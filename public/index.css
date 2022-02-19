@@ -1,0 +1,165 @@
+img {
+	display: block;
+}
+.container {
+    padding: 16px;
+    margin-top: 100px;
+    background-color: white;
+    margin-bottom: 100px;
+    margin-left: 400px;
+    margin-right: 400px;
+    border-width: thick;
+    border-color: #4CAF50;
+    border-style: solid;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+}    
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.back {
+    background-color: white;
+    color: black;
+    font-size: xx-large;
+    /* padding: 16px 20px; */
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    opacity: 0.9;
+}
+
+.registerbtn:hover {
+    opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+    color: dodgerblue;
+}
+
+.signin {
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+
+.nav-bar {
+    background: #4CAF50;
+  }
+  
+.menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.menu li {
+    border: 1px solid #000;
+    position: relative;
+}
+
+.menu>li {
+    flex: 1;
+}
+
+.menu a {
+    text-align: center;
+    display: flex;
+    text-decoration: none;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    color: #FFFFFF;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu li a div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.menu .sub-menu {
+    position: absolute;
+    display: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: #aad659;
+    z-index: 1;
+}
+
+.menu .sub-menu a {
+    margin-bottom: -1px;
+    color: white;
+    text-decoration: none;
+    padding:3px 5px;
+}
+
+.menu a:hover {
+    background-color: salmon;
+}
+
+.menu>li:hover .sub-menu {
+    display: block;
+}
+
+.search-form {
+    display: inline-block;
+    margin-right: 17px;
+    width: 300px;
+}
+
+.search-form .search-text {
+    background-image: url(images/glass.png);
+    background-repeat: no-repeat;
+    background-position: 13px 5px;
+    text-indent: 56px;
+    width: 100%;
+    height: 35px;
+    font-size: 0.875rem;
+    line-height: 1.0625rem;
+    display: inline-block;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+}
