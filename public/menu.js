@@ -1,6 +1,7 @@
 import { loginPage } from './login.js'
 import { signupPage } from './signup.js';
 import { profilePage } from './profile.js';
+import { filmsPage } from './films.js';
 
 export let configApp = {
 	menu: {
@@ -22,10 +23,11 @@ export let configApp = {
 		text: 'Профиль',
 		openMethod: profilePage,
 	},
-	about: {
-		href: '/about',
-		text: 'Контакты',
-	}
+	films: {
+		href: '/films',
+		text: 'Фильмы',
+		openMethod: filmsPage,
+	},
 };
 
 export function menuPage(   ) {
@@ -45,12 +47,14 @@ export function menuPage(   ) {
 	main.appendChild(mainLabel);
 	mainLabel.href = "/menu";
 	mainLabel.innerHTML = "<div>Кинопоиск</div>";
+	mainLabel.dataset.section = "menu";
 
 	const movies = document.createElement("li");
 	menu.appendChild(movies);
 	const moviesLabel = document.createElement("a");
-	moviesLabel.href = "/menu"; // TODO
+	moviesLabel.href = "/films"; // TODO
 	moviesLabel.innerHTML = "<div>Фильмы</div>";
+	moviesLabel.dataset.section = "films";
 	movies.appendChild(moviesLabel);
 
 	const moviesSubMenu = document.createElement("ul");
@@ -58,13 +62,15 @@ export function menuPage(   ) {
 	movies.appendChild(moviesSubMenu);
 	const top250 = document.createElement("li");
 	moviesSubMenu.appendChild(top250);
-	top250.innerHTML = "<a href=\"/menu\">Топ 250</a>"
+	top250.innerHTML = "<a href=\"/films\">Топ 250</a>"
+	top250.href = "/films";
+	
 	const top500 = document.createElement("li");
 	moviesSubMenu.appendChild(top500);
-	top500.innerHTML = "<a href=\"/menu\">Топ 500</a>"
+	top500.innerHTML = "<a href=\"/films\">Топ 500</a>"
 	const ourChoice = document.createElement("li");
 	moviesSubMenu.appendChild(ourChoice);
-	ourChoice.innerHTML = "<a href=\"/menu\">Выбор редакции</a>"
+	ourChoice.innerHTML = "<a href=\"/filmsFromUs\">Выбор редакции</a>"
 
 	const signin = document.createElement("li");
 	menu.appendChild(signin);

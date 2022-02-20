@@ -1,223 +1,223 @@
 
-const root = document.getElementById('root');
+// const root = document.getElementById('root');
 
-const configApp = {
-	menu: {
-		href: '/menu',
-		openMethod: menuPage,
-	},
-	signup: {
-		href: '/sighup',
-		text: 'Зарегистрироваться',
-		openMethod: signupPage,
-	},
-	login: {
-		href: '/login',
-		text: 'Войти',
-		openMethod: loginPage,
-	},
-	profile: {
-		href: '/profile',
-		text: 'Профиль',
-		openMethod: profilePage,
-	},
-	about: {
-		href: '/about',
-		text: 'Контакты',
-	}
-};
+// const configApp = {
+// 	menu: {
+// 		href: '/menu',
+// 		openMethod: menuPage,
+// 	},
+// 	signup: {
+// 		href: '/sighup',
+// 		text: 'Зарегистрироваться',
+// 		openMethod: signupPage,
+// 	},
+// 	login: {
+// 		href: '/login',
+// 		text: 'Войти',
+// 		openMethod: loginPage,
+// 	},
+// 	profile: {
+// 		href: '/profile',
+// 		text: 'Профиль',
+// 		openMethod: profilePage,
+// 	},
+// 	about: {
+// 		href: '/about',
+// 		text: 'Контакты',
+// 	}
+// };
 
-export function ajax(method, url, body = null, callback) {
-	const xhr = new XMLHttpRequest();
-	xhr.open(method, url, true);
-	xhr.withCredentials = true;
+// export function ajax(method, url, body = null, callback) {
+// 	const xhr = new XMLHttpRequest();
+// 	xhr.open(method, url, true);
+// 	xhr.withCredentials = true;
 
-	xhr.addEventListener('readystatechange', function() {
-		if (xhr.readyState !== XMLHttpRequest.DONE) return;
+// 	xhr.addEventListener('readystatechange', function() {
+// 		if (xhr.readyState !== XMLHttpRequest.DONE) return;
 
-		callback(xhr.status, xhr.responseText);
-	});
+// 		callback(xhr.status, xhr.responseText);
+// 	});
 
-	if (body) {
-		xhr.setRequestHeader('Content-type', 'application/json; charset=utf8');
-		xhr.send(JSON.stringify(body));
-		return;
-	}
+// 	if (body) {
+// 		xhr.setRequestHeader('Content-type', 'application/json; charset=utf8');
+// 		xhr.send(JSON.stringify(body));
+// 		return;
+// 	}
 
-	xhr.send();
-}
+// 	xhr.send();
+// }
 
-function createInput(type, text, name) {
-	const input = document.createElement('input');
-	input.type = type;
-	input.name = name;
-	input.placeholder = text;
+// function createInput(type, text, name) {
+// 	const input = document.createElement('input');
+// 	input.type = type;
+// 	input.name = name;
+// 	input.placeholder = text;
 
-	return input;
-}
+// 	return input;
+// }
 
-function menuPage() {
-	root.innerHTML = '';
+// function menuPage() {
+// 	root.innerHTML = '';
 
-	Object
-		.entries(configApp)
-		.map(([key, {href, text}]) => {
-			if (!text) {
-				return ;
-			}
-			const menuElement = document.createElement('a');
-			menuElement.href = href;
-			menuElement.textContent = text;
-			menuElement.dataset.section = key;
+// 	Object
+// 		.entries(configApp)
+// 		.map(([key, {href, text}]) => {
+// 			if (!text) {
+// 				return ;
+// 			}
+// 			const menuElement = document.createElement('a');
+// 			menuElement.href = href;
+// 			menuElement.textContent = text;
+// 			menuElement.dataset.section = key;
 
-			return menuElement;
-		})
-		.forEach((element) => {
-			if (!element) {
-				return;
-			}
-			root.appendChild(element);
-		})
-	;
+// 			return menuElement;
+// 		})
+// 		.forEach((element) => {
+// 			if (!element) {
+// 				return;
+// 			}
+// 			root.appendChild(element);
+// 		})
+// 	;
 
-}
+// }
 
-function signupPage() {
-	root.innerHTML = '';
+// function signupPage() {
+// 	root.innerHTML = '';
 
-	const form = document.createElement('form');
+// 	const form = document.createElement('form');
 
-	const emailInput = createInput('email', 'Емайл', 'email');
-	const passwordInput = createInput('password', 'Пароль', 'password');
-	const ageInput = createInput('number', 'Возраст', 'age');
+// 	const emailInput = createInput('email', 'Емайл', 'email');
+// 	const passwordInput = createInput('password', 'Пароль', 'password');
+// 	const ageInput = createInput('number', 'Возраст', 'age');
 
-	const submitBtn = document.createElement('input');
-	submitBtn.type = 'submit';
-	submitBtn.value = 'Зарегистрироваться!';
+// 	const submitBtn = document.createElement('input');
+// 	submitBtn.type = 'submit';
+// 	submitBtn.value = 'Зарегистрироваться!';
 
-	const back = document.createElement('a');
-	back.textContent = 'назад';
-	back.href = 'back';
-	back.dataset.section = 'menu';
-
-
-	form.appendChild(emailInput);
-	form.appendChild(passwordInput);
-	form.appendChild(ageInput);
-	form.appendChild(submitBtn);
-	form.appendChild(back);
-
-	root.appendChild(form);
-}
-
-function loginPage() {
-	root.innerHTML = '';
-
-	const form = document.createElement('form');
-
-	const emailInput = createInput('email', 'Емайл', 'email');
-	const passwordInput = createInput('password', 'Пароль', 'password');
-
-	const submitBtn = document.createElement('input');
-	submitBtn.type = 'submit';
-	submitBtn.value = 'Войти!';
-
-	const back = document.createElement('a');
-	back.textContent = 'назад';
-	back.href = 'back';
-	back.dataset.section = 'menu';
-
-	form.appendChild(emailInput);
-	form.appendChild(passwordInput);
-	form.appendChild(submitBtn);
-	form.appendChild(back);
-
-	form.addEventListener('submit', (e) => {
-		e.preventDefault();
-
-		const email = emailInput.value.trim();
-		const password = passwordInput.value;
-
-		ajax(
-			'POST',
-			'/login',
-			{email, password},
-			(status => {
-				if (status === 200) {
-					profilePage();
-					return;
-				}
-
-				alert('АХТУНГ! НЕТ АВТОРИЗАЦИИ');
-				signupPage();
-			})
-		)
-	});
+// 	const back = document.createElement('a');
+// 	back.textContent = 'назад';
+// 	back.href = 'back';
+// 	back.dataset.section = 'menu';
 
 
+// 	form.appendChild(emailInput);
+// 	form.appendChild(passwordInput);
+// 	form.appendChild(ageInput);
+// 	form.appendChild(submitBtn);
+// 	form.appendChild(back);
 
-	root.appendChild(form);
-}
+// 	root.appendChild(form);
+// }
 
-function profilePage() {
-	root.innerHTML = '';
+// function loginPage() {
+// 	root.innerHTML = '';
 
-	ajax(
-		'GET',
-		'/me',
-		null,
-		(status, responseText) => {
-			let isAuthorized = false;
-			if (status === 200) {
-				isAuthorized = true;
-			}
+// 	const form = document.createElement('form');
+
+// 	const emailInput = createInput('email', 'Емайл', 'email');
+// 	const passwordInput = createInput('password', 'Пароль', 'password');
+
+// 	const submitBtn = document.createElement('input');
+// 	submitBtn.type = 'submit';
+// 	submitBtn.value = 'Войти!';
+
+// 	const back = document.createElement('a');
+// 	back.textContent = 'назад';
+// 	back.href = 'back';
+// 	back.dataset.section = 'menu';
+
+// 	form.appendChild(emailInput);
+// 	form.appendChild(passwordInput);
+// 	form.appendChild(submitBtn);
+// 	form.appendChild(back);
+
+// 	form.addEventListener('submit', (e) => {
+// 		e.preventDefault();
+
+// 		const email = emailInput.value.trim();
+// 		const password = passwordInput.value;
+
+// 		ajax(
+// 			'POST',
+// 			'/login',
+// 			{email, password},
+// 			(status => {
+// 				if (status === 200) {
+// 					profilePage();
+// 					return;
+// 				}
+
+// 				alert('АХТУНГ! НЕТ АВТОРИЗАЦИИ');
+// 				signupPage();
+// 			})
+// 		)
+// 	});
 
 
-			if (isAuthorized) {
-				const {age, score, images} = JSON.parse(responseText);
 
-				const span = document.createElement('span');
-				span.textContent = `Мне ${age} лет и я крутой на ${score} очков`;
+// 	root.appendChild(form);
+// }
 
-				root.appendChild(span);
+// function profilePage() {
+// 	root.innerHTML = '';
 
-				const back = document.createElement('a');
-				back.textContent = 'назад';
-				back.href = 'back';
-				back.dataset.section = 'menu';
+// 	ajax(
+// 		'GET',
+// 		'/me',
+// 		null,
+// 		(status, responseText) => {
+// 			let isAuthorized = false;
+// 			if (status === 200) {
+// 				isAuthorized = true;
+// 			}
 
-				root.appendChild(back);
 
-				if (images && Array.isArray(images)) {
-					const div = document.createElement('div');
-					root.appendChild(div);
+// 			if (isAuthorized) {
+// 				const {age, score, images} = JSON.parse(responseText);
 
-					images.forEach((imageSrc) => {
-						div.innerHTML += `<img src="${imageSrc}" width="200"/>`
-					});
-				}
+// 				const span = document.createElement('span');
+// 				span.textContent = `Мне ${age} лет и я крутой на ${score} очков`;
 
-				return;
-			}
+// 				root.appendChild(span);
 
-			alert('АХТУНГ, НЕТ АВТОРИЗАЦИИ');
-			loginPage();
-		}
-	)
-}
+// 				const back = document.createElement('a');
+// 				back.textContent = 'назад';
+// 				back.href = 'back';
+// 				back.dataset.section = 'menu';
 
-menuPage();
+// 				root.appendChild(back);
 
-root.addEventListener('click', (e) => {
-	const {target} = e;
+// 				if (images && Array.isArray(images)) {
+// 					const div = document.createElement('div');
+// 					root.appendChild(div);
 
-	if (target instanceof HTMLAnchorElement) {
-		e.preventDefault();
+// 					images.forEach((imageSrc) => {
+// 						div.innerHTML += `<img src="${imageSrc}" width="200"/>`
+// 					});
+// 				}
 
-		const {section} = target.dataset;
-		if (section) {
-			configApp[section].openMethod();
-		}
-	}
+// 				return;
+// 			}
 
-});
+// 			alert('АХТУНГ, НЕТ АВТОРИЗАЦИИ');
+// 			loginPage();
+// 		}
+// 	)
+// }
+
+// menuPage();
+
+// root.addEventListener('click', (e) => {
+// 	const {target} = e;
+
+// 	if (target instanceof HTMLAnchorElement) {
+// 		e.preventDefault();
+
+// 		const {section} = target.dataset;
+// 		if (section) {
+// 			configApp[section].openMethod();
+// 		}
+// 	}
+
+// });
