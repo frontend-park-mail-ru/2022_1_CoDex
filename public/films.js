@@ -1,5 +1,18 @@
 import { menuPage } from './menu.js';
 
+const configFilm = {
+    film1: {
+        filmName:"",
+        filmNameOriginal:"",
+        filmRating: 0,
+        filmImage: ``,
+        filmOverviewAdditional: "",
+        filmDescription: "",
+        filmAgeLimit: "",
+        filmCast: [""],
+    }
+};
+
 export function filmsPage() {
 	root.innerHTML = '';    
     menuPage();
@@ -10,6 +23,7 @@ export function filmsPage() {
 
     //Заголовок для страницы
     const pageLabel = document.createElement("h1");
+    pageLabel.classList.add("top-title");
     pageLabel.innerHTML = "<center>Топ 250</center>";
     root.appendChild(pageLabel);
 
@@ -138,7 +152,7 @@ export function filmsPage() {
     // Оценка фильма
     const filmRating2 = document.createElement("div")
     filmRating2.classList.add("filmRating");
-    filmRating2.innerHTML = "8.5";
+    filmRating2.innerHTML = "8.6";
 
     film_body2.appendChild(filmBriefDescription2);
     film_body2.appendChild(filmDescription2);

@@ -1,223 +1,116 @@
+'use strict';
 
-// const root = document.getElementById('root');
+const express = require('express');
+const body = require('body-parser');
+const cookie = require('cookie-parser');
+const morgan = require('morgan');
+const uuid = require('uuid/v4');
+const path = require('path');
+const app = express();
 
-// const configApp = {
-// 	menu: {
-// 		href: '/menu',
-// 		openMethod: menuPage,
-// 	},
-// 	signup: {
-// 		href: '/sighup',
-// 		text: 'Зарегистрироваться',
-// 		openMethod: signupPage,
-// 	},
-// 	login: {
-// 		href: '/login',
-// 		text: 'Войти',
-// 		openMethod: loginPage,
-// 	},
-// 	profile: {
-// 		href: '/profile',
-// 		text: 'Профиль',
-// 		openMethod: profilePage,
-// 	},
-// 	about: {
-// 		href: '/about',
-// 		text: 'Контакты',
-// 	}
-// };
+app.use(morgan('dev'));
+app.use(express.static(path.resolve(__dirname, '..', 'public')));
+app.use(express.static(path.resolve(__dirname, 'images')));
+app.use(body.json());
+app.use(cookie());
 
-// export function ajax(method, url, body = null, callback) {
-// 	const xhr = new XMLHttpRequest();
-// 	xhr.open(method, url, true);
-// 	xhr.withCredentials = true;
+const users = {
+    'd.dorofeev@corp.mail.ru': {
+        email: 'd.dorofeev@corp.mail.ru',
+        password: 'password',
+        age: 21,
+        score: 3,
+    },
+    's.volodin@corp.mail.ru': {
+        email: 's.volodin@corp.mail.ru',
+        password: 'password',
+        age: 24,
+        score: 100500,
+        images: [
+            '/273153700_118738253861831_5906416883131394354_n.jpeg',
+            '/272708814_1158833634855293_1743973316352152210_n.webp.jpg',
+            '/272464515_147005761018515_3100264353239753904_n.webp.jpg',
+            '/259096143_252774593424446_3292295880799640700_n.jpeg'
+        ]
+    },
+    'aleksandr.tsvetkov@corp.mail.ru': {
+        email: 'aleksandr.tsvetkov@corp.mail.ru',
+        password: 'password',
+        age: 27,
+        score: 72,
+        images: [
+            '/19984805_468099790230913_7469029070697660416_n.jpeg',
+            '/16583858_168051673696142_846500378588479488_n.jpeg'
+        ],
+    },
+    'a.ostapenko@corp.mail.ru': {
+        email: 'a.ostapenko@corp.mail.ru',
+        password: 'password',
+        age: 21,
+        score: 72,
+    },
+};
+const ids = {};
 
-// 	xhr.addEventListener('readystatechange', function() {
-// 		if (xhr.readyState !== XMLHttpRequest.DONE) return;
+app.post('/signup', function (req, res) {
+    const password1 = req.body.password1;
+    const password2 = req.body.password2;
+    const email = req.body.email;
+    //const age = req.body.age;
+    if (!password1 || !password2 || !email || //!age ||
+        !password1.match(/^\S{4,}$/) ||
+        !email.match(/@/)// ||
+        //!(typeof age === 'number' && age > 10 && age < 100)
+    ) {
+        return res.status(400).json({ error: 'Не валидные данные пользователя' });
+    }
+    if (password1 != password2) {
+        return res.status(401).json({ error: 'Пароли не совпадают' });
+    }
+    if (users[email]) {
+        return res.status(402).json({ error: 'Пользователь уже существует' });
+    }
 
-// 		callback(xhr.status, xhr.responseText);
-// 	});
+    const id = uuid();
+    const user = { password1, email, age: 0/*age*/, score: 0, images: [] };
+    ids[id] = email;
+    users[email] = user;
 
-// 	if (body) {
-// 		xhr.setRequestHeader('Content-type', 'application/json; charset=utf8');
-// 		xhr.send(JSON.stringify(body));
-// 		return;
-// 	}
+    res.cookie('podvorot', id, { expires: new Date(Date.now() + 1000 * 60 * 10) });
+    res.status(200).json({ id });
+});
 
-// 	xhr.send();
-// }
+app.post('/login', function (req, res) {
+    const password = req.body.password;
+    const email = req.body.email;
+    if (!password || !email) {
+        return res.status(400).json({ error: 'Не указан E-Mail или пароль' });
+    }
+    if (!users[email] || users[email].password !== password) {
+        return res.status(401).json({ error: 'Не верный E-Mail и/или пароль' });
+    }
 
-// function createInput(type, text, name) {
-// 	const input = document.createElement('input');
-// 	input.type = type;
-// 	input.name = name;
-// 	input.placeholder = text;
+    const id = uuid();
+    ids[id] = email;
 
-// 	return input;
-// }
+    res.cookie('podvorot', id, { expires: new Date(Date.now() + 1000 * 60 * 10) });
+    res.status(200).json({ id });
+});
 
-// function menuPage() {
-// 	root.innerHTML = '';
+app.get('/me', function (req, res) {
+    const id = req.cookies['podvorot'];
+    const email = ids[id];
+    if (!email || !users[email]) {
+        return res.status(401).end();
+    }
 
-// 	Object
-// 		.entries(configApp)
-// 		.map(([key, {href, text}]) => {
-// 			if (!text) {
-// 				return ;
-// 			}
-// 			const menuElement = document.createElement('a');
-// 			menuElement.href = href;
-// 			menuElement.textContent = text;
-// 			menuElement.dataset.section = key;
+    users[email].score += 1;
 
-// 			return menuElement;
-// 		})
-// 		.forEach((element) => {
-// 			if (!element) {
-// 				return;
-// 			}
-// 			root.appendChild(element);
-// 		})
-// 	;
+    res.json(users[email]);
+});
 
-// }
+const port = process.env.PORT || 3000;
 
-// function signupPage() {
-// 	root.innerHTML = '';
-
-// 	const form = document.createElement('form');
-
-// 	const emailInput = createInput('email', 'Емайл', 'email');
-// 	const passwordInput = createInput('password', 'Пароль', 'password');
-// 	const ageInput = createInput('number', 'Возраст', 'age');
-
-// 	const submitBtn = document.createElement('input');
-// 	submitBtn.type = 'submit';
-// 	submitBtn.value = 'Зарегистрироваться!';
-
-// 	const back = document.createElement('a');
-// 	back.textContent = 'назад';
-// 	back.href = 'back';
-// 	back.dataset.section = 'menu';
-
-
-// 	form.appendChild(emailInput);
-// 	form.appendChild(passwordInput);
-// 	form.appendChild(ageInput);
-// 	form.appendChild(submitBtn);
-// 	form.appendChild(back);
-
-// 	root.appendChild(form);
-// }
-
-// function loginPage() {
-// 	root.innerHTML = '';
-
-// 	const form = document.createElement('form');
-
-// 	const emailInput = createInput('email', 'Емайл', 'email');
-// 	const passwordInput = createInput('password', 'Пароль', 'password');
-
-// 	const submitBtn = document.createElement('input');
-// 	submitBtn.type = 'submit';
-// 	submitBtn.value = 'Войти!';
-
-// 	const back = document.createElement('a');
-// 	back.textContent = 'назад';
-// 	back.href = 'back';
-// 	back.dataset.section = 'menu';
-
-// 	form.appendChild(emailInput);
-// 	form.appendChild(passwordInput);
-// 	form.appendChild(submitBtn);
-// 	form.appendChild(back);
-
-// 	form.addEventListener('submit', (e) => {
-// 		e.preventDefault();
-
-// 		const email = emailInput.value.trim();
-// 		const password = passwordInput.value;
-
-// 		ajax(
-// 			'POST',
-// 			'/login',
-// 			{email, password},
-// 			(status => {
-// 				if (status === 200) {
-// 					profilePage();
-// 					return;
-// 				}
-
-// 				alert('АХТУНГ! НЕТ АВТОРИЗАЦИИ');
-// 				signupPage();
-// 			})
-// 		)
-// 	});
-
-
-
-// 	root.appendChild(form);
-// }
-
-// function profilePage() {
-// 	root.innerHTML = '';
-
-// 	ajax(
-// 		'GET',
-// 		'/me',
-// 		null,
-// 		(status, responseText) => {
-// 			let isAuthorized = false;
-// 			if (status === 200) {
-// 				isAuthorized = true;
-// 			}
-
-
-// 			if (isAuthorized) {
-// 				const {age, score, images} = JSON.parse(responseText);
-
-// 				const span = document.createElement('span');
-// 				span.textContent = `Мне ${age} лет и я крутой на ${score} очков`;
-
-// 				root.appendChild(span);
-
-// 				const back = document.createElement('a');
-// 				back.textContent = 'назад';
-// 				back.href = 'back';
-// 				back.dataset.section = 'menu';
-
-// 				root.appendChild(back);
-
-// 				if (images && Array.isArray(images)) {
-// 					const div = document.createElement('div');
-// 					root.appendChild(div);
-
-// 					images.forEach((imageSrc) => {
-// 						div.innerHTML += `<img src="${imageSrc}" width="200"/>`
-// 					});
-// 				}
-
-// 				return;
-// 			}
-
-// 			alert('АХТУНГ, НЕТ АВТОРИЗАЦИИ');
-// 			loginPage();
-// 		}
-// 	)
-// }
-
-// menuPage();
-
-// root.addEventListener('click', (e) => {
-// 	const {target} = e;
-
-// 	if (target instanceof HTMLAnchorElement) {
-// 		e.preventDefault();
-
-// 		const {section} = target.dataset;
-// 		if (section) {
-// 			configApp[section].openMethod();
-// 		}
-// 	}
-
-// });
+app.listen(port, function () {
+    console.log(`Server listening port ${port}`);
+});

@@ -15,7 +15,7 @@ img {
     border-style: solid;
 }
 
-#root h1 {
+.top-title {
     color: red;    
 }
 
@@ -80,16 +80,6 @@ img {
     word-wrap: break-word;
     /* width: 30%; */
 
-}
-
-.filmOverviewLink .filmOverviewNameOriginal {
-    /* float: left; */
-    /* word-wrap: break-word; */
-}
-
-.filmOverviewLink .filmOverviewAdditional {
-    /* float: left; */
-    /* word-wrap: break-word; */
 }
 
 .film .filmDescription {
@@ -256,4 +246,10 @@ a {
     border-radius: 5px;
     box-shadow: none;
     border: none;
+}
+
+.warning p {
+    color: red;
+    margin: 0;
+    text-align: right;
 }
