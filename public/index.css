@@ -40,31 +40,72 @@ img {
 
 }
 
+.film .film_body {
+    display: flex;
+    float: left;
+    width: 65%;
+}
+
 .film .filmNumber {
     color: red;
     float: left;    
     width: 5%;
 }
 
-.film .filmName {
-    color: red;
+.film .filmImage {
+    object-fit: contain;
     float: left;
-    width: 20%;
+    width: auto;
+    height: auto;
+}
+
+.film_body .filmBriefDescription {
+    float: left;
+    width: 30%;
     word-wrap: break-word;
-    padding-right: 5px;
+    padding: 5px;
+    display: flex;
+}
+
+.filmBriefDescription .filmOverviewLink {
+    color: red;
+
+    float: left;
+    word-wrap: break-word;
+    width: 100%;
+}
+
+.filmOverviewLink .filmOverviewName {
+    /* float: left; */
+    word-wrap: break-word;
+    /* width: 30%; */
+
+}
+
+.filmOverviewLink .filmOverviewNameOriginal {
+    /* float: left; */
+    /* word-wrap: break-word; */
+}
+
+.filmOverviewLink .filmOverviewAdditional {
+    /* float: left; */
+    /* word-wrap: break-word; */
 }
 
 .film .filmDescription {
     color: red;
     float: left;
-    width: 45%;
+    width: 65%;
+    word-wrap: break-word;
+    padding-right: 5px;
 }
 
-.film .filmImage {
-    width: 30%;
+.film_body .filmRating {
+    color: red;
     float: left;
+    width: 10%;
+    padding-right: 5px;
 }
-
 
 body {
     font-family: Arial, Helvetica, sans-serif;
