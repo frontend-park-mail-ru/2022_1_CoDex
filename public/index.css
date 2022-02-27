@@ -1,22 +1,97 @@
-img {
-	display: block;
+#root {
+    position: relative;
+    flex-direction: column;
+    display: flex;
 }
 
+:root {
+    --main-nav-color: #394053;
+    --main-wng-color: #FA8334;
+    --main-soft-color: #6D98BA;
+    --main-bg-color: #F6F4F3;
+    --main-green-color: #7CAE7A;
+    --main-font: "Montserrat" ,sans-serif;
+}
+
+#navbar {
+    font-family: var(--main-font);
+    width: 100%;
+    flex: 0 0 70px;
+    background-color: var(--main-nav-color);
+    position: sticky;
+    align-items: center;
+    display: flex;
+
+  }
+
+.navbar_logo {
+    margin-left: 5%;
+}
+
+.navbar_logo img{
+    width: 100px;
+    height: 65px;
+}
+
+.navbar_menu {
+    display: inherit;
+    width: 40%;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+.navbar_menu_btn {
+    text-decoration: none;
+    transition: .1s;
+    color: var(--main-bg-color);
+
+}
+
+.navbar_search {
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+
+.navbar_menu_login-btn {
+    text-decoration: none;
+    color: var(--main-wng-color);
+    font-size: 24px;
+    margin-left: 5%;
+
+}
+
+#content {
+    width: 100%;
+    flex: 0 0 850px;
+    background-color: var(--main-bg-color);
+    display: flex;
+}
+
+#footer {
+    width: 100%;
+    flex: 0 0 150px;
+    background-color: var(--main-nav-color);
+    display: flex;
+}
 
 .container {
     padding: 16px;
     margin-top: 100px;
-    background-color: white;
+    background-color: var(--main-bg-color);
     margin-bottom: 100px;
     margin-left: 400px;
     margin-right: 400px;
+    align-items: center;
     border-width: thick;
     border-color: #4CAF50;
     border-style: solid;
 }
 
 .top-title {
-    color: red;    
+    color: red;  
+    align-items: center;  
 }
 
 .container-films {
@@ -98,8 +173,8 @@ img {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: black;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    /* background-color: black; */
 }
 
 * {
@@ -163,9 +238,6 @@ a {
 }
 
 
-.nav-bar {
-    background: #4CAF50;
-  }
   
 .menu {
     margin: 0;

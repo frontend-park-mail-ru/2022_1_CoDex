@@ -1,4 +1,4 @@
-import { menuPage } from './menu.js';
+import {clearContent} from './menu.js';
 
 const configFilm = {
     film1: {
@@ -14,9 +14,7 @@ const configFilm = {
 };
 
 export function filmsPage() {
-	root.innerHTML = '';    
-    menuPage();
-
+    const content = clearContent();
     // Контейнер для всех фильмов
     const filmsContainer = document.createElement("div");
     filmsContainer.classList.add("container-films");
@@ -25,7 +23,7 @@ export function filmsPage() {
     const pageLabel = document.createElement("h1");
     pageLabel.classList.add("top-title");
     pageLabel.innerHTML = "<center>Топ 250</center>";
-    root.appendChild(pageLabel);
+    content.appendChild(pageLabel);
 
     // Контейнер для фильма
     const film = document.createElement("div");
@@ -162,5 +160,6 @@ export function filmsPage() {
     film2.appendChild(film_body2);
 
 
-	root.appendChild(filmsContainer);
+	content.appendChild(filmsContainer);
+
 }
