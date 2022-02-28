@@ -48,6 +48,13 @@ export function loginPage(warning = false) {
     form.appendChild(passwordLabel);
     form.appendChild(passwordInput);
 
+    const loginButton = document.createElement("input");
+    loginButton.type = "button";
+    loginButton.value = "Войти";
+    loginButton.name = "submitBtn";
+    loginButton.classList.add("login__btn");
+    form.appendChild(loginButton);
+
     // let emailLabelWarning;
     // if (warning) {
     //     emailLabelWarning = document.createElement("Label");
