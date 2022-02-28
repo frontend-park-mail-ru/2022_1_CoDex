@@ -101,7 +101,26 @@
     border-style: solid;
 }
 
-.login__invitation {
+.signup {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    min-width: 50%;
+    min-height: 20%;
+    max-height: 45%;
+    background-color: var(--main-bg-color);
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 400px;
+    margin-right: 400px;
+    align-items: center;
+    border-width: thick;
+    border-color: var(--main-green-color);
+    border-style: solid;
+}
+
+.login__invitation,
+.signup__invitation {
     font-family: var(--main-font);
     font-size: 26px;
     display: flex;
@@ -110,7 +129,8 @@
     height: 65px;
 }
 
-.login__form {
+.login__form,
+.signup__form {
     flex: 1 0 auto;
     flex-wrap: wrap;
     display: flex;  
@@ -119,7 +139,8 @@
     width: 100%;
 }
 
-.login a {
+.login a,
+.signup a {
     font-family: var(--main-font);
     text-decoration: none;
     color: var(--main-nav-color);
@@ -127,7 +148,8 @@
     margin: 10px auto 25px auto;
 }
 
-.login__btn {
+.login__btn,
+.sigup__btn {
     font-family: var(--main-font);
     font-size: 18px;
     background-color: var(--main-soft-color);
@@ -247,17 +269,6 @@ hr {
     margin-bottom: 25px;
 }
 
-/* Set a style for the submit button */
-.registerbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-}
 
 .back {
     background-color: white;
@@ -271,21 +282,9 @@ hr {
     opacity: 0.9;
 }
 
-.registerbtn:hover {
-    opacity: 1;
-}
-
-/* Add a blue text color to links */
-a {
-    color: dodgerblue;
-}
-
-.signin {
-    background-color: #f1f1f1;
-    text-align: center;
-}
 
 
+/* 
   
 .menu {
     margin: 0;
@@ -345,7 +344,7 @@ a {
 
 .menu>li:hover .sub-menu {
     display: block;
-}
+} */
 
 .search-form {
     display: inline-block;
