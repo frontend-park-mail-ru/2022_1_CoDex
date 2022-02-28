@@ -76,17 +76,74 @@
     display: flex;
 }
 
-.container {
+.login-content {
+    background-color: var(--main-bg-color);
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
     padding: 16px;
     margin-top: 100px;
+    min-width: 50%;
+    min-height: 65%;
     background-color: var(--main-bg-color);
     margin-bottom: 100px;
     margin-left: 400px;
     margin-right: 400px;
     align-items: center;
     border-width: thick;
-    border-color: #4CAF50;
+    border-color: var(--main-green-color);
     border-style: solid;
+}
+
+.login__invitation {
+    font-family: var(--main-font);
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 65px;
+}
+
+.login__form {
+    flex: 1 0 auto;
+    flex-wrap: wrap;
+    display: flex;  
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.login a {
+    font-family: var(--main-font);
+    text-decoration: none;
+    color: var(--main-nav-color);
+    cursor: pointer;
+    margin: 10px auto 25px auto;
+}
+
+.text_inputs {
+    font-family: var(--main-font);
+    padding-left: 15px;
+    flex: 1 0 auto;
+    margin: 0;
+    max-height: 40px;
+    outline: none;
+    border: 0;
+    width: 80%;
+}
+
+.text_inputs__label {
+    margin-top: 1em;
+    margin-bottom: .3em;
+    font-size: 1em;
+    font-family: var(--main-font);
+    align-self: baseline;
+    margin-left: 11%;
 }
 
 .top-title {
@@ -171,28 +228,6 @@
     width: 10%;
     padding-right: 5px;
 }
-
-body {
-    /* font-family: Arial, Helvetica, sans-serif; */
-    /* background-color: black; */
-}
-
-* {
-    box-sizing: border-box;
-}
-
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-}    
 
 hr {
     border: 1px solid #f1f1f1;
