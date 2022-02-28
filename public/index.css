@@ -282,6 +282,49 @@ hr {
     opacity: 0.9;
 }
 
+.page {
+    margin: 20px 0 50px 0;
+    flex: 1 1 auto;
+}
+
+.title {
+    font-family: var(--main-font);
+    font-size: 40px;
+    margin: 0 0 .21em;
+}
+
+._container {
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.collections__content {
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.collections__main_title {
+    font-family: var(--main-font);
+    font-size: 40px;
+    margin: 0 0 .21em;
+}
+
+.collections__description {
+    margin-bottom: 15px;
+    font-family: var(--main-font);
+}
+
+.bg_container {
+    background-color: var(--main-soft-color);
+    border-radius: 30px;
+    color: var(--main-bg-color);
+    padding: 30px;
+}
+
+
 
 
 /* 

@@ -2,6 +2,7 @@ import { loginPage } from './login.js'
 import { signupPage } from './signup.js';
 import { profilePage } from './profile.js';
 import { filmsPage } from './films.js';
+import { collectionsPage } from './collections.js'; 
 
 export let configApp = {
 	menu: {
@@ -22,6 +23,11 @@ export let configApp = {
 		href: '/profile',
 		text: 'Профиль',
 		openMethod: profilePage,
+	},
+	collections: {
+		href: '/collections',
+		text: 'Подборки',
+		openMethod: collectionsPage,
 	},
 	films: {
 		href: '/films',
@@ -55,9 +61,9 @@ export function navbarRender() {
 	const collection = document.createElement("a");
 	collection.classList.add("navbar_menu_btn");
 	menu.appendChild(collection);
-	collection.href = "/films";
+	collection.href = "/collections";
 	collection.textContent = "Подборки";
-	collection.dataset.section = "films";
+	collection.dataset.section = "collections";
 
 	const genres = document.createElement("a");
 	genres.classList.add("navbar_menu_btn");
