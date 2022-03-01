@@ -27,7 +27,7 @@ menuPage();
 root.addEventListener('click', (e) => {
 	const {target} = e;
 
-	if (target instanceof HTMLAnchorElement) {
+	if (target instanceof HTMLElement) {
 		e.preventDefault();
 
 		const {section} = target.dataset;

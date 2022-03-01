@@ -1,7 +1,7 @@
 import { loginPage } from './login.js'
 import { signupPage } from './signup.js';
 import { profilePage } from './profile.js';
-import { filmsPage } from './films.js';
+import { moviesPage } from './films.js';
 import { collectionsPage } from './collections.js'; 
 
 export let configApp = {
@@ -29,10 +29,10 @@ export let configApp = {
 		text: 'Подборки',
 		openMethod: collectionsPage,
 	},
-	films: {
-		href: '/films',
+	movies: {
+		href: '/movies',
 		text: 'Фильмы',
-		openMethod: filmsPage,
+		openMethod: moviesPage,
 	},
 };
 

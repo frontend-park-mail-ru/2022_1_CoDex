@@ -2,18 +2,21 @@ import { createInput } from './signup.js';
 import { ajax } from './main.js';
 import { clearContent } from './menu.js';
 
-function createCollection(description, src, href) {
+function createCollection(description, src, page) {
     const collection = document.createElement("a");
-    collection.href = href;
+    collection.href = `/${ page }`;
+    collection.dataset.section = page;
     collection.classList.add("collection");
     const collectionImg = document.createElement("div");
     collectionImg.classList.add("collection__wrapper");
     const img = document.createElement("img");
+    img.dataset.section = page;
     img.classList.add("collection_img");
     img.src = src;
     collectionImg.appendChild(img);
     const collectionDesription = document.createElement("div");
     collectionDesription.classList.add("collection__description");
+    collectionDesription.dataset.section = page;
     collectionDesription.textContent = description;
 
     collection.appendChild(collectionImg);
@@ -26,7 +29,7 @@ export function collectionsPage() {
     const content = clearContent();
 
     const collectionsContent = document.createElement("div");
-    collectionsContent.classList.add("collections__content");
+    collectionsContent.classList.add("content_wrapper");
     content.appendChild(collectionsContent);
 
     const collectionsPage = document.createElement("page");
@@ -39,7 +42,6 @@ export function collectionsPage() {
     collectionsPage.appendChild(collectionsPageContainer);
 
     const collectionsTitle = document.createElement("h1");
-    collectionsTitle.classList.add("collections__main_title");
     collectionsTitle.classList.add("title");
     collectionsTitle.textContent = "Подборки";
     collectionsPageContainer.appendChild(collectionsTitle);
@@ -57,40 +59,40 @@ export function collectionsPage() {
     collectionsContainer.classList.add("collections__container");
     collectionsBgContainer.appendChild(collectionsContainer);
 
-    const top256 = createCollection("Топ 256", "top.png", "/");
+    const top256 = createCollection("Топ 256", "top.png", "movies");
     collectionsContainer.appendChild(top256);
 
-    const adventures = createCollection("Приключения", "adventures.png", "/");
+    const adventures = createCollection("Приключения", "adventures.png", "");
     collectionsContainer.appendChild(adventures);
 
-    const family = createCollection("Для всей семьи", "family.png", "/");
+    const family = createCollection("Для всей семьи", "family.png", "");
     collectionsContainer.appendChild(family);
 
-    const romantic = createCollection("Романтичное", "romantic.png", "/");
+    const romantic = createCollection("Романтичное", "romantic.png", "");
     collectionsContainer.appendChild(romantic);
 
-    const drams = createCollection("Лучшие драмы", "drama.png", "/");
+    const drams = createCollection("Лучшие драмы", "drama.png", "");
     collectionsContainer.appendChild(drams);
 
-    const childish = createCollection("Детское", "childish.png", "/");
+    const childish = createCollection("Детское", "childish.png", "");
     collectionsContainer.appendChild(childish);
 
-    const comedy = createCollection("Комедии", "comedy.png", "/");
+    const comedy = createCollection("Комедии", "comedy.png", "");
     collectionsContainer.appendChild(comedy);
 
-    const saveTheWorld = createCollection("Спасение мира", "saveTheWorld.png", "/");
+    const saveTheWorld = createCollection("Спасение мира", "saveTheWorld.png", "");
     collectionsContainer.appendChild(saveTheWorld);
 
-    const comics = createCollection("Кинокомиксы", "comics.png", "/");
+    const comics = createCollection("Кинокомиксы", "comics.png", "");
     collectionsContainer.appendChild(comics);
 
-    const soviet = createCollection("Советская классика", "soviet.png", "/");
+    const soviet = createCollection("Советская классика", "soviet.png", "");
     collectionsContainer.appendChild(soviet);
 
-    const spy = createCollection("Шпионские фильмы", "spy.png", "/");
+    const spy = createCollection("Шпионские фильмы", "spy.png", "");
     collectionsContainer.appendChild(spy);
 
-    const ourTop = createCollection("Выбор редакции", "ourTop.png", "/");
+    const ourTop = createCollection("Выбор редакции", "ourTop.png", "");
     collectionsContainer.appendChild(ourTop);
 
     
