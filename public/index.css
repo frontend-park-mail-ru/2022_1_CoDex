@@ -326,11 +326,23 @@ hr {
 
 .collection {
     min-width: 180px;
+    text-decoration: none;
+    flex-direction: column;
+    transition: all .2s ease-out;
 }
 
-.collection__image {
+.collection_wrapper {
     position: relative;
     padding-top: 55%;
+}
+
+.collection_img {
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    object-fit: cover;
 }
 
 .collection__description {
@@ -338,7 +350,7 @@ hr {
     margin-top: 10px;
     text-decoration: none;
     font-family: var(--main-font);
-    font-size: 18px;
+    font-size: 20px;
     color: var(--main-nav-color);
 }
 
@@ -349,7 +361,9 @@ hr {
     padding: 30px;
 }
 
-
+* {
+    box-sizing: border-box;
+}
 
 
 /* 
