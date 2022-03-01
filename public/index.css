@@ -317,6 +317,31 @@ hr {
     font-family: var(--main-font);
 }
 
+.collections__container {
+    grid-template-columns: repeat(4, 1fr);
+    display: grid;
+    row-gap: 30px;
+    column-gap: 20px;
+}
+
+.collection {
+    min-width: 180px;
+}
+
+.collection__image {
+    position: relative;
+    padding-top: 55%;
+}
+
+.collection__description {
+    text-align: center;
+    margin-top: 10px;
+    text-decoration: none;
+    font-family: var(--main-font);
+    font-size: 18px;
+    color: var(--main-nav-color);
+}
+
 .bg_container {
     background-color: var(--main-soft-color);
     border-radius: 30px;
