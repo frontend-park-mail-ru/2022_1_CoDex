@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "node server",
+    "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,11 +19,13 @@
   },
   "homepage": "https://github.com/frontend-park-mail-ru/sample-2022-1#readme",
   "dependencies": {
-    "debug": "^4.1.1",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.4",
+    "debug": "^4.1.1",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
+    "pug": "^3.0.2",
+    "sass": "^1.49.9",
     "uuid": "^3.3.2"
   }
 }

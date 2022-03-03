@@ -1,0 +1,52 @@
+@import '../../css/consts.scss';
+
+#navbar {
+    font-family: $main-font;
+    width: 100%;
+    flex: 0 0 70px;
+    background-color: $main-nav-color;
+    position: sticky;
+    align-items: center;
+    display: flex;
+
+    .navbar_logo {
+        margin-left: 5%;
+
+
+        .navbar_logo img{
+            width: 100px;
+            height: 65px;
+        }
+    }
+
+    .navbar_menu {
+        display: inherit;
+        width: 40%;
+        align-items: center;
+        justify-content: space-around;
+        font-size: 20px;
+    }
+
+    .navbar_menu_btn {
+        text-decoration: none;
+        transition: .1s;
+        color: $main-bg-color;
+    
+    }
+    
+    .navbar_search {
+        width: 30%;
+        display: flex;
+        align-items: center;
+    }
+    
+    .navbar_menu_login-btn {
+        text-decoration: none;
+        color: $main-wng-color;
+        font-size: 24px;
+        margin-left: 5%;
+    
+    }
+
+  }
+  

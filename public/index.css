@@ -1,3 +1,8 @@
+@import 'components/footer/footer.css';
+@import 'components/header/header.css';
+@import 'components/collections/collections.css';
+@import 'components/movie/movie.css';
+
 #root {
     position: relative;
     flex-direction: column;
@@ -13,66 +18,10 @@
     --main-font: "Montserrat" ,sans-serif;
 }
 
-#navbar {
-    font-family: var(--main-font);
-    width: 100%;
-    flex: 0 0 70px;
-    background-color: var(--main-nav-color);
-    position: sticky;
-    align-items: center;
-    display: flex;
-
-  }
-
-.navbar_logo {
-    margin-left: 5%;
-}
-
-.navbar_logo img{
-    width: 100px;
-    height: 65px;
-}
-
-.navbar_menu {
-    display: inherit;
-    width: 40%;
-    align-items: center;
-    justify-content: space-around;
-    font-size: 20px;
-}
-
-.navbar_menu_btn {
-    text-decoration: none;
-    transition: .1s;
-    color: var(--main-bg-color);
-
-}
-
-.navbar_search {
-    width: 30%;
-    display: flex;
-    align-items: center;
-}
-
-.navbar_menu_login-btn {
-    text-decoration: none;
-    color: var(--main-wng-color);
-    font-size: 24px;
-    margin-left: 5%;
-
-}
-
 #content {
     width: 100%;
     flex: 0 0 850px;
     background-color: var(--main-bg-color);
-    display: flex;
-}
-
-#footer {
-    width: 100%;
-    flex: 0 0 150px;
-    background-color: var(--main-nav-color);
     display: flex;
 }
 
@@ -316,197 +265,9 @@ hr {
     color: var(--main-wng-color);
 }
 
-.collections__description {
-    margin-bottom: 15px;
-    font-family: var(--main-font);
-}
-
-.collections__container {
-    grid-template-columns: repeat(4, 1fr);
-    display: grid;
-    row-gap: 30px;
-    column-gap: 20px;
-}
-
-.collection {
-    min-width: 180px;
-    text-decoration: none;
-    flex-direction: column;
-    transition: all .2s ease-out;
-}
-
-.collection_wrapper {
-    position: relative;
-    padding-top: 55%;
-}
-
-.collection_img {
-    border-radius: 10px;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    right: 0;
-    object-fit: cover;
-}
-
-.collection__description {
-    text-align: center;
-    margin-top: 10px;
-    text-decoration: none;
-    font-family: var(--main-font);
-    font-size: 20px;
-    color: var(--main-nav-color);
-}
-
-.bg_container {
-    background-color: var(--main-soft-color);
-    border-radius: 30px;
-    color: var(--main-bg-color);
-    padding: 30px;
-}
-
-.movie {
-    display: flex;
-    align-items: flex-start;
-    /* padding-bottom: 30px; */
-}
-
-.movie_container {
-    background-color: var(--main-green-color);
-    border-radius: 30px;
-    color: var(--main-bg-color);
-    padding: 30px;
-    margin-bottom: 30px;
-}
-
-.movie_image {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.movie_image img {
-    width: 220px;
-    border-radius: 5px;
-}
-
-.movie_body {
-    flex: 1 1 auto;
-    padding: 0 30px 0 20px;
-}
-
-.movie_info {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.movie_data {
-    margin-bottom: 10px;
-}
-
-.movie_title {
-    font-size: 36px;
-    text-decoration: none;
-}
-
-.movie_add_info {
-    margin-bottom: 5px;
-    font-size: 24px;
-    color: var(--main-soft-color);
-}
-
-.movie_text {
-    text-align: center;
-    font-size: 28px;
-}
-
-.movie_rating {
-    width: 120px;
-}
-
-.movie_rating_number {
-    text-align: center;
-    font-family: var(--main-font);
-    font-size: 38px;
-    color: var(--main-wng-color);
-    margin-bottom: 10px;
-}
-
-.movie_description {
-    font-family: var(--main-font);
-    font-weight: 300;
-    text-align: justify;
-    display: flex;
-}
-
 * {
     box-sizing: border-box;
 }
-
-
-
-/* 
-  
-.menu {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-}
-
-.menu li {
-    border: 1px solid #000;
-    position: relative;
-}
-
-.menu>li {
-    flex: 1;
-}
-
-.menu a {
-    text-align: center;
-    display: flex;
-    text-decoration: none;
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-    color: #FFFFFF;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-.menu li a div {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.menu .sub-menu {
-    position: absolute;
-    display: none;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    background-color: #aad659;
-    z-index: 1;
-}
-
-.menu .sub-menu a {
-    margin-bottom: -1px;
-    color: white;
-    text-decoration: none;
-    padding:3px 5px;
-}
-
-.menu a:hover {
-    background-color: salmon;
-}
-
-.menu>li:hover .sub-menu {
-    display: block;
-} */
 
 .search-form {
     display: inline-block;

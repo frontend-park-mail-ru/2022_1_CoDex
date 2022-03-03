@@ -1,4 +1,4 @@
-import { ajax } from "./main.js";
+import { ajax } from "../utils/ajax.js";
 
 export function profilePage() {
 	root.innerHTML = '';

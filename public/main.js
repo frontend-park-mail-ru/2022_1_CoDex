@@ -1,28 +1,45 @@
-import { menuPage, configApp }from './menu.js';
+import { collectionsPage } from "./modules/collectionsPage.js";
+import { mainPage } from "./modules/mainPage.js";
+import { moviesPage } from "./modules/moviesPage.js";
+import { profilePage } from "./modules/profilePage.js";
+import { signupPage } from "./modules/signupPage.js";
+import { loginPage } from "./modules/loginPage.js";
 
-const root = document.getElementById('root');
+export const root = document.getElementById('root');
 
-export function ajax(method, url, body = null, callback) {
-	const xhr = new XMLHttpRequest();
-	xhr.open(method, url, true);
-	xhr.withCredentials = true;
+let configApp = {
+	main: {
+		href: '/',
+		openMethod: mainPage,
+	},
+	signup: {
+		href: '/signup',
+		text: 'Зарегистрироваться',
+		openMethod: signupPage,
+	},
+	login: {
+		href: '/login',
+		text: 'Войти',
+		openMethod: loginPage,
+	},
+	profile: {
+		href: '/profile',
+		text: 'Профиль',
+		openMethod: profilePage,
+	},
+	collections: {
+		href: '/collections',
+		text: 'Подборки',
+		openMethod: collectionsPage,
+	},
+	movies: {
+		href: '/movies',
+		text: 'Фильмы',
+		openMethod: moviesPage,
+	},
+};
 
-	xhr.addEventListener('readystatechange', function() {
-		if (xhr.readyState !== XMLHttpRequest.DONE) return;
-
-		callback(xhr.status, xhr.responseText);
-	});
-
-	if (body) {
-		xhr.setRequestHeader('Content-type', 'application/json; charset=utf8');
-		xhr.send(JSON.stringify(body));
-		return;
-	}
-
-	xhr.send();
-}
-
-menuPage();
+mainPage();
 
 root.addEventListener('click', (e) => {
 	const {target} = e;

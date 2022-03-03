@@ -1,0 +1,10 @@
+#footer {
+    width: 100%;
+    flex: 0 0 150px;
+    background-color: var(--main-nav-color);
+    display: flex;
+}
+
+#footer a {
+    color: red;
+}
