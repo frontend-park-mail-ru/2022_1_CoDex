@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "node server/index.js",
+    "prestart": "rm -rf public/template.js & node server/build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

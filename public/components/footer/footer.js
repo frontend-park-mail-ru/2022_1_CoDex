@@ -1,5 +1,6 @@
+import { createElementFromHTML } from "../../utils/utils.js";
+
 export function footerRender() {
-	const footer = document.createElement("footer");
-	footer.id = "footer";
-	root.appendChild(footer);
+	const template = createElementFromHTML(footer());
+	root.appendChild(template);
 }
