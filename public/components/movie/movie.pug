@@ -2,7 +2,7 @@ div.movie_container
     div.movie
         div.movie_image
             a.movie_image(href=input.movieHref)
-                img(src=input.imgHref)
+                img(src=("../server/images/" + input.imgHref))
         div.movie_body
             div.movie_info
                 div.movie_data
@@ -10,4 +10,7 @@ div.movie_container
                     div.movie_add_info
                     div.movie_add_info #{input.info}
                 div.movie_rating
-                    
+                    div.movie_text Рейтинг
+                    div
+                    div.movie_rating_number #{input.rating}
+            div.movie_description #{input.description}
