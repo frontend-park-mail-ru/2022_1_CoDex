@@ -1,6 +1,6 @@
-import { createElementFromHTML } from "../../utils/utils.js";
+import {createElementFromHTML} from '../../utils/utils.js';
 
 export function navbarRender() {
-	const template = createElementFromHTML(header());
-	root.appendChild(template);
+  const template = createElementFromHTML(header());
+  root.appendChild(template);
 }

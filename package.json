@@ -28,5 +28,9 @@
     "pug": "^3.0.2",
     "sass": "^1.49.9",
     "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0",
+    "eslint-config-google": "^0.14.0"
   }
 }
