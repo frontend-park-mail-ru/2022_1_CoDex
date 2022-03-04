@@ -1,0 +1,13 @@
+div.movie_container
+    div.movie
+        div.movie_image
+            a.movie_image(href=input.movieHref)
+                img(src=input.imgHref)
+        div.movie_body
+            div.movie_info
+                div.movie_data
+                    a.movie_title(href=input.movieHref) #{input.title}
+                    div.movie_add_info
+                    div.movie_add_info #{input.info}
+                div.movie_rating
+                    

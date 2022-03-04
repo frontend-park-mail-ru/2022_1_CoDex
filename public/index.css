@@ -37,8 +37,8 @@
     flex-direction: column;
     padding: 16px;
     min-width: 50%;
-    min-height: 20%;
-    max-height: 40%;
+    min-height: 30%;
+    max-height: 50%;
     background-color: var(--main-bg-color);
     margin-top: 100px;
     margin-bottom: 100px;
@@ -55,8 +55,8 @@
     flex-direction: column;
     padding: 16px;
     min-width: 50%;
-    min-height: 20%;
-    max-height: 45%;
+    min-height: 30%;
+    max-height: 55%;
     background-color: var(--main-bg-color);
     margin-top: 100px;
     margin-bottom: 100px;
@@ -118,13 +118,14 @@
     max-height: 40px;
     outline: none;
     border: 0;
+    height: 40px;
     width: 80%;
 }
 
 .text_inputs__label {
     margin-top: 1em;
     margin-bottom: .3em;
-    font-size: 1em;
+    font-size: 1.5em;
     font-family: var(--main-font);
     align-self: baseline;
     margin-left: 11%;

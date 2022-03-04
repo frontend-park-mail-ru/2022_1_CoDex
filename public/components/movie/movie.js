@@ -1,4 +1,12 @@
-export function createMovie(movieElement) {
+import { createElementFromHTML } from "../../utils/utils.js";
+
+export function createMovie(input) {
+
+    let params = {
+        input
+    };
+
+    const template = createElementFromHTML(movie(params));
 
     let { movieHref, imgHref, title, info, rating, description} = movieElement;
     const movieContainer = document.createElement("div");

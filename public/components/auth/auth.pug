@@ -1,0 +1,9 @@
+form(class=input.isLogin ? "login__form" : "signup__form")
+    label(class="text_inputs__label" for="email") Email
+    input(class="text_inputs" type="email" name="email" placeholder="Введите e-mail")
+    label(class="text_inputs__label" for="password") Пароль
+    input(class="text_inputs" type="password" name="password" placeholder="Введите пароль")
+    if !input.isLogin
+        label(class="text_inputs__label" for="repeatPassword") Повторите пароль
+        input(class="text_inputs" type="password" name="repeatPassword" placeholder="Повторите пароль")
+    input(class="login__btn" type="button" value=input.isLogin ? "Войти" : "Зарегистрироваться" name="submitBtn")
