@@ -14,42 +14,7 @@ app.use(express.static(path.resolve(__dirname, 'images')));
 app.use(body.json());
 app.use(cookie());
 
-const users = {
-    'd.dorofeev@corp.mail.ru': {
-        email: 'd.dorofeev@corp.mail.ru',
-        password: 'password',
-        age: 21,
-        score: 3,
-    },
-    's.volodin@corp.mail.ru': {
-        email: 's.volodin@corp.mail.ru',
-        password: 'password',
-        age: 24,
-        score: 100500,
-        images: [
-            '/273153700_118738253861831_5906416883131394354_n.jpeg',
-            '/272708814_1158833634855293_1743973316352152210_n.webp.jpg',
-            '/272464515_147005761018515_3100264353239753904_n.webp.jpg',
-            '/259096143_252774593424446_3292295880799640700_n.jpeg'
-        ]
-    },
-    'aleksandr.tsvetkov@corp.mail.ru': {
-        email: 'aleksandr.tsvetkov@corp.mail.ru',
-        password: 'password',
-        age: 27,
-        score: 72,
-        images: [
-            '/19984805_468099790230913_7469029070697660416_n.jpeg',
-            '/16583858_168051673696142_846500378588479488_n.jpeg'
-        ],
-    },
-    'a.ostapenko@corp.mail.ru': {
-        email: 'a.ostapenko@corp.mail.ru',
-        password: 'password',
-        age: 21,
-        score: 72,
-    },
-};
+
 const ids = {};
 
 app.post('/signup', function (req, res) {
