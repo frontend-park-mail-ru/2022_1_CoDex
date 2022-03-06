@@ -1,7 +1,6 @@
 import {collectionsPage} from './modules/collectionsPage.js';
 import {mainPage} from './modules/mainPage.js';
 import {moviesPage} from './modules/moviesPage.js';
-import {profilePage} from './modules/profilePage.js';
 import {signupPage} from './modules/signupPage.js';
 import {loginPage} from './modules/loginPage.js';
 import { changeNavbarButton } from './components/header/header.js';
@@ -22,11 +21,6 @@ const configApp = {
     href: '/login',
     text: 'Войти',
     openMethod: loginPage,
-  },
-  profile: {
-    href: '/profile',
-    text: 'Профиль',
-    openMethod: profilePage,
   },
   collections: {
     href: '/collections',

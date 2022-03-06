@@ -8,7 +8,7 @@ export function createCollection(params) {
 export function renderCollections(collectionContainer) {
   Ajax.getFetch({url: '/api/collections'}) // TODO 
       .then(({status, parsedBody}) => {
-        parsedBody.collectionsList.forEach(element => {
+        parsedBody.collectionList.forEach(element => {
           collectionContainer.appendChild(createCollection(element))
         });
       })

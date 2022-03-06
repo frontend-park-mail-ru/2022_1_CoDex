@@ -14,7 +14,7 @@ app.use(body.json());
 app.use(cookie());
 
 const Collections = {
-  collectionsList: [
+  collectionList: [
     {description: "Топ 256", imgSrc: "top.png", page: "movies"},
     {description: "Приключения", imgSrc: "adventures.png", page: ""},
     {description: "Для всей семьи", imgSrc: "family.png", page: ""},
@@ -31,8 +31,32 @@ const Collections = {
   ]
 };
 
+const top256 = {
+    movieList: [
+    {
+      'movieHref': '/',
+      'imgHref': 'greenMile.png',
+      'title': 'Зелёная миля',
+      'info': '1999, США. Драма',
+      'rating': '9.1',
+      'description': 'Пол Эджкомб — начальник блока смертников в тюрьме «Холодная гора», каждый из узников которого однажды проходит «зеленую милю» по пути к месту казни. Пол повидал много заключённых и надзирателей за время работы. Однако гигант Джон Коффи, обвинённый в страшном преступлении, стал одним из самых необычных обитателей блока.',
+    },
+    {
+      'movieHref': '/',
+      'imgHref': 'showshenkRedemption.png',
+      'title': 'Побег из Шоушенка',
+      'info': '1994, США. Драма',
+      'rating': '8.9',
+      'description': 'Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника. Оказавшись в тюрьме под названием Шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решётки. Каждый, кто попадает в эти стены, становится их рабом до конца жизни. Но Энди, обладающий живым умом и доброй душой, находит подход как к заключённым, так и к охранникам, добиваясь их особого к себе расположения.',
+    },
+]};
+
 app.get('/api/collections', function(req, res) {
   res.json(Collections);
+});
+
+app.get('/api/collections/1', function(req, res) {
+    res.json(top256);
 });
 
 

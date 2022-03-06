@@ -1,16 +1,16 @@
 div.movie_container
     div.movie
         div.movie_image
-            a.movie_image(href=input.movieHref)
-                img(src=("../server/images/" + input.imgHref))
+            a.movie_image(href=movieHref)
+                img(src=("../server/images/" + imgHref))
         div.movie_body
             div.movie_info
                 div.movie_data
-                    a.movie_title(href=input.movieHref) #{input.title}
+                    a.movie_title(href=movieHref) #{title}
                     div.movie_add_info
-                    div.movie_add_info #{input.info}
+                    div.movie_add_info #{info}
                 div.movie_rating
                     div.movie_text Рейтинг
                     div
-                    div.movie_rating_number #{input.rating}
-            div.movie_description #{input.description}
+                    div.movie_rating_number #{rating}
+            div.movie_description #{description}
