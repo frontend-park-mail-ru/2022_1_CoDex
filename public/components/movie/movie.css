@@ -8,6 +8,12 @@
 
 }
 
+.movie {
+    display: flex;
+    align-items: flex-start;
+    /* padding-bottom: 30px; */
+}
+
 .movie_image {
     display: flex;
     gap: 10px;
