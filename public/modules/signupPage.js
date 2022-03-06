@@ -1,6 +1,6 @@
-import {ajax} from '../utils/ajax.js';
-import {clearContent} from '../utils/contentManipulate.js';
-import {createAuth} from '../components/auth/auth.js';
+import { ajax } from '../utils/ajax.js';
+import { clearContent } from '../utils/contentManipulate.js';
+import { createAuth, addInputListeners, signupSubmit } from '../components/auth/auth.js';
 
 export function signupPage(warning = 0) {
   const content = clearContent();
@@ -16,35 +16,17 @@ export function signupPage(warning = 0) {
   div.appendChild(signupInvitation);
 
   const form = createAuth(false);
+
+  addInputListeners(form);
+  const signupBtn = form.submitBtn;
+  signupBtn.addEventListener('click', signupSubmit );
+
+  const loginInvitation = document.createElement('a');
+  loginInvitation.href = '/login';
+  loginInvitation.dataset.section = 'login';
+  loginInvitation.textContent = 'Уже есть аккаунт?';
+
   div.appendChild(form);
+  div.appendChild(loginInvitation);
   content.appendChild(div);
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
-
-    ajax(
-        'POST',
-        '/login',
-        {email, password},
-        ((status) => {
-          if (status === 200) {
-            alert('All good');
-            // FilmPage(); //
-            return;
-          }
-          if (status === 400) {
-            alert('Input ur data bruh');
-            loginPage(false);
-            return;
-          }
-          if (status === 401) {
-            loginPage(true);
-            return;
-          }
-        }),
-    );
-  });
 }

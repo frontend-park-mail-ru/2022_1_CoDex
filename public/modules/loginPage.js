@@ -1,6 +1,6 @@
-import {clearContent} from '../utils/contentManipulate.js';
-import {ajax} from '../utils/ajax.js';
-import {createAuth} from '../components/auth/auth.js';
+import { clearContent } from '../utils/contentManipulate.js';
+import { ajax } from '../utils/ajax.js';
+import { createAuth, addInputListeners, loginSubmit } from '../components/auth/auth.js';
 
 export function loginPage(warning = false) {
   const content = clearContent();
@@ -21,37 +21,12 @@ export function loginPage(warning = false) {
   signupInvitation.textContent = 'Зарегистрироваться';
 
   const form = createAuth(true);
+  addInputListeners(form);
+  const loginBtn = form.submitBtn;
+  loginBtn.addEventListener('click', loginSubmit );
+
   div.appendChild(form);
   div.appendChild(signupInvitation);
 
   content.appendChild(div);
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
-
-    ajax(
-        'POST',
-        '/login',
-        {email, password},
-        ((status) => {
-          if (status === 200) {
-            alert('All good');
-            // FilmPage(); //
-            return;
-          }
-          if (status === 400) {
-            alert('Input ur data bruh');
-            loginPage(false);
-            return;
-          }
-          if (status === 401) {
-            loginPage(true);
-            return;
-          }
-        }),
-    );
-  });
 }

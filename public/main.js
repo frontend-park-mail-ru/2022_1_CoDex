@@ -4,6 +4,7 @@ import {moviesPage} from './modules/moviesPage.js';
 import {profilePage} from './modules/profilePage.js';
 import {signupPage} from './modules/signupPage.js';
 import {loginPage} from './modules/loginPage.js';
+import { changeNavbarButton } from './components/header/header.js';
 
 export const root = document.getElementById('root');
 
@@ -37,6 +38,11 @@ const configApp = {
     text: 'Фильмы',
     openMethod: moviesPage,
   },
+  logout: {
+    href: '/logout',
+    text: 'Выйти',
+    openMethod: changeNavbarButton,
+  }
 };
 
 mainPage();

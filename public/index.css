@@ -110,6 +110,28 @@
     width: 220px;
 }
 
+.error_text {
+    margin-left: 12%;
+    align-self: baseline;
+    height: 2em;
+    font-family: var(--main-font);
+    font-size: 15px;
+    color: var(--main-nav-color);
+}
+
+.error {
+    border: solid var(--main-wng-color) !important;
+    border-width: 2px !important;
+}
+
+.error_mes {
+    font-family: var(--main-font);
+    text-align: center;
+    font-size: 20px;
+    color: var(--main-wng-color);
+    margin-top: 2%;
+}
+
 .text_inputs {
     font-family: var(--main-font);
     padding-left: 15px;

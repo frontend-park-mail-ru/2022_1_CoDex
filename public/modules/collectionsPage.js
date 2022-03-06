@@ -1,5 +1,5 @@
 import {clearContent} from '../utils/contentManipulate.js';
-import {createCollection} from '../components/collections/collections.js';
+import {renderCollections} from '../components/collections/collections.js';
 
 export function collectionsPage() {
   const content = clearContent();
@@ -35,39 +35,5 @@ export function collectionsPage() {
   collectionsContainer.classList.add('collections__container');
   collectionsBgContainer.appendChild(collectionsContainer);
 
-  const top256 = createCollection('Топ 256', 'top.png', 'movies');
-  collectionsContainer.appendChild(top256);
-
-  const adventures = createCollection('Приключения', 'adventures.png', '');
-  collectionsContainer.appendChild(adventures);
-
-  const family = createCollection('Для всей семьи', 'family.png', '');
-  collectionsContainer.appendChild(family);
-
-  const romantic = createCollection('Романтичное', 'romantic.png', '');
-  collectionsContainer.appendChild(romantic);
-
-  const drams = createCollection('Лучшие драмы', 'drama.png', '');
-  collectionsContainer.appendChild(drams);
-
-  const childish = createCollection('Детское', 'childish.png', '');
-  collectionsContainer.appendChild(childish);
-
-  const comedy = createCollection('Комедии', 'comedy.png', '');
-  collectionsContainer.appendChild(comedy);
-
-  const saveTheWorld = createCollection('Спасение мира', 'saveTheWorld.png', '');
-  collectionsContainer.appendChild(saveTheWorld);
-
-  const comics = createCollection('Кинокомиксы', 'comics.png', '');
-  collectionsContainer.appendChild(comics);
-
-  const soviet = createCollection('Советская классика', 'soviet.png', '');
-  collectionsContainer.appendChild(soviet);
-
-  const spy = createCollection('Шпионские фильмы', 'spy.png', '');
-  collectionsContainer.appendChild(spy);
-
-  const ourTop = createCollection('Выбор редакции', 'ourTop.png', '');
-  collectionsContainer.appendChild(ourTop);
+  renderCollections(collectionsContainer);
 }
