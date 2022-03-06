@@ -1,9 +1,11 @@
 .movie_container {
-    background-color: var(--main-green-color);
+    background-color: #4F3F47;
     border-radius: 30px;
     color: var(--main-bg-color);
     padding: 30px;
     margin-bottom: 30px;
+    align-items: center;
+
 }
 
 .movie_image {
@@ -14,7 +16,7 @@
 
 .movie_image img {
     width: 220px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .movie_body {
@@ -35,12 +37,13 @@
 .movie_title {
     font-size: 36px;
     text-decoration: none;
+    color: white
 }
 
 .movie_add_info {
     margin-bottom: 5px;
     font-size: 24px;
-    color: var(--main-soft-color);
+    color: white;
 }
 
 .movie_text {
@@ -62,7 +65,13 @@
 
 .movie_description {
     font-family: var(--main-font);
+    color:rgb(219, 218, 218);
     font-weight: 300;
     text-align: justify;
     display: flex;
+}
+
+._container {
+    max-width: 1150px;
+    margin: 0 auto;
 }

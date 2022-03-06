@@ -1,14 +1,14 @@
 import { clearContent } from '../utils/contentManipulate.js';
-import { ajax } from '../utils/ajax.js';
 import { createAuth, addInputListeners, loginSubmit } from '../components/auth/auth.js';
 
 export function loginPage(warning = false) {
   const content = clearContent();
 
   const authContent = document.createElement('div');
-  authContent.classList.add('login-content');
+  authContent.classList.add('auth-content');
   const div = document.createElement('div');
   div.classList.add('login');
+  authContent.appendChild(div);
 
   const loginInvitation = document.createElement('div');
   loginInvitation.classList.add('login__invitation');
@@ -28,5 +28,5 @@ export function loginPage(warning = false) {
   div.appendChild(form);
   div.appendChild(signupInvitation);
 
-  content.appendChild(div);
+  content.appendChild(authContent);
 }

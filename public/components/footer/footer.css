@@ -3,8 +3,9 @@
     flex: 0 0 150px;
     background-color: var(--main-nav-color);
     display: flex;
+    justify-content:center;
 }
 
-#footer a {
-    color: red;
+#footer p {
+    color: white;
 }
