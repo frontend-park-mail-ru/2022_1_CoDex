@@ -6,7 +6,7 @@ export function createCollection(params) {
 }
 
 export function renderCollections(collectionContainer) {
-  Ajax.getFetch({url: 'https://tphwgocodex.herokuapp.com/api/v1/'}) // TODO 
+  Ajax.getFetch({url: 'https://teamprojectkinopoisk.herokuapp.com/api/v1/'}) // TODO 
       .then(({status, parsedBody}) => {
         parsedBody.collectionList.forEach(element => {
           collectionContainer.appendChild(createCollection(element))
