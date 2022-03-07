@@ -44,6 +44,15 @@ export function addInputListeners(authForm) {
           }
           break;
         }
+        case 'username': {
+          if (!input.value.match(/\S+@\S+\.\S+/)) {
+            input.classList.add('error');
+            authForm.insertBefore(createError('Неправильное имя пользователя'), input);
+          } else {
+            input.classList.remove('error');
+          }
+          break;
+        }
         case 'password': {
           let errorText = '';
           if (!input.value.match(/^(?=.*[0-9])(?=.*[A-z])[A-zА-я0-9]{8,}$/)) {
@@ -127,10 +136,11 @@ export function signupSubmit(e) {
     return;
   }
   const email = document.forms.authForm.email.value.trim();
+  const username = document.forms.authForm.username.value.trim();
   const password = document.forms.authForm.password.value.trim();
   Ajax.postFetch({
     url: 'https://teamprojectkinopoisk.herokuapp.com/api/v1/signup', // TODO
-    body: {email: email, password: password },
+    body: {email: email, username: username, password: password, repeatpassword: password },
   }).then((response) => {
     if (response && response.status === 201) {
       changeNavbarButton();
