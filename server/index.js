@@ -15,23 +15,24 @@ app.use(cookie());
 
 const Collections = {
   collectionList: [
-    {description: "Топ 256", imgSrc: "top.png", page: "movies"},
-    {description: "Приключения", imgSrc: "adventures.png", page: ""},
-    {description: "Для всей семьи", imgSrc: "family.png", page: ""},
-    {description: "Романтичное", imgSrc: "romantic.png", page: ""},
-    {description: "Лучшие драмы", imgSrc: "drama.png", page: ""},
-    {description: "Детское", imgSrc: "childish.png", page: ""},
-    {description: "Комедии", imgSrc: "comedy.png", page: ""},
-    {description: "Спасение мира", imgSrc: "saveTheWorld.png", page: ""},
-    {description: "Кинокомиксы", imgSrc: "comics.png", page: ""},
-    {description: "Советская классика", imgSrc: "soviet.png", page: ""},
-    {description: "Шпионские фильмы", imgSrc: "spy.png", page: ""},
-    {description: "Выбор редакции", imgSrc: "ourTop.png", page: ""},
-
+    {description: "Топ 256", imgSrc: "top.png", page: "movies", number: "1"},
+    {description: "Приключения", imgSrc: "adventures.png", page: "movies", number: "2"},
+    {description: "Для всей семьи", imgSrc: "family.png", page: "movies", number: "3"},
+    {description: "Романтичное", imgSrc: "romantic.png", page: "movies", number: "4"},
+    {description: "Лучшие драмы", imgSrc: "drama.png", page: "movies", number: "5"},
+    {description: "Детское", imgSrc: "childish.png", page: "movies", number: "6"},
+    {description: "Комедии", imgSrc: "comedy.png", page: "movies", number: "7"},
+    {description: "Спасение мира", imgSrc: "saveTheWorld.png", page: "movies", number: "8"},
+    {description: "Кинокомиксы", imgSrc: "comics.png", page: "movies", number: "9"},
+    {description: "Советская классика", imgSrc: "soviet.png", page: "movies", number: "10"},
+    {description: "Шпионские фильмы", imgSrc: "spy.png", page: "movies", number: "11"},
+    {description: "Выбор редакции", imgSrc: "ourTop.png", page: "movies", number: "12"},
   ]
 };
 
 const top256 = {
+    title: "Топ 256",
+    description: "Вот такая вот подборочка :)",
     movieList: [
     {
       'movieHref': '/',
@@ -51,6 +52,30 @@ const top256 = {
     },
 ]};
 
+const adventures = {
+  title: "Приключения",
+  description: "Вот такая вот подборочка :)",
+  movieList: [
+    {
+      'movieHref': '/',
+      'imgHref': 'showshenkRedemption.png',
+      'title': 'Побег из Шоушенка',
+      'info': '1994, США. Драма',
+      'rating': '8.9',
+      'description': 'Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника. Оказавшись в тюрьме под названием Шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решётки. Каждый, кто попадает в эти стены, становится их рабом до конца жизни. Но Энди, обладающий живым умом и доброй душой, находит подход как к заключённым, так и к охранникам, добиваясь их особого к себе расположения.',
+    },
+    {
+      'movieHref': '/',
+      'imgHref': 'greenMile.png',
+      'title': 'Зелёная миля',
+      'info': '1999, США. Драма',
+      'rating': '9.1',
+      'description': 'Пол Эджкомб — начальник блока смертников в тюрьме «Холодная гора», каждый из узников которого однажды проходит «зеленую милю» по пути к месту казни. Пол повидал много заключённых и надзирателей за время работы. Однако гигант Джон Коффи, обвинённый в страшном преступлении, стал одним из самых необычных обитателей блока.',
+    },
+  ]};
+
+
+
 app.get('/api/collections', function(req, res) {
   res.json(Collections);
 });
@@ -59,6 +84,9 @@ app.get('/api/collections/1', function(req, res) {
     res.json(top256);
 });
 
+app.get('/api/collections/2', function(req, res) {
+  res.json(adventures);
+});
 
 const users = {
     'vasya@bk.ru': {

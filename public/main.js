@@ -43,13 +43,17 @@ mainPage();
 
 root.addEventListener('click', (e) => {
   const {target} = e;
+  console.log(target.attributes.parameters);
 
   if (target instanceof HTMLElement) {
     e.preventDefault();
 
     const {section} = target.dataset;
     if (section) {
-      configApp[section].openMethod();
+      if (target.attributes.parameters)
+        configApp[section].openMethod(target.attributes.parameters.nodeValue);
+      else
+        configApp[section].openMethod();
     }
   }
 });
