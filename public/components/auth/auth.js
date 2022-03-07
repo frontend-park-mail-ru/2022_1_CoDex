@@ -116,7 +116,7 @@ export function loginSubmit(e) {
     url: 'https://teamprojectkinopoisk.herokuapp.com/api/v1/login', // TODO: наш url на логин, по типу https://codex.ru/api/user/login
     body: {email: email, password: password},
   }).then((response) => {
-    if (response && response.status === 200) {
+    if (response && response.status === 200 || response && response.status === 201) {
       changeNavbarButton();
       collectionsPage(response.parsedBody); // - TODO, когда сделаем интеграцию с сервером
       collectionsPage();
@@ -139,10 +139,10 @@ export function signupSubmit(e) {
   const username = document.forms.authForm.username.value.trim();
   const password = document.forms.authForm.password.value.trim();
   Ajax.postFetch({
-    url: 'https://teamprojectkinopoisk.herokuapp.com/api/v1/signup', // TODO
+    url: 'https://teamprojectkinopoisk.herokuapp.com/api/v1/signup/', // TODO
     body: {email: email, username: username, password: password, repeatpassword: password },
   }).then((response) => {
-    if (response && response.status === 201) {
+    if (response && response.status === 201 || response && response.status === 201 ) {
       changeNavbarButton();
       collectionsPage(response.parsedBody);
       return;
