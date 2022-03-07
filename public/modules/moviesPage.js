@@ -33,7 +33,7 @@ export function moviesPage(collectionNumber) {
   moviesDescription.classList.add('collections__description');
   moviesPageContainer.appendChild(moviesDescription);
   
-  Ajax.getFetch({url: `/api/v1/collections/collection/${collectionNumber}`}) // TODO 
+  Ajax.getFetch({url: `https://tphwgocodex.herokuapp.com/api/v1/collections/collection/${collectionNumber}`}) // TODO 
       .then(({status, parsedBody}) => {
         collectionTitle.textContent = parsedBody.title;
         moviesDescription.textContent = parsedBody.description;
