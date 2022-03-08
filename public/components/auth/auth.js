@@ -183,6 +183,7 @@ export function signupSubmit(e) {
   if (foundErrorFields(authForm)) {
     return;
   }
+  const name = document.forms.authForm.name.value.trim();
   const email = document.forms.authForm.email.value.trim();
   const password = document.forms.authForm.password.value.trim();
   const secondPassword = document.forms.authForm.repeatPassword.value.trim();
@@ -191,7 +192,7 @@ export function signupSubmit(e) {
   console.log(secondPassword);
   Ajax.postFetch({
     url: `${URL}/api/v1/signup`,
-    body: {email: email, password: password, repeatpassword: secondPassword },
+    body: {username: name, password: password, repeatpassword: secondPassword, email: email, },
   }).then((response) => {
     if (response && response.status === CREATED) {
       changeNavbarButton();
