@@ -239,8 +239,9 @@
 
 #auth_email_error {
     width: 70%;
+    display: grid;
+    align-items: end;
     text-align: right;
-    vertical-align: middle;
     font-family: var(--main-font);
     font-size: 18px;
     color: var(--main-wng-color);
@@ -259,6 +260,8 @@
     font-family: var(--main-font);
     font-size: 18px;
     color: var(--main-wng-color);
+    align-items: end;
+    display: grid;
 }
 
 #auth_btn_error {
