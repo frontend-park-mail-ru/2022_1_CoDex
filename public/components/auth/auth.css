@@ -38,8 +38,6 @@
     "B0 B1 B1 B1 B1 B2"
     "B0 B1 B1 B1 B1 B2"
     "C0 C1 C1 C1 C1 C2";
-    
-    
 }
 
 .signup {
@@ -54,6 +52,15 @@
     background: rgba(240, 240, 240, 0.83);
     border-radius: 10px;
     border-image: linear-gradient(to right, rgba(240, 12, 122, 1), rgba(228, 183, 23, 0.67));
+    display: grid;
+    gap: 20px;
+    grid-template-areas: 
+    "A0 A0 A0 A0 A0 A0"
+    "B0 B1 B1 B1 B1 B2"
+    "B0 B1 B1 B1 B1 B2"
+    "B0 B1 B1 B1 B1 B2"
+    "C0 C1 C1 C1 C1 C2";
+    
 }
 
 .login__invitation,
@@ -164,12 +171,12 @@
 }
 
 .text_inputs__label {
+    width: 30%;
     margin-top: 1em;
     margin-bottom: .3em;
     font-size: 1.5em;
     font-family: var(--main-font);
     align-self: baseline;
-    margin-left: 11%;
 }
 
 .auth_email {
@@ -222,4 +229,43 @@
     width: 220px;
     background: #B70084;
     border-radius: 12px;
+}
+
+.auth_email_labels {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+#auth_email_error {
+    width: 70%;
+    text-align: right;
+    vertical-align: middle;
+    font-family: var(--main-font);
+    font-size: 18px;
+    color: var(--main-wng-color);
+}
+
+.auth_password_labels {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+#auth_password_error {
+    width: 70%;
+    text-align: right;
+    vertical-align: middle;
+    font-family: var(--main-font);
+    font-size: 18px;
+    color: var(--main-wng-color);
+}
+
+#auth_btn_error {
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    font-family: var(--main-font);
+    font-size: 18px;
+    color: var(--main-wng-color);
 }
