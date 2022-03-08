@@ -57,7 +57,7 @@
 }
 
 .bg_container {
-    background-color: var(--grid-bg-color);
+    background-color: var(--main-bg-color);
     border-radius: 30px;
     color: var(--main-bg-color);
     padding: 30px;

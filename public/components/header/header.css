@@ -102,3 +102,30 @@
 .navbar_menu_login-btn:active {
     box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.75);
 }
+
+.navbar_menu_logout-btn {
+    display: grid;
+    padding: 10px;
+    grid-area: A8;
+    text-decoration: none;
+
+    width: 88px;
+    height: 48px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 28px;
+    color: #ffffff;
+    background: #9207A6;
+    border-radius: 12px;
+}
+
+.navbar_menu_logout-btn:hover {
+    background: #9207A6;
+    box-shadow: inset 0px 0px 15px rgba(0, 0, 0, 0.75);
+}
+
+.navbar_menu_login-btn:active {
+    box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.75);
+}
