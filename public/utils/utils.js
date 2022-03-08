@@ -15,8 +15,8 @@ export function checkAuth() {
   }).then((response) => {
     
     if (response && response.status === OK) {
+      mainPage();
       changeNavbarButton();
-      //mainPage();
       return;
     } else {
       loginPage();
