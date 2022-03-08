@@ -76,10 +76,16 @@
     color: var(--main-nav-color);
     cursor: pointer;
     margin: 10px auto 25px auto;
+    text-decoration: none;
+}
+
+.login a:hover,
+.signup a:hover {
+    text-decoration: underline;
 }
 
 .login__btn,
-.sigup__btn {
+.signup__btn {
     font-family: var(--main-font);
     font-size: 18px;
     color: white;
@@ -88,9 +94,18 @@
     border: 0;
     cursor: pointer;
     width: 220px;
-    background: linear-gradient(80.58deg, rgba(246, 87, 250, 0.83) 7.41%, rgba(255, 0, 92, 0.94) 87.29%);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #B70084;
     border-radius: 12px;
+}
+
+.login__btn:hover,
+.signup__btn:hover {
+    box-shadow: inset 0px 0px 15px rgba(0, 0, 0, 0.75);
+}
+
+.login__btn:active,
+.signup__btn:active {
+    box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.75);
 }
 
 .error_text {

@@ -39,30 +39,30 @@
     font-size: 20px;
 }
 
-[class^="navbar_menu_"]:hover {
+[class^="navbar_menu_btn_"]:hover {
     color: #AB23FF;
 }
 
-[class^="navbar_menu_"]:active {
+[class^="navbar_menu_btn_"]:active {
     color: #7200b9;
 }
 
 
-.navbar_menu_collections {
+.navbar_menu_btn_collections {
     text-decoration: none;
     transition: .1s;
     color: white;
     grid-area: A31;
 }
 
-.navbar_menu_genres {
+.navbar_menu_btn_genres {
     text-decoration: none;
     transition: .1s;
     color: white;
     grid-area: A32;
 }
 
-.navbar_menu_premiers {
+.navbar_menu_btn_premiers {
     text-decoration: none;
     transition: .1s;
     color: white;
