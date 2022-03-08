@@ -101,7 +101,15 @@ export function addInputListeners(authForm) {
           break;
         }
         case 'name': {
-          // TODO
+          if (!input.value.match(/^.*[^A-zА-яЁё].*$/)) {
+            input.classList.add('error');
+            const error = document.getElementById("auth_name_error");
+            error.textContent = 'Недопускаются цифры и спец символы!';
+          } else {
+            const error = document.getElementById("auth_name_error");
+            error.textContent = '';
+          }
+          break;
         }
         default: {
         }
@@ -150,12 +158,11 @@ export function loginSubmit(e) {
   const email = document.forms.authForm.email.value.trim();
   const password = document.forms.authForm.password.value.trim();
   Ajax.postFetch({
-    url: '/login', // TODO: наш url на логин, по типу https://codex.ru/api/user/login
+    url: 'https://teamprojectkinopoisk.herokuapp.com/api/v1/login',
     body: {email: email, password: password},
   }).then((response) => {
     if (response && response.status === 200) {
       changeNavbarButton();
-      // collectionsPage(response.parsedBody); - TODO, когда сделаем интеграцию с сервером
       collectionsPage();
       return;
     } else if (!(e.target.previousElementSibling.classList.contains('error_mes'))){
@@ -179,7 +186,7 @@ export function signupSubmit(e) {
   const email = document.forms.authForm.email.value.trim();
   const password = document.forms.authForm.password.value.trim();
   Ajax.postFetch({
-    url: '/signup', // TODO
+    url: 'https://teamprojectkinopoisk.herokuapp.com/api/v1/signup',
     body: {email: email, password: password },
   }).then((response) => {
     if (response && response.status === 201) {

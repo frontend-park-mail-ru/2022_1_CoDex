@@ -17,15 +17,14 @@ export function createCollection(params) {
  * в случае успеха парсит полученные данные, получая подборки фильмов.
  */
 export function renderCollections(collectionContainer) {
-  // Ajax.getFetch({url: 'https://tphwgocodex.herokuapp.com/api/v1/'}) // TODO 
-  Ajax.getFetch({url: '/api/collections'}) // TODO 
+  Ajax.getFetch({url: 'https://tphwgocodex.herokuapp.com/api/v1/'}) 
       .then(({status, parsedBody}) => {
         parsedBody.collectionList.forEach(element => {
           collectionContainer.appendChild(createCollection(element))
         });
       })
       .catch((status, parsedBody) => {
-        console.log("Something got wrong"); // TODO error page
+        console.log("Something got wrong"); 
       });
 }
 

@@ -22,7 +22,7 @@ pug_html = pug_html + "\u003Clabel class=\"text_inputs__label\" for=\"name\"\u00
 ;pug_debug_line = 5;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "Имя\u003C\u002Flabel\u003E";
 ;pug_debug_line = 6;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cdiv id=\"auth_repeat_password_error\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Cdiv id=\"auth_name_error\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 7;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Cinput class=\"text_inputs_password auth_input\" type=\"text\" name=\"name\" placeholder=\"Введите имя\"\u002F\u003E\u003C\u002Fdiv\u003E";
 }
