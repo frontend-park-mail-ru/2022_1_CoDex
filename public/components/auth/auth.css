@@ -1,26 +1,28 @@
 .auth-content {
     background: url("../../static/pics/bg.jpg") no-repeat center center;
-    display: flex;
     min-height: 100%;
+    width: 100%;
     background-size: cover;
     background-color: var(--main-bg-color);
-    flex: 1 0 auto;
     align-items: center;
     justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(12, 120px);
+    column-gap: 30px;
+    row-gap: 30px;
+    grid-template-areas:
+    "B0 B0 B1 B1 B2 B2 B3 B3 B4 B4 B5 B5"
+    "C0 C0 C0 C1 C1 C1 C1 C1 C1 C2 C2 C2"
+    "D0 D0 D0 D1 D1 D1 D1 D1 D1 D2 D2 D2";
+    justify-items: center;
+    justify-content: center;
+
 }
 
 .login {
-    display: flex;
-    flex-direction: column;
+    grid-area: C1;
+    width: 100%;
     padding: 16px;
-    min-width: 50%;
-    min-height: 30%;
-    max-height: 50%;
-    background-color: var(--main-bg-color);
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-left: 400px;
-    margin-right: 400px;
     align-items: center;
     border-width: thick;
     border-color: var(--main-green-color);
@@ -28,19 +30,24 @@
     background: rgba(240, 240, 240, 0.83);
     border-radius: 10px;
     border-image: linear-gradient(to right, rgba(240, 12, 122, 1), rgba(228, 183, 23, 0.67));
+    display: grid;
+    gap: 20px;
+    grid-template-areas: 
+    "A0 A0 A0 A0 A0 A0"
+    "B0 B1 B1 B1 B1 B2"
+    "B0 B1 B1 B1 B1 B2"
+    "B0 B1 B1 B1 B1 B2"
+    "C0 C1 C1 C1 C1 C2";
+    
+    
 }
 
 .signup {
+    grid-area: C1;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 16px;
-    min-width: 50%;
-    min-height: 30%;
-    max-height: 55%;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-left: 400px;
-    margin-right: 400px;
     align-items: center;
     border-width: thin;
     border-style: solid;
@@ -51,6 +58,7 @@
 
 .login__invitation,
 .signup__invitation {
+    grid-area: A0;
     font-family: var(--main-font);
     font-size: 26px;
     display: flex;
@@ -59,14 +67,27 @@
     height: 65px;
 }
 
-.login__form,
-.signup__form {
-    flex: 1 0 auto;
-    flex-wrap: wrap;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.login__form {
+    grid-area: B1;
     width: 100%;
+    height: 100%;
+    display: grid;
+    gap: 20px;
+    grid-template-areas: 
+    "A0 A0 A0 A0"
+    "B0 B0 B0 B0"
+    "C0 C0 C0 C0";
+}
+
+.signup__form {
+    grid-area: B1;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    gap: 20px;
+    grid-template-areas: 
+    "A0 A0 A0 A0"
+    "B0 B0 B0 B0"
 }
 
 .login a,
@@ -75,8 +96,8 @@
     text-decoration: none;
     color: var(--main-nav-color);
     cursor: pointer;
-    margin: 10px auto 25px auto;
     text-decoration: none;
+    margin: 10px auto 25px auto;
 }
 
 .login a:hover,
@@ -84,7 +105,7 @@
     text-decoration: underline;
 }
 
-.login__btn,
+
 .signup__btn {
     font-family: var(--main-font);
     font-size: 18px;
@@ -149,4 +170,56 @@
     font-family: var(--main-font);
     align-self: baseline;
     margin-left: 11%;
+}
+
+.auth_email {
+    grid-area: A0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.login_signup_invitation {
+    width: 100%;
+    text-align: center;
+    grid-area: C1;
+}
+
+.text_inputs_email {
+    font-family: var(--main-font);
+    width: 100%;
+    height: 50px;
+}
+
+.auth_password {
+    grid-area: B0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.text_inputs_password {
+    font-family: var(--main-font);
+    width: 100%;
+    height: 50px;
+}
+
+.auth_btn {
+    grid-area: C0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.auth__btn {
+    font-family: var(--main-font);
+    font-size: 18px;
+    color: white;
+    margin: 1em auto 0;
+    height: 40px;
+    border: 0;
+    cursor: pointer;
+    width: 220px;
+    background: #B70084;
+    border-radius: 12px;
 }
