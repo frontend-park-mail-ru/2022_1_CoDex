@@ -1,4 +1,5 @@
-import {OK, CREATED} from 'utils.js'
+import {OK, CREATED} from 'consts.js';
+
 (function() {
   const AJAX_METHODS = {
     POST: 'POST',
