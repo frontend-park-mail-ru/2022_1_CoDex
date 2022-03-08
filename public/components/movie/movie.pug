@@ -6,11 +6,9 @@ div.movie_container
         div.movie_body
             div.movie_info
                 div.movie_data
-                    a.movie_title(href=movieHref) #{title}
+                    div.movie_rating_title
+                        a.movie_title(href=movieHref) #{title}
+                        div.movie_rating_number #{rating}
                     div.movie_add_info
                     div.movie_add_info #{info}
-                div.movie_rating
-                    div.movie_text Рейтинг
-                    div
-                    div.movie_rating_number #{rating}
             div.movie_description #{description}

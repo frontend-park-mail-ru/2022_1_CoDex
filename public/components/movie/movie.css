@@ -1,27 +1,45 @@
 .movie_container {
     background-color: #4F3F47;
-    border-radius: 30px;
+    border-radius: 20px;
     color: var(--main-bg-color);
-    padding: 30px;
+    padding: 10px;
     margin-bottom: 30px;
     align-items: center;
+    max-width: 580px;
+    max-height: 214px;
+}
 
+.movie_collections__description {
+    display: flex;
+    text-align: left;
+    width: 100%;
+    max-width: 1180px;
+    margin-bottom: 40px;
+    font-family: var(--main-font);
+    font-size: 28px;
+    color: white;
+    grid-area: C1;
 }
 
 .movie {
     display: flex;
     align-items: flex-start;
     /* padding-bottom: 30px; */
+    max-width: 580px;
+    max-height: 214px;
 }
 
 .movie_image {
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+    max-width: 158px;
+    max-height: 214px;
+    margin-bottom: 20px;
+    align-self: center;
 }
 
 .movie_image img {
-    width: 220px;
+    width: 158px;
+    height: 214px;
     border-radius: 10px;
 }
 
@@ -38,17 +56,25 @@
 
 .movie_data {
     margin-bottom: 10px;
+    width: 100%;
 }
 
 .movie_title {
-    font-size: 36px;
+    font-family: var(--main-font);
+    display: flex;
+    width: 100%;
+    max-width: 1180px;
+    font-size: 20px;
     text-decoration: none;
-    color: white
+    color: white;
+    grid-area: B1;
+    text-align: left;
 }
 
 .movie_add_info {
+    font-family: var(--main-font);
     margin-bottom: 5px;
-    font-size: 24px;
+    font-size: 17px;
     color: white;
 }
 
@@ -64,9 +90,13 @@
 .movie_rating_number {
     text-align: center;
     font-family: var(--main-font);
-    font-size: 38px;
+    font-size: 20px;
     color: var(--main-wng-color);
     margin-bottom: 10px;
+}
+
+.movie_rating_title {
+    display: flex;
 }
 
 .movie_description {
@@ -77,7 +107,41 @@
     display: flex;
 }
 
-._container {
-    max-width: 1150px;
+.movie_content_container {
+    max-width: 100%;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 120px);
+    column-gap: 30px;
+    row-gap: 0px;
+    grid-template-areas:
+    "B1 B1 B1 B1 B1 B1 B1 B1 B1 B1 B1 B1"
+    "C1 C1 C1 C1 C1 C1 C1 C1 C1 C1 C1 C1"
+    "D1 D1 D1 D1 D1 D1 D1 D1 D1 D1 D1 D1";
+    justify-items: center;
+    justify-content: left;
+}
+
+.movies_container {
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    row-gap: 30px;
+    column-gap: 20px;
+    grid-area: D1;
+}
+
+.movie_collection_title {
+    font-family: var(--main-font);
+    display: flex;
+    width: 100%;
+    max-width: 1180px;
+    font-size: 40px;
+    text-decoration: none;
+    color: white;
+    grid-area: B1;
+    text-align: left;
+}
+
+.movie_collection_title span {
+    min-width: 20px;
 }
