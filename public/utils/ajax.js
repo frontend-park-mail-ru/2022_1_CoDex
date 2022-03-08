@@ -1,4 +1,4 @@
-import {OK, CREATED} from 'consts.js';
+import {OK, CREATED} from './consts.js';
 
 (function() {
   const AJAX_METHODS = {
