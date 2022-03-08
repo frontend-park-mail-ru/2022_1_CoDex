@@ -55,23 +55,25 @@ function createError(text) {
  * поля ввода password должны содержать 8 символов, а также хотя бы 1 цифру и латинскую букву.
  */
 export function addInputListeners(authForm) {
-  const formTextInputs = authForm.querySelectorAll('.text_inputs');
+  const formTextInputs = authForm.querySelectorAll('.auth_input');
   for (const input of formTextInputs) {
     input.addEventListener('focusout', (e) => {
       deleteNodeError(input);
       switch (input.name) {
         case 'email': {
-          if (!input.value.match(/\S+@\S+\.\S+/)) {
+          if (!input.value.match(/\S+@\S+\.\S+/) && input.value != "") {
             input.classList.add('error');
-            authForm.insertBefore(createError('Неправильный email!'), input);
+            const err = document.getElementById("auth_email_error");
+            err.textContent = "Неправильный email!";
           } else {
-            input.classList.remove('error');
+            const err = document.getElementById("auth_email_error");
+            err.textContent = "";
           }
           break;
         }
         case 'password': {
           let errorText = '';
-          if (!input.value.match(/^(?=.*[0-9])(?=.*[A-z])[A-zА-я0-9]{8,}$/)) {
+          if (!input.value.match(/^(?=.*[0-9])(?=.*[A-z])[A-zА-я0-9]{8,}$/) && input.value != "") {
             input.classList.add('error');
             if (!input.value.match(/(?=.*[0-9])/)) {
               errorText='Пароль должен содержать хотя бы 1 цифру!';
@@ -80,9 +82,11 @@ export function addInputListeners(authForm) {
             } else if (!input.value.match(/[a-zA-Z0-9]{8,}/)) {
               errorText='Пароль должен содержать хотя бы 8 символов!';
             }
-            authForm.insertBefore(createError(errorText), input);
+            const err = document.getElementById("auth_password_error");
+            err.textContent = errorText;
           } else {
-            input.classList.remove('error');
+            const err = document.getElementById("auth_password_error");
+            err.textContent = "";
           }
           break;
         }
@@ -151,10 +155,8 @@ export function loginSubmit(e) {
       collectionsPage();
       return;
     } else if (!(e.target.previousElementSibling.classList.contains('error_mes'))){
-      const error = document.createElement('div');
-      error.classList.add('error_mes');
-      error.innerText = 'Неправильный логин или пароль!';
-      e.target.parentNode.insertBefore(error, e.target)
+      const error = document.getElementById("auth_btn_error");
+      error.textContent = 'Неправильный логин или пароль!';
     }
   })
 }

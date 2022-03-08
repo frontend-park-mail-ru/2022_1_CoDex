@@ -27,41 +27,45 @@ pug_html = pug_html + "\u003Cinput class=\"text_inputs\" type=\"text\" name=\"na
 ;pug_debug_line = 7;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Cdiv class=\"auth_email\"\u003E";
 ;pug_debug_line = 8;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Clabel class=\"text_inputs__label\" for=\"email\"\u003E";
-;pug_debug_line = 8;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "Email\u003C\u002Flabel\u003E";
+pug_html = pug_html + "\u003Cdiv class=\"auth_email_labels\"\u003E";
 ;pug_debug_line = 9;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cdiv id=\"auth_email_error\"\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Clabel class=\"text_inputs__label\" for=\"email\"\u003E";
+;pug_debug_line = 9;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
+pug_html = pug_html + "Email\u003C\u002Flabel\u003E";
 ;pug_debug_line = 10;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cinput class=\"text_inputs_email\" type=\"email\" name=\"email\" placeholder=\"Введите e-mail\"\u002F\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Cdiv id=\"auth_email_error\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 11;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
+pug_html = pug_html + "\u003Cinput class=\"text_inputs_email auth_input\" type=\"email\" name=\"email\" placeholder=\"Введите e-mail\"\u002F\u003E\u003C\u002Fdiv\u003E";
+;pug_debug_line = 12;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Cdiv class=\"auth_password\"\u003E";
-;pug_debug_line = 12;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Clabel class=\"text_inputs__label\" for=\"password\"\u003E";
-;pug_debug_line = 12;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "Пароль\u003C\u002Flabel\u003E";
 ;pug_debug_line = 13;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cdiv id=\"auth_password_error\"\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Cdiv class=\"auth_password_labels\"\u003E";
 ;pug_debug_line = 14;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cinput class=\"text_inputs_password\" type=\"password\" name=\"password\" placeholder=\"Введите пароль\"\u002F\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Clabel class=\"text_inputs__label\" for=\"password\"\u003E";
+;pug_debug_line = 14;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
+pug_html = pug_html + "Пароль\u003C\u002Flabel\u003E";
 ;pug_debug_line = 15;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-if (!input.isLogin) {
+pug_html = pug_html + "\u003Cdiv id=\"auth_password_error\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 16;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cdiv class=\"auth_repeat_password\"\u003E";
+pug_html = pug_html + "\u003Cinput class=\"text_inputs_password auth_input\" type=\"password\" name=\"password\" placeholder=\"Введите пароль\"\u002F\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 17;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Clabel class=\"text_inputs__label\" for=\"repeatPassword\"\u003E";
-;pug_debug_line = 17;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "Повторите пароль\u003C\u002Flabel\u003E";
+if (!input.isLogin) {
 ;pug_debug_line = 18;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cdiv id=\"auth_repeat_password_error\"\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Cdiv class=\"auth_repeat_password\"\u003E";
 ;pug_debug_line = 19;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
+pug_html = pug_html + "\u003Clabel class=\"text_inputs__label\" for=\"repeatPassword\"\u003E";
+;pug_debug_line = 19;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
+pug_html = pug_html + "Повторите пароль\u003C\u002Flabel\u003E";
+;pug_debug_line = 20;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
+pug_html = pug_html + "\u003Cdiv id=\"auth_repeat_password_error\"\u003E\u003C\u002Fdiv\u003E";
+;pug_debug_line = 21;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Cinput class=\"text_inputs\" type=\"password\" name=\"repeatPassword\" placeholder=\"Повторите пароль\"\u002F\u003E\u003C\u002Fdiv\u003E";
 }
-;pug_debug_line = 20;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cdiv class=\"auth_btn\"\u003E";
-;pug_debug_line = 21;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cdiv id=\"auth_btn_error\"\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 22;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
+pug_html = pug_html + "\u003Cdiv class=\"auth_btn\"\u003E";
+;pug_debug_line = 23;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
+pug_html = pug_html + "\u003Cdiv id=\"auth_btn_error\"\u003E\u003C\u002Fdiv\u003E";
+;pug_debug_line = 24;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Cinput" + (" class=\"auth__btn\""+" type=\"button\""+pug_attr("value", input.isLogin ? "Войти" : "Зарегистрироваться", true, false)+" name=\"submitBtn\"") + "\u002F\u003E\u003C\u002Fdiv\u003E\u003C\u002Fform\u003E";
     }.call(this, "input" in locals_for_with ?
         locals_for_with.input :
