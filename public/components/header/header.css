@@ -12,7 +12,7 @@
     flex-direction: row; */
     display: grid;
     grid-template-columns: repeat(12, 120px);
-    column-gap: 30px;
+    /* column-gap: 30px; */
     grid-template-areas: 
     "A1 A1 A2 A3 A3 A3 A4 A5 A6 A7 A8 A9";
 
