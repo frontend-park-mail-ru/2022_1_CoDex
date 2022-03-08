@@ -59,6 +59,8 @@
     "B0 B1 B1 B1 B1 B2"
     "B0 B1 B1 B1 B1 B2"
     "B0 B1 B1 B1 B1 B2"
+    "B0 B1 B1 B1 B1 B2"
+    "B0 B1 B1 B1 B1 B2"
     "C0 C1 C1 C1 C1 C2";
     
 }
@@ -93,8 +95,11 @@
     display: grid;
     gap: 20px;
     grid-template-areas: 
+    "Z0 Z0 Z0 Z0"
     "A0 A0 A0 A0"
+    "D0 D0 D0 D0"
     "B0 B0 B0 B0"
+    "C0 C0 C0 C0";
 }
 
 .login a,
@@ -267,6 +272,59 @@
 #auth_btn_error {
     width: 100%;
     text-align: center;
+    vertical-align: middle;
+    font-family: var(--main-font);
+    font-size: 18px;
+    color: var(--main-wng-color);
+}
+
+.signup_login_invitation {
+    width: 100%;
+    text-align: center;
+    grid-area: C1;
+}
+
+.auth_name_labels {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+.auth_name {
+    grid-area: Z0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.auth_repeat_password_labels {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+.auth_repeat_password {
+    grid-area: D0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.text_inputs_name {
+    font-family: var(--main-font);
+    width: 100%;
+    height: 50px;
+}
+
+.text_inputs_repeat_password {
+    font-family: var(--main-font);
+    width: 100%;
+    height: 50px;
+}
+
+#auth_repeat_password_error {
+    width: 70%;
+    text-align: right;
     vertical-align: middle;
     font-family: var(--main-font);
     font-size: 18px;

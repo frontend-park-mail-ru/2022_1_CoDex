@@ -28,6 +28,7 @@ export function signupPage() {
   const loginInvitation = document.createElement('a');
   loginInvitation.href = '/login';
   loginInvitation.dataset.section = 'login';
+  loginInvitation.classList.add("signup_login_invitation");
   loginInvitation.textContent = 'Уже есть аккаунт?';
 
   div.appendChild(form);
