@@ -101,7 +101,7 @@ export function addInputListeners(authForm) {
           break;
         }
         case 'name': {
-          if (!input.value.match(/^.*[^A-zА-яЁё].*$/)) {
+          if (!input.value.match(/^(?=.{1,40}$)[а-яёА-ЯЁ]+(?:[-' ][а-яёА-ЯЁ]+)*$/) && input.value != "") {
             input.classList.add('error');
             const error = document.getElementById("auth_name_error");
             error.textContent = 'Недопускаются цифры и спец символы!';
