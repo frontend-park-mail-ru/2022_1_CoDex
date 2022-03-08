@@ -41,6 +41,10 @@ const configApp = {
 
 mainPage();
 
+
+
+checkAuth();
+
 root.addEventListener('click', (e) => {
   const {target} = e;
   console.log(target.attributes.parameters);
