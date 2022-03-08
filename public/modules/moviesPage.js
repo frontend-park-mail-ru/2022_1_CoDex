@@ -20,12 +20,12 @@ export function moviesPage(collectionNumber) {
 
   const moviesPageContainer = document.createElement('div');
   moviesPageContainer.classList.add('page__container');
-  moviesPageContainer.classList.add('_container');
+  moviesPageContainer.classList.add('movie_content_container');
   moviesPage.appendChild(moviesPageContainer);
 
   const moviesTitle = document.createElement('h1');
-  moviesTitle.classList.add('title');
-  moviesTitle.textContent = 'Подборка';
+  moviesTitle.classList.add('movie_collection_title');
+  moviesTitle.textContent = 'Подборка: ';
   const span = document.createElement('span');
   span.textContent = ' ';
   const collectionTitle = document.createElement('span');
@@ -36,14 +36,19 @@ export function moviesPage(collectionNumber) {
   moviesPageContainer.appendChild(moviesTitle);
 
   const moviesDescription = document.createElement('div');
-  moviesDescription.classList.add('collections__description');
+  moviesDescription.classList.add('movie_collections__description');
   moviesPageContainer.appendChild(moviesDescription);
+
+  const moviesContainer = document.createElement('div');
+  moviesContainer.classList.add("movies_container");
+  moviesPageContainer.appendChild(moviesContainer);
   
-  Ajax.getFetch({url: `https://tphwgocodex.herokuapp.com/api/v1/collections/collection/${collectionNumber}`}) // TODO 
+  // Ajax.getFetch({url: `https://tphwgocodex.herokuapp.com/api/v1/collections/collection/${collectionNumber}`}) // TODO 
+  Ajax.getFetch({url: `/api/collections/${collectionNumber}`}) // TODO 
       .then(({status, parsedBody}) => {
         collectionTitle.textContent = parsedBody.title;
         moviesDescription.textContent = parsedBody.description;
-        renderMovies(moviesPageContainer, parsedBody.movieList);
+        renderMovies(moviesContainer, parsedBody.movieList);
       })
       .catch((status, parsedBody) => {
         console.log("Something got wrong"); // TODO error page
