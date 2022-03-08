@@ -1,6 +1,7 @@
 import { collectionsPage } from '../../modules/collectionsPage.js';
 import {createElementFromHTML} from '../../utils/utils.js';
 import { changeNavbarButton } from '../header/header.js';
+import {URL, nameRegularCheck, emailRegularCheck, passwordRegularCheck, numberRegularCheck, englishRegularCheck, countRegularCheck, CREATED, OK} from '../../utils/consts.js';
 
 /**
  * @param { bool } isLogin - Является ли форма формой авторизации
@@ -61,7 +62,7 @@ export function addInputListeners(authForm) {
       deleteNodeError(input);
       switch (input.name) {
         case 'email': {
-          if (!input.value.match(/\S+@\S+\.\S+/) && input.value != "") {
+          if (!input.value.match(emailRegularCheck) && input.value != "") {
             input.classList.add('error');
             const err = document.getElementById("auth_email_error");
             err.textContent = "Неправильный email!";
@@ -73,13 +74,13 @@ export function addInputListeners(authForm) {
         }
         case 'password': {
           let errorText = '';
-          if (!input.value.match(/^(?=.*[0-9])(?=.*[A-z])[A-zА-я0-9]{8,}$/) && input.value != "") {
+          if (!input.value.match(passwordRegularCheck) && input.value != "") {
             input.classList.add('error');
-            if (!input.value.match(/(?=.*[0-9])/)) {
+            if (!input.value.match(numberRegularCheck)) {
               errorText='Пароль должен содержать хотя бы 1 цифру!';
-            } else if (!input.value.match(/(?=.*[A-z])/)) {
+            } else if (!input.value.match(englishRegularCheck)) {
               errorText='Пароль должен содержать хотя бы 1 латинскую букву!';
-            } else if (!input.value.match(/[a-zA-Z0-9]{8,}/)) {
+            } else if (!input.value.match(countRegularCheck)) {
               errorText='Пароль должен содержать хотя бы 8 символов!';
             }
             const err = document.getElementById("auth_password_error");
@@ -101,10 +102,10 @@ export function addInputListeners(authForm) {
           break;
         }
         case 'name': {
-          if (!input.value.match(/^(?=.{1,40}$)[а-яёА-ЯЁ]+(?:[-' ][а-яёА-ЯЁ]+)*$/) && input.value != "") {
+          if (!input.value.match(nameRegularCheck) && input.value != "") {
             input.classList.add('error');
             const error = document.getElementById("auth_name_error");
-            error.textContent = 'Недопускаются цифры и спец символы!';
+            error.textContent = 'Недопускаются спец символы!';
           } else {
             const error = document.getElementById("auth_name_error");
             error.textContent = '';
@@ -126,20 +127,19 @@ export function addInputListeners(authForm) {
  */
 function foundErrorFields(form) {
   let flag = false;
-  const formTextInputs = form.querySelectorAll('.text-inputs');
-  for (const input of formTextInputs) {
+  const authInput = form.querySelectorAll('.text-inputs');
+  authInput.forEach((input) => {
     if (input.classList.contains('error')) {
       flag = true;
       input.classList.toggle('animated');
-      continue;
     }
-    if (input.value === '') {
+    else if (input.value === '') {
       flag = true;
       input.classList.add('error');
       form.insertBefore(createError('Поле не заполнено!'), input);
       input.classList.toggle('animated');
     }
-  }
+  });
   return flag;
 }
 
@@ -158,10 +158,10 @@ export function loginSubmit(e) {
   const email = document.forms.authForm.email.value.trim();
   const password = document.forms.authForm.password.value.trim();
   Ajax.postFetch({
-    url: 'https://teamprojectkinopoisk.herokuapp.com/api/v1/login',
+    url: `${URL}/api/v1/login`,
     body: {email: email, password: password},
   }).then((response) => {
-    if (response && response.status === 200) {
+    if (response && response.status === OK) {
       changeNavbarButton();
       collectionsPage();
       return;
@@ -185,11 +185,13 @@ export function signupSubmit(e) {
   }
   const email = document.forms.authForm.email.value.trim();
   const password = document.forms.authForm.password.value.trim();
+  const secondPassword = document.forms.authForm.repeatpassword.value.trim();
+
   Ajax.postFetch({
-    url: 'https://teamprojectkinopoisk.herokuapp.com/api/v1/signup',
-    body: {email: email, password: password },
+    url: `${URL}/api/v1/signup`,
+    body: {email: email, password: password, repeatpassword: secondPassword },
   }).then((response) => {
-    if (response && response.status === 201) {
+    if (response && response.status === CREATED) {
       changeNavbarButton();
       collectionsPage(response.parsedBody);
       return;

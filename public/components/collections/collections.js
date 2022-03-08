@@ -1,4 +1,5 @@
 import {createElementFromHTML} from '../../utils/utils.js';
+import { URL } from '../../utils/consts.js';
 
 /**
  * @param { Array } params - Параметры, необходимые для создания 
@@ -17,7 +18,7 @@ export function createCollection(params) {
  * в случае успеха парсит полученные данные, получая подборки фильмов.
  */
 export function renderCollections(collectionContainer) {
-  Ajax.getFetch({url: 'https://teamprojectkinopoisk.herokuapp.com/api/v1/'}) 
+  Ajax.getFetch({url: `${URL}/api/v1/`}) 
       .then(({status, parsedBody}) => {
         parsedBody.collectionList.forEach(element => {
           collectionContainer.appendChild(createCollection(element))
