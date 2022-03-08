@@ -1,4 +1,4 @@
-export const URL = 'https://teamprojectkinopoisk.herokuapp.com/'
+export const URL = 'https://teamprojectkinopoisk.herokuapp.com'
 export const nameRegularCheck = /[a-zA-Z0-9]{2,}/;
 export const emailRegularCheck = /\S+@\S+\.\S+/;
 export const passwordRegularCheck = /^(?=.*[0-9])(?=.*[A-z])[A-zА-я0-9]{8,}$/;

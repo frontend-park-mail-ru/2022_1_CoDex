@@ -7,8 +7,7 @@ import { URL } from '../../utils/consts.js';
  * @description Создаёт карточку поборки фильмов по заданному pug-шаблону.
  */
 export function createCollection(params) {
-  const collection = createElementFromHTML(collections(params));
-  return collection;
+  return createElementFromHTML(collections(params));
 }
 
 /**
