@@ -18,7 +18,7 @@ export function collectionsPage() {
 
   const collectionsPageContainer = document.createElement('div');
   collectionsPageContainer.classList.add('page__container');
-  collectionsPageContainer.classList.add('_container');
+  collectionsPageContainer.classList.add('content_container');
   collectionsPage.appendChild(collectionsPageContainer);
 
   const collectionsTitle = document.createElement('h1');

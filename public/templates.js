@@ -108,15 +108,15 @@ pug_html = pug_html + "\u003Cimg data-section=\"main\" src=\"..\u002Fserver\u002
 ;pug_debug_line = 4;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fheader\u002Fheader.pug";
 pug_html = pug_html + "\u003Cdiv class=\"navbar_menu\"\u003E";
 ;pug_debug_line = 5;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fheader\u002Fheader.pug";
-pug_html = pug_html + "\u003Ca class=\"navbar_menu_btn\" href=\"\u002Fcollections\" data-section=\"collections\"\u003E";
+pug_html = pug_html + "\u003Ca class=\"navbar_menu_collections\" href=\"\u002Fcollections\" data-section=\"collections\"\u003E";
 ;pug_debug_line = 5;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fheader\u002Fheader.pug";
 pug_html = pug_html + "Подборки\u003C\u002Fa\u003E";
 ;pug_debug_line = 6;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fheader\u002Fheader.pug";
-pug_html = pug_html + "\u003Ca class=\"navbar_menu_btn\" href=\"\u002F\" data-section=\"genres\"\u003E";
+pug_html = pug_html + "\u003Ca class=\"navbar_menu_genres\" href=\"\u002F\" data-section=\"genres\"\u003E";
 ;pug_debug_line = 6;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fheader\u002Fheader.pug";
 pug_html = pug_html + "Жанры\u003C\u002Fa\u003E";
 ;pug_debug_line = 7;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fheader\u002Fheader.pug";
-pug_html = pug_html + "\u003Ca class=\"navbar_menu_btn\" href=\"\u002F\" data-section=\"premiers\"\u003E";
+pug_html = pug_html + "\u003Ca class=\"navbar_menu_premiers\" href=\"\u002F\" data-section=\"premiers\"\u003E";
 ;pug_debug_line = 7;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fheader\u002Fheader.pug";
 pug_html = pug_html + "Премьеры\u003C\u002Fa\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 8;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fheader\u002Fheader.pug";

@@ -5,13 +5,22 @@
     background-color: var(--main-nav-color);
     position: sticky;
     align-items: center;
-    display: flex;
-    flex-direction: row;
+    justify-items: center;
+    justify-self: center;
+    justify-content: center;
+    /* display: flex;
+    flex-direction: row; */
+    display: grid;
+    grid-template-columns: repeat(12, 120px);
+    column-gap: 30px;
+    grid-template-areas: 
+    "A1 A1 A2 A3 A3 A3 A4 A5 A6 A7 A8 A9";
 
 }
 
 .navbar_logo {
     margin-left: 5%;
+    grid-area: A1;
 }
 
 .navbar_logo img {
@@ -20,18 +29,37 @@
 }
 
 .navbar_menu {
-    display: inherit;
-    width: 40%;
+    display: grid;
+    grid-area: A3;
     align-items: center;
-    justify-content: space-around;
+    justify-items: center;
+    grid-template-columns: repeat(3, 120px);
+    gap: 30px;
+    grid-template-areas: "A31 A32 A33";
     font-size: 20px;
 }
 
-.navbar_menu_btn {
+.navbar_menu_collections {
     text-decoration: none;
     transition: .1s;
     color: white;
+    grid-area: A31;
 }
+
+.navbar_menu_genres {
+    text-decoration: none;
+    transition: .1s;
+    color: white;
+    grid-area: A32;
+}
+
+.navbar_menu_premiers {
+    text-decoration: none;
+    transition: .1s;
+    color: white;
+    grid-area: A33;
+}
+
 
 .navbar_search {
     width: 30%;
@@ -40,10 +68,9 @@
 }
 
 .navbar_menu_login-btn {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    display: grid;
     padding: 10px;
+    grid-area: A8;
     text-decoration: none;
 
     width: 88px;
