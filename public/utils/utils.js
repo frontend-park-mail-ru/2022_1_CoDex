@@ -10,7 +10,7 @@ export function createElementFromHTML(html) {
 
 export function checkAuth() {
   Ajax.getFetch({
-    url: `${URL}/api/user/checkAuth`,
+    url: `${URL}/api/v1/user/checkAuth`,
   }).then((response) => {
     if (response && response.status === OK) {
       Ajax.getFetch({
