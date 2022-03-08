@@ -13,7 +13,6 @@ export function checkAuth() {
   Ajax.getFetch({
     url: `${URL}/api/v1/user/checkAuth`,
   }).then((response) => {
-    
     if (response && response.status === OK) {
       mainPage();
       changeNavbarButton();
