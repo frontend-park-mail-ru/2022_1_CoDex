@@ -3,7 +3,8 @@ import {mainPage} from './modules/mainPage.js';
 import {moviesPage} from './modules/moviesPage.js';
 import {signupPage} from './modules/signupPage.js';
 import {loginPage} from './modules/loginPage.js';
-import { changeNavbarButton } from './components/header/header.js';
+import {changeNavbarButton } from './components/header/header.js';
+import { checkAuth } from './utils/utils.js';
 
 export const root = document.getElementById('root');
 

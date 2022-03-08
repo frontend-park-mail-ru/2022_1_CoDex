@@ -1,5 +1,7 @@
 import { mainPage } from "../modules/mainPage";
+import { loginPage } from "../modules/loginPage";
 import { URL, OK } from "./consts";
+import { changeNavbarButton } from "../components/header/header";
 export function createElementFromHTML(html) {
   const temp = document.createElement('div');
   temp.innerHTML = html;
