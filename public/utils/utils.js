@@ -13,14 +13,10 @@ export function checkAuth() {
   Ajax.getFetch({
     url: `${URL}/api/v1/user/checkAuth`,
   }).then((response) => {
+    
     if (response && response.status === OK) {
-      Ajax.getFetch({
-        url: `${URL}/api/v1/user/${response.parsedBody.id}`,
-      }).then((response) => {
-        changeNavbarButton();
-        mainPage();
-        // collectionsPage(response.parsedBody);
-      });
+      changeNavbarButton();
+      mainPage();
       return;
     } else {
       loginPage();
