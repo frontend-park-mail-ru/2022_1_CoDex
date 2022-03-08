@@ -185,7 +185,7 @@ export function signupSubmit(e) {
   }
   const email = document.forms.authForm.email.value.trim();
   const password = document.forms.authForm.password.value.trim();
-  const secondPassword = document.forms.authForm.repeatpassword.value.trim();
+  const secondPassword = document.forms.authForm.repeatPassword.value.trim();
 
   Ajax.postFetch({
     url: `${URL}/api/v1/signup`,
