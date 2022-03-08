@@ -39,18 +39,20 @@
     font-size: 20px;
 }
 
+[class^="navbar_menu_"]:hover {
+    color: #AB23FF;
+}
+
+[class^="navbar_menu_"]:active {
+    color: #7200b9;
+}
+
+
 .navbar_menu_collections {
     text-decoration: none;
     transition: .1s;
     color: white;
     grid-area: A31;
-}
-.navbar_menu_btn:hover {
-    color: #AB23FF;
-}
-
-.navbar_menu_btn:active {
-    color: #7200b9;
 }
 
 .navbar_menu_genres {
