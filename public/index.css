@@ -22,6 +22,7 @@
 
 #content {
     width: 100%;
+    min-height: 850px;
     background-color: var(--main-bg-color);
     height: calc(100vh - 230px);
 }
