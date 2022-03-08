@@ -1,5 +1,6 @@
 import {clearContent} from '../utils/contentManipulate.js';
 import {renderMovies} from '../components/movie/movie.js';
+import { URL } from '../utils/consts.js';
 
 /**
  * @param { string } collectionNumber Номер подборки на сервере
