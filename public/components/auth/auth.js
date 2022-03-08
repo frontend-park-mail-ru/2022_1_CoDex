@@ -92,12 +92,16 @@ export function addInputListeners(authForm) {
         }
         case 'repeatPassword': {
           if (input.value !== authForm.password.value) {
-            input.classList.add('error');
-            authForm.insertBefore(createError('Пароли не совпадают!'), input);
+            const err = document.getElementById("auth_repeat_password_error");
+            err.textContent = "Пароли не совпадают!";
           } else {
-            input.classList.remove('error');
+            const err = document.getElementById("auth_repeat_password_error");
+            err.textContent = "";
           }
           break;
+        }
+        case 'name': {
+          // TODO
         }
         default: {
         }
