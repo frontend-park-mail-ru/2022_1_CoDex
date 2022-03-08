@@ -1,5 +1,5 @@
 import {createElementFromHTML} from '../../utils/utils.js';
-
+import { URL } from '../../utils/consts.js';
 
 /**
  * @description Создаёт и прикрепляет к корню страницы навигационную панель, полученную при 
