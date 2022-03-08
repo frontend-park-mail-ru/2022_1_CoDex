@@ -22,10 +22,8 @@
 
 #content {
     width: 100%;
-    align-items: center;
-    flex: 0 0 850px;
     background-color: var(--main-bg-color);
-    display: flex;
+    height: calc(100vh - 230px);
 }
 
 .color-bright {

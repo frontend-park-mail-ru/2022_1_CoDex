@@ -1,11 +1,14 @@
 #footer {
     width: 100%;
-    flex: 0 0 150px;
+    flex: 0 0 100%;
+    
     background-color: var(--main-nav-color);
     display: flex;
     justify-content:center;
+    /* position: sticky; */
+    
 }
 
 #footer p {
-    color: white;
+    color: rgb(246, 215, 215);
 }

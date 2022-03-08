@@ -1,3 +1,4 @@
+import {OK, CREATED} from 'utils.js'
 (function() {
   const AJAX_METHODS = {
     POST: 'POST',
@@ -53,7 +54,7 @@
         },
       }).then((response) => {
         statusCode = response.status;
-        if (statusCode === 200 || statusCode === 201) {
+        if (statusCode === OK || statusCode === CREATED) {
           return response.json();
         }
         return response;
