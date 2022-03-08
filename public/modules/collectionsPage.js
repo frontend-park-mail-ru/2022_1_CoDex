@@ -1,6 +1,10 @@
 import {clearContent} from '../utils/contentManipulate.js';
 import {renderCollections} from '../components/collections/collections.js';
 
+/**
+ * @description Создаёт и отрисовывает страницу подборок фильмов.
+ * Предварительно очищает содержимое страницы. Поддерживает SPA.
+ */
 export function collectionsPage() {
   const content = clearContent();
 

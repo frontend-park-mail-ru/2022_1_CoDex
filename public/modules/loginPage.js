@@ -1,6 +1,10 @@
 import { clearContent } from '../utils/contentManipulate.js';
 import { createAuth, addInputListeners, loginSubmit } from '../components/auth/auth.js';
 
+/**
+ * @description Создаёт и отрисовывает страницу авторизации.
+ * Предварительно очищает содержимое страницы. Поддерживает SPA.
+ */
 export function loginPage(warning = false) {
   const content = clearContent();
 

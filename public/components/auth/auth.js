@@ -2,6 +2,13 @@ import { collectionsPage } from '../../modules/collectionsPage.js';
 import {createElementFromHTML} from '../../utils/utils.js';
 import { changeNavbarButton } from '../header/header.js';
 
+/**
+ * @param { bool } isLogin - Является ли форма формой авторизации
+ * @returns { form } - Возвращает форму авторизации / регистрации.
+ * @description Создаёт и возвращает форму авторизации, если isLogin === true, иначе
+ * создаёт и возвращает форму регистрации.
+ * 
+ */
 export function createAuth(isLogin) {
   const params = {
     input: {
@@ -12,6 +19,13 @@ export function createAuth(isLogin) {
   return template;
 }
 
+/**
+ * @param { Node } currNode Элемент в DOM, относительно которого будет искаться сообщение
+ *  об ошибке
+ * @description Если перед currNode есть сообщение об ошибке, то удаляет элемент, содержащий
+ * это сообщение.
+ * 
+ */
 function deleteNodeError(currNode) {
   const prevNode = currNode.previousSibling;
   if (!prevNode) {
@@ -22,6 +36,11 @@ function deleteNodeError(currNode) {
   }
 }
 
+/**
+ * @param { string } text Текст сообщения об ошибке
+ * @returns { div } HTML Div, содержащий сообщение об ошибке.
+ * @description Создаёт HTML Div, содержащий сообщение об ошибке.
+ */
 function createError(text) {
   const errorBlock = document.createElement('div');
   errorBlock.innerText = text;
@@ -29,6 +48,12 @@ function createError(text) {
   return errorBlock;
 } 
 
+/**
+ * @param { form } authForm HTML-форма, поля которой будут проверяться
+ * @description Проверяет поля ввода переданной формы: 
+ * поля ввода email должны быть email-адресом;
+ * поля ввода password должны содержать 8 символов, а также хотя бы 1 цифру и латинскую букву.
+ */
 export function addInputListeners(authForm) {
   const formTextInputs = authForm.querySelectorAll('.text_inputs');
   for (const input of formTextInputs) {
@@ -77,6 +102,12 @@ export function addInputListeners(authForm) {
   }
 }
 
+/**
+ * @param { form } form Форма, которую будем проверять
+ * @returns { bool } True, если форма содержит ошибки.
+ * @description Проверяет каждое input-поле формы на предмет ошибки. Если
+ * ошибка есть, добавляет класс animated полю input, а также добавляет сообщение об ошибке.
+ */
 function foundErrorFields(form) {
   let flag = false;
   const formTextInputs = form.querySelectorAll('.text-inputs');
@@ -96,6 +127,13 @@ function foundErrorFields(form) {
   return flag;
 }
 
+
+/**
+ * @param { event } e - перехваченное событие
+ * @description Обрабатывает отправку данных из формы авторизации. Проверяет поля ввода, в
+ * случае успеха отправляет запрос на сервер. В случае успеха перенаправляет на следующую страницу,
+ * иначе показывает сообщение об ошибке.
+ */
 export function loginSubmit(e) {
   e.preventDefault();
   if (foundErrorFields(authForm)) {
@@ -121,6 +159,12 @@ export function loginSubmit(e) {
   })
 }
 
+/**
+ * @param { event } e - перехваченное событие
+ * @description Обрабатывает отправку данных из формы регистрации. Проверяет поля ввода, в
+ * случае успеха отправляет запрос на сервер. В случае успеха перенаправляет на следующую страницу,
+ * иначе показывает сообщение об ошибке.
+ */
 export function signupSubmit(e) {
   e.preventDefault();
   if (foundErrorFields(authForm)) {

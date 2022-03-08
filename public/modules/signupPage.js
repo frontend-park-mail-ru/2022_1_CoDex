@@ -1,7 +1,11 @@
 import { clearContent } from '../utils/contentManipulate.js';
 import { createAuth, addInputListeners, signupSubmit } from '../components/auth/auth.js';
 
-export function signupPage(warning = 0) {
+/**
+ * @description Создаёт и отрисовывает страницу регистрации.
+ * Предварительно очищает содержимое страницы. Поддерживает SPA.
+ */
+export function signupPage() {
   const content = clearContent();
 
   const authContent = document.createElement('div');

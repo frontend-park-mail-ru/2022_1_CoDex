@@ -1,6 +1,12 @@
 import {clearContent} from '../utils/contentManipulate.js';
 import {renderMovies} from '../components/movie/movie.js';
 
+/**
+ * @param { string } collectionNumber Номер подборки на сервере
+ * @description Создаёт и отрисовывает страницу конкретной подборки фильмов, полученной
+ * как ответ на запрос от сервера.
+ * Предварительно очищает содержимое страницы. Поддерживает SPA.
+ */
 export function moviesPage(collectionNumber) {
   const content = clearContent();
 
