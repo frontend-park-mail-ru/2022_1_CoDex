@@ -41,9 +41,6 @@ const configApp = {
 };
 
 mainPage();
-
-
-
 checkAuth();
 
 root.addEventListener('click', (e) => {
