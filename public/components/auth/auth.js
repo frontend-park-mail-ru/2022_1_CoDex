@@ -1,14 +1,14 @@
-import { collectionsPage } from '../../modules/collectionsPage.js';
+import {collectionsPage} from '../../modules/collectionsPage.js';
 import {createElementFromHTML} from '../../utils/utils.js';
-import { changeNavbarButton } from '../header/header.js';
+import {changeNavbarButton} from '../header/header.js';
 import {URL, nameRegularCheck, emailRegularCheck, passwordRegularCheck, numberRegularCheck, englishRegularCheck, countRegularCheck, CREATED, OK} from '../../utils/consts.js';
 
 /**
  * @param { bool } isLogin - Является ли форма формой авторизации
- * @returns { form } - Возвращает форму авторизации / регистрации.
+ * @return { form } - Возвращает форму авторизации / регистрации.
  * @description Создаёт и возвращает форму авторизации, если isLogin === true, иначе
  * создаёт и возвращает форму регистрации.
- * 
+ *
  */
 export function createAuth(isLogin) {
   const params = {
@@ -25,7 +25,7 @@ export function createAuth(isLogin) {
  *  об ошибке
  * @description Если перед currNode есть сообщение об ошибке, то удаляет элемент, содержащий
  * это сообщение.
- * 
+ *
  */
 function deleteNodeError(currNode) {
   const prevNode = currNode.previousSibling;
@@ -39,7 +39,7 @@ function deleteNodeError(currNode) {
 
 /**
  * @param { string } text Текст сообщения об ошибке
- * @returns { div } HTML Div, содержащий сообщение об ошибке.
+ * @return { div } HTML Div, содержащий сообщение об ошибке.
  * @description Создаёт HTML Div, содержащий сообщение об ошибке.
  */
 function createError(text) {
@@ -47,11 +47,11 @@ function createError(text) {
   errorBlock.innerText = text;
   errorBlock.classList.add('error_text');
   return errorBlock;
-} 
+}
 
 /**
  * @param { form } authForm HTML-форма, поля которой будут проверяться
- * @description Проверяет поля ввода переданной формы: 
+ * @description Проверяет поля ввода переданной формы:
  * поля ввода email должны быть email-адресом;
  * поля ввода password должны содержать 8 символов, а также хотя бы 1 цифру и латинскую букву.
  */
@@ -62,19 +62,19 @@ export function addInputListeners(authForm) {
       deleteNodeError(input);
       switch (input.name) {
         case 'email': {
-          if (!input.value.match(emailRegularCheck) && input.value != "") {
+          if (!input.value.match(emailRegularCheck) && input.value != '') {
             input.classList.add('error');
-            const err = document.getElementById("auth_email_error");
-            err.textContent = "Неправильный email!";
+            const err = document.getElementById('auth_email_error');
+            err.textContent = 'Неправильный email!';
           } else {
-            const err = document.getElementById("auth_email_error");
-            err.textContent = "";
+            const err = document.getElementById('auth_email_error');
+            err.textContent = '';
           }
           break;
         }
         case 'password': {
           let errorText = '';
-          if (!input.value.match(passwordRegularCheck) && input.value != "") {
+          if (!input.value.match(passwordRegularCheck) && input.value != '') {
             input.classList.add('error');
             if (!input.value.match(numberRegularCheck)) {
               errorText='Пароль должен содержать хотя бы 1 цифру!';
@@ -83,31 +83,31 @@ export function addInputListeners(authForm) {
             } else if (!input.value.match(countRegularCheck)) {
               errorText='Пароль должен содержать хотя бы 8 символов!';
             }
-            const err = document.getElementById("auth_password_error");
+            const err = document.getElementById('auth_password_error');
             err.textContent = errorText;
           } else {
-            const err = document.getElementById("auth_password_error");
-            err.textContent = "";
+            const err = document.getElementById('auth_password_error');
+            err.textContent = '';
           }
           break;
         }
         case 'repeatPassword': {
           if (input.value !== authForm.password.value) {
-            const err = document.getElementById("auth_repeat_password_error");
-            err.textContent = "Пароли не совпадают!";
+            const err = document.getElementById('auth_repeat_password_error');
+            err.textContent = 'Пароли не совпадают!';
           } else {
-            const err = document.getElementById("auth_repeat_password_error");
-            err.textContent = "";
+            const err = document.getElementById('auth_repeat_password_error');
+            err.textContent = '';
           }
           break;
         }
         case 'name': {
-          if (!input.value.match(nameRegularCheck) && input.value != "") {
+          if (!input.value.match(nameRegularCheck) && input.value != '') {
             input.classList.add('error');
-            const error = document.getElementById("auth_name_error");
+            const error = document.getElementById('auth_name_error');
             error.textContent = 'Недопускаются спец символы!';
           } else {
-            const error = document.getElementById("auth_name_error");
+            const error = document.getElementById('auth_name_error');
             error.textContent = '';
           }
           break;
@@ -121,7 +121,7 @@ export function addInputListeners(authForm) {
 
 /**
  * @param { form } form Форма, которую будем проверять
- * @returns { bool } True, если форма содержит ошибки.
+ * @return { bool } True, если форма содержит ошибки.
  * @description Проверяет каждое input-поле формы на предмет ошибки. Если
  * ошибка есть, добавляет класс animated полю input, а также добавляет сообщение об ошибке.
  */
@@ -132,8 +132,7 @@ function foundErrorFields(form) {
     if (input.classList.contains('error')) {
       flag = true;
       input.classList.toggle('animated');
-    }
-    else if (input.value === '') {
+    } else if (input.value === '') {
       flag = true;
       input.classList.add('error');
       form.insertBefore(createError('Поле не заполнено!'), input);
@@ -165,11 +164,11 @@ export function loginSubmit(e) {
       changeNavbarButton();
       collectionsPage();
       return;
-    } else if (!(e.target.previousElementSibling.classList.contains('error_mes'))){
-      const error = document.getElementById("auth_btn_error");
+    } else if (!(e.target.previousElementSibling.classList.contains('error_mes'))) {
+      const error = document.getElementById('auth_btn_error');
       error.textContent = 'Неправильный логин или пароль!';
     }
-  })
+  });
 }
 
 /**
@@ -192,17 +191,17 @@ export function signupSubmit(e) {
   console.log(secondPassword);
   Ajax.postFetch({
     url: `${URL}/api/v1/signup`,
-    body: {username: name, password: password, repeatpassword: secondPassword, email: email, },
+    body: {username: name, password: password, repeatpassword: secondPassword, email: email},
   }).then((response) => {
     if (response && response.status === CREATED) {
       changeNavbarButton();
       collectionsPage(response.parsedBody);
       return;
-    } else if (!(e.target.previousElementSibling.classList.contains('error_mes'))){
+    } else if (!(e.target.previousElementSibling.classList.contains('error_mes'))) {
       const error = document.createElement('div');
       error.classList.add('error_mes');
       error.innerText = 'Такой пользователь уже существует!';
-      e.target.parentNode.insertBefore(error, e.target)
+      e.target.parentNode.insertBefore(error, e.target);
     }
   });
 }

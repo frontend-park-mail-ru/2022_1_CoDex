@@ -1,5 +1,5 @@
-import { clearContent } from '../utils/contentManipulate.js';
-import { createAuth, addInputListeners, signupSubmit } from '../components/auth/auth.js';
+import {clearContent} from '../utils/contentManipulate.js';
+import {createAuth, addInputListeners, signupSubmit} from '../components/auth/auth.js';
 
 /**
  * @description Создаёт и отрисовывает страницу регистрации.
@@ -28,7 +28,7 @@ export function signupPage() {
   const loginInvitation = document.createElement('a');
   loginInvitation.href = '/login';
   loginInvitation.dataset.section = 'login';
-  loginInvitation.classList.add("signup_login_invitation");
+  loginInvitation.classList.add('signup_login_invitation');
   loginInvitation.textContent = 'Уже есть аккаунт?';
 
   div.appendChild(form);

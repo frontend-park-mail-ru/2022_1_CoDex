@@ -2,7 +2,7 @@ import {navbarRender} from '../components/header/header.js';
 import {footerRender} from '../components/footer/footer.js';
 import {contentRender} from '../utils/contentManipulate.js';
 import {root} from '../main.js';
-import { collectionsPage } from './collectionsPage.js';
+import {collectionsPage} from './collectionsPage.js';
 
 /**
  * @description Создаёт и отрисовывает страницу главную страницу.

@@ -1,5 +1,5 @@
-import { clearContent } from '../utils/contentManipulate.js';
-import { createAuth, addInputListeners, loginSubmit } from '../components/auth/auth.js';
+import {clearContent} from '../utils/contentManipulate.js';
+import {createAuth, addInputListeners, loginSubmit} from '../components/auth/auth.js';
 
 /**
  * @description Создаёт и отрисовывает страницу авторизации.
@@ -20,7 +20,7 @@ export function loginPage(warning = false) {
   div.appendChild(loginInvitation);
 
   const signupInvitation = document.createElement('a');
-  signupInvitation.classList.add("login_signup_invitation");
+  signupInvitation.classList.add('login_signup_invitation');
   signupInvitation.href = '/signup';
   signupInvitation.dataset.section = 'signup';
   signupInvitation.textContent = 'Нет аккаунта? Зарегистрироваться!';
