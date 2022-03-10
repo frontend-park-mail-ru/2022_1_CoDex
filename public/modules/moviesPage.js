@@ -1,6 +1,6 @@
 import {clearContent} from '../utils/contentManipulate.js';
 import {renderMovies} from '../components/movie/movie.js';
-import { URL } from '../utils/consts.js';
+import {URL} from '../utils/consts.js';
 
 /**
  * @param { string } collectionNumber Номер подборки на сервере
@@ -41,9 +41,9 @@ export function moviesPage(collectionNumber) {
   moviesPageContainer.appendChild(moviesDescription);
 
   const moviesContainer = document.createElement('div');
-  moviesContainer.classList.add("movies_container");
+  moviesContainer.classList.add('movies_container');
   moviesPageContainer.appendChild(moviesContainer);
-  
+
   Ajax.getFetch({url: `${URL}/api/v1/collections/collection/${collectionNumber}`})
       .then(({status, parsedBody}) => {
         collectionTitle.textContent = parsedBody.title;
@@ -51,6 +51,6 @@ export function moviesPage(collectionNumber) {
         renderMovies(moviesContainer, parsedBody.movieList);
       })
       .catch((status, parsedBody) => {
-        console.log("Something got wrong");
+        console.log('Something got wrong');
       });
 }

@@ -1,9 +1,9 @@
 import {createElementFromHTML} from '../../utils/utils.js';
-import { URL } from '../../utils/consts.js';
+import {URL} from '../../utils/consts.js';
 
 /**
- * @param { Array } params - Параметры, необходимые для создания 
- * @returns { div } HTML Div, содержащий данные о подборке фильмов.
+ * @param { Array } params - Параметры, необходимые для создания
+ * @return { div } HTML Div, содержащий данные о подборке фильмов.
  * @description Создаёт карточку поборки фильмов по заданному pug-шаблону.
  */
 export function createCollection(params) {
@@ -17,14 +17,14 @@ export function createCollection(params) {
  * в случае успеха парсит полученные данные, получая подборки фильмов.
  */
 export function renderCollections(collectionContainer) {
-  Ajax.getFetch({url: `${URL}/api/v1/`}) 
+  Ajax.getFetch({url: `${URL}/api/v1/`})
       .then(({status, parsedBody}) => {
-        parsedBody.collectionList.forEach(element => {
-          collectionContainer.appendChild(createCollection(element))
+        parsedBody.collectionList.forEach((element) => {
+          collectionContainer.appendChild(createCollection(element));
         });
       })
       .catch((status, parsedBody) => {
-        console.log("Something got wrong"); 
+        console.log('Something got wrong');
       });
 }
 
