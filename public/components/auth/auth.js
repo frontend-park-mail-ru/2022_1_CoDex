@@ -1,7 +1,7 @@
 import {collectionsPage} from '../../modules/collectionsPage.js';
 import {createElementFromHTML} from '../../utils/utils.js';
 import {changeNavbarButton} from '../header/header.js';
-import {URL, nameRegularCheck, emailRegularCheck, passwordRegularCheck, numberRegularCheck, englishRegularCheck, countRegularCheck, CREATED, OK} from '../../utils/consts.js';
+import {URL, emailRegularCheck, passwordRegularCheck, numberRegularCheck, englishRegularCheck, countRegularCheck, CREATED, OK, russianRegularCheck} from '../../utils/consts.js';
 
 /**
  * @param { bool } isLogin - Является ли форма формой авторизации
@@ -20,33 +20,104 @@ export function createAuth(isLogin) {
   return template;
 }
 
-/**
- * @param { Node } currNode Элемент в DOM, относительно которого будет искаться сообщение
- *  об ошибке
- * @description Если перед currNode есть сообщение об ошибке, то удаляет элемент, содержащий
- * это сообщение.
- *
- */
-function deleteNodeError(currNode) {
-  const prevNode = currNode.previousSibling;
-  if (!prevNode) {
-    return;
-  }
-  if (prevNode.classList.contains('error_text')) {
-    currNode.parentNode.removeChild(prevNode);
+function isRepeatPasswordError(input) {
+  return input.value !== authForm.password.value && authForm.password.value != "" && !authForm.password.classList.contains("error");
+}
+
+function InputClearListener() {
+  const authForm = document.authForm;
+  const formTextInputs = authForm.querySelectorAll('.auth_input');
+  for (const input of formTextInputs) {
+    if (input.value == "") {
+      input.classList.remove("error");
+      switch (input.name) {
+        case 'name': {
+          const error = document.getElementById('auth_name_error');
+          error.textContent = '';
+        }
+        case 'email': {
+          const error = document.getElementById('auth_email_error');
+          error.textContent = '';
+        }
+        case 'password': {
+          let error = document.getElementById('auth_password_error');
+          error.textContent = '';
+          document.authForm.repeatPassword.classList.remove("error");
+          error = document.getElementById('auth_repeat_password_error');
+          error.textContent = '';
+        }
+        case 'repeatPassword': {
+          const error = document.getElementById('auth_repeat_password_error');
+          error.textContent = '';
+        }
+      }
+    }
   }
 }
 
-/**
- * @param { string } text Текст сообщения об ошибке
- * @return { div } HTML Div, содержащий сообщение об ошибке.
- * @description Создаёт HTML Div, содержащий сообщение об ошибке.
- */
-function createError(text) {
-  const errorBlock = document.createElement('div');
-  errorBlock.innerText = text;
-  errorBlock.classList.add('error_text');
-  return errorBlock;
+function InputListener() {
+  const authForm = document.authForm;
+  const formTextInputs = authForm.querySelectorAll('.auth_input');
+  for (const input of formTextInputs) {
+    switch (input.name) {
+      case 'email': {
+        if (!input.value.match(emailRegularCheck) && input.value != '') {
+          input.classList.add('error');
+          const err = document.getElementById('auth_email_error');
+          err.textContent = 'Неправильный email!';
+        } else {
+          input.classList.remove('error');
+          const err = document.getElementById('auth_email_error');
+          err.textContent = '';
+        }
+        break;
+      }
+      case 'password': {
+        let errorText = '';
+        if (!input.value.match(passwordRegularCheck) && input.value != '') {
+          input.classList.add('error');
+          if (!input.value.match(numberRegularCheck)) {
+            errorText='Пароль должен содержать хотя бы 1 цифру!';
+          } else if (!input.value.match(englishRegularCheck)) {
+            errorText='Пароль должен содержать хотя бы 1 латинскую букву!';
+          } else if (!input.value.match(countRegularCheck)) {
+            errorText='Пароль должен содержать хотя бы 8 символов!';
+          }
+        } else {
+          input.classList.remove("error");
+        }
+        const err = document.getElementById('auth_password_error');
+        err.textContent = errorText;
+        break;
+      }
+      case 'repeatPassword': {
+        if (input.value != '' && isRepeatPasswordError(input)) {
+          input.classList.add('error');
+          const err = document.getElementById('auth_repeat_password_error');
+          err.textContent = 'Пароли не совпадают!';
+        } else {
+          input.classList.remove("error");
+          const err = document.getElementById('auth_repeat_password_error');
+          err.textContent = '';
+        }
+        break;
+      }
+      case 'name': {
+        if (!(input.value.match(englishRegularCheck) || input.value.match(russianRegularCheck)) && input.value != '') {
+          input.classList.add('error');
+          const error = document.getElementById('auth_name_error');
+          error.textContent = 'Введите своё имя на русском или английском языке';
+        } else {
+          input.classList.remove("error");
+          const error = document.getElementById('auth_name_error');
+          error.textContent = '';
+        }
+        break;
+      }
+      default: {
+      }
+    }
+  }
 }
 
 /**
@@ -58,66 +129,12 @@ function createError(text) {
 export function addInputListeners(authForm) {
   const formTextInputs = authForm.querySelectorAll('.auth_input');
   for (const input of formTextInputs) {
-    input.addEventListener('focusout', (e) => {
-      deleteNodeError(input);
-      switch (input.name) {
-        case 'email': {
-          if (!input.value.match(emailRegularCheck) && input.value != '') {
-            input.classList.add('error');
-            const err = document.getElementById('auth_email_error');
-            err.textContent = 'Неправильный email!';
-          } else {
-            const err = document.getElementById('auth_email_error');
-            err.textContent = '';
-          }
-          break;
-        }
-        case 'password': {
-          let errorText = '';
-          if (!input.value.match(passwordRegularCheck) && input.value != '') {
-            input.classList.add('error');
-            if (!input.value.match(numberRegularCheck)) {
-              errorText='Пароль должен содержать хотя бы 1 цифру!';
-            } else if (!input.value.match(englishRegularCheck)) {
-              errorText='Пароль должен содержать хотя бы 1 латинскую букву!';
-            } else if (!input.value.match(countRegularCheck)) {
-              errorText='Пароль должен содержать хотя бы 8 символов!';
-            }
-            const err = document.getElementById('auth_password_error');
-            err.textContent = errorText;
-          } else {
-            const err = document.getElementById('auth_password_error');
-            err.textContent = '';
-          }
-          break;
-        }
-        case 'repeatPassword': {
-          if (input.value !== authForm.password.value) {
-            const err = document.getElementById('auth_repeat_password_error');
-            err.textContent = 'Пароли не совпадают!';
-          } else {
-            const err = document.getElementById('auth_repeat_password_error');
-            err.textContent = '';
-          }
-          break;
-        }
-        case 'name': {
-          if (!input.value.match(nameRegularCheck) && input.value != '') {
-            input.classList.add('error');
-            const error = document.getElementById('auth_name_error');
-            error.textContent = 'Недопускаются спец символы!';
-          } else {
-            const error = document.getElementById('auth_name_error');
-            error.textContent = '';
-          }
-          break;
-        }
-        default: {
-        }
-      }
-    });
+    input.addEventListener('focusin', InputListener);
+    input.addEventListener('focusout', InputListener);
+    input.addEventListener('keydown', InputClearListener);
   }
 }
+
 
 /**
  * @param { form } form Форма, которую будем проверять
@@ -127,16 +144,81 @@ export function addInputListeners(authForm) {
  */
 function foundErrorFields(form) {
   let flag = false;
-  const authInput = form.querySelectorAll('.text-inputs');
+  const authInput = form.querySelectorAll('.auth_input');
   authInput.forEach((input) => {
-    if (input.classList.contains('error')) {
-      flag = true;
-      input.classList.toggle('animated');
-    } else if (input.value === '') {
-      flag = true;
-      input.classList.add('error');
-      form.insertBefore(createError('Поле не заполнено!'), input);
-      input.classList.toggle('animated');
+    switch (input.name) {
+      case 'email': {
+        let errorText = '';
+        if (!input.value.match(emailRegularCheck) || input.value == "") {
+          input.classList.add('error');
+          flag = false;
+          if (input.value == "")
+            errorText = 'Поле не заполнено!';
+          else
+            errorText = 'Неправильный email!';
+        } else {
+          input.classList.remove("error");
+        }
+        const err = document.getElementById('auth_email_error');
+        err.textContent = errorText;
+        break;
+      }
+      case 'password': {
+        let errorText = '';
+        if (!input.value.match(passwordRegularCheck) || input.value == '') {
+          input.classList.add('error');
+          flag = false;
+          if (input.value == "") {
+            errorText = "Поле не заполнено!";
+          } else if (!input.value.match(numberRegularCheck)) {
+            errorText='Пароль должен содержать хотя бы 1 цифру!';
+          } else if (!input.value.match(englishRegularCheck)) {
+            errorText='Пароль должен содержать хотя бы 1 латинскую букву!';
+          } else if (!input.value.match(countRegularCheck)) {
+            errorText='Пароль должен содержать хотя бы 8 символов!';
+          }
+        } else {
+          input.classList.remove("error");
+        }
+        const err = document.getElementById('auth_password_error');
+        err.textContent = errorText;
+        break;
+      }
+      case 'repeatPassword': {
+        let errorText = '';
+        if (input.value == "" || isRepeatPasswordError(input)) {
+          input.classList.add('error');
+          flag = false;
+          if (input.value == "") {
+            errorText = "Поле не заполнено!";
+          } else {
+            errorText = 'Пароли не совпадают!';
+          }
+        } else {
+          input.classList.remove("error");
+        }
+        const err = document.getElementById('auth_repeat_password_error');
+        err.textContent = errorText;
+        break;
+      }
+      case 'name': {
+        let errorText = '';
+        if (input.value == "" || !(input.value.match(englishRegularCheck) || input.value.match(russianRegularCheck))) {
+          input.classList.add('error');
+          if (input.value == "") {
+            errorText = "Поле не заполнено!";
+          } else {
+            errorText = "Введите своё имя на русском или английском языке";
+          }
+        } else {
+          input.classList.remove("error");
+        }
+        const err = document.getElementById('auth_name_error');
+        err.textContent = errorText;
+        break;
+      }
+      default: {
+      }
     }
   });
   return flag;
@@ -186,9 +268,6 @@ export function signupSubmit(e) {
   const email = document.forms.authForm.email.value.trim();
   const password = document.forms.authForm.password.value.trim();
   const secondPassword = document.forms.authForm.repeatPassword.value.trim();
-  console.log(email);
-  console.log(password);
-  console.log(secondPassword);
   Ajax.postFetch({
     url: `${URL}/api/v1/signup`,
     body: {username: name, password: password, repeatpassword: secondPassword, email: email},
