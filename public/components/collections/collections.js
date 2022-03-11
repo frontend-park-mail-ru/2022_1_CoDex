@@ -2,8 +2,16 @@ import {createElementFromHTML} from '../../utils/utils.js';
 import {URL} from '../../utils/consts.js';
 
 /**
- * @param { Array } params - Параметры, необходимые для создания
- * @return { div } HTML Div, содержащий данные о подборке фильмов.
+ * @typedef { CollectionParams } - Параметры, необходимые для однозначного задания
+ * подборки фильмов. Объект, имеющий string поля:
+ * page (имя данной подборки на стороне клиента),
+ * number (номер данной подборки на сервере),
+ * imgSrc (путь к афише данной подборки).
+ */
+
+/**
+ * @param { CollectionParams } params - Параметры, необходимые для создания
+ * @return { HTMLDivElement } HTML Div, содержащий данные о подборке фильмов.
  * @description Создаёт карточку поборки фильмов по заданному pug-шаблону.
  */
 export function createCollection(params) {

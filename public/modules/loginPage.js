@@ -1,6 +1,8 @@
 import {clearContent} from '../utils/contentManipulate.js';
-import {createAuth, addInputListeners, loginSubmit} 
-from '../components/auth/auth.js';
+import {createAuth, addInputListeners, loginSubmit}
+  from '../components/auth/auth.js';
+
+/** @module loginPage */
 
 /**
  * @description Создаёт и отрисовывает страницу авторизации.

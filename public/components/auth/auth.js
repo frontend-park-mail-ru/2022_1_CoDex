@@ -1,14 +1,15 @@
 import {collectionsPage} from '../../modules/collectionsPage.js';
 import {createElementFromHTML} from '../../utils/utils.js';
 import {changeNavbarButton} from '../header/header.js';
-import {URL, emailRegularCheck, passwordRegularCheck, numberRegularCheck, englishRegularCheck, countRegularCheck, CREATED, OK, russianRegularCheck} from '../../utils/consts.js';
+import {URL, emailRegularCheck, passwordRegularCheck,
+  numberRegularCheck, englishRegularCheck, countRegularCheck,
+  CREATED, OK, russianRegularCheck} from '../../utils/consts.js';
 
 /**
  * @param { bool } isLogin - Является ли форма формой авторизации
- * @return { form } - Возвращает форму авторизации / регистрации.
- * @description Создаёт и возвращает форму авторизации, если isLogin === true, иначе
- * создаёт и возвращает форму регистрации.
- *
+ * @return { HTMLFormElement } - Возвращает форму авторизации / регистрации.
+ * @description Создаёт и возвращает форму авторизации, если isLogin === true,
+ * иначе создаёт и возвращает форму регистрации.
  */
 export function createAuth(isLogin) {
   const params = {
@@ -20,34 +21,53 @@ export function createAuth(isLogin) {
   return template;
 }
 
+/**
+ * @param { HTMLInputElement } input Поле повторного ввода пароля
+ * @return { boolean } Корректность содержимого переданного поля
+ * @description Проверяет содержимое переданного поля повторного
+ * ввода пароля на корректность. Содержимое корректно, если в
+ * полях ввода пароля и повторного пароля одинаковое, непустое и
+ * корректное с точки зрения семантики содержимое.
+ * Пароль является корректным, если в нём не меньше 8 символов,
+ * не меньше одной цифры и не меньше одной буквы.
+ */
 function isRepeatPasswordError(input) {
-  return input.value !== authForm.password.value && authForm.password.value != "" && !authForm.password.classList.contains("error");
+  return input.value == authForm.password.value &&
+  authForm.password.value != '' &&
+  !authForm.password.classList.contains('error');
 }
 
+/**
+ * @description Добавляет обработчик ввода на каждое поле,
+ * являющееся классом auth_input.
+ *
+ * Принцип работы обработчика: если значение поле пусто, то
+ * оно перестаёт помечаться как содержащее ошибку.
+ */
 function InputClearListener() {
   const authForm = document.authForm;
   const formTextInputs = authForm.querySelectorAll('.auth_input');
   for (const input of formTextInputs) {
-    if (input.value == "") {
-      input.classList.remove("error");
+    if (input.value == '') {
+      input.classList.remove('error');
       switch (input.name) {
         case 'name': {
-          const error = document.getElementById('auth_name_error');
+          const error = document.getElementById('auth-name-error');
           error.textContent = '';
         }
         case 'email': {
-          const error = document.getElementById('auth_email_error');
+          const error = document.getElementById('auth-email-error');
           error.textContent = '';
         }
         case 'password': {
-          let error = document.getElementById('auth_password_error');
+          let error = document.getElementById('auth-password-error');
           error.textContent = '';
-          document.authForm.repeatPassword.classList.remove("error");
-          error = document.getElementById('auth_repeat_password_error');
+          document.authForm.repeatPassword.classList.remove('error');
+          error = document.getElementById('auth-repeat-password-error');
           error.textContent = '';
         }
         case 'repeatPassword': {
-          const error = document.getElementById('auth_repeat_password_error');
+          const error = document.getElementById('auth-repeat-password-error');
           error.textContent = '';
         }
       }
@@ -55,6 +75,17 @@ function InputClearListener() {
   }
 }
 
+/**
+ * @description Обработчик для всех полей ввода, являющихся
+ * классом auth_input. Когда, вызвано, для каждого поля ввода проверяет:
+ * для поля email - что в нём находится корректный адрес,
+ * для поля password - что пароль подходит под требования
+ * (>= 8 символов, >= 1 цифра, >= 1 буква),
+ * для поля repeatPassword - что его содержимое совпадает с содержимым
+ * поля password,
+ * для поля name - что в нём находится имя
+ * (одно слово на русском или английском языке).
+ */
 function InputListener() {
   const authForm = document.authForm;
   const formTextInputs = authForm.querySelectorAll('.auth_input');
@@ -63,11 +94,11 @@ function InputListener() {
       case 'email': {
         if (!input.value.match(emailRegularCheck) && input.value != '') {
           input.classList.add('error');
-          const err = document.getElementById('auth_email_error');
+          const err = document.getElementById('auth-email-error');
           err.textContent = 'Неправильный email!';
         } else {
           input.classList.remove('error');
-          const err = document.getElementById('auth_email_error');
+          const err = document.getElementById('auth-email-error');
           err.textContent = '';
         }
         break;
@@ -84,32 +115,33 @@ function InputListener() {
             errorText='Пароль должен содержать хотя бы 8 символов!';
           }
         } else {
-          input.classList.remove("error");
+          input.classList.remove('error');
         }
-        const err = document.getElementById('auth_password_error');
+        const err = document.getElementById('auth-password-error');
         err.textContent = errorText;
         break;
       }
       case 'repeatPassword': {
         if (input.value != '' && isRepeatPasswordError(input)) {
           input.classList.add('error');
-          const err = document.getElementById('auth_repeat_password_error');
+          const err = document.getElementById('auth-repeat-password-error');
           err.textContent = 'Пароли не совпадают!';
         } else {
-          input.classList.remove("error");
-          const err = document.getElementById('auth_repeat_password_error');
+          input.classList.remove('error');
+          const err = document.getElementById('auth-repeat-password-error');
           err.textContent = '';
         }
         break;
       }
       case 'name': {
-        if (!(input.value.match(englishRegularCheck) || input.value.match(russianRegularCheck)) && input.value != '') {
+        if (!(input.value.match(englishRegularCheck) ||
+        input.value.match(russianRegularCheck)) && input.value != '') {
           input.classList.add('error');
-          const error = document.getElementById('auth_name_error');
+          const error = document.getElementById('auth-name-error');
           error.textContent = 'Введите своё имя на русском или английском языке';
         } else {
-          input.classList.remove("error");
-          const error = document.getElementById('auth_name_error');
+          input.classList.remove('error');
+          const error = document.getElementById('auth-name-error');
           error.textContent = '';
         }
         break;
@@ -121,7 +153,7 @@ function InputListener() {
 }
 
 /**
- * @param { form } authForm HTML-форма, поля которой будут проверяться
+ * @param { HTMLFormElement } authForm HTML-форма, поля которой будут проверяться
  * @description Проверяет поля ввода переданной формы:
  * поля ввода email должны быть email-адресом;
  * поля ввода password должны содержать 8 символов, а также хотя бы 1 цифру и латинскую букву.
@@ -137,8 +169,8 @@ export function addInputListeners(authForm) {
 
 
 /**
- * @param { form } form Форма, которую будем проверять
- * @return { bool } True, если форма содержит ошибки.
+ * @param { HTMLFormElement } form Форма, которую будем проверять
+ * @return { boolean } True, если форма содержит ошибки.
  * @description Проверяет каждое input-поле формы на предмет ошибки. Если
  * ошибка есть, добавляет класс animated полю input, а также добавляет сообщение об ошибке.
  */
@@ -149,17 +181,18 @@ function foundErrorFields(form) {
     switch (input.name) {
       case 'email': {
         let errorText = '';
-        if (!input.value.match(emailRegularCheck) || input.value == "") {
+        if (!input.value.match(emailRegularCheck) || input.value == '') {
           input.classList.add('error');
           flag = false;
-          if (input.value == "")
+          if (input.value == '') {
             errorText = 'Поле не заполнено!';
-          else
+          } else {
             errorText = 'Неправильный email!';
+          }
         } else {
-          input.classList.remove("error");
+          input.classList.remove('error');
         }
-        const err = document.getElementById('auth_email_error');
+        const err = document.getElementById('auth-email-error');
         err.textContent = errorText;
         break;
       }
@@ -168,8 +201,8 @@ function foundErrorFields(form) {
         if (!input.value.match(passwordRegularCheck) || input.value == '') {
           input.classList.add('error');
           flag = false;
-          if (input.value == "") {
-            errorText = "Поле не заполнено!";
+          if (input.value == '') {
+            errorText = 'Поле не заполнено!';
           } else if (!input.value.match(numberRegularCheck)) {
             errorText='Пароль должен содержать хотя бы 1 цифру!';
           } else if (!input.value.match(englishRegularCheck)) {
@@ -178,42 +211,42 @@ function foundErrorFields(form) {
             errorText='Пароль должен содержать хотя бы 8 символов!';
           }
         } else {
-          input.classList.remove("error");
+          input.classList.remove('error');
         }
-        const err = document.getElementById('auth_password_error');
+        const err = document.getElementById('auth-password-error');
         err.textContent = errorText;
         break;
       }
       case 'repeatPassword': {
         let errorText = '';
-        if (input.value == "" || isRepeatPasswordError(input)) {
+        if (input.value == '' || isRepeatPasswordError(input)) {
           input.classList.add('error');
           flag = false;
-          if (input.value == "") {
-            errorText = "Поле не заполнено!";
+          if (input.value == '') {
+            errorText = 'Поле не заполнено!';
           } else {
             errorText = 'Пароли не совпадают!';
           }
         } else {
-          input.classList.remove("error");
+          input.classList.remove('error');
         }
-        const err = document.getElementById('auth_repeat_password_error');
+        const err = document.getElementById('auth-repeat-password-error');
         err.textContent = errorText;
         break;
       }
       case 'name': {
         let errorText = '';
-        if (input.value == "" || !(input.value.match(englishRegularCheck) || input.value.match(russianRegularCheck))) {
+        if (input.value == '' || !(input.value.match(englishRegularCheck) || input.value.match(russianRegularCheck))) {
           input.classList.add('error');
-          if (input.value == "") {
-            errorText = "Поле не заполнено!";
+          if (input.value == '') {
+            errorText = 'Поле не заполнено!';
           } else {
-            errorText = "Введите своё имя на русском или английском языке";
+            errorText = 'Введите своё имя на русском или английском языке';
           }
         } else {
-          input.classList.remove("error");
+          input.classList.remove('error');
         }
-        const err = document.getElementById('auth_name_error');
+        const err = document.getElementById('auth-name-error');
         err.textContent = errorText;
         break;
       }
@@ -226,7 +259,7 @@ function foundErrorFields(form) {
 
 
 /**
- * @param { event } e - перехваченное событие
+ * @param { Event } e - перехваченное HTML событие
  * @description Обрабатывает отправку данных из формы авторизации. Проверяет поля ввода, в
  * случае успеха отправляет запрос на сервер. В случае успеха перенаправляет на следующую страницу,
  * иначе показывает сообщение об ошибке.
@@ -247,14 +280,14 @@ export function loginSubmit(e) {
       collectionsPage();
       return;
     } else if (!(e.target.previousElementSibling.classList.contains('error_mes'))) {
-      const error = document.getElementById('auth_btn_error');
+      const error = document.getElementById('auth-btn-error');
       error.textContent = 'Неправильный логин или пароль!';
     }
   });
 }
 
 /**
- * @param { event } e - перехваченное событие
+ * @param { Event } e - перехваченное HTML событие
  * @description Обрабатывает отправку данных из формы регистрации. Проверяет поля ввода, в
  * случае успеха отправляет запрос на сервер. В случае успеха перенаправляет на следующую страницу,
  * иначе показывает сообщение об ошибке.

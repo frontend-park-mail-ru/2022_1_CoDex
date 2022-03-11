@@ -2,9 +2,11 @@ import {clearContent} from '../utils/contentManipulate.js';
 import {renderMovies} from '../components/movie/movie.js';
 import {URL} from '../utils/consts.js';
 
+/** @module moviesPage */
+
 /**
  * @param { string } collectionNumber Номер подборки на сервере
- * @description Создаёт и отрисовывает страницу конкретной подборки 
+ * @description Создаёт и отрисовывает страницу конкретной подборки
  * фильмов, полученной
  * как ответ на запрос от сервера.
  * Предварительно очищает содержимое страницы. Поддерживает SPA.
@@ -45,7 +47,9 @@ export function moviesPage(collectionNumber) {
   moviesContainer.classList.add('movies_container');
   moviesPageContainer.appendChild(moviesContainer);
 
-  const collectionURL = `${URL}/api/v1/collections/collection/${collectionNumber}`;
+  const collectionAPI = '/api/v1/collections/collection/';
+
+  const collectionURL = URL + collectionAPI + collectionNumber;
 
   Ajax.getFetch({url: collectionURL})
       .then(({status, parsedBody}) => {

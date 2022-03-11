@@ -1,5 +1,8 @@
 import {clearContent} from '../utils/contentManipulate.js';
-import {createAuth, addInputListeners, signupSubmit} from '../components/auth/auth.js';
+import {createAuth, addInputListeners, signupSubmit}
+  from '../components/auth/auth.js';
+
+/** @module signupPage */
 
 /**
  * @description Создаёт и отрисовывает страницу регистрации.

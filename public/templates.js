@@ -22,9 +22,9 @@ pug_html = pug_html + "\u003Clabel class=\"text_inputs__label\" for=\"name\"\u00
 ;pug_debug_line = 5;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "Имя\u003C\u002Flabel\u003E";
 ;pug_debug_line = 6;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cdiv id=\"auth_name_error\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Cdiv id=\"auth-name-error\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 7;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cinput class=\"auth_input\" id=\"text_inputs_name\" type=\"text\" name=\"name\" placeholder=\"Введите имя\"\u002F\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Cinput class=\"auth_input\" id=\"text-inputs-name\" type=\"text\" name=\"name\" placeholder=\"Введите имя\"\u002F\u003E\u003C\u002Fdiv\u003E";
 }
 ;pug_debug_line = 8;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Cdiv class=\"auth_email\"\u003E";
@@ -35,9 +35,9 @@ pug_html = pug_html + "\u003Clabel class=\"text_inputs__label\" for=\"email\"\u0
 ;pug_debug_line = 10;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "Email\u003C\u002Flabel\u003E";
 ;pug_debug_line = 11;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cdiv id=\"auth_email_error\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Cdiv id=\"auth-email-error\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 12;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cinput class=\"auth_input\" id=\"text_inputs_email\" type=\"email\" name=\"email\" placeholder=\"Введите e-mail\"\u002F\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Cinput class=\"auth_input\" id=\"text-inputs-email\" type=\"email\" name=\"email\" placeholder=\"Введите e-mail\"\u002F\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 13;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Cdiv class=\"auth_password\"\u003E";
 ;pug_debug_line = 14;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
@@ -47,9 +47,9 @@ pug_html = pug_html + "\u003Clabel class=\"text_inputs__label\" for=\"password\"
 ;pug_debug_line = 15;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "Пароль\u003C\u002Flabel\u003E";
 ;pug_debug_line = 16;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cdiv id=\"auth_password_error\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Cdiv id=\"auth-password-error\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 17;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cinput class=\"auth_input\" id=\"text_inputs_password\" type=\"password\" name=\"password\" placeholder=\"Введите пароль\"\u002F\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Cinput class=\"auth_input\" id=\"text-inputs-password\" type=\"password\" name=\"password\" placeholder=\"Введите пароль\"\u002F\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 18;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 if (!input.isLogin) {
 ;pug_debug_line = 19;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
@@ -63,12 +63,12 @@ pug_html = pug_html + "Повторите пароль\u003C\u002Flabel\u003E";
 ;pug_debug_line = 22;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Cdiv id=\"auth_repeat_password_error\"\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 23;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cinput class=\"auth_input\" id=\"text_inputs_repeat_password\" type=\"password\" name=\"repeatPassword\" placeholder=\"Повторите пароль\"\u002F\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Cinput class=\"auth_input\" id=\"text-inputs-repeat-password\" type=\"password\" name=\"repeatPassword\" placeholder=\"Повторите пароль\"\u002F\u003E\u003C\u002Fdiv\u003E";
 }
 ;pug_debug_line = 24;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Cdiv class=\"auth_btn\"\u003E";
 ;pug_debug_line = 25;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cdiv id=\"auth_btn_error\"\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Cdiv id=\"auth-btn-error\"\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 26;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Cinput" + (" class=\"auth__btn\""+" type=\"button\""+pug_attr("value", input.isLogin ? "Войти" : "Зарегистрироваться", true, false)+" name=\"submitBtn\"") + "\u002F\u003E\u003C\u002Fdiv\u003E\u003C\u002Fform\u003E";
     }.call(this, "input" in locals_for_with ?

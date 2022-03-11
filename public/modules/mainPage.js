@@ -4,6 +4,8 @@ import {contentRender} from '../utils/contentManipulate.js';
 import {root} from '../main.js';
 import {collectionsPage} from './collectionsPage.js';
 
+/** @module mainPage */
+
 /**
  * @description Создаёт и отрисовывает страницу главную страницу.
  * Создаёт навигационную панель, footer. Поддерживает SPA.

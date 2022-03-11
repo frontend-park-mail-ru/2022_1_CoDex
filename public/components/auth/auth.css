@@ -1,342 +1,339 @@
 .auth-content {
-    background: url("../../static/pics/bg.jpg") no-repeat center center;
-    min-height: 100%;
-    width: 100%;
-    background-size: cover;
-    background-color: var(--main-bg-color);
-    align-items: center;
-    justify-content: center;
-    display: grid;
-    grid-template-columns: repeat(12, 120px);
-    column-gap: 30px;
-    row-gap: 30px;
-    grid-template-areas:
-    "B0 B0 B1 B1 B2 B2 B3 B3 B4 B4 B5 B5"
-    "C0 C0 C0 C1 C1 C1 C1 C1 C1 C2 C2 C2"
-    "D0 D0 D0 D1 D1 D1 D1 D1 D1 D2 D2 D2";
-    justify-items: center;
-    justify-content: center;
+	background: url("../../static/pics/bg.jpg") no-repeat center center;
+	min-height: 100%;
+	width: 100%;
+	background-size: cover;
+	background-color: var(--main-bg-color);
+	align-items: center;
+	justify-content: center;
+	display: grid;
+	grid-template-columns: repeat(12, 120px);
+	column-gap: 30px;
+	row-gap: 30px;
+	grid-template-areas:
+		"B0 B0 B1 B1 B2 B2 B3 B3 B4 B4 B5 B5"
+		"C0 C0 C0 C1 C1 C1 C1 C1 C1 C2 C2 C2"
+		"D0 D0 D0 D1 D1 D1 D1 D1 D1 D2 D2 D2";
+	justify-items: center;
 }
 
 .login {
-    grid-area: C1;
-    width: 100%;
-    padding: 16px;
-    align-items: center;
-    border-width: thick;
-    border-color: var(--main-green-color);
-    border-style: solid;
-    background: rgba(240, 240, 240, 0.83);
-    border-radius: 10px;
-    display: grid;
-    gap: 20px;
-    grid-template-areas: 
-    "A0 A0 A0 A0 A0 A0"
-    "B0 B1 B1 B1 B1 B2"
-    "B0 B1 B1 B1 B1 B2"
-    "B0 B1 B1 B1 B1 B2"
-    "C0 C1 C1 C1 C1 C2";
-    grid-auto-columns: minmax(0, 136px);
+	grid-area: C1;
+	width: 100%;
+	padding: 16px;
+	align-items: center;
+	border-width: thick;
+	border-color: var(--main-green-color);
+	border-style: solid;
+	background: rgb(240 240 240 / 83%);
+	border-radius: 10px;
+	display: grid;
+	gap: 20px;
+	grid-template-areas:
+		"A0 A0 A0 A0 A0 A0"
+		"B0 B1 B1 B1 B1 B2"
+		"B0 B1 B1 B1 B1 B2"
+		"B0 B1 B1 B1 B1 B2"
+		"C0 C1 C1 C1 C1 C2";
+	grid-auto-columns: minmax(0, 136px);
 }
 
 .signup {
-    grid-area: C1;
-    width: 100%;
-    flex-direction: column;
-    padding: 16px;
-    align-items: center;
-    border-width: thin;
-    border-style: solid;
-    background: rgba(240, 240, 240, 0.83);
-    border-radius: 10px;
-    display: grid;
-    gap: 20px;
-    grid-template-areas: 
-    "A0 A0 A0 A0 A0 A0"
-    "B0 B1 B1 B1 B1 B2"
-    "B0 B1 B1 B1 B1 B2"
-    "B0 B1 B1 B1 B1 B2"
-    "B0 B1 B1 B1 B1 B2"
-    "B0 B1 B1 B1 B1 B2"
-    "C0 C1 C1 C1 C1 C2";
-    grid-auto-columns: minmax(0, 136px);
+	grid-area: C1;
+	width: 100%;
+	flex-direction: column;
+	padding: 16px;
+	align-items: center;
+	border-width: thin;
+	border-style: solid;
+	background: rgb(240 240 240 / 83%);
+	border-radius: 10px;
+	display: grid;
+	gap: 20px;
+	grid-template-areas:
+		"A0 A0 A0 A0 A0 A0"
+		"B0 B1 B1 B1 B1 B2"
+		"B0 B1 B1 B1 B1 B2"
+		"B0 B1 B1 B1 B1 B2"
+		"B0 B1 B1 B1 B1 B2"
+		"B0 B1 B1 B1 B1 B2"
+		"C0 C1 C1 C1 C1 C2";
+	grid-auto-columns: minmax(0, 136px);
 }
 
 .login__invitation,
 .signup__invitation {
-    grid-area: A0;
-    font-family: var(--main-font);
-    font-size: 26px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 65px;
+	grid-area: A0;
+	font-family: var(--main-font);
+	font-size: 26px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 65px;
 }
 
 .login__form {
-    grid-area: B1;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    gap: 20px;
-    grid-template-areas: 
-    "A0 A0 A0 A0"
-    "B0 B0 B0 B0"
-    "C0 C0 C0 C0";
+	grid-area: B1;
+	width: 100%;
+	height: 100%;
+	display: grid;
+	gap: 20px;
+	grid-template-areas:
+		"A0 A0 A0 A0"
+		"B0 B0 B0 B0"
+		"C0 C0 C0 C0";
 }
 
 .signup__form {
-    grid-area: B1;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    gap: 20px;
-    grid-template-areas: 
-    "Z0 Z0 Z0 Z0"
-    "A0 A0 A0 A0"
-    "B0 B0 B0 B0"
-    "D0 D0 D0 D0"
-    "C0 C0 C0 C0";
+	grid-area: B1;
+	width: 100%;
+	height: 100%;
+	display: grid;
+	gap: 20px;
+	grid-template-areas:
+		"Z0 Z0 Z0 Z0"
+		"A0 A0 A0 A0"
+		"B0 B0 B0 B0"
+		"D0 D0 D0 D0"
+		"C0 C0 C0 C0";
 }
 
 .login a,
 .signup a {
-    font-family: var(--main-font);
-    text-decoration: none;
-    color: var(--main-nav-color);
-    cursor: pointer;
-    text-decoration: none;
-    margin: 10px auto 25px auto;
+	font-family: var(--main-font);
+	text-decoration: none;
+	color: var(--main-nav-color);
+	cursor: pointer;
+	margin: 10px auto 25px;
 }
 
 .login a:hover,
 .signup a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
-
 .signup__btn {
-    font-family: var(--main-font);
-    font-size: 18px;
-    color: white;
-    margin: 1em auto 0;
-    height: 40px;
-    border: 0;
-    cursor: pointer;
-    width: 220px;
-    background: #B70084;
-    border-radius: 12px;
+	font-family: var(--main-font);
+	font-size: 18px;
+	color: white;
+	margin: 1em auto 0;
+	height: 40px;
+	border: 0;
+	cursor: pointer;
+	width: 220px;
+	background: #b70084;
+	border-radius: 12px;
 }
 
 .login__btn:hover,
 .signup__btn:hover {
-    box-shadow: inset 0px 0px 15px rgba(0, 0, 0, 0.75);
+	box-shadow: inset 0 0 15px rgb(0 0 0 / 75%);
 }
 
 .login__btn:active,
 .signup__btn:active {
-    box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.75);
+	box-shadow: inset 0 0 30px rgb(0 0 0 / 75%);
 }
 
 .error_text {
-    margin-left: 12%;
-    align-self: baseline;
-    height: 2em;
-    font-family: var(--main-font);
-    font-size: 15px;
-    color: var(--main-nav-color);
+	margin-left: 12%;
+	align-self: baseline;
+	height: 2em;
+	font-family: var(--main-font);
+	font-size: 15px;
+	color: var(--main-nav-color);
 }
 
 .error {
-    border: solid var(--main-wng-color) !important;
-    border-width: 2px !important;
+	border: solid var(--main-wng-color) !important;
+	border-width: 2px !important;
 }
 
 .error_mes {
-    font-family: var(--main-font);
-    text-align: center;
-    font-size: 20px;
-    color: var(--main-wng-color);
-    margin-top: 2%;
+	font-family: var(--main-font);
+	text-align: center;
+	font-size: 20px;
+	color: var(--main-wng-color);
+	margin-top: 2%;
 }
 
 .text_inputs {
-    font-family: var(--main-font);
-    padding-left: 15px;
-    flex: 1 0 auto;
-    margin: 0;
-    max-height: 40px;
-    outline: none;
-    border: 0;
-    height: 40px;
-    width: 80%;
+	font-family: var(--main-font);
+	padding-left: 15px;
+	flex: 1 0 auto;
+	margin: 0;
+	max-height: 40px;
+	outline: none;
+	border: 0;
+	height: 40px;
+	width: 80%;
 }
 
 .text_inputs__label {
-    width: 30%;
-    margin-top: 1em;
-    margin-bottom: .3em;
-    font-size: 1.5em;
-    font-family: var(--main-font);
-    align-self: baseline;
+	width: 30%;
+	margin-top: 1em;
+	margin-bottom: 0.3em;
+	font-size: 1.5em;
+	font-family: var(--main-font);
+	align-self: baseline;
 }
 
 .auth_email {
-    grid-area: A0;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+	grid-area: A0;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 }
 
 .login_signup_invitation {
-    width: 100%;
-    text-align: center;
-    grid-area: C1;
+	width: 100%;
+	text-align: center;
+	grid-area: C1;
 }
 
-#text_inputs_email {
-    font-family: var(--main-font);
-    width: 100%;
-    height: 50px;
+#text-inputs-email {
+	font-family: var(--main-font);
+	width: 100%;
+	height: 50px;
 }
 
 .auth_password {
-    grid-area: B0;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+	grid-area: B0;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 }
 
-#text_inputs_password {
-    font-family: var(--main-font);
-    width: 100%;
-    height: 50px;
+#text-inputs-password {
+	font-family: var(--main-font);
+	width: 100%;
+	height: 50px;
 }
 
 .auth_btn {
-    grid-area: C0;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+	grid-area: C0;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 }
 
 .auth__btn {
-    font-family: var(--main-font);
-    font-size: 18px;
-    color: white;
-    margin: 1em auto 0;
-    height: 40px;
-    border: 0;
-    cursor: pointer;
-    width: 220px;
-    background: #B70084;
-    border-radius: 12px;
+	font-family: var(--main-font);
+	font-size: 18px;
+	color: white;
+	margin: 1em auto 0;
+	height: 40px;
+	border: 0;
+	cursor: pointer;
+	width: 220px;
+	background: #b70084;
+	border-radius: 12px;
 }
 
 .auth_email_labels {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
+	display: flex;
+	width: 100%;
+	flex-direction: row;
 }
 
-#auth_email_error {
-    width: 70%;
-    display: grid;
-    align-items: end;
-    text-align: right;
-    font-family: var(--main-font);
-    font-size: 18px;
-    color: var(--main-wng-color);
+#auth-email-error {
+	width: 70%;
+	display: grid;
+	align-items: end;
+	text-align: right;
+	font-family: var(--main-font);
+	font-size: 18px;
+	color: var(--main-wng-color);
 }
 
 .auth_password_labels {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
+	display: flex;
+	width: 100%;
+	flex-direction: row;
 }
 
-#auth_password_error {
-    width: 70%;
-    text-align: right;
-    vertical-align: middle;
-    font-family: var(--main-font);
-    font-size: 18px;
-    color: var(--main-wng-color);
-    align-items: end;
-    display: grid;
+#auth-password-error {
+	width: 70%;
+	text-align: right;
+	vertical-align: middle;
+	font-family: var(--main-font);
+	font-size: 18px;
+	color: var(--main-wng-color);
+	align-items: end;
+	display: grid;
 }
 
-#auth_btn_error {
-    width: 100%;
-    text-align: center;
-    vertical-align: middle;
-    font-family: var(--main-font);
-    font-size: 18px;
-    color: var(--main-wng-color);
+#auth-btn-error {
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+	font-family: var(--main-font);
+	font-size: 18px;
+	color: var(--main-wng-color);
 }
 
 .signup_login_invitation {
-    width: 100%;
-    text-align: center;
-    grid-area: C1;
+	width: 100%;
+	text-align: center;
+	grid-area: C1;
 }
 
 .auth_name_labels {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
+	display: flex;
+	width: 100%;
+	flex-direction: row;
 }
 
 .auth_name {
-    grid-area: Z0;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+	grid-area: Z0;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 }
 
 .auth_repeat_password_labels {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
+	display: flex;
+	width: 100%;
+	flex-direction: row;
 }
 
 .auth_repeat_password {
-    grid-area: D0;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+	grid-area: D0;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 }
 
-#text_inputs_name {
-    font-family: var(--main-font);
-    width: 100%;
-    height: 50px;
+#text-inputs-name {
+	font-family: var(--main-font);
+	width: 100%;
+	height: 50px;
 }
 
-#text_inputs_repeat_password {
-    font-family: var(--main-font);
-    width: 100%;
-    height: 50px;
+#text-inputs-repeat-password {
+	font-family: var(--main-font);
+	width: 100%;
+	height: 50px;
 }
 
-#auth_repeat_password_error {
-    width: 70%;
-    display: grid;
-    align-content: end;
-    text-align: right;
-    vertical-align: middle;
-    font-family: var(--main-font);
-    font-size: 18px;
-    color: var(--main-wng-color);
+#auth-repeat-password-error {
+	width: 70%;
+	display: grid;
+	align-content: end;
+	text-align: right;
+	vertical-align: middle;
+	font-family: var(--main-font);
+	font-size: 18px;
+	color: var(--main-wng-color);
 }
 
-#auth_name_error {
-    width: 70%;
-    display: grid;
-    align-content: end;
-    text-align: right;
-    vertical-align: middle;
-    font-family: var(--main-font);
-    font-size: 18px;
-    color: var(--main-wng-color);
+#auth-name-error {
+	width: 70%;
+	display: grid;
+	align-content: end;
+	text-align: right;
+	vertical-align: middle;
+	font-family: var(--main-font);
+	font-size: 18px;
+	color: var(--main-wng-color);
 }
