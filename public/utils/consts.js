@@ -1,4 +1,4 @@
-export const URL = 'https://teamprojectkinopoisk.herokuapp.com'
+export const URL = 'https://teamprojectkinopoisk.herokuapp.com';
 export const englishRegularCheck = /(?=.*[A-z])/;
 export const russianRegularCheck = /^[\u0400-\u04FF]+$/;
 export const emailRegularCheck = /\S+@\S+\.\S+/;

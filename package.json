@@ -7,7 +7,9 @@
     "start": "node server/index.js",
     "prestart": "rm -rf public/template.js & node server/build.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "doc": "jsdoc -c jsdoc.json -r --readme README.md"
+    "doc": "jsdoc -c jsdoc.json public/*/*.js -r --readme README.md",
+    "lint": "npx eslint public/*/*.js --fix && npx stylelint public/*/*.css"
+    
   },
   "repository": {
     "type": "git",

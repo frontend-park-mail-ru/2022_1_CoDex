@@ -13,7 +13,7 @@ import {OK, CREATED} from './consts.js';
   class Ajax {
     /**
      * @param { Array } args Аргументы, с которыми будет отправлен GET-запрос
-     * @returns { Object } Ответ на запрос (полученный в виде json)
+     * @return { Object } Ответ на запрос (полученный в виде json)
      * @description Совершает GET-запрос, реализует Fetch API. Поддерживает CORS.
      */
     getFetch(args = {}) {
@@ -40,7 +40,7 @@ import {OK, CREATED} from './consts.js';
 
     /**
      * @param { Array } args Аргументы, с которыми будет отправлен POST-запрос
-     * @returns { Object } Ответ на запрос (полученный в виде json)
+     * @return { Object } Ответ на запрос (полученный в виде json)
      * @description Совершает POST-запрос, реализует Fetch API. Поддерживает CORS.
      */
     postFetch(args = {}) {

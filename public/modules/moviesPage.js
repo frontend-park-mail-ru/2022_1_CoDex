@@ -4,7 +4,8 @@ import {URL} from '../utils/consts.js';
 
 /**
  * @param { string } collectionNumber Номер подборки на сервере
- * @description Создаёт и отрисовывает страницу конкретной подборки фильмов, полученной
+ * @description Создаёт и отрисовывает страницу конкретной подборки 
+ * фильмов, полученной
  * как ответ на запрос от сервера.
  * Предварительно очищает содержимое страницы. Поддерживает SPA.
  */
@@ -44,7 +45,9 @@ export function moviesPage(collectionNumber) {
   moviesContainer.classList.add('movies_container');
   moviesPageContainer.appendChild(moviesContainer);
 
-  Ajax.getFetch({url: `${URL}/api/v1/collections/collection/${collectionNumber}`})
+  const collectionURL = `${URL}/api/v1/collections/collection/${collectionNumber}`;
+
+  Ajax.getFetch({url: collectionURL})
       .then(({status, parsedBody}) => {
         collectionTitle.textContent = parsedBody.title;
         moviesDescription.textContent = parsedBody.description;

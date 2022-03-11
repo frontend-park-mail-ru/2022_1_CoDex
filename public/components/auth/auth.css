@@ -28,7 +28,6 @@
     border-style: solid;
     background: rgba(240, 240, 240, 0.83);
     border-radius: 10px;
-    border-image: linear-gradient(to right, rgba(240, 12, 122, 1), rgba(228, 183, 23, 0.67));
     display: grid;
     gap: 20px;
     grid-template-areas: 
@@ -50,7 +49,6 @@
     border-style: solid;
     background: rgba(240, 240, 240, 0.83);
     border-radius: 10px;
-    border-image: linear-gradient(to right, rgba(240, 12, 122, 1), rgba(228, 183, 23, 0.67));
     display: grid;
     gap: 20px;
     grid-template-areas: 
