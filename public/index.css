@@ -25,6 +25,7 @@
     min-height: 850px;
     background-color: var(--main-bg-color);
     height: calc(100vh - 230px);
+    margin: 0;
 }
 
 .color-bright {

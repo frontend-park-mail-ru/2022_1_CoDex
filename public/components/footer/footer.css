@@ -1,14 +1,55 @@
+@import '../../index.css';
+
 #footer {
     width: 100%;
     flex: 0 0 100%;
     
     background-color: var(--main-nav-color);
     display: flex;
-    justify-content:center;
-    /* position: sticky; */
-    
+    /* justify-content:center;     */
 }
 
-#footer p {
-    color: rgb(246, 215, 215);
+.copyright {
+    font-family: var(--main-font);
+    flex: 0 0 200px;
+    color:rgb(246, 215, 215);
+    align-self: flex-end;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+.social {
+    font-family: var(--main-font);
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:rgb(246, 215, 215);
+    font-size: 12px;
+}
+
+
+.social-btn {
+    padding:20px;
+}
+
+.social-btn path {
+    transition: .5s ease-in-out;
+}
+
+.social-btn:hover path {
+    fill:rgb(246, 215, 215)
+}
+
+.github-hrefs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 0 0 20px;
+}
+
+.github-hrefs a {
+    text-decoration: none;
+    color: currentcolor;
+    padding: 3px;
 }
