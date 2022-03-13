@@ -20,7 +20,7 @@ export function changeNavbarButton() {
     navbarButton.href = '/logout';
     navbarButton.textContent = 'Выйти';
   } else {
-    Ajax.getFetch({
+    Ajax.postFetch({
       url: `${URL}/api/v1/logout`,
     });
     navbarButton.dataset.section = 'login';
