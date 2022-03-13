@@ -74,6 +74,12 @@
 	align-items: center;
 }
 
+.navbar_menu_login {
+	display:grid;
+	grid-area: A8;
+	margin: 0 auto;
+}
+
 .navbar_menu_login-btn {
 	display: grid;
 	padding: 10px;
