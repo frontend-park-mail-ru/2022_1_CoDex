@@ -77,13 +77,14 @@
 .navbar_menu_login {
 	display:grid;
 	grid-area: A8;
+	grid-template-areas: "A81";
 	margin: 0 auto;
 }
 
 .navbar_menu_login-btn {
 	display: grid;
 	padding: 10px;
-	grid-area: A8;
+	grid-area: A81;
 	text-decoration: none;
 	width: 88px;
 	height: 48px;
