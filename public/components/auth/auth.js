@@ -1,9 +1,11 @@
-import {collectionsPage} from '../../modules/collectionsPage.js';
-import {createElementFromHTML} from '../../utils/utils.js';
-import {changeNavbarButton} from '../header/header.js';
-import {URL, emailRegularCheck, passwordRegularCheck,
+import { collectionsPage } from '../../modules/collectionsPage.js';
+import { createElementFromHTML } from '../../utils/utils.js';
+import { changeNavbarButton } from '../header/header.js';
+import {
+  URL, emailRegularCheck, passwordRegularCheck,
   numberRegularCheck, englishRegularCheck, countRegularCheck,
-  CREATED, OK, russianRegularCheck} from '../../utils/consts.js';
+  CREATED, OK, russianRegularCheck
+} from '../../utils/consts.js';
 
 /**
  * @param { bool } isLogin - Является ли форма формой авторизации
@@ -32,9 +34,9 @@ export function createAuth(isLogin) {
  * не меньше одной цифры и не меньше одной буквы.
  */
 function isRepeatPasswordError(input) {
-  return input.value == authForm.password.value &&
-  authForm.password.value != '' &&
-  !authForm.password.classList.contains('error');
+  return input.value !== document.authForm.password.value &&
+    document.authForm.password.value != '' &&
+    !document.authForm.password.classList.contains('error');
 }
 
 /**
@@ -54,21 +56,22 @@ function InputClearListener() {
         case 'name': {
           const error = document.getElementById('auth-name-error');
           error.textContent = '';
+          break;
         }
         case 'email': {
           const error = document.getElementById('auth-email-error');
           error.textContent = '';
+          break;
         }
         case 'password': {
           let error = document.getElementById('auth-password-error');
           error.textContent = '';
-          document.authForm.repeatPassword.classList.remove('error');
-          error = document.getElementById('auth-repeat-password-error');
-          error.textContent = '';
+          break;
         }
         case 'repeatPassword': {
           const error = document.getElementById('auth-repeat-password-error');
           error.textContent = '';
+          break;
         }
       }
     }
@@ -90,32 +93,33 @@ function InputListener() {
   const authForm = document.authForm;
   const formTextInputs = authForm.querySelectorAll('.auth_input');
   for (const input of formTextInputs) {
+    let errorText = '';
     switch (input.name) {
       case 'email': {
         if (!input.value.match(emailRegularCheck) && input.value != '') {
           input.classList.add('error');
-          const err = document.getElementById('auth-email-error');
-          err.textContent = 'Неправильный email!';
-        } else {
+          input.classList.remove('correct-input');
+          errorText = 'Неправильный email';
+        } else if (input.value != '') {
           input.classList.remove('error');
-          const err = document.getElementById('auth-email-error');
-          err.textContent = '';
+          input.classList.add('correct-input');
+        } else {
+          input.classList.remove('correct-input');
         }
+        const err = document.getElementById('auth-email-error');
+        err.textContent = errorText;
         break;
       }
       case 'password': {
-        let errorText = '';
         if (!input.value.match(passwordRegularCheck) && input.value != '') {
           input.classList.add('error');
-          if (!input.value.match(numberRegularCheck)) {
-            errorText='Пароль должен содержать хотя бы 1 цифру!';
-          } else if (!input.value.match(englishRegularCheck)) {
-            errorText='Пароль должен содержать хотя бы 1 латинскую букву!';
-          } else if (!input.value.match(countRegularCheck)) {
-            errorText='Пароль должен содержать хотя бы 8 символов!';
-          }
-        } else {
+          input.classList.remove('correct-input');
+          errorText = 'Пароль должен содержать хотя бы 1 цифру, 1 латинскую букву и быть длиной не менее 8 символов!';
+        } else if (input.value != '') {
           input.classList.remove('error');
+          input.classList.add('correct-input');
+        } else {
+          input.classList.remove('correct-input');
         }
         const err = document.getElementById('auth-password-error');
         err.textContent = errorText;
@@ -124,26 +128,37 @@ function InputListener() {
       case 'repeatPassword': {
         if (input.value != '' && isRepeatPasswordError(input)) {
           input.classList.add('error');
-          const err = document.getElementById('auth-repeat-password-error');
-          err.textContent = 'Пароли не совпадают!';
-        } else {
+          input.classList.remove('correct-input');
+          errorText = 'Пароли не совпадают';
+        } else if (input.value != '') {
           input.classList.remove('error');
-          const err = document.getElementById('auth-repeat-password-error');
-          err.textContent = '';
+          input.classList.add('correct-input');
+        } else {
+          input.classList.remove('correct-input');
         }
+        const err = document.getElementById('auth-repeat-password-error');
+        err.textContent = errorText;
         break;
       }
       case 'name': {
-        if (!(input.value.match(englishRegularCheck) ||
-        input.value.match(russianRegularCheck)) && input.value != '') {
+        if ((!input.value.match(englishRegularCheck) ||
+          !input.value.match(russianRegularCheck)) && input.value.match(numberRegularCheck) && input.value != '') {
           input.classList.add('error');
+          input.classList.remove('correct-input');
           const error = document.getElementById('auth-name-error');
-          error.textContent = 'Введите своё имя на русском или английском языке';
-        } else {
+          errorText = 'Введите своё имя на русском или английском языке без использования цифр';
+        } else if (input.value != '') {
           input.classList.remove('error');
+          input.classList.add('correct-input');
+
           const error = document.getElementById('auth-name-error');
           error.textContent = '';
+        } else {
+          input.classList.remove('correct-input');
         }
+        const error = document.getElementById('auth-name-error');
+        error.textContent = errorText;
+
         break;
       }
       default: {
@@ -166,7 +181,6 @@ export function addInputListeners(authForm) {
     input.addEventListener('keydown', InputClearListener);
   }
 }
-
 
 /**
  * @param { HTMLFormElement } form Форма, которую будем проверять
@@ -203,12 +217,8 @@ function foundErrorFields(form) {
           flag = false;
           if (input.value == '') {
             errorText = 'Поле не заполнено!';
-          } else if (!input.value.match(numberRegularCheck)) {
-            errorText='Пароль должен содержать хотя бы 1 цифру!';
-          } else if (!input.value.match(englishRegularCheck)) {
-            errorText='Пароль должен содержать хотя бы 1 латинскую букву!';
-          } else if (!input.value.match(countRegularCheck)) {
-            errorText='Пароль должен содержать хотя бы 8 символов!';
+          } else if (!input.value.match(numberRegularCheck) || !input.value.match(englishRegularCheck) || !input.value.match(countRegularCheck)) {
+            errorText = 'Пароль должен содержать хотя бы 1 цифру, 1 латинскую букву и быть длиной не менее 8 символов!';
           }
         } else {
           input.classList.remove('error');
@@ -238,6 +248,7 @@ function foundErrorFields(form) {
         let errorText = '';
         if (input.value == '' || !(input.value.match(englishRegularCheck) || input.value.match(russianRegularCheck))) {
           input.classList.add('error');
+
           if (input.value == '') {
             errorText = 'Поле не заполнено!';
           } else {
@@ -245,6 +256,7 @@ function foundErrorFields(form) {
           }
         } else {
           input.classList.remove('error');
+
         }
         const err = document.getElementById('auth-name-error');
         err.textContent = errorText;
@@ -273,7 +285,7 @@ export function loginSubmit(e) {
   const password = document.forms.authForm.password.value.trim();
   Ajax.postFetch({
     url: `${URL}/api/v1/login`,
-    body: {email: email, password: password},
+    body: { email: email, password: password },
   }).then((response) => {
     if (response && response.status === OK) {
       changeNavbarButton();
@@ -303,7 +315,7 @@ export function signupSubmit(e) {
   const secondPassword = document.forms.authForm.repeatPassword.value.trim();
   Ajax.postFetch({
     url: `${URL}/api/v1/signup`,
-    body: {username: name, password: password, repeatpassword: secondPassword, email: email},
+    body: { username: name, password: password, repeatpassword: secondPassword, email: email },
   }).then((response) => {
     if (response && response.status === CREATED) {
       changeNavbarButton();
