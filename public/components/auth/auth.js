@@ -81,6 +81,16 @@ function InputClearListener() {
 }
 
 /**
+ * @description Проверяет, находится ли пользователь на странице
+ * авторизации.
+ * @returns { boolean } Находится ли пользователь на странице
+ * авторизации.
+ */
+function isLoginPage() {
+  return document.authForm.classList.contains("login__form");
+}
+
+/**
  * @description Обработчик для всех полей ввода, являющихся
  * классом auth_input. Когда, вызвано, для каждого поля ввода проверяет:
  * для поля email - что в нём находится корректный адрес,
@@ -108,6 +118,8 @@ function InputListener() {
         } else {
           input.classList.remove('correct-input');
         }
+        if (isLoginPage())      
+          input.classList.remove('correct-input');
         const err = document.getElementById('auth-email-error');
         err.textContent = errorText;
         break;
@@ -123,6 +135,8 @@ function InputListener() {
         } else {
           input.classList.remove('correct-input');
         }
+        if (isLoginPage())      
+          input.classList.remove('correct-input');
         const err = document.getElementById('auth-password-error');
         err.textContent = errorText;
         break;
