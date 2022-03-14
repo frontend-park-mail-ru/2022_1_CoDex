@@ -3,7 +3,7 @@
 
 ## Деплой
 
-https://xenodochial-mayer-d916ec.netlify.app/
+ https://tp-frontkinopoisk.herokuapp.com/
 
 ## API
 
