@@ -66,6 +66,8 @@ function InputClearListener() {
         case 'password': {
           let error = document.getElementById('auth-password-error');
           error.textContent = '';
+          error = document.getElementById('auth-repeat-password-error');
+          error.textContent = '';
           break;
         }
         case 'repeatPassword': {
