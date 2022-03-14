@@ -197,7 +197,7 @@ function foundErrorFields(form) {
         let errorText = '';
         if (!input.value.match(emailRegularCheck) || input.value == '') {
           input.classList.add('error');
-          flag = false;
+          flag = true;
           if (input.value == '') {
             errorText = 'Поле не заполнено!';
           } else {
@@ -214,7 +214,7 @@ function foundErrorFields(form) {
         let errorText = '';
         if (!input.value.match(passwordRegularCheck) || input.value == '') {
           input.classList.add('error');
-          flag = false;
+          flag = true;
           if (input.value == '') {
             errorText = 'Поле не заполнено!';
           } else if (!input.value.match(numberRegularCheck) || !input.value.match(englishRegularCheck) || !input.value.match(countRegularCheck)) {
@@ -231,7 +231,7 @@ function foundErrorFields(form) {
         let errorText = '';
         if (input.value == '' || isRepeatPasswordError(input)) {
           input.classList.add('error');
-          flag = false;
+          flag = true;
           if (input.value == '') {
             errorText = 'Поле не заполнено!';
           } else {
@@ -248,7 +248,7 @@ function foundErrorFields(form) {
         let errorText = '';
         if (input.value == '' || !(input.value.match(englishRegularCheck) || input.value.match(russianRegularCheck))) {
           input.classList.add('error');
-
+          flag = true;
           if (input.value == '') {
             errorText = 'Поле не заполнено!';
           } else {
