@@ -7,6 +7,8 @@ export const numberRegularCheck = /(?=.*[0-9])/;
 export const countRegularCheck = /[a-zA-Z]{2,}/;
 export const CREATED = 201;
 export const OK = 200;
+export const NOT_AUTHORIZED = 401;
+export const NOT_FOUND = 404;
 export const maxMovieShortDescriptionLength = 190;
 export const AJAX_METHODS = {
     POST: 'POST',

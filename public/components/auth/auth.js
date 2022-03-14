@@ -4,7 +4,7 @@ import { changeNavbarButton } from '../header/header.js';
 import {
   URL, emailRegularCheck, passwordRegularCheck,
   numberRegularCheck, englishRegularCheck, countRegularCheck,
-  CREATED, OK, russianRegularCheck
+  CREATED, OK, NOT_AUTHORIZED, NOT_FOUND, russianRegularCheck
 } from '../../utils/consts.js';
 
 /**
@@ -118,7 +118,7 @@ function InputListener() {
         } else {
           input.classList.remove('correct-input');
         }
-        if (isLoginPage())      
+        if (isLoginPage())
           input.classList.remove('correct-input');
         const err = document.getElementById('auth-email-error');
         err.textContent = errorText;
@@ -135,7 +135,7 @@ function InputListener() {
         } else {
           input.classList.remove('correct-input');
         }
-        if (isLoginPage())      
+        if (isLoginPage())
           input.classList.remove('correct-input');
         const err = document.getElementById('auth-password-error');
         err.textContent = errorText;
@@ -307,9 +307,12 @@ export function loginSubmit(e) {
       changeNavbarButton();
       collectionsPage();
       return;
-    } else if (!(e.target.previousElementSibling.classList.contains('error_mes'))) {
+    } else {
       const error = document.getElementById('auth-btn-error');
-      error.textContent = 'Неправильный логин или пароль!';
+      if (response.status === NOT_AUTHORIZED)
+        error.textContent = 'Неправильный логин или пароль!';
+      else if (response.status === NOT_FOUND)
+        error.textContent = "Пользователь не найден!";
     }
   });
 }
@@ -337,9 +340,10 @@ export function signupSubmit(e) {
       changeNavbarButton();
       collectionsPage(response.parsedBody);
       return;
-    } else if (!(e.target.previousElementSibling.classList.contains('error_mes'))) {
+    } else {
       const error = document.createElement('div');
       error.classList.add('error_mes');
+
       error.innerText = 'Такой пользователь уже существует!';
       e.target.parentNode.insertBefore(error, e.target);
     }
