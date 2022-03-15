@@ -23,9 +23,9 @@ export function createElementFromHTML(html) {
 export function checkAuth() {
   Ajax.getFetch({
     url: `${URL}/api/v1/checkAuth`,
-  }).then((response, parsedBody) => {
+  }).then((response) => {
     if (response && response.status === OK) {
-      if (parsedBody.status == OK) {
+      if (response.parsedBody.status == OK) {
         mainPage();
         changeNavbarButton();
         return;
