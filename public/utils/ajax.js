@@ -52,7 +52,7 @@ export class Ajax {
       },
     }).then((response) => {
       statusCode = response.status;
-      if (statusCode === OK || statusCode === CREATED) {
+      if (response.body && (statusCode === OK || statusCode === CREATED)) {
         return response.json();
       }
       return response;
