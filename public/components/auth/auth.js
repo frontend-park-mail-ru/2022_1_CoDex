@@ -4,7 +4,7 @@ import { changeNavbarButton } from '../header/header.js';
 import {
   URL, emailRegularCheck, passwordRegularCheck,
   numberRegularCheck, englishRegularCheck, countRegularCheck,
-  CREATED, OK, NOT_AUTHORIZED, NOT_FOUND, russianRegularCheck
+  CREATED, OK, NOT_AUTHORIZED, NOT_FOUND, russianRegularCheck, CONFLICT, BAD_REQUEST
 } from '../../utils/consts.js';
 
 /**
@@ -341,11 +341,14 @@ export function signupSubmit(e) {
       collectionsPage(response.parsedBody);
       return;
     } else {
-      const error = document.createElement('div');
-      error.classList.add('error_mes');
+      const error = document.getElementById('auth-btn-error');
+      if (response.status === CONFLICT)
+        error.textContent = 'Такой пользователь уже существует!';
+      else if (response.status === BAD_REQUEST)
+        error.textContent = "Неправильные данные!";
+        else
+        error.textContent = "";
 
-      error.innerText = 'Такой пользователь уже существует!';
-      e.target.parentNode.insertBefore(error, e.target);
     }
   });
 }

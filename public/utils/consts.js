@@ -7,6 +7,7 @@ export const numberRegularCheck = /(?=.*[0-9])/;
 export const countRegularCheck = /[a-zA-Z]{2,}/;
 export const CREATED = 201;
 export const OK = 200;
+export const BAD_REQUEST = 400;
 export const NOT_AUTHORIZED = 401;
 export const NOT_FOUND = 404;
 export const CONFLICT = 409;
