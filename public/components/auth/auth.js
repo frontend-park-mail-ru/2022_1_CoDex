@@ -348,7 +348,6 @@ export function signupSubmit(e) {
         error.textContent = "Неправильные данные!";
         else
         error.textContent = "";
-
     }
   });
 }
