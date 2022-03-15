@@ -24,11 +24,15 @@ export function createElementFromHTML(html) {
 export function checkAuth() {
   Ajax.getFetch({
     url: `${URL}/api/v1/checkAuth`,
-  }).then((response) => {
+  }).then((response, parsedBody) => {
     if (response && response.status === OK) {
-      mainPage();
-      changeNavbarButton();
-      return;
+      if (parsedBody.status == OK) {
+        mainPage();
+        changeNavbarButton();
+        return;
+      } else {
+        mainPage();
+      }
     } else {
       loginPage();
     }
