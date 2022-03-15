@@ -4,7 +4,7 @@ import { changeNavbarButton } from '../header/header.js';
 import {
   URL, emailRegularCheck, passwordRegularCheck,
   numberRegularCheck, englishRegularCheck, countRegularCheck,
-  CREATED, OK, NOT_AUTHORIZED, NOT_FOUND, russianRegularCheck, CONFLICT, BAD_REQUEST
+  CREATED, OK, NOT_AUTHORIZED, FAILED_DEPENDENCY, russianRegularCheck, CONFLICT, BAD_REQUEST
 } from '../../utils/consts.js';
 
 /**
@@ -157,8 +157,8 @@ function InputListener() {
         break;
       }
       case 'name': {
-        if ((!input.value.match(englishRegularCheck) ||
-          !input.value.match(russianRegularCheck)) && input.value.match(numberRegularCheck) && input.value != '') {
+        if ((!input.value.match(englishRegularCheck) &&
+          !input.value.match(russianRegularCheck)) && input.value != '') {
           input.classList.add('error');
           input.classList.remove('correct-input');
           const error = document.getElementById('auth-name-error');
@@ -310,8 +310,8 @@ export function loginSubmit(e) {
     } else {
       const error = document.getElementById('auth-btn-error');
       if (response.status === NOT_AUTHORIZED)
-        error.textContent = 'Неправильный логин или пароль!';
-      else if (response.status === NOT_FOUND)
+        error.textContent = 'Неправильный пароль!';
+      else if (response.status === FAILED_DEPENDENCY)
         error.textContent = "Пользователь не найден!";
     }
   });
