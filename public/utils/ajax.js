@@ -53,11 +53,7 @@ export class Ajax {
     }).then((response) => {
       statusCode = response.status;
       if (statusCode === OK || statusCode === CREATED) {
-        try {
-          return response.json();
-        } catch {
-          return response;
-        }
+        return response.json();
       }
       return response;
     }).then((parsedBody) => {
@@ -65,7 +61,7 @@ export class Ajax {
         status: statusCode,
         parsedBody,
       };
-    });
+    }).catch(console.error);
   }
 }
 window.Ajax = new Ajax();
