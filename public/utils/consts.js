@@ -9,6 +9,7 @@ export const CREATED = 201;
 export const OK = 200;
 export const NOT_AUTHORIZED = 401;
 export const NOT_FOUND = 404;
+export const CONFLICT = 409;
 export const maxMovieShortDescriptionLength = 190;
 export const AJAX_METHODS = {
     POST: 'POST',
