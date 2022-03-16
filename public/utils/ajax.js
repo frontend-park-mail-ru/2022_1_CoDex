@@ -53,15 +53,7 @@ export class Ajax {
     }).then((response) => {
       statusCode = response.status;
       if (statusCode === OK || statusCode === CREATED) {
-        console.log(response);
-        console.log(response.body);
-        let result = {};
-        try {
-          result = response.json();
-        } catch(e) {
-          console.log("Catch");
-        }
-        return result;
+        return response.json();
       }
       return response;
     }).then((parsedBody) => {
@@ -69,7 +61,7 @@ export class Ajax {
         status: statusCode,
         parsedBody,
       };
-    }).catch(console.error);
+    });
   }
 }
 window.Ajax = new Ajax();

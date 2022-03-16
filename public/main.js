@@ -45,8 +45,6 @@ checkAuth();
 
 root.addEventListener('click', (e) => {
   const {target} = e;
-  console.log(target.attributes.parameters);
-
   if (target instanceof HTMLElement) {
     e.preventDefault();
 

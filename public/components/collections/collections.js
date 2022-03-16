@@ -32,7 +32,6 @@ export function renderCollections(collectionContainer) {
         });
       })
       .catch((status, parsedBody) => {
-        console.log('Something got wrong');
       });
 }
 

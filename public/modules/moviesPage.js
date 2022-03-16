@@ -58,6 +58,5 @@ export function moviesPage(collectionNumber) {
         renderMovies(moviesContainer, parsedBody.movieList);
       })
       .catch((status, parsedBody) => {
-        console.log('Something got wrong');
       });
 }
