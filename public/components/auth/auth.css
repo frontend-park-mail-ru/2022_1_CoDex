@@ -22,9 +22,6 @@
 	width: 100%;
 	padding: 16px;
 	align-items: center;
-	border-width: thick;
-	border-color: var(--main-green-color);
-	border-style: solid;
 	background: rgb(240 240 240 / 83%);
 	border-radius: 10px;
 	display: grid;
