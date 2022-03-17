@@ -1,0 +1,72 @@
+// TODO
+
+.user-block {
+    margin-right: 7%;
+    display: flex;
+    position: relative;
+  
+    &:hover > &__submenu {
+      display: flex;
+    }
+  
+    &__submenu {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      position: absolute;
+      white-space: nowrap;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      top: 40px;
+      z-index: -1;
+      right: -35px;
+      width:120px;
+      height:100px;
+      background-color: $grey-base;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+  
+      &:hover {
+        display: flex;
+      }
+  
+      & span {
+        color: grey;
+        cursor: default;
+        margin: 0;
+      }
+    }
+  
+    &__name {
+      color: $white;
+      margin-right: 20px;
+    }
+  
+    &__img {
+      box-shadow: 0 0 20px 1px rgba(255, 255, 255, 0.3);
+      border-radius: 300px;
+      height: 42px;
+      width: 46px;
+      object-fit: cover;
+    }
+  
+    &__logout-btn, &__profile {
+      color: $white;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 16px;
+      transition: .2s ease-in-out;
+  
+      &:hover {
+        color: $pink;
+      }
+    }
+  }
+  
+  @media (max-width: 1016px) {
+    .user-block:hover > .user-block__submenu {
+      display: none;
+    }
+  }
+  
