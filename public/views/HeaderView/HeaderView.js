@@ -1,9 +1,15 @@
-// TODO
-
-import events from "../../consts/events.js";
+import { authModule } from "../../modules/auth.js";
+import { events } from "../../consts/events.js";
+import { routes } from "../../consts/routes.js";
 import { renderBaseView, createElementFromHTML } from "../../utils/utils.js";
 import { BaseView } from "../BaseView/BaseView.js";
-import loginButton from "../../components/header/loginButton.pug";
+import { loginButton } from "../../components/header/loginButton.pug";
+import { userBlock } from "../../components/header/userBlock/userBlock.pug";
+import { logoutButton } from "../../components/header/logoutButton.pug";
+import { loginButton } from "../../components/header/loginButton.pug";
+
+const usernameMaxLength = 10;
+
 
 /**
  * @description Класс представления навигационной панели.
@@ -88,9 +94,77 @@ export class HeaderView extends BaseView {
         userBlock.replaceWith(createElementFromHTML(loginButton()));
     }
 
+    /**
+     * @description Отрисовывает блок навигационной панели, 
+     * предназначенный для информации пользователя: в зависимости от 
+     * ситуации, отрисовывает приглашение ко выходу или кнопку выхода.
+     */
     renderUserBlock = () => {
-        // TODO
-    }
+        const changeBlock = document.querySelector(".navbar__login-btn") ||
+            document.querySelector(".user-block");
+        if (!authModule.user || !changeBlock) {
+            return;
+        }
+        const username = user.username;
+        changeBlock.replaceWith(createElementFromHTML(userBlock({
+            username: username.length > usernameMaxLength ?
+                username.substr(0, usernameMaxLength).concat("...") :
+                username,
+            imgSrc: authModule.user.avatarSrc,
+            userID: authModule.user.ID,
+            profileHref: routes.profilePage,
+        })));
+        const verticalMenu = document.querySelector(".vertical-menu__btn-container");
+        if (verticalMenu) {
+            const logoutBtn = document.querySelector(".vertical-logout-btn");
+            if (logoutBtn) {
+                return;
+            }
+            verticalMenu.appendChild(createElementFromHTML(logoutButton()));
+        }
+        this.addEventListenerToLogoutButton();
+    };
+
+    /**
+     * @description Добавляет обработчик события для нажатия на 
+     * кнопку выхода из аккаунта (заменяет на приглашение ко входу).
+     */
+    addEventListenerToLogoutButton = () => {
+        const logoutButton = document.querySelectorAll(".user-block__logout-btn");
+        if (!logoutButton.length) {
+            return;
+        }
+        logoutButton.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                this.removeLogoutButton();
+                this.renderLoginButton();
+                this.eventBus.emit(events.header.logout);
+            });
+        });
+    };
+
+    /**
+     * @description Находит и удаляет кнопку выхода из аккаунта 
+     * из вертикального меню.
+     */
+    removeLogoutButton = () => {
+        const logoutButton = [...document.querySelectorAll('vertical-menu__btn-container a')]
+            .find((button) => button.textContent.includes("Выйти"));
+        if (logoutButton) {
+            logoutButton.remove();
+        }
+    };
+
+    /**
+     * @description Отрисовывает кнопку приглашения на авторизацию.
+     */
+    renderLoginButton = () => {
+        const userBlock = document.querySelector(".user-block");
+        if (!userBlock) {
+            return;
+        }
+        userBlock.replaceWith(createElementFromHTML())
+    };
 
     /**
      * @description Находит и возвращает элемент навигационной панели.
@@ -98,5 +172,19 @@ export class HeaderView extends BaseView {
      */
     getHeaderFromDOM = () => {
         return document.querySelector('.navbar');
-    }
+    };
+
+    addEventListenerToResize = () => {
+        // TODO
+    };
+    
+    addEventListenerToSearch = () => {
+        // TODO
+    };
+
+    addEventListenerToVerticalMenu = () => {
+        // TODO
+    };
+
+    
 };

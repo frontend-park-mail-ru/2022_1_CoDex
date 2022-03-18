@@ -9,7 +9,9 @@ export default events = {
         noAccess: 'app:noAccess',
         errorPageText: 'app:errorPageText',
     },
-
+    router: {
+        go: 'router:go',
+    },
     header: {
         render: {
             content: 'header:renderContent',
