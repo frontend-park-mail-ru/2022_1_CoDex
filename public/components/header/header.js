@@ -1,5 +1,5 @@
-import {createElementFromHTML} from '../../utils/utils.js';
-import {URL} from '../../utils/consts.js';
+import {createElementFromHTML} from "../../utils/utils.js";
+import {URL} from "../../utils/consts.js";
 
 /**
  * @description Создаёт и прикрепляет к корню страницы навигационную панель, полученную при
@@ -14,17 +14,17 @@ export function navbarRender() {
  * @description Меняет кнопку приглашения к авторизации на кнопку выхода из аккаунта.
  */
 export function changeNavbarButton() {
-  const navbarButton = document.getElementById('navbar-button');
-  if (navbarButton.dataset.section === 'login') {
-    navbarButton.dataset.section = 'logout';
-    navbarButton.href = '/logout';
-    navbarButton.textContent = 'Выйти';
+  const navbarButton = document.getElementById("navbar-button");
+  if (navbarButton.dataset.section === "login") {
+    navbarButton.dataset.section = "logout";
+    navbarButton.href = "/logout";
+    navbarButton.textContent = "Выйти";
   } else {
     Ajax.postFetch({
       url: `${URL}/api/v1/logout`,
     });
-    navbarButton.dataset.section = 'login';
-    navbarButton.href = '/login';
-    navbarButton.textContent = 'Войти';
+    navbarButton.dataset.section = "login";
+    navbarButton.href = "/login";
+    navbarButton.textContent = "Войти";
   }
 }

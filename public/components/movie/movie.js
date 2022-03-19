@@ -1,5 +1,5 @@
-import {createElementFromHTML} from '../../utils/utils.js';
-import {maxMovieShortDescriptionLength} from '../../utils/consts.js';
+import {createElementFromHTML} from "../../utils/utils.js";
+import {maxMovieShortDescriptionLength} from "../../utils/consts.js";
 
 /**
  * @param { string } description Описание фильма
@@ -14,7 +14,7 @@ function processDescription(description) {
   }
   return description.slice(0, description.slice(
       0, maxMovieShortDescriptionLength).
-      lastIndexOf(' ')) + '...';
+      lastIndexOf(" ")) + "...";
 }
 
 /**

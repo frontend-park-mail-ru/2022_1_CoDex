@@ -1,5 +1,5 @@
-import {createElementFromHTML} from '../../utils/utils.js';
-import {URL} from '../../utils/consts.js';
+import {createElementFromHTML} from "../../utils/utils.js";
+import {URL} from "../../utils/consts.js";
 
 /**
  * @typedef { CollectionParams } - Параметры, необходимые для однозначного задания

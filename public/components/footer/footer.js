@@ -1,4 +1,4 @@
-import {createElementFromHTML} from '../../utils/utils.js';
+import {createElementFromHTML} from "../../utils/utils.js";
 
 /**
  * @description Создаёт и прикрепляет к корню страницы footer, полученный при помощи

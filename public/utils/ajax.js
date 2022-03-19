@@ -1,4 +1,4 @@
-import {OK, CREATED, AJAX_METHODS} from './consts.js';
+import {OK, CREATED, AJAX_METHODS} from "./consts.js";
 
 /**
  * @description Класс, реализующий Fetch API.
@@ -17,10 +17,10 @@ export class Ajax {
 
     return fetch(args.url, {
       method: AJAX_METHODS.GET,
-      credentials: 'include',
-      mode: 'cors',
+      credentials: "include",
+      mode: "cors",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     }).then((response) => {
       statusCode = response.status;
@@ -45,10 +45,10 @@ export class Ajax {
     return fetch(args.url, {
       method: AJAX_METHODS.POST,
       body: JSON.stringify(args.body),
-      credentials: 'include',
-      mode: 'cors',
+      credentials: "include",
+      mode: "cors",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     }).then((response) => {
       statusCode = response.status;

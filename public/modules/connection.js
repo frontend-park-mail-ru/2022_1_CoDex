@@ -1,6 +1,6 @@
 import { statuses } from "../consts/statuses.js";
 import { urls } from "../consts/urls.js";
-import regeneratorRuntime from 'regenerator-runtime';
+import regeneratorRuntime from "regenerator-runtime";
 
 /**
  * @description Отправляет асинхронный запрос на сервер.
@@ -11,11 +11,11 @@ export const sendRequest = async ({url, method, body} = {}) => {
     const response = await fetch(url, {
         method: method,
         headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
         },
         body: body,
-        mode: 'cors',
-        credentials: 'include',
+        mode: "cors",
+        credentials: "include",
     });
 
     try {
@@ -41,8 +41,8 @@ export const sendRequest = async ({url, method, body} = {}) => {
 export const checkAuth = async () => {
     const params = {
         url: urls.api.checkAuth,
-        method: 'GET',
-        credentials: 'include',
+        method: "GET",
+        credentials: "include",
     };
 
     try {
@@ -61,8 +61,8 @@ export const checkAuth = async () => {
 export const getCurrentUser = async (id) => {
     const params = {
         url: urls.api.getUser.concat(id),
-        methd: 'GET',
-        credentials: 'include',
+        methd: "GET",
+        credentials: "include",
     };
 
     try {
@@ -79,7 +79,7 @@ export const getCurrentUser = async (id) => {
 export const logout = async () => {
     const params = {
         url: urls.api.logout,
-        method: 'GET',
+        method: "GET",
     };
 
     try {

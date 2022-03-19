@@ -5,6 +5,6 @@ export const routes = {
 }
 
 export const regularRoutes = {
-    homePage: '^/$',
-    collections: '/collections',    
+    homePage: "^/$",
+    collections: "/collections",    
 }

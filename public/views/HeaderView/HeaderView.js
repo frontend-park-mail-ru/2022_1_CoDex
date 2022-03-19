@@ -47,13 +47,13 @@ export class HeaderView extends BaseView {
             return;
         }
         const header = this.getHeaderFromDOM();
-        const buttons = header.querySelectorAll('.navbar__menu-btn');
+        const buttons = header.querySelectorAll(".navbar__menu-btn");
         if (!buttons.length) {
             return;
         }
         for (const button of buttons) {
-            if (button.getAttribute('href') === buttonHref) {
-                button.classList.add('.navbar__menu-btn_active');
+            if (button.getAttribute("href") === buttonHref) {
+                button.classList.add(".navbar__menu-btn_active");
             }
         }
     }
@@ -62,12 +62,12 @@ export class HeaderView extends BaseView {
      * @description Делает все кнопки навигационной панели неактивными.
      */
     unactiveAllButtons = () => {
-        const activeButtons = document.querySelectorAll('.navbar__menu-btn_active');
+        const activeButtons = document.querySelectorAll(".navbar__menu-btn_active");
         if (!activeButtons) {
             return;
         }
         for (const button of activeButtons) {
-            button.classList.remove('navbar__menu-btn_active');
+            button.classList.remove("navbar__menu-btn_active");
         }
     }
 
@@ -75,8 +75,8 @@ export class HeaderView extends BaseView {
      * @description Убирает кнопку выхода с навигационной панели
      */
     removeLogoutButton = () => {
-        const logoutBtn = [...document.querySelectorAll('.vertival-menu__btn-container a')]
-            .find((elem) => elem.textContent.includes('Выйти'));
+        const logoutBtn = [...document.querySelectorAll(".vertival-menu__btn-container a")]
+            .find((elem) => elem.textContent.includes("Выйти"));
         if (logoutBtn) {
             logoutBtn.remove();
         }
@@ -86,7 +86,7 @@ export class HeaderView extends BaseView {
      * @description Отрисовывает кнопку авторизации в навигационной панели.
      */
     renderLoginButton = () => {
-        const userBlock = document.querySelector('.user-block');
+        const userBlock = document.querySelector(".user-block");
         if (!userBlock) {
             return;
         }
@@ -134,7 +134,7 @@ export class HeaderView extends BaseView {
             return;
         }
         logoutButton.forEach((button) => {
-            button.addEventListener('click', (e) => {
+            button.addEventListener("click", (e) => {
                 this.removeLogoutButton();
                 this.renderLoginButton();
                 this.eventBus.emit(events.header.logout);
@@ -147,7 +147,7 @@ export class HeaderView extends BaseView {
      * из вертикального меню.
      */
     removeLogoutButton = () => {
-        const logoutButton = [...document.querySelectorAll('vertical-menu__btn-container a')]
+        const logoutButton = [...document.querySelectorAll("vertical-menu__btn-container a")]
             .find((button) => button.textContent.includes("Выйти"));
         if (logoutButton) {
             logoutButton.remove();
@@ -170,7 +170,7 @@ export class HeaderView extends BaseView {
      * @returns { HTMLDivElement } Элемент навигационной панели
      */
     getHeaderFromDOM = () => {
-        return document.querySelector('.navbar');
+        return document.querySelector(".navbar");
     };
 
     addEventListenerToResize = () => {

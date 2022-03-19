@@ -15,7 +15,7 @@ export const getURLArguments = (URL, template) => {
     const splitURL = URL.split("/");
     return template.split("/").reduce(
         (args, propertyName, index) => {
-            if (propertyName.startsWith(':')) {
+            if (propertyName.startsWith(":")) {
                 args[propertyName.slice(1)] = splitURL[index];
             }
             return args;
@@ -43,7 +43,7 @@ export class Router {
             this.page.addEventListener("click",
                 (e) => {
                     const clickTarget = e.target;
-                    const closestLink = e.target.closest('a');
+                    const closestLink = e.target.closest("a");
                     if (clickTarget.matches("not-route") || 
                         closestLink?.matches("not-route")) {
                             return;
@@ -148,7 +148,7 @@ export class Router {
      * страницу.
      */
     start = () => {
-        window.addEventListener('popstate', () => {
+        window.addEventListener("popstate", () => {
             this.go(window.location.pathname + window.location.search);
         });
         this.go(window.location.pathname + window.location.search);

@@ -1,6 +1,6 @@
-import {clearContent} from '../utils/contentManipulate.js';
-import {renderMovies} from '../components/movie/movie.js';
-import {URL} from '../utils/consts.js';
+import {clearContent} from "../utils/contentManipulate.js";
+import {renderMovies} from "../components/movie/movie.js";
+import {URL} from "../utils/consts.js";
 
 /** @module moviesPage */
 
@@ -14,40 +14,40 @@ import {URL} from '../utils/consts.js';
 export function moviesPage(collectionNumber) {
   const content = clearContent();
 
-  const moviesContent = document.createElement('div');
-  moviesContent.classList.add('content_wrapper');
+  const moviesContent = document.createElement("div");
+  moviesContent.classList.add("content_wrapper");
   content.appendChild(moviesContent);
 
-  const moviesPage = document.createElement('page');
-  moviesPage.classList.add('page');
+  const moviesPage = document.createElement("page");
+  moviesPage.classList.add("page");
   moviesContent.appendChild(moviesPage);
 
-  const moviesPageContainer = document.createElement('div');
-  moviesPageContainer.classList.add('page__container');
-  moviesPageContainer.classList.add('movie_content_container');
+  const moviesPageContainer = document.createElement("div");
+  moviesPageContainer.classList.add("page__container");
+  moviesPageContainer.classList.add("movie_content_container");
   moviesPage.appendChild(moviesPageContainer);
 
-  const moviesTitle = document.createElement('h1');
-  moviesTitle.classList.add('movie_collection_title');
-  moviesTitle.textContent = 'Подборка: ';
-  const span = document.createElement('span');
-  span.textContent = ' ';
-  const collectionTitle = document.createElement('span');
-  collectionTitle.classList.add('color-bright');
+  const moviesTitle = document.createElement("h1");
+  moviesTitle.classList.add("movie_collection_title");
+  moviesTitle.textContent = "Подборка: ";
+  const span = document.createElement("span");
+  span.textContent = " ";
+  const collectionTitle = document.createElement("span");
+  collectionTitle.classList.add("color-bright");
 
   moviesTitle.appendChild(span);
   moviesTitle.appendChild(collectionTitle);
   moviesPageContainer.appendChild(moviesTitle);
 
-  const moviesDescription = document.createElement('div');
-  moviesDescription.classList.add('movie_collections__description');
+  const moviesDescription = document.createElement("div");
+  moviesDescription.classList.add("movie_collections__description");
   moviesPageContainer.appendChild(moviesDescription);
 
-  const moviesContainer = document.createElement('div');
-  moviesContainer.classList.add('movies_container');
+  const moviesContainer = document.createElement("div");
+  moviesContainer.classList.add("movies_container");
   moviesPageContainer.appendChild(moviesContainer);
 
-  const collectionAPI = '/api/v1/collections/collection/';
+  const collectionAPI = "/api/v1/collections/collection/";
 
   const collectionURL = URL + collectionAPI + collectionNumber;
 

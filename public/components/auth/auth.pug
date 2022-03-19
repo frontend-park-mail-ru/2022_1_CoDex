@@ -1,26 +1,28 @@
-form(class=input.isLogin ? "login__form" : "signup__form", name='authForm')
-    if !input.isLogin
-        div.auth_name
-            div.auth_name_labels
-                label(class="text_inputs__label" for="name") Имя
-                div#auth-name-error
-            input(id="text-inputs-name" class="auth_input" type="text" name="name" placeholder="Введите имя")
-    div.auth_email
-        div.auth_email_labels
-            label(class="text_inputs__label" for="email") Email
-            div#auth-email-error
-        input(id="text-inputs-email" class="auth_input" type="email" name="email" placeholder="Введите e-mail")
-    div.auth_password
-        div.auth_password_labels
-            label(class="text_inputs__label" for="password") Пароль
-            div#auth-password-error
-        input(id="text-inputs-password" class="auth_input" type="password" name="password" placeholder="Введите пароль")
-    if !input.isLogin
-        div.auth_repeat_password
-            div.auth_repeat_password_labels
-                label(class="text_inputs__label" for="repeatPassword") Повторите пароль
-                div#auth-repeat-password-error
-            input(id="text-inputs-repeat-password" class="auth_input" type="password" name="repeatPassword" placeholder="Повторите пароль")
-    div.auth_btn
-        div#auth-btn-error
-        input(class="auth__btn" type="button" value=input.isLogin ? "Войти" : "Зарегистрироваться" name="submitBtn")
+- var currClass = auth ? "auth" : "reg"
+
+.auth-content
+    div(class=currClass)
+        if auth
+            div(class=`${currClass}__head`) Войти
+        else
+            div(class=`${currClass}__head`) Зарегистрироваться
+        form(class=`${currClass}__form` name=authFormName)
+            each input in inputs
+                div(class=`auth-input ${input.name}`)
+                    div(class=`auth-input__head`)
+                        label(for=input.name class="text-input__label") #{input.title}
+                        div(class=`auth-input__error ${input.name}`)
+                    input(
+                        type=input.type
+                        name=input.name
+                        id=input.name
+                        placeholder=input.placeholder
+                        class="text-inputs"
+                    )
+            div.auth__btn
+                div.auth__btn__error
+                input(class=`auth__btn__input` type="button" name=submitButtonName value=auth ? "Войти" : "Создать аккаунт")
+        if auth
+            a(class="auth__invitation" href="/reg") Нет аккаунта? Зарегистрироваться!
+        else
+            a(class="auth__invitation" href="/auth") Уже есть аккаунт? Войти!

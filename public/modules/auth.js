@@ -69,7 +69,7 @@ class Auth {
         }
         this.user = parsedResponse.body;
         if (this.user) {
-            window.localStorage.setItem('user', JSON.stringify(this.user));
+            window.localStorage.setItem("user", JSON.stringify(this.user));
             this.eventBus.emit(events.auth.gotUser);
             this.lastEvent = events.auth.gotUser;
         }
@@ -101,7 +101,7 @@ class Auth {
             return;
         }
         this.user = user;
-        window.localStorage.setItem('user', JSON.stringify(this.user));
+        window.localStorage.setItem("user", JSON.stringify(this.user));
         this.eventBus.emit(events.auth.changedUser);
     };
 }

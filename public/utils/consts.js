@@ -1,4 +1,4 @@
-export const URL = 'https://teamprojectkinopoisk.herokuapp.com';
+export const URL = "https://teamprojectkinopoisk.herokuapp.com";
 export const englishRegularCheck = /(?=.*[A-z])/;
 export const russianRegularCheck = /^[\u0400-\u04FF]+$/;
 export const emailRegularCheck = /\S+@\S+\.\S+/;
@@ -7,8 +7,8 @@ export const numberRegularCheck = /(?=.*[0-9])/;
 export const countRegularCheck = /[a-zA-Z]{2,}/;
 export const maxMovieShortDescriptionLength = 190;
 export const AJAX_METHODS = {
-    POST: 'POST',
-    GET: 'GET',
+    POST: "POST",
+    GET: "GET",
   };
 export const OK = 200;
 export const NOT_AUTHORIZED = 401;

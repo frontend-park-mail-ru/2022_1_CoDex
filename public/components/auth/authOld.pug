@@ -1,0 +1,26 @@
+form(class=input.isLogin ? "login__form" : "signup__form", name="authForm")
+    if !input.isLogin
+        div.auth_name
+            div.auth_name_labels
+                label(class="text_inputs__label" for="name") Имя
+                div#auth-name-error
+            input(id="text-inputs-name" class="auth_input" type="text" name="name" placeholder="Введите имя")
+    div.auth_email
+        div.auth_email_labels
+            label(class="text_inputs__label" for="email") Email
+            div#auth-email-error
+        input(id="text-inputs-email" class="auth_input" type="email" name="email" placeholder="Введите e-mail")
+    div.auth_password
+        div.auth_password_labels
+            label(class="text_inputs__label" for="password") Пароль
+            div#auth-password-error
+        input(id="text-inputs-password" class="auth_input" type="password" name="password" placeholder="Введите пароль")
+    if !input.isLogin
+        div.auth_repeat_password
+            div.auth_repeat_password_labels
+                label(class="text_inputs__label" for="repeatPassword") Повторите пароль
+                div#auth-repeat-password-error
+            input(id="text-inputs-repeat-password" class="auth_input" type="password" name="repeatPassword" placeholder="Повторите пароль")
+    div.auth_btn
+        div#auth-btn-error
+        input(class="auth__btn" type="button" value=input.isLogin ? "Войти" : "Зарегистрироваться" name="submitBtn")

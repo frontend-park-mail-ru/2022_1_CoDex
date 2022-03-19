@@ -20,7 +20,7 @@ export class BaseView {
     emitGetContent = () => {};
     render = (routeData) => {
         this.routeData = routeData;
-        const content = document.querySelector('.content');
+        const content = document.querySelector(".content");
         if (!content) {
             root.innerHTML = renderBaseView();
             this.eventBus.emit(events.header.render.header);
