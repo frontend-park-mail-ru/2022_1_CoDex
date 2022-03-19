@@ -3,3 +3,8 @@ export const routes = {
     collectionsPage: "/collections/\\d+",
     profilePage: "/profile",
 }
+
+export const regularRoutes = {
+    homePage: '^/$',
+    collections: '/collections',    
+}

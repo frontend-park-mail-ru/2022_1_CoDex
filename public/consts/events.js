@@ -1,4 +1,4 @@
-export default events = {
+export const events = {
     pathChanged: 'pathChanged',
     redirectBack: 'redirectBack',
     redirectForward: 'redirectForward',

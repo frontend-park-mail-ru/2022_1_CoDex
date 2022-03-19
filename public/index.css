@@ -4,11 +4,11 @@
 @import 'components/movie/movie.css';
 @import 'components/auth/auth.css';
 
-#root {
+/* #root {
     position: relative;
     flex-direction: column;
     display: flex;
-}
+} */
 
 :root {
     --main-nav-color: #15161A;
@@ -20,15 +20,15 @@
     --grid-bg-color: #382435;
 }
 
-#content {
+/* #content {
     width: 100%;
     min-height: 850px;
     background-color: var(--main-bg-color);
     height: calc(100vh - 230px);
     margin: 0;
-}
+} */
 
-.color-bright {
+/* .color-bright {
     color: var(--main-wng-color);
 }
 
@@ -40,4 +40,4 @@
     color: red;
     margin: 0;
     text-align: right;
-}
+} */

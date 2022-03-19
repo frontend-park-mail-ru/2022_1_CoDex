@@ -23,7 +23,7 @@
       right: -35px;
       width:120px;
       height:100px;
-      background-color: $grey-base;
+      background-color: $grey;
       border-bottom-left-radius: 15px;
       border-bottom-right-radius: 15px;
   
@@ -59,7 +59,7 @@
       transition: .2s ease-in-out;
   
       &:hover {
-        color: $pink;
+        color: $raspberry;
       }
     }
   }

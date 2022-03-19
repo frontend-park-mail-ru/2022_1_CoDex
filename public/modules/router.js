@@ -1,6 +1,6 @@
-import eventBus from "./eventBus";
-import events from "../consts/events";
-import { routes } from "../consts/routes";
+import { eventBus } from "./eventBus.js";
+import { events } from "../consts/events.js";
+import { routes } from "../consts/routes.js";
 
 /**
  * @description Получает аргументы из URL-a.
@@ -59,7 +59,7 @@ export class Router {
     onPathChanged = (data) => {
         this.go(data.URL);
     }
-
+    
     /**
      * @description Переходит на указанную страницу.
      */
@@ -69,13 +69,14 @@ export class Router {
         if (this.currentController) {
             this.currentController.unsubscribe();
         }
+        console.log(data);
         this.currentController = routeData.constroller;
         if (!this.currentController) {
             eventBus.emit(events.app.errorPage);
             return;
         }
         this.currentController.subscribe();
-
+        
         if (!this.currentController) {
             URL = routes.homePage;
             this.currentController = this.getURLData(URL).constroller;
@@ -85,8 +86,9 @@ export class Router {
         }
         this.currentController.view.render(data);
         eventBus.emit(events.router.go);
+        console.log("Going...");
     }
-
+    
     /**
      * @description Получает информацию из URL-a.
      * @param { string } URL URL, на которые перешёл пользователь
@@ -159,7 +161,7 @@ export class Router {
      * добавляемого URL-a
      * @return { object } Возвращает указатель на роутер
      */
-    register = (URL, constroller) => {
+    register = (URL, controller) => {
         this.routes.add({URL, controller});
         return this;
     }

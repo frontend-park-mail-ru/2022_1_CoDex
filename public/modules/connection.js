@@ -1,5 +1,6 @@
 import { statuses } from "../consts/statuses.js";
 import { urls } from "../consts/urls.js";
+import regeneratorRuntime from 'regenerator-runtime';
 
 /**
  * @description Отправляет асинхронный запрос на сервер.

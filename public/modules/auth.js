@@ -1,6 +1,6 @@
-import events from "../consts/events.js";
+import { events } from "../consts/events.js";
 import { statuses } from "../consts/statuses.js";
-import eventBus from "./eventBus.js";
+import { eventBus} from "./eventBus.js";
 import { checkAuth, getCurrentUser, logout } from "./connection.js";
 
 /**
@@ -12,9 +12,9 @@ class Auth {
         this.eventBus = eventBus;
         this.user = null;
         this.lastEvent = null;
-        if (navigator.onLine) {
-            this.getUserFromServer();
-        }
+        // if (navigator.onLine) {
+        //     this.getUserFromServer();
+        // }
         this.eventBus.on(events.authPage.logRegSuccess, this.getUserFromSubmit);
         this.eventBus.on(events.header.logout, this.logoutUser);
         this.eventBus.on(events.profilePage.changedProfile, )

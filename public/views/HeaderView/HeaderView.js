@@ -6,7 +6,6 @@ import { BaseView } from "../BaseView/BaseView.js";
 import { loginButton } from "../../components/header/loginButton.pug";
 import { userBlock } from "../../components/header/userBlock/userBlock.pug";
 import { logoutButton } from "../../components/header/logoutButton.pug";
-import { loginButton } from "../../components/header/loginButton.pug";
 
 const usernameMaxLength = 10;
 

@@ -10,3 +10,9 @@ export const AJAX_METHODS = {
     POST: 'POST',
     GET: 'GET',
   };
+export const OK = 200;
+export const NOT_AUTHORIZED = 401;
+export const CONFLICT = 404;
+export const BAD_REQUEST = 400;
+export const FAILED_DEPENDENCY = 423;
+export const CREATED = 201;

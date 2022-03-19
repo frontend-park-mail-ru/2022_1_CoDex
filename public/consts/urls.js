@@ -1,10 +1,10 @@
 // eslint-disable-next-line no-unused-vars
-const localUrl = 'http://localhost:3000';
+const localUrl = 'http://localhost:3001';
 
 // eslint-disable-next-line no-unused-vars
 export const deployUrl = 'https://teamprojectkinopoisk.herokuapp.com';
 
-export const currentUrl = deployUrl;
+export const currentUrl = localUrl;
 
 export const urls = {
     api: {
