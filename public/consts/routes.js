@@ -6,5 +6,7 @@ export const routes = {
 
 export const regularRoutes = {
     homePage: "^/$",
-    collections: "/collections",    
+    collectionsPage: "/collections",    
+    authPage:  "^/auth$",
+    
 }

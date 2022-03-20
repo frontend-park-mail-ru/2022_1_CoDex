@@ -1,4 +1,3 @@
-import { authFormName } from "../../consts/auth.js";
 import { BaseView } from "./BaseView/BaseView.js"
 import { authContent } from "../..components/auth/auth.pug";
 import { events } from "../../consts/events.js";
@@ -12,6 +11,11 @@ export class AuthView extends BaseView {
         super(eventBus, data);
     }
 
+    /**
+     * @description Отрисовывает контент страницы авторизации / регистрации.
+     * @param { Object } data Данные для формы авторизации / регистрации: 
+     * количество полей ввода и их названия
+     */
     renderContent = (data) => {
         this._data = data;
         const template = authContent(this._data);
@@ -19,7 +23,9 @@ export class AuthView extends BaseView {
         if (content) {
             content.innerHTML = template;
             this.addValidateListeners();
-            // this.
+            this.addSubmitListener();
+        } else {
+            this.eventBus.emit(events.app.errorPage);
         }
     };
 
@@ -58,19 +64,23 @@ export class AuthView extends BaseView {
      */
     getAuthDOMForm = () => {
         return document.forms[AuthFormName];
-    }
+    };
 
     /**
      * @description Очищает ошибку входа / регистрации 
      * (над кнопкой отправления формы).
      */
-    deleteNotAuthorizedError = () => {
+    deleteSubmitError = () => {
         const error = document.querySelector(".auth__btn__error");
         if (error) {
             error.textContent = "";
         }
-    }
+    };
 
+    /**
+     * @description Добавляет обработчик событий (нажатия) на 
+     * кнопку отправки данных в форме авторизации / регистрации.
+     */
     addSubmitListener = () => {
         const authForm = this.getAuthDOMForm();
         const submitBtn = document.querySelector(".auth__btn__input");
@@ -86,7 +96,40 @@ export class AuthView extends BaseView {
             for (const input of textInputs) {
                 inputData[input.name] = input.value;
             }
-            this.eventBus.emit(events.authPag)
-        })
+            this.eventBus.emit(events.authPage.submit, inputData, this.routeData);  
+        });
+    };
+
+    /**
+     * @description Добавляет сообщение об ошибке для конкретного поля ввода.
+     * @param { string } inputName Название поля ввода
+     * @param { string } errorMessage Сообщение об ошибке
+     */
+    addErrorMessage = (inputName, errorMessage) => {
+        const authForm = this.getAuthDOMForm();
+        const errorField = document.getElementsByClassName(`auth-input__error ${inputName}`);
+        if (!inputName || !errorMessage || !authForm || !errorField) {
+            return;
+        }
+        const errorInput = authForm[inputName];
+        errorInput.classList.add("error");
+        errorField.textContent = errorMessage;
     }
+
+    /**
+     * @description Удаляет сообщение об ошибке для конкретного поля ввода.
+     * @param { string } inputName Название поля ввода
+     */
+    deleteErrorMessage = (inputName) => {
+        const authForm = this.getAuthDOMForm();
+        const errorField = document.getElementsByClassName(`auth-input__error ${inputName}`);
+        if (!inputName || !authForm || !errorField) {
+            return;
+        }
+        const errorInput = authForm[inputName];
+        errorInput.classList.remove("error");
+        errorField.textContent = "";
+    }
+
+
 }

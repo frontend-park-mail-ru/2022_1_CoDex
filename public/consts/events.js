@@ -27,11 +27,19 @@ export const events = {
     },
 
     authPage: {
+        render: {
+            page: "authPage:renderPage",
+            content: "authPage:renderContent",
+        },
         redirect: "authPage:redirect",
         logRegSuccess: "authPage:logRegSuccess",
-        deleteAllErrors: "authPage:deleteAllErrors",
         validate: "authPage:validate",
         submit: "authPage:submit",
+        submitError: "authPage:submitError",
+        wrongInput: "authPage:wrongInput",
+        deleteValidationError: "authPage:deleteValidationError",
+        addValidationError: "authPage:addValidationError",
+        deleteAllErrors: "authPage:deleteAllErrors",
     },
     profilePage: {
         changedProfile: "profilePage:changedProfile",

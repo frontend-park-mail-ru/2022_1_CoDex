@@ -11,5 +11,7 @@ export const urls = {
         checkAuth: `${currentUrl}/api/v1/checkAuth`,
         getUser: `${currentUrl}/api/TODO`,
         logout: `${currentUrl}/api/v1/logout`,
+        login: `${currentUrl}/api/v1/login`,
+        register: `${currentUrl}/api/v1/signup`,
     }
 }

@@ -88,3 +88,31 @@ export const logout = async () => {
         return null;
     }
 };
+
+export const login = async(user) => {
+    const params = {
+        url: urls.api.login,
+        method: "POST",
+        body: JSON.stringify(user),
+    };
+    
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}
+
+export const register = async(user) => {
+    const params = {
+        url: urls.api.register,
+        method: "POST",
+        body: JSON.stringify(user),
+    };
+    
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}
