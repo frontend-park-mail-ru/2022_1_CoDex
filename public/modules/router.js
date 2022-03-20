@@ -44,13 +44,14 @@ export class Router {
                 (e) => {
                     const clickTarget = e.target;
                     const closestLink = e.target.closest("a");
-                    if (clickTarget.matches("not-route") || 
-                        closestLink?.matches("not-route")) {
-                            return;
-                        }
+                    if (!closestLink || clickTarget.matches("not-route") || 
+                    closestLink?.matches("not-route")) {
+                        return;
+                    }
                     e.preventDefault();
                     const data = {...closestLink.dataset};
                     data.URL = closestLink.getAttribute("href");
+                    eventBus.emit(events.pathChanged, data);
                 }
             );
         }
@@ -69,7 +70,6 @@ export class Router {
         if (this.currentController) {
             this.currentController.unsubscribe();
         }
-        console.log(data);
         this.currentController = routeData.constroller;
         if (!this.currentController) {
             eventBus.emit(events.app.errorPage);
@@ -86,7 +86,6 @@ export class Router {
         }
         this.currentController.view.render(data);
         eventBus.emit(events.router.go);
-        console.log("Going...");
     }
     
     /**

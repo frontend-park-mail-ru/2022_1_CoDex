@@ -35,7 +35,7 @@ export class HeaderView extends BaseView {
         } else {
             this.eventBus.emit(events.app.errorPage);
         }
-    }
+    };
 
     /**
      * @description Делает кнопку навигационной панели с указанной
@@ -56,7 +56,7 @@ export class HeaderView extends BaseView {
                 button.classList.add(".navbar__menu-btn_active");
             }
         }
-    }
+    };
 
     /**
      * @description Делает все кнопки навигационной панели неактивными.
@@ -69,18 +69,18 @@ export class HeaderView extends BaseView {
         for (const button of activeButtons) {
             button.classList.remove("navbar__menu-btn_active");
         }
-    }
+    };
 
     /**
      * @description Убирает кнопку выхода с навигационной панели
      */
     removeLogoutButton = () => {
         const logoutBtn = [...document.querySelectorAll(".vertival-menu__btn-container a")]
-            .find((elem) => elem.textContent.includes("Выйти"));
+        .find((elem) => elem.textContent.includes("Выйти"));
         if (logoutBtn) {
             logoutBtn.remove();
         }
-    }
+    };
 
     /**
      * @description Отрисовывает кнопку авторизации в навигационной панели.
@@ -91,7 +91,7 @@ export class HeaderView extends BaseView {
             return;
         }
         userBlock.replaceWith(createElementFromHTML(loginButton()));
-    }
+    };
 
     /**
      * @description Отрисовывает блок навигационной панели, 
@@ -154,16 +154,6 @@ export class HeaderView extends BaseView {
         }
     };
 
-    /**
-     * @description Отрисовывает кнопку приглашения на авторизацию.
-     */
-    renderLoginButton = () => {
-        const userBlock = document.querySelector(".user-block");
-        if (!userBlock) {
-            return;
-        }
-        userBlock.replaceWith(createElementFromHTML())
-    };
 
     /**
      * @description Находит и возвращает элемент навигационной панели.

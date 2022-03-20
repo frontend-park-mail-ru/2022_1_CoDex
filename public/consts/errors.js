@@ -16,12 +16,12 @@ export const errorMessages = {
         message: 'Пароль должен содержать хотя бы 8 символов!',
         regexp: /[а-яА-Яa-zA-Z0-9]{8,}/,
     }],
-    [authConfig.repPasswordInput.name]: [{
+    [authConfig.repeatePasswordInput.name]: [{
         message: 'Пароли не совпадают!',
     }],
     [authConfig.nameInput.name]: [{
         message: 'Количество символов больше 30 или введены небуквенные символы!',
-        regexp: /^[^0-9_!.,\-¡?÷¿/\\+=@#$%ˆ&*(){}| ~<>;:[\]]{,30}$/,
+        regexp: /^[^0-9_!.,\-¡?÷¿/\\+=@#$%ˆ&*(){}| ~<>;:[\]]{0,30}$/,
     }],
     emptyField: {
         message: 'Заполните поле!',

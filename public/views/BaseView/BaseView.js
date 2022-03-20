@@ -1,5 +1,5 @@
 import { root } from "../../main.js";
-import { loader } from "../../components/loader/loader.pug";
+import loader from "../../components/loader/loader.pug";
 import { events } from "../../consts/events.js";
 import { renderBaseView } from "../../utils/utils.js";
 

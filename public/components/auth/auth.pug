@@ -3,21 +3,21 @@
 .auth-content
     div(class=currClass)
         if login
-            div(class=`${currClass}__head`) Войти
+            div(class=`${currClass}__invitation`) Войти
         else
-            div(class=`${currClass}__head`) Зарегистрироваться
+            div(class=`${currClass}__invitation`) Зарегистрироваться
         form(class=`${currClass}__form` name=authFormName)
             each input in inputs
                 div(class=`auth-input ${input.name}`)
                     div(class=`auth-input__head`)
-                        label(for=input.name class="text-input__label") #{input.title}
-                        div(class=`auth-input__error ${input.name}`)
+                        label(for=input.name class="auth-input__head__label") #{input.title}
+                        div(class=`auth-input__head__error ${input.name}`)
                     input(
                         type=input.type
                         name=input.name
                         id=input.name
                         placeholder=input.placeholder
-                        class="text-inputs"
+                        class="text-input"
                     )
             div.auth__btn
                 div.auth__btn__error

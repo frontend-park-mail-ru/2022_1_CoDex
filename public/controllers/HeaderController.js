@@ -7,15 +7,39 @@ export class HeaderController extends BaseController {
     constructor() {
         super(HeaderView, HeaderModel);
         this.events.push(
-            {event: events.header.changeActiveButton, handler: this.view.changeActiveButton},
-            {event: events.auth.gotUser, handler: this.view.renderUserBlock},
-            {event: events.auth.changedUser, handler: this.view.renderUserBlock},
-            {event: events.auth.notLoggedIn, handler: this.view.renderLoginButton},
+            { 
+                event: events.header.changeActiveButton, 
+                handler: this.view.changeActiveButton 
+            },
+            { 
+                event: events.auth.gotUser, 
+                handler: this.view.renderUserBlock 
+            },
+            { 
+                event: events.auth.changedUser, 
+                handler: this.view.renderUserBlock 
+            },
+            { 
+                event: events.auth.notLoggedIn, 
+                handler: this.view.renderLoginButton 
+            },
             // TODO Адаптивность
-            {event: events.router.go, handler: this.model.compareURLWithPath},
-            {event: events.header.render.header, handler: this.view.addEventListenerToSearch},
-            {event: events.header.render.header, handler: this.view.addEventListenerToResize},
-            {event: events.header.render.header, handler: this.view.addEventListenerToVerticalMenu},
+            { 
+                event: events.router.go, 
+                handler: this.model.compareURLWithPath 
+            },
+            { 
+                event: events.header.render.header, 
+                handler: this.view.addEventListenerToSearch 
+            },
+            { 
+                event: events.header.render.header, 
+                handler: this.view.addEventListenerToResize 
+            },
+            { 
+                event: events.header.render.header, 
+                handler: this.view.addEventListenerToVerticalMenu 
+            },
         );
         this.subscribe();
     }

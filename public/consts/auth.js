@@ -5,31 +5,31 @@ export const authConfig = {
     emailInput: {
         type: "email", 
         name: "email", 
-        placeholder: "ivan@mail.ru", 
+        placeholder: "Введите e-mail", 
         title: "Email"
     },
     surnameInput: {
         type: "text", 
         name: "surname", 
-        placeholder: "Иванов", 
+        placeholder: "Введите фамилию", 
         title: "Фамилия"
     },
     nameInput: {
         type: "text", 
-        name: "first_name", 
-        placeholder: "Иван", 
+        name: "name", 
+        placeholder: "Введите имя", 
         title: "Имя"
     },
     passwordInput: {
         type: "password", 
         name: "password", 
-        placeholder: "", 
+        placeholder: "Введите пароль", 
         title: "Пароль"
     },
     repeatePasswordInput: {
         type: "password", 
-        name: "password_repeat", 
-        placeholder: "", 
+        name: "repeat_password", 
+        placeholder: "Повторите пароль", 
         title: "Повторите пароль"
     },
   };

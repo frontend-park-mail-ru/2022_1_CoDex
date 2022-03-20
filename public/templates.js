@@ -8,15 +8,15 @@ var pug_match_html=/["&<>]/;
 function pug_rethrow(e,n,r,t){if(!(e instanceof Error))throw e;if(!("undefined"==typeof window&&n||t))throw e.message+=" on line "+r,e;var o,a,i,s;try{t=t||require("fs").readFileSync(n,{encoding:"utf8"}),o=3,a=t.split("\n"),i=Math.max(r-o,0),s=Math.min(a.length,r+o)}catch(t){return e.message+=" - could not read from "+n+" ("+t.message+")",void pug_rethrow(e,null,r)}o=a.slice(i,s).map(function(e,n){var t=n+i+1;return(t==r?"  > ":"    ")+t+"| "+e}).join("\n"),e.path=n;try{e.message=(n||"Pug")+":"+r+"\n"+o+"\n\n"+e.message}catch(e){}throw e}function auth(locals) {var pug_html = "", pug_mixins = {}, pug_interp;var pug_debug_filename, pug_debug_line;try {;
     var locals_for_with = (locals || {});
     
-    (function (auth, authFormName, currClass, inputs, submitButtonName) {
+    (function (auth, authFormName, currClass, inputs, login, submitButtonName) {
       ;pug_debug_line = 1;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-var currClass = auth ? "auth" : "reg"
+var currClass = login ? "login" : "reg"
 ;pug_debug_line = 3;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Cdiv class=\"auth-content\"\u003E";
 ;pug_debug_line = 4;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([currClass], [true]), false, false)) + "\u003E";
 ;pug_debug_line = 5;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-if (auth) {
+if (login) {
 ;pug_debug_line = 6;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`${currClass}__head`], [true]), false, false)) + "\u003E";
 ;pug_debug_line = 6;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
@@ -78,7 +78,7 @@ pug_html = pug_html + "\u003Cdiv class=\"auth__btn__error\"\u003E\u003C\u002Fdiv
 ;pug_debug_line = 24;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Cinput" + (" class=\"auth__btn__input\""+" type=\"button\""+pug_attr("name", submitButtonName, true, false)+pug_attr("value", auth ? "Войти" : "Создать аккаунт", true, false)) + "\u002F\u003E\u003C\u002Fdiv\u003E\u003C\u002Fform\u003E";
 ;pug_debug_line = 25;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-if (auth) {
+if (login) {
 ;pug_debug_line = 26;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Ca class=\"auth__invitation\" href=\"\u002Freg\"\u003E";
 ;pug_debug_line = 26;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
@@ -99,7 +99,9 @@ pug_html = pug_html + "\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
         locals_for_with.currClass :
         typeof currClass !== 'undefined' ? currClass : undefined, "inputs" in locals_for_with ?
         locals_for_with.inputs :
-        typeof inputs !== 'undefined' ? inputs : undefined, "submitButtonName" in locals_for_with ?
+        typeof inputs !== 'undefined' ? inputs : undefined, "login" in locals_for_with ?
+        locals_for_with.login :
+        typeof login !== 'undefined' ? login : undefined, "submitButtonName" in locals_for_with ?
         locals_for_with.submitButtonName :
         typeof submitButtonName !== 'undefined' ? submitButtonName : undefined));
     ;} catch (err) {pug_rethrow(err, pug_debug_filename, pug_debug_line);};return pug_html;}

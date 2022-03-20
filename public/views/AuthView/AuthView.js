@@ -1,5 +1,5 @@
-import { BaseView } from "./BaseView/BaseView.js"
-import { authContent } from "../..components/auth/auth.pug";
+import { BaseView } from "../BaseView/BaseView.js"
+import authContent from "../../components/auth/auth.pug";
 import { events } from "../../consts/events.js";
 import { authFormName, authConfig } from "../../consts/auth.js";
 
@@ -9,6 +9,10 @@ import { authFormName, authConfig } from "../../consts/auth.js";
 export class AuthView extends BaseView {
     constructor(eventBus, {data={}} = {}) {
         super(eventBus, data);
+    }
+
+    emitGetContent = () => {
+        this.eventBus.emit(events.authPage.getContent, this.routeData)
     }
 
     /**
@@ -43,7 +47,7 @@ export class AuthView extends BaseView {
         for (const input of textInputs) {
             input.addEventListener("input", () => {
                 this.eventBus.emit(events.authPage.deleteAllErrors, input.name);
-                this.deleteNotAuthorizedError();
+                this.deleteSubmitError();
             });
             input.addEventListener("change", () => {
                 this.eventBus.emit(events.authPage.validate, 
@@ -53,7 +57,7 @@ export class AuthView extends BaseView {
                     ""
             });
             input.addEventListener("animationend", () => {
-                input.className.remove("auth-error-input_animated");
+                input.classList.remove("auth-error-input_animated");
             })
         }
     };
@@ -63,7 +67,15 @@ export class AuthView extends BaseView {
      * @returns { HTMLFormElement } Форма авторизации / регистрации.
      */
     getAuthDOMForm = () => {
-        return document.forms[AuthFormName];
+        return document.forms[authFormName];
+    };
+
+    addSubmitError = (message) => {
+        this.deleteSubmitError();
+        const error = document.querySelector(".auth__btn__error");
+        if (error) {
+            error.textContent = message;
+        }
     };
 
     /**
@@ -107,7 +119,7 @@ export class AuthView extends BaseView {
      */
     addErrorMessage = (inputName, errorMessage) => {
         const authForm = this.getAuthDOMForm();
-        const errorField = document.getElementsByClassName(`auth-input__error ${inputName}`);
+        const errorField = document.getElementsByClassName(`auth-input__head__error ${inputName}`)[0];
         if (!inputName || !errorMessage || !authForm || !errorField) {
             return;
         }
@@ -122,7 +134,7 @@ export class AuthView extends BaseView {
      */
     deleteErrorMessage = (inputName) => {
         const authForm = this.getAuthDOMForm();
-        const errorField = document.getElementsByClassName(`auth-input__error ${inputName}`);
+        const errorField = document.getElementsByClassName(`auth-input__head__error ${inputName}`)[0];
         if (!inputName || !authForm || !errorField) {
             return;
         }

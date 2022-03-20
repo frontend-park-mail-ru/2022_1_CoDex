@@ -31,6 +31,7 @@ export const events = {
             page: "authPage:renderPage",
             content: "authPage:renderContent",
         },
+        getContent: "authPage:getContent",
         redirect: "authPage:redirect",
         logRegSuccess: "authPage:logRegSuccess",
         validate: "authPage:validate",

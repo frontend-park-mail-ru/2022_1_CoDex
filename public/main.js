@@ -62,9 +62,14 @@ import "./index.scss";
 import { regularRoutes } from "./consts/routes.js";
 import { Router } from "./modules/router.js";
 import { HomeController } from "./controllers/HomeController.js";
+import { AuthController } from "./controllers/AuthController.js";
 
 export const root = document.getElementById("root");
 const homeController = new HomeController();
+const authController = new AuthController();
+
 const router = new Router(root);
+
 router.register(regularRoutes.homePage, homeController)
+  .register(regularRoutes.authPage, authController)
   .start();

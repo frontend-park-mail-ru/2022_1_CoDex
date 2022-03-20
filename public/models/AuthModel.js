@@ -20,7 +20,7 @@ export class AuthModel extends BaseModel {
     }
 
     getContent = (URLData) => {
-        if (URLData?.path?.path.matches(regularRoutes.authPage)) {
+        if (URLData?.URL?.URL.match(regularRoutes.authPage)) {
             this.getLoginContent();
         } else {
             this.getRegistrationContent();
@@ -135,7 +135,7 @@ export class AuthModel extends BaseModel {
         if (this.hasErrors(inputsData)) {
             return;
         }
-        if (URLData?.path?.path.match(regularRoutes.authPage)) {
+        if (URLData?.URL?.URL.match(regularRoutes.authPage)) {
             this.submitLogin(inputsData);
         } else {
             this.submitRegister(inputsData);
@@ -150,7 +150,7 @@ export class AuthModel extends BaseModel {
         if (!inputsData) {
             return;
         }
-        login(inputsData).this((response) => {
+        login(inputsData).then((response) => {
             if (!response) {
                 return;
             }
@@ -175,7 +175,7 @@ export class AuthModel extends BaseModel {
         if (!inputsData) {
             return;
         }
-        register(inputsData).this((response) => {
+        register(inputsData).then((response) => {
             if (!response) {
                 return;
             }
@@ -203,7 +203,7 @@ export class AuthModel extends BaseModel {
             return true;
         }
         let result = false;
-        for (const inputName of inputsData) {
+        for (const inputName in inputsData) {
             this.validateSingleInput(inputName, inputsData[inputName]);
             if (this.errorMessages.get(inputName).size) {
                 this.eventBus.emit(events.authPage.wrongInput, inputName);
@@ -234,7 +234,7 @@ export class AuthModel extends BaseModel {
                 authConfig.repeatePasswordInput.name) {
                 const authForm = document.forms[authFormName];
                 let passwordValue = "";
-                for (input of authForm) {
+                for (const input of authForm) {
                     if (input.name === authConfig.passwordInput.name) {
                         passwordValue = input.value;
                     }
