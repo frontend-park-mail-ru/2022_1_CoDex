@@ -5,6 +5,8 @@
 @import "components/footer/footer.scss";
 @import "components/header/userBlock/userBlock.scss";
 @import "components/auth/auth.scss";
+@import "components/singleCollection/singleCollection.scss";
+@import "components/movieCard/movieCard.scss";
 
 @font-face {
     font-family: 'Montserrat-Light';
@@ -45,6 +47,7 @@ body {
 .content {
     display: flex;
     flex: 1 0 auto;
+    background-color: $background;
 }
   
 #root {

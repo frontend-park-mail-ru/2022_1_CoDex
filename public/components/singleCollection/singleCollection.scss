@@ -38,11 +38,11 @@
         grid-area: B1;
         text-align: left;
     
-        :span {
+        span {
             min-width: 20px;
         }
     
-        &__color-bright {
+        &__color{
             color: $error
         }
     }

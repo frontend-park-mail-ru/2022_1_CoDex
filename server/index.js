@@ -6,7 +6,12 @@ const cookie = require("cookie-parser");
 const morgan = require("morgan");
 const {v4: uuid} = require("uuid");
 const path = require("path");
+const cors = require("cors");
 const app = express();
+app.use(cors({
+  credentials: true,
+  origin: "http://localhost:3000"
+}));
 
 app.use(morgan("dev"));
 app.use(express.static(path.resolve(__dirname, "..", "public")));
@@ -156,15 +161,15 @@ const adventures = {
 
 
 
-app.get("/api/collections", function(req, res) {
+app.get("/api/v1/collections/collection", function(req, res) {
   res.json(Collections);
 });
 
-app.get("/api/collections/1", function(req, res) {
+app.get("/api/v1/collections/collection/1", function(req, res) {
     res.json(top256);
 });
 
-app.get("/api/collections/2", function(req, res) {
+app.get("/api/v1/collections/collection/2", function(req, res) {
   res.json(adventures);
 });
 
@@ -218,7 +223,7 @@ app.post("/login", function (req, res) {
     res.status(200).json({ id });
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 app.listen(port, function () {
     console.log(`Server listening port ${port}`);

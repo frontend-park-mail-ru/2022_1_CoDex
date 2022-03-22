@@ -13,6 +13,6 @@ export const urls = {
         logout: `${currentUrl}/api/v1/logout`,
         login: `${currentUrl}/api/v1/login`,
         register: `${currentUrl}/api/v1/signup`,
-        singleCollection: `${currentUrl}/collections/collection`
+        singleCollection: `${currentUrl}/api/v1/collections/collection`
     }
 }

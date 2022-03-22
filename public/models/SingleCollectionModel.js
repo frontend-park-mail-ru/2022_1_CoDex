@@ -21,19 +21,16 @@ export class SingleCollectionModel {
      * название, ID
      */
     getContent = (collection) => {
-        console.log("getContent");
-        console.log(collection);
         if (!collection?.ID) {
             this.eventBus.emit(events.app.errorPage);
             return;
         }
-        console.log("trying");
         getSingleCollection(collection.ID).then(
             (response) => {
-                console.log("Response", response);
                 if (!response) {
                     this.eventBus.emit(events.app.errorPage);
                 } if (response?.status === statuses.OK && response.parsedResponse) {
+                    this.shortenMoviesDescription(response.parsedResponse.movieList);
                     this.eventBus.emit(
                         events.singleCollectionPage.render.content, response.parsedResponse
                     );
@@ -42,5 +39,32 @@ export class SingleCollectionModel {
                 }
             }
         );
+    }
+
+    /**
+     * @description Укорачивает, если требуется, переданное описание фильма,
+     * согласно максимальной длине краткого описания. В случае укорачивания
+     * добавляет в конце описания "..."
+     * @param { string } description Описание фильма
+     * @return { string } Укороченное описание фильма
+     */
+    processDescription = (description) => {
+        const maxMovieShortDescriptionLength = 190;
+        if (description.length < maxMovieShortDescriptionLength) {
+        return description;
+        }
+        return description.slice(0, description.slice(
+            0, maxMovieShortDescriptionLength).
+            lastIndexOf(" ")) + "...";
+    }
+
+    /**
+     * @description По необходимости укорачивает описания фильмов.
+     * @param { Object[] } movieList Массив данных о фильмах
+     */
+    shortenMoviesDescription = (movieList) => {
+        for (const movie of movieList) {
+            movie.description = this.processDescription(movie.description);
+        }
     }
 }
