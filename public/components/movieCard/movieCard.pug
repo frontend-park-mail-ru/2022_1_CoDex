@@ -6,10 +6,10 @@ mixin movieCard(currentMovie)
                     img(src=(`../server/images/${currentMovie.imgHref}`))
             div.movie__body
                 div.movie__body__info
-                    div.movie_body__info__data
-                        div.movie_body__info__data__title
-                            a.movie_body__info__data__title__movie-title(href=`${currentMovie.movieHref}`) #{currentMovie.title}
-                            div.movie_body__info__data__title__rating #{currentMovie.rating}
-                        div.movie_body__info__data__additional
-                        div.movie_body__info__data__additional #{currentMovie.info}
+                    div.movie__body__info__data
+                        div.movie__body__info__data__title
+                            a.movie__body__info__data__title__movie-title(href=`${currentMovie.movieHref}`) #{currentMovie.title}
+                            div.movie__body__info__data__title__rating #{currentMovie.rating}
+                        div.movie__body__info__data__additional
+                        div.movie__body__info__data__additional #{currentMovie.info}
                 div.movie__body__description #{currentMovie.description}

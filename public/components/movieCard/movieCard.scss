@@ -1,29 +1,36 @@
 @import "../../css/consts.scss";
 
 .movie-card {
+    max-width: 580px;
+    max-height: 214px;
     background-color: $movie_card;
     border-radius: 20px;
     color: $background;
     padding: 10px;
     margin-bottom: 30px;
     align-items: center;
-    max-width: 580px;
-    max-height: 214px;
+    box-sizing: border-box;
 }
 
 .movie {
+    max-width: 560px;
+    max-height: 214px;
     display: flex;
     align-items: flex-start;
     padding-bottom: 30px;
-    max-width: 580px;
-    max-height: 214px;
-
+    
     &__image {
         display: flex;
         max-width: 158px;
         max-height: 214px;
         margin-bottom: 20px;
         align-self: center;
+
+        img {
+            width: 158px;
+            height: 214px;
+            border-radius: 10px;
+        }
     }
 
     &__body {

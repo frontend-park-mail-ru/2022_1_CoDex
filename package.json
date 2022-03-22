@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "webpack server --mode=development --config ./webpack.config.js",
-    "runserver": "node server/index.js",
+    "server": "node server/index.js",
     "prestart": "rm -rf public/template.js & node server/build.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "doc": "jsdoc -c jsdoc.json public/*/*/*.js -r --readme README.md",
@@ -25,6 +25,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
     "css-loader": "^6.7.1",
     "debug": "^4.1.1",
     "express": "^4.16.4",

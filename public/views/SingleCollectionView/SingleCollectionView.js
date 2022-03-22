@@ -31,7 +31,6 @@ export class SingleCollectionView extends BaseView {
      * название подборки, даннные о фильмах
      */
     renderContent = (data) => {
-        console.log("renderContent");
         const template = singleCollectionContent(data);
         this.moviesData = data;
         const content = document.querySelector(".content");
