@@ -63,13 +63,16 @@ import { regularRoutes } from "./consts/routes.js";
 import { Router } from "./modules/router.js";
 import { HomeController } from "./controllers/HomeController.js";
 import { AuthController } from "./controllers/AuthController.js";
+import { SingleCollectionController } from "./controllers/SingleCollectionController.js";
 
 export const root = document.getElementById("root");
 const homeController = new HomeController();
 const authController = new AuthController();
+const singleCollectionController = new SingleCollectionController();
 
 const router = new Router(root);
 
 router.register(regularRoutes.homePage, homeController)
   .register(regularRoutes.authPage, authController)
+  .register(regularRoutes.singleCollectionPage, singleCollectionController)
   .start();

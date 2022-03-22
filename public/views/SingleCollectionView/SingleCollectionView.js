@@ -21,7 +21,7 @@ export class SingleCollectionView extends BaseView {
      * контента страницы. 
      */
     emitGetContent = () => {
-        const URLArgs = getURLArguments(window.location.pathname, '/movies/:id');
+        const URLArgs = getURLArguments(window.location.pathname, '/movies/:ID');
         this.eventBus.emit(events.singleCollectionPage.getContent, URLArgs);
     }
 
@@ -31,6 +31,7 @@ export class SingleCollectionView extends BaseView {
      * название подборки, даннные о фильмах
      */
     renderContent = (data) => {
+        console.log("renderContent");
         const template = singleCollectionContent(data);
         this.moviesData = data;
         const content = document.querySelector(".content");

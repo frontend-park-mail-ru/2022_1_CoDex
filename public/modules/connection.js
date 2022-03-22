@@ -89,6 +89,11 @@ export const logout = async () => {
     }
 };
 
+/**
+ * @description Производит авторизацию пользователя в системе.
+ * @param { object } user Данные о пользователе
+ * @returns { object } Ответ с сервера
+ */
 export const login = async(user) => {
     const params = {
         url: urls.api.login,
@@ -103,6 +108,11 @@ export const login = async(user) => {
     }
 }
 
+/**
+ * @description Производит регистрацию пользователя в системе.
+ * @param { object } user Данные о пользователе
+ * @returns { object } Ответ с сервера
+ */
 export const register = async(user) => {
     const params = {
         url: urls.api.register,
@@ -110,6 +120,24 @@ export const register = async(user) => {
         body: JSON.stringify(user),
     };
     
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+};
+
+/**
+ * @description Получает с сервера данные о конкретной подборке фильмов.
+ * @param { string } collectionID ID запрашиваемой подборки
+ * @returns { object } Ответ с сервера
+ */
+export const getSingleCollection = async(collectionID) => {
+    const params = {
+        url: `${urls.api.singleCollection}/${collectionID}`,
+        method: "GET",
+    };
+
     try {
         return await sendRequest(params);
     } catch (error) {
