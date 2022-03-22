@@ -18,13 +18,13 @@ pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([currClass], 
 ;pug_debug_line = 5;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 if (login) {
 ;pug_debug_line = 6;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`${currClass}__head`], [true]), false, false)) + "\u003E";
+pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`${currClass}__invitation`], [true]), false, false)) + "\u003E";
 ;pug_debug_line = 6;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "Войти\u003C\u002Fdiv\u003E";
 }
 else {
 ;pug_debug_line = 8;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`${currClass}__head`], [true]), false, false)) + "\u003E";
+pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`${currClass}__invitation`], [true]), false, false)) + "\u003E";
 ;pug_debug_line = 8;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "Зарегистрироваться\u003C\u002Fdiv\u003E";
 }
@@ -42,13 +42,13 @@ pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`auth-input 
 ;pug_debug_line = 12;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Cdiv class=\"auth-input__head\"\u003E";
 ;pug_debug_line = 13;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Clabel" + (" class=\"text-input__label\""+pug_attr("for", input.name, true, false)) + "\u003E";
+pug_html = pug_html + "\u003Clabel" + (" class=\"auth-input__head__label\""+pug_attr("for", input.name, true, false)) + "\u003E";
 ;pug_debug_line = 13;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + (pug_escape(null == (pug_interp = input.title) ? "" : pug_interp)) + "\u003C\u002Flabel\u003E";
 ;pug_debug_line = 14;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`auth-input__error ${input.name}`], [true]), false, false)) + "\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`auth-input__head__error ${input.name}`], [true]), false, false)) + "\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 15;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cinput" + (" class=\"text-inputs\""+pug_attr("type", input.type, true, false)+pug_attr("name", input.name, true, false)+pug_attr("id", input.name, true, false)+pug_attr("placeholder", input.placeholder, true, false)) + "\u002F\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Cinput" + (" class=\"text-input\""+pug_attr("type", input.type, true, false)+pug_attr("name", input.name, true, false)+pug_attr("id", input.name, true, false)+pug_attr("placeholder", input.placeholder, true, false)) + "\u002F\u003E\u003C\u002Fdiv\u003E";
       }
   } else {
     var $$l = 0;
@@ -60,13 +60,13 @@ pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`auth-input 
 ;pug_debug_line = 12;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "\u003Cdiv class=\"auth-input__head\"\u003E";
 ;pug_debug_line = 13;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Clabel" + (" class=\"text-input__label\""+pug_attr("for", input.name, true, false)) + "\u003E";
+pug_html = pug_html + "\u003Clabel" + (" class=\"auth-input__head__label\""+pug_attr("for", input.name, true, false)) + "\u003E";
 ;pug_debug_line = 13;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + (pug_escape(null == (pug_interp = input.title) ? "" : pug_interp)) + "\u003C\u002Flabel\u003E";
 ;pug_debug_line = 14;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`auth-input__error ${input.name}`], [true]), false, false)) + "\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Cdiv" + (pug_attr("class", pug_classes([`auth-input__head__error ${input.name}`], [true]), false, false)) + "\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
 ;pug_debug_line = 15;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Cinput" + (" class=\"text-inputs\""+pug_attr("type", input.type, true, false)+pug_attr("name", input.name, true, false)+pug_attr("id", input.name, true, false)+pug_attr("placeholder", input.placeholder, true, false)) + "\u002F\u003E\u003C\u002Fdiv\u003E";
+pug_html = pug_html + "\u003Cinput" + (" class=\"text-input\""+pug_attr("type", input.type, true, false)+pug_attr("name", input.name, true, false)+pug_attr("id", input.name, true, false)+pug_attr("placeholder", input.placeholder, true, false)) + "\u002F\u003E\u003C\u002Fdiv\u003E";
     }
   }
 }).call(this);
@@ -86,7 +86,7 @@ pug_html = pug_html + "Нет аккаунта? Зарегистрировать
 }
 else {
 ;pug_debug_line = 28;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
-pug_html = pug_html + "\u003Ca class=\"auth__invitation\" href=\"\u002Fauth\"\u003E";
+pug_html = pug_html + "\u003Ca class=\"auth__invitation\" href=\"\u002Flogin\"\u003E";
 ;pug_debug_line = 28;pug_debug_filename = ".\u002Fpublic\u002Fcomponents\u002Fauth\u002Fauth.pug";
 pug_html = pug_html + "Уже есть аккаунт? Войти!\u003C\u002Fa\u003E";
 }

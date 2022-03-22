@@ -45,4 +45,7 @@ export const events = {
     profilePage: {
         changedProfile: "profilePage:changedProfile",
     },
+    singleCollectionPage: {
+        getContent: "singleCollectionPage:getContent",
+    },
 };

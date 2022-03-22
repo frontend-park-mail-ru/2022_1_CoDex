@@ -7,10 +7,20 @@ import { authFormName, authConfig } from "../../consts/auth.js";
  * @description Класс представления страницы авторизации / регистрации.
  */
 export class AuthView extends BaseView {
+    /**
+     * @description Создаёт представление страницы 
+     * авторизации / регистрации.
+     * @param { EventBus } eventBus Глобальная шина событий
+     * @param { Object } data Данные, необходимые для создания представления
+     */
     constructor(eventBus, {data={}} = {}) {
         super(eventBus, data);
     }
 
+    /**
+     * @description Отправляет на глобальную шину событий событие отрисовки 
+     * контента страницы. 
+     */
     emitGetContent = () => {
         this.eventBus.emit(events.authPage.getContent, this.routeData)
     }

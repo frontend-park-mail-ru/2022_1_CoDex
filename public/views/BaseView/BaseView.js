@@ -11,13 +11,20 @@ export class BaseView {
     /**
      * @description Создаёт базовое представление.
      * @param { EventBus } eventBus Глобальная шина событий
+     * @param { Object } data Данные, необходимые для создания представления
      */
     constructor(eventBus, {data = {}} = {}) {
         this._data = data;
         this.eventBus = eventBus;
     }
 
+    /**
+     * @description Отправляет на глобальную шину событий событие отрисовки 
+     * контента страницы. Функция базового класса предназначена для 
+     * переопределения.
+     */
     emitGetContent = () => {};
+
     render = (routeData) => {
         this.routeData = routeData;
         const content = document.querySelector(".content");
