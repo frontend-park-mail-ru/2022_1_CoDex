@@ -46,6 +46,9 @@ export const events = {
         changedProfile: "profilePage:changedProfile",
     },
     singleCollectionPage: {
+        render: {
+            content: "singleCollectionPage:renderContent",
+        },
         getContent: "singleCollectionPage:getContent",
     },
 };

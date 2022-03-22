@@ -1,12 +1,13 @@
 export const routes = {
     homePage: "/",
-    collectionsPage: "/collections/\\d+",
+    collectionsPage: "/collections",
+    singleCollectionsPage: "/collections/\\d+",
     profilePage: "/profile",
 }
 
 export const regularRoutes = {
     homePage: "^/$",
-    collectionsPage: "/collections",    
+    collectionsPage: "^/collections",    
     authPage:  "^/login$",
-
+    singleCollectionPage:"^/collections/\\d+$",    
 }
