@@ -73,6 +73,7 @@ const singleCollectionController = new SingleCollectionController();
 const router = new Router(root);
 
 router.register(regularRoutes.homePage, homeController)
-  .register(regularRoutes.authPage, authController)
+  .register(regularRoutes.loginPage, authController)
+  .register(regularRoutes.registrationPage, authController)
   .register(regularRoutes.singleCollectionPage, singleCollectionController)
   .start();

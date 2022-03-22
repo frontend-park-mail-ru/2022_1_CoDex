@@ -20,7 +20,7 @@ export class AuthModel extends BaseModel {
     }
 
     getContent = (URLData) => {
-        if (URLData?.URL?.URL.match(regularRoutes.authPage)) {
+        if (URLData?.URL?.URL.match(regularRoutes.loginPage)) {
             this.getLoginContent();
         } else {
             this.getRegistrationContent();
@@ -135,7 +135,7 @@ export class AuthModel extends BaseModel {
         if (this.hasErrors(inputsData)) {
             return;
         }
-        if (URLData?.URL?.URL.match(regularRoutes.authPage)) {
+        if (URLData?.URL?.URL.match(regularRoutes.loginPage)) {
             this.submitLogin(inputsData);
         } else {
             this.submitRegister(inputsData);

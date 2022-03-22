@@ -96,11 +96,10 @@ export class Router {
     getURLData = (URL) => {
         let targetController = null;
         const result = this.getParameters(URL);
-
-        this.routes.forEach(({ currentURL, controller }) => {
-            const tmpResult = result.URL.match(currentURL);
+        this.routes.forEach((route) => {
+            const tmpResult = result.URL.match(route.URL);
             if (tmpResult) {
-                targetController = controller;
+                targetController = route.controller;
             }
         });
         return {
