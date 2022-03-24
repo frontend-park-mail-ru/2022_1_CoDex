@@ -4,13 +4,13 @@ export const routes = {
     singleCollectionsPage: "/collections/\\d+",
     profilePage: "/profile",
     loginPage: "/login",
-    registrationPage: "/reg",
+    registrationPage: "/register",
 }
 
 export const regularRoutes = {
     homePage: "^/$",
-    collectionsPage: "^/collections",    
+    collectionsPage: "^/collections$",    
     loginPage:  "^/login",
-    registrationPage: "^/reg",
+    registrationPage: "^/register",
     singleCollectionPage:"^/collections/\\d+$",    
 }

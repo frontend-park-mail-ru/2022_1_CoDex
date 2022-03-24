@@ -45,6 +45,14 @@ export const events = {
     profilePage: {
         changedProfile: "profilePage:changedProfile",
     },
+
+    collectionsPage: {
+        render: {
+            content: "collectionsPage:renderContent",
+        },
+        getContent: "collectionsPage:getContent",
+    },
+
     singleCollectionPage: {
         render: {
             content: "singleCollectionPage:renderContent",

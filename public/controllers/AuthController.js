@@ -51,5 +51,6 @@ export class AuthController extends BaseController {
                 handler: this.model.deleteAllErrors,
             },
         );
+        this.subscribe();
     }
 }

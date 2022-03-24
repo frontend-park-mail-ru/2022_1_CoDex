@@ -21,7 +21,7 @@ export class SingleCollectionView extends BaseView {
      * контента страницы. 
      */
     emitGetContent = () => {
-        const URLArgs = getURLArguments(window.location.pathname, '/movies/:ID');
+        const URLArgs = getURLArguments(window.location.pathname, '/collections/:ID');
         this.eventBus.emit(events.singleCollectionPage.getContent, URLArgs);
     }
 

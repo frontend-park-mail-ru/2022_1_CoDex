@@ -11,5 +11,7 @@ export class HomeController extends BaseController {
      */
     constructor() {
         super(HomeView, HomeModel);
+        this.subscribe();
     }
+    
 }

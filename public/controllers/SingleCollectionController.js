@@ -22,5 +22,6 @@ export class SingleCollectionController extends BaseController {
                 handler: this.view.renderContent,
             }
         );
+        this.subscribe();
     }
 }

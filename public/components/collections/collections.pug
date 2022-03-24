@@ -2,13 +2,13 @@ include ../collection/collection
 
 div.content_wrapper
     page.page
-        div(class = "page__container content_container")
-        h1.title Подборки
-        div.collections_description Это наши подборочки :)
-        div.bg_container
-            div.collections__container
-                each input, _ in collections
-                    +collection(input)
+        div(class = "content_container")
+            h1.title Подборки
+            div.description Это наши подборочки :)
+            div.bg_container
+                div.collections__container
+                    each input, _ in collectionList
+                        +collection(input)
 
 //- a.collection(href=("/" + page) data-section=page parameters=number)
 //-     div.collection__wrapper

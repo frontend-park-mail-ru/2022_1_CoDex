@@ -144,3 +144,20 @@ export const getSingleCollection = async(collectionID) => {
         return null;
     }
 }
+
+/**
+ * @description Получает с сервера данные о подборках фильмов.
+ * @returns { object } Ответ с сервера
+ */
+ export const getCollections = async() => {
+    const params = {
+        url: `${urls.api.collections}`,
+        method: "GET",
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}

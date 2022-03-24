@@ -1,4 +1,4 @@
-- var currClass = login ? "login" : "reg"
+- var currClass = login ? "login" : "register"
 
 .auth-content
     div(class=currClass)
@@ -23,6 +23,6 @@
                 div.auth__btn__error
                 input(class=`auth__btn__input` type="button" name=submitButtonName value=auth ? "Войти" : "Создать аккаунт")
         if login
-            a(class="auth__invitation" href="/reg") Нет аккаунта? Зарегистрироваться!
+            a(class="auth__invitation" href="/register") Нет аккаунта? Зарегистрироваться!
         else
             a(class="auth__invitation" href="/login") Уже есть аккаунт? Войти!

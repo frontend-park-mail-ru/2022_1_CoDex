@@ -6,7 +6,7 @@ import { eventBus } from "../modules/eventBus.js";
 export class BaseController {
     /**
      * @description Создаёт базовый контроллер.
-     * @param { function } view - Предаставление (view)
+     * @param { function } view - Представление (view)
      * @param { function } model - Модель
      */
     constructor(view, model) {

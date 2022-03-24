@@ -7,10 +7,9 @@
     transition: all 0.2s ease-out;
 
     &_wrapper {
-        position: relative;
-        padding-top: 55%;
+        box-sizing: border-box;
 
-        & _img {
+        img {
             border-radius: 10px;
             height: 100%;
             width: 100%;
@@ -23,7 +22,7 @@
     &__description {
         margin-top: 10px;
         text-decoration: none;
-        font-family: var(--main-font);
+        font-family: $main_font;
         font-size: 20px;
         color: white;
     }

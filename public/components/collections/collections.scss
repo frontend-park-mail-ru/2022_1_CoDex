@@ -24,38 +24,38 @@
                 "D0 D0 D1 D1 D1 D1 D1 D1 D1 D1 D2 D2";
             justify-items: center;
             justify-content: center;
-        }
 
-        .collections__description {
-            text-align: left;
-            width: 100%;
-            margin-bottom: 15px;
-            font-family: var(--main-font);
-            color: white;
-            grid-area: C1;
-        }
+            .description {
+                text-align: left;
+                width: 100%;
+                margin-bottom: 15px;
+                font-family: $main_font;
+                color: white;
+                grid-area: C1;
+            }
 
-        .collections__container {
-            grid-template-columns: repeat(4, 1fr);
-            display: grid;
-            row-gap: 30px;
-            column-gap: 20px;
-        }
-
-        .title {
-            color: white;
-            grid-area: B1;
-            text-align: left;
-            width: 100%;
+            .title {
+                color: white;
+                grid-area: B1;
+                text-align: left;
+                width: 100%;
+            }
         }
 
         .bg_container {
-            background-color: var(--main-bg-color);
+            background-color: $background;
             border-radius: 30px;
-            color: var(--main-bg-color);
+            color: $background;
             padding: 30px;
             grid-area: D1;
             width: 100%;
+
+            .collections__container {
+                grid-template-columns: repeat(4, 1fr);
+                display: grid;
+                row-gap: 30px;
+                column-gap: 20px;
+            }
         }
     }
 }

@@ -20,18 +20,18 @@ app.use(cookie());
 
 const Collections = {
   collectionList: [
-    {description: "Топ 256", imgSrc: "top.png", page: "movies", number: "1"},
-    {description: "Приключения", imgSrc: "adventures.png", page: "movies", number: "2"},
-    {description: "Для всей семьи", imgSrc: "family.png", page: "movies", number: "3"},
-    {description: "Романтичное", imgSrc: "romantic.png", page: "movies", number: "4"},
-    {description: "Лучшие драмы", imgSrc: "drama.png", page: "movies", number: "5"},
-    {description: "Детское", imgSrc: "childish.png", page: "movies", number: "6"},
-    {description: "Комедии", imgSrc: "comedy.png", page: "movies", number: "7"},
-    {description: "Спасение мира", imgSrc: "saveTheWorld.png", page: "movies", number: "8"},
-    {description: "Кинокомиксы", imgSrc: "comics.png", page: "movies", number: "9"},
-    {description: "Советская классика", imgSrc: "soviet.png", page: "movies", number: "10"},
-    {description: "Шпионские фильмы", imgSrc: "spy.png", page: "movies", number: "11"},
-    {description: "Выбор редакции", imgSrc: "ourTop.png", page: "movies", number: "12"},
+    {description: "Топ 256", imgSrc: "top.png", page: "collections", number: "1"},
+    {description: "Приключения", imgSrc: "adventures.png", page: "collections", number: "2"},
+    {description: "Для всей семьи", imgSrc: "family.png", page: "collections", number: "3"},
+    {description: "Романтичное", imgSrc: "romantic.png", page: "collections", number: "4"},
+    {description: "Лучшие драмы", imgSrc: "drama.png", page: "collections", number: "5"},
+    {description: "Детское", imgSrc: "childish.png", page: "collections", number: "6"},
+    {description: "Комедии", imgSrc: "comedy.png", page: "collections", number: "7"},
+    {description: "Спасение мира", imgSrc: "saveTheWorld.png", page: "collections", number: "8"},
+    {description: "Кинокомиксы", imgSrc: "comics.png", page: "collections", number: "9"},
+    {description: "Советская классика", imgSrc: "soviet.png", page: "collections", number: "10"},
+    {description: "Шпионские фильмы", imgSrc: "spy.png", page: "collections", number: "11"},
+    {description: "Выбор редакции", imgSrc: "ourTop.png", page: "collections", number: "12"},
   ]
 };
 
@@ -161,7 +161,7 @@ const adventures = {
 
 
 
-app.get("/api/v1/collections/collection", function(req, res) {
+app.get("/api/v1/mainPage", function(req, res) {
   res.json(Collections);
 });
 
