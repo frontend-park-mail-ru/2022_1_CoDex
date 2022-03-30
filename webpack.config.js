@@ -44,16 +44,6 @@ module.exports = {
                 use: 'file-loader?name=fonts/[name].[ext]',
             },
             {
-                test: /\.(png|jpg|svg|gif)$/,
-                use:
-                {
-                    loader: 'url-loader',
-                    options: {
-                      mimetype: 'image/png',
-                    },
-                },
-              },
-            {
                 test: /\.scss$/i,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
                 exclude: /node_modules/,
