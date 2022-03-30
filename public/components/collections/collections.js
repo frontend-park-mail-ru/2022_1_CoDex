@@ -25,7 +25,7 @@ export function createCollection(params) {
  * в случае успеха парсит полученные данные, получая подборки фильмов.
  */
 export function renderCollections(collectionContainer) {
-  Ajax.getFetch({url: `${URL}/api/v1/mainPage`})
+  Ajax.getFetch({url: `${URL}/api/v1/collections`})
       .then(({status, parsedBody}) => {
         parsedBody.collectionList.forEach((element) => {
           collectionContainer.appendChild(createCollection(element));
