@@ -13,6 +13,8 @@
 }
 
 .movie {
+    font-family: $main_font;
+    font-weight: bold;
     max-width: 560px;
     max-height: 214px;
     display: flex;
@@ -80,9 +82,7 @@
         }
 
         &__description {
-            font-family: var(--main-font);
             color: rgb(219 218 218);
-            font-weight: 300;
             text-align: justify;
             display: flex;
         }

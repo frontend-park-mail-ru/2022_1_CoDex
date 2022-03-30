@@ -1,6 +1,8 @@
 @import "../../css/consts.scss";
 
 .auth-content {
+    font-family: $main_font;
+    font-weight: bold;
 	background: url("./static/pics/bg.png") no-repeat center center;
 	min-height: 100%;
 	width: 100%;
@@ -140,6 +142,7 @@
 .text-input {
 	height: 50px;
     font-family: $main_font;
+    font-weight: bold;
 	width: 100%;
     border-radius: 10px;
     box-sizing: border-box;
@@ -177,7 +180,8 @@
     }
 
     &__input {
-        font-family: var(--main-font);
+        font-family: $main_font;
+        font-weight: bold;
         font-size: 18px;
         color: white;
         margin: 1em auto 0;

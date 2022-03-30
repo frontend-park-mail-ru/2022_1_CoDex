@@ -21,7 +21,7 @@
                     )
             div.auth__btn
                 div.auth__btn__error
-                input(class=`auth__btn__input` type="button" name=submitButtonName value=auth ? "Войти" : "Создать аккаунт")
+                input(class=`auth__btn__input` type="button" name=submitButtonName value=login ? "Войти" : "Создать аккаунт")
         if login
             a(class="auth__invitation" href="/register") Нет аккаунта? Зарегистрироваться!
         else

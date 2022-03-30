@@ -1,6 +1,8 @@
 @import "../../css/consts.scss";
 
 .content_wrapper {
+    font-family: $main_font;
+    font-weight: bold;
     width: 100%;
     min-height: 100%;
     overflow: hidden;
