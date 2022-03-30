@@ -5,15 +5,12 @@
 	flex: 0 0 100%;
 	background-color: $navigational;
 	display: flex;
-	/* justify-content:center;     */
 }
 
 .copyright {
 	font-family: "Montserrat-Regular", "Arial", sans-serif;
-	;
 	flex: 0 0 200px;
 	color: $shadow;
-	;
 	align-self: flex-end;
 	padding-bottom: 20px;
 	padding-left: 20px;
@@ -21,7 +18,6 @@
 
 .social {
 	font-family: "Montserrat-Regular", sans-serif;
-	;
 	flex: 1 0 auto;
 	display: flex;
 	align-items: center;
