@@ -3,9 +3,9 @@ import { events } from "../../consts/events.js";
 import { routes } from "../../consts/routes.js";
 import { renderBaseView, createElementFromHTML } from "../../utils/utils.js";
 import { BaseView } from "../BaseView/BaseView.js";
-import { loginButton } from "../../components/header/loginButton.pug";
-import { userBlock } from "../../components/header/userBlock/userBlock.pug";
-import { logoutButton } from "../../components/header/logoutButton.pug";
+import loginButton from "../../components/header/loginButton.pug";
+import userBlock from "../../components/header/userBlock/userBlock.pug";
+import logoutButton from "../../components/header/logoutButton.pug";
 
 const usernameMaxLength = 10;
 
@@ -104,11 +104,8 @@ export class HeaderView extends BaseView {
         if (!authModule.user || !changeBlock) {
             return;
         }
-        const username = user.username;
+        userBlock();
         changeBlock.replaceWith(createElementFromHTML(userBlock({
-            username: username.length > usernameMaxLength ?
-                username.substr(0, usernameMaxLength).concat("...") :
-                username,
             imgSrc: authModule.user.avatarSrc,
             userID: authModule.user.ID,
             profileHref: routes.profilePage,
@@ -119,6 +116,7 @@ export class HeaderView extends BaseView {
             if (logoutBtn) {
                 return;
             }
+            console.log("OK");
             verticalMenu.appendChild(createElementFromHTML(logoutButton()));
         }
         this.addEventListenerToLogoutButton();

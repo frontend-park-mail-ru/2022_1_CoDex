@@ -17,7 +17,7 @@ class Auth {
         }
         this.eventBus.on(events.authPage.logRegSuccess, this.getUserFromSubmit);
         this.eventBus.on(events.header.logout, this.logoutUser);
-        this.eventBus.on(events.profilePage.changedProfile, )
+        this.eventBus.on(events.profilePage.changedProfile, this.changeUser);
     }
 
     /**
@@ -67,7 +67,7 @@ class Auth {
         if (!parsedResponse) {
             return;
         }
-        this.user = parsedResponse.body;
+        this.user = parsedResponse;
         if (this.user) {
             window.localStorage.setItem("user", JSON.stringify(this.user));
             this.eventBus.emit(events.auth.gotUser);

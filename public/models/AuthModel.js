@@ -78,11 +78,12 @@ export class AuthModel extends BaseModel {
      * @description Перенаправляет (если необходимо) на следующую страницу.
      */
     redirect = () => {
+        console.log("Redirecting...");
         const redirect = new URL(location.href).searchParams.get("redirect");
         if (!redirect) {
-            this.eventBus.emit(events.pathChanged, { path: routes.homePage });
+            this.eventBus.emit(events.pathChanged, { URL: routes.collectionsPage });
         } else {
-            this.eventBus.emit(events.pathChanged, { path: `/${redirect}` });
+            this.eventBus.emit(events.pathChanged, { URL: `/${redirect}` });
         }
     };
 
@@ -154,7 +155,7 @@ export class AuthModel extends BaseModel {
             if (!response) {
                 return;
             }
-            if (response.parsedResponse?.status === statuses.OK) {
+            if (response.status === statuses.OK) {
                 this.eventBus.emit(events.authPage.logRegSuccess, 
                     response.parsedResponse);
                 this.redirect();

@@ -1,5 +1,5 @@
 import { events } from "../consts/events.js";
-import { HeaderModel } from "../models/headerModel.js";
+import { HeaderModel } from "../models/HeaderModel.js";
 import { HeaderView } from "../views/HeaderView/HeaderView.js";
 import { BaseController } from "./BaseController.js";
 
