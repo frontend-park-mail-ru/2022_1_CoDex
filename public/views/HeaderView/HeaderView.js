@@ -116,7 +116,6 @@ export class HeaderView extends BaseView {
             if (logoutBtn) {
                 return;
             }
-            console.log("OK");
             verticalMenu.appendChild(createElementFromHTML(logoutButton()));
         }
         this.addEventListenerToLogoutButton();
