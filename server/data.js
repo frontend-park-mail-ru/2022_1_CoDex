@@ -60,6 +60,11 @@ const startServer = (app) => {
         });
     });
 
+    // app.get('/api/v1/checkAuth', (req, res) => {
+    //   res.json({
+    //     "status": 200,
+    //     });
+    // });
 
     const users = {
         "a@a.ru": {

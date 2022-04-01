@@ -127,11 +127,11 @@ export class HeaderView extends BaseView {
      */
     addEventListenerToLogoutButton = () => {
         const logoutButton = document.querySelectorAll(".user-block__logout-btn");
-        if (!logoutButton.length) {
+        if (!logoutButton || !logoutButton.length) {
             return;
         }
-        logoutButton.forEach((button) => {
-            button.addEventListener("click", (e) => {
+        logoutButton.forEach((button) => { 
+                button.addEventListener("click", (e) => {
                 this.removeLogoutButton();
                 this.renderLoginButton();
                 this.eventBus.emit(events.header.logout);

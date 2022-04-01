@@ -1,5 +1,6 @@
 import baseViewPug from "../views/BaseView/BaseView.pug";
 import { headerLinks } from "../consts/header.js";
+import { routes } from "../consts/routes.js";
 
 
 /**
@@ -43,10 +44,9 @@ export const renderBaseView = () => {
     const user = JSON.parse(userLocalStorage);
     return baseViewPug({
       headerLinks: headerLinks,
-      userName: user.first_name.length > 8 ? user.first_name.substr(0, 8) + "..." : user.first_name,
       imgSrc: user.profile_pic,
       userId: user.id,
-      profileHref: ROUTES.Profile,
+      profileHref: routes.Profile,
       userFromStorage: true,
     });
   } else {
