@@ -1,9 +1,27 @@
-header#navbar
-    a.navbar_logo(href="/" data-section="main")
+header.navbar
+    .navbar__vertical-menu
+      .vertical-menu__main-btn
+        span.vertical-menu-line.first-line-in-menu
+        span.vertical-menu-line.second-line-in-menu
+        span.vertical-menu-line.third-line-in-menu
+      .vertical-menu__btn-container
+        //- each btn in mobileHeaderLinks
+        //-     a.navbar__menu-btn(href = btn.href)= btn.title
+    a.navbar__logo(href="/" data-section="main")
         img(data-section="main" src="../server/images/logo.svg")
-    div.navbar_menu
-        a.navbar_menu_btn_collections(href="/collections", data-section="collections") Подборки
-        a.navbar_menu_btn_genres(href="/", data-section="genres") Жанры
-        a.navbar_menu_btn_premiers(href="/", data-section="premiers") Премьеры
-    div.navbar_menu_login
-        a.navbar_menu_login-btn(id="navbar-button" href="/login", data-section="login") Войти
+ 
+    div.navbar__menu
+        a.navbar__menu-btn.collections(href="/collections") Подборки
+        a.navbar__menu-btn.genres(href="/") Жанры
+        a.navbar__menu-btn.premiers(href="/") Премьеры
+        // Как так сделать?
+        //- each btn in headerLinks
+        //-     a.navbar__menu-btn(href=btn.href) = btn.title
+    .search
+        input.search__input(placeholder="Фильм? Актёр?")
+        .search__btn
+            include ../../static/pics/search.svg
+    if userFromStorage
+        include userBlock/userBlock.pug
+    else
+        include loginButton.pug

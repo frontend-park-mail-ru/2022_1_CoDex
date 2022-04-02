@@ -1,0 +1,15 @@
+mixin movieCard(currentMovie)
+    div.movie-card
+        div.movie
+            div.movie__image
+                a.movie__image(href=`${currentMovie.movieHref}`)
+                    img(src=(`../server/images/${currentMovie.imgHref}`))
+            div.movie__body
+                div.movie__body__info
+                    div.movie__body__info__data
+                        div.movie__body__info__data__title
+                            a.movie__body__info__data__title__movie-title(href=`${currentMovie.movieHref}`) #{currentMovie.title}
+                            div.movie__body__info__data__title__rating #{currentMovie.rating}
+                        div.movie__body__info__data__additional
+                        div.movie__body__info__data__additional #{currentMovie.info}
+                div.movie__body__description #{currentMovie.description}

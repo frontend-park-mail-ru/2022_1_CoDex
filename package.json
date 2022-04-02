@@ -1,11 +1,11 @@
 {
-  "name": "sample-2022-1",
+  "name": "AKino, CoDex",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "node server/index.js",
-    "prestart": "rm -rf public/template.js & node server/build.js",
+    "start": "webpack server --mode=development --config ./webpack.config.js",
+    "server": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "doc": "jsdoc -c jsdoc.json public/*/*/*.js -r --readme README.md",
     "lint": "npx eslint public/*/*/*.js --fix && npx stylelint public/*/*/*.css --fix"
@@ -24,17 +24,34 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "css-loader": "^6.7.1",
     "debug": "^4.1.1",
     "express": "^4.16.4",
+    "file-loader": "^6.2.0",
     "morgan": "^1.9.1",
     "pug": "^3.0.2",
+    "pug-loader": "^2.4.0",
     "sass": "^1.49.9",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.3",
     "eslint": "^8.10.0",
     "eslint-config-google": "^0.14.0",
+    "favicons": "^6.2.2",
+    "favicons-webpack-plugin": "^5.0.2",
+    "html-webpack-plugin": "^5.5.0",
     "jsdoc": "^3.6.10",
-    "stylelint-config-standard": "^25.0.0"
+    "stylelint-config-standard": "^25.0.0",
+    "svg-inline-loader": "^0.8.2",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
   }
 }

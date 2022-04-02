@@ -1,0 +1,153 @@
+@import "../../css/consts.scss";
+
+.navbar {
+	font-family: $main_font;
+    font-weight: bold;
+	width: 100%;
+	flex: 0 0 10%;
+	background-color: $navigational;
+	position: sticky;
+	align-items: center;
+	justify-items: center;
+	justify-self: center;
+	justify-content: center;
+
+	/* display: flex;
+    flex-direction: row; */
+	display: grid;
+	grid-template-columns: repeat(12, 120px);
+
+	/* column-gap: 30px; */
+	grid-template-areas: "A1 A1 A2 A3 A3 A3 A4 A4 A4 A7 A8 A9";
+
+    &__logo {
+        margin-left: 5%;
+        grid-area: A1;
+
+        img {
+            width: 100px;
+            height: 65px;
+        }
+    }
+
+    // TODO
+    &__vertical-menu {
+        display: none;
+        margin-left: 18px;
+        flex-direction: column;
+        height: 65px;
+        justify-content: center;
+    
+        &:hover {
+          cursor: pointer;
+        }
+    
+        & svg {
+          fill: $white;
+        }
+    }
+
+    &__menu {
+        display: grid;
+        grid-area: A3;
+        align-items: center;
+        justify-items: center;
+        grid-template-columns: repeat(3, 120px);
+        gap: 30px;
+        grid-template-areas: "A31 A32 A33";
+        font-size: 20px;
+    }
+
+    &__menu-btn {
+        text-decoration: none;
+        transition: 0.1s;
+        color: white;
+
+        &:hover {
+            color: $dark_raspberry;
+            cursor: pointer;
+        }
+
+        &:active {
+            color: $very_dark_raspberry;
+            cursor: pointer;
+        }
+    }    
+
+    .collections {
+        grid-area: A31;
+    }
+    
+    .genres {
+        grid-area: A32;
+    }
+    
+    .premiers {
+        grid-area: A33;
+    }
+
+    &__login {
+        display:grid;
+        grid-area: A8;
+        grid-template-areas: "A81";
+        margin: 0 auto;
+    }
+    
+    &__login-btn {
+        display: grid;
+        padding: 10px;
+        grid-area: A81;
+        text-decoration: none;
+        width: 88px;
+        height: 48px;
+        font-family: var(--main-font);
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 28px;
+        color: white;
+        background: #9207a6;
+        border-radius: 12px;
+        box-sizing: border-box;
+
+        &:hover {
+            background: #9207a6;
+	        box-shadow: inset 0 0 15px rgb(0 0 0 / 75%);
+        }
+
+        &:active {
+            box-shadow: inset 0 0 30px rgb(0 0 0 / 75%);
+        }
+    }
+}
+
+.search {
+    // TODO
+    grid-area: A4;
+    font-family: "Montserrat-Regular", "Arial", sans-serif;
+    display: flex;
+    visibility: visible;
+    opacity: 0;
+    justify-content: end;
+    align-items: center;
+    flex: 1 0;
+    padding: 0 15px;
+    width: 30%;
+  
+    &__input {
+      color: $black;
+      font-family: "Montserrat-Regular", sans-serif;
+      border-radius: 20px;
+      width: 100%;
+      border: 0;
+      padding: 6px 15px;
+      outline: none;
+      transition-property: visibility, opacity;
+      transition-duration: 2s, 0.4s;
+      transition-delay: 0s;
+    }
+  
+    &__btn {
+      cursor: pointer;
+    }
+  }

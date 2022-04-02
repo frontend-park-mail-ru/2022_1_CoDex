@@ -1,0 +1,56 @@
+@import "../../css/consts.scss";
+
+#footer {
+	width: 100%;
+	flex: 0 0 100%;
+	background-color: $navigational;
+	display: flex;
+}
+
+.copyright {
+	font-family: "Montserrat-Regular", "Arial", sans-serif;
+	flex: 0 0 200px;
+	color: $shadow;
+	align-self: flex-end;
+	padding-bottom: 20px;
+	padding-left: 20px;
+}
+
+.social {
+	font-family: "Montserrat-Regular", sans-serif;
+	flex: 1 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: $shadow;
+	font-size: 14px;
+}
+
+.social img {
+	width: 150px;
+	height: 150px;
+	padding: 20px;
+	filter: drop-shadow(0 0 10px $dark_shadow);
+
+}
+
+.social-btn path {
+	transition: 0.5s ease-in-out;
+}
+
+.github-hrefs {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	padding: 0 0 0 20px;
+}
+
+.github-hrefs a {
+	text-decoration: none;
+	color: currentcolor;
+	padding: 3px;
+}
+
+.github-hrefs a:hover {
+	color: $light_shadow;
+}

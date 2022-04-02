@@ -1,0 +1,78 @@
+@import "../../../css/consts.scss";
+
+.user-block {
+    display: inline;
+    position: relative;
+    width: 120px;
+    height: 70px;
+
+    &__profile-href {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover &__submenu {
+      display: block;
+    }
+  
+    &__submenu {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      position: absolute;
+      white-space: nowrap;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      z-index: 1;
+      width:120px;
+      height:100px;
+      background-color: $navigational;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+
+      &__block {
+        margin-top: 16px;
+        display: block;
+        text-align: center;
+        width: 120px;
+        height: 30px;
+        font-family: $main-font;
+        font-weight: bold;
+        color: $white;
+        cursor: pointer;
+          &:hover {
+            color: $dark_raspberry;
+          }
+      
+          &:active {
+            color: $very_dark_raspberry;
+          }
+      }
+    }
+  
+    &__img {
+      margin: auto;
+      box-shadow: 0 0 20px 1px $navigational;
+      border-radius: 300px;
+      height: 46px;
+      width: 46px;
+      object-fit: cover;
+    }
+  
+    &__logout-btn, &__profile {
+      color: $white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: .2s ease-in-out;
+  
+    }
+  }
+  
+  @media (max-width: 1016px) {
+    .user-block:hover {
+      display: block;
+    }
+  }
+  

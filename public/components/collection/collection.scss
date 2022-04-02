@@ -1,0 +1,29 @@
+@import "../../css/consts.scss";
+
+.collection {
+    min-width: 180px;
+    text-decoration: none;
+    flex-direction: column;
+    transition: all 0.2s ease-out;
+
+    &_wrapper {
+        box-sizing: border-box;
+
+        img {
+            border-radius: 10px;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            right: 0;
+            object-fit: cover;
+        }
+    }
+
+    &__description {
+        margin-top: 10px;
+        text-decoration: none;
+        font-family: $main_font;
+        font-size: 20px;
+        color: white;
+    }
+}

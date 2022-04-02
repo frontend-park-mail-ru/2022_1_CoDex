@@ -1,0 +1,40 @@
+@import "css/consts.scss";
+// @import "ccs/style.scss";
+// @import "css/ui.scss";
+@import "components/header/header.scss";
+@import "components/footer/footer.scss";
+@import "components/header/userBlock/userBlock.scss";
+@import "components/auth/auth.scss";
+@import "components/collection/collection.scss";
+@import "components/collections/collections.scss";
+@import "components/singleCollection/singleCollection.scss";
+@import "components/movieCard/movieCard.scss";
+
+html, body {
+    font-family: 'Montserrat-Regular', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: $white;
+    color: $black;
+    width: 100vw;
+    border: 0;
+}
+  
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  
+}
+  
+.content {
+    display: flex;
+    flex: 1 0 auto;
+    background-color: $background;
+}
+  
+#root {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    position: relative;
+}

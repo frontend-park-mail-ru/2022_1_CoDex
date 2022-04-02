@@ -1,4 +1,4 @@
 .idea
 node_modules
 out
-# public/templates.js
+public/templates.js

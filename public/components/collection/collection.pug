@@ -1,0 +1,5 @@
+mixin collection(i)
+    a(class = "collection" href=`/${i.page}/${i.number}`)
+        div.collection_wrapper
+            img(src=`server/images/${i.imgSrc}`)
+        div.collection__description #{i.description}

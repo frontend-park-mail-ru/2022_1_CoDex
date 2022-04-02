@@ -1,4 +1,12 @@
-a.collection(href=("/" + page) data-section=page parameters=number)
-    div.collection__wrapper
-        img.collection_img(data-section=page, src=("../server/images/" + imgSrc) parameters=number)
-    div.collection__description(data-section=page) #{description}
+include ../collection/collection
+
+div.content_wrapper
+    page.page
+        div(class = "content_container")
+            h1.title Подборки
+            div.description Это наши подборочки :)
+            div.bg_container
+                div.collections__container
+                    each input, _ in collectionList
+                        +collection(input)
+
