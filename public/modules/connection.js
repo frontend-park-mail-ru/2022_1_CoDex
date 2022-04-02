@@ -20,7 +20,7 @@ export const sendRequest = async ({url, method, body} = {}) => {
 
     try {
         const parsedResponse = await response?.json();
-        if (response.status !== statuses.OK) {
+        if (response.status !== statuses.OK && response.status !== statuses.CREATED) {
             return null;
         }
         return {

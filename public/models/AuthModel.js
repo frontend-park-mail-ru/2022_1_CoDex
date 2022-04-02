@@ -179,7 +179,7 @@ export class AuthModel extends BaseModel {
             if (!response) {
                 return;
             }
-            if (response.parsedResponse?.status === statuses.AUTHORIZED) {
+            if (response.status === statuses.AUTHORIZED) {
                 this.eventBus.emit(events.authPage.logRegSuccess, 
                     response.parsedResponse);
                 this.redirect();
