@@ -4,7 +4,7 @@ const localUrl = "http://localhost:3001";
 // eslint-disable-next-line no-unused-vars
 export const deployUrl = "https://teamprojectkinopoisk.herokuapp.com";
 
-export const currentUrl = localUrl;
+export const currentUrl = deployUrl;
 
 const versions = {
     v1: "/api/v1",
