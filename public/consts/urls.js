@@ -19,5 +19,6 @@ export const urls = {
         register: `${currentUrl}${versions.v1}/signup`,
         singleCollection: `${currentUrl}${versions.v1}/collections/collection`,
         collections: `${currentUrl}${versions.v1}/mainPage`,
+        movie: `${currentUrl}${versions.v1}/movie`,
     }
 }

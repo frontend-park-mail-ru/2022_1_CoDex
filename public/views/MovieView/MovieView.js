@@ -1,6 +1,7 @@
 import {BaseView} from "../BaseView/BaseView.js";
 import {getURLArguments} from '../../modules/router.js';
 import { events } from "../../consts/events.js";
+import moviePageContent from "../../components/movie/movie.pug";
 
 /**
  * @description Класс представления страницы одного фильма
@@ -26,7 +27,16 @@ export class MovieView extends BaseView {
     }
 
     renderContent = (data) => {
-        // TODO
+        // data: poster, title, rating, originalTitle, desctiption
+        const template = moviePageContent(data);
+        console.log(data);
+        const content = document.querySelector(".content");
+        if (content) {
+            content.innerHTML = template;
+            // TODO 
+        } else {
+            this.eventBus.emit(events.app.errorPage);
+        }
     }
 
     renderRating = (movieID) => {

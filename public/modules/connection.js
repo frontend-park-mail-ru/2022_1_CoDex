@@ -161,3 +161,21 @@ export const getSingleCollection = async(collectionID) => {
         return null;
     }
 }
+
+/**
+ * @description Получает с сервера данные о конкретной подборке фильмов.
+ * @param { string } movieID ID запрашиваемой подборки
+ * @returns { object } Ответ с сервера
+ */
+ export const getMovie = async(movieID) => {
+    const params = {
+        url: `${urls.api.movie}/${movieID}`,
+        method: "GET",
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}

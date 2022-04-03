@@ -29,7 +29,6 @@ export class CollectionsView extends BaseView {
    * массив подборок
    */
   renderContent = (data) => {
-    console.log(123);
     const template = collectionsContent(data);
     this.moviesData = data;
     const content = document.querySelector('.content');

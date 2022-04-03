@@ -7,6 +7,7 @@ import { HomeController } from "./controllers/HomeController.js";
 import { AuthController } from "./controllers/AuthController.js";
 import { SingleCollectionController } from "./controllers/SingleCollectionController.js";
 import { CollectionsController } from "./controllers/CollectionsController.js";
+import { MovieController } from "./controllers/MovieController.js";
 
 export const root = document.getElementById("root");
 
@@ -17,6 +18,7 @@ const homeController = new HomeController();
 const authController = new AuthController();
 const singleCollectionController = new SingleCollectionController();
 const collectionsController = new CollectionsController();
+const movieController = new MovieController();
 
 const router = new Router(root);
 
@@ -25,4 +27,5 @@ router.register(regularRoutes.homePage, homeController)
   .register(regularRoutes.registrationPage, authController)
   .register(regularRoutes.singleCollectionPage, singleCollectionController)
   .register(regularRoutes.collectionsPage, collectionsController)
+  .register(regularRoutes.moviePage, movieController)
   .start();
