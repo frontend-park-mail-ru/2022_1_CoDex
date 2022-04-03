@@ -78,5 +78,6 @@ export const events = {
             page: "actorPage:renderPage",
         },
         getContent: "actorPage:getContent",
+        getJobContent: "actorPage:getJobContent",
     }
 };

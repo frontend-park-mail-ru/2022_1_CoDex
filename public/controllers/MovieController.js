@@ -39,6 +39,6 @@ export class MovieController extends BaseController {
                 event: events.moviePage.addCollection,
                 handler: this.model.addCollection,
             },
-        )
+        );
     }
 }

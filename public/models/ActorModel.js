@@ -2,7 +2,7 @@
 /**
  * @description Класс модели страницы актёра.
  */
- export class MovieModel {
+export class ActorModel {
     /**
      * @description Создаёт модель страницы актёра.
      * @param { EventBus } eventBus Глобальная шина событий
