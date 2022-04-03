@@ -49,6 +49,10 @@ import { BaseModel } from "./BaseModel.js";
         // TODO
     }
 
+    sendChanges = (inputsData) => {
+        // TODO
+    }
+
     submitChanges = (inputsData) => {
         // TODO
     }

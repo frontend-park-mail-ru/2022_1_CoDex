@@ -38,6 +38,14 @@ export class ProfileView extends BaseView {
         // TODO
     }
 
+    renderSettings = () => {
+        // TODO
+    }
+
+    deleteSettings = () => {
+        // TODO
+    }
+
     submitChange = () => {
         // TODO
     }
