@@ -79,5 +79,22 @@ export const events = {
         },
         getContent: "actorPage:getContent",
         getJobContent: "actorPage:getJobContent",
+    },
+
+    profilePage: {
+        render: {
+            content: "profilePage:renderContent",
+            collections: "profilePage:renderCollections",
+            activity: "profilePage:renderActivity",
+        },
+        getContent: "profilePage:getContent",
+        validate: "profilePage:validate",
+        sendChanges: "profilePage:sendChanges",
+        submit: "profilePage:submit",
+        submitError: "profilePage:submitError",
+        wrongInput: "profilePage:wrongInput",
+        deleteValidationError: "profilePage:deleteValidationError",
+        addValidationError: "profilePage:addValidationError",
+        deleteAllErrors: "profilePage:deleteAllErrors",
     }
 };
