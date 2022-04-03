@@ -66,7 +66,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: 22
           key: ${{ secrets.PRIVATE_KEY }}
-          source: "public/dist/*"
+          source: "/home/runner/work/2022_1_CoDex/2022_1_CoDex"
           target: "/home/ubuntu/deploy"
           strip_components: 1
           
