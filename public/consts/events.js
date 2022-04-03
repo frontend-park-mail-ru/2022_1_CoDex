@@ -59,4 +59,11 @@ export const events = {
         },
         getContent: "singleCollectionPage:getContent",
     },
+
+    moviePage: {
+        render: {
+            content: "moviePage:renderContent",
+        },
+        getContent: "moviePage:getContent",
+    }
 };
