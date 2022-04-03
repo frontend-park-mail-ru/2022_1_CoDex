@@ -60,13 +60,13 @@ jobs:
           name: build
 
       - name: Transfer build files to server
-        uses: appleboy/scp-action@master
+        uses: appleboy/scp-action@v0.0.10
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: 22
           key: ${{ secrets.PRIVATE_KEY }}
-          source: "/home/runner/work/2022_1_CoDex/2022_1_CoDex"
+          source: "build/*"
           target: "/home/ubuntu/deploy"
           strip_components: 1
           
