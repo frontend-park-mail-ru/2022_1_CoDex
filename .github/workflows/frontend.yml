@@ -69,3 +69,4 @@ jobs:
           source: "public/dist/*"
           target: "/home/ubuntu/deploy"
           strip_components: 1
+          
