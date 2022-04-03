@@ -63,7 +63,12 @@ export const events = {
     moviePage: {
         render: {
             content: "moviePage:renderContent",
+            page: "moviePage:renderPage",
         },
         getContent: "moviePage:getContent",
+        sendReview: "moviePage:sendReview",
+        sendRating: "moviePage:sendRating",
+        reviewSuccess: "moviePage:reviewSuccess",
+        addCollection: "moviePage:addCollection",
     }
 };

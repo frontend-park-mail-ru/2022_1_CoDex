@@ -37,6 +37,10 @@ export class MovieView extends BaseView {
         // TODO
     }
 
+    renderReviewSuccess = () => {
+        // TODO
+    }
+
     addSubmitReviewListener = (movieID) => {
         // TODO
     }
