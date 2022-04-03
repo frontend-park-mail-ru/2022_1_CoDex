@@ -70,5 +70,13 @@ export const events = {
         sendRating: "moviePage:sendRating",
         reviewSuccess: "moviePage:reviewSuccess",
         addCollection: "moviePage:addCollection",
+    },
+
+    actorPage: {
+        render: {
+            content: "actorPage:renderContent",
+            page: "actorPage:renderPage",
+        },
+        getContent: "actorPage:getContent",
     }
 };
