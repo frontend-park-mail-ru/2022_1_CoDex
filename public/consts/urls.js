@@ -18,7 +18,7 @@ export const urls = {
         login: `${currentUrl}${versions.v1}/login`,
         register: `${currentUrl}${versions.v1}/signup`,
         singleCollection: `${currentUrl}${versions.v1}/collections/collection`,
-        collections: `${currentUrl}${versions.v1}/mainPage`,
+        collections: `${currentUrl}${versions.v1}/collections`,
         movie: `${currentUrl}${versions.v1}/movie`,
     }
 }
