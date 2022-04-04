@@ -29,7 +29,6 @@ export class MovieView extends BaseView {
     renderContent = (data) => {
         // data: poster, title, rating, originalTitle, desctiption
         const template = moviePageContent(data);
-        console.log(data);
         const content = document.querySelector(".content");
         if (content) {
             content.innerHTML = template;

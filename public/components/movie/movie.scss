@@ -32,9 +32,16 @@
     justify-content: center;
 }
 
+.poster-and-buttons {
+    grid-area: A1;
+    display: flex;
+    flex-direction: column;
+}
+
 .poster {
     grid-area: A1;
     box-sizing: border-box;
+    margin-bottom: 15px;
 
     img {
         width: 280px;
@@ -44,46 +51,147 @@
     }
 }
 
+.trailer {
+    display: flex;
+    box-sizing: border-box;
+    background: $raspberry;
+    border-radius: 20px;    
+    width: 100%;
+    height: 48px;
+    margin-bottom: 15px;
+
+    &__btn {
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        font-family: $main_font;
+        font-size: 20px;
+        font-weight: 600;
+        color: black;
+        text-align: center;
+        padding: 14px;
+
+    }
+
+    :hover {
+        border-radius: 20px;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), $raspberry;
+    }
+
+    :active {
+        border-radius: 20px;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28)), $raspberry;
+    }
+}
+
+.movie-collection {
+    display: flex;
+    box-sizing: border-box;
+    margin: 0 auto;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28)), $raspberry;
+    border-radius: 20px;    
+    width: 100%;
+    height: 48px;
+    opacity: 0.4;
+    
+    &__btn {
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        font-family: $main_font;
+        font-size: 20px;
+        font-weight: 600;
+        color: black;
+        text-align: center;
+        padding: 14px;
+
+    }
+}
+
+
 .info {
     grid-area: A2;
     display: flex;
     flex-direction: column;
 }
 
-.title {
+.movie-title {
     box-sizing: border-box;
     padding-top: 20px;
     grid-area: A1;
     width: 100%;
     height: 80px;
     text-align: left;
-    color: white;
+    color: $white;
     font-family: $main_font;
     font-size: 40px;
     font-weight: bold;
 }
 
-.rating {
+.movie-rating {
     grid-area: A3;
     width: 100%;
     text-align: center;
     color: $raspberry;
+    font-size: 40px;
     font-weight: bold;
+    padding-top: 20px;
 }
 
-.original-title {
+.movie-original {
     width: 100%;
     text-align: left;
-    color: white;
+    color: $white;
     font-family: $main_font;
-    font-weight: bold;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 500;
 }
 
-.description {
+.movie-description {
     width: 100%;
     text-align: left;
-    color: white;
+    color: $white;
     font-family: $main_font;
     font-size: 20px;
     font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.movie-facts {
+    row-gap: 20px;
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        color: $white;
+        font-family: $main_font;
+        font-weight: 600;
+        font-size: 28px;
+        height: 40px;
+    }
+
+    &__fact {
+        display: grid;
+        column-gap: 20px;
+        grid-template-columns: 2fr 4fr;
+
+        &__name {
+            color: $white;
+            height: 40px;
+            font-family: $main_font;
+            font-weight: 600;
+            font-size: 17px;
+        }
+
+        &__value {
+            color: $white;
+            height: 40px;
+            font-family: $main_font;
+            font-weight: 600;
+            font-size: 17px;
+        }
+    }
 }
