@@ -17,7 +17,7 @@ const startServer = (app) => {
   app.get("/api/v1/movie/1", function (req, res) {
     res.json(top256.movieList[0]);
   });
-  
+
   app.get("/api/v1/movie/2", function (req, res) {
     res.json(top256.movieList[1]);
   });
@@ -43,10 +43,12 @@ const startServer = (app) => {
     users[email] = user;
 
     res.cookie('podvorot', id, { expires: new Date(Date.now() + 1000 * 60 * 10) });
-    res.status(201).json({ ID: id,
+    res.status(201).json({
+      ID: id,
       avatarSrc: "server/images/adventures.png",
       name: users[email].name,
-      email: email, });
+      email: email,
+    });
   });
 
   app.post("/api/v1/login", function (req, res) {
@@ -71,11 +73,11 @@ const startServer = (app) => {
     });
   });
 
-  // app.get('/api/v1/checkAuth', (req, res) => {
-  //   res.json({
-  //     "status": 200,
-  //     });
-  // });
+  app.get('/api/v1/checkAuth', (req, res) => {
+    res.json({
+      "status": 200,
+    });
+  });
 
   const users = {
     "a@a.ru": {

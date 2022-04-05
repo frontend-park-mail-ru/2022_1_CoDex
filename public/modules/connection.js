@@ -60,7 +60,7 @@ export const checkAuth = async () => {
  */
 export const getCurrentUser = async (id) => {
     const params = {
-        url: urls.api.getUser.concat(id),
+        url: urls.api.getUser.concat('/').concat(id),
         methd: "GET",
         credentials: "include",
     };

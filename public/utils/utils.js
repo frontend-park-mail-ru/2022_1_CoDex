@@ -14,30 +14,6 @@ export function createElementFromHTML(html) {
   return temp.firstChild;
 }
 
-/**
- * Проверяет, авторизован ли пользователь в системе. Если
- * авторизован, то заменяет кнопку "Войти" в навигационной
- * панели кнопкой "Выйти" и перенаправляет на главную страницу.
- * Иначе перенаправляет на страницу авторизации.
- */
-export function checkAuth() {
-  Ajax.getFetch({
-    url: `${URL}/api/v1/checkAuth`,
-  }).then((response) => {
-    if (response && response.status === OK) {
-      if (response.parsedBody.status == OK) {
-        mainPage();
-        changeNavbarButton();
-        return;
-      } else {
-        mainPage();
-      }
-    } else {
-      loginPage();
-    }
-  });
-}
-
 export const renderBaseView = () => {
   const userLocalStorage = window.localStorage.getItem("user");
   if (userLocalStorage) {

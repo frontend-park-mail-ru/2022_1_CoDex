@@ -31,7 +31,7 @@ class Auth {
                 return null;
             }
             if (response?.parsedResponse?.status === statuses.OK) {
-                return response.parsedResponse.body?.id;
+                return response.parsedResponse?.id;
             }
             window.localStorage.removeItem("user");
             this.eventBus.emit(events.auth.notLoggedIn);
@@ -45,12 +45,13 @@ class Auth {
             if (!response) {
                 return;
             }
-            if (response?.parsedResponse?.status === statuses.OK) {
-                this.user = response.parsedResponse.body;
+            if (response?.status === statuses.OK) {
+                this.user = response.parsedResponse;
                 if (this.user) {
-                    this.lastEvent = events.auth.gotUser;
+                    window.localStorage.setItem("user", JSON.stringify(this.user));
                     this.eventBus.emit(eventBus.auth.gotUser);
-                    this.eventBus.emit(events.authPage.redirect);
+                    this.lastEvent = events.auth.gotUser;
+                    //this.eventBus.emit(events.authPage.redirect);
                 }
             }
         }).catch(() => {
