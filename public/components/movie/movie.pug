@@ -52,10 +52,10 @@ div.content-wrapper
                 div.stars
                     - for (let i = 1; i <= 10; i++)
                         div.stars__item
-                            if (rating >= i || myRating >= i)
-                                div.stars__item__single-star.active(data-rate=`${i}`)
+                            if (movie.rating >= i || movie.myRating >= i)
+                                div.stars__item__single-star.active(rating=`${i}`)
                             else
-                                div.stars__item__single-star(data-rate=`${i}`)
+                                div.stars__item__single-star(rating=`${i}`)
                             div.stars__score #{i}
                 div.user-rating
                     if myRating > 1

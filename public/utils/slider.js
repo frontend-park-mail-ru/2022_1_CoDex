@@ -15,7 +15,6 @@ export const slider = (selector) => {
     const previous = buttons?.children[0];
     const next = buttons?.children[1];
 
-    console.log(slides);
     const oneSlideWidth = slides[0].offsetWidth;
     const totalWidth = sliderList.offsetWidth;
     const visibleAmount = Math.floor(totalWidth / oneSlideWidth);
@@ -29,7 +28,6 @@ export const slider = (selector) => {
         + oneSlideWidth - (totalWidth - oneSlideWidth * visibleAmount) + gap;
     }
     
-    console.log(oneSlideWidth, totalWidth, visibleAmount, moveWidth);
     sliderTrack.style.transform = "translate3d(0px, 0px, 0px)";
     previous.classList.toggle("disabled", slideIndex === 0);
     next.classList.toggle("disabled", slideIndex >= itemsAmount - visibleAmount);
@@ -60,15 +58,12 @@ export const slider = (selector) => {
             return;
         }
         if (slideIndex < 0) { slideIndex = 0;}
-        console.log("Slide index", slideIndex);
         let slideWidth = 0;
-        console.log(moveWidth);
         if (slideIndex * (oneSlideWidth + gap) > moveWidth) {
             slideWidth = moveWidth;
         } else {
             slideWidth = slideIndex * (oneSlideWidth + gap);
         }
-        console.log("Slide width: ", slideWidth);
         sliderTrack.style.transform = `translate3d(-${slideWidth}px, 0px, 0px)`;
         previous.classList.toggle("disabled", slideIndex === 0);
         next.classList.toggle("disabled", slideIndex >= itemsAmount - visibleAmount);
