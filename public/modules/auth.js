@@ -13,6 +13,7 @@ class Auth {
         this.user = null;
         this.lastEvent = null;
         if (navigator.onLine) {
+            console.log("server");
             this.getUserFromServer();
         }
         this.eventBus.on(events.authPage.logRegSuccess, this.getUserFromSubmit);
@@ -27,9 +28,12 @@ class Auth {
      */
     getUserFromServer = () => {
         checkAuth().then((response) => {
+            console.log("1");
+
             if (!response) {
                 return null;
             }
+            console.log("2");
             if (response?.parsedResponse?.status === statuses.OK) {
                 console.log("response?.parsedResponse?.status === statuses.OK", response.parsedResponse.id);
 
@@ -38,6 +42,7 @@ class Auth {
             window.localStorage.removeItem("user");
             this.eventBus.emit(events.auth.notLoggedIn);
             this.lastEvent = events.auth.notLoggedIn;
+            console.log("3");
             return null;
         }).then((userID) => {
             if (userID) {
@@ -48,6 +53,7 @@ class Auth {
             if (!response) {
                 return;
             }
+            console.log("4");
             if (response?.status === statuses.OK) {
                 console.log("response?.status === statuses.OK", response.parsedResponse);
                 this.user = response.parsedResponse;
@@ -59,7 +65,9 @@ class Auth {
                     //this.eventBus.emit(events.authPage.redirect);
                 }
             }
+            console.log("5");
         }).catch(() => {
+            console.log("6");
             this.eventBus.emit(events.app.errorPage);
         });
     };
