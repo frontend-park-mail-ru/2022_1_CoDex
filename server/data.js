@@ -15,11 +15,129 @@ const startServer = (app) => {
   });
 
   app.get("/api/v1/movie/1", function (req, res) {
-    res.json(top256.movieList[0]);
+    res.json({
+      movie: top256.movieList[0],
+      related: [
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "title": "Зелёная миля",
+        },
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "title": "Зелёная миля",
+        },
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "title": "Зелёная миля",
+        },
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "title": "Зелёная миля",
+        },
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "title": "Зелёная миля",
+        },
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "title": "Зелёная миля",
+        },
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "title": "Зелёная миля",
+        },
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "title": "Зелёная миля",
+        },
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "title": "Зелёная миля",
+        },
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "title": "Зелёная миля",
+        },
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "title": "Зелёная миля",
+        },
+      ]
+    });
   });
   
   app.get("/api/v1/movie/2", function (req, res) {
-    res.json(top256.movieList[1]);
+    res.json({
+      movie: top256.movieList[1],
+      related: [
+        {
+          "ID": "1",
+          "poster": "showshenkRedemption.png",
+          "title": "Побег из Шоушенка",
+        },
+        {
+          "ID": "1",
+          "poster": "showshenkRedemption.png",
+          "title": "Побег из Шоушенка",
+        },
+        {
+          "ID": "1",
+          "poster": "showshenkRedemption.png",
+          "title": "Побег из Шоушенка",
+        },
+        {
+          "ID": "1",
+          "poster": "showshenkRedemption.png",
+          "title": "Побег из Шоушенка",
+        },
+        {
+          "ID": "1",
+          "poster": "showshenkRedemption.png",
+          "title": "Побег из Шоушенка",
+        },
+        {
+          "ID": "1",
+          "poster": "showshenkRedemption.png",
+          "title": "Побег из Шоушенка",
+        },
+        {
+          "ID": "1",
+          "poster": "showshenkRedemption.png",
+          "title": "Побег из Шоушенка",
+        },
+        {
+          "ID": "1",
+          "poster": "showshenkRedemption.png",
+          "title": "Побег из Шоушенка",
+        },
+        {
+          "ID": "1",
+          "poster": "showshenkRedemption.png",
+          "title": "Побег из Шоушенка",
+        },
+        {
+          "ID": "1",
+          "poster": "showshenkRedemption.png",
+          "title": "Побег из Шоушенка",
+        },
+        {
+          "ID": "1",
+          "poster": "showshenkRedemption.png",
+          "title": "Побег из Шоушенка",
+        },
+      ]
+    });
   });
 
   app.post("/api/v1/signup", function (req, res) {
