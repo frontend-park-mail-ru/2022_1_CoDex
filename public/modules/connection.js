@@ -79,7 +79,7 @@ export const getCurrentUser = async (id) => {
 export const logout = async () => {
     const params = {
         url: urls.api.logout,
-        method: "GET",
+        method: "POST",
     };
 
     try {
