@@ -28,7 +28,7 @@ export const authConfig = {
     },
     repeatePasswordInput: {
         type: "password", 
-        name: "repeat_password", 
+        name: "repeatpassword", 
         placeholder: "Повторите пароль", 
         title: "Повторите пароль"
     },
