@@ -61,7 +61,7 @@ class Auth {
                 console.log(this.user);
                 if (this.user) {
                     window.localStorage.setItem("user", JSON.stringify(this.user));
-                    this.eventBus.emit(eventBus.auth.gotUser);
+                    this.eventBus.emit(events.auth.gotUser);
                     this.lastEvent = events.auth.gotUser;
                     //this.eventBus.emit(events.authPage.redirect);
                 }
