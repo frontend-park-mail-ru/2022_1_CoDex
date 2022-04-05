@@ -47,6 +47,7 @@ class Auth {
             }
             if (response?.status === statuses.OK) {
                 this.user = response.parsedResponse;
+                console.log(this.user);
                 if (this.user) {
                     window.localStorage.setItem("user", JSON.stringify(this.user));
                     this.eventBus.emit(eventBus.auth.gotUser);
@@ -69,6 +70,7 @@ class Auth {
             return;
         }
         this.user = parsedResponse;
+        console.log(this.user);
         if (this.user) {
             window.localStorage.setItem("user", JSON.stringify(this.user));
             this.eventBus.emit(events.auth.gotUser);
