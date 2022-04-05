@@ -63,7 +63,7 @@ class Auth {
                     window.localStorage.setItem("user", JSON.stringify(this.user));
                     this.eventBus.emit(events.auth.gotUser);
                     this.lastEvent = events.auth.gotUser;
-                    //this.eventBus.emit(events.authPage.redirect);
+                    this.eventBus.emit(events.authPage.redirect);
                 }
             }
             console.log("5");
