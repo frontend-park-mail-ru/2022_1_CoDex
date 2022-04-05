@@ -34,6 +34,7 @@ class Auth {
                 return null;
             }
             console.log("2");
+            console.log("2:", response.parsedResponse);
             if (response?.parsedResponse?.status === statuses.OK) {
                 console.log("response?.parsedResponse?.status === statuses.OK", response.parsedResponse.id);
 
