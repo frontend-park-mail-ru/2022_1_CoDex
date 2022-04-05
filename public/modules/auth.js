@@ -31,6 +31,8 @@ class Auth {
                 return null;
             }
             if (response?.parsedResponse?.status === statuses.OK) {
+                console.log("response?.parsedResponse?.status === statuses.OK", response.parsedResponse.id);
+
                 return response.parsedResponse?.id;
             }
             window.localStorage.removeItem("user");
@@ -39,6 +41,7 @@ class Auth {
             return null;
         }).then((userID) => {
             if (userID) {
+                console.log("if (userID)", userID);
                 return getCurrentUser(userID);
             }
         }).then((response) => {
@@ -46,6 +49,7 @@ class Auth {
                 return;
             }
             if (response?.status === statuses.OK) {
+                console.log("response?.status === statuses.OK", response.parsedResponse);
                 this.user = response.parsedResponse;
                 console.log(this.user);
                 if (this.user) {
