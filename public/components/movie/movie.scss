@@ -235,6 +235,21 @@
         line-height: 32px;
         display: flex;
     }
+
+    .user-rating {
+        height: 60px;
+        width: 100%;
+        font-family: $main_font;
+        font-size: 28px;
+        color: $white;
+        font-weight: 600;
+        line-height: 60px;
+        text-align: left;
+
+        a {
+            color: $white;
+        }
+    }
 }
 
 .stars {

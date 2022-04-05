@@ -46,6 +46,11 @@ export class MovieView extends BaseView {
         }
     }
 
+    /**
+     * @description Отрисовывает панель рейтинга и навешивает все необходимые 
+     * обработчики (для динамического изменения рейтинга).
+     * @param { string } movieID ID текущего фильма
+     */
     renderRating = (movieID) => {
         const rating = document.querySelector(".stars");
         const ratingItems = document.querySelectorAll(".stars__item__single-star");
@@ -107,8 +112,26 @@ export class MovieView extends BaseView {
                 }
             }
         }
+    }
 
+    /**
+     * @description Выводит сообщение о просьбе зарегистрироваться.
+     * @param { string } movieID ID текущего фильма.
+     */
+    askToLog = (movieID) => {
+        const messageArea = document.querySelector(".user-rating");
+        messageArea.innerHTML = `
+        Чтобы поставить оценку, пожалуйста, 
+        <a href= /register?redirect=movie/${movieID} class = "white_text"">
+        зарегистрируйтесь</a>`;
 
+    }
+
+    onRatingSuccess = (myRating, movieRating) => {
+        const messageArea = document.querySelector(".user-rating");
+        messageArea.innerHTML = `Ваша оценка: ${myRating}. Рейтинг фильма: ${movieRating}`;
+        shortRating = document.querySelector(".short-rating");
+        shortRating.textContent = `${movieRating}`;
     }
 
     renderCollectionBlock = () => {

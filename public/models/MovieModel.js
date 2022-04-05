@@ -1,6 +1,7 @@
 import { events } from "../consts/events.js";
 import { statuses } from "../consts/statuses.js";
-import { getMovie } from "../modules/connection.js";
+import { authModule } from "../modules/auth.js";
+import { getMovie, sendUserRating } from "../modules/connection.js";
 
 /**
  * @description Класс модели страницы одного фильма.
@@ -32,13 +33,36 @@ export class MovieModel {
         });
     }
 
+    /**
+     * @description Проверяет, авторизован пользователь или нет, если авторизован, 
+     * то отправляет оценку пользователя на сервер.
+     * @param { string } movieID ID текущего фильма
+     * @param { number } rating Оценка пользователя
+     */
+    sendRating = (movieID, rating) => {
+        console.log(movieID, rating);
+        if (!movieID || !rating) { 
+            this.eventBus.emit(events.app.errorPage);
+            return; 
+        }
+        if (!authModule.user) {
+            this.eventBus.emit(events.moviePage.askToLog, movieID);
+            return;
+        }
+        sendUserRating(movieID, rating).then(
+            (response) => {
+                if (!response) { return; }
+                if (response.status === statuses.OK) {
+                    this.eventBus.emit(events.moviePage.ratingSuccess, rating, response.rating);
+                }
+            }
+        );
+    }
+
     sendReview = (inputsData = {}) => {
         // TODO
     }
 
-    sendRating = (movieID, rating) => {
-        // TODO
-    }
 
     addCollection = (movieID, collectionID) => {
         // TODO

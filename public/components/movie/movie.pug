@@ -52,7 +52,9 @@ div.content-wrapper
                 div.stars
                     - for (let i = 1; i <= 10; i++)
                         div.stars__item
-                            if (movie.rating >= i || movie.myRating >= i)
+                            if (movie.rating >= i && movie.rating - 1 < i)
+                                div.stars__item__single-star.active.current-active(rating=`${i}`)
+                            else if (movie.rating >= i)
                                 div.stars__item__single-star.active(rating=`${i}`)
                             else
                                 div.stars__item__single-star(rating=`${i}`)
