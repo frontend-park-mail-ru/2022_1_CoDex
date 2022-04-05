@@ -67,8 +67,8 @@ class Auth {
                 }
             }
             console.log("5");
-        }).catch(() => {
-            console.log("6");
+        }).catch((e) => {
+            console.log("6:",e);
             this.eventBus.emit(events.app.errorPage);
         });
     };
