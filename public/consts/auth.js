@@ -16,7 +16,7 @@ export const authConfig = {
     },
     nameInput: {
         type: "text", 
-        name: "name", 
+        name: "username", 
         placeholder: "Введите имя", 
         title: "Имя"
     },
@@ -33,4 +33,3 @@ export const authConfig = {
         title: "Повторите пароль"
     },
   };
-  
