@@ -131,7 +131,7 @@
     font-weight: bold;
 }
 
-.movie-rating {
+.short-rating {
     grid-area: A3;
     width: 100%;
     text-align: center;
@@ -215,5 +215,61 @@
         display: flex;
         margin-bottom: 24px;
     }
+}
+
+.star-rating {
+    grid-area: C1;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        width: 100%;
+        color: $white;
+        text-align: left;
+        height: 56px;
+        font-family: $main_font;
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 32px;
+        display: flex;
+    }
+}
+
+.stars {
+    gap: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        
+        &__single-star {
+            width: 60px;
+            height: 60px;
+            background-image: url("./static/pics/star-passive.svg");
+            cursor: pointer;
+        }
+    
+        &__single-star.active {
+            background-image: url("./static/pics/star-active.svg");
+        }
+    }
+
+    &__score {
+        height: 60px;
+        width: 60px;
+        font-family: $main_font;
+        font-size: 28px;
+        color: $white;
+        font-weight: 600;
+        line-height: 60px;
+        text-align: center;
+    }
+
+
 }
 

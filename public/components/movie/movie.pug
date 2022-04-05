@@ -10,7 +10,7 @@ div.content-wrapper
                     a.trailer__btn.not-route(href=`${movie.trailerHref}`) Смотреть трейлер
                 div.movie-collection
                     div.movie-collection__btn.not-route Мне нравится
-            div.movie-rating #{movie.rating}
+            div.short-rating #{movie.rating}
             div.info
                 div.movie-title #{movie.title}
                 div.movie-original #{movie.originalTitle}
@@ -47,5 +47,19 @@ div.content-wrapper
             div.related
                 div.related__title Если вам понравился этот фильм:
                 +slider(related)
+            div.star-rating
+                div.star-rating__title Рейтинг фильма:
+                div.stars
+                    - for (let i = 1; i <= 10; i++)
+                        div.stars__item
+                            if (rating >= i || myRating >= i)
+                                div.stars__item__single-star.active(data-rate=`${i}`)
+                            else
+                                div.stars__item__single-star(data-rate=`${i}`)
+                            div.stars__score #{i}
+                div.user-rating
+                    if myRating > 1
+                        div.user-rating__title Оценка: #{myRating}
+
                     
                     
