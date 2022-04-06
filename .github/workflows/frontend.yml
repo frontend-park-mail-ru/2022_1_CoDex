@@ -69,4 +69,15 @@ jobs:
           source: "/home/runner/work/2022_1_CoDex/2022_1_CoDex"
           target: "/home/ubuntu/deploy"
           strip_components: 1
+        
+      - name: Transfer server images
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: 22
+          key: ${{ secrets.PRIVATE_KEY }}
+          source: "/home/runner/work/2022_1_CoDex/2022_1_CoDex/server/images"
+          target: "/home/ubuntu/deploy"
+          strip_components: 1
           
