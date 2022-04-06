@@ -49,6 +49,12 @@ jobs:
         with:
           name: build
           path: ./public/dist
+          
+      - name: Upload server images
+        uses: actions/upload-artifact@v3
+        with:
+          name: backend
+          path: ./server/images
 
   deploy:
     runs-on: ubuntu-latest
@@ -69,6 +75,11 @@ jobs:
           source: "/home/runner/work/2022_1_CoDex/2022_1_CoDex"
           target: "/home/ubuntu/deploy"
           strip_components: 1
+      
+      - name: Download server images
+        uses: actions/download-artifact@v3
+        with:
+          name: backend
         
       - name: Transfer server images
         uses: appleboy/scp-action@master
@@ -77,7 +88,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: 22
           key: ${{ secrets.PRIVATE_KEY }}
-          source: "./server/images"
+          source: "/home/runner/work/2022_1_CoDex/2022_1_CoDex"
           target: "/home/ubuntu/deploy"
           strip_components: 1
           
