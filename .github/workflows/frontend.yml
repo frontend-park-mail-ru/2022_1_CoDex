@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: backend
-          path: ./server/images
+          path: .public/server
 
   deploy:
     runs-on: ubuntu-latest
