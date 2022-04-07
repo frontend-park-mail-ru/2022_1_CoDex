@@ -8,7 +8,7 @@ mixin movieCard(currentMovie)
                 div.movie__body__info
                     div.movie__body__info__data
                         div.movie__body__info__data__title
-                            a.movie__body__info__data__title__movie-title(href=`${currentMovie.ID}`) #{currentMovie.title}
+                            a.movie__body__info__data__title__movie-title(href=`/movie/${currentMovie.ID}`) #{currentMovie.title}
                             div.movie__body__info__data__title__rating #{currentMovie.rating}
                         div.movie__body__info__data__additional
                         div.movie__body__info__data__additional #{currentMovie.info}

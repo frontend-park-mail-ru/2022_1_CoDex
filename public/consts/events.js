@@ -68,8 +68,10 @@ export const events = {
         getContent: "moviePage:getContent",
         sendReview: "moviePage:sendReview",
         sendRating: "moviePage:sendRating",
+        ratingSuccess: "moviePage:ratingSuccess",
         reviewSuccess: "moviePage:reviewSuccess",
         addCollection: "moviePage:addCollection",
+        askToLog: "moviePage:askToLog",
     },
 
     actorPage: {

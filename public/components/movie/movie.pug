@@ -1,10 +1,73 @@
+include ../slider/slider
+include ../reviewCard/reviewCard
+
 div.content-wrapper
     div.page
         div.movie-content
-            div.poster
-                img.poster__img(src=`../server/images/${poster}`)
-            h1.rating #{rating}
+            div.poster-and-buttons
+                div.poster
+                    img.poster__img(src=`../server/images/${movie.poster}`)
+                div.trailer.not-route
+                    a.trailer__btn.not-route(href=`${movie.trailerHref}`) Смотреть трейлер
+                div.movie-collection
+                    div.movie-collection__btn.not-route Мне нравится
+            div.short-rating #{movie.rating}
             div.info
-                div.title #{title}
-                div.original #{originalTitle}
-                div.description #{description}
+                div.movie-title #{movie.title}
+                div.movie-original #{movie.originalTitle}
+                div.movie-description #{movie.description}
+                div.movie-facts
+                    div.movie-facts__title О фильме
+                    div.movie-facts__fact
+                        div.movie-facts__fact__name Год производства
+                        div.movie-facts__fact__value #{movie.year}
+                    div.movie-facts__fact
+                        div.movie-facts__fact__name Страна
+                        div.movie-facts__fact__value #{movie.country}
+                    div.movie-facts__fact
+                        div.movie-facts__fact__name Жанр
+                        div.movie-facts__fact__value #{movie.genre}
+                    div.movie-facts__fact
+                        div.movie-facts__fact__name Слоган
+                        div.movie-facts__fact__value #{movie.motto}
+                    div.movie-facts__fact
+                        div.movie-facts__fact__name Режиссёр
+                        div.movie-facts__fact__value #{movie.director}
+                    div.movie-facts__fact
+                        div.movie-facts__fact__name Бюджет
+                        div.movie-facts__fact__value #{movie.budget}
+                    div.movie-facts__fact
+                        div.movie-facts__fact__name Сборы в мире
+                        div.movie-facts__fact__value #{movie.gross}
+                    div.movie-facts__fact
+                        div.movie-facts__fact__name Длительность
+                        div.movie-facts__fact__value #{movie.duration}
+                    div.movie-facts__fact
+                        div.movie-facts__fact__name Главные роли
+                        div.movie-facts__fact__value #{movie.mainCast}
+            div.related
+                div.related__title Если вам понравился этот фильм:
+                +slider(related)
+            div.star-rating
+                div.star-rating__title Рейтинг фильма:
+                div.stars
+                    - for (let i = 1; i <= 10; i++)
+                        div.stars__item
+                            if (movie.rating >= i && movie.rating - 1 < i)
+                                div.stars__item__single-star.active.current-active(rating=`${i}`)
+                            else if (movie.rating >= i)
+                                div.stars__item__single-star.active(rating=`${i}`)
+                            else
+                                div.stars__item__single-star(rating=`${i}`)
+                            div.stars__score #{i}
+                div.user-rating
+                    if myRating > 1
+                        div.user-rating__title Оценка: #{myRating}
+            div.movie-review
+                div.movie-review__title Отзывы
+                div.review-list
+                    each singleReview, _ in reviews
+                        +reviewCard(singleReview)
+
+                    
+                    

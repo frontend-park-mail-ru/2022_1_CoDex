@@ -179,3 +179,24 @@ export const getSingleCollection = async(collectionID) => {
         return null;
     }
 }
+
+
+/**
+ * @description Отправляет оценку фильма пользователем на сервер.
+ * @param { string } movieID Данные о пользователе
+ * @param { number } rating Оставленная оценка
+ * @returns { object } Ответ с сервера
+ */
+ export const sendUserRating = async(movieID, rating) => {
+    const params = {
+        url: `${urls.api.sendRating}/TODO/movieID=${movieID}&rating=${rating}`,
+        method: "POST",
+        body: JSON.stringify(""),
+    };
+    
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+};

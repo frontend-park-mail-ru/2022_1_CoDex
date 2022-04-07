@@ -1,6 +1,5 @@
 @import "css/consts.scss";
-// @import "ccs/style.scss";
-// @import "css/ui.scss";
+@import "css/fonts.scss";
 @import "components/header/header.scss";
 @import "components/footer/footer.scss";
 @import "components/header/userBlock/userBlock.scss";
@@ -10,9 +9,11 @@
 @import "components/singleCollection/singleCollection.scss";
 @import "components/movieCard/movieCard.scss";
 @import "components/movie/movie.scss";
+@import "components/slider/slider.scss";
+@import "components/reviewCard/reviewCard.scss";
 
 html, body {
-    font-family: 'Montserrat-Regular', sans-serif;
+    font-family: $main_font;
     margin: 0;
     padding: 0;
     background-color: $white;

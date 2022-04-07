@@ -2,11 +2,11 @@ name: Frontend Build
 
 on:
   push:
-    branches:
-      - deploy_work
-  pull_request:
-    branches:
-      - deploy_work
+   # branches:
+    #  - develop
+  #pull_request:
+   # branches:
+    #  - develop
 
 jobs:
 #   lint:

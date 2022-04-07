@@ -16,12 +16,20 @@ export class MovieController extends BaseController {
                 handler: this.model.getContent,
             },
             {
-                event: events.moviePage.sendReview,
-                handler: this.model.sendReview,
+                event: events.moviePage.askToLog,
+                handler: this.view.askToLog
             },
             {
                 event: events.moviePage.sendRating,
                 handler: this.model.sendRating,
+            },
+            {
+                event: events.moviePage.ratingSuccess,
+                handler: this.view.onRatingSuccess,
+            },
+            {
+                event: events.moviePage.sendReview,
+                handler: this.model.sendReview,
             },
             {
                 event: events.moviePage.render.content,
