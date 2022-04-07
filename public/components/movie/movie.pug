@@ -1,4 +1,5 @@
 include ../slider/slider
+include ../reviewCard/reviewCard
 
 div.content-wrapper
     div.page
@@ -62,6 +63,11 @@ div.content-wrapper
                 div.user-rating
                     if myRating > 1
                         div.user-rating__title Оценка: #{myRating}
+            div.movie-review
+                div.movie-review__title Отзывы
+                div.review-list
+                    each singleReview, _ in reviews
+                        +reviewCard(singleReview)
 
                     
                     

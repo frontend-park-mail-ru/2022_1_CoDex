@@ -73,7 +73,17 @@ const startServer = (app) => {
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
-      ]
+      ],
+      reviews: [
+        {
+          avatarSrc: "http://localhost:3000/server/images/tales.png",
+          username: "Баба Яга",
+          userID: "",
+          rating: "8 / 10",
+          date: "28.03.2022",
+          content: "Ох, ребят, молодцы, порадовали старушку... Давно я таких хороших фильмов не смотрела.",
+        }
+      ],
     });
   });
   
@@ -136,7 +146,17 @@ const startServer = (app) => {
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
-      ]
+      ],
+      reviews: [
+        {
+          avatarSrc: "http://localhost:3000/server/images/tales.png",
+          username: "Баба Яга",
+          userID: "",
+          rating: "8 / 10",
+          date: "28.03.2022",
+          content: "Ох, ребят, молодцы, порадовали старушку... Давно я таких хороших фильмов не смотрела.",
+        }
+      ],
     });
   });
 

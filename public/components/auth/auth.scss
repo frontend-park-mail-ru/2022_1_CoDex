@@ -40,7 +40,7 @@
 
     &__invitation {
         grid-area: A0;
-        font-family: var(--main-font);
+        font-family: $main_font;
         font-size: 26px;
         display: flex;
         align-items: center;
@@ -85,7 +85,7 @@
 
     &__invitation {
         grid-area: A0;
-        font-family: var(--main-font);
+        font-family: $main_font;
         font-size: 26px;
         display: flex;
         align-items: center;
@@ -123,7 +123,7 @@
             margin-top: 1em;
             margin-bottom: 0.3em;
             font-size: 1.5em;
-            font-family: var(--main-font);
+            font-family: $main_font;
             align-self: baseline;
         }
 
