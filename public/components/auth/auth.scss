@@ -3,7 +3,7 @@
 .auth-content {
     font-family: $main_font;
     font-weight: bold;
-	background: url("./static/pics/bg.png") no-repeat center center;
+	background: url("./dist/img/bg.png") no-repeat center center;
 	min-height: 100%;
 	width: 100%;
 	background-size: cover;
@@ -156,11 +156,11 @@
     grid-area: B0;
 }
 
-.name {
+.username {
     grid-area: Z0;
 }
 
-.repeat_password {
+.repeatpassword {
     grid-area: D0;
 }
 

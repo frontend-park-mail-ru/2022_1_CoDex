@@ -8,7 +8,7 @@ header.navbar
         //- each btn in mobileHeaderLinks
         //-     a.navbar__menu-btn(href = btn.href)= btn.title
     a.navbar__logo(href="/" data-section="main")
-        img(data-section="main" src="../server/images/logo.svg")
+        img(data-section="main" src="/img/logo.svg")
  
     div.navbar__menu
         a.navbar__menu-btn.collections(href="/collections") Подборки
@@ -20,7 +20,7 @@ header.navbar
     .search
         input.search__input(placeholder="Фильм? Актёр?")
         .search__btn
-            include ../../static/pics/search.svg
+            include ../../dist/img/search.svg
     if userFromStorage
         include userBlock/userBlock.pug
     else

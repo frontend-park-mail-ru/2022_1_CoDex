@@ -13,6 +13,7 @@ class Auth {
         this.user = null;
         this.lastEvent = null;
         if (navigator.onLine) {
+            console.log("server");
             this.getUserFromServer();
         }
         this.eventBus.on(events.authPage.logRegSuccess, this.getUserFromSubmit);
@@ -27,33 +28,47 @@ class Auth {
      */
     getUserFromServer = () => {
         checkAuth().then((response) => {
+            console.log("1");
+
             if (!response) {
                 return null;
             }
-            if (response?.parsedResponse?.status === statuses.OK) {
-                return response.parsedResponse.body?.id;
+            console.log("2");
+            console.log("2:", response.parsedResponse);
+            if (response?.parsedResponse?.status == statuses.OK) {
+                console.log("response?.parsedResponse?.status === statuses.OK", response.parsedResponse.id);
+
+                return response.parsedResponse?.id;
             }
             window.localStorage.removeItem("user");
             this.eventBus.emit(events.auth.notLoggedIn);
             this.lastEvent = events.auth.notLoggedIn;
+            console.log("3");
             return null;
         }).then((userID) => {
             if (userID) {
+                console.log("if (userID)", userID);
                 return getCurrentUser(userID);
             }
         }).then((response) => {
             if (!response) {
                 return;
             }
-            if (response?.parsedResponse?.status === statuses.OK) {
-                this.user = response.parsedResponse.body;
+            console.log("4");
+            if (response?.status === statuses.OK) {
+                console.log("response?.status === statuses.OK", response.parsedResponse);
+                this.user = response.parsedResponse;
+                console.log(this.user);
                 if (this.user) {
+                    window.localStorage.setItem("user", JSON.stringify(this.user));
+                    this.eventBus.emit(events.auth.gotUser);
                     this.lastEvent = events.auth.gotUser;
-                    this.eventBus.emit(eventBus.auth.gotUser);
                     this.eventBus.emit(events.authPage.redirect);
                 }
             }
-        }).catch(() => {
+            console.log("5");
+        }).catch((e) => {
+            console.log("6:",e);
             this.eventBus.emit(events.app.errorPage);
         });
     };
@@ -68,6 +83,7 @@ class Auth {
             return;
         }
         this.user = parsedResponse;
+        console.log(this.user);
         if (this.user) {
             window.localStorage.setItem("user", JSON.stringify(this.user));
             this.eventBus.emit(events.auth.gotUser);
