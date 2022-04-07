@@ -62,7 +62,7 @@ module.exports = {
             inject: "body",
         }),
         new FaviconsWebpackPlugin({
-            logo: 'public/server/images/favicon.ico',
+            logo: 'public/dist/img/favicon.ico',
             inject: (htmlPlugin) =>
               basename(htmlPlugin.options.filename) === 'index.html',
           }),
