@@ -15,7 +15,8 @@
         color: $black;
         background-color: $raspberry;
         border-radius: 20px;
-        
+        margin-bottom: 20px;
+
         select {
             display: none;
         }
@@ -46,7 +47,7 @@
         
         .select-items div, .select-selected {
             background-color: $raspberry;
-            color: $white;
+            color: $black;
             line-height: 48px;
             cursor: pointer;
             user-select: none;
@@ -74,6 +75,18 @@
             }
         }
         
+    }
+
+    &__text-input {
+        display: flex;
+        flex-direction: column;
+        border-radius: 20px;
+        min-height: 160px;
+        font-size: 18px;
+        font-family: $main_font;
+        line-height: 20px;
+        font-weight: 600;
+        padding: 10px;
     }
 }
 

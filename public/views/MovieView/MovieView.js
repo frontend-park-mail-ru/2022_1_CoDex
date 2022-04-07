@@ -211,7 +211,7 @@ export class MovieView extends BaseView {
                 let previousSameAsSelected = target.parentNode.getElementsByClassName("same-as-selected");
                 const previousLength = previousSameAsSelected.length;
                 for (let k = 0; k < previousLength; k++) {
-                    previousSameAsSelected[k].removeAttribute("class");
+                    previousSameAsSelected[k].toggle("same-as-selected");
                 }
                 target.classList.add("same-as-selected");
                 break;
