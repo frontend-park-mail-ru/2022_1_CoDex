@@ -1,7 +1,7 @@
 import { events } from "../consts/events.js";
 import { statuses } from "../consts/statuses.js";
 import { authModule } from "../modules/auth.js";
-import { getMovie, sendUserRating } from "../modules/connection.js";
+import { getMovie, sendUserRating, sendUserReview } from "../modules/connection.js";
 
 /**
  * @description Класс модели страницы одного фильма.
@@ -51,7 +51,7 @@ export class MovieModel {
         sendUserRating(movieID, rating).then(
             (response) => {
                 if (!response) { return; }
-                if (response.status === statuses.OK) {
+                if (response.status == statuses.OK) {
                     this.eventBus.emit(events.moviePage.ratingSuccess, rating, response.rating);
                 }
             }
@@ -59,7 +59,14 @@ export class MovieModel {
     }
 
     sendReview = (inputsData = {}) => {
-        // TODO
+        sendUserReview(inputsData).then(
+            (response) => {
+                if (!response) { return; }
+                if (response.status == statuses.OK) {
+                    this.eventBus.emit(events.moviePage.reviewSuccess, response.review);
+                }
+            }
+        );
     }
 
 

@@ -3,6 +3,7 @@
 .review-input-block {
     display: flex;
     flex-direction: column;
+    align-items: center;
     
     &__dropdown {
         width: 100%;
@@ -78,6 +79,7 @@
     }
 
     &__text-input {
+        width: 100%;
         display: flex;
         flex-direction: column;
         border-radius: 20px;
@@ -87,6 +89,29 @@
         line-height: 20px;
         font-weight: 600;
         padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    &__submit {
+        text-align: center;
+        border-radius: 20px;
+        background-color: $raspberry;
+        font-size: 20px;
+        font-weight: 600;
+        height: 40px;
+        width: 380px;
+        color: $white;
+        line-height: 40px;
+        font-family: $main_font;
+
+        &:hover {
+            background-color: $dark_raspberry;
+            cursor: pointer;
+        }
+
+        &:active {
+            background-color: $very_dark_raspberry;
+        }
     }
 }
 

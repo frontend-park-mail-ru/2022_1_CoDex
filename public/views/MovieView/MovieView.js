@@ -1,11 +1,13 @@
 import {BaseView} from "../BaseView/BaseView.js";
 import {getURLArguments} from '../../modules/router.js';
 import { authModule } from "../../modules/auth.js";
+import { slider } from "../../utils/slider.js";
 import { events } from "../../consts/events.js";
 import moviePageContent from "../../components/movie/movie.pug";
 import reviewInvitation from "../../components/reviewInvitation/reviewInvitation.pug";
 import reviewInputBlock from "../../components/reviewInputBlock/reviewInputBlock.pug";
-import { slider } from "../../utils/slider.js";
+import reviewSuccessBlock from "../../components/reviewSuccessBlock/reviewSuccessBlock.pug";
+import reviewCard from "../../components/reviewCard/reviewCard.pug";
 
 /**
  * @description Класс представления страницы одного фильма
@@ -37,6 +39,7 @@ export class MovieView extends BaseView {
     renderContent = (data) => {
         // data: poster, title, rating, originalTitle, desctiption
         if (!data) { return; }
+        this.movieID = data.movie.ID;
         const template = moviePageContent(data);
         const content = document.querySelector(".content");
         if (content) {
@@ -192,6 +195,9 @@ export class MovieView extends BaseView {
             });
         }
         document.addEventListener("click", this.closeAllSelect);
+
+        const submitButton = document.querySelector(".review-input-block__submit");
+        submitButton.addEventListener("click", this.sendReview);
     }
 
     /**
@@ -211,7 +217,7 @@ export class MovieView extends BaseView {
                 let previousSameAsSelected = target.parentNode.getElementsByClassName("same-as-selected");
                 const previousLength = previousSameAsSelected.length;
                 for (let k = 0; k < previousLength; k++) {
-                    previousSameAsSelected[k].toggle("same-as-selected");
+                    previousSameAsSelected[k].classList.toggle("same-as-selected");
                 }
                 target.classList.add("same-as-selected");
                 break;
@@ -241,5 +247,34 @@ export class MovieView extends BaseView {
                 items[i].classList.add("select-hide");
             }
         }
+    }
+
+    /**
+     * @description Собирает данные для оставления отзыва и отправляет их в модель.
+     */
+    sendReview = () => {
+        const reviewText = document.querySelector(".review-input-block__text-input").value;
+        const reviewTypeText = document.querySelector(".select-selected").textContent;
+        let reviewType = 0;
+        if (reviewTypeText.includes("Отлично")) {
+            reviewType = 1;
+        } else if (reviewTypeText.includes("Неплохо")) {
+            reviewType = 2;
+        } else if (reviewTypeText.includes("Ужасно")) {
+            reviewType = 3;
+        }
+        review = {
+            text: reviewText,
+            type: reviewType,
+            movieID: this.movieID,
+        },
+        this.eventBus.emit(events.moviePage.sendReview, review);
+    }
+
+    renderReviewSuccess = (review) => {
+        const reviewInput = document.querySelector(".send-review__input");
+        reviewInput.innerHTML = reviewSuccessBlock();
+        let reviewList = document.querySelector(".review-list");
+        reviewList.insertBefore(reviewCard(review), reviewList.firstChild);
     }
 }
