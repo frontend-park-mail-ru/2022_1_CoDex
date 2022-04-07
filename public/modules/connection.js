@@ -64,7 +64,6 @@ export const getCurrentUser = async (id) => {
         methd: "GET",
         credentials: "include",
     };
-    console.log("getCurrentUser", params);
     try {
         return await sendRequest(params);
     } catch (error) {

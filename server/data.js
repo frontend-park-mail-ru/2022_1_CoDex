@@ -76,13 +76,50 @@ const startServer = (app) => {
       ],
       reviews: [
         {
+          avatarSrc: "http://localhost:3000/server/images/romantic.png",
+          username: "Пётр Калашников",
+          userID: "",
+          rating: "9 / 10",
+          date: "28.03.2022",
+          content: "Понравилось, только хочется продолжения",
+          type: "good",
+        },
+        {
+          avatarSrc: "http://localhost:3000/server/images/comics.png",
+          username: "Анатолий Мужиков",
+          userID: "",
+          rating: "10 / 10",
+          date: "28.03.2022",
+          content: "Просто огонь! Ребят, это надо смотреть просто всем!",
+          type: "good",
+        },
+        {
+          avatarSrc: "http://localhost:3000/server/images/spy.png",
+          username: "Костя Костяной",
+          userID: "",
+          rating: "7 / 10",
+          date: "28.03.2022",
+          content: "Средненько, книга интереснее",
+          type: "neutral",
+        },
+        {
+          avatarSrc: "http://localhost:3000/server/images/ourTop.png",
+          username: "Виктория Киселёва",
+          userID: "",
+          rating: "8 / 10",
+          date: "28.03.2022",
+          content: "Не зашло.",
+          type: "bad",
+        },
+        {
           avatarSrc: "http://localhost:3000/server/images/tales.png",
           username: "Баба Яга",
           userID: "",
           rating: "8 / 10",
           date: "28.03.2022",
           content: "Ох, ребят, молодцы, порадовали старушку... Давно я таких хороших фильмов не смотрела.",
-        }
+          type: "good",
+        },
       ],
     });
   });
@@ -149,13 +186,41 @@ const startServer = (app) => {
       ],
       reviews: [
         {
-          avatarSrc: "http://localhost:3000/server/images/tales.png",
-          username: "Баба Яга",
+          avatarSrc: "http://localhost:3000/server/images/romantic.png",
+          username: "Пётр Калашников",
+          userID: "",
+          rating: "9 / 10",
+          date: "28.03.2022",
+          content: "Понравилось, только хочется продолжения",
+          type: "good",
+        },
+        {
+          avatarSrc: "http://localhost:3000/server/images/comics.png",
+          username: "Анатолий Мужиков",
+          userID: "",
+          rating: "10 / 10",
+          date: "28.03.2022",
+          content: "Просто огонь! Ребят, это надо смотреть просто всем!",
+          type: "good",
+        },
+        {
+          avatarSrc: "http://localhost:3000/server/images/spy.png",
+          username: "Костя Костяной",
+          userID: "",
+          rating: "7 / 10",
+          date: "28.03.2022",
+          content: "Средненько, книга интереснее",
+          type: "neutral",
+        },
+        {
+          avatarSrc: "http://localhost:3000/server/images/ourTop.png",
+          username: "Виктория Киселёва",
           userID: "",
           rating: "8 / 10",
           date: "28.03.2022",
-          content: "Ох, ребят, молодцы, порадовали старушку... Давно я таких хороших фильмов не смотрела.",
-        }
+          content: "Не зашло.",
+          type: "bad",
+        },  
       ],
     });
   });

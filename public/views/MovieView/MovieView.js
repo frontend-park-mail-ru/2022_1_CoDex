@@ -1,7 +1,10 @@
 import {BaseView} from "../BaseView/BaseView.js";
 import {getURLArguments} from '../../modules/router.js';
+import { authModule } from "../../modules/auth.js";
 import { events } from "../../consts/events.js";
 import moviePageContent from "../../components/movie/movie.pug";
+import reviewInvitation from "../../components/reviewInvitation/reviewInvitation.pug";
+import reviewInputBlock from "../../components/reviewInputBlock/reviewInputBlock.pug";
 import { slider } from "../../utils/slider.js";
 
 /**
@@ -40,7 +43,7 @@ export class MovieView extends BaseView {
             content.innerHTML = template;
             slider("#related-slider");
             this.renderRating(data.movie.ID);
-            // TODO 
+            this.renderReviewInput(data.movie.ID);
         } else {
             this.eventBus.emit(events.app.errorPage);
         }
@@ -127,6 +130,12 @@ export class MovieView extends BaseView {
 
     }
 
+    /**
+     * @description Отображает оставленную пользователем оценку, 
+     * обновляет глобальную оценку.
+     * @param { string } myRating Оставленная оценка
+     * @param { string } movieRating Глобальная оценка фильма
+     */
     onRatingSuccess = (myRating, movieRating) => {
         const messageArea = document.querySelector(".user-rating");
         messageArea.innerHTML = `Ваша оценка: ${myRating}. Рейтинг фильма: ${movieRating}`;
@@ -134,16 +143,103 @@ export class MovieView extends BaseView {
         shortRating.textContent = `${movieRating}`;
     }
 
-    renderCollectionBlock = () => {
-        // TODO
+    /**
+     * @description Отрисовывает область оставления отзыва.
+     * @param { string } movieID ID текущего фильма
+     */
+    renderReviewInput = (movieID) => {
+        const reviewInput = document.querySelector(".send-review__input");
+        if (!reviewInput) { return;}
+        // if (authModule.user) {
+        reviewInput.innerHTML = reviewInputBlock();
+        this.addReviewInputListeners();
+
+        // } else {
+        //     reviewInput.innerHTML = reviewInvitation({ movieID: movieID });
+        // }
     }
 
-    renderReviewSuccess = () => {
-        // TODO
+    /**
+     * @description Добавляет обработчики событий на dropdown.
+     */
+    addReviewInputListeners = () => {
+        const dropdown = document.getElementsByClassName("review-input-block__dropdown");
+        const choiceAmount = dropdown.length;
+        for (let i = 0; i < choiceAmount; i++) {
+            const curentSelect = dropdown[i].getElementsByTagName("select")[0];
+            const currentSelectLength = curentSelect.length;
+            let div = document.createElement("div");
+            div.setAttribute("class", "select-selected");
+            div.innerHTML = curentSelect.options[curentSelect.selectedIndex].innerHTML;
+            dropdown[i].appendChild(div);
+
+            let optionListContainer = document.createElement("div");
+            optionListContainer.setAttribute("class", "select-items select-hide");
+            for (let j = 1; j < currentSelectLength; j++) {
+                let optionItem = document.createElement("div");
+                if (j == currentSelectLength - 1) {
+                    optionItem.classList.add("last");
+                }
+                optionItem.innerHTML = curentSelect.options[j].innerHTML;
+                optionItem.addEventListener("click", this.dropdownEventListener);
+                optionListContainer.appendChild(optionItem);
+            }
+            dropdown[i].appendChild(optionListContainer);
+            div.addEventListener("click", function(e) {
+                e.stopPropagation();
+                this.nextSibling.classList.toggle("select-hide");
+                this.classList.toggle("select-arrow-active");
+            });
+        }
+        document.addEventListener("click", this.closeAllSelect);
     }
 
-    addSubmitReviewListener = (movieID) => {
-        // TODO
+    /**
+     * @description Когда происходит нажатие элемента dropdown-a,
+     * обновляет исходный dropdown и отмечает элемент как выбранный.
+     */
+    dropdownEventListener = (e) => {
+        const target = e.target;
+
+        const currentSelect = target.parentNode.parentNode.getElementsByTagName("select")[0];
+        const currentSelectLength = currentSelect.length;
+        let previousSelect = target.parentNode.previousSibling;
+        for (let i = 0; i < currentSelectLength; i++) {
+            if (currentSelect.options[i].innerHTML == target.innerHTML) {
+                currentSelect.selectedIndex = i;
+                previousSelect.innerHTML = "Выбор: " + target.innerHTML;
+                let previousSameAsSelected = target.parentNode.getElementsByClassName("same-as-selected");
+                const previousLength = previousSameAsSelected.length;
+                for (let k = 0; k < previousLength; k++) {
+                    previousSameAsSelected[k].removeAttribute("class");
+                }
+                target.classList.add("same-as-selected");
+                break;
+            }
+        }
+        previousSelect.click();
     }
 
+    /**
+     * @description Закрывает все элементы в dropdown-e, кроме выбранного.
+     */
+    closeAllSelect = (element) => {
+        const items = document.getElementsByClassName("select-items");
+        let selected = document.getElementsByClassName("select-selected");
+        const itemsAmount = items.length;
+        const selectedAmount = selected.length;
+        let elementsToHide = [];
+        for (let i = 0; i < selectedAmount; i++) {
+            if (element == selected[i]) {
+                elementsToHide.push(i)
+            } else {
+                selected[i].classList.remove("select-arrow-active");
+            }
+        }
+        for (let i = 0; i < itemsAmount; i++) {
+            if (elementsToHide.indexOf(i)) {
+                items[i].classList.add("select-hide");
+            }
+        }
+    }
 }

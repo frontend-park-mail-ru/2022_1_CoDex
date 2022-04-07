@@ -1,5 +1,5 @@
 mixin reviewCard(singleReview)
-    div.review-card
+    div(class=`review-card ${singleReview.type}`)
         div.review-card__avatar
             img(src=singleReview.avatarSrc)
         div.review-card__info

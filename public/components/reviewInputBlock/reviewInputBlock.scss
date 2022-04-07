@@ -1,0 +1,82 @@
+@import "../../css/consts.scss";
+
+.review-input-block {
+    display: flex;
+    flex-direction: column;
+    
+    &__dropdown {
+        width: 100%;
+        height: 48px;
+        position: relative;
+        font-family: $main_font;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 48px;
+        color: $black;
+        background-color: $raspberry;
+        border-radius: 20px;
+        
+        select {
+            display: none;
+        }
+
+        .select-selected {
+            background-color: $raspberry;
+            border-radius: 20px;
+            &::after {
+                position: absolute;
+                content: "";
+                top: 22px;
+                right: 18px;
+                width: 0;
+                height: 0;
+                border: 6px solid transparent;
+                border-color: $black transparent transparent transparent;
+            }
+
+        }
+        
+        .select-items {
+            position: absolute;
+            width: 100%;
+            top: 100%;
+            left: 0;
+            right: 0;
+        }
+        
+        .select-items div, .select-selected {
+            background-color: $raspberry;
+            color: $white;
+            line-height: 48px;
+            cursor: pointer;
+            user-select: none;
+
+        }
+        
+        .select-hide {
+            display: none;
+        }
+        
+        .select-items div:hover, .same-as-selected {
+            background-color: $dark_raspberry;
+        }
+        
+        .select-items div:active {
+            background-color: $very_dark_raspberry;
+        }
+        
+        .select-arrow-active {
+            border-radius: 20px 20px 0 0;
+            
+            &::after {
+                border-color: transparent transparent $black transparent;
+                top: 15px;
+            }
+        }
+        
+    }
+}
+
+.last {
+    border-radius: 0 0 20px 20px;
+}

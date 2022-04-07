@@ -3,17 +3,20 @@
 .review-card {
     display: grid;
     column-gap: 20px;
-    grid-template-areas: "A0 A0 A1 A1 A1 A1 A1 A1 A1 A1 A1";
+    grid-template-columns: repeat(10, 80px);
+    grid-template-areas: "A0 A0 A1 A1 A1 A1 A1 A1 A1 A1";
     background-color: $dark_raspberry;
     color: $white;
     border-radius: 20px;
+    margin-bottom: 30px;
 
+    
     &__avatar {
         grid-area: A0;
         display: flex;
         flex-direction: column;
         min-height: 180px;
-        min-width: 180px;
+        width: 180px;
 
         img {
             object-fit: cover;
@@ -28,7 +31,7 @@
 
     &__info {
         grid-area: A1;
-
+        
         &__title {
             display: flex;
             flex-direction: row;
@@ -44,7 +47,7 @@
                 line-height: 40px;
                 margin-right: 6px;
             }
-    
+            
             &__info {
                 color: $white;
                 height: 40px;
@@ -65,4 +68,16 @@
             line-height: 20px;
         }
     }
+}
+
+.good {
+    background: radial-gradient(circle, $dark-raspberry 11%, $green 92%);
+}
+
+.neutral {
+    background: radial-gradient(circle, $dark-raspberry 11%, $navigational 92%);
+}
+
+.bad {
+    background: radial-gradient(circle, $dark-raspberry 11%, $red 92%);
 }
