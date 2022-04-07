@@ -2,7 +2,7 @@ const { v4: uuid } = require('uuid');
 const path = require('path');
 
 const startServer = (app) => {
-  app.get("/api/v1/mainPage", function (req, res) {
+  app.get("/api/v1/collections", function (req, res) {
     res.json(Collections);
   });
 
