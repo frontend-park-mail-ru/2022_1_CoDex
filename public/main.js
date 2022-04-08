@@ -9,6 +9,7 @@ import { SingleCollectionController } from "./controllers/SingleCollectionContro
 import { CollectionsController } from "./controllers/CollectionsController.js";
 import { MovieController } from "./controllers/MovieController.js";
 import { ActorController } from "./controllers/ActorController.js";
+import { registerServiceWorker } from "./utils/utils.js";
 
 export const root = document.getElementById("root");
 
@@ -23,6 +24,8 @@ const movieController = new MovieController();
 const actorController = new ActorController();
 
 const router = new Router(root);
+
+registerServiceWorker();
 
 router.register(regularRoutes.homePage, homeController)
   .register(regularRoutes.loginPage, authController)

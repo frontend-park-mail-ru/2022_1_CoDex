@@ -151,10 +151,16 @@
     grid-area: C1;
     width: 100%;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(12, 80px);
+    column-gap: 20px;
+    grid-template-areas: 
+        "A0 A1 A1 A1 A1 A1 A1 A1 A1 A1 A1 A2"
+        "B1 B1 B1 B1 B1 B1 B1 B1 B1 B1 B1 B1";
 
     &__title {
+        width: 100%;
+        grid-area: A1;
         color: $white;
         text-align: left;
         height: 56px;
@@ -167,6 +173,7 @@
     }
 
     &__container {
+        grid-area: B1;
         grid-template-columns: repeat(2, 1fr);
         display: grid;
         row-gap: 30px;
