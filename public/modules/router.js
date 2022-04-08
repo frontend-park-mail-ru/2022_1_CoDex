@@ -44,8 +44,8 @@ export class Router {
                 (e) => {
                     const clickTarget = e.target;
                     const closestLink = e.target.closest("a");
-                    if (!closestLink || clickTarget.matches("not-route") || 
-                    closestLink?.matches("not-route")) {
+                    if (!closestLink || clickTarget.classList.matches("not-route") || 
+                    closestLink?.classList.matches("not-route")) {
                         return;
                     }
                     e.preventDefault();

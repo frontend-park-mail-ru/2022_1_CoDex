@@ -14,62 +14,71 @@ const startServer = (app) => {
     res.json(adventures);
   });
 
+  app.get("/api/v1/actor/1", function (req, res) {
+    res.json(actors[0]);
+  });
+  
+  app.get("/api/v1/actor/2", function (req, res) {
+    res.json(actors[1]);
+  });
+
+
   app.get("/api/v1/movie/1", function (req, res) {
     res.json({
       movie: top256.movieList[0],
       related: [
         {
-          "href": "/movies/2",
+          "href": "/movie/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movies/2",
+          "href": "/movie/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movies/2",
+          "href": "/movie/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movies/2",
+          "href": "/movie/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movies/2",
+          "href": "/movie/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movies/2",
+          "href": "/movie/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movies/2",
+          "href": "/movie/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movies/2",
+          "href": "/movie/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movies/2",
+          "href": "/movie/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movies/2",
+          "href": "/movie/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movies/2",
+          "href": "/movie/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
@@ -129,57 +138,57 @@ const startServer = (app) => {
       movie: top256.movieList[1],
       related: [
         {
-          "href": "/movies/1",
+          "href": "/movie/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movies/1",
+          "href": "/movie/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movies/1",
+          "href": "/movie/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movies/1",
+          "href": "/movie/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movies/1",
+          "href": "/movie/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movies/1",
+          "href": "/movie/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movies/1",
+          "href": "/movie/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movies/1",
+          "href": "/movie/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movies/1",
+          "href": "/movie/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movies/1",
+          "href": "/movie/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movies/1",
+          "href": "/movie/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
@@ -278,7 +287,7 @@ const startServer = (app) => {
 
   app.get('/api/v1/checkAuth', (req, res) => {
     res.json({
-      "status": 200,
+      "status": 400,
     });
   });
 
@@ -328,8 +337,8 @@ const startServer = (app) => {
         "duration": "142 минуты",
         "cast": [
           {
-            "name": "Тим Роббинс",
-            "href": "/collections",
+            "name": "Баба Яга",
+            "href": "/actor/2",
           },
           {
             "name": "Боб Гантон",
@@ -370,7 +379,7 @@ const startServer = (app) => {
         "cast": [
           {
             "name": "Том Хэнкс",
-            "href": "/collections",
+            "href": "/actor/1",
           },
           {
             "name": "Дэвид Морс",
@@ -1488,7 +1497,341 @@ const startServer = (app) => {
           "title": "Баба Яга",
         },
       ],
-
+      "movies": [
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
+          "title": "Зелёная миля",
+          "originalTitle": "The Green Mile",
+          "year": "1999",
+          "country": "США",
+          "genre": "Драма, Криминал",
+          "motto": "Пол Эджкомб не верил в чудеса. Пока не столкнулся с одним из них",
+          "director": "Франк Дарабонт",
+          "budget": "60 000 000 $",
+          "gross": "300 000 000 $",
+          "duration": "189 минут",
+          "mainCast": "Том Хэнкс, Дэвид Морс, Бонни Хант, Майкл Клакр Дункан, Джеймс Кромуэлл, Майкл Джитер, Грэм Грин, Даг Хатчисон",
+          "cast": [
+            {
+              "name": "Том Хэнкс",
+              "href": "/collections",
+            },
+            {
+              "name": "Дэвид Морс",
+              "href": "/collections",
+            },
+            {
+              "name": "Бонни Хант",
+              "href": "/collections",
+            },
+            {
+              "name": "Майкл Кларк Дункан",
+              "href": "/collections",
+            },
+            {
+              "name": "Джеймс Кромуэлл",
+              "href": "/collections",
+            },
+            {
+              "name": "Майкл Джиттер",
+              "href": "/collections",
+            },
+          ],
+          "info": "1999, США. Драма",
+          "rating": "9.1",
+          "description": "Пол Эджкомб — начальник блока смертников в тюрьме «Холодная гора», каждый из узников которого однажды проходит «зеленую милю» по пути к месту казни. Пол повидал много заключённых и надзирателей за время работы. Однако гигант Джон Коффи, обвинённый в страшном преступлении, стал одним из самых необычных обитателей блока.",
+        },
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
+          "title": "Зелёная миля",
+          "originalTitle": "The Green Mile",
+          "year": "1999",
+          "country": "США",
+          "genre": "Драма, Криминал",
+          "motto": "Пол Эджкомб не верил в чудеса. Пока не столкнулся с одним из них",
+          "director": "Франк Дарабонт",
+          "budget": "60 000 000 $",
+          "gross": "300 000 000 $",
+          "duration": "189 минут",
+          "mainCast": "Том Хэнкс, Дэвид Морс, Бонни Хант, Майкл Клакр Дункан, Джеймс Кромуэлл, Майкл Джитер, Грэм Грин, Даг Хатчисон",
+          "cast": [
+            {
+              "name": "Том Хэнкс",
+              "href": "/collections",
+            },
+            {
+              "name": "Дэвид Морс",
+              "href": "/collections",
+            },
+            {
+              "name": "Бонни Хант",
+              "href": "/collections",
+            },
+            {
+              "name": "Майкл Кларк Дункан",
+              "href": "/collections",
+            },
+            {
+              "name": "Джеймс Кромуэлл",
+              "href": "/collections",
+            },
+            {
+              "name": "Майкл Джиттер",
+              "href": "/collections",
+            },
+          ],
+          "info": "1999, США. Драма",
+          "rating": "9.1",
+          "description": "Пол Эджкомб — начальник блока смертников в тюрьме «Холодная гора», каждый из узников которого однажды проходит «зеленую милю» по пути к месту казни. Пол повидал много заключённых и надзирателей за время работы. Однако гигант Джон Коффи, обвинённый в страшном преступлении, стал одним из самых необычных обитателей блока.",
+        },
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
+          "title": "Зелёная миля",
+          "originalTitle": "The Green Mile",
+          "year": "1999",
+          "country": "США",
+          "genre": "Драма, Криминал",
+          "motto": "Пол Эджкомб не верил в чудеса. Пока не столкнулся с одним из них",
+          "director": "Франк Дарабонт",
+          "budget": "60 000 000 $",
+          "gross": "300 000 000 $",
+          "duration": "189 минут",
+          "mainCast": "Том Хэнкс, Дэвид Морс, Бонни Хант, Майкл Клакр Дункан, Джеймс Кромуэлл, Майкл Джитер, Грэм Грин, Даг Хатчисон",
+          "cast": [
+            {
+              "name": "Том Хэнкс",
+              "href": "/collections",
+            },
+            {
+              "name": "Дэвид Морс",
+              "href": "/collections",
+            },
+            {
+              "name": "Бонни Хант",
+              "href": "/collections",
+            },
+            {
+              "name": "Майкл Кларк Дункан",
+              "href": "/collections",
+            },
+            {
+              "name": "Джеймс Кромуэлл",
+              "href": "/collections",
+            },
+            {
+              "name": "Майкл Джиттер",
+              "href": "/collections",
+            },
+          ],
+          "info": "1999, США. Драма",
+          "rating": "9.1",
+          "description": "Пол Эджкомб — начальник блока смертников в тюрьме «Холодная гора», каждый из узников которого однажды проходит «зеленую милю» по пути к месту казни. Пол повидал много заключённых и надзирателей за время работы. Однако гигант Джон Коффи, обвинённый в страшном преступлении, стал одним из самых необычных обитателей блока.",
+        },
+      ]
+    },
+    {
+      actor: {
+        "ID": "1",
+        "avatar": "tales.png",
+        "name": "Баба Яга",
+        "originalName": "Baba Yaga",
+        "career": "Актёр",
+        "height": "160 см (без ступы)",
+        "birthdate": "Неизвестно",
+        "birthplace": "Русь",
+        "genres": "Сказки",
+        "total": "Много",
+      },
+      related: [
+        {
+          "href": "/actor/1",
+          "poster": "tomHanks.jpg",
+          "title": "Том Хэнкс",
+        },
+        {
+          "href": "/actor/1",
+          "poster": "tomHanks.jpg",
+          "title": "Том Хэнкс",
+        },
+        {
+          "href": "/actor/1",
+          "poster": "tomHanks.jpg",
+          "title": "Том Хэнкс",
+        },
+        {
+          "href": "/actor/1",
+          "poster": "tomHanks.jpg",
+          "title": "Том Хэнкс",
+        },
+        {
+          "href": "/actor/1",
+          "poster": "tomHanks.jpg",
+          "title": "Том Хэнкс",
+        },
+        {
+          "href": "/actor/1",
+          "poster": "tomHanks.jpg",
+          "title": "Том Хэнкс",
+        },
+        {
+          "href": "/actor/1",
+          "poster": "tomHanks.jpg",
+          "title": "Том Хэнкс",
+        },
+        {
+          "href": "/actor/1",
+          "poster": "tomHanks.jpg",
+          "title": "Том Хэнкс",
+        },
+        {
+          "href": "/actor/1",
+          "poster": "tomHanks.jpg",
+          "title": "Том Хэнкс",
+        },        
+      ],
+      "movies": [
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
+          "title": "Зелёная миля",
+          "originalTitle": "The Green Mile",
+          "year": "1999",
+          "country": "США",
+          "genre": "Драма, Криминал",
+          "motto": "Пол Эджкомб не верил в чудеса. Пока не столкнулся с одним из них",
+          "director": "Франк Дарабонт",
+          "budget": "60 000 000 $",
+          "gross": "300 000 000 $",
+          "duration": "189 минут",
+          "mainCast": "Том Хэнкс, Дэвид Морс, Бонни Хант, Майкл Клакр Дункан, Джеймс Кромуэлл, Майкл Джитер, Грэм Грин, Даг Хатчисон",
+          "cast": [
+            {
+              "name": "Том Хэнкс",
+              "href": "/collections",
+            },
+            {
+              "name": "Дэвид Морс",
+              "href": "/collections",
+            },
+            {
+              "name": "Бонни Хант",
+              "href": "/collections",
+            },
+            {
+              "name": "Майкл Кларк Дункан",
+              "href": "/collections",
+            },
+            {
+              "name": "Джеймс Кромуэлл",
+              "href": "/collections",
+            },
+            {
+              "name": "Майкл Джиттер",
+              "href": "/collections",
+            },
+          ],
+          "info": "1999, США. Драма",
+          "rating": "9.1",
+          "description": "Пол Эджкомб — начальник блока смертников в тюрьме «Холодная гора», каждый из узников которого однажды проходит «зеленую милю» по пути к месту казни. Пол повидал много заключённых и надзирателей за время работы. Однако гигант Джон Коффи, обвинённый в страшном преступлении, стал одним из самых необычных обитателей блока.",
+        },
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
+          "title": "Зелёная миля",
+          "originalTitle": "The Green Mile",
+          "year": "1999",
+          "country": "США",
+          "genre": "Драма, Криминал",
+          "motto": "Пол Эджкомб не верил в чудеса. Пока не столкнулся с одним из них",
+          "director": "Франк Дарабонт",
+          "budget": "60 000 000 $",
+          "gross": "300 000 000 $",
+          "duration": "189 минут",
+          "mainCast": "Том Хэнкс, Дэвид Морс, Бонни Хант, Майкл Клакр Дункан, Джеймс Кромуэлл, Майкл Джитер, Грэм Грин, Даг Хатчисон",
+          "cast": [
+            {
+              "name": "Том Хэнкс",
+              "href": "/collections",
+            },
+            {
+              "name": "Дэвид Морс",
+              "href": "/collections",
+            },
+            {
+              "name": "Бонни Хант",
+              "href": "/collections",
+            },
+            {
+              "name": "Майкл Кларк Дункан",
+              "href": "/collections",
+            },
+            {
+              "name": "Джеймс Кромуэлл",
+              "href": "/collections",
+            },
+            {
+              "name": "Майкл Джиттер",
+              "href": "/collections",
+            },
+          ],
+          "info": "1999, США. Драма",
+          "rating": "9.1",
+          "description": "Пол Эджкомб — начальник блока смертников в тюрьме «Холодная гора», каждый из узников которого однажды проходит «зеленую милю» по пути к месту казни. Пол повидал много заключённых и надзирателей за время работы. Однако гигант Джон Коффи, обвинённый в страшном преступлении, стал одним из самых необычных обитателей блока.",
+        },
+        {
+          "ID": "2",
+          "poster": "greenMile.png",
+          "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
+          "title": "Зелёная миля",
+          "originalTitle": "The Green Mile",
+          "year": "1999",
+          "country": "США",
+          "genre": "Драма, Криминал",
+          "motto": "Пол Эджкомб не верил в чудеса. Пока не столкнулся с одним из них",
+          "director": "Франк Дарабонт",
+          "budget": "60 000 000 $",
+          "gross": "300 000 000 $",
+          "duration": "189 минут",
+          "mainCast": "Том Хэнкс, Дэвид Морс, Бонни Хант, Майкл Клакр Дункан, Джеймс Кромуэлл, Майкл Джитер, Грэм Грин, Даг Хатчисон",
+          "cast": [
+            {
+              "name": "Том Хэнкс",
+              "href": "/collections",
+            },
+            {
+              "name": "Дэвид Морс",
+              "href": "/collections",
+            },
+            {
+              "name": "Бонни Хант",
+              "href": "/collections",
+            },
+            {
+              "name": "Майкл Кларк Дункан",
+              "href": "/collections",
+            },
+            {
+              "name": "Джеймс Кромуэлл",
+              "href": "/collections",
+            },
+            {
+              "name": "Майкл Джиттер",
+              "href": "/collections",
+            },
+          ],
+          "info": "1999, США. Драма",
+          "rating": "9.1",
+          "description": "Пол Эджкомб — начальник блока смертников в тюрьме «Холодная гора», каждый из узников которого однажды проходит «зеленую милю» по пути к месту казни. Пол повидал много заключённых и надзирателей за время работы. Однако гигант Джон Коффи, обвинённый в страшном преступлении, стал одним из самых необычных обитателей блока.",
+        },
+      ]
     },
   ];
 };

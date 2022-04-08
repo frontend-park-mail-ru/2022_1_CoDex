@@ -1,5 +1,7 @@
 import { events } from "../../consts/events.js";
 import { BaseView } from "../BaseView/BaseView.js";
+import { getURLArguments } from "../../modules/router.js";
+import { slider } from "../../utils/slider.js";
 import actorPageContent from "../../components/actor/actor.pug";
 /**
  * @description Класс представления страницы актёра.
@@ -31,6 +33,7 @@ export class ActorView extends BaseView {
     renderContent = (data) => {
         if (!data) { return; }
         this.actorID = data.actor.ID;
+        console.log(data);
         const template = actorPageContent(data);
         const content = document.querySelector(".content");
         if (content) {
