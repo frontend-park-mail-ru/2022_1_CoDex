@@ -1,0 +1,44 @@
+include ../slider/slider
+include ../movieCard/movieCard
+
+div.content-wrapper
+    div.page
+        div.actor-content
+            div.poster-and-buttons
+                div.poster
+                    img.poster__img(src=`../server/images/${actor.avatar}`)
+            div.info
+                div.actor-title #{actor.name}
+                div.actor-original #{actor.originalName}
+                div.actor-facts
+                    div.actor-facts__title О персоне:
+                    div.actor-facts__fact
+                        div.actor-facts__fact__name Карьера
+                        div.actor-facts__fact__value #{actor.career}
+                    div.actor-facts__fact
+                        div.actor-facts__fact__name Рост
+                        div.actor-facts__fact__value #{actor.height}
+                    div.actor-facts__fact
+                        div.actor-facts__fact__name Дата рождения
+                        div.actor-facts__fact__value #{actor.birthdate}
+                    div.actor-facts__fact
+                        div.actor-facts__fact__name Место рождения
+                        div.actor-facts__fact__value #{actor.birthplace}
+                    div.actor-facts__fact
+                        div.actor-facts__fact__name Жанры
+                        div.actor-facts__fact__value #{actor.genres}
+                    div.actor-facts__fact
+                        div.actor-facts__fact__name Всего фильмов
+                        div.actor-facts__fact__value #{actor.total}
+            div.related
+                div.related__title Если вам понравился этот актёр:
+                +slider(related)
+            div.actor-movies
+                div.actor-movies__title
+                div.actor-movies__container
+                    each movie, _ in movies
+                        +movieCard(movie)
+
+
+                    
+                    

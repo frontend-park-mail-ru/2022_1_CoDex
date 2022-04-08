@@ -19,57 +19,57 @@ const startServer = (app) => {
       movie: top256.movieList[0],
       related: [
         {
-          "ID": "2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "ID": "2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "ID": "2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "ID": "2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "ID": "2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "ID": "2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "ID": "2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "ID": "2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "ID": "2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "ID": "2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "ID": "2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
@@ -129,57 +129,57 @@ const startServer = (app) => {
       movie: top256.movieList[1],
       related: [
         {
-          "ID": "1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "ID": "1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "ID": "1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "ID": "1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "ID": "1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "ID": "1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "ID": "1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "ID": "1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "ID": "1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "ID": "1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "ID": "1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
@@ -1426,6 +1426,71 @@ const startServer = (app) => {
       },
     ]
   };
+
+  const actors = [
+    {
+      actor: {
+        "ID": "1",
+        "avatar": "tomHanks.jpg",
+        "name": "Том Хэнкс",
+        "originalName": "Tom Hanks",
+        "career": "Актёр",
+        "height": "160 см",
+        "birthdate": "9 июля 1956",
+        "birthplace": "Конкорд, Калифорния, США",
+        "genres": "Комедия, Драма",
+        "total": "10",
+      },
+      related: [
+        {
+          "href": "/actor/2",
+          "poster": "tales.png",
+          "title": "Баба Яга",
+        },
+        {
+          "href": "/actor/2",
+          "poster": "tales.png",
+          "title": "Баба Яга",
+        },
+        {
+          "href": "/actor/2",
+          "poster": "tales.png",
+          "title": "Баба Яга",
+        },
+        {
+          "href": "/actor/2",
+          "poster": "tales.png",
+          "title": "Баба Яга",
+        },
+        {
+          "href": "/actor/2",
+          "poster": "tales.png",
+          "title": "Баба Яга",
+        },
+        {
+          "href": "/actor/2",
+          "poster": "tales.png",
+          "title": "Баба Яга",
+        },
+        {
+          "href": "/actor/2",
+          "poster": "tales.png",
+          "title": "Баба Яга",
+        },
+        {
+          "href": "/actor/2",
+          "poster": "tales.png",
+          "title": "Баба Яга",
+        },
+        {
+          "href": "/actor/2",
+          "poster": "tales.png",
+          "title": "Баба Яга",
+        },
+      ],
+
+    },
+  ];
 };
 
 module.exports = startServer;

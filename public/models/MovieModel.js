@@ -15,6 +15,12 @@ export class MovieModel {
         this.eventBus = eventBus;
     }
 
+    /**
+     * @description Получает информацию для контента страницы 
+     * одного фильма.
+     * @param { object } movie Информация о подборке: 
+     * название, ID, похожие фильмы...
+     */
     getContent = (movie) => {
         if (!movie?.ID) {
             this.eventBus.emit(events.app.errorPage);
@@ -25,7 +31,6 @@ export class MovieModel {
             if (!response || !response.status) {
                 this.eventBus.emit(events.app.errorPage);
             } else if (response.status === statuses.OK && response.parsedResponse) {
-                console.log(response.parsedResponse.movie.cast);
                 this.eventBus.emit(events.moviePage.render.content, response.parsedResponse);
             }
             if (response.status === statuses.NOT_FOUND) {

@@ -20,6 +20,7 @@ export const urls = {
         singleCollection: `${currentUrl}${versions.v1}/collections/collection`,
         collections: `${currentUrl}${versions.v1}/collections`,
         movie: `${currentUrl}${versions.v1}/movie`,
+        actor: `${currentUrl}${versions.v1}/actor`,
         getUser: `${currentUrl}${versions.v1}/TODO`,
         sendRating: `${currentUrl}${versions.v1}/TODO`,
     }

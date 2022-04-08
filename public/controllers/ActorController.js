@@ -23,10 +23,6 @@ export class ActorController extends BaseController {
                 event: events.actorPage.render.page,
                 handler: this.view.render,
             },
-            {
-                event: events.actorPage.getJobContent,
-                handler: this.model.getJobContent,
-            }
         );
     }
 }

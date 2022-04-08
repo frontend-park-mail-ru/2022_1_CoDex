@@ -179,7 +179,6 @@ export const getSingleCollection = async(collectionID) => {
     }
 }
 
-
 /**
  * @description Отправляет оценку фильма пользователем на сервер.
  * @param { string } movieID Данные о пользователе
@@ -219,3 +218,21 @@ export const getSingleCollection = async(collectionID) => {
         return null;
     }
 };
+
+/**
+ * @description Получает с сервера данные о конкретной подборке фильмов.
+ * @param { string } actorID ID запрашиваемой подборки
+ * @returns { object } Ответ с сервера
+ */
+ export const getActor = async(actorID) => {
+    const params = {
+        url: `${urls.api.actor}/${actorID}`,
+        method: "GET",
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}
