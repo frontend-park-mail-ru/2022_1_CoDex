@@ -193,6 +193,15 @@
             font-family: $main_font;
             font-weight: 600;
             font-size: 17px;
+
+            &__link {
+                text-decoration: none;
+                color: $white;
+
+                &:hover {
+                    color: $raspberry;
+                }
+            }
         }
     }
 }

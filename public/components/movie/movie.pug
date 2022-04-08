@@ -44,7 +44,11 @@ div.content-wrapper
                         div.movie-facts__fact__value #{movie.duration}
                     div.movie-facts__fact
                         div.movie-facts__fact__name Главные роли
-                        div.movie-facts__fact__value #{movie.mainCast}
+                        div.movie-facts__fact__value
+                            each actor, index in movie.cast
+                                if index != 0
+                                    span=`, `
+                                a(class="movie-facts__fact__value__link" href=actor.href) #{actor.name}
             div.related
                 div.related__title Если вам понравился этот фильм:
                 +slider(related)
