@@ -20,7 +20,7 @@ export const renderBaseView = () => {
     const user = JSON.parse(userLocalStorage);
     return baseViewPug({
       headerLinks: headerLinks,
-      imgSrc: user.profile_pic,
+      imrsrc: user.profile_pic,
       userId: user.id,
       profileHref: routes.Profile,
       userFromStorage: true,

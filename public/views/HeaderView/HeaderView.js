@@ -106,7 +106,7 @@ export class HeaderView extends BaseView {
     }
     userBlock();
     changeBlock.replaceWith(createElementFromHTML(userBlock({
-      imgSrc: authModule.user.avatarSrc,
+      imrsrc: authModule.user.avatarSrc,
       userID: authModule.user.ID,
       profileHref: routes.profilePage,
     })));

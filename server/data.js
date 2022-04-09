@@ -302,18 +302,18 @@ const startServer = (app) => {
 
   const Collections = {
     collectionlist: [
-      { description: "Топ 256", imgSrc: "top.png", page: "collections", number: "1" },
-      { description: "Приключения", imgSrc: "adventures.png", page: "collections", number: "2" },
-      { description: "Для всей семьи", imgSrc: "family.png", page: "collections", number: "3" },
-      { description: "Романтичное", imgSrc: "romantic.png", page: "collections", number: "4" },
-      { description: "Лучшие драмы", imgSrc: "drama.png", page: "collections", number: "5" },
-      { description: "Детское", imgSrc: "childish.png", page: "collections", number: "6" },
-      { description: "Комедии", imgSrc: "comedy.png", page: "collections", number: "7" },
-      { description: "Спасение мира", imgSrc: "saveTheWorld.png", page: "collections", number: "8" },
-      { description: "Кинокомиксы", imgSrc: "comics.png", page: "collections", number: "9" },
-      { description: "Советская классика", imgSrc: "soviet.png", page: "collections", number: "10" },
-      { description: "Шпионские фильмы", imgSrc: "spy.png", page: "collections", number: "11" },
-      { description: "Выбор редакции", imgSrc: "ourTop.png", page: "collections", number: "12" },
+      { description: "Топ 256", imrsrc: "top.png", page: "collections", number: "1" },
+      { description: "Приключения", imrsrc: "adventures.png", page: "collections", number: "2" },
+      { description: "Для всей семьи", imrsrc: "family.png", page: "collections", number: "3" },
+      { description: "Романтичное", imrsrc: "romantic.png", page: "collections", number: "4" },
+      { description: "Лучшие драмы", imrsrc: "drama.png", page: "collections", number: "5" },
+      { description: "Детское", imrsrc: "childish.png", page: "collections", number: "6" },
+      { description: "Комедии", imrsrc: "comedy.png", page: "collections", number: "7" },
+      { description: "Спасение мира", imrsrc: "saveTheWorld.png", page: "collections", number: "8" },
+      { description: "Кинокомиксы", imrsrc: "comics.png", page: "collections", number: "9" },
+      { description: "Советская классика", imrsrc: "soviet.png", page: "collections", number: "10" },
+      { description: "Шпионские фильмы", imrsrc: "spy.png", page: "collections", number: "11" },
+      { description: "Выбор редакции", imrsrc: "ourTop.png", page: "collections", number: "12" },
     ]
   };
 
