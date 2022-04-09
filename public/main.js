@@ -25,7 +25,7 @@ const actorController = new ActorController();
 
 const router = new Router(root);
 
-registerServiceWorker();
+// registerServiceWorker();
 
 router.register(regularRoutes.homePage, homeController)
   .register(regularRoutes.loginPage, authController)
