@@ -21,7 +21,6 @@ export const urls = {
         collections: `${currentUrl}${versions.v1}/collections/feed`,
         movie: `${currentUrl}${versions.v1}/movie`,
         actor: `${currentUrl}${versions.v1}/actor`,
-        getUser: `${currentUrl}${versions.v1}/TODO`,
         sendRating: `${currentUrl}${versions.v1}/TODO`,
     }
 }
