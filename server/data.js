@@ -25,7 +25,7 @@ const startServer = (app) => {
 
   app.get("/api/v1/movie/1", function (req, res) {
     res.json({
-      movie: top256.movieList[0],
+      movie: top256.movielist[0],
       related: [
         {
           "href": "/movie/2",
@@ -135,7 +135,7 @@ const startServer = (app) => {
 
   app.get("/api/v1/movie/2", function (req, res) {
     res.json({
-      movie: top256.movieList[1],
+      movie: top256.movielist[1],
       related: [
         {
           "href": "/movie/1",
@@ -320,7 +320,7 @@ const startServer = (app) => {
   const top256 = {
     title: "Топ 256",
     description: "Вот такая вот подборочка :)",
-    movieList: [
+    movielist: [
       {
         "ID": "1",
         "poster": "showshenkRedemption.png",
@@ -1262,7 +1262,7 @@ const startServer = (app) => {
   const adventures = {
     title: "Приключения",
     description: "Вот такая вот подборочка :)",
-    movieList: [
+    movielist: [
       {
         "ID": "1",
         "poster": "showshenkRedemption.png",
