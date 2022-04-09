@@ -12,7 +12,7 @@ const versions = {
 
 export const urls = {
     api: {
-        checkAuth: `${currentUrl}${versions.v1}/checkAuth`,
+        checkAuth: `${currentUrl}${versions.v1}/user/authcheck`,
         getUser: `${currentUrl}${versions.v1}/user`,
         logout: `${currentUrl}${versions.v1}/logout`,
         login: `${currentUrl}${versions.v1}/login`,
