@@ -22,7 +22,7 @@ self.addEventListener("install", (e) => {
             const parsedResponse = await response.json();
             console.log(parsedResponse);
             const imageURLs = parsedResponse.collectionlist.map(
-                (collection) => `http://localhost:3000/server/images/${collection.imrsrc}`
+                (collection) => `http://localhost:3000/server/images/${collection.imgsrc}`
             );
             const responses = await Promise.all(imageURLs.map(
                 (currentImageURL) => {
