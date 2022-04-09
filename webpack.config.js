@@ -2,6 +2,7 @@ const path = require('path');
 const { basename } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: "./public/main.js",
@@ -66,5 +67,13 @@ module.exports = {
             inject: (htmlPlugin) =>
               basename(htmlPlugin.options.filename) === 'index.html',
           }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: 'public/sw.js',
+                    to: '',
+                },
+            ],
+        }),
     ]
 }
