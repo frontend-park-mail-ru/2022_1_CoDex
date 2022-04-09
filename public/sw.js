@@ -21,7 +21,7 @@ self.addEventListener("install", (e) => {
             console.log(response);
             const parsedResponse = await response.json();
             console.log(parsedResponse);
-            const imageURLs = parsedResponse.collectionList.map(
+            const imageURLs = parsedResponse.collectionlist.map(
                 (collection) => `http://localhost:3000/server/images/${collection.imgSrc}`
             );
             const responses = await Promise.all(imageURLs.map(

@@ -301,7 +301,7 @@ const startServer = (app) => {
   const ids = {};
 
   const Collections = {
-    collectionList: [
+    collectionlist: [
       { description: "Топ 256", imgSrc: "top.png", page: "collections", number: "1" },
       { description: "Приключения", imgSrc: "adventures.png", page: "collections", number: "2" },
       { description: "Для всей семьи", imgSrc: "family.png", page: "collections", number: "3" },
