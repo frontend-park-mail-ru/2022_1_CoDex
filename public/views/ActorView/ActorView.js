@@ -33,7 +33,6 @@ export class ActorView extends BaseView {
     renderContent = (data) => {
         if (!data) { return; }
         this.actorID = data.actor.ID;
-        console.log(data);
         const template = actorPageContent(data);
         const content = document.querySelector(".content");
         if (content) {

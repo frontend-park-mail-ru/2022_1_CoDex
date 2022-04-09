@@ -9,7 +9,16 @@ import { SingleCollectionController } from "./controllers/SingleCollectionContro
 import { CollectionsController } from "./controllers/CollectionsController.js";
 import { MovieController } from "./controllers/MovieController.js";
 import { ActorController } from "./controllers/ActorController.js";
-import { registerServiceWorker } from "./utils/utils.js";
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js', {scope: '/'})
+      .then((registration) => {
+        console.log('sw registration on scope:', registration.scope);
+      })
+      .catch((err) => {
+        console.error(err);
+  });
+}
 
 export const root = document.getElementById("root");
 
@@ -25,7 +34,6 @@ const actorController = new ActorController();
 
 const router = new Router(root);
 
-// registerServiceWorker();
 
 router.register(regularRoutes.homePage, homeController)
   .register(regularRoutes.loginPage, authController)

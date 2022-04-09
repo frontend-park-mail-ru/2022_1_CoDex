@@ -32,16 +32,3 @@ export const renderBaseView = () => {
     });
   }
 };
-
-export const registerServiceWorker = () => {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register("http://localhost:3000/sw.js")
-    .then(() => {
-      console.log("SW registered");
-      navigator.serviceWorker.ready.then((worker) => {
-        worker.sync.register('syncdata');
-      });
-    })
-    .catch((err) => console.log(err));
-  }
-}
