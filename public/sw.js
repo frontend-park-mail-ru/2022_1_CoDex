@@ -2,8 +2,7 @@
 
 const cacheName = "fallback";
 
-const cacheURLs = [  ];
-console.log(self);
+const cacheURLs = [ "main.js" ];
 self.addEventListener("install", (e) => {
     e.waitUntil(
         caches.open(cacheName).then(
@@ -20,7 +19,6 @@ self.addEventListener("install", (e) => {
 self.addEventListener("fetch", 
     (e) => {
         e.respondWith((async () => {
-            console.log("huuuuurra");
             if (navigator.onLine === true) {
                 const response = await fetch(e.request);
                 if (e.request.method !== "GET") {
@@ -29,7 +27,6 @@ self.addEventListener("fetch",
                 const clone = response.clone();
                 caches.open(cacheName)
                     .then((cache) => {
-                        console.log(`${e.request}: cache saved`);
                         cache.put(e.request, clone);
                     });
                 return response;
