@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "webpack server --mode=development --config ./webpack.config.js",
+    "start": "webpack --mode=development --config ./webpack.config.js",
     "server": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "doc": "jsdoc -c jsdoc.json public/*/*/*.js -r --readme README.md",

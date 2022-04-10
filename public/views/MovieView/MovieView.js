@@ -255,7 +255,7 @@ export class MovieView extends BaseView {
     sendReview = () => {
         const reviewText = document.querySelector(".review-input-block__text-input").value;
         const reviewTypeText = document.querySelector(".select-selected").textContent;
-        let reviewType = 0;
+        let reviewType = 2;
         if (reviewTypeText.includes("Отлично")) {
             reviewType = 1;
         } else if (reviewTypeText.includes("Неплохо")) {
