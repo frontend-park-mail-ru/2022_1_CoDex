@@ -23,62 +23,62 @@ const startServer = (app) => {
   });
 
 
-  app.get("/api/v1/movie/1", function (req, res) {
+  app.get("/api/v1/movies/1", function (req, res) {
     res.json({
       movie: top256.movielist[0],
       related: [
         {
-          "href": "/movie/2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movie/2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movie/2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movie/2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movie/2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movie/2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movie/2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movie/2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movie/2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movie/2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
         {
-          "href": "/movie/2",
+          "href": "/movies/2",
           "poster": "greenMile.png",
           "title": "Зелёная миля",
         },
@@ -133,62 +133,62 @@ const startServer = (app) => {
     });
   });
 
-  app.get("/api/v1/movie/2", function (req, res) {
+  app.get("/api/v1/movies/2", function (req, res) {
     res.json({
       movie: top256.movielist[1],
       related: [
         {
-          "href": "/movie/1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movie/1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movie/1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movie/1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movie/1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movie/1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movie/1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movie/1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movie/1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movie/1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },
         {
-          "href": "/movie/1",
+          "href": "/movies/1",
           "poster": "showshenkRedemption.png",
           "title": "Побег из Шоушенка",
         },

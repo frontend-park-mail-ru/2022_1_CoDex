@@ -28,7 +28,7 @@ export class MovieView extends BaseView {
      * контента страницы.
      */
     emitGetContent = () => {
-        const URLArgs = getURLArguments(window.location.pathname, "/movie/:ID");
+        const URLArgs = getURLArguments(window.location.pathname, "/movies/:ID");
         this.eventBus.emit(events.moviePage.getContent, URLArgs);
     }
 
