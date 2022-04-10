@@ -1,4 +1,6 @@
-.profile
-    includes profileInfo/profileInfo
-    .profile__profile-content 
-        includes ../loader/loader.pug
+.profile-wrapper
+    .profile
+        include profileInfo/profileInfo
+        .profileContent
+            include profileBookmark/profileBookmark
+            include profileReview/profileReview

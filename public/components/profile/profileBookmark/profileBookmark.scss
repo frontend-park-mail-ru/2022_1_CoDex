@@ -1,0 +1,25 @@
+.profileBookmarks {
+    grid-area: bookmarks;
+    width: 780px;
+    display: grid;
+    grid-template-areas:
+        "name name name name name name"
+        "el el el el el el";
+    &__title {
+        margin-top: 30px;
+        grid-area: name;
+        width: 780px;
+        height: 40px;
+        color: $font_color_white;
+        text-align: center;
+    }
+
+    &__bookmarks-container {
+        grid-area: el;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+    }
+}

@@ -14,6 +14,29 @@ const startServer = (app) => {
     res.json(adventures);
   });
 
+  app.get("/api/v1/user/getProfile/1", function (req, res) {
+    res.status(200).json({
+      ID: 1,
+      avatarSrc: "server/images/adventures.png",
+      name: users['a@a.ru'].name,
+      email: 'a@a.ru',
+    });
+  });
+
+  app.get("/api/v1/user/getBookmarks/1", function (req, res) {
+    res.status(200).json({
+      ID: 1,
+      bookmarksList: users['a@a.ru'].bookmarksList,
+    });
+  });
+
+  app.get("/api/v1/user/getReviews/1", function (req, res) {
+    res.status(200).json({
+      ID: 1,
+      reviewsAndStarsList: users['a@a.ru'].reviewsAndStarsList,
+    });
+  });
+
   app.get("/api/v1/movie/1", function (req, res) {
     res.json({
       movie: top256.movieList[0],
@@ -204,7 +227,7 @@ const startServer = (app) => {
 
     res.cookie('podvorot', ID, { expires: new Date(Date.now() + 1000 * 60 * 10) });
     res.status(200).json({
-      ID: ID,
+      ID: 1,
       avatarSrc: "server/images/adventures.png",
       name: users[email].name,
       email: email,
@@ -213,18 +236,37 @@ const startServer = (app) => {
 
   app.get('/api/v1/checkAuth', (req, res) => {
     res.json({
-      "status": 200,
+      "status": 400,
     });
   });
+
+
+  const ids = {};
+
+  const Bookmarks = {
+    bookmarksList: [
+      { description: "Подборка №1", imgSrc: "top.png", page: "profile", number: "1" },
+      { description: "Подборка №2", imgSrc: "top.png", page: "profile", number: "2" },
+    ]
+  };
+
+  const ReviewsAndStars = {
+    reviewsAndStarsList: [
+      { type: "Оценка", text: "10", number: "1" },
+      { type: "Отзыв", text: "Афигенно", number: "2" },
+    ]
+  };
 
   const users = {
     "a@a.ru": {
       name: "aaaaaa",
       email: "a@a.ru",
       password: 'password1',
+      avatarSrc: "server/images/adventures.png",
+      bookmarksList: Bookmarks.bookmarksList,
+      reviewsAndStarsList: ReviewsAndStars.reviewsAndStarsList,
     },
   };
-  const ids = {};
 
   const Collections = {
     collectionList: [
@@ -561,5 +603,8 @@ const startServer = (app) => {
     ]
   };
 };
+
+
+
 
 module.exports = startServer;

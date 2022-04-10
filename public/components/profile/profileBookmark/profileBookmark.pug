@@ -1,0 +1,7 @@
+include bookmark
+.profileBookmarks
+    span.profileBookmarks__title Мои подборки
+    .profileBookmarks__bookmarks-container
+        each input, _ in bookmarksList
+            +bookmark(input)    
+        

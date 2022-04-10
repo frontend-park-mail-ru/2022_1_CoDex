@@ -20,7 +20,9 @@ export const urls = {
         singleCollection: `${currentUrl}${versions.v1}/collections/collection`,
         collections: `${currentUrl}${versions.v1}/collections`,
         movie: `${currentUrl}${versions.v1}/movie`,
-        getUser: `${currentUrl}${versions.v1}/TODO`,
+        profile: `${currentUrl}${versions.v1}/user/getProfile`,
+        bookmarks: `${currentUrl}${versions.v1}/user/getBookmarks`,
+        reviews: `${currentUrl}${versions.v1}/user/getReviews`,
         sendRating: `${currentUrl}${versions.v1}/TODO`,
     }
 }

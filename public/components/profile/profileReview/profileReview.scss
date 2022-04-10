@@ -1,0 +1,39 @@
+.profileReview {
+    grid-area: review;
+    width: 780px;
+    display: grid;
+    grid-template-areas:
+        "name name name name name name"
+        "el el el el el el";
+
+    &__title {
+        grid-area: name;
+        width: 780px;
+        height: 40px;
+        color: $font_color_white;
+        text-align: center;
+    }
+    &__reviewContainer {
+        grid-area: el;
+        .review-element {
+            display: flex;
+            flex-direction: row;
+            width: 780px;
+            border-radius: 20px;
+            background-color: $grey;
+            height: 80px;
+            margin-bottom: 24px;
+            align-items: center;
+
+            &__type {
+                color: $black;
+            margin-left: 26px;
+
+            }
+            &__text {
+                color: $black;
+                margin-left: 10px;
+            }
+        }
+    }
+}

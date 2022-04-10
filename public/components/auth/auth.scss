@@ -41,7 +41,7 @@
     &__invitation {
         grid-area: A0;
         font-family: $main_font;
-        font-size: 26px;
+        font-size: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -86,7 +86,7 @@
     &__invitation {
         grid-area: A0;
         font-family: $main_font;
-        font-size: 26px;
+        font-size: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -199,6 +199,7 @@
 	text-align: center;
 	grid-area: C1;
     font-family: $main_font;
+    font-size: 20px;
 	text-decoration: none;
 	color: $navigational;
 	cursor: pointer;

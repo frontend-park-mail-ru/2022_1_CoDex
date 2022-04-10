@@ -11,6 +11,7 @@
 @import "components/movie/movie.scss";
 @import "components/slider/slider.scss";
 @import "components/reviewCard/reviewCard.scss";
+@import "components/profile/profile.scss";
 
 html, body {
     font-family: $main_font;
@@ -25,7 +26,6 @@ html, body {
 body {
     overflow-y: scroll;
     overflow-x: hidden;
-  
 }
   
 .content {

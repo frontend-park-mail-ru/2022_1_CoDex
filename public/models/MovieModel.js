@@ -40,7 +40,6 @@ export class MovieModel {
      * @param { number } rating Оценка пользователя
      */
     sendRating = (movieID, rating) => {
-        console.log(movieID, rating);
         if (!movieID || !rating) { 
             this.eventBus.emit(events.app.errorPage);
             return; 

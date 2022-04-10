@@ -79,7 +79,6 @@ export class AuthModel extends BaseModel {
      */
     redirect = () => {
         const redirect = new URL(location.href).searchParams.get("redirect");
-        console.log(redirect);
         if (!redirect) {
             this.eventBus.emit(events.pathChanged, { URL: routes.collectionsPage });
         } else {

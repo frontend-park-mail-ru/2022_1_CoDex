@@ -14,4 +14,5 @@ export const regularRoutes = {
     registrationPage: "^/register",
     singleCollectionPage:"^/collections/\\d+$",    
     moviePage:"^/movie/\\d+$",
+    profilePage:"^/profile/\\d+$",
 }

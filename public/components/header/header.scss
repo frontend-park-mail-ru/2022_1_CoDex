@@ -72,6 +72,10 @@
             color: $very_dark_raspberry;
             cursor: pointer;
         }
+
+        &__active {
+            color: $dark_raspberry;
+        }
     }    
 
     .collections {

@@ -86,10 +86,15 @@ export const events = {
     profilePage: {
         render: {
             content: "profilePage:renderContent",
-            collections: "profilePage:renderCollections",
-            activity: "profilePage:renderActivity",
+            bookmarks: "profilePage:renderBookmarks",
+            reviews: "profilePage:renderReviews",
+            profileInfo: "profilePage:renderProfileInfo",
         },
         getContent: "profilePage:getContent",
+        getReviews: "profilePage:getReviews",
+        getBookmarks: "profilePage:getBookmarks",
+        getProfileInfo: "profilePage:getProfileInfo",
+        
         validate: "profilePage:validate",
         sendChanges: "profilePage:sendChanges",
         submit: "profilePage:submit",
