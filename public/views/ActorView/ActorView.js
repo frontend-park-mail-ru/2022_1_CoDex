@@ -22,7 +22,7 @@ export class ActorView extends BaseView {
      * контента страницы.
      */
     emitGetContent = () => {
-        const URLArgs = getURLArguments(window.location.pathname, "/actor/:ID");
+        const URLArgs = getURLArguments(window.location.pathname, "/actors/:ID");
         this.eventBus.emit(events.actorPage.getContent, URLArgs);
     }
 

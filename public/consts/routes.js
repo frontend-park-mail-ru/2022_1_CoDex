@@ -6,6 +6,7 @@ export const routes = {
     loginPage: "/login",
     registrationPage: "/register",
     moviePage: "/movies/\\d+",
+    actorPage: "/actor/\\d+",
 }
 
 export const regularRoutes = {
@@ -15,5 +16,5 @@ export const regularRoutes = {
     registrationPage: "^/register",
     singleCollectionPage:"^/collections/\\d+$",    
     moviePage:"^/movies/\\d+$",
-    actorPage: "^/actor/\\d+$",
+    actorPage: "^/actors/\\d+$",
 }

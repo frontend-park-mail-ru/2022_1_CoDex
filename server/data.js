@@ -14,11 +14,11 @@ const startServer = (app) => {
     res.json(adventures);
   });
 
-  app.get("/api/v1/actor/1", function (req, res) {
+  app.get("/api/v1/actors/1", function (req, res) {
     res.json(actors[0]);
   });
   
-  app.get("/api/v1/actor/2", function (req, res) {
+  app.get("/api/v1/actors/2", function (req, res) {
     res.json(actors[1]);
   });
 
@@ -317,7 +317,7 @@ const startServer = (app) => {
     ]
   };
 
-  const top256 = {
+  const   top256 = {
     title: "Топ 256",
     description: "Вот такая вот подборочка :)",
     movielist: [
@@ -338,7 +338,7 @@ const startServer = (app) => {
         "cast": [
           {
             "name": "Баба Яга",
-            "href": "/actor/2",
+            "href": "/actors/2",
           },
           {
             "name": "Боб Гантон",
@@ -379,7 +379,7 @@ const startServer = (app) => {
         "cast": [
           {
             "name": "Том Хэнкс",
-            "href": "/actor/1",
+            "href": "/actors/1",
           },
           {
             "name": "Дэвид Морс",
@@ -1452,47 +1452,47 @@ const startServer = (app) => {
       },
       related: [
         {
-          "href": "/actor/2",
+          "href": "/actors/2",
           "poster": "tales.png",
           "title": "Баба Яга",
         },
         {
-          "href": "/actor/2",
+          "href": "/actors/2",
           "poster": "tales.png",
           "title": "Баба Яга",
         },
         {
-          "href": "/actor/2",
+          "href": "/actors/2",
           "poster": "tales.png",
           "title": "Баба Яга",
         },
         {
-          "href": "/actor/2",
+          "href": "/actors/2",
           "poster": "tales.png",
           "title": "Баба Яга",
         },
         {
-          "href": "/actor/2",
+          "href": "/actors/2",
           "poster": "tales.png",
           "title": "Баба Яга",
         },
         {
-          "href": "/actor/2",
+          "href": "/actors/2",
           "poster": "tales.png",
           "title": "Баба Яга",
         },
         {
-          "href": "/actor/2",
+          "href": "/actors/2",
           "poster": "tales.png",
           "title": "Баба Яга",
         },
         {
-          "href": "/actor/2",
+          "href": "/actors/2",
           "poster": "tales.png",
           "title": "Баба Яга",
         },
         {
-          "href": "/actor/2",
+          "href": "/actors/2",
           "poster": "tales.png",
           "title": "Баба Яга",
         },
@@ -1650,47 +1650,47 @@ const startServer = (app) => {
       },
       related: [
         {
-          "href": "/actor/1",
+          "href": "/actors/1",
           "poster": "tomHanks.jpg",
           "title": "Том Хэнкс",
         },
         {
-          "href": "/actor/1",
+          "href": "/actors/1",
           "poster": "tomHanks.jpg",
           "title": "Том Хэнкс",
         },
         {
-          "href": "/actor/1",
+          "href": "/actors/1",
           "poster": "tomHanks.jpg",
           "title": "Том Хэнкс",
         },
         {
-          "href": "/actor/1",
+          "href": "/actors/1",
           "poster": "tomHanks.jpg",
           "title": "Том Хэнкс",
         },
         {
-          "href": "/actor/1",
+          "href": "/actors/1",
           "poster": "tomHanks.jpg",
           "title": "Том Хэнкс",
         },
         {
-          "href": "/actor/1",
+          "href": "/actors/1",
           "poster": "tomHanks.jpg",
           "title": "Том Хэнкс",
         },
         {
-          "href": "/actor/1",
+          "href": "/actors/1",
           "poster": "tomHanks.jpg",
           "title": "Том Хэнкс",
         },
         {
-          "href": "/actor/1",
+          "href": "/actors/1",
           "poster": "tomHanks.jpg",
           "title": "Том Хэнкс",
         },
         {
-          "href": "/actor/1",
+          "href": "/actors/1",
           "poster": "tomHanks.jpg",
           "title": "Том Хэнкс",
         },        
