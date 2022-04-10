@@ -39,7 +39,6 @@ const actorController = new ActorController();
 
 const router = new Router(root);
 
-
 router.register(regularRoutes.homePage, homeController)
   .register(regularRoutes.loginPage, authController)
   .register(regularRoutes.registrationPage, authController)
