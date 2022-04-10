@@ -68,6 +68,7 @@ export class MovieView extends BaseView {
                 target.classList.add("active", "current-active");
                 const rating = {
                     myRating: target.getAttribute("rating"),
+                    ID: this.authModule.ID,
                 };
                 this.eventBus.emit(events.moviePage.sendRating, movieID, rating.myRating);
             }
@@ -267,6 +268,7 @@ export class MovieView extends BaseView {
             text: reviewText,
             type: reviewType,
             movieID: this.movieID,
+            ID: authModule.user.ID,
         },
         this.eventBus.emit(events.moviePage.sendReview, review);
     }
