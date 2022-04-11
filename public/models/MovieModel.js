@@ -62,7 +62,11 @@ export class MovieModel {
             (response) => {
                 if (!response) { return; }
                 if (response.status == statuses.OK) {
-                    this.eventBus.emit(events.moviePage.ratingSuccess, rating, response.newrating);
+                    this.eventBus.emit(
+                        events.moviePage.ratingSuccess, 
+                        rating, 
+                        response.parsedResponse.newrating
+                    );
                 }
             }
         );
