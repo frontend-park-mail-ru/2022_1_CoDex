@@ -32,7 +32,7 @@
         margin-top: 20px;
         width: 380px;
         height: 40px;
-        span {
+        .name {
             text-align: center;
             color: $font_color_white;
         }
@@ -60,9 +60,7 @@
     }
 
     &__settings__form {
-        display: none;
-        flex-direction: column;
-
+        display:none;
         a {
             width: 350px;
             height: 20px;

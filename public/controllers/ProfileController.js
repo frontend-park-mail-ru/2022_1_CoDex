@@ -29,6 +29,10 @@ export class ProfileController extends BaseController {
                 handler: this.model.getContent,
             },
             {
+                event: events.profilePage.sendChanges,
+                handler: this.model.sendSettingsCnanges,
+            },
+            {
                 event: events.profilePage.render.content,
                 handler: this.view.renderContent,
             },
@@ -44,6 +48,7 @@ export class ProfileController extends BaseController {
                 event: events.profilePage.render.bookmarks,
                 handler: this.view.renderBookmarks,
             },
+            
             // {
             //     event: events.header.logout,
             //     handler: this.view.deleteSettings,

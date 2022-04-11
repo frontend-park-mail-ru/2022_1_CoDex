@@ -1,4 +1,4 @@
-import { getProfile, getBookmarks, getReview } from "../modules/connection.js";
+import { getProfile, getBookmarks, getReview, sendSettingsChanges } from "../modules/connection.js";
 import { BaseModel } from "./BaseModel.js";
 import { statuses } from "../consts/statuses.js";
 import { events } from "../consts/events.js";
@@ -58,9 +58,16 @@ export class ProfileModel extends BaseModel {
         });
     }
 
+    getContent = (user) => {
+        this.getBookmarks(user);
+        this.getReviews(user);
+    }
 
-    changeProfile = async (inputsData = {}, formData) => {
-        // TODO
+    sendSettingsCnanges = (inputsData) => {
+        console.log("inputsData", inputsData)
+        sendSettingsChanges(inputsData).then((response) => {
+            console.log("nice");
+        })
     }
 
     changeAvatar = async (avatar) => {

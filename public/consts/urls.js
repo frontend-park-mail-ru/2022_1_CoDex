@@ -21,6 +21,7 @@ export const urls = {
         collections: `${currentUrl}${versions.v1}/collections`,
         movie: `${currentUrl}${versions.v1}/movie`,
         profile: `${currentUrl}${versions.v1}/user/getProfile`,
+        changeProfile:`${currentUrl}${versions.v1}/user/changeProfile`,
         bookmarks: `${currentUrl}${versions.v1}/user/getBookmarks`,
         reviews: `${currentUrl}${versions.v1}/user/getReviews`,
         sendRating: `${currentUrl}${versions.v1}/TODO`,

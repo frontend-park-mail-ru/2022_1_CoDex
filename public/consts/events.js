@@ -42,9 +42,6 @@ export const events = {
         addValidationError: "authPage:addValidationError",
         deleteAllErrors: "authPage:deleteAllErrors",
     },
-    profilePage: {
-        changedProfile: "profilePage:changedProfile",
-    },
 
     collectionsPage: {
         render: {
@@ -95,8 +92,9 @@ export const events = {
         getBookmarks: "profilePage:getBookmarks",
         getProfileInfo: "profilePage:getProfileInfo",
         
+        sendChanges: "profilePage:sendSettingsChanges",
+
         validate: "profilePage:validate",
-        sendChanges: "profilePage:sendChanges",
         submit: "profilePage:submit",
         submitError: "profilePage:submitError",
         wrongInput: "profilePage:wrongInput",

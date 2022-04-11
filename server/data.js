@@ -33,7 +33,7 @@ const startServer = (app) => {
   app.get("/api/v1/user/getReviews/1", function (req, res) {
     res.status(200).json({
       ID: 1,
-      reviewsAndStarsList: users['a@a.ru'].reviewsAndStarsList,
+      reviewsList: users['a@a.ru'].reviewsList,
     });
   });
 
@@ -234,6 +234,35 @@ const startServer = (app) => {
     });
   });
 
+  app.post("/api/v1/user/changeProfile", function (req, res) {
+    const name = req.body.name;
+    // const password = req.body.password;
+    // const email = req.body.email;
+    // if (
+    //   !password || !email ||
+    //   !password.match(/^\S{4,}$/) ||
+    //   !email.match(/@/)
+    // ) {
+    //   return res.status(400).json({ error: 'Невалидные данные пользователя' });
+    // }
+    // if (users[email]) {
+    //   return res.status(400).json({ error: 'Пользователь уже существует' });
+    // }
+
+    //const id = uuid();
+    //const user = { name, email, password };
+    //ids[id] = email;
+    users["a@a.ru"].name = name;
+
+    res.cookie('podvorot', 1, { expires: new Date(Date.now() + 1000 * 60 * 10) });
+    res.status(201).json({
+      ID: 1,
+      //avatarSrc: "server/images/adventures.png",
+      name: users["a@a.ru"].name,
+      //email: email,
+    });
+  });
+
   app.get('/api/v1/checkAuth', (req, res) => {
     res.json({
       "status": 400,
@@ -250,10 +279,10 @@ const startServer = (app) => {
     ]
   };
 
-  const ReviewsAndStars = {
-    reviewsAndStarsList: [
-      { type: "Оценка", text: "10", number: "1" },
-      { type: "Отзыв", text: "Афигенно", number: "2" },
+  const Reviews = {
+    reviewsList: [
+      { type: "Оценка", text: "10", date: "01.01.2001", number: "1" },
+      { type: "Отзыв", text: "Афигенно", date: "01.01.2001", number: "2" },
     ]
   };
 
@@ -264,7 +293,7 @@ const startServer = (app) => {
       password: 'password1',
       avatarSrc: "server/images/adventures.png",
       bookmarksList: Bookmarks.bookmarksList,
-      reviewsAndStarsList: ReviewsAndStars.reviewsAndStarsList,
+      reviewsList: Reviews.reviewsList,
     },
   };
 

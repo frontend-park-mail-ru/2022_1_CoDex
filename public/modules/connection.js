@@ -20,7 +20,6 @@ export const sendRequest = async ({url, method, body} = {}) => {
 
     try {
         const parsedResponse = await response?.json();
-        console.log("parsed", parsedResponse)
         if (response.status !== statuses.OK && response.status !== statuses.CREATED) {
             console.log("err");
             return null;
@@ -213,8 +212,6 @@ export const getSingleCollection = async(collectionID) => {
         method: "GET",
         credentials: "include",
     };
-    console.log("paramsProfile", params);
-
     try {
         return await sendRequest(params);
     } catch (error) {
@@ -259,3 +256,23 @@ export const getSingleCollection = async(collectionID) => {
         return null;
     }
 }
+
+/**
+ * @description Отправляет обновленные данные пользователя на сервер.
+ * @param { string } userID ID пользователя
+ * @param { object } personalData Новые данные
+ * @returns { object } Ответ с сервера
+ */
+ export const sendSettingsChanges = async(personalData) => {
+    const params = {
+        url: `${urls.api.changeProfile}`,
+        method: "POST",
+        body: JSON.stringify(personalData),
+    };
+    
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+};

@@ -1,0 +1,23 @@
+.review-element {
+    display: flex;
+    flex-direction: row;
+    width: 780px;
+    border-radius: 20px;
+    background-color: $grey;
+    height: 80px;
+    margin-bottom: 24px;
+    align-items: center;
+
+    &__type {
+        color: $black;
+        margin-left: 26px;
+    }
+    &__text {
+        color: $black;
+        margin-left: 10px;
+    }
+    &__date {
+        color: $black;
+        margin-left: 10px;
+    }
+}
