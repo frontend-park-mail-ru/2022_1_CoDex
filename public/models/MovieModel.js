@@ -57,7 +57,7 @@ export class MovieModel {
         sendUserRating({
             rating: rating,
             movieId: movieID,
-            userId: string(authModule.user.ID),
+            userId: authModule.user.ID.toString(),
         }).then(
             (response) => {
                 if (!response) { return; }
