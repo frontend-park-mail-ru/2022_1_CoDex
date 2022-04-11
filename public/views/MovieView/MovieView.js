@@ -144,7 +144,7 @@ export class MovieView extends BaseView {
     onRatingSuccess = (myRating, movieRating) => {
         const messageArea = document.querySelector(".user-rating");
         messageArea.innerHTML = `Ваша оценка: ${myRating}. Рейтинг фильма: ${movieRating}`;
-        shortRating = document.querySelector(".short-rating");
+        const shortRating = document.querySelector(".short-rating");
         shortRating.textContent = `${movieRating}`;
     }
 
