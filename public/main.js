@@ -10,20 +10,20 @@ import { CollectionsController } from "./controllers/CollectionsController.js";
 import { MovieController } from "./controllers/MovieController.js";
 import { ActorController } from "./controllers/ActorController.js";
 
-console.log("Ready to register SW");
-if ('serviceWorker' in navigator) {
-  console.log("Registrating...")
-  navigator.serviceWorker.register('/sw.js', {scope: '/'})
-      .then((registration) => {
-        console.log('SW registered on scope:', registration.scope);
-      })
-      .catch((err) => {
-        console.error("Error", err);
-  });
-} else {
-  console.log("smt went wrong, we shouldn't be here");
-}
-console.log("SW done?");
+// console.log("Ready to register SW");
+// if ('serviceWorker' in navigator) {
+//   console.log("Registrating...")
+//   navigator.serviceWorker.register('/sw.js', {scope: '/'})
+//       .then((registration) => {
+//         console.log('SW registered on scope:', registration.scope);
+//       })
+//       .catch((err) => {
+//         console.error("Error", err);
+//   });
+// } else {
+//   console.log("smt went wrong, we shouldn't be here");
+// }
+// console.log("SW done?");
 
 export const root = document.getElementById("root");
 

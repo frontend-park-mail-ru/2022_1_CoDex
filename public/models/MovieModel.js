@@ -69,6 +69,7 @@ export class MovieModel {
     }
 
     sendReview = (inputsData = {}) => {
+        inputsData
         sendUserReview(inputsData).then(
             (response) => {
                 if (!response) { return; }
