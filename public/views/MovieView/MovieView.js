@@ -61,6 +61,7 @@ export class MovieView extends BaseView {
         const rating = document.querySelector(".stars");
         const ratingItems = document.querySelectorAll(".stars__item__single-star");
         rating.addEventListener("click", (e) => {
+            if (!authModule)
             e.preventDefault();
             const target = e.target;
             if (target.classList.contains("stars__item__single-star")) {
@@ -68,7 +69,7 @@ export class MovieView extends BaseView {
                 target.classList.add("active", "current-active");
                 const rating = {
                     myRating: target.getAttribute("rating"),
-                    ID: this.authModule.ID,
+                    ID: authModule?.ID,
                 };
                 this.eventBus.emit(events.moviePage.sendRating, movieID, rating.myRating);
             }
@@ -154,7 +155,7 @@ export class MovieView extends BaseView {
     renderReviewInput = (movieID) => {
         const reviewInput = document.querySelector(".send-review__input");
         if (!reviewInput) { return;}
-        if (authModule.user) {
+        if (authModule?.user) {
             reviewInput.innerHTML = reviewInputBlock();
             this.addReviewInputListeners();
         } else {
