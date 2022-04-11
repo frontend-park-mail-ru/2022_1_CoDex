@@ -34,7 +34,7 @@ class Auth {
                 return null;
             }
             if (response?.parsedResponse?.status == statuses.OK) {
-                return response.parsedResponse?.id;
+                return response.parsedResponse?.ID;
             }
             window.localStorage.removeItem("user");
             this.eventBus.emit(events.auth.notLoggedIn);

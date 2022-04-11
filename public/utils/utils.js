@@ -21,7 +21,7 @@ export const renderBaseView = () => {
     return baseViewPug({
       headerLinks: headerLinks,
       imgsrc: user.profile_pic,
-      userId: user.id,
+      userId: user.ID,
       profileHref: routes.Profile,
       userFromStorage: true,
     });
