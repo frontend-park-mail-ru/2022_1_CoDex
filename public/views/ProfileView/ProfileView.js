@@ -52,6 +52,7 @@ export class ProfileView extends BaseView {
         }
         this.eventBus.emit(events.profilePage.getContent, data);
         this.addSettingsButtonListener();
+        this.listenAvatarChanged();
     }
 
     renderBookmarks = (data) => {
@@ -131,6 +132,25 @@ export class ProfileView extends BaseView {
         }
 
     }
+
+    listenAvatarChanged = () => {
+        const avatarInput = document.querySelector('.profileInfo__avatar__input');
+        //const avatarDiv = document.querySelector('.profileInfo__avatar__input');
+        if (!avatarInput) {
+          return;
+        }
+        avatarInput.addEventListener('change', (event) => {
+        //   if (event.target.size / 1024 /1024 > maxAvatarSizeMb) {
+        //     this.eventBus.emit(EVENTS.ProfilePage.Validate, 'avatar', 'oversize');
+        //     return;
+        //   }
+          const reader = new FileReader();
+          reader.addEventListener('load', (event) => {
+            avatarInput.style.backgroundImage = `url(${event.target.result})`;
+          });
+          reader.readAsDataURL(event.target);
+        });
+      }
 }
 
 
