@@ -154,13 +154,12 @@ export class MovieView extends BaseView {
     renderReviewInput = (movieID) => {
         const reviewInput = document.querySelector(".send-review__input");
         if (!reviewInput) { return;}
-        // if (authModule.user) {
-        reviewInput.innerHTML = reviewInputBlock();
-        this.addReviewInputListeners();
-
-        // } else {
-        //     reviewInput.innerHTML = reviewInvitation({ movieID: movieID });
-        // }
+        if (authModule.user) {
+            reviewInput.innerHTML = reviewInputBlock();
+            this.addReviewInputListeners();
+        } else {
+            reviewInput.innerHTML = reviewInvitation({ movieID: movieID });
+        }
     }
 
     /**
