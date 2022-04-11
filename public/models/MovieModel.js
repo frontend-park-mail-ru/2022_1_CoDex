@@ -54,11 +54,15 @@ export class MovieModel {
             this.eventBus.emit(events.moviePage.askToLog, movieID);
             return;
         }
-        sendUserRating(movieID, rating).then(
+        sendUserRating({
+            rating: rating,
+            movieId: movieID,
+            userId: authModule.user.ID,
+        }).then(
             (response) => {
                 if (!response) { return; }
                 if (response.status == statuses.OK) {
-                    this.eventBus.emit(events.moviePage.ratingSuccess, rating, response.rating);
+                    this.eventBus.emit(events.moviePage.ratingSuccess, rating, response.newrating);
                 }
             }
         );

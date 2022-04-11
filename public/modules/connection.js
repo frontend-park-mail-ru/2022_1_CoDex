@@ -181,15 +181,14 @@ export const getSingleCollection = async(collectionID) => {
 
 /**
  * @description Отправляет оценку фильма пользователем на сервер.
- * @param { string } movieID Данные о пользователе
- * @param { number } rating Оставленная оценка
+ * @param { string } movie Данные о рейтинге
  * @returns { object } Ответ с сервера
  */
- export const sendUserRating = async(movieID, rating) => {
+ export const sendUserRating = async(movie) => {
     const params = {
-        url: `${urls.api.sendRating}/TODO/movieID=${movieID}&rating=${rating}`,
+        url: `${urls.api.sendRating}`,
         method: "POST",
-        body: JSON.stringify(""),
+        body: JSON.stringify(movie),
     };
     
     try {

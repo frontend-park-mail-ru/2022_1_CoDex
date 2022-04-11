@@ -273,10 +273,26 @@ export class MovieView extends BaseView {
         this.eventBus.emit(events.moviePage.sendReview, review);
     }
 
+    /**
+     * @description Отображает результат отправления отзыва.
+     * @param { object } review Сформированный отзыв
+     */
     renderReviewSuccess = (review) => {
         const reviewInput = document.querySelector(".send-review__input");
         reviewInput.innerHTML = reviewSuccessBlock();
         let reviewList = document.querySelector(".review-list");
         reviewList.insertBefore(reviewCard(review), reviewList.firstChild);
+    }
+
+    /**
+     * @description Убирает информацию, которая находится только на странице
+     * авторизованного пользователя.
+     */
+    onLogout = () => {
+        const reviewInput = document.querySelector(".send-review__input");
+        const messageArea = document.querySelector(".user-rating");
+        if (!reviewInput || !messageArea) { return;}
+        messageArea.innerHTML = ``;
+        reviewInput.innerHTML = reviewInvitation({ movieID: movieID });
     }
 }
