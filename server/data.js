@@ -263,7 +263,7 @@ const startServer = (app) => {
     });
   });
 
-  app.post("/api/v1/login", function (req, res) {
+  app.post("/api/v1/user/login", function (req, res) {
     const password = req.body.password;
     const email = req.body.email;
     if (!password || !email) {
@@ -298,7 +298,9 @@ const startServer = (app) => {
       password: 'password1',
     },
   };
+  const id = uuid();
   const ids = {};
+  ids[id] = "a@a.ru";
 
   const Collections = {
     collectionlist: [

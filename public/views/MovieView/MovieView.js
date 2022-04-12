@@ -8,6 +8,7 @@ import reviewInvitation from "../../components/reviewInvitation/reviewInvitation
 import reviewInputBlock from "../../components/reviewInputBlock/reviewInputBlock.pug";
 import reviewSuccessBlock from "../../components/reviewSuccessBlock/reviewSuccessBlock.pug";
 import reviewCard from "../../components/reviewCard/reviewCard.pug";
+import { createElementFromHTML } from "../../utils/utils.js";
 
 /**
  * @description Класс представления страницы одного фильма
@@ -281,7 +282,7 @@ export class MovieView extends BaseView {
         const reviewInput = document.querySelector(".send-review__input");
         reviewInput.innerHTML = reviewSuccessBlock();
         let reviewList = document.querySelector(".review-list");
-        reviewList.insertBefore(reviewCard(review), reviewList.firstChild);
+        reviewList.insertBefore(createElementFromHTML(reviewCard(review)), reviewList.firstChild);
     }
 
     /**
