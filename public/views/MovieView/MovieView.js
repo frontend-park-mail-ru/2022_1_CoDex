@@ -282,6 +282,9 @@ export class MovieView extends BaseView {
         const reviewInput = document.querySelector(".send-review__input");
         reviewInput.innerHTML = reviewSuccessBlock();
         let reviewList = document.querySelector(".review-list");
+        console.log(reviewCard(review));
+        console.log(reviewList);
+        console.log(createElementFromHTML(reviewCard(review)));
         reviewList.append(createElementFromHTML(reviewCard(review)));
     }
 
