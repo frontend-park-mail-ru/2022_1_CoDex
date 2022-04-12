@@ -22,5 +22,6 @@ export const urls = {
         movie: `${currentUrl}${versions.v1}/movies`,
         actor: `${currentUrl}${versions.v1}/actors`,
         sendRating: `${currentUrl}${versions.v1}/movies/postrating`,
+        sendRevies: `${currentUrl}${versions.v1}/movies/postcomment`,
     }
 }

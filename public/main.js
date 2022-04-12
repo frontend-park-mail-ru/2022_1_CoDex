@@ -37,10 +37,10 @@ const actorController = new ActorController();
 const router = new Router(root);
 
 router.register(regularRoutes.homePage, homeController)
-  .register(regularRoutes.loginPage, authController)
-  .register(regularRoutes.registrationPage, authController)
   .register(regularRoutes.singleCollectionPage, singleCollectionController)
-  .register(regularRoutes.collectionsPage, collectionsController)
   .register(regularRoutes.moviePage, movieController)
   .register(regularRoutes.actorPage, actorController)
+  .register(regularRoutes.loginPage, authController)
+  .register(regularRoutes.registrationPage, authController)
+  .register(regularRoutes.collectionsPage, collectionsController)
   .start();
