@@ -4,69 +4,97 @@ import { ProfileView } from "../views/ProfileView/ProfileView.js";
 import { BaseController } from "./BaseController.js";
 
 /**
- * @description Класс контроллера страницы одного фильма.
+ * @description Класс контроллера страницы профиля пользователя.
  */
 export class ProfileController extends BaseController {
 
     constructor() {
         super(ProfileView, ProfileModel);
         this.events.push(
+
+            {
+                event: events.profilePage.getProfileInfo,
+                handler: this.model.getProfileInfo,
+            },
+            {
+                event: events.profilePage.getBookmarks,
+                handler: this.model.getBookmarks,
+            },
+            {
+                event: events.profilePage.getReviews,
+                handler: this.model.getReviews,
+            },
             {
                 event: events.profilePage.getContent,
                 handler: this.model.getContent,
             },
             {
-                event: events.header.logout,
-                handler: this.view.deleteSettings,
-            },
-            {
-                event: events.auth.gotUser,
-                handler: this.view.renderSettings,
+                event: events.profilePage.sendChanges,
+                handler: this.model.sendSettingsCnanges,
             },
             {
                 event: events.profilePage.render.content,
                 handler: this.view.renderContent,
             },
             {
-                event: events.auth.notLoggedIn,
-                handler: this.view.deleteSettings,
+                event: events.profilePage.render.profileInfo,
+                handler: this.view.renderProfileInfo,
             },
             {
-                event: events.profilePage.render.activity,
-                handler: this.view.renderActivity,
+                event: events.profilePage.render.reviews,
+                handler: this.view.renderReviews,
             },
             {
-                event: events.profilePage.render.collections,
-                handler: this.event.renderCollections,
+                event: events.profilePage.render.bookmarks,
+                handler: this.view.renderBookmarks,
             },
             {
-                event: events.profilePage.addValidationError,
-                handler: this.view.addErrorMessage,
+                event: events.profilePage.render.changedProfile,
+                handler: this.view.renderChangedProfile,
             },
-            {
-                event: events.profilePage.render,
-                handler: this.view.render,
-            },
-            {
-                event: events.profilePage.sendChanges,
-                handler: this.model.sendChanges,
-            },
-            {
-                event: events.profilePage.submit,
-                handler: this.model.submitChanges,
-            },
-            {
-                event: events.profilePage.submitError,
-                handler: this.view.addSubmitError,
-            },
-            {
-                event: events.profilePage.validate,
-                hanlder: this.view.validateSingleInput,
-            },
+            
+            // {
+            //     event: events.header.logout,
+            //     handler: this.view.deleteSettings,
+            // },
+            // {
+            //     event: events.auth.gotUser,
+            //     handler: this.view.renderSettings,
+            // },
+            
+            // {
+            //     event: events.auth.notLoggedIn,
+            //     handler: this.view.deleteSettings,
+            // },
+            // {
+            //     event: events.profilePage.addValidationError,
+            //     handler: this.view.addErrorMessage,
+            // },
+            // {
+            //     event: events.profilePage.render,
+            //     handler: this.view.render,
+            // },
+            // {
+            //     event: events.profilePage.sendChanges,
+            //     handler: this.model.sendChanges,
+            // },
+            // {
+            //     event: events.profilePage.submit,
+            //     handler: this.model.submitChanges,
+            // },
+            // {
+            //     event: events.profilePage.submitError,
+            //     handler: this.view.addSubmitError,
+            // },
+            // {
+            //     event: events.profilePage.validate,
+            //     hanlder: this.view.validateSingleInput,
+            // },
             // {
             //     event: events.profilePage.wrongInput,
             //     hanlder: TODO animation?
             // }
         );
+        this.subscribe();
     }
 }

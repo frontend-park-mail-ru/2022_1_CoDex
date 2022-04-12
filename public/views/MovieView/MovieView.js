@@ -20,7 +20,7 @@ export class MovieView extends BaseView {
      * @param { EventBus } eventBus Глобальная шина событий
      * @param { Object } data Данные, необходимые для создания представления
     */
-    constructor(eventBus, {data={}} = {}) {
+    constructor(eventBus, { data = {} } = {}) {
         super(eventBus, data);
     }
 
@@ -80,7 +80,7 @@ export class MovieView extends BaseView {
             }
         });
 
-        rating.onmouseover = function(e) {
+        rating.onmouseover = function (e) {
             const target = e.target;
             if (target.classList.contains("stars__item__single-star")) {
                 removeClass(ratingItems, "active");
@@ -89,25 +89,25 @@ export class MovieView extends BaseView {
             }
         }
 
-        rating.onmouseout = function(e) {
+        rating.onmouseout = function (e) {
             addClass(ratingItems, "active");
             mouseOutOfActive(ratingItems);
         }
 
         function removeClass(item, removableClass) {
-            for (let i = 0, len=ratingItems.length; i < len; i++) {
+            for (let i = 0, len = ratingItems.length; i < len; i++) {
                 ratingItems[i].classList.remove(removableClass);
             }
         }
 
         function addClass(item, addbleClass) {
-            for (let i = 0, len=ratingItems.length; i < len; i++) {
+            for (let i = 0, len = ratingItems.length; i < len; i++) {
                 ratingItems[i].classList.add(addbleClass);
             }
         }
 
         function mouseOverActive(items) {
-            for (let i = 0, len=items.length; i < len; i++) {
+            for (let i = 0, len = items.length; i < len; i++) {
                 if (items[i].classList.contains("active")) {
                     break;
                 } else {

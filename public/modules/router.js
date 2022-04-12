@@ -70,7 +70,7 @@ export class Router {
         if (this.currentController) {
             this.currentController.unsubscribe();
         }
-        this.currentController = routeData.constroller;
+        this.currentController = routeData.controller;
         if (!this.currentController) {
             eventBus.emit(events.app.errorPage);
             return;
@@ -79,13 +79,13 @@ export class Router {
         
         if (!this.currentController) {
             URL = routes.homePage;
-            this.currentController = this.getURLData(URL).constroller;
+            this.currentController = this.getURLData(URL).controller;
         }
         if (window.location.pathname !== URL) {
             window.history.pushState(null, null, URL);
         }
         this.currentController.view.render(data);
-        eventBus.emit(events.router.go);
+        eventBus.emit(events.router.go, URL);
     }
     
     /**
@@ -103,7 +103,7 @@ export class Router {
             }
         });
         return {
-            constroller: targetController,
+            controller: targetController,
             data: result.data,
             URL: {
                 URL: result.URL,

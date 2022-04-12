@@ -20,7 +20,7 @@ export class HeaderModel extends BaseModel {
      * @param { string } URL URL, на который пользователь перейдёт.
      */
     compareURLWithPath = (URL) => {
-        const activeURL = headerLinks.find((link) => link.href === URL);
+        const activeURL = headerLinks.find((link) => link.href == URL);
         this.eventBus.emit(events.header.changeActiveButton, activeURL ? activeURL.href : null);
     }
 }
