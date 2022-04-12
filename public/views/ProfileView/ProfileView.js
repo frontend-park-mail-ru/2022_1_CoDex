@@ -29,23 +29,12 @@ export class ProfileView extends BaseView {
         this.eventBus.emit(events.profilePage.getProfileInfo, URLArgs);
     }
 
-    // renderContent = () => {
-    //     console.log("info", this.profileInfo);
-    //     console.log("bookmarks", this.profileBookmarks);
-    //     console.log("reviews", this.profileReviews);
-    //     const content = document.querySelector('.content');
-    //     if (content) {
-    //     } else {
-    //         this.eventBus.emit(events.app.errorPage);
-    //     }
-    // }
-
     renderProfileInfo = (data) => {
         this.user = data;
         this.user.isThisUser = authModule.user ? (data.ID === authModule.user.ID) : false;
         const content = document.querySelector('.content');
         if (content) {
-            const profileInfo = document.querySelector('profileInfo');
+            const profileInfo = document.querySelector('profile-info');
             if (!profileInfo) {
                 content.innerHTML = profilePug(this.user);
             }
@@ -71,38 +60,21 @@ export class ProfileView extends BaseView {
 
     }
 
-    openSettings = () => {
-        const profileInfoSettings = document.querySelector('.profileInfo__container');
-        if (!profileInfoSettings) {
-            return;
-        }
-
-    }
-
     addSettingsButtonListener = () => {
-        const settings = document.querySelector('.profileInfo__container');
+        const settings = document.querySelector('.profile-info__container');
         settings.addEventListener("click", (e) => {
             e.preventDefault();
             const target = e.target;
-            if (target.classList.contains("profileInfo__settings")) {
-                document.querySelector(".profileInfo__settings").style.display = "none";
-                document.querySelector(".profileInfo__settings__form").style.display = "block";
+            if (target.classList.contains("profile-info__settings")) {
+                document.querySelector(".profile-info__settings").style.display = "none";
+                document.querySelector(".profile-info__settings__form").style.display = "block";
             }
-            // if (document.querySelector(".profileInfo__settings__").style.display = "none";) {
-            //     console.log("cancel")
-            //     document.querySelector(".profileInfo__settings").style.display = "flex";
-            //     document.querySelector(".profileInfo__settings__form").style.display = "none";
-            // } else if (target.nodeValue === "Сохранить"){
-            //     document.querySelector(".profileInfo__settings").style.display = "flex";
-            //     document.querySelector(".profileInfo__settings__form").style.display = "none";
-            //     this.submitChange();
-            // }
             if (target.value == "Отменить") {
-                document.querySelector(".profileInfo__settings").style.display = "flex";
-                document.querySelector(".profileInfo__settings__form").style.display = "none";
+                document.querySelector(".profile-info__settings").style.display = "flex";
+                document.querySelector(".profile-info__settings__form").style.display = "none";
             } else if (target.value == "Сохранить") {
-                document.querySelector(".profileInfo__settings").style.display = "flex";
-                document.querySelector(".profileInfo__settings__form").style.display = "none";
+                document.querySelector(".profile-info__settings").style.display = "flex";
+                document.querySelector(".profile-info__settings__form").style.display = "none";
                 this.submitChange();
 
             }
@@ -111,17 +83,16 @@ export class ProfileView extends BaseView {
     }
 
     submitChange = () => {
-        const inputName = document.querySelector('.profileInfo__settings__form__text-input').value;
+        const inputName = document.querySelector('.profile-info__settings__form__name-input').value;
         console.log(inputName);
         if (!this.validateInput(inputName)) {
             return;
         } else {
-            document.querySelector('.profileInfo__settings__form__text-input').value = "";
+            document.querySelector('.profile-info__settings__form__name-input').value = "";
             document.querySelector('.name').textContent = inputName;
-            console.log({name:inputName})
-            this.eventBus.emit(events.profilePage.sendChanges, {name: inputName});
+            console.log({ name: inputName })
+            this.eventBus.emit(events.profilePage.sendChanges, { name: inputName });//changedProfile <---
         }
-
     }
 
     validateInput = (inputName) => {
@@ -134,23 +105,32 @@ export class ProfileView extends BaseView {
     }
 
     listenAvatarChanged = () => {
-        const avatarInput = document.querySelector('.profileInfo__avatar__input');
-        //const avatarDiv = document.querySelector('.profileInfo__avatar__input');
+        const avatarInput = document.querySelector('.profile-info__avatar__input');
+        const avatarDiv = document.querySelector('.avatar');
         if (!avatarInput) {
-          return;
+            return;
         }
-        avatarInput.addEventListener('change', (event) => {
-        //   if (event.target.size / 1024 /1024 > maxAvatarSizeMb) {
-        //     this.eventBus.emit(EVENTS.ProfilePage.Validate, 'avatar', 'oversize');
-        //     return;
-        //   }
-          const reader = new FileReader();
-          reader.addEventListener('load', (event) => {
-            avatarInput.style.backgroundImage = `url(${event.target.result})`;
-          });
-          reader.readAsDataURL(event.target);
+        avatarInput.addEventListener('click', (e) => {
+            console.log("1");
+            avatarInput.addEventListener('change', (ee) =>{
+                if (!ee.target.files[0]) {
+                    return;
+                  }
+                const reader = new FileReader();
+
+                console.log("change");
+                reader.addEventListener('load', (event)=> {
+                    console.log(event.target.result)
+                    avatarDiv.style.backgroundImage = `url(${event.target.result})`;
+                })
+                console.log("files",ee.target.files[0])
+                reader.readAsDataURL(ee.target.files[0]);
+
+            });
+            
         });
-      }
+        
+    }
 }
 
 
