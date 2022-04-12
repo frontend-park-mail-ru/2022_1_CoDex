@@ -30,7 +30,7 @@ export class SingleCollectionModel {
                 if (!response) {
                     this.eventBus.emit(events.app.errorPage);
                 } if (response?.status === statuses.OK && response.parsedResponse) {
-                    this.shortenMoviesDescription(response.parsedResponse.movieList);
+                    this.shortenMoviesDescription(response.parsedResponse.movielist);
                     this.eventBus.emit(
                         events.singleCollectionPage.render.content, response.parsedResponse
                     );
@@ -60,10 +60,10 @@ export class SingleCollectionModel {
 
     /**
      * @description По необходимости укорачивает описания фильмов.
-     * @param { Object[] } movieList Массив данных о фильмах
+     * @param { Object[] } movielist Массив данных о фильмах
      */
-    shortenMoviesDescription = (movieList) => {
-        for (const movie of movieList) {
+    shortenMoviesDescription = (movielist) => {
+        for (const movie of movielist) {
             movie.description = this.processDescription(movie.description);
         }
     }

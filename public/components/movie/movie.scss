@@ -193,6 +193,15 @@
             font-family: $main_font;
             font-weight: 600;
             font-size: 17px;
+
+            &__link {
+                text-decoration: none;
+                color: $white;
+
+                &:hover {
+                    color: $raspberry;
+                }
+            }
         }
     }
 }
@@ -311,3 +320,28 @@
     flex-direction: column;
 }
 
+.send-review {
+    grid-area: E1;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+
+    &__title {
+        width: 100%;
+        color: $white;
+        text-align: center;
+        height: 56px;
+        font-family: $main_font;
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 32px;
+    }
+
+    &__input {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+}

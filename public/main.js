@@ -9,6 +9,19 @@ import { SingleCollectionController } from "./controllers/SingleCollectionContro
 import { CollectionsController } from "./controllers/CollectionsController.js";
 import { MovieController } from "./controllers/MovieController.js";
 import { ProfileController } from "./controllers/ProfileController.js";
+import { ActorController } from "./controllers/ActorController.js";
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js', {scope: '/'})
+      .then((registration) => {
+        console.log('SW registered on scope:', registration.scope);
+      })
+      .catch((err) => {
+        console.error("Error", err);
+  });
+} else {
+  console.log("smt went wrong, we shouldn't be here");
+}
 
 export const root = document.getElementById("root");
 
@@ -21,13 +34,16 @@ const singleCollectionController = new SingleCollectionController();
 const collectionsController = new CollectionsController();
 const movieController = new MovieController();
 const profileController = new ProfileController();
+const actorController = new ActorController();
 
 const router = new Router(root);
 
 router.register(regularRoutes.homePage, homeController)
+  .register(regularRoutes.singleCollectionPage, singleCollectionController)
+  .register(regularRoutes.moviePage, movieController)
+  .register(regularRoutes.actorPage, actorController)
   .register(regularRoutes.loginPage, authController)
   .register(regularRoutes.registrationPage, authController)
-  .register(regularRoutes.singleCollectionPage, singleCollectionController)
   .register(regularRoutes.collectionsPage, collectionsController)
   .register(regularRoutes.moviePage, movieController)
   .register(regularRoutes.profilePage, profileController)

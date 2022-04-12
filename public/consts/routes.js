@@ -5,14 +5,17 @@ export const routes = {
     profilePage: "/profile",
     loginPage: "/login",
     registrationPage: "/register",
+    moviePage: "/movies/\\d+",
+    actorPage: "/actor/\\d+",
 }
 
 export const regularRoutes = {
-    homePage: "^/$",
-    collectionsPage: "^/collections$",    
+    singleCollectionPage:"^/collections/\\d+$",    
+    moviePage:"^/movies/\\d+$",
     loginPage:  "^/login",
     registrationPage: "^/register",
-    singleCollectionPage:"^/collections/\\d+$",    
-    moviePage:"^/movie/\\d+$",
     profilePage:"^/profile/\\d+$",
+    actorPage: "^/actors/\\d+$",
+    collectionsPage: "^/collections$",    
+    homePage: "^/$",
 }

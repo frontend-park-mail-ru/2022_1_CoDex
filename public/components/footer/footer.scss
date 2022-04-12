@@ -8,7 +8,7 @@
 }
 
 .copyright {
-	font-family: "Montserrat-Regular", "Arial", sans-serif;
+	font-family: $main_font;
 	flex: 0 0 200px;
 	color: $shadow;
 	align-self: flex-end;
@@ -39,6 +39,7 @@
 }
 
 .github-hrefs {
+	font-family: $main_font;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;

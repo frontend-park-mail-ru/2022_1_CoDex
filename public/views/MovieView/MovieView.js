@@ -1,8 +1,14 @@
-import { BaseView } from "../BaseView/BaseView.js";
-import { getURLArguments } from '../../modules/router.js';
+import {BaseView} from "../BaseView/BaseView.js";
+import {getURLArguments} from '../../modules/router.js';
+import { authModule } from "../../modules/auth.js";
+import { slider } from "../../utils/slider.js";
 import { events } from "../../consts/events.js";
 import moviePageContent from "../../components/movie/movie.pug";
-import { slider } from "../../utils/slider.js";
+import reviewInvitation from "../../components/reviewInvitation/reviewInvitation.pug";
+import reviewInputBlock from "../../components/reviewInputBlock/reviewInputBlock.pug";
+import reviewSuccessBlock from "../../components/reviewSuccessBlock/reviewSuccessBlock.pug";
+import createReviewCard from "../../components/reviewCard/createReviewCard.pug";
+import { createElementFromHTML } from "../../utils/utils.js";
 
 /**
  * @description Класс представления страницы одного фильма
@@ -23,7 +29,7 @@ export class MovieView extends BaseView {
      * контента страницы.
      */
     emitGetContent = () => {
-        const URLArgs = getURLArguments(window.location.pathname, "/movie/:ID");
+        const URLArgs = getURLArguments(window.location.pathname, "/movies/:ID");
         this.eventBus.emit(events.moviePage.getContent, URLArgs);
     }
 
@@ -34,13 +40,18 @@ export class MovieView extends BaseView {
     renderContent = (data) => {
         // data: poster, title, rating, originalTitle, desctiption
         if (!data) { return; }
+        this.movieID = data.movie.ID;
         const template = moviePageContent(data);
         const content = document.querySelector(".content");
         if (content) {
             content.innerHTML = template;
             slider("#related-slider");
             this.renderRating(data.movie.ID);
-            // TODO 
+            this.renderReviewInput(data.movie.ID);
+            if (data.reviewex != "")
+                this.eventBus.emit(events.moviePage.reviewSuccess);
+            if (data.userrating != "")
+                this.eventBus.emit(events.moviePage.ratingSuccess, data.userrating, data.movie.rating);
         } else {
             this.eventBus.emit(events.app.errorPage);
         }
@@ -55,6 +66,7 @@ export class MovieView extends BaseView {
         const rating = document.querySelector(".stars");
         const ratingItems = document.querySelectorAll(".stars__item__single-star");
         rating.addEventListener("click", (e) => {
+            if (!authModule)
             e.preventDefault();
             const target = e.target;
             if (target.classList.contains("stars__item__single-star")) {
@@ -62,6 +74,7 @@ export class MovieView extends BaseView {
                 target.classList.add("active", "current-active");
                 const rating = {
                     myRating: target.getAttribute("rating"),
+                    ID: authModule?.ID,
                 };
                 this.eventBus.emit(events.moviePage.sendRating, movieID, rating.myRating);
             }
@@ -127,23 +140,168 @@ export class MovieView extends BaseView {
 
     }
 
+    /**
+     * @description Отображает оставленную пользователем оценку, 
+     * обновляет глобальную оценку.
+     * @param { string } myRating Оставленная оценка
+     * @param { string } movieRating Глобальная оценка фильма
+     */
     onRatingSuccess = (myRating, movieRating) => {
         const messageArea = document.querySelector(".user-rating");
         messageArea.innerHTML = `Ваша оценка: ${myRating}. Рейтинг фильма: ${movieRating}`;
-        shortRating = document.querySelector(".short-rating");
+        const shortRating = document.querySelector(".short-rating");
         shortRating.textContent = `${movieRating}`;
     }
 
-    renderCollectionBlock = () => {
-        // TODO
+    /**
+     * @description Отрисовывает область оставления отзыва.
+     * @param { string } movieID ID текущего фильма
+     */
+    renderReviewInput = (movieID) => {
+        const reviewInput = document.querySelector(".send-review__input");
+        if (!reviewInput) { return;}
+        if (authModule?.user) {
+            reviewInput.innerHTML = reviewInputBlock();
+            this.addReviewInputListeners();
+        } else {
+            reviewInput.innerHTML = reviewInvitation({ movieID: movieID });
+        }
     }
 
-    renderReviewSuccess = () => {
-        // TODO
+    /**
+     * @description Добавляет обработчики событий на dropdown.
+     */
+    addReviewInputListeners = () => {
+        const dropdown = document.getElementsByClassName("review-input-block__dropdown");
+        const choiceAmount = dropdown.length;
+        for (let i = 0; i < choiceAmount; i++) {
+            const curentSelect = dropdown[i].getElementsByTagName("select")[0];
+            const currentSelectLength = curentSelect.length;
+            let div = document.createElement("div");
+            div.setAttribute("class", "select-selected");
+            div.innerHTML = curentSelect.options[curentSelect.selectedIndex].innerHTML;
+            dropdown[i].appendChild(div);
+
+            let optionListContainer = document.createElement("div");
+            optionListContainer.setAttribute("class", "select-items select-hide");
+            for (let j = 1; j < currentSelectLength; j++) {
+                let optionItem = document.createElement("div");
+                if (j == currentSelectLength - 1) {
+                    optionItem.classList.add("last");
+                }
+                optionItem.innerHTML = curentSelect.options[j].innerHTML;
+                optionItem.addEventListener("click", this.dropdownEventListener);
+                optionListContainer.appendChild(optionItem);
+            }
+            dropdown[i].appendChild(optionListContainer);
+            div.addEventListener("click", function(e) {
+                e.stopPropagation();
+                this.nextSibling.classList.toggle("select-hide");
+                this.classList.toggle("select-arrow-active");
+            });
+        }
+        document.addEventListener("click", this.closeAllSelect);
+
+        const submitButton = document.querySelector(".review-input-block__submit");
+        submitButton.addEventListener("click", this.sendReview);
     }
 
-    addSubmitReviewListener = (movieID) => {
-        // TODO
+    /**
+     * @description Когда происходит нажатие элемента dropdown-a,
+     * обновляет исходный dropdown и отмечает элемент как выбранный.
+     */
+    dropdownEventListener = (e) => {
+        const target = e.target;
+
+        const currentSelect = target.parentNode.parentNode.getElementsByTagName("select")[0];
+        const currentSelectLength = currentSelect.length;
+        let previousSelect = target.parentNode.previousSibling;
+        for (let i = 0; i < currentSelectLength; i++) {
+            if (currentSelect.options[i].innerHTML == target.innerHTML) {
+                currentSelect.selectedIndex = i;
+                previousSelect.innerHTML = "Выбор: " + target.innerHTML;
+                let previousSameAsSelected = target.parentNode.getElementsByClassName("same-as-selected");
+                const previousLength = previousSameAsSelected.length;
+                for (let k = 0; k < previousLength; k++) {
+                    previousSameAsSelected[k].classList.toggle("same-as-selected");
+                }
+                target.classList.add("same-as-selected");
+                break;
+            }
+        }
+        previousSelect.click();
     }
 
+    /**
+     * @description Закрывает все элементы в dropdown-e, кроме выбранного.
+     */
+    closeAllSelect = (element) => {
+        const items = document.getElementsByClassName("select-items");
+        let selected = document.getElementsByClassName("select-selected");
+        const itemsAmount = items.length;
+        const selectedAmount = selected.length;
+        let elementsToHide = [];
+        for (let i = 0; i < selectedAmount; i++) {
+            if (element == selected[i]) {
+                elementsToHide.push(i)
+            } else {
+                selected[i].classList.remove("select-arrow-active");
+            }
+        }
+        for (let i = 0; i < itemsAmount; i++) {
+            if (elementsToHide.indexOf(i)) {
+                items[i].classList.add("select-hide");
+            }
+        }
+    }
+
+    /**
+     * @description Собирает данные для оставления отзыва и отправляет их в модель.
+     */
+    sendReview = () => {
+        const reviewText = document.querySelector(".review-input-block__text-input").value;
+        const reviewTypeText = document.querySelector(".select-selected").textContent;
+        let reviewType = 2;
+        if (reviewTypeText.includes("Отлично")) {
+            reviewType = 1;
+        } else if (reviewTypeText.includes("Неплохо")) {
+            reviewType = 2;
+        } else if (reviewTypeText.includes("Ужасно")) {
+            reviewType = 3;
+        }
+        let review = {
+            reviewText: reviewText,
+            reviewType: reviewType.toString(),
+            movieId: this.movieID,
+            userId: authModule.user.ID.toString(),
+        }
+        this.eventBus.emit(events.moviePage.sendReview, review);
+    }
+
+    /**
+     * @description Отображает результат отправления отзыва.
+     * @param { object } review Сформированный отзыв
+     */
+    renderReviewSuccess = (review) => {
+        if (!review) { return; }
+        const reviewInput = document.querySelector(".send-review__input");
+        reviewInput.innerHTML = reviewSuccessBlock();
+        let reviewList = document.querySelector(".review-list");
+        console.log("Review: ", {singleReview: review});
+        console.log("HTML: ", createReviewCard({singleReview: review}));
+        console.log("Created: ", createElementFromHTML(createReviewCard({singleReview: review})));
+        reviewList.append(createElementFromHTML(createReviewCard({singleReview: review})));
+    }
+
+    /**
+     * @description Убирает информацию, которая находится только на странице
+     * авторизованного пользователя.
+     */
+    onLogout = () => {
+        const reviewInput = document.querySelector(".send-review__input");
+        const messageArea = document.querySelector(".user-rating");
+        if (!reviewInput || !messageArea) { return;}
+        messageArea.innerHTML = ``;
+        reviewInput.innerHTML = reviewInvitation({ movieID: movieID });
+    }
 }

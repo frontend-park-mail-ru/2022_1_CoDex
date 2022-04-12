@@ -11,7 +11,8 @@ import { routes } from "../consts/routes.js";
 export function createElementFromHTML(html) {
   const temp = document.createElement("div");
   temp.innerHTML = html;
-  return temp.firstChild;
+  console.log("Inner HTML: ", html);
+  return temp.firstElementChild;
 }
 
 export const renderBaseView = () => {
@@ -20,8 +21,8 @@ export const renderBaseView = () => {
     const user = JSON.parse(userLocalStorage);
     return baseViewPug({
       headerLinks: headerLinks,
-      imgSrc: user.profile_pic,
-      userId: user.id,
+      imgsrc: user.profile_pic,
+      userId: user.ID,
       profileHref: routes.Profile,
       userFromStorage: true,
     });

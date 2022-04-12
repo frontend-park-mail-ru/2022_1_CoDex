@@ -180,6 +180,24 @@ export const getSingleCollection = async(collectionID) => {
     }
 }
 
+/**
+ * @description Отправляет оценку фильма пользователем на сервер.
+ * @param { string } rating Данные о рейтинге
+ * @returns { object } Ответ с сервера
+ */
+ export const sendUserRating = async(rating) => {
+    const params = {
+        url: `${urls.api.sendRating}`,
+        method: "POST",
+        body: JSON.stringify(rating),
+    };
+    
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+};
 
 /**
  * @description Отправляет оценку фильма пользователем на сервер.
@@ -187,11 +205,11 @@ export const getSingleCollection = async(collectionID) => {
  * @param { number } rating Оставленная оценка
  * @returns { object } Ответ с сервера
  */
- export const sendUserRating = async(movieID, rating) => {
+ export const sendUserReview = async(review) => {
     const params = {
-        url: `${urls.api.sendRating}/TODO/movieID=${movieID}&rating=${rating}`,
+        url: `${urls.api.sendReviews}`,
         method: "POST",
-        body: JSON.stringify(""),
+        body: JSON.stringify(review),
     };
     
     try {
@@ -270,9 +288,21 @@ export const getSingleCollection = async(collectionID) => {
         body: JSON.stringify(personalData),
     };
     
+/**
+ * @description Получает с сервера данные о конкретной подборке фильмов.
+ * @param { string } actorID ID запрашиваемой подборки
+ * @returns { object } Ответ с сервера
+ */
+ export const getActor = async(actorID) => {
+    const params = {
+        url: `${urls.api.actor}/${actorID}`,
+        method: "GET",
+    };
+
     try {
         return await sendRequest(params);
     } catch (error) {
         return null;
     }
 };
+}

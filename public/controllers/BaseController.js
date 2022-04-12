@@ -15,7 +15,7 @@ export class BaseController {
         this.model = new model(eventBus);
         this.events = [];
     }
-
+    
     subscribe = () => {
         this.events.forEach((item) => this.eventBus.on(item.event, item.handler));
     }

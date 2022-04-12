@@ -7,7 +7,10 @@ import { checkAuth, getCurrentUser, logout } from "./connection.js";
  * @description Класс авторизации
  */
 class Auth {
-
+    /**
+     * @description Создаёт модуль авторизации.
+     * @param { eventBus } Глобальная шина событий
+     */
     constructor(eventBus) {
         this.eventBus = eventBus;
         this.user = null;
@@ -27,12 +30,11 @@ class Auth {
      */
     getUserFromServer = () => {
         checkAuth().then((response) => {
-
             if (!response) {
                 return null;
             }
             if (response?.parsedResponse?.status == statuses.OK) {
-                return response.parsedResponse?.id;
+                return response.parsedResponse?.ID;
             }
             window.localStorage.removeItem("user");
             this.eventBus.emit(events.auth.notLoggedIn);

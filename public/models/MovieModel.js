@@ -1,7 +1,7 @@
 import { events } from "../consts/events.js";
 import { statuses } from "../consts/statuses.js";
 import { authModule } from "../modules/auth.js";
-import { getMovie, sendUserRating } from "../modules/connection.js";
+import { getMovie, sendUserRating, sendUserReview } from "../modules/connection.js";
 
 /**
  * @description Класс модели страницы одного фильма.
@@ -15,6 +15,12 @@ export class MovieModel {
         this.eventBus = eventBus;
     }
 
+    /**
+     * @description Получает информацию для контента страницы 
+     * одного фильма.
+     * @param { object } movie Информация о подборке: 
+     * название, ID, похожие фильмы...
+     */
     getContent = (movie) => {
         if (!movie?.ID) {
             this.eventBus.emit(events.app.errorPage);
@@ -48,18 +54,34 @@ export class MovieModel {
             this.eventBus.emit(events.moviePage.askToLog, movieID);
             return;
         }
-        sendUserRating(movieID, rating).then(
+        sendUserRating({
+            rating: rating,
+            movieId: movieID,
+            userId: authModule.user.ID.toString(),
+        }).then(
             (response) => {
                 if (!response) { return; }
-                if (response.status === statuses.OK) {
-                    this.eventBus.emit(events.moviePage.ratingSuccess, rating, response.rating);
+                if (response.status == statuses.OK) {
+                    this.eventBus.emit(
+                        events.moviePage.ratingSuccess, 
+                        rating, 
+                        response.parsedResponse.newrating
+                    );
                 }
             }
         );
     }
 
     sendReview = (inputsData = {}) => {
-        // TODO
+        inputsData
+        sendUserReview(inputsData).then(
+            (response) => {
+                if (!response) { return; }
+                if (response.status == statuses.OK) {
+                    this.eventBus.emit(events.moviePage.reviewSuccess, response.parsedResponse.review);
+                }
+            }
+        );
     }
 
 

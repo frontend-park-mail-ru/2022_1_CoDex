@@ -51,13 +51,14 @@
                     
 
                     &__title {
+                        margin-top: 8px;
                         width: 100%;
                         min-height: 60px;
                         font-family: $main_font;
                         font-weight: 600;
                         color: $white;
                         font-size: 17px;
-                        line-height: 60px;
+                        line-height: 24px;
                     }
                 }
             }

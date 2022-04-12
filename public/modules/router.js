@@ -44,8 +44,8 @@ export class Router {
                 (e) => {
                     const clickTarget = e.target;
                     const closestLink = e.target.closest("a");
-                    if (!closestLink || clickTarget.matches("not-route") || 
-                    closestLink?.matches("not-route")) {
+                    if (!closestLink || clickTarget.classList.contains("not-route") || 
+                    closestLink?.classList.contains("not-route")) {
                         return;
                     }
                     e.preventDefault();
@@ -93,7 +93,7 @@ export class Router {
      * @param { string } URL URL, на которые перешёл пользователь
      * @return { object } Информация об URL-е
      */
-    getURLData = (URL) => {
+    getURLData =    (URL) => {
         let targetController = null;
         const result = this.getParameters(URL);
         this.routes.forEach((route) => {
