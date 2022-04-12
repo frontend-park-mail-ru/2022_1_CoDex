@@ -264,12 +264,12 @@ export class MovieView extends BaseView {
         } else if (reviewTypeText.includes("Ужасно")) {
             reviewType = 3;
         }
-        review = {
+        let review = {
             text: reviewText,
             type: reviewType,
             movieID: this.movieID,
             ID: authModule.user.ID,
-        },
+        }
         this.eventBus.emit(events.moviePage.sendReview, review);
     }
 
