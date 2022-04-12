@@ -198,7 +198,7 @@ const startServer = (app) => {
           avatarSrc: "http://localhost:3000/server/images/romantic.png",
           username: "Пётр Калашников",
           userID: "",
-          rating: "9 / 10",
+          rating: "",
           date: "28.03.2022",
           content: "Понравилось, только хочется продолжения",
           type: "good",
