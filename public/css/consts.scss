@@ -1,17 +1,24 @@
-$white: #F2F2F2;
+$white: #f2f2f2;
 $black: #000000;
-$navigational: #15161A;
-$raspberry: #B70084;
+$navigational: #15161a;
+$raspberry: #b70084;
 $dark_raspberry: #ab23ff;
 $very_dark_raspberry: #7200b9;
-$grey: #4F3F47;
+$grey: #4f3f47;
 $movie_card: #4f3f47;
 $light_shadow: #c5c5c5;
 $shadow: #757575;
 $dark_shadow: #959494;
-$background: #1E1F23;
-$error: #FA8334;
+$background: #1e1f23;
+$font_color_grey: #c5c5c5;
+$error: #fa8334;
+$profile_info_background: #4f3f47;
+$font_color_white: #ffffff;
 $green: #7DF390;
 $red: #E90000;
 
-$main_font: "Montserrat" ,sans-serif;
+:root {
+    --badFeedback: #b24d4d;
+    --goodFeedback: #649844;
+}
+$main_font: "Montserrat", sans-serif;

@@ -21,6 +21,7 @@ export const sendRequest = async ({url, method, body} = {}) => {
     try {
         const parsedResponse = await response?.json();
         if (response.status !== statuses.OK && response.status !== statuses.CREATED) {
+            console.log("err");
             return null;
         }
         return {
@@ -219,6 +220,75 @@ export const getSingleCollection = async(collectionID) => {
 };
 
 /**
+ * @description Получает с сервера данные о пользователе.
+ * @param { string } id ID запрашиваемого пользователя
+ * @returns { object } Ответ с сервера
+ */
+ export const getProfile = async(id) => {
+    const params = {
+        url: `${urls.api.profile}/${id}`,
+        method: "GET",
+        credentials: "include",
+    };
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}
+
+/**
+ * @description Получает с сервера данные о подборка пользователя.
+ * @param { string } id ID запрашиваемого пользователя
+ * @returns { object } Ответ с сервера
+ */
+ export const getBookmarks = async(id) => {
+    const params = {
+        url: `${urls.api.bookmarks}/${id}`,
+        method: "GET",
+        credentials: "include",
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}
+
+/**
+ * @description Получает с сервера данные о оценках и отзывах пользователя.
+ * @param { string } id ID запрашиваемого пользователя
+ * @returns { object } Ответ с сервера
+ */
+ export const getReview = async(id) => {
+    const params = {
+        url: `${urls.api.reviews}/${id}`,
+        method: "GET",
+        credentials: "include",
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}
+
+/**
+ * @description Отправляет обновленные данные пользователя на сервер.
+ * @param { string } userID ID пользователя
+ * @param { object } personalData Новые данные
+ * @returns { object } Ответ с сервера
+ */
+ export const sendSettingsChanges = async(personalData) => {
+    const params = {
+        url: `${urls.api.changeProfile}`,
+        method: "POST",
+        body: JSON.stringify(personalData),
+    };
+    
+/**
  * @description Получает с сервера данные о конкретной подборке фильмов.
  * @param { string } actorID ID запрашиваемой подборки
  * @returns { object } Ответ с сервера
@@ -234,4 +304,5 @@ export const getSingleCollection = async(collectionID) => {
     } catch (error) {
         return null;
     }
+};
 }

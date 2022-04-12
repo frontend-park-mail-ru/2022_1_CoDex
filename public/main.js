@@ -8,6 +8,7 @@ import { AuthController } from "./controllers/AuthController.js";
 import { SingleCollectionController } from "./controllers/SingleCollectionController.js";
 import { CollectionsController } from "./controllers/CollectionsController.js";
 import { MovieController } from "./controllers/MovieController.js";
+import { ProfileController } from "./controllers/ProfileController.js";
 import { ActorController } from "./controllers/ActorController.js";
 
 if ('serviceWorker' in navigator) {
@@ -32,6 +33,7 @@ const authController = new AuthController();
 const singleCollectionController = new SingleCollectionController();
 const collectionsController = new CollectionsController();
 const movieController = new MovieController();
+const profileController = new ProfileController();
 const actorController = new ActorController();
 
 const router = new Router(root);
@@ -43,4 +45,6 @@ router.register(regularRoutes.homePage, homeController)
   .register(regularRoutes.loginPage, authController)
   .register(regularRoutes.registrationPage, authController)
   .register(regularRoutes.collectionsPage, collectionsController)
+  .register(regularRoutes.moviePage, movieController)
+  .register(regularRoutes.profilePage, profileController)
   .start();

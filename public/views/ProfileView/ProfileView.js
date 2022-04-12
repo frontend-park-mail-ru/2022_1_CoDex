@@ -1,5 +1,12 @@
 import { events } from "../../consts/events.js";
 import { BaseView } from "../BaseView/BaseView.js";
+import { getURLArguments } from "../../modules/router.js";
+import profilePug from "../../components/profile/profile.pug";
+import profileSettings from "../../components/profile/profileInfo/profileInfo.pug";
+import profileReview from "../../components/profile/profileReview/profileReview.pug";
+import profileBookmark from "../../components/profile/profileBookmark/profileBookmark.pug";
+import { authModule } from '../../modules/auth.js';
+
 
 /**
  * @description Класс представления страницы профиля.
@@ -10,12 +17,8 @@ export class ProfileView extends BaseView {
      * @param { EventBus } eventBus Глобальная шина событий
      * @param { Object } data Данные, необходимые для создания представления
     */
-     constructor(eventBus, {data={}} = {}) {
+    constructor(eventBus, { data = {} } = {}) {
         super(eventBus, data);
-    }
-
-    render = (routeData) => {
-        // TODO
     }
 
     /**
@@ -23,66 +26,109 @@ export class ProfileView extends BaseView {
      * контента страницы.
      */
     emitGetContent = () => {
-        this.eventBus.emit(events.profilePage.getContent, this.routeData);
-    }
-    
-    renderContent = (user, isOwner) => {
-        // TODO
+        const URLArgs = getURLArguments(window.location.pathname, '/profile/:ID');
+        this.eventBus.emit(events.profilePage.getProfileInfo, URLArgs);
     }
 
-    openSettings = () => {
-        // TODO
+    renderProfileInfo = (data) => {
+        this.user = data;
+        this.user.isThisUser = authModule.user ? (data.ID === authModule.user.ID) : false;
+        const content = document.querySelector('.content');
+        if (content) {
+            content.innerHTML = profilePug(this.user);
+        }
+        this.eventBus.emit(events.profilePage.getContent, data);
+        this.addSettingsButtonListener();
     }
 
-    closeSettings = () => {
-        // TODO
+    renderBookmarks = (data) => {
+        const profileBookmarks = document.querySelector('.profile-bookmarks');
+        if (profileBookmarks) {
+            profileBookmarks.innerHTML += profileBookmark(data);
+        }
     }
 
-    renderSettings = () => {
-        // TODO
+    renderReviews = (data) => {
+        const profileReviews = document.querySelector('.profile-reviews');
+        if (profileReviews) {
+            profileReviews.innerHTML += profileReview(data);
+        }
+
     }
 
-    deleteSettings = () => {
-        // TODO
+    renderChangedProfile = (data) => {
+        this.user = data;
+        this.user.isThisUser = authModule.user ? (data.ID === authModule.user.ID) : false;
+        const profileInfo = document.querySelector('.profile-info');
+        if (profileInfo) {
+            profileInfo.innerHTML = profileSettings(this.user);
+        }
+        this.addSettingsButtonListener();
+
+    }
+
+    addSettingsButtonListener = () => {
+        const settings = document.querySelector('.profile-info__container');
+        settings.addEventListener("click", (e) => {
+            e.preventDefault();
+            const target = e.target;
+            if (target.classList.contains("profile-info__container__settings")) {
+                document.querySelector(".profile-info__container__settings").style.display = "none";
+                document.querySelector(".profile-info__container__settings__form").style.display = "block";
+            }
+            if (target.value == "Отменить") {
+                document.querySelector(".profile-info__container__settings").style.display = "flex";
+                document.querySelector(".profile-info__container__settings__form").style.display = "none";
+                document.querySelector('.profile-info__container__settings__form__name-input').value = "";
+
+            } else if (target.value == "Сохранить") {
+                document.querySelector(".profile-info__container__settings").style.display = "flex";
+                document.querySelector(".profile-info__container__settings__form").style.display = "none";
+                this.submitChange();
+            }
+        });
+
     }
 
     submitChange = () => {
-        // TODO
+        const inputName = document.querySelector('.profile-info__container__settings__form__name-input').value;
+        if (!this.validateInput(inputName)) {
+            return;
+        } else {
+            document.querySelector('.profile-info__container__settings__form__name-input').value = "";
+            this.eventBus.emit(events.profilePage.sendChanges, { name: inputName });
+        }
     }
 
-    addValidateListeners = () => {
-        // TODO
+    validateInput = (inputName) => {
+        if (!inputName) {
+            return null;
+        } else {
+            return true;
+        }
+
     }
 
-    addSubmitError = () => {
-        // TODO
-    }
+    listenAvatarChanged = () => {
+        const avatarInput = document.querySelector('.profile-info__avatar__input');
+        const avatarDiv = document.querySelector('.avatar');
+        if (!avatarInput) {
+            return;
+        }
+        avatarInput.addEventListener('click', (e) => {
+            avatarInput.addEventListener('change', (ee) => {
+                if (!ee.target.files[0]) {
+                    return;
+                }
+                const reader = new FileReader();
 
-    deleteSubmitError = () => {
-        // TODO
-    }
+                reader.addEventListener('load', (event) => {
+                    avatarDiv.style.backgroundImage = `url(${event.target.result})`;
+                })
+                reader.readAsDataURL(ee.target.files[0]);
 
-    addSubmitListener = () => {
-        // TODO
-    }
+            });
 
-    addErrorMessage = () => {
-        // TODO
-    }
-
-    deleteErrorMessage = () => {
-        // TODO
-    }
-
-    addAvatarListener = () => {
-        // TODO
-    }
-
-    renderCollections = () => {
-        // TODO
-    }
-
-    renderActivity = () => {
-        // TODO
+        });
     }
 }

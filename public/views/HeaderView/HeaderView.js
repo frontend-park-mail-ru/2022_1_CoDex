@@ -53,7 +53,7 @@ export class HeaderView extends BaseView {
     }
     for (const button of buttons) {
       if (button.getAttribute('href') === buttonHref) {
-        button.classList.add('.navbar__menu-btn_active');
+        button.classList.add('navbar__menu-btn__active');
       }
     }
   };
@@ -62,12 +62,12 @@ export class HeaderView extends BaseView {
      * @description Делает все кнопки навигационной панели неактивными.
      */
   unactiveAllButtons = () => {
-    const activeButtons = document.querySelectorAll('.navbar__menu-btn_active');
+    const activeButtons = document.querySelectorAll('.navbar__menu-btn__active');
     if (!activeButtons) {
       return;
     }
     for (const button of activeButtons) {
-      button.classList.remove('navbar__menu-btn_active');
+      button.classList.remove('navbar__menu-btn__active');
     }
   };
 

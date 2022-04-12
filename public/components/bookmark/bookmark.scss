@@ -1,0 +1,26 @@
+.bookmark-element {
+    display: flex;
+    flex-direction: column;
+    &__wrapper {
+        margin-right: 10px;
+        img {
+            border-radius: 20px;
+            width: 180px;
+            height: 150px;
+            object-fit: cover;
+        }
+    }
+    &__description {
+        width: 180px;
+        height: 64px;
+        color: $font_color_white;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        font-family: $main_font;
+        font-weight: 600;
+        font-size: 17px;
+        line-height: 24px;
+    }
+}

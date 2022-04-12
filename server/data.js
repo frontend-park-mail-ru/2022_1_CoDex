@@ -14,6 +14,30 @@ const startServer = (app) => {
     res.json(adventures);
   });
 
+  app.get("/api/v1/user/getProfile/1", function (req, res) {
+    res.status(200).json({
+      ID: 1,
+      avatarSrc: "/server/images/adventures.png",
+      name: users['a@a.ru'].name,
+      email: 'a@a.ru',
+    });
+  });
+
+  app.get("/api/v1/user/getBookmarks/1", function (req, res) {
+    res.status(200).json({
+      ID: 1,
+      bookmarksList: users['a@a.ru'].bookmarksList,
+    });
+  });
+
+  app.get("/api/v1/user/getReviews/1", function (req, res) {
+    res.status(200).json({
+      ID: 1,
+      reviewsList: users['a@a.ru'].reviewsList,
+    });
+  });
+
+  app.get("/api/v1/movie/1", function (req, res) {
   app.get("/api/v1/actors/1", function (req, res) {
     res.json(actors[0]);
   });
@@ -278,10 +302,30 @@ const startServer = (app) => {
 
     res.cookie('podvorot', ID, { expires: new Date(Date.now() + 1000 * 60 * 10) });
     res.status(200).json({
-      ID: ID,
+      ID: 1,
       avatarSrc: "server/images/adventures.png",
       name: users[email].name,
       email: email,
+    });
+  });
+
+  app.post("/api/v1/logout", function (req, res) {
+    res.status(200).json({
+      status:200,
+    });
+  });
+
+  app.post("/api/v1/user/changeProfile", function (req, res) {
+    const name = req.body.name;
+    users["a@a.ru"].name = name;
+
+    //res.cookie('podvorot', 1, { expires: new Date(Date.now() + 1000 * 60 * 10) });
+    res.cookie('podvorot', 1, { expires: new Date(Date.now() + 1000 * 60 * 10) });
+    res.status(200).json({
+      ID: 1,
+      avatarSrc: "/server/images/adventures.png",
+      name: users["a@a.ru"].name,
+      email: "a@a.ru",
     });
   });
 
@@ -291,11 +335,33 @@ const startServer = (app) => {
     });
   });
 
+
+  const ids = {};
+
+  const Bookmarks = {
+    bookmarksList: [
+      { description: "Подборка №1", imgSrc: "top.png", page: "profile", number: "1" },
+      { description: "Подборка №2", imgSrc: "top.png", page: "profile", number: "2" },
+    ]
+  };
+
+  const Reviews = {
+    reviewsList: [
+      { type: "Оценка", text: "10", date: "01.01.2001", number: "1" },
+      { type: "Отзыв", feedbackType: "0", date: "01.01.2001", number: "2", film_name: "Вечное сияние чистого разума"},
+      { type: "Отзыв", feedbackType: "1", date: "01.01.2001", number: "3", film_name: "Вечное сияние чистого разума"},
+      { type: "Отзыв", feedbackType: "2", date: "01.01.2001", number: "4", film_name: "Вечное сияние чистого разума"},
+    ]
+  };
+
   const users = {
     "a@a.ru": {
       name: "aaaaaa",
       email: "a@a.ru",
       password: 'password1',
+      avatarSrc: "server/images/adventures.png",
+      bookmarksList: Bookmarks.bookmarksList,
+      reviewsList: Reviews.reviewsList,
     },
   };
   const id = uuid();
@@ -1837,5 +1903,8 @@ const startServer = (app) => {
     },
   ];
 };
+
+
+
 
 module.exports = startServer;
