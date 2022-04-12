@@ -10,11 +10,11 @@ export const routes = {
 }
 
 export const regularRoutes = {
-    homePage: "^/$",
-    collectionsPage: "^/collections$",    
-    loginPage:  "^/login",
-    registrationPage: "^/register",
     singleCollectionPage:"^/collections/\\d+$",    
     moviePage:"^/movies/\\d+$",
+    loginPage:  "^/login",
+    registrationPage: "^/register",
     actorPage: "^/actors/\\d+$",
+    collectionsPage: "^/collections$",    
+    homePage: "^/$",
 }
