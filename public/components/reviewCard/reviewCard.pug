@@ -5,8 +5,9 @@ mixin reviewCard(singleReview)
         div.review-card__info
             div.review-card__info__title
                 a.review-card__info__title__name(href=`/profiles/${singleReview.userID}`) #{`${singleReview.username}, `}
-                if singleReview.rating != ""
-                    div.review-card__info__title__info #{`${singleReview.rating} / 10, ${singleReview.date}`}
-                else
-                    div.review-card__info__title__info #{`${singleReview.date}`}
+                //- if singleReview.rating != ""
+                    //- div.review-card__info__title__info #{`${singleReview.rating} / 10, ${singleReview.date}`}
+                //- else
+                //-     div.review-card__info__title__info #{`${singleReview.date}`}
+                div.review-card__info__title__info #{`${singleReview.rating} / 10, ${singleReview.date}`}
             div.review-card__info__content #{singleReview.content}

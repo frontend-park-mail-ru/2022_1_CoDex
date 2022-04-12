@@ -289,6 +289,7 @@ export class MovieView extends BaseView {
         console.log("3");
         console.log(createElementFromHTML(reviewCard(review)));
         console.log("4");
+        console.log("Review: ", review);
         reviewList.append(createElementFromHTML(reviewCard(review)));
     }
 
