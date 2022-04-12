@@ -93,7 +93,7 @@ export class Router {
      * @param { string } URL URL, на которые перешёл пользователь
      * @return { object } Информация об URL-е
      */
-    getURLData = (URL) => {
+    getURLData =    (URL) => {
         let targetController = null;
         const result = this.getParameters(URL);
         this.routes.forEach((route) => {

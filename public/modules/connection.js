@@ -206,7 +206,7 @@ export const getSingleCollection = async(collectionID) => {
  */
  export const sendUserReview = async(review) => {
     const params = {
-        url: `${urls.api.sendRating}/TODO/`,
+        url: `${urls.api.sendReviews}`,
         method: "POST",
         body: JSON.stringify(review),
     };
