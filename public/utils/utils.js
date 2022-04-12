@@ -10,6 +10,8 @@ import { routes } from "../consts/routes.js";
  */
 export function createElementFromHTML(html) {
   const temp = document.createElement("div");
+  console.log("Inside createElement");
+  console.log("HTML: ", html);
   temp.innerHTML = html;
   return temp.firstElementChild;
 }
