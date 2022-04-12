@@ -48,6 +48,10 @@ export class ProfileController extends BaseController {
                 event: events.profilePage.render.bookmarks,
                 handler: this.view.renderBookmarks,
             },
+            {
+                event: events.profilePage.render.changedProfile,
+                handler: this.view.renderChangedProfile,
+            },
             
             // {
             //     event: events.header.logout,

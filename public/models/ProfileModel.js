@@ -64,9 +64,16 @@ export class ProfileModel extends BaseModel {
     }
 
     sendSettingsCnanges = (inputsData) => {
-        console.log("inputsData", inputsData)
         sendSettingsChanges(inputsData).then((response) => {
-            console.log("nice");
+            if (!response) {
+                this.eventBus.emit(events.app.errorPage);
+            } if (response?.status === statuses.OK && response.parsedResponse) {
+                this.eventBus.emit(
+                    events.profilePage.render.changedProfile, response.parsedResponse
+                );
+            } else if (response?.status === statuses.NOT_FOUND) {
+                this.eventBus.emit(events.app.errorPageText, "Такого пользователя нет");
+            }
         })
     }
 

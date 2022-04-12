@@ -1,17 +1,15 @@
-.profile-info
-    .profile-info__avatar
-        .profile-info__avatar__input
-            img(class="avatar" style=`background-image: url(${avatarSrc}` accept=".webp .jpg, .jpeg, .png, .svg")
-            input(class="change__avatar" type ="file" accept=".webp .jpg, .jpeg, .png, .svg")
-    .profile-info__name
-        span.name #{name}
-    .profile-info__container
-        if isThisUser
-            .profile-info__settings Изменить
-            .profile-info__settings__form
-                a Имя
-                input(type="text" class='profile-info__settings__form__name-input' placeholder=" Введите новое имя")
-                    //- span.profile-info__settings__form__new-name
-                .profile-info__settings__form__button
-                    input(type="button" class='profile-info__settings__form__button-input' value='Сохранить') 
-                    input(type="button" class='profile-info__settings__form__button-input' value='Отменить')
+.profile-info__avatar
+    .profile-info__avatar__input
+        img(class="avatar" style=`background-image: url(${avatarSrc}` accept=".webp .jpg, .jpeg, .png, .svg")
+        //TODO input(class="change__avatar" type ="file" accept=".webp .jpg, .jpeg, .png, .svg")
+.profile-info__name
+    span.name #{name}
+.profile-info__container
+    if isThisUser
+        .profile-info__container__settings Изменить
+        .profile-info__container__settings__form
+            a Имя
+            input(type="text" class='profile-info__container__settings__form__name-input' placeholder=" Введите новое имя")
+            .profile-info__container__settings__form__button
+                input(type="button" class='profile-info__container__settings__form__button-input' value='Сохранить') 
+                input(type="button" class='profile-info__container__settings__form__button-input' value='Отменить')

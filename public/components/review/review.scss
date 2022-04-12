@@ -9,15 +9,35 @@
     align-items: center;
 
     &__type {
-        color: $black;
         margin-left: 26px;
+        color: $font_color_grey;
+        font-family: $main_font;
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 32px;
     }
     &__text {
-        color: $black;
+        color: $font_color_white;
+        font-family: $main_font;
         margin-left: 10px;
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 32px;
     }
-    &__date {
-        color: $black;
+    //TODO &__date {
+    //     color: $font_color_white;
+    //     font-family: $main_font;
+    //     margin-left: 10px;
+    //     font-weight: 600;
+    //     font-size: 28px;
+    //     line-height: 32px;
+    // }
+    &__film-name {
+        font-family: $main_font;
+        color: $font_color_white;
         margin-left: 10px;
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 32px;
     }
 }

@@ -1,68 +1,61 @@
-.profile-info {
-    grid-area: info;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $profile_info_background;
-    height: 764px;
-    width: 380px;
-    margin-top: 30px;
-    border-radius: 20px;
+.profile-info__avatar {
+    &__input {
+        position: relative;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        margin-top: 20px;
+        margin-left: 50px;
+        margin-right: 50px;
+        object-fit: cover;
+        background-repeat: no-repeat;
+        background-position: center;
 
-    &__avatar {
-        &__input {
-            position: relative;
-
+        .avatar {
+            border-radius: 50%;
             width: 280px;
             height: 280px;
-            border-radius: 50%;
-            margin-top: 20px;
-            margin-left: 50px;
-            margin-right: 50px;
             object-fit: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-
-            .avatar {
-                border-radius: 50%;
-                width: 280px;
-                height: 280px;
-                object-fit: cover;
-            }
-
-            .change__avatar {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 100%;
-                border-radius: 50%;
-                opacity: 0;
-                cursor: pointer;
-
-            }
         }
-        &__input:hover {
-            background-image: url("static/pics/avatarBackground.jpg");
-            img {
-                filter: opacity(50%);
-            }
+
+        .change__avatar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            opacity: 0;
+            cursor: pointer;
         }
     }
-
-    &__name {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-        width: 380px;
-        height: 40px;
-        .name {
-            text-align: center;
-            color: $font_color_white;
+    &__input:hover {
+        background-image: url("static/pics/avatarBackground.jpg");
+        img {
+            filter: opacity(50%);
         }
     }
+}
+
+.profile-info__name {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 380px;
+    height: 40px;
+    .name {
+        text-align: center;
+        color: $font_color_white;
+        font-family: $main_font;
+        font-size: 20px;
+        font-weight: 500px;
+        line-height: 28px;
+    }
+}
+
+.profile-info__container {
     &__settings {
         display: flex;
         justify-content: center;
@@ -76,6 +69,10 @@
         border-radius: 12px;
         background-color: $raspberry;
         color: $font_color_white;
+        font-family: $main_font;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 28px;
         cursor: pointer;
         &:hover {
             filter: brightness(80%);

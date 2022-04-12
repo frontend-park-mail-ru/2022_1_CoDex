@@ -19,14 +19,25 @@
         column-gap: 20px;
         grid-template-areas: "info info info info content content content content content content content content";
 
-        .profileContent {
+        &-info {
+            grid-area: info;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: $profile_info_background;
+            height: 764px;
+            width: 380px;
+            margin-top: 30px;
+            border-radius: 20px;
+        }
+        &-content {
             grid-area: content;
             display: grid;
             grid-template-areas:
                 "bookmarks"
                 "review";
             margin-left: 20px;
-            .profileBookmarks {
+            .profile-bookmarks {
                 grid-area: bookmarks;
                 width: 780px;
                 display: grid;
@@ -40,18 +51,33 @@
                     height: 40px;
                     color: $font_color_white;
                     text-align: center;
-                }
-            
-                &__bookmarks-container {
-                    grid-area: el;
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    justify-content: flex-start;
-            
+                    font-family: $main_font;
+                    font-weight: 600;
+                    font-size: 28px;
+                    line-height: 32px;
                 }
             }
-            
+
+            .profile-reviews {
+                grid-area: review;
+                width: 780px;
+                display: grid;
+                grid-template-areas:
+                    "name name name name name name"
+                    "el el el el el el";
+
+                &__title {
+                    grid-area: name;
+                    width: 780px;
+                    height: 40px;
+                    color: $font_color_white;
+                    text-align: center;
+                    font-family: $main_font;
+                    font-weight: 600;
+                    font-size: 28px;
+                    line-height: 32px;
+                }
+            }
         }
     }
 }

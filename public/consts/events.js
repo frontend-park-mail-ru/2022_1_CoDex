@@ -86,6 +86,7 @@ export const events = {
             bookmarks: "profilePage:renderBookmarks",
             reviews: "profilePage:renderReviews",
             profileInfo: "profilePage:renderProfileInfo",
+            changedProfile: "profilePage:renderChangedProfile",
         },
         getContent: "profilePage:getContent",
         getReviews: "profilePage:getReviews",

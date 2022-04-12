@@ -242,30 +242,15 @@ const startServer = (app) => {
 
   app.post("/api/v1/user/changeProfile", function (req, res) {
     const name = req.body.name;
-    // const password = req.body.password;
-    // const email = req.body.email;
-    // if (
-    //   !password || !email ||
-    //   !password.match(/^\S{4,}$/) ||
-    //   !email.match(/@/)
-    // ) {
-    //   return res.status(400).json({ error: 'Невалидные данные пользователя' });
-    // }
-    // if (users[email]) {
-    //   return res.status(400).json({ error: 'Пользователь уже существует' });
-    // }
-
-    //const id = uuid();
-    //const user = { name, email, password };
-    //ids[id] = email;
     users["a@a.ru"].name = name;
 
+    //res.cookie('podvorot', 1, { expires: new Date(Date.now() + 1000 * 60 * 10) });
     res.cookie('podvorot', 1, { expires: new Date(Date.now() + 1000 * 60 * 10) });
-    res.status(201).json({
+    res.status(200).json({
       ID: 1,
-      //avatarSrc: "server/images/adventures.png",
+      avatarSrc: "/server/images/adventures.png",
       name: users["a@a.ru"].name,
-      //email: email,
+      email: "a@a.ru",
     });
   });
 
@@ -288,7 +273,9 @@ const startServer = (app) => {
   const Reviews = {
     reviewsList: [
       { type: "Оценка", text: "10", date: "01.01.2001", number: "1" },
-      { type: "Отзыв", text: "Афигенно", date: "01.01.2001", number: "2" },
+      { type: "Отзыв", feedbackType: "0", date: "01.01.2001", number: "2", film_name: "Вечное сияние чистого разума"},
+      { type: "Отзыв", feedbackType: "1", date: "01.01.2001", number: "3", film_name: "Вечное сияние чистого разума"},
+      { type: "Отзыв", feedbackType: "2", date: "01.01.2001", number: "4", film_name: "Вечное сияние чистого разума"},
     ]
   };
 

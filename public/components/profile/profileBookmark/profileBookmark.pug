@@ -1,7 +1,5 @@
 include ../../bookmark/bookmark
-.profile-bookmarks
-    span.profile-bookmarks__title Мои подборки
-    .profile-bookmarks__bookmarks-container
-        each input, _ in bookmarksList
-            +bookmark(input)    
+.profile-bookmarks__bookmarks-container
+    each input, _ in bookmarksList
+        +bookmark(input)    
         

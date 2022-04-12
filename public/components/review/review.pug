@@ -1,5 +1,19 @@
 mixin review(i)
-    .review-element
-        .review-element__type #{i.type}
-        .review-element__text #{i.text}
-        .review-element__date #{i.date}
+    if i.feedbackType=='0'
+        .review-element(style="background-color: var(--goodFeedback);")
+            .review-element__type #{i.type}:
+            .review-element__film-name #{i.film_name}
+        //TODO .review-element__date #{i.date}
+    else if i.feedbackType=='1'
+        .review-element
+            .review-element__type #{i.type}:
+            .review-element__film-name #{i.film_name}
+    else if i.feedbackType=='2'
+        .review-element(style="background-color: var(--badFeedback);")
+            .review-element__type #{i.type}:
+            .review-element__film-name #{i.film_name}
+    else
+        .review-element
+            .review-element__type #{i.type}:
+            .review-element__film-name #{i.film_name}
+            .review-element__text #{i.text}
