@@ -48,6 +48,10 @@ export class MovieView extends BaseView {
             slider("#related-slider");
             this.renderRating(data.movie.ID);
             this.renderReviewInput(data.movie.ID);
+            if (data.reviewex != "")
+                this.eventBus.emit(events.moviePage.reviewSuccess);
+            if (data.userrating != "")
+                this.eventBus.emit(events.moviePage.ratingSuccess, data.userrating, data.movie.rating);
         } else {
             this.eventBus.emit(events.app.errorPage);
         }
@@ -279,6 +283,7 @@ export class MovieView extends BaseView {
      * @param { object } review Сформированный отзыв
      */
     renderReviewSuccess = (review) => {
+        if (!review) { return; }
         const reviewInput = document.querySelector(".send-review__input");
         reviewInput.innerHTML = reviewSuccessBlock();
         let reviewList = document.querySelector(".review-list");
