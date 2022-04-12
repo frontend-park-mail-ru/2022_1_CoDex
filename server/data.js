@@ -37,7 +37,6 @@ const startServer = (app) => {
     });
   });
 
-  app.get("/api/v1/movie/1", function (req, res) {
   app.get("/api/v1/actors/1", function (req, res) {
     res.json(actors[0]);
   });
@@ -365,7 +364,6 @@ const startServer = (app) => {
     },
   };
   const id = uuid();
-  const ids = {};
   ids[id] = "a@a.ru";
 
   const Collections = {
@@ -1903,8 +1901,5 @@ const startServer = (app) => {
     },
   ];
 };
-
-
-
 
 module.exports = startServer;

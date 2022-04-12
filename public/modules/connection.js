@@ -7,7 +7,7 @@ import regeneratorRuntime from "regenerator-runtime";
  * @param { object } params Параметры для запроса
  * @returns { object } Статус и обработанный ответ
  */
-export const sendRequest = async ({url, method, body} = {}) => {
+export const sendRequest = async ({ url, method, body } = {}) => {
     const response = await fetch(url, {
         method: method,
         headers: {
@@ -94,13 +94,13 @@ export const logout = async () => {
  * @param { object } user Данные о пользователе
  * @returns { object } Ответ с сервера
  */
-export const login = async(user) => {
+export const login = async (user) => {
     const params = {
         url: urls.api.login,
         method: "POST",
         body: JSON.stringify(user),
     };
-    
+
     try {
         return await sendRequest(params);
     } catch (error) {
@@ -113,13 +113,13 @@ export const login = async(user) => {
  * @param { object } user Данные о пользователе
  * @returns { object } Ответ с сервера
  */
-export const register = async(user) => {
+export const register = async (user) => {
     const params = {
         url: urls.api.register,
         method: "POST",
         body: JSON.stringify(user),
     };
-    
+
     try {
         return await sendRequest(params);
     } catch (error) {
@@ -132,7 +132,7 @@ export const register = async(user) => {
  * @param { string } collectionID ID запрашиваемой подборки
  * @returns { object } Ответ с сервера
  */
-export const getSingleCollection = async(collectionID) => {
+export const getSingleCollection = async (collectionID) => {
     const params = {
         url: `${urls.api.singleCollection}/${collectionID}`,
         method: "GET",
@@ -149,7 +149,7 @@ export const getSingleCollection = async(collectionID) => {
  * @description Получает с сервера данные о подборках фильмов.
  * @returns { object } Ответ с сервера
  */
- export const getCollections = async() => {
+export const getCollections = async () => {
     const params = {
         url: `${urls.api.collections}`,
         method: "GET",
@@ -167,7 +167,7 @@ export const getSingleCollection = async(collectionID) => {
  * @param { string } movieID ID запрашиваемой подборки
  * @returns { object } Ответ с сервера
  */
- export const getMovie = async(movieID) => {
+export const getMovie = async (movieID) => {
     const params = {
         url: `${urls.api.movie}/${movieID}`,
         method: "GET",
@@ -185,13 +185,13 @@ export const getSingleCollection = async(collectionID) => {
  * @param { string } rating Данные о рейтинге
  * @returns { object } Ответ с сервера
  */
- export const sendUserRating = async(rating) => {
+export const sendUserRating = async (rating) => {
     const params = {
         url: `${urls.api.sendRating}`,
         method: "POST",
         body: JSON.stringify(rating),
     };
-    
+
     try {
         return await sendRequest(params);
     } catch (error) {
@@ -205,13 +205,13 @@ export const getSingleCollection = async(collectionID) => {
  * @param { number } rating Оставленная оценка
  * @returns { object } Ответ с сервера
  */
- export const sendUserReview = async(review) => {
+export const sendUserReview = async (review) => {
     const params = {
         url: `${urls.api.sendReviews}`,
         method: "POST",
         body: JSON.stringify(review),
     };
-    
+
     try {
         return await sendRequest(params);
     } catch (error) {
@@ -224,7 +224,7 @@ export const getSingleCollection = async(collectionID) => {
  * @param { string } id ID запрашиваемого пользователя
  * @returns { object } Ответ с сервера
  */
- export const getProfile = async(id) => {
+export const getProfile = async (id) => {
     const params = {
         url: `${urls.api.profile}/${id}`,
         method: "GET",
@@ -242,7 +242,7 @@ export const getSingleCollection = async(collectionID) => {
  * @param { string } id ID запрашиваемого пользователя
  * @returns { object } Ответ с сервера
  */
- export const getBookmarks = async(id) => {
+export const getBookmarks = async (id) => {
     const params = {
         url: `${urls.api.bookmarks}/${id}`,
         method: "GET",
@@ -261,7 +261,7 @@ export const getSingleCollection = async(collectionID) => {
  * @param { string } id ID запрашиваемого пользователя
  * @returns { object } Ответ с сервера
  */
- export const getReview = async(id) => {
+export const getReview = async (id) => {
     const params = {
         url: `${urls.api.reviews}/${id}`,
         method: "GET",
@@ -281,19 +281,25 @@ export const getSingleCollection = async(collectionID) => {
  * @param { object } personalData Новые данные
  * @returns { object } Ответ с сервера
  */
- export const sendSettingsChanges = async(personalData) => {
+export const sendSettingsChanges = async (personalData) => {
     const params = {
         url: `${urls.api.changeProfile}`,
         method: "POST",
         body: JSON.stringify(personalData),
     };
-    
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}
 /**
  * @description Получает с сервера данные о конкретной подборке фильмов.
  * @param { string } actorID ID запрашиваемой подборки
  * @returns { object } Ответ с сервера
  */
- export const getActor = async(actorID) => {
+export const getActor = async (actorID) => {
     const params = {
         url: `${urls.api.actor}/${actorID}`,
         method: "GET",
@@ -305,4 +311,4 @@ export const getSingleCollection = async(collectionID) => {
         return null;
     }
 };
-}
+
