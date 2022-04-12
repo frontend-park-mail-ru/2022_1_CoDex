@@ -11,7 +11,6 @@ import { routes } from "../consts/routes.js";
 export function createElementFromHTML(html) {
   const temp = document.createElement("div");
   temp.innerHTML = html;
-  console.log("Inner HTML: ", html);
   return temp.firstElementChild;
 }
 
