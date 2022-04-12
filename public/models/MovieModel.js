@@ -78,7 +78,7 @@ export class MovieModel {
             (response) => {
                 if (!response) { return; }
                 if (response.status == statuses.OK) {
-                    this.eventBus.emit(events.moviePage.reviewSuccess, response.review);
+                    this.eventBus.emit(events.moviePage.reviewSuccess, response.parsedResponse.review);
                 }
             }
         );
