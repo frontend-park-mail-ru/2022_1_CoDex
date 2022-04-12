@@ -7,7 +7,7 @@ import moviePageContent from "../../components/movie/movie.pug";
 import reviewInvitation from "../../components/reviewInvitation/reviewInvitation.pug";
 import reviewInputBlock from "../../components/reviewInputBlock/reviewInputBlock.pug";
 import reviewSuccessBlock from "../../components/reviewSuccessBlock/reviewSuccessBlock.pug";
-import reviewCard from "../../components/reviewCard/reviewCard.pug";
+import createReviewCard from "../../components/reviewCard/createReviewCard.pug";
 import { createElementFromHTML } from "../../utils/utils.js";
 
 /**
@@ -282,10 +282,10 @@ export class MovieView extends BaseView {
         const reviewInput = document.querySelector(".send-review__input");
         reviewInput.innerHTML = reviewSuccessBlock();
         let reviewList = document.querySelector(".review-list");
-        console.log("Review: ", {...review});
-        console.log("HTML: ", reviewCard({ ...review}));
-        console.log("Created: ", createElementFromHTML(reviewCard({...review})));
-        reviewList.append(createElementFromHTML(reviewCard({...review})));
+        console.log("Review: ", {singleReview: review});
+        console.log("HTML: ", reviewCard({singleReview: review}));
+        console.log("Created: ", createElementFromHTML(reviewCard({singleReview: review})));
+        reviewList.append(createElementFromHTML(reviewCard({singleReview: review})));
     }
 
     /**
