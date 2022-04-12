@@ -265,10 +265,10 @@ export class MovieView extends BaseView {
             reviewType = 3;
         }
         let review = {
-            text: reviewText,
-            type: reviewType,
-            movieID: this.movieID,
-            ID: authModule.user.ID,
+            reviewText: reviewText,
+            reviewType: reviewType.toString(),
+            movieId: this.movieID,
+            userId: authModule.user.ID.toString(),
         }
         this.eventBus.emit(events.moviePage.sendReview, review);
     }
