@@ -283,6 +283,8 @@ export class MovieView extends BaseView {
         reviewInput.innerHTML = reviewSuccessBlock();
         let reviewList = document.querySelector(".review-list");
         console.log("Review: ", review);
+        console.log("HTML: ", reviewCard(review));
+        console.log("Created: ", createElementFromHTML(reviewCard(review)));
         reviewList.append(createElementFromHTML(reviewCard(review)));
     }
 
