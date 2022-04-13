@@ -49,10 +49,10 @@ export class ProfileView extends BaseView {
     }
 
     renderReviews = (data) => {
-        const profileReviews = document.querySelector('.profile-reviews');
-        if (profileReviews) {
-            profileReviews.innerHTML += profileReview(data);
-        }
+        // const profileReviews = document.querySelector('.profile-reviews');
+        // if (profileReviews) {
+        //     profileReviews.innerHTML += profileReview(data);
+        // }
 
     }
 

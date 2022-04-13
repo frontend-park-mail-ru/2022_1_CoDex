@@ -4,7 +4,7 @@ const localUrl = "http://localhost:3001";
 // eslint-disable-next-line no-unused-vars
 export const deployUrl = "https://teamprojectkinopoisk.herokuapp.com";
 
-export const currentUrl = deployUrl;
+export const currentUrl = localUrl;
 
 const versions = {
     v1: "/api/v1",
@@ -14,9 +14,9 @@ export const urls = {
     api: {
         checkAuth: `${currentUrl}${versions.v1}/user/authcheck`,
         getUser: `${currentUrl}${versions.v1}/user`,
-        profile: `${currentUrl}${versions.v1}/user/getProfile`,
-        changeProfile:`${currentUrl}${versions.v1}/user/changeProfile`,
-        bookmarks: `${currentUrl}${versions.v1}/user/getBookmarks`,
+        //profile: `${currentUrl}${versions.v1}/user/getProfile`,
+        changeProfile:`${currentUrl}${versions.v1}/user/update`,
+        bookmarks: `${currentUrl}${versions.v1}/user/bookmarks`,
         reviews: `${currentUrl}${versions.v1}/user/getReviews`,
         logout: `${currentUrl}${versions.v1}/user/logout`,
         login: `${currentUrl}${versions.v1}/user/login`,

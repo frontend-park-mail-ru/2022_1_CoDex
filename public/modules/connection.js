@@ -226,7 +226,7 @@ export const sendUserReview = async (review) => {
  */
 export const getProfile = async (id) => {
     const params = {
-        url: `${urls.api.profile}/${id}`,
+        url: `${urls.api.getUser}/${id}`,
         method: "GET",
         credentials: "include",
     };
