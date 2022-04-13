@@ -34,14 +34,6 @@ export class ProfileView extends BaseView {
    * @description Отрисовывает страницу профиля (часть с данными о пользователе).
    * @param { object } data Данные о пользователе
    */
-  renderProfileInfo = (data) => {
-    this.user = data;
-    this.user.isThisUser = authModule.user ? (data.ID === authModule.user.ID) : false;
-    const content = document.querySelector('.content');
-    if (content) {
-      content.innerHTML = profilePug(this.user);
-    }
-
     renderProfileInfo = (data) => {
         this.user = data;
         this.user.isThisUser = authModule.user ? (data.ID === authModule.user.ID) : false;
