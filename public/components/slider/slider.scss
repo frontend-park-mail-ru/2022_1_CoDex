@@ -80,11 +80,11 @@
         background-size: cover;
 
         &__left {
-            background-image: url("./static/pics/previous-arrow.png");
+            background-image: url("./dist/img/previous-arrow.png");
         }
         
         &__right {
-            background-image: url("./static/pics/next-arrow.png");
+            background-image: url("./dist/img/next-arrow.png");
             right: 0;
         }
 
