@@ -304,7 +304,7 @@ export const sendSettingsChanges = async (personalData, userID) => {
     const params = {
         url: `${urls.api.changeAvatar}`,
         method: "POST",
-        body: JSON.stringify(formData),
+        body: formData,
     };
 
     try {
