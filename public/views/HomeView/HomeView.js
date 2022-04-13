@@ -1,4 +1,3 @@
-import {events} from '../../consts/events.js';
 import {BaseView} from '../BaseView/BaseView.js';
 
 /**

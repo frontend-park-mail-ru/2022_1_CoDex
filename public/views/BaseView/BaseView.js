@@ -24,6 +24,11 @@ export class BaseView {
      */
   emitGetContent = () => {};
 
+  /**
+   * @description Отрисовывает страницу целиком, вместе с
+   * навигационной панелью и нижним колонтитулом.
+   * @param { object } routeData Конкретные данные о странице
+   */
   render = (routeData) => {
     this.routeData = routeData;
     const content = document.querySelector('.content');
