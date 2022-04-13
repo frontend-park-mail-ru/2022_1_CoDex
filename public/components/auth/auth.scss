@@ -38,27 +38,26 @@
         "C0 C1 C1 C1 C1 C2";
     grid-auto-columns: minmax(0, 136px);
 
-    &__invitation {
-        grid-area: A0;
-        font-family: $main_font;
-        font-size: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 65px;
-    }
-
-    &__form {
-        grid-area: B1;
-        width: 100%;
-        height: 100%;
-        display: grid;
-        gap: 20px;
-        grid-template-areas:
-            "A0 A0 A0 A0"
-            "B0 B0 B0 B0"
-            "C0 C0 C0 C0";
-    }
+	&__invitation {
+		grid-area: A0;
+		font-family: $main_font;
+		font-size: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 65px;
+	}
+	&__form {
+		grid-area: B1;
+		width: 100%;
+		height: 100%;
+		display: grid;
+		gap: 20px;
+		grid-template-areas:
+			"A0 A0 A0 A0"
+			"B0 B0 B0 B0"
+			"C0 C0 C0 C0";
+	}
 }
 
 .register {
@@ -83,29 +82,28 @@
         "C0 C1 C1 C1 C1 C2";
     grid-auto-columns: minmax(0, 136px);
 
-    &__invitation {
-        grid-area: A0;
-        font-family: $main_font;
-        font-size: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 65px;
-    }
-
-    &__form {
-        grid-area: B1;
-        width: 100%;
-        height: 100%;
-        display: grid;
-        gap: 20px;
-        grid-template-areas:
-            "Z0 Z0 Z0 Z0"
-            "A0 A0 A0 A0"
-            "B0 B0 B0 B0"
-            "D0 D0 D0 D0"
-            "C0 C0 C0 C0";
-    }
+	&__invitation {
+		grid-area: A0;
+		font-family: $main_font;
+		font-size: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 65px;
+	}
+	&__form {
+		grid-area: B1;
+		width: 100%;
+		height: 100%;
+		display: grid;
+		gap: 20px;
+		grid-template-areas:
+			"Z0 Z0 Z0 Z0"
+			"A0 A0 A0 A0"
+			"B0 B0 B0 B0"
+			"D0 D0 D0 D0"
+			"C0 C0 C0 C0";
+	}
 }
 
 .auth-input {
@@ -148,19 +146,19 @@
 }
 
 .email {
-    grid-area: A0;
+	grid-area: A0;
 }
 
 .password {
-    grid-area: B0;
+	grid-area: B0;
 }
 
 .username {
-    grid-area: Z0;
+	grid-area: Z0;
 }
 
 .repeatpassword {
-    grid-area: D0;
+	grid-area: D0;
 }
 
 .auth__btn {
@@ -169,28 +167,27 @@
     flex-direction: column;
     width: 100%;
 
-    &__error {
-        width: 100%;
-        text-align: center;
-        vertical-align: middle;
-        font-family: $main_font;
-        font-size: 18px;
-        color: $error;
-    }
-
-    &__input {
-        font-family: $main_font;
-        font-weight: bold;
-        font-size: 18px;
-        color: white;
-        margin: 1em auto 0;
-        height: 40px;
-        border: 0;
-        cursor: pointer;
-        width: 220px;
-        background: #b70084;
-        border-radius: 12px;
-    }
+	&__error {
+		width: 100%;
+		text-align: center;
+		vertical-align: middle;
+		font-family: $main_font;
+		font-size: 18px;
+		color: $error;
+	}
+	&__input {
+		font-family: $main_font;
+		font-weight: bold;
+		font-size: 18px;
+		color: white;
+		margin: 1em auto 0;
+		height: 40px;
+		border: 0;
+		cursor: pointer;
+		width: 220px;
+		background: #b70084;
+		border-radius: 12px;
+	}
 }
 
 .auth__invitation {
