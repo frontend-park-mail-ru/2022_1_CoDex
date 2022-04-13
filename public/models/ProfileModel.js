@@ -63,8 +63,8 @@ export class ProfileModel extends BaseModel {
         this.getReviews(user);
     }
 
-    sendSettingsCnanges = (inputsData) => {
-        sendSettingsChanges(inputsData).then((response) => {
+    sendSettingsCnanges = (inputsData, userID) => {
+        sendSettingsChanges(inputsData, userID).then((response) => {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
             } if (response?.status === statuses.OK && response.parsedResponse) {

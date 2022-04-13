@@ -281,9 +281,9 @@ export const getReview = async (id) => {
  * @param { object } personalData Новые данные
  * @returns { object } Ответ с сервера
  */
-export const sendSettingsChanges = async (personalData) => {
+export const sendSettingsChanges = async (personalData, userID) => {
     const params = {
-        url: `${urls.api.changeProfile}`,
+        url: `${urls.api.changeProfile}/${userID}`,
         method: "POST",
         body: JSON.stringify(personalData),
     };

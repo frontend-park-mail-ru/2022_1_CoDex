@@ -3,7 +3,7 @@
 
 ## Деплой
 
- https://tp-frontkinopoisk.herokuapp.com/
+ https://park-akino.ru
 
 ## API
 

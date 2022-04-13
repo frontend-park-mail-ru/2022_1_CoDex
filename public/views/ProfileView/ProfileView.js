@@ -96,7 +96,7 @@ export class ProfileView extends BaseView {
             return;
         } else {
             document.querySelector('.profile-info__container__settings__form__name-input').value = "";
-            this.eventBus.emit(events.profilePage.sendChanges, { name: inputName });
+            this.eventBus.emit(events.profilePage.sendChanges, { name: inputName }, this.user.ID);
         }
     }
 
