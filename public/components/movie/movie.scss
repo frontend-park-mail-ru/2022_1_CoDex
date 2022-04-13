@@ -274,12 +274,12 @@
         &__single-star {
             width: 60px;
             height: 60px;
-            background-image: url("./dist/img/star-passive.svg") no-repeat center center;
+            background: url("./dist/img/star-passive.svg") no-repeat center center;
             cursor: pointer;
         }
     
         &__single-star.active {
-            background-image: url("./dist/img/star-active.svg");
+            background: url("./dist/img/star-active.svg");
         }
     }
 
