@@ -77,6 +77,10 @@ export class AuthView extends BaseView {
     return document.forms[authFormName];
   };
 
+  /**
+   * @description Добавляет сообщение об ошибке ко всей форме.
+   * @param { string } message Сообщение об ошибке
+   */
   addSubmitError = (message) => {
     this.deleteSubmitError();
     const error = document.querySelector('.auth__btn__error');

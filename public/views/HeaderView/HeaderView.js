@@ -7,16 +7,13 @@ import loginButton from '../../components/header/loginButton.pug';
 import userBlock from '../../components/header/userBlock/userBlock.pug';
 import logoutButton from '../../components/header/logoutButton.pug';
 
-const usernameMaxLength = 10;
-
-
 /**
  * @description Класс представления навигационной панели.
  */
 export class HeaderView extends BaseView {
   /**
      * @description Создаёт представление навигационной панели.
-     * @param { eventBus } Глобальная шина событий
+     * @param { eventBus } eventBus Глобальная шина событий
      */
   constructor(eventBus) {
     super(eventBus);
@@ -40,6 +37,8 @@ export class HeaderView extends BaseView {
   /**
      * @description Делает кнопку навигационной панели с указанной
      * ссылкой активной.
+     * @param { string } buttonHref Ссылка кнопки навигационной панели, которую
+     * надо сделать активной
      */
   changeActiveButton = (buttonHref) => {
     this.unactiveAllButtons();
