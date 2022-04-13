@@ -33,6 +33,10 @@ export class ProfileController extends BaseController {
                 handler: this.model.sendSettingsCnanges,
             },
             {
+                event: events.profilePage.sendAvatar,
+                handler: this.model.sendSettingsAvatar,
+            },
+            {
                 event: events.profilePage.render.content,
                 handler: this.view.renderContent,
             },
@@ -50,6 +54,10 @@ export class ProfileController extends BaseController {
             },
             {
                 event: events.profilePage.render.changedProfile,
+                handler: this.view.renderChangedProfile,
+            },
+            {
+                event: events.profilePage.render.changedAvatar,
                 handler: this.view.renderChangedProfile,
             },
             {

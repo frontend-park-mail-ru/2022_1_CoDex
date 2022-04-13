@@ -15,6 +15,7 @@ export const urls = {
         checkAuth: `${currentUrl}${versions.v1}/user/authcheck`,
         getUser: `${currentUrl}${versions.v1}/user`,
         changeProfile:`${currentUrl}${versions.v1}/user/update`,
+        changeAvatar:`${currentUrl}${versions.v1}/user/update/avatar`,
         bookmarks: `${currentUrl}${versions.v1}/user/bookmarks`,
         reviews: `${currentUrl}${versions.v1}/user/reviews`,
         logout: `${currentUrl}${versions.v1}/user/logout`,

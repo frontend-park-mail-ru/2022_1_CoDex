@@ -94,6 +94,7 @@ export const events = {
         getProfileInfo: "profilePage:getProfileInfo",
         
         sendChanges: "profilePage:sendSettingsChanges",
+        sendAvatar: "profilePage:sendAvatarChanges",
 
         //TODO validate: "profilePage:validate",
         // submit: "profilePage:submit",

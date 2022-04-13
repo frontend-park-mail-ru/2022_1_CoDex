@@ -294,6 +294,26 @@ export const sendSettingsChanges = async (personalData, userID) => {
         return null;
     }
 }
+
+/**
+ * @description Отправляет обновленные данные пользователя на сервер.
+ * @param { object } formData Новые данные
+ * @returns { object } Ответ с сервера
+ */
+ export const sendAvatar = async (formData) => {
+    const params = {
+        url: `${urls.api.changeAvatar}`,
+        method: "POST",
+        body: JSON.stringify(formData),
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}
+
 /**
  * @description Получает с сервера данные о конкретной подборке фильмов.
  * @param { string } actorID ID запрашиваемой подборки
@@ -311,4 +331,6 @@ export const getActor = async (actorID) => {
         return null;
     }
 };
+
+
 

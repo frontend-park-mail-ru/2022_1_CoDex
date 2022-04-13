@@ -41,18 +41,17 @@ export class ProfileView extends BaseView {
     if (content) {
       content.innerHTML = profilePug(this.user);
     }
-    this.eventBus.emit(events.profilePage.getContent, data);
-    this.addSettingsButtonListener();
-  };
 
-  /**
-   * @description Отрисовывает страницу профиля (часть с личными подборками).
-   * @param { object } data Данные о личных подборках
-   */
-  renderBookmarks = (data) => {
-    const profileBookmarks = document.querySelector('.profile-bookmarks');
-    if (profileBookmarks) {
-      profileBookmarks.innerHTML += profileBookmark(data);
+    renderProfileInfo = (data) => {
+        this.user = data;
+        this.user.isThisUser = authModule.user ? (data.ID === authModule.user.ID) : false;
+        const content = document.querySelector('.content');
+        if (content) {
+            content.innerHTML = profilePug(this.user);
+        }
+        this.eventBus.emit(events.profilePage.getContent, data);
+        this.addSettingsButtonListener();
+        this.listenAvatarChanged();
     }
   };
 
@@ -136,12 +135,29 @@ export class ProfileView extends BaseView {
         if (!ee.target.files[0]) {
           return;
         }
-        const reader = new FileReader();
+        avatarInput.addEventListener('click', (e) => {
+            avatarInput.addEventListener('change', (ee) => {
+                if (!ee.target.files[0]) {
+                    return;
+                }
+                const reader = new FileReader();
 
-        reader.addEventListener('load', (event) => {
-          avatarDiv.style.backgroundImage = `url(${event.target.result})`;
+                reader.addEventListener('load', (event) => {
+                    avatarDiv.style.backgroundImage = `url(${event.target.result})`;
+                })
+                reader.readAsDataURL(ee.target.files[0]);
+                
+                const formData = new FormData();
+                if (ee.target.files[0]) {
+                    console.log("ee.target", ee.target.files[0]);
+                    //console.log("avatarDiv", formData.values());
+                    formData.append('avatar', ee.target.files[0]);
+                    console.log("before event form data");
+                    this.eventBus.emit(events.profilePage.sendAvatar, formData);
+                }
+
+            });
         });
-        reader.readAsDataURL(ee.target.files[0]);
       });
     });
   };
