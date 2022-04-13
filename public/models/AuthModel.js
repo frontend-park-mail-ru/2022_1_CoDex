@@ -126,7 +126,7 @@ export class AuthModel extends BaseModel {
         let repeatePasswordName = authConfig.repeatePasswordInput.name;
         if (inputName === authConfig.passwordInput.name) {
             for (const errorMessage of this.errorMessages.get(repeatePasswordName)) {
-                this.deleteError(repeatePasswordName);
+                this.deleteError(repeatePasswordName, errorMessage);
             }
         }
     }
