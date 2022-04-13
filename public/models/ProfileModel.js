@@ -90,44 +90,4 @@ export class ProfileModel extends BaseModel {
             }
         })
     }
-
-    changeAvatar = async (avatar) => {
-        // TODO
-    }
-
-    getChangeContent = () => {
-        // TODO
-    }
-
-    initErrorMessages = () => {
-        // TODO
-    }
-
-    addError = () => {
-        // TODO
-    }
-
-    deleteError = () => {
-        // TODO
-    }
-
-    deleteAllErrors = () => {
-        // TODO
-    }
-
-    sendChanges = (inputsData) => {
-        // TODO
-    }
-
-    submitChanges = (inputsData) => {
-        // TODO
-    }
-
-    hasErrors = (inputsData) => {
-        // TODO
-    }
-
-    validateSingleInput = (inputName, inputValue) => {
-        // TODO ?
-    }
 }
