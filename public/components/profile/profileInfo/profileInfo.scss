@@ -16,6 +16,9 @@
             width: 280px;
             height: 280px;
             object-fit: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
         }
 
         .change__avatar {
