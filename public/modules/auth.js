@@ -15,12 +15,14 @@ class Auth {
         this.eventBus = eventBus;
         this.user = null;
         this.lastEvent = null;
+        console.log("creating authModule");
         if (navigator.onLine) {
             this.getUserFromServer();
         }
         this.eventBus.on(events.authPage.logRegSuccess, this.getUserFromSubmit);
         this.eventBus.on(events.header.logout, this.logoutUser);
         this.eventBus.on(events.profilePage.changedProfile, this.changeUser);
+        console.log("authModule created");
     }
 
     /**
