@@ -36,6 +36,36 @@ export const sendRequest = async ({ url, method, body } = {}) => {
 };
 
 /**
+ * @description Отправляет асинхронный запрос на сервер.
+ * @param { object } params Параметры для запроса
+ * @returns { object } Статус и обработанный ответ
+ */
+ export const sendRequestAvatar = async ({ url, method, body } = {}) => {
+    const response = await fetch(url, {
+        method: method,
+        body: body,
+        mode: "cors",
+        credentials: "include",
+    });
+
+    try {
+        const parsedResponse = await response?.json();
+        if (response.status !== statuses.OK && response.status !== statuses.CREATED) {
+            console.log("err");
+            return null;
+        }
+        return {
+            status: response.status,
+            parsedResponse,
+        };
+    } catch {
+        return {
+            status: response.status,
+        };
+    }
+};
+
+/**
  * @description Проверяет, авторизован ли пользователь.
  * @returns { object } Ответ с сервера
  */
@@ -308,7 +338,7 @@ export const sendSettingsChanges = async (personalData, userID) => {
     };
 
     try {
-        return await sendRequest(params);
+        return await sendRequestAvatar(params);
     } catch (error) {
         return null;
     }
