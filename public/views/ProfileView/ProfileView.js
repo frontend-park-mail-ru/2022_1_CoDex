@@ -126,9 +126,12 @@ export class ProfileView extends BaseView {
                     avatarDiv.style.backgroundImage = `url(${event.target.result})`;
                 })
                 reader.readAsDataURL(ee.target.files[0]);
+                
                 const formData = new FormData();
-                if (avatarDiv.files[0]) {
-                    formData.append('avatar', avatarDiv.files[0]);
+                if (ee.target.files[0]) {
+                    console.log("ee.target", ee.target.files[0]);
+                    console.log("avatarDiv", avatarDiv.files[0]);
+                    formData.append('avatar', ee.target.files[0]);
                     this.eventBus.emit(events.profilePage.sendAvatar, formData);
                 }
 
