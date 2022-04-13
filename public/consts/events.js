@@ -95,12 +95,12 @@ export const events = {
         
         sendChanges: "profilePage:sendSettingsChanges",
 
-        validate: "profilePage:validate",
-        submit: "profilePage:submit",
-        submitError: "profilePage:submitError",
-        wrongInput: "profilePage:wrongInput",
-        deleteValidationError: "profilePage:deleteValidationError",
-        addValidationError: "profilePage:addValidationError",
-        deleteAllErrors: "profilePage:deleteAllErrors",
+        //TODO validate: "profilePage:validate",
+        // submit: "profilePage:submit",
+        // submitError: "profilePage:submitError",
+        // wrongInput: "profilePage:wrongInput",
+        // deleteValidationError: "profilePage:deleteValidationError",
+        // addValidationError: "profilePage:addValidationError",
+        // deleteAllErrors: "profilePage:deleteAllErrors",
     }
 };

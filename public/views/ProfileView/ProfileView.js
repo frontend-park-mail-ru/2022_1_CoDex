@@ -131,4 +131,8 @@ export class ProfileView extends BaseView {
 
         });
     }
+
+    reRenderPage = () => {
+        this.emitGetContent();
+    }
 }

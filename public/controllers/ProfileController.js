@@ -52,11 +52,11 @@ export class ProfileController extends BaseController {
                 event: events.profilePage.render.changedProfile,
                 handler: this.view.renderChangedProfile,
             },
+            {
+                event: events.header.logout,
+                handler: this.view.reRenderPage,
+            },
             
-            // {
-            //     event: events.header.logout,
-            //     handler: this.view.deleteSettings,
-            // },
             // {
             //     event: events.auth.gotUser,
             //     handler: this.view.renderSettings,
