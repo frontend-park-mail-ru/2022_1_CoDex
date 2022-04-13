@@ -14,10 +14,9 @@ export const urls = {
     api: {
         checkAuth: `${currentUrl}${versions.v1}/user/authcheck`,
         getUser: `${currentUrl}${versions.v1}/user`,
-        //profile: `${currentUrl}${versions.v1}/user/getProfile`,
         changeProfile:`${currentUrl}${versions.v1}/user/update`,
         bookmarks: `${currentUrl}${versions.v1}/user/bookmarks`,
-        reviews: `${currentUrl}${versions.v1}/user/getReviews`,
+        reviews: `${currentUrl}${versions.v1}/user/reviews`,
         logout: `${currentUrl}${versions.v1}/user/logout`,
         login: `${currentUrl}${versions.v1}/user/login`,
         register: `${currentUrl}${versions.v1}/user/signup`,
