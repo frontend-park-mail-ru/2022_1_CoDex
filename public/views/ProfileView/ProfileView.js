@@ -58,6 +58,7 @@ export class ProfileView extends BaseView {
         }
         this.addSettingsButtonListener();
     }
+    
     addSettingsButtonListener = () => {
         const settings = document.querySelector('.profile-info__container');
         settings.addEventListener("click", (e) => {
