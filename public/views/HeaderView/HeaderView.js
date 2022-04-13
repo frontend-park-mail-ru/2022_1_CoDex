@@ -74,22 +74,26 @@ export class HeaderView extends BaseView {
      * @description Убирает кнопку выхода с навигационной панели
      */
   removeLogoutButton = () => {
+    console.log("Removing logout button...");
     const logoutBtn = [...document.querySelectorAll('.vertival-menu__btn-container a')]
-        .find((elem) => elem.textContent.includes('Выйти'));
+    .find((elem) => elem.textContent.includes('Выйти'));
     if (logoutBtn) {
       logoutBtn.remove();
     }
+    console.log("Logout button removed");
   };
 
   /**
      * @description Отрисовывает кнопку авторизации в навигационной панели.
      */
   renderLoginButton = () => {
+    console.log("Rendering login button");
     const userBlock = document.querySelector('.user-block');
     if (!userBlock) {
       return;
     }
     userBlock.replaceWith(createElementFromHTML(loginButton()));
+    console.log("Login button rendered");
   };
 
   /**
@@ -131,6 +135,7 @@ export class HeaderView extends BaseView {
     }
     logoutButton.forEach((button) => {
       button.addEventListener('click', (e) => {
+        console.log("Trying to logout");
         this.removeLogoutButton();
         this.renderLoginButton();
         this.eventBus.emit(events.header.logout);

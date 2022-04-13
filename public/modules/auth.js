@@ -82,6 +82,7 @@ class Auth {
      * @description Осуществляет выход пользователя из системы.
      */
     logoutUser = () => {
+        console.log("Starting logout...");
         logout().then((response) => {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
@@ -89,8 +90,10 @@ class Auth {
                 window.localStorage.removeItem("user");
                 this.user = null;
                 this.lastEvent = events.auth.logoutUser;
+                console.log("Logout done!");
             }
         }).catch(() => {
+            console.log("Something went wrong, logout fail");
             this.eventBus.emit(events.app.errorPage);
         });
     };
