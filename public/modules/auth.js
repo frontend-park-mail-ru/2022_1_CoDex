@@ -15,14 +15,12 @@ class Auth {
         this.eventBus = eventBus;
         this.user = null;
         this.lastEvent = null;
-        console.log("creating authModule");
         if (navigator.onLine) {
             this.getUserFromServer();
         }
         this.eventBus.on(events.authPage.logRegSuccess, this.getUserFromSubmit);
         this.eventBus.on(events.header.logout, this.logoutUser);
         this.eventBus.on(events.profilePage.changedProfile, this.changeUser);
-        console.log("authModule created");
     }
 
     /**
@@ -84,7 +82,6 @@ class Auth {
      * @description Осуществляет выход пользователя из системы.
      */
     logoutUser = () => {
-        console.log("Starting logout...");
         logout().then((response) => {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
@@ -92,10 +89,8 @@ class Auth {
                 window.localStorage.removeItem("user");
                 this.user = null;
                 this.lastEvent = events.auth.logoutUser;
-                console.log("Logout done!");
             }
         }).catch(() => {
-            console.log("Something went wrong, logout fail");
             this.eventBus.emit(events.app.errorPage);
         });
     };

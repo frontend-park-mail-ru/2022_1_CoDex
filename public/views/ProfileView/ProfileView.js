@@ -136,9 +136,7 @@ export class ProfileView extends BaseView {
 
         const formData = new FormData();
         if (ee.target.files[0]) {
-          console.log('ee.target', ee.target.files[0]);
           formData.append('avatar', ee.target.files[0]);
-          console.log('before event form data');
           this.eventBus.emit(events.profilePage.sendAvatar, formData, this.user.ID);
         }
       });
