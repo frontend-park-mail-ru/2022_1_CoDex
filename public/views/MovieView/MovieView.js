@@ -74,7 +74,7 @@ export class MovieView extends BaseView {
       }
       const target = e.target;
       if (target.classList.contains('stars__item__single-star')) {
-        removeClass(ratingItems, 'current-active');
+        removeClass('current-active');
         target.classList.add('active', 'current-active');
         const rating = {
           myRating: target.getAttribute('rating'),
@@ -87,14 +87,14 @@ export class MovieView extends BaseView {
     rating.onmouseover = function(e) {
       const target = e.target;
       if (target.classList.contains('stars__item__single-star')) {
-        removeClass(ratingItems, 'active');
+        removeClass('active');
         target.classList.add('active');
         mouseOverActive(ratingItems);
       }
     };
 
     rating.onmouseout = function(e) {
-      addClass(ratingItems, 'active');
+      addClass('active');
       mouseOutOfActive(ratingItems);
     };
 
