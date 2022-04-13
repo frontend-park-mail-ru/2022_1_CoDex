@@ -274,7 +274,7 @@
         &__single-star {
             width: 60px;
             height: 60px;
-            background-image: url("./dist/img/star-passive.svg");
+            background-image: url("./dist/img/star-passive.svg") no-repeat center center;
             cursor: pointer;
         }
     
