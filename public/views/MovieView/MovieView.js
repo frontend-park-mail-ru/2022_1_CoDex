@@ -216,8 +216,8 @@ export class MovieView extends BaseView {
       dropdown[i].appendChild(optionListContainer);
       div.addEventListener('click', function(e) {
         e.stopPropagation();
-        this.nextSibling.classList.toggle('select-hide');
-        this.classList.toggle('select-arrow-active');
+        e.target.nextSibling.classList.toggle('select-hide');
+        e.target.classList.toggle('select-arrow-active');
       });
     }
     document.addEventListener('click', this.closeAllSelect);
