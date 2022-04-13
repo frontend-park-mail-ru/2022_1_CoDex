@@ -39,6 +39,7 @@ export class ProfileView extends BaseView {
         }
         this.eventBus.emit(events.profilePage.getContent, data);
         this.addSettingsButtonListener();
+        this.listenAvatarChanged();
     }
 
     renderBookmarks = (data) => {
@@ -97,6 +98,12 @@ export class ProfileView extends BaseView {
             document.querySelector('.profile-info__container__settings__form__name-input').value = "";
             this.eventBus.emit(events.profilePage.sendChanges, { name: inputName }, this.user.ID);
         }
+        const formData = new FormData();
+        if (document.querySelector(".avatar").files[0]) {
+            formData.append('avatar', document.querySelector(".avatar").files[0]);
+            this.eventBus.emit(events.profilePage.sendAvatar, formData);
+        }
+
     }
 
     validateInput = (inputName) => {

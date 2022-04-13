@@ -1,4 +1,4 @@
-import { getProfile, getBookmarks, getReview, sendSettingsChanges } from "../modules/connection.js";
+import { getProfile, getBookmarks, getReview, sendSettingsChanges, sendAvatar } from "../modules/connection.js";
 import { BaseModel } from "./BaseModel.js";
 import { statuses } from "../consts/statuses.js";
 import { events } from "../consts/events.js";
@@ -65,6 +65,20 @@ export class ProfileModel extends BaseModel {
 
     sendSettingsCnanges = (inputsData, userID) => {
         sendSettingsChanges(inputsData, userID).then((response) => {
+            if (!response) {
+                this.eventBus.emit(events.app.errorPage);
+            } if (response?.status === statuses.OK && response.parsedResponse) {
+                this.eventBus.emit(
+                    events.profilePage.render.changedProfile, response.parsedResponse
+                );
+            } else if (response?.status === statuses.NOT_FOUND) {
+                this.eventBus.emit(events.app.errorPageText, "Такого пользователя нет");
+            }
+        })
+    }
+
+    sendSettingsAvatar = (formData) => {
+        sendAvatar(formData).then((response) => {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
             } if (response?.status === statuses.OK && response.parsedResponse) {
