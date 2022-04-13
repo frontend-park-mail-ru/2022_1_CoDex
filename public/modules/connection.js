@@ -330,9 +330,9 @@ export const sendSettingsChanges = async (personalData, userID) => {
  * @param { object } formData Новые данные
  * @returns { object } Ответ с сервера
  */
- export const sendAvatar = async (formData) => {
+ export const sendAvatar = async (formData, userID) => {
     const params = {
-        url: `${urls.api.changeAvatar}`,
+        url: `${urls.api.changeAvatar}/${userID}`,
         method: "POST",
         body: formData,
     };

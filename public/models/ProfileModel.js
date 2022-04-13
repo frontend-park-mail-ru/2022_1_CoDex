@@ -77,8 +77,8 @@ export class ProfileModel extends BaseModel {
         })
     }
 
-    sendSettingsAvatar = (formData) => {
-        sendAvatar(formData).then((response) => {
+    sendSettingsAvatar = (formData, userID) => {
+        sendAvatar(formData, userID).then((response) => {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
             } if (response?.status === statuses.OK && response.parsedResponse) {

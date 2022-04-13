@@ -117,7 +117,7 @@ export class ProfileView extends BaseView {
                     //console.log("avatarDiv", formData.values());
                     formData.append('avatar', ee.target.files[0]);
                     console.log("before event form data");
-                    this.eventBus.emit(events.profilePage.sendAvatar, formData);
+                    this.eventBus.emit(events.profilePage.sendAvatar, formData, this.user.ID);
                 }
 
             });
