@@ -66,9 +66,6 @@ export class AuthView extends BaseView {
                     this.getAuthDOMForm()?.[authConfig.passwordInput.name].value :
                     '';
       });
-      input.addEventListener('animationend', () => {
-        input.classList.remove('auth-error-input_animated');
-      });
     }
   };
 
