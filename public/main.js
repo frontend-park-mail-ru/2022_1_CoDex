@@ -38,7 +38,7 @@ const actorController = new ActorController();
 
 const router = new Router(root);
 
-router.register(regularRoutes.homePage, homeController)
+router.register(regularRoutes.homePage, collectionsController)
   .register(regularRoutes.singleCollectionPage, singleCollectionController)
   .register(regularRoutes.moviePage, movieController)
   .register(regularRoutes.actorPage, actorController)
