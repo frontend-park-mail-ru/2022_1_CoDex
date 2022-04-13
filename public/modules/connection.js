@@ -90,6 +90,9 @@ export const checkAuth = async () => {
  * @returns { object } Данные о текущем пользователе
  */
 export const getCurrentUser = async (id) => {
+    if (!id) {
+        return;
+    }
     const params = {
         url: urls.api.getUser.concat('/').concat(id),
         methd: "GET",
@@ -255,6 +258,9 @@ export const sendUserReview = async (review) => {
  * @returns { object } Ответ с сервера
  */
 export const getProfile = async (id) => {
+    if (!id) {
+        return;
+    }
     const params = {
         url: `${urls.api.getUser}/${id}`,
         method: "GET",
