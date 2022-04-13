@@ -98,12 +98,6 @@ export class ProfileView extends BaseView {
             document.querySelector('.profile-info__container__settings__form__name-input').value = "";
             this.eventBus.emit(events.profilePage.sendChanges, { name: inputName }, this.user.ID);
         }
-        const formData = new FormData();
-        if (document.querySelector(".avatar").files[0]) {
-            formData.append('avatar', document.querySelector(".avatar").files[0]);
-            this.eventBus.emit(events.profilePage.sendAvatar, formData);
-        }
-
     }
 
     validateInput = (inputName) => {
@@ -132,6 +126,11 @@ export class ProfileView extends BaseView {
                     avatarDiv.style.backgroundImage = `url(${event.target.result})`;
                 })
                 reader.readAsDataURL(ee.target.files[0]);
+                const formData = new FormData();
+                if (avatarDiv.files[0]) {
+                    formData.append('avatar', avatarDiv.files[0]);
+                    this.eventBus.emit(events.profilePage.sendAvatar, formData);
+                }
 
             });
 
