@@ -43,22 +43,6 @@
 			}
 		}
 		.bg_container {
-			background-color: $background;
-			border-radius: 30px;
-			color: $background;
-			padding: 30px;
-			grid-area: D1;
-			width: 100%;
-
-            .title {
-                color: white;
-                grid-area: B1;
-                text-align: left;
-                width: 100%;
-            }
-        }
-
-        .bg_container {
             background-color: $background;
             border-radius: 30px;
             color: $background;
