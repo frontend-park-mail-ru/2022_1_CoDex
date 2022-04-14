@@ -13,6 +13,7 @@ const versions = {
 
 export const urls = {
     api: {
+        csrf: `${currentUrl}${versions.v1}/csrf`,
         checkAuth: `${currentUrl}${versions.v1}/user/authcheck`,
         getUser: `${currentUrl}${versions.v1}/user`,
         changeProfile:`${currentUrl}${versions.v1}/user/update`,
