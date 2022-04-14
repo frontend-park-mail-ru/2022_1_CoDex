@@ -4,8 +4,7 @@ import regeneratorRuntime from "regenerator-runtime";
 
 let CSRFToken = null;
 
-const csrf = async () => {
-    if (CSRFToken == null) {
+export const csrf = async () => {
         if (CSRFToken === null) {
             let headers = {
                 "Content-Type": 'application/json',
@@ -19,7 +18,7 @@ const csrf = async () => {
             });
             CSRFToken = response.headers.get('X-Csrf-Token');
     }
-}
+};
 
 /**
  * @description Отправляет асинхронный запрос на сервер.
@@ -30,7 +29,7 @@ export const sendRequest = async ({ url, method, body } = {}) => {
     await csrf();
     let headers =  {
         "Content-Type": "application/json",
-    },
+    };
     if (CSRFToken != null) {
         headers.set("X-CSRF-Token", CSRFToken);
     }
