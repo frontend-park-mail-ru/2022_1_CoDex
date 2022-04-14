@@ -34,6 +34,7 @@ export const sendRequest = async ({ url, method, body } = {}) => {
     if (CSRFToken != null) {
         headers.set("X-CSRF-Token", CSRFToken);
     }
+    console.log("sendRequest")
     const response = await fetch(url, {
         method: method,
         headers: headers,
@@ -41,6 +42,7 @@ export const sendRequest = async ({ url, method, body } = {}) => {
         mode: "cors",
         credentials: "include",
     });
+    console.log("sendRequest -- ")
 
     try {
         const parsedResponse = await response?.json();
