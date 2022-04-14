@@ -9,7 +9,7 @@ export const csrf = async () => {
             let headers = {
                 "Content-Type": 'application/json',
             }
-            const response = await fetch(urls.api, {
+            const response = await fetch(urls.api.csrf, {
               method: 'GET',
               mode: 'cors',
               cache: 'no-store',
