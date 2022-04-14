@@ -34,7 +34,6 @@ export const sendRequest = async ({ url, method, body } = {}) => {
     // if (CSRFToken != null) {
     //     headers.set("X-CSRF-Token", CSRFToken);
     // }
-    console.log("sendRequest")
     const response = await fetch(url, {
         method: method,
         headers: headers,

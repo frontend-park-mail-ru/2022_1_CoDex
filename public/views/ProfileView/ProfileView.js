@@ -117,6 +117,7 @@ export class ProfileView extends BaseView {
       return true;
     }
   };
+
   listenAvatarChanged = () => {
     const avatarInput = document.querySelector('.profile-info__avatar__input');
     const avatarDiv = document.querySelector('.avatar');
@@ -142,6 +143,7 @@ export class ProfileView extends BaseView {
       });
     });
   };
+
   reRenderPage = () => {
     this.emitGetContent();
   };

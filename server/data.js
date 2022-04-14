@@ -14,7 +14,7 @@ const startServer = (app) => {
     res.json(adventures);
   });
 
-  app.get("/api/v1/user/getProfile/1", function (req, res) {
+  app.get("/api/v1/user/1", function (req, res) {
     res.status(200).json({
       ID: 1,
       avatarSrc: "/server/images/adventures.png",
@@ -308,7 +308,7 @@ const startServer = (app) => {
     });
   });
 
-  app.post("/api/v1/logout", function (req, res) {
+  app.post("/api/v1/user/logout", function (req, res) {
     res.status(200).json({
       status:200,
     });
