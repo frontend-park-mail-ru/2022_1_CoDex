@@ -2,17 +2,41 @@ import { statuses } from "../consts/statuses.js";
 import { urls } from "../consts/urls.js";
 import regeneratorRuntime from "regenerator-runtime";
 
+let CSRFToken = null;
+
+const csrf = async () => {
+    if (CSRFToken == null) {
+        if (CSRFToken === null) {
+            let headers = {
+                "Content-Type": 'application/json',
+            }
+            const response = await fetch(urls.api, {
+              method: 'GET',
+              mode: 'cors',
+              cache: 'no-store',
+              credentials: 'include',
+              headers: headers,
+            });
+            CSRFToken = response.headers.get('X-Csrf-Token');
+    }
+}
+
 /**
  * @description Отправляет асинхронный запрос на сервер.
  * @param { object } params Параметры для запроса
  * @returns { object } Статус и обработанный ответ
  */
 export const sendRequest = async ({ url, method, body } = {}) => {
+    await csrf();
+    let headers =  {
+        "Content-Type": "application/json",
+    },
+    if (CSRFToken != null) {
+        headers.set("X-CSRF-Token", CSRFToken);
+    }
     const response = await fetch(url, {
         method: method,
-        headers: {
-            "Content-Type": "application/json",
-        },
+        headers: headers,
         body: body,
         mode: "cors",
         credentials: "include",
