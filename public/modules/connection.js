@@ -17,6 +17,7 @@ export const csrf = async () => {
               headers: headers,
             });
             CSRFToken = response.headers.get('X-Csrf-Token');
+            console.log(CSRFToken);
     }
 };
 
