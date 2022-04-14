@@ -27,13 +27,13 @@ export const csrf = async () => {
  * @returns { object } Статус и обработанный ответ
  */
 export const sendRequest = async ({ url, method, body } = {}) => {
-    await csrf();
+    //await csrf();
     let headers =  {
         "Content-Type": "application/json",
     };
-    if (CSRFToken != null) {
-        headers.set("X-CSRF-Token", CSRFToken);
-    }
+    // if (CSRFToken != null) {
+    //     headers.set("X-CSRF-Token", CSRFToken);
+    // }
     console.log("sendRequest")
     const response = await fetch(url, {
         method: method,
@@ -42,7 +42,6 @@ export const sendRequest = async ({ url, method, body } = {}) => {
         mode: "cors",
         credentials: "include",
     });
-    console.log("sendRequest -- ")
 
     try {
         const parsedResponse = await response?.json();
