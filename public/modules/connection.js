@@ -9,7 +9,7 @@ export const csrf = async () => {
             let headers = {
                 "Content-Type": 'application/json',
             }
-            const response = await fetch(urls.api, {
+            const response = await fetch(urls.api.csrf, {
               method: 'GET',
               mode: 'cors',
               cache: 'no-store',
@@ -17,6 +17,7 @@ export const csrf = async () => {
               headers: headers,
             });
             CSRFToken = response.headers.get('X-Csrf-Token');
+            console.log(CSRFToken);
     }
 };
 
@@ -26,13 +27,13 @@ export const csrf = async () => {
  * @returns { object } Статус и обработанный ответ
  */
 export const sendRequest = async ({ url, method, body } = {}) => {
-    await csrf();
+    //await csrf();
     let headers =  {
         "Content-Type": "application/json",
     };
-    if (CSRFToken != null) {
-        headers.set("X-CSRF-Token", CSRFToken);
-    }
+    // if (CSRFToken != null) {
+    //     headers.set("X-CSRF-Token", CSRFToken);
+    // }
     const response = await fetch(url, {
         method: method,
         headers: headers,
