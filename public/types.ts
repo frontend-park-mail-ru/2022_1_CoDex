@@ -1,3 +1,5 @@
+import { BaseController } from "./controllers/BaseController"
+
 export type urlsList = {
     api: api
 }
@@ -101,4 +103,28 @@ export type requestParamsData = {
     method: string,
     credentials: string | null,
     body: FormData | null,
+}
+
+export type pathData = {
+    URL: string,
+}
+
+export type routerData = {
+    URL: string,
+    controller: BaseController,
+}
+
+export type routeParameters = {
+    URL: string,
+    URLParameters: null;
+    data: null
+}
+
+export type URLData = {
+    controller: BaseController | null,
+    data: null,
+    URL: {
+        URL: string,
+        resourceID: number,
+    }
 }

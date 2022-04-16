@@ -1,6 +1,6 @@
 import { events } from '../../consts/events';
 import { BaseView } from '../BaseView/BaseView.js';
-import { getURLArguments } from '../../modules/router.js';
+import { getURLArguments } from '../../modules/router';
 import profilePug from '../../components/profile/profile.pug';
 import profileSettings from '../../components/profile/profileInfo/profileInfo.pug';
 import profileReview from '../../components/profile/profileReview/profileReview.pug';

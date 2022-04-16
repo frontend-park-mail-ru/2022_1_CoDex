@@ -49,6 +49,8 @@ const startServer = (app) => {
   app.get("/api/v1/movies/1", function (req, res) {
     res.json({
       movie: top256.movielist[0],
+      reviewex: "",
+      userrating: "",
       related: [
         {
           "href": "/movies/2",
@@ -159,6 +161,8 @@ const startServer = (app) => {
   app.get("/api/v1/movies/2", function (req, res) {
     res.json({
       movie: top256.movielist[1],
+      reviewex: "",
+      userrating: "",
       related: [
         {
           "href": "/movies/1",

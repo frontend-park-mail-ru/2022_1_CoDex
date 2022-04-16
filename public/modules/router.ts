@@ -1,6 +1,8 @@
 import { eventBus } from "./eventBus";
 import { events } from "../consts/events";
 import { routes } from "../consts/routes";
+import { BaseController } from "@/controllers/BaseController";
+import { pathData, routeParameters, routerData, URLData } from "@/types";
 
 /**
  * @description Получает аргументы из URL-a.
@@ -8,13 +10,13 @@ import { routes } from "../consts/routes";
  * @param { string } template Шаблон URL-а
  * @returns { object } Найденные аргументы
  */
-export const getURLArguments = (URL, template) => {
+export const getURLArguments = (URL: string, template: string) => {
     if (!template) {
         return {};
     }
-    const splitURL = URL.split("/");
+    const splitURL: string[] = URL.split("/");
     return template.split("/").reduce(
-        (args, propertyName, index) => {
+        (args: any, propertyName: string, index: number) => {
             if (propertyName.startsWith(":")) {
                 args[propertyName.slice(1)] = splitURL[index];
             }
@@ -27,11 +29,14 @@ export const getURLArguments = (URL, template) => {
  * @description Класс для роутера путей.
  */
 export class Router {
+    private routes: Set<routerData>;
+    private page: HTMLElement;
+    private currentController: BaseController | null;
     /**
      * @description Создаёт роутер.
      * @param { HTMLElement } page HTML страницы 
      */
-    constructor(page) {
+    constructor(page: HTMLElement) {
         this.routes = new Set();
         this.page = page;
         this.currentController = null;
@@ -41,23 +46,26 @@ export class Router {
 
         if (page) {
             this.page.addEventListener("click",
-                (e) => {
-                    const clickTarget = e.target;
-                    const closestLink = e.target.closest("a");
+                (e: Event) => {
+                    const clickTarget = e.target as Element;
+                    if (!clickTarget) { return; }
+                    const closestLink = clickTarget.closest("a");
                     if (!closestLink || clickTarget.classList.contains("not-route") || 
                     closestLink?.classList.contains("not-route")) {
                         return;
                     }
                     e.preventDefault();
-                    const data = {...closestLink.dataset};
-                    data.URL = closestLink.getAttribute("href");
+                    console.log("I hear");
+                    let data = {
+                        URL: closestLink.getAttribute("href"),
+                    }
                     eventBus.emit(events.pathChanged, data);
                 }
             );
         }
     }
 
-    onPathChanged = (data) => {
+    onPathChanged = (data: pathData) => {
         this.go(data.URL);
     }
     
@@ -66,6 +74,7 @@ export class Router {
      */
     go = (URL = "/") => {
         const routeData = this.getURLData(URL);
+        console.log(routeData);
         const data = {...routeData};
         if (this.currentController) {
             this.currentController.unsubscribe();
@@ -75,16 +84,16 @@ export class Router {
             eventBus.emit(events.app.errorPage);
             return;
         }
-        this.currentController.subscribe();
+        this.currentController?.subscribe();
         
         if (!this.currentController) {
             URL = routes.homePage;
             this.currentController = this.getURLData(URL).controller;
         }
         if (window.location.pathname !== URL) {
-            window.history.pushState(null, null, URL);
+            window.history.pushState(null, "", URL);
         }
-        this.currentController.view.render(data);
+        this.currentController?.view.render(data);
         eventBus.emit(events.router.go, URL);
     }
     
@@ -93,23 +102,24 @@ export class Router {
      * @param { string } URL URL, на которые перешёл пользователь
      * @return { object } Информация об URL-е
      */
-    getURLData =    (URL) => {
+    getURLData = (URL: string) => {
         let targetController = null;
-        const result = this.getParameters(URL);
+        const result: routeParameters = this.getParameters(URL);
         this.routes.forEach((route) => {
             const tmpResult = result.URL.match(route.URL);
             if (tmpResult) {
                 targetController = route.controller;
             }
         });
-        return {
+        const URLData: URLData = {
             controller: targetController,
             data: result.data,
             URL: {
                 URL: result.URL,
-                resourceID: +result.URLParameters,
+                resourceID: +(result.URLParameters ? result.URLParameters : 0),
             },
         };
+        return URLData;
     };
 
     /**
@@ -117,14 +127,16 @@ export class Router {
      * @param { string } currentURL URL, на который перешёл пользователь
      * @return { object } Параметры URL-а
      */
-    getParameters = (currentURL = "/") => {
+    getParameters = (currentURL: string = "/"): routeParameters => {
         const parsedURL = new URL(window.location.origin + currentURL);
         const URLParameters = null;
         const resultURL = parsedURL.pathname;
-        return {
+        const result: routeParameters = {
             URL: resultURL,
             URLParameters: URLParameters,
-        };
+            data: null,
+        }
+        return result;
     };
 
     /**
@@ -159,8 +171,10 @@ export class Router {
      * добавляемого URL-a
      * @return { object } Возвращает указатель на роутер
      */
-    register = (URL, controller) => {
-        this.routes.add({URL, controller});
+    register = (URL: string, controller: BaseController) => {
+        const data: routerData = { URL: URL, controller: controller}
+
+        this.routes.add(data);
         return this;
     }
 }
