@@ -18,7 +18,12 @@ $green: #7DF390;
 $red: #E90000;
 
 :root {
-    --badFeedback: #b24d4d;
-    --goodFeedback: #649844;
+    --dark-raspberry: #ab23ff;
+    --green: #7DF390;
+    --red: #E90000;
+    --navigational: #15161a;
+    --badFeedback: radial-gradient(circle, var(--dark-raspberry) 11%, var(--red) 92%);
+    --neutralFeedback : radial-gradient(circle, var(--dark-raspberry) 11%, var(--navigational) 92%);
+    --goodFeedback: radial-gradient(circle, var(--dark-raspberry) 11%, var(--green) 92%) ;
 }
 $main_font: "Montserrat", sans-serif;
