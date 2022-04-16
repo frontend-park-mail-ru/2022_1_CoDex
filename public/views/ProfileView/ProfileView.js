@@ -5,7 +5,7 @@ import profilePug from '../../components/profile/profile.pug';
 import profileSettings from '../../components/profile/profileInfo/profileInfo.pug';
 import profileReview from '../../components/profile/profileReview/profileReview.pug';
 import profileBookmark from '../../components/profile/profileBookmark/profileBookmark.pug';
-import { authModule } from '../../modules/auth.js';
+import { authModule } from '../../modules/auth';
 /**
  * @description Класс представления страницы профиля.
  */

@@ -1,6 +1,6 @@
 import { events } from "@/consts/events";
 import { statuses } from "@/consts/statuses";
-// import EventBus from "./eventBus.js";
+import EventBus from "./eventBus.js";
 import { eventBus } from "./eventBus.js";
 import { checkAuth, getCurrentUser, logout } from "./connection";
 
@@ -8,12 +8,14 @@ import { checkAuth, getCurrentUser, logout } from "./connection";
  * @description Класс авторизации
  */
 class Auth {
-    
+    private eventBus: EventBus;
+    public user: string | null; // TSTODO ?
+    private lastEvent: string | null;
     /**
      * @description Создаёт модуль авторизации.
      * @param { eventBus } Глобальная шина событий
      */
-    constructor(eventBus) {
+    constructor(eventBus: EventBus) {
         this.eventBus = eventBus;
         this.user = null;
         this.lastEvent = null;
@@ -22,7 +24,7 @@ class Auth {
         }
         this.eventBus.on(events.authPage.logRegSuccess, this.getUserFromSubmit);
         this.eventBus.on(events.header.logout, this.logoutUser);
-        this.eventBus.on(events.profilePage.changedProfile, this.changeUser);
+        // this.eventBus.on(events.profilePage.changedProfile, this.changeUser);
     }
 
     /**
@@ -68,7 +70,7 @@ class Auth {
      * полученные из обработанного ответа с сервера.
      * @param { object } parsedResponse Обработанный ответ с сервера
      */
-    getUserFromSubmit = (parsedResponse) => {
+    getUserFromSubmit = (parsedResponse: string) => {
         if (!parsedResponse) {
             return;
         }
@@ -90,7 +92,7 @@ class Auth {
             } else if (response.status === statuses.OK) {
                 window.localStorage.removeItem("user");
                 this.user = null;
-                this.lastEvent = events.auth.logoutUser;
+                this.lastEvent = events.header.logout;
             }
         }).catch(() => {
             this.eventBus.emit(events.app.errorPage);
@@ -101,7 +103,7 @@ class Auth {
      * @description Заменяет данные о пользователе.
      * @param { string } user Новые данные о пользователе.
      */
-    changeUser = (user) => {
+    changeUser = (user: string) => {
         if (!user) {
             return;
         }

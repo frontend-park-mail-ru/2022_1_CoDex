@@ -1,7 +1,7 @@
 import "./index.scss";
 import { regularRoutes } from "./consts/routes";
 import { Router } from "./modules/router.js";
-import { authModule } from "./modules/auth.js";
+import { authModule } from "./modules/auth";
 import { HeaderController } from "./controllers/HeaderController.js";
 import { HomeController } from "./controllers/HomeController.js";
 import { AuthController } from "./controllers/AuthController.js";

@@ -215,7 +215,6 @@ export const getSingleCollection = async (collectionID: string) => {
  * @returns { object } Ответ с сервера
  */
 export const getCollections = async () => {
-    console.log("For collectioins");
     const params: requestParams = {
         url: `${urls.api.collections}`,
         method: "GET",
@@ -224,7 +223,6 @@ export const getCollections = async () => {
     };
 
     try {
-        console.log("Sending...");
         return await sendRequest(params);
     } catch (error) {
         return null;

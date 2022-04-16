@@ -19,7 +19,6 @@ export class CollectionsModel {
      * подборок.
      */
     getContent = () => {
-        console.log("Going");
         getCollections().then(
             (response) => {
                 if (!response) {
