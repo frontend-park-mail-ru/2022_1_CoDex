@@ -35,11 +35,6 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
-                exclude: /node_modules/,
-                loader: 'ts-loader',
-            },
-            {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
@@ -62,6 +57,11 @@ module.exports = {
             {
                 test: /\.pug$/,
                 use: ['pug-loader'],
+            },
+            {
+                test: /\.ts?$/,
+                exclude: /node_modules/,
+                loader: 'ts-loader',
             },
         ],
     },

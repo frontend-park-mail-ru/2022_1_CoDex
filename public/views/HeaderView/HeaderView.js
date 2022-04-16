@@ -1,7 +1,7 @@
 import {authModule} from '../../modules/auth';
 import {events} from '../../consts/events';
 import {routes} from '../../consts/routes';
-import {renderBaseView, createElementFromHTML} from '../../utils/utils.js';
+import {renderBaseView, createElementFromHTML} from '../../utils/utils';
 import {BaseView} from '../BaseView/BaseView.js';
 import loginButton from '../../components/header/loginButton.pug';
 import userBlock from '../../components/header/userBlock/userBlock.pug';

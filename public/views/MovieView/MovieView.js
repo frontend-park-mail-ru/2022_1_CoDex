@@ -1,14 +1,14 @@
 import {BaseView} from '../BaseView/BaseView.js';
 import {getURLArguments} from '../../modules/router';
 import {authModule} from '../../modules/auth';
-import {slider} from '../../utils/slider.js';
+import {slider} from '@/utils/slider';
 import {events} from '../../consts/events';
 import moviePageContent from '../../components/movie/movie.pug';
 import reviewInvitation from '../../components/reviewInvitation/reviewInvitation.pug';
 import reviewInputBlock from '../../components/reviewInputBlock/reviewInputBlock.pug';
 import reviewSuccessBlock from '../../components/reviewSuccessBlock/reviewSuccessBlock.pug';
 import createReviewCard from '../../components/reviewCard/createReviewCard.pug';
-import {createElementFromHTML} from '../../utils/utils.js';
+import {createElementFromHTML} from '../../utils/utils';
 
 /**
  * @description Класс представления страницы одного фильма

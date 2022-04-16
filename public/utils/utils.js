@@ -22,7 +22,7 @@ export const renderBaseView = () => {
       headerLinks: headerLinks,
       imgsrc: user.profile_pic,
       userId: user.ID,
-      profileHref: routes.Profile,
+      profileHref: routes.profilePage,
       userFromStorage: true,
     });
   } else {

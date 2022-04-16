@@ -1,7 +1,7 @@
 import {events} from '../../consts/events';
 import {BaseView} from '../BaseView/BaseView.js';
 import {getURLArguments} from '../../modules/router';
-import {slider} from '../../utils/slider.js';
+import {slider} from '@/utils/slider';
 import actorPageContent from '../../components/actor/actor.pug';
 /**
  * @description Класс представления страницы актёра.
