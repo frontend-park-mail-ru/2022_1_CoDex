@@ -1,6 +1,6 @@
 import { statuses } from "@/consts/statuses";
 import { urls } from "@/consts/urls";
-import { loginData, personalData, registerData, requestParams, requestParamsData, review } from "@/types";
+import { loginData, personalData, ratingRequest, registerData, requestParams, requestParamsData, reviewRequest } from "@/types";
 // import regeneratorRuntime from "regenerator-runtime";
 
 let CSRFToken: string | null = null;
@@ -254,7 +254,7 @@ export const getMovie = async (movieID: string) => {
  * @param { string } rating Данные о рейтинге
  * @returns { object } Ответ с сервера
  */
-export const sendUserRating = async (rating: string) => {
+export const sendUserRating = async (rating: ratingRequest) => {
     const params: requestParams = {
         url: `${urls.api.sendRating}`,
         method: "POST",
@@ -275,7 +275,7 @@ export const sendUserRating = async (rating: string) => {
  * @param { number } rating Оставленная оценка
  * @returns { object } Ответ с сервера
  */
-export const sendUserReview = async (review: review) => {
+export const sendUserReview = async (review: reviewRequest) => {
     const params: requestParams = {
         url: `${urls.api.sendReviews}`,
         method: "POST",

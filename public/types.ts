@@ -88,13 +88,6 @@ export type registerData = {
     username: string,
 }
 
-export type review = {
-    movieid: string,
-    reviewText: string,
-    reviewType: string,
-    userId: string,
-}
-
 export type personalData = {
     name: string,
 }
@@ -143,3 +136,40 @@ export type error = [{
     message: string,
     regexp: string,
 }]
+
+export type movie = {
+    ID: string,
+}
+
+export type ratingRequest = {
+    rating: string,
+    movieId: string,
+    userId: string,
+}
+
+export type userData = {
+    ID: number,
+    username: string,
+    email: string,
+    imgsrc: string,
+}
+
+export type reviewRequest = {
+    movieId: string,
+    reviewText: string,
+    reviewType: string,
+    userId: string,
+}
+
+export type singleCollection = {
+    ID: string,
+}
+
+export type singleCollectionMovie = {
+    ID: string,
+    poster: string,
+    title: string,
+    rating: string,
+    info: string,
+    description: string,
+}

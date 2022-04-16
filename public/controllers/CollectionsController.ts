@@ -1,6 +1,6 @@
 import { BaseController } from "./BaseController";
 import { events } from "../consts/events";
-import {CollectionsModel} from "../models/CollectionsModel.js"
+import {CollectionsModel} from "@/models/CollectionsModel"
 import {CollectionsView} from "../views/CollectionsView/CollectionsView.js"
 
 /**

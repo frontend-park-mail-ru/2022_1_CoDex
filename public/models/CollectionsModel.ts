@@ -1,3 +1,4 @@
+import EventBus from "@/modules/eventBus";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
 import { getCollections } from "../modules/connection";
@@ -11,7 +12,7 @@ export class CollectionsModel extends BaseModel {
      * @description Создаёт экземляр модели подборок фильмов.
      * @param { EventBus } eventBus Глобальная шина событий
      */
-    constructor(eventBus) {
+    constructor(eventBus: EventBus) {
         super(eventBus);
     }
 

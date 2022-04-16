@@ -1,3 +1,5 @@
+import EventBus from "@/modules/eventBus";
+import { singleCollection, singleCollectionMovie } from "@/types";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
 import { getSingleCollection } from "../modules/connection";
@@ -11,7 +13,7 @@ export class SingleCollectionModel extends BaseModel {
      * @description Создаёт экземляр модели одной подборки фильмов.
      * @param { EventBus } eventBus Глобальная шина событий
      */
-    constructor(eventBus) {
+    constructor(eventBus: EventBus) {
         super(eventBus);
     }
 
@@ -21,7 +23,7 @@ export class SingleCollectionModel extends BaseModel {
      * @param { object } collection Информация о подборке: 
      * название, ID
      */
-    getContent = (collection) => {
+    getContent = (collection: singleCollection) => {
         if (!collection?.ID) {
             this.eventBus.emit(events.app.errorPage);
             return;
@@ -49,7 +51,7 @@ export class SingleCollectionModel extends BaseModel {
      * @param { string } description Описание фильма
      * @return { string } Укороченное описание фильма
      */
-    processDescription = (description) => {
+    processDescription = (description: string) => {
         const maxMovieShortDescriptionLength = 190;
         if (description.length < maxMovieShortDescriptionLength) {
         return description;
@@ -63,7 +65,7 @@ export class SingleCollectionModel extends BaseModel {
      * @description По необходимости укорачивает описания фильмов.
      * @param { Object[] } movielist Массив данных о фильмах
      */
-    shortenMoviesDescription = (movielist) => {
+    shortenMoviesDescription = (movielist: singleCollectionMovie[]) => {
         for (const movie of movielist) {
             movie.description = this.processDescription(movie.description);
         }

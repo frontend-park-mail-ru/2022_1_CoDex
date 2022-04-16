@@ -3,13 +3,14 @@ import { statuses } from "@/consts/statuses";
 import EventBus from "./eventBus";
 import { eventBus } from "./eventBus";
 import { checkAuth, getCurrentUser, logout } from "./connection";
+import { userData } from "@/types";
 
 /**
  * @description Класс авторизации
  */
 class Auth {
     private eventBus: EventBus;
-    public user: string | null; // TSTODO ?
+    public user: userData | null; // TSTODO ?
     private lastEvent: string | null;
     /**
      * @description Создаёт модуль авторизации.
@@ -70,7 +71,7 @@ class Auth {
      * полученные из обработанного ответа с сервера.
      * @param { object } parsedResponse Обработанный ответ с сервера
      */
-    getUserFromSubmit = (parsedResponse: string) => {
+    getUserFromSubmit = (parsedResponse: userData) => {
         if (!parsedResponse) {
             return;
         }
@@ -103,7 +104,7 @@ class Auth {
      * @description Заменяет данные о пользователе.
      * @param { string } user Новые данные о пользователе.
      */
-    changeUser = (user: string) => {
+    changeUser = (user: userData) => {
         if (!user) {
             return;
         }

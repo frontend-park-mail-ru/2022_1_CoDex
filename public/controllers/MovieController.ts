@@ -1,5 +1,5 @@
 import { events } from "../consts/events";
-import { MovieModel } from "../models/MovieModel.js";
+import { MovieModel } from "@/models/MovieModel";
 import { MovieView } from "../views/MovieView/MovieView.js";
 import { BaseController } from "./BaseController";
 

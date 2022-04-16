@@ -1,3 +1,5 @@
+import EventBus from "@/modules/eventBus";
+import { movie, ratingRequest, reviewRequest } from "@/types";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
 import { authModule } from "../modules/auth";
@@ -12,7 +14,7 @@ export class MovieModel extends BaseModel {
      * @description Создаёт модель страницы одного фильма.
      * @param { EventBus } eventBus Глобальная шина событий
      */
-    constructor(eventBus) {
+    constructor(eventBus: EventBus) {
         super(eventBus);
     }
 
@@ -22,7 +24,7 @@ export class MovieModel extends BaseModel {
      * @param { object } movie Информация о подборке: 
      * название, ID, похожие фильмы...
      */
-    getContent = (movie) => {
+    getContent = (movie: movie) => {
         if (!movie?.ID) {
             this.eventBus.emit(events.app.errorPage);
             return;
@@ -34,7 +36,7 @@ export class MovieModel extends BaseModel {
             } else if (response.status === statuses.OK && response.parsedResponse) {
                 this.eventBus.emit(events.moviePage.render.content, response.parsedResponse);
             }
-            if (response.status === statuses.NOT_FOUND) {
+            if (response?.status === statuses.NOT_FOUND) {
                 this.eventBus.emit(events.app.errorPageText, "Такого фильма нет :/");
             }
         });
@@ -46,7 +48,7 @@ export class MovieModel extends BaseModel {
      * @param { string } movieID ID текущего фильма
      * @param { number } rating Оценка пользователя
      */
-    sendRating = (movieID, rating) => {
+    sendRating = (movieID: string, rating: string) => {
         if (!movieID || !rating) { 
             this.eventBus.emit(events.app.errorPage);
             return; 
@@ -55,11 +57,12 @@ export class MovieModel extends BaseModel {
             this.eventBus.emit(events.moviePage.askToLog, movieID);
             return;
         }
-        sendUserRating({
+        const request: ratingRequest = {
             rating: rating,
             movieId: movieID,
             userId: authModule.user.ID.toString(),
-        }).then(
+        }
+        sendUserRating(request).then(
             (response) => {
                 if (!response) { return; }
                 if (response.status == statuses.OK) {
@@ -73,8 +76,7 @@ export class MovieModel extends BaseModel {
         );
     }
 
-    sendReview = (inputsData = {}) => {
-        inputsData
+    sendReview = (inputsData: reviewRequest) => {
         sendUserReview(inputsData).then(
             (response) => {
                 if (!response) { return; }
@@ -86,11 +88,11 @@ export class MovieModel extends BaseModel {
     }
 
 
-    addCollection = (movieID, collectionID) => {
+    addCollection = (movieID: string, collectionID: string) => {
         // TODO
     }
 
-    createCollection = (collection) => {
+    createCollection = (collection: string) => {
         // TODO
     }
 
