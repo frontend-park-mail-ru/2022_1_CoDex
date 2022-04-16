@@ -75,7 +75,7 @@ export class HeaderView extends BaseView {
      */
   removeLogoutButton = () => {
     const logoutBtn = [...document.querySelectorAll('.vertival-menu__btn-container a')]
-        .find((elem) => elem.textContent.includes('Выйти'));
+    .find((elem) => elem.textContent.includes('Выйти'));
     if (logoutBtn) {
       logoutBtn.remove();
     }
@@ -103,20 +103,20 @@ export class HeaderView extends BaseView {
     if (!authModule.user || !changeBlock) {
       return;
     }
-    userBlock();
+
     changeBlock.replaceWith(createElementFromHTML(userBlock({
       imgsrc: authModule.user.imgsrc,
       userID: authModule.user.ID,
       profileHref: routes.profilePage,
     })));
-    const verticalMenu = document.querySelector('.vertical-menu__btn-container');
-    if (verticalMenu) {
-      const logoutBtn = document.querySelector('.vertical-logout-btn');
-      if (logoutBtn) {
-        return;
-      }
-      verticalMenu.appendChild(createElementFromHTML(logoutButton()));
-    }
+    // const verticalMenu = document.querySelector('.vertical-menu__btn-container');
+    // if (verticalMenu) {
+    //   const logoutBtn = document.querySelector('.vertical-logout-btn');
+    //   if (logoutBtn) {
+    //     return;
+    //   }
+    //   verticalMenu.appendChild(createElementFromHTML(logoutButton()));
+    // }
     this.addEventListenerToLogoutButton();
   };
 

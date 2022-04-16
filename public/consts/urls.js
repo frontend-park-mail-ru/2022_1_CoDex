@@ -3,6 +3,7 @@ const localUrl = "http://localhost:3001";
 
 // eslint-disable-next-line no-unused-vars
 export const deployUrl = "https://teamprojectkinopoisk.herokuapp.com";
+//https://teamprojectkinopoisk.herokuapp.com
 
 export const currentUrl = deployUrl;
 
@@ -12,6 +13,7 @@ const versions = {
 
 export const urls = {
     api: {
+        csrf: `${currentUrl}${versions.v1}/csrf`,
         checkAuth: `${currentUrl}${versions.v1}/user/authcheck`,
         getUser: `${currentUrl}${versions.v1}/user`,
         changeProfile:`${currentUrl}${versions.v1}/user/update`,

@@ -54,7 +54,7 @@ export class ProfileController extends BaseController {
             },
             {
                 event: events.profilePage.render.changedProfile,
-                handler: this.view.renderChangedProfile,
+                handler: this.view.reRenderPage,
             },
             {
                 event: events.profilePage.render.changedAvatar,
@@ -64,44 +64,6 @@ export class ProfileController extends BaseController {
                 event: events.header.logout,
                 handler: this.view.reRenderPage,
             },
-            
-            // {
-            //     event: events.auth.gotUser,
-            //     handler: this.view.renderSettings,
-            // },
-            
-            // {
-            //     event: events.auth.notLoggedIn,
-            //     handler: this.view.deleteSettings,
-            // },
-            // {
-            //     event: events.profilePage.addValidationError,
-            //     handler: this.view.addErrorMessage,
-            // },
-            // {
-            //     event: events.profilePage.render,
-            //     handler: this.view.render,
-            // },
-            // {
-            //     event: events.profilePage.sendChanges,
-            //     handler: this.model.sendChanges,
-            // },
-            // {
-            //     event: events.profilePage.submit,
-            //     handler: this.model.submitChanges,
-            // },
-            // {
-            //     event: events.profilePage.submitError,
-            //     handler: this.view.addSubmitError,
-            // },
-            // {
-            //     event: events.profilePage.validate,
-            //     hanlder: this.view.validateSingleInput,
-            // },
-            // {
-            //     event: events.profilePage.wrongInput,
-            //     hanlder: TODO animation?
-            // }
         );
         this.subscribe();
     }

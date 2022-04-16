@@ -11,17 +11,17 @@ import { MovieController } from "./controllers/MovieController.js";
 import { ProfileController } from "./controllers/ProfileController.js";
 import { ActorController } from "./controllers/ActorController.js";
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js', {scope: '/'})
-      .then((registration) => {
-        console.log('SW registered on scope:', registration.scope);
-      })
-      .catch((err) => {
-        console.error("Error", err);
-  });
-} else {
-  console.log("smt went wrong, we shouldn't be here");
-}
+//Выключили сервис воркер if ('serviceWorker' in navigator) {
+//   navigator.serviceWorker.register('/sw.js', {scope: '/'})
+//       .then((registration) => {
+//         console.log('SW registered on scope:', registration.scope);
+//       })
+//       .catch((err) => {
+//         console.error("Error", err);
+//   });
+// } else {
+//   console.log("smt went wrong, we shouldn't be here");
+// }
 
 export const root = document.getElementById("root");
 

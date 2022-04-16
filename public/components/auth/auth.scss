@@ -1,42 +1,42 @@
 @import "../../css/consts.scss";
 
 .auth-content {
-	font-family: $main_font;
-	font-weight: bold;
-	background: url("./dist/img/bg.png") no-repeat center center;
-	min-height: 100%;
-	width: 100%;
-	background-size: cover;
-	background-color: $background;
-	align-items: center;
-	justify-content: center;
-	display: grid;
-	grid-template-columns: repeat(12, 120px);
-	column-gap: 30px;
-	row-gap: 30px;
-	grid-template-areas:
-		"B0 B0 B1 B1 B2 B2 B3 B3 B4 B4 B5 B5"
-		"C0 C0 C0 C1 C1 C1 C1 C1 C1 C2 C2 C2"
-		"D0 D0 D0 D1 D1 D1 D1 D1 D1 D2 D2 D2";
-	justify-items: center;
+    font-family: $main_font;
+    font-weight: bold;
+    background: url("./dist/img/bg.png") no-repeat center center;
+    min-height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-color: $background;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(12, 120px);
+    column-gap: 30px;
+    row-gap: 30px;
+    grid-template-areas:
+        "B0 B0 B1 B1 B2 B2 B3 B3 B4 B4 B5 B5"
+        "C0 C0 C0 C1 C1 C1 C1 C1 C1 C2 C2 C2"
+        "D0 D0 D0 D1 D1 D1 D1 D1 D1 D2 D2 D2";
+    justify-items: center;
 }
 
 .login {
-	grid-area: C1;
-	width: 100%;
-	padding: 16px;
-	align-items: center;
-	background: rgb(240 240 240 / 83%);
-	border-radius: 10px;
-	display: grid;
-	gap: 20px;
-	grid-template-areas:
-		"A0 A0 A0 A0 A0 A0"
-		"B0 B1 B1 B1 B1 B2"
-		"B0 B1 B1 B1 B1 B2"
-		"B0 B1 B1 B1 B1 B2"
-		"C0 C1 C1 C1 C1 C2";
-	grid-auto-columns: minmax(0, 136px);
+    grid-area: C1;
+    width: 100%;
+    padding: 16px;
+    align-items: center;
+    background: rgb(240 240 240 / 83%);
+    border-radius: 10px;
+    display: grid;
+    gap: 20px;
+    grid-template-areas:
+        "A0 A0 A0 A0 A0 A0"
+        "B0 B1 B1 B1 B1 B2"
+        "B0 B1 B1 B1 B1 B2"
+        "B0 B1 B1 B1 B1 B2"
+        "C0 C1 C1 C1 C1 C2";
+    grid-auto-columns: minmax(0, 136px);
 
 	&__invitation {
 		grid-area: A0;
@@ -61,26 +61,26 @@
 }
 
 .register {
-	grid-area: C1;
-	width: 100%;
-	flex-direction: column;
-	padding: 16px;
-	align-items: center;
-	border-width: thin;
-	border-style: solid;
-	background: rgb(240 240 240 / 83%);
-	border-radius: 10px;
-	display: grid;
-	gap: 20px;
-	grid-template-areas:
-		"A0 A0 A0 A0 A0 A0"
-		"B0 B1 B1 B1 B1 B2"
-		"B0 B1 B1 B1 B1 B2"
-		"B0 B1 B1 B1 B1 B2"
-		"B0 B1 B1 B1 B1 B2"
-		"B0 B1 B1 B1 B1 B2"
-		"C0 C1 C1 C1 C1 C2";
-	grid-auto-columns: minmax(0, 136px);
+    grid-area: C1;
+    width: 100%;
+    flex-direction: column;
+    padding: 16px;
+    align-items: center;
+    border-width: thin;
+    border-style: solid;
+    background: rgb(240 240 240 / 83%);
+    border-radius: 10px;
+    display: grid;
+    gap: 20px;
+    grid-template-areas:
+        "A0 A0 A0 A0 A0 A0"
+        "B0 B1 B1 B1 B1 B2"
+        "B0 B1 B1 B1 B1 B2"
+        "B0 B1 B1 B1 B1 B2"
+        "B0 B1 B1 B1 B1 B2"
+        "B0 B1 B1 B1 B1 B2"
+        "C0 C1 C1 C1 C1 C2";
+    grid-auto-columns: minmax(0, 136px);
 
 	&__invitation {
 		grid-area: A0;
@@ -107,42 +107,42 @@
 }
 
 .auth-input {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 
-	&__head {
-		display: flex;
-		width: 100%;
-		flex-direction: row;
+    &__head {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
 
-		&__label {
-			width: 30%;
-			margin-top: 1em;
-			margin-bottom: 0.3em;
-			font-size: 1.5em;
-			font-family: $main_font;
-			align-self: baseline;
-		}
-		&__error {
-			width: 70%;
-			display: grid;
-			align-items: end;
-			text-align: right;
-			font-family: $main_font;
-			font-size: 18px;
-			color: $error;
-		}
-	}
+        &__label {
+            width: 100%;
+            font-size: 1.5em;
+            font-family: $main_font;
+            align-self: baseline;
+        }
+    }
+    &__head__error {
+        width: 100%;
+        display: grid;
+        text-align: left;
+        font-family: $main_font;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        height: 40px;
+        color: $error;
+    }
 }
 
 .text-input {
-	height: 50px;
-	font-family: $main_font;
-	font-weight: bold;
-	width: 100%;
-	border-radius: 10px;
-	box-sizing: border-box;
+    height: 50px;
+    font-family: $main_font;
+    font-weight: bold;
+    width: 100%;
+    border-radius: 10px;
+    box-sizing: border-box;
 }
 
 .email {
@@ -162,10 +162,10 @@
 }
 
 .auth__btn {
-	grid-area: C0;
-	display: flex;
-	flex-direction: column;
-	width: 100%;
+    grid-area: C0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 
 	&__error {
 		width: 100%;
@@ -191,30 +191,33 @@
 }
 
 .auth__invitation {
-	width: 100%;
-	text-align: center;
-	grid-area: C1;
-	font-family: $main_font;
-	font-size: 20px;
-	text-decoration: none;
-	color: $navigational;
-	cursor: pointer;
-	margin: 10px auto 25px;
+    width: 100%;
+    text-align: center;
+    grid-area: C1;
+    font-family: $main_font;
+    font-size: 20px;
+    text-decoration: none;
+    color: $navigational;
+    cursor: pointer;
+    margin: 10px auto 25px;
 
-	&:hover {
-		text-decoration: underline;
-	}
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 @keyframes input-error {
-
-	from { background-color: white; }
-	to { background-color: rgb(248 133 133); }
+    from {
+        background-color: white;
+    }
+    to {
+        background-color: rgb(248, 133, 133);
+    }
 }
 
 .error {
-	border: solid $error;
-	border-width: 2px;
-	animation-name: input-error;
-	animation-duration: 1s;
+    border: solid $error;
+    border-width: 2px;
+    animation-name: input-error;
+    animation-duration: 1s;
 }

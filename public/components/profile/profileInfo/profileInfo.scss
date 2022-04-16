@@ -32,12 +32,12 @@
             cursor: pointer;
         }
     }
-    &__input:hover {
-        background-image: url("static/pics/avatarBackground.jpg");
-        img {
-            filter: opacity(50%);
-        }
-    }
+    //TODO &__input:hover {
+    //     background-image: url("static/pics/avatarBackground.jpg");
+    //     img {
+    //         filter: opacity(50%);
+    //     }
+    // }
 }
 
 .profile-info__name {

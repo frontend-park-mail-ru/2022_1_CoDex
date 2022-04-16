@@ -3,10 +3,10 @@ name: Frontend Build
 on:
   push:
    branches:
-     - develop
+     - rk1_mvc
   pull_request:
    branches:
-     - develop
+     - rk1_mvc
 
 jobs:
 #   lint:

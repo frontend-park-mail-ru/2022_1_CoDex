@@ -11,7 +11,6 @@
                 div(class=`auth-input ${input.name}`)
                     div(class=`auth-input__head`)
                         label(for=input.name class="auth-input__head__label") #{input.title}
-                        div(class=`auth-input__head__error ${input.name}`)
                     input(
                         type=input.type
                         name=input.name
@@ -19,6 +18,7 @@
                         placeholder=input.placeholder
                         class="text-input"
                     )
+                    div(class=`auth-input__head__error ${input.name}`)
             div.auth__btn
                 div.auth__btn__error
                 input(class=`auth__btn__input` type="button" name=submitButtonName value=login ? "Войти" : "Создать аккаунт")

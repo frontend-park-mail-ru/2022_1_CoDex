@@ -43,19 +43,18 @@
 			}
 		}
 		.bg_container {
-			background-color: $background;
-			border-radius: 30px;
-			color: $background;
-			padding: 30px;
-			grid-area: D1;
-			width: 100%;
+            background-color: $background;
+            border-radius: 30px;
+            color: $background;
+            grid-area: D1;
+            width: 100%;
 
-			.collections__container {
-				grid-template-columns: repeat(4, 1fr);
-				display: grid;
-				row-gap: 30px;
-				column-gap: 20px;
-			}
-		}
-	}
+            .collections__container {
+                grid-template-columns: repeat(4, 1fr);
+                display: grid;
+                row-gap: 30px;
+                column-gap: 20px;
+            }
+        }
+    }
 }

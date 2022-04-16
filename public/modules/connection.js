@@ -2,17 +2,41 @@ import { statuses } from "../consts/statuses.js";
 import { urls } from "../consts/urls.js";
 import regeneratorRuntime from "regenerator-runtime";
 
+let CSRFToken = null;
+
+export const csrf = async () => {
+        if (CSRFToken === null) {
+            let headers = {
+                "Content-Type": 'application/json',
+            }
+            const response = await fetch(urls.api.csrf, {
+              method: 'GET',
+              mode: 'cors',
+              cache: 'no-store',
+              credentials: 'include',
+              headers: headers,
+            });
+            CSRFToken = response.headers.get('X-Csrf-Token');
+            console.log(CSRFToken);
+    }
+};
+
 /**
  * @description Отправляет асинхронный запрос на сервер.
  * @param { object } params Параметры для запроса
  * @returns { object } Статус и обработанный ответ
  */
 export const sendRequest = async ({ url, method, body } = {}) => {
+    //await csrf();
+    let headers =  {
+        "Content-Type": "application/json",
+    };
+    // if (CSRFToken != null) {
+    //     headers.set("X-CSRF-Token", CSRFToken);
+    // }
     const response = await fetch(url, {
         method: method,
-        headers: {
-            "Content-Type": "application/json",
-        },
+        headers: headers,
         body: body,
         mode: "cors",
         credentials: "include",
@@ -90,6 +114,9 @@ export const checkAuth = async () => {
  * @returns { object } Данные о текущем пользователе
  */
 export const getCurrentUser = async (id) => {
+    if (!id) {
+        return;
+    }
     const params = {
         url: urls.api.getUser.concat('/').concat(id),
         methd: "GET",
@@ -255,6 +282,9 @@ export const sendUserReview = async (review) => {
  * @returns { object } Ответ с сервера
  */
 export const getProfile = async (id) => {
+    if (!id) {
+        return;
+    }
     const params = {
         url: `${urls.api.getUser}/${id}`,
         method: "GET",
