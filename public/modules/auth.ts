@@ -1,7 +1,7 @@
 import { events } from "@/consts/events";
 import { statuses } from "@/consts/statuses";
-import EventBus from "./eventBus.js";
-import { eventBus } from "./eventBus.js";
+import EventBus from "./eventBus";
+import { eventBus } from "./eventBus";
 import { checkAuth, getCurrentUser, logout } from "./connection";
 
 /**

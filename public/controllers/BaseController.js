@@ -1,4 +1,4 @@
-import { eventBus } from "../modules/eventBus.js";
+import { eventBus } from "../modules/eventBus";
 
 /**
  * @description Базовый класс контроллера для MVC архитектуры.

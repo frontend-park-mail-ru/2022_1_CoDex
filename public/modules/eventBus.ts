@@ -6,12 +6,12 @@
  * @description Класс шины событий, необходимой для MVC моделей.
  */
 export default class EventBus {
-    #listeners;
+    private listeners: Map<string, Set<Function> | null>;
     /**
      * @description Создаёт шину событий с пустыми обработчиками.
      */
     constructor() {
-        this.#listeners = {};
+        this.listeners = new Map;
     }
 
     /**
@@ -19,8 +19,11 @@ export default class EventBus {
      * @param { string } event Имя нового события
      * @param { function } callback Функция-callback для события
      */
-    on(event, callback) {
-        (this.#listeners[event] || (this.#listeners[event] = new Set())).add(callback);
+    on(event: string, callback: Function) {
+        if (this.listeners.get(event))
+            this.listeners.get(event)?.add(callback);
+        else 
+            this.listeners.set(event, (new Set<Function>([callback])));
     }
 
     /**
@@ -28,8 +31,8 @@ export default class EventBus {
      * @param { string } event Имя отключаемого события
      * @param { function } callback Функция-callback для события
      */
-    off(event, callback) {
-        this.#listeners[event]?.delete(callback);
+    off(event: string, callback: Function) {
+        this.listeners.get(event)?.delete(callback);
     }
 
     /**
@@ -38,11 +41,11 @@ export default class EventBus {
      * @param { string } event Имя вызываемого события
      * @param { any } data Данные для вызываемых обработчиков
      */
-    emit(event, ...data) {
-        if (!this.#listeners[event]) {
+    emit(event: string, ...data: any) {
+        if (!this.listeners.get(event)) {
             return;
         }
-        const tmpSet = new Set(this.#listeners[event]);
+        const tmpSet = new Set(this.listeners.get(event));
         tmpSet?.forEach((listener) => listener(...data));
     }
 }

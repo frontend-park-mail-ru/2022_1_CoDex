@@ -1,4 +1,4 @@
-import { eventBus } from "./eventBus.js";
+import { eventBus } from "./eventBus";
 import { events } from "../consts/events";
 import { routes } from "../consts/routes";
 
