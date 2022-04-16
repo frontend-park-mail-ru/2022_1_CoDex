@@ -2,7 +2,7 @@ import {BaseView} from '../BaseView/BaseView.js';
 import {getURLArguments} from '../../modules/router.js';
 import {authModule} from '../../modules/auth.js';
 import {slider} from '../../utils/slider.js';
-import {events} from '../../consts/events.js';
+import {events} from '../../consts/events';
 import moviePageContent from '../../components/movie/movie.pug';
 import reviewInvitation from '../../components/reviewInvitation/reviewInvitation.pug';
 import reviewInputBlock from '../../components/reviewInputBlock/reviewInputBlock.pug';

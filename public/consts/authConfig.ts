@@ -1,7 +1,9 @@
+import { authInputs } from "@/types";
+
 export const authFormName = "authForm";
 export const submitButtonName = "submitBtn";
 
-export const authConfig = {
+export const authConfig: authInputs = {
     emailInput: {
         type: "email", 
         name: "email", 

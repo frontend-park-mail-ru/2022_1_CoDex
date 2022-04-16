@@ -1,4 +1,4 @@
-import {events} from '../../consts/events.js';
+import {events} from '../../consts/events';
 import {getURLArguments} from '../../modules/router.js';
 import {BaseView} from '../BaseView/BaseView.js';
 import singleCollectionContent from '../../components/singleCollection/singleCollection.pug';

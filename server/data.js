@@ -17,7 +17,7 @@ const startServer = (app) => {
   app.get("/api/v1/user/1", function (req, res) {
     res.status(200).json({
       ID: 1,
-      avatarSrc: "/server/images/adventures.png",
+      avatarSrc: "/server/images/adventures.webp",
       name: users['a@a.ru'].name,
       email: 'a@a.ru',
     });
@@ -52,63 +52,63 @@ const startServer = (app) => {
       related: [
         {
           "href": "/movies/2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "title": "Зелёная миля",
         },
         {
           "href": "/movies/2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "title": "Зелёная миля",
         },
         {
           "href": "/movies/2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "title": "Зелёная миля",
         },
         {
           "href": "/movies/2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "title": "Зелёная миля",
         },
         {
           "href": "/movies/2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "title": "Зелёная миля",
         },
         {
           "href": "/movies/2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "title": "Зелёная миля",
         },
         {
           "href": "/movies/2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "title": "Зелёная миля",
         },
         {
           "href": "/movies/2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "title": "Зелёная миля",
         },
         {
           "href": "/movies/2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "title": "Зелёная миля",
         },
         {
           "href": "/movies/2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "title": "Зелёная миля",
         },
         {
           "href": "/movies/2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "title": "Зелёная миля",
         },
       ],
       reviews: [
         {
-          avatarSrc: "http://localhost:3000/server/images/romantic.png",
+          avatarSrc: "http://localhost:3000/server/images/romantic.webp",
           username: "Пётр Калашников",
           userID: "",
           rating: "9 / 10",
@@ -117,7 +117,7 @@ const startServer = (app) => {
           type: "good",
         },
         {
-          avatarSrc: "http://localhost:3000/server/images/comics.png",
+          avatarSrc: "http://localhost:3000/server/images/comics.webp",
           username: "Анатолий Мужиков",
           userID: "",
           rating: "10 / 10",
@@ -126,7 +126,7 @@ const startServer = (app) => {
           type: "good",
         },
         {
-          avatarSrc: "http://localhost:3000/server/images/spy.png",
+          avatarSrc: "http://localhost:3000/server/images/spy.webp",
           username: "Костя Костяной",
           userID: "",
           rating: "7 / 10",
@@ -135,7 +135,7 @@ const startServer = (app) => {
           type: "neutral",
         },
         {
-          avatarSrc: "http://localhost:3000/server/images/ourTop.png",
+          avatarSrc: "http://localhost:3000/server/images/ourTop.webp",
           username: "Виктория Киселёва",
           userID: "",
           rating: "8 / 10",
@@ -144,7 +144,7 @@ const startServer = (app) => {
           type: "bad",
         },
         {
-          avatarSrc: "http://localhost:3000/server/images/tales.png",
+          avatarSrc: "http://localhost:3000/server/images/tales.webp",
           username: "Баба Яга",
           userID: "",
           rating: "8 / 10",
@@ -162,63 +162,63 @@ const startServer = (app) => {
       related: [
         {
           "href": "/movies/1",
-          "poster": "showshenkRedemption.png",
+          "poster": "showshenkRedemption.webp",
           "title": "Побег из Шоушенка",
         },
         {
           "href": "/movies/1",
-          "poster": "showshenkRedemption.png",
+          "poster": "showshenkRedemption.webp",
           "title": "Побег из Шоушенка",
         },
         {
           "href": "/movies/1",
-          "poster": "showshenkRedemption.png",
+          "poster": "showshenkRedemption.webp",
           "title": "Побег из Шоушенка",
         },
         {
           "href": "/movies/1",
-          "poster": "showshenkRedemption.png",
+          "poster": "showshenkRedemption.webp",
           "title": "Побег из Шоушенка",
         },
         {
           "href": "/movies/1",
-          "poster": "showshenkRedemption.png",
+          "poster": "showshenkRedemption.webp",
           "title": "Побег из Шоушенка",
         },
         {
           "href": "/movies/1",
-          "poster": "showshenkRedemption.png",
+          "poster": "showshenkRedemption.webp",
           "title": "Побег из Шоушенка",
         },
         {
           "href": "/movies/1",
-          "poster": "showshenkRedemption.png",
+          "poster": "showshenkRedemption.webp",
           "title": "Побег из Шоушенка",
         },
         {
           "href": "/movies/1",
-          "poster": "showshenkRedemption.png",
+          "poster": "showshenkRedemption.webp",
           "title": "Побег из Шоушенка",
         },
         {
           "href": "/movies/1",
-          "poster": "showshenkRedemption.png",
+          "poster": "showshenkRedemption.webp",
           "title": "Побег из Шоушенка",
         },
         {
           "href": "/movies/1",
-          "poster": "showshenkRedemption.png",
+          "poster": "showshenkRedemption.webp",
           "title": "Побег из Шоушенка",
         },
         {
           "href": "/movies/1",
-          "poster": "showshenkRedemption.png",
+          "poster": "showshenkRedemption.webp",
           "title": "Побег из Шоушенка",
         },
       ],
       reviews: [
         {
-          avatarSrc: "http://localhost:3000/server/images/romantic.png",
+          avatarSrc: "http://localhost:3000/server/images/romantic.webp",
           username: "Пётр Калашников",
           userID: "",
           rating: "",
@@ -227,7 +227,7 @@ const startServer = (app) => {
           type: "good",
         },
         {
-          avatarSrc: "http://localhost:3000/server/images/comics.png",
+          avatarSrc: "http://localhost:3000/server/images/comics.webp",
           username: "Анатолий Мужиков",
           userID: "",
           rating: "10 / 10",
@@ -236,7 +236,7 @@ const startServer = (app) => {
           type: "good",
         },
         {
-          avatarSrc: "http://localhost:3000/server/images/spy.png",
+          avatarSrc: "http://localhost:3000/server/images/spy.webp",
           username: "Костя Костяной",
           userID: "",
           rating: "7 / 10",
@@ -245,7 +245,7 @@ const startServer = (app) => {
           type: "neutral",
         },
         {
-          avatarSrc: "http://localhost:3000/server/images/ourTop.png",
+          avatarSrc: "http://localhost:3000/server/images/ourTop.webp",
           username: "Виктория Киселёва",
           userID: "",
           rating: "8 / 10",
@@ -280,7 +280,7 @@ const startServer = (app) => {
     res.cookie('podvorot', id, { expires: new Date(Date.now() + 1000 * 60 * 10) });
     res.status(201).json({
       ID: id,
-      avatarSrc: "server/images/adventures.png",
+      avatarSrc: "server/images/adventures.webp",
       name: users[email].name,
       email: email,
     });
@@ -302,7 +302,7 @@ const startServer = (app) => {
     res.cookie('podvorot', ID, { expires: new Date(Date.now() + 1000 * 60 * 10) });
     res.status(200).json({
       ID: 1,
-      avatarSrc: "server/images/adventures.png",
+      avatarSrc: "server/images/adventures.webp",
       name: users[email].name,
       email: email,
     });
@@ -322,7 +322,7 @@ const startServer = (app) => {
     res.cookie('podvorot', 1, { expires: new Date(Date.now() + 1000 * 60 * 10) });
     res.status(200).json({
       ID: 1,
-      avatarSrc: "/server/images/adventures.png",
+      avatarSrc: "/server/images/adventures.webp",
       name: users["a@a.ru"].name,
       email: "a@a.ru",
     });
@@ -339,8 +339,8 @@ const startServer = (app) => {
 
   const Bookmarks = {
     bookmarksList: [
-      { description: "Подборка №1", imgSrc: "top.png", page: "profile", number: "1" },
-      { description: "Подборка №2", imgSrc: "top.png", page: "profile", number: "2" },
+      { description: "Подборка №1", imgSrc: "top.webp", page: "profile", number: "1" },
+      { description: "Подборка №2", imgSrc: "top.webp", page: "profile", number: "2" },
     ]
   };
 
@@ -358,7 +358,7 @@ const startServer = (app) => {
       name: "aaaaaa",
       email: "a@a.ru",
       password: 'password1',
-      avatarSrc: "server/images/adventures.png",
+      avatarSrc: "server/images/adventures.webp",
       bookmarksList: Bookmarks.bookmarksList,
       reviewsList: Reviews.reviewsList,
     },
@@ -368,18 +368,18 @@ const startServer = (app) => {
 
   const Collections = {
     collectionlist: [
-      { description: "Топ 256", imgsrc: "top.png", page: "collections", number: "1" },
-      { description: "Приключения", imgsrc: "adventures.png", page: "collections", number: "2" },
-      { description: "Для всей семьи", imgsrc: "family.png", page: "collections", number: "3" },
-      { description: "Романтичное", imgsrc: "romantic.png", page: "collections", number: "4" },
-      { description: "Лучшие драмы", imgsrc: "drama.png", page: "collections", number: "5" },
-      { description: "Детское", imgsrc: "childish.png", page: "collections", number: "6" },
-      { description: "Комедии", imgsrc: "comedy.png", page: "collections", number: "7" },
-      { description: "Спасение мира", imgsrc: "saveTheWorld.png", page: "collections", number: "8" },
-      { description: "Кинокомиксы", imgsrc: "comics.png", page: "collections", number: "9" },
-      { description: "Советская классика", imgsrc: "soviet.png", page: "collections", number: "10" },
-      { description: "Шпионские фильмы", imgsrc: "spy.png", page: "collections", number: "11" },
-      { description: "Выбор редакции", imgsrc: "ourTop.png", page: "collections", number: "12" },
+      { description: "Топ 256", imgsrc: "top.webp", page: "collections", number: "1" },
+      { description: "Приключения", imgsrc: "adventures.webp", page: "collections", number: "2" },
+      { description: "Для всей семьи", imgsrc: "family.webp", page: "collections", number: "3" },
+      { description: "Романтичное", imgsrc: "romantic.webp", page: "collections", number: "4" },
+      { description: "Лучшие драмы", imgsrc: "drama.webp", page: "collections", number: "5" },
+      { description: "Детское", imgsrc: "childish.webp", page: "collections", number: "6" },
+      { description: "Комедии", imgsrc: "comedy.webp", page: "collections", number: "7" },
+      { description: "Спасение мира", imgsrc: "saveTheWorld.webp", page: "collections", number: "8" },
+      { description: "Кинокомиксы", imgsrc: "comics.webp", page: "collections", number: "9" },
+      { description: "Советская классика", imgsrc: "soviet.webp", page: "collections", number: "10" },
+      { description: "Шпионские фильмы", imgsrc: "spy.webp", page: "collections", number: "11" },
+      { description: "Выбор редакции", imgsrc: "ourTop.webp", page: "collections", number: "12" },
     ]
   };
 
@@ -389,7 +389,7 @@ const startServer = (app) => {
     movielist: [
       {
         "ID": "1",
-        "poster": "showshenkRedemption.png",
+        "poster": "showshenkRedemption.webp",
         "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
         "title": "Побег из Шоушенка",
         "originalTitle": "The Shawshank Redemption",
@@ -429,7 +429,7 @@ const startServer = (app) => {
       },
       {
         "ID": "2",
-        "poster": "greenMile.png",
+        "poster": "greenMile.webp",
         "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
         "title": "Зелёная миля",
         "originalTitle": "The Green Mile",
@@ -474,7 +474,7 @@ const startServer = (app) => {
       },
       {
         "ID": "1",
-        "poster": "showshenkRedemption.png",
+        "poster": "showshenkRedemption.webp",
         "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
         "title": "Побег из Шоушенка",
         "originalTitle": "The Shawshank Redemption",
@@ -514,7 +514,7 @@ const startServer = (app) => {
       },
       {
         "ID": "2",
-        "poster": "greenMile.png",
+        "poster": "greenMile.webp",
         "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
         "title": "Зелёная миля",
         "originalTitle": "The Green Mile",
@@ -559,7 +559,7 @@ const startServer = (app) => {
       },
       {
         "ID": "1",
-        "poster": "showshenkRedemption.png",
+        "poster": "showshenkRedemption.webp",
         "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
         "title": "Побег из Шоушенка",
         "originalTitle": "The Shawshank Redemption",
@@ -599,7 +599,7 @@ const startServer = (app) => {
       },
       {
         "ID": "2",
-        "poster": "greenMile.png",
+        "poster": "greenMile.webp",
         "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
         "title": "Зелёная миля",
         "originalTitle": "The Green Mile",
@@ -644,7 +644,7 @@ const startServer = (app) => {
       },
       {
         "ID": "1",
-        "poster": "showshenkRedemption.png",
+        "poster": "showshenkRedemption.webp",
         "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
         "title": "Побег из Шоушенка",
         "originalTitle": "The Shawshank Redemption",
@@ -684,7 +684,7 @@ const startServer = (app) => {
       },
       {
         "ID": "2",
-        "poster": "greenMile.png",
+        "poster": "greenMile.webp",
         "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
         "title": "Зелёная миля",
         "originalTitle": "The Green Mile",
@@ -729,7 +729,7 @@ const startServer = (app) => {
       },
       {
         "ID": "1",
-        "poster": "showshenkRedemption.png",
+        "poster": "showshenkRedemption.webp",
         "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
         "title": "Побег из Шоушенка",
         "originalTitle": "The Shawshank Redemption",
@@ -769,7 +769,7 @@ const startServer = (app) => {
       },
       {
         "ID": "2",
-        "poster": "greenMile.png",
+        "poster": "greenMile.webp",
         "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
         "title": "Зелёная миля",
         "originalTitle": "The Green Mile",
@@ -814,7 +814,7 @@ const startServer = (app) => {
       },
       {
         "ID": "1",
-        "poster": "showshenkRedemption.png",
+        "poster": "showshenkRedemption.webp",
         "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
         "title": "Побег из Шоушенка",
         "originalTitle": "The Shawshank Redemption",
@@ -854,7 +854,7 @@ const startServer = (app) => {
       },
       {
         "ID": "2",
-        "poster": "greenMile.png",
+        "poster": "greenMile.webp",
         "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
         "title": "Зелёная миля",
         "originalTitle": "The Green Mile",
@@ -899,7 +899,7 @@ const startServer = (app) => {
       },
       {
         "ID": "1",
-        "poster": "showshenkRedemption.png",
+        "poster": "showshenkRedemption.webp",
         "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
         "title": "Побег из Шоушенка",
         "originalTitle": "The Shawshank Redemption",
@@ -939,7 +939,7 @@ const startServer = (app) => {
       },
       {
         "ID": "2",
-        "poster": "greenMile.png",
+        "poster": "greenMile.webp",
         "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
         "title": "Зелёная миля",
         "originalTitle": "The Green Mile",
@@ -984,7 +984,7 @@ const startServer = (app) => {
       },
       {
         "ID": "1",
-        "poster": "showshenkRedemption.png",
+        "poster": "showshenkRedemption.webp",
         "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
         "title": "Побег из Шоушенка",
         "originalTitle": "The Shawshank Redemption",
@@ -1024,7 +1024,7 @@ const startServer = (app) => {
       },
       {
         "ID": "2",
-        "poster": "greenMile.png",
+        "poster": "greenMile.webp",
         "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
         "title": "Зелёная миля",
         "originalTitle": "The Green Mile",
@@ -1069,7 +1069,7 @@ const startServer = (app) => {
       },
       {
         "ID": "1",
-        "poster": "showshenkRedemption.png",
+        "poster": "showshenkRedemption.webp",
         "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
         "title": "Побег из Шоушенка",
         "originalTitle": "The Shawshank Redemption",
@@ -1109,7 +1109,7 @@ const startServer = (app) => {
       },
       {
         "ID": "2",
-        "poster": "greenMile.png",
+        "poster": "greenMile.webp",
         "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
         "title": "Зелёная миля",
         "originalTitle": "The Green Mile",
@@ -1154,7 +1154,7 @@ const startServer = (app) => {
       },
       {
         "ID": "1",
-        "poster": "showshenkRedemption.png",
+        "poster": "showshenkRedemption.webp",
         "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
         "title": "Побег из Шоушенка",
         "originalTitle": "The Shawshank Redemption",
@@ -1194,7 +1194,7 @@ const startServer = (app) => {
       },
       {
         "ID": "2",
-        "poster": "greenMile.png",
+        "poster": "greenMile.webp",
         "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
         "title": "Зелёная миля",
         "originalTitle": "The Green Mile",
@@ -1239,7 +1239,7 @@ const startServer = (app) => {
       },
       {
         "ID": "1",
-        "poster": "showshenkRedemption.png",
+        "poster": "showshenkRedemption.webp",
         "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
         "title": "Побег из Шоушенка",
         "originalTitle": "The Shawshank Redemption",
@@ -1279,7 +1279,7 @@ const startServer = (app) => {
       },
       {
         "ID": "2",
-        "poster": "greenMile.png",
+        "poster": "greenMile.webp",
         "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
         "title": "Зелёная миля",
         "originalTitle": "The Green Mile",
@@ -1331,7 +1331,7 @@ const startServer = (app) => {
     movielist: [
       {
         "ID": "1",
-        "poster": "showshenkRedemption.png",
+        "poster": "showshenkRedemption.webp",
         "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
         "title": "Побег из Шоушенка",
         "originalTitle": "The Shawshank Redemption",
@@ -1371,7 +1371,7 @@ const startServer = (app) => {
       },
       {
         "ID": "2",
-        "poster": "greenMile.png",
+        "poster": "greenMile.webp",
         "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
         "title": "Зелёная миля",
         "originalTitle": "The Green Mile",
@@ -1416,7 +1416,7 @@ const startServer = (app) => {
       },
       {
         "ID": "1",
-        "poster": "showshenkRedemption.png",
+        "poster": "showshenkRedemption.webp",
         "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
         "title": "Побег из Шоушенка",
         "originalTitle": "The Shawshank Redemption",
@@ -1456,7 +1456,7 @@ const startServer = (app) => {
       },
       {
         "ID": "2",
-        "poster": "greenMile.png",
+        "poster": "greenMile.webp",
         "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
         "title": "Зелёная миля",
         "originalTitle": "The Green Mile",
@@ -1506,7 +1506,7 @@ const startServer = (app) => {
     {
       actor: {
         "ID": "1",
-        "avatar": "tomHanks.jpg",
+        "avatar": "tomHanks.webp",
         "name": "Том Хэнкс",
         "originalName": "Tom Hanks",
         "career": "Актёр",
@@ -1519,54 +1519,54 @@ const startServer = (app) => {
       related: [
         {
           "href": "/actors/2",
-          "poster": "tales.png",
+          "poster": "tales.webp",
           "title": "Баба Яга",
         },
         {
           "href": "/actors/2",
-          "poster": "tales.png",
+          "poster": "tales.webp",
           "title": "Баба Яга",
         },
         {
           "href": "/actors/2",
-          "poster": "tales.png",
+          "poster": "tales.webp",
           "title": "Баба Яга",
         },
         {
           "href": "/actors/2",
-          "poster": "tales.png",
+          "poster": "tales.webp",
           "title": "Баба Яга",
         },
         {
           "href": "/actors/2",
-          "poster": "tales.png",
+          "poster": "tales.webp",
           "title": "Баба Яга",
         },
         {
           "href": "/actors/2",
-          "poster": "tales.png",
+          "poster": "tales.webp",
           "title": "Баба Яга",
         },
         {
           "href": "/actors/2",
-          "poster": "tales.png",
+          "poster": "tales.webp",
           "title": "Баба Яга",
         },
         {
           "href": "/actors/2",
-          "poster": "tales.png",
+          "poster": "tales.webp",
           "title": "Баба Яга",
         },
         {
           "href": "/actors/2",
-          "poster": "tales.png",
+          "poster": "tales.webp",
           "title": "Баба Яга",
         },
       ],
       "movies": [
         {
           "ID": "2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
           "title": "Зелёная миля",
           "originalTitle": "The Green Mile",
@@ -1611,7 +1611,7 @@ const startServer = (app) => {
         },
         {
           "ID": "2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
           "title": "Зелёная миля",
           "originalTitle": "The Green Mile",
@@ -1656,7 +1656,7 @@ const startServer = (app) => {
         },
         {
           "ID": "2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
           "title": "Зелёная миля",
           "originalTitle": "The Green Mile",
@@ -1704,7 +1704,7 @@ const startServer = (app) => {
     {
       actor: {
         "ID": "1",
-        "avatar": "tales.png",
+        "avatar": "tales.webp",
         "name": "Баба Яга",
         "originalName": "Baba Yaga",
         "career": "Актёр",
@@ -1717,54 +1717,54 @@ const startServer = (app) => {
       related: [
         {
           "href": "/actors/1",
-          "poster": "tomHanks.jpg",
+          "poster": "tomHanks.webp",
           "title": "Том Хэнкс",
         },
         {
           "href": "/actors/1",
-          "poster": "tomHanks.jpg",
+          "poster": "tomHanks.webp",
           "title": "Том Хэнкс",
         },
         {
           "href": "/actors/1",
-          "poster": "tomHanks.jpg",
+          "poster": "tomHanks.webp",
           "title": "Том Хэнкс",
         },
         {
           "href": "/actors/1",
-          "poster": "tomHanks.jpg",
+          "poster": "tomHanks.webp",
           "title": "Том Хэнкс",
         },
         {
           "href": "/actors/1",
-          "poster": "tomHanks.jpg",
+          "poster": "tomHanks.webp",
           "title": "Том Хэнкс",
         },
         {
           "href": "/actors/1",
-          "poster": "tomHanks.jpg",
+          "poster": "tomHanks.webp",
           "title": "Том Хэнкс",
         },
         {
           "href": "/actors/1",
-          "poster": "tomHanks.jpg",
+          "poster": "tomHanks.webp",
           "title": "Том Хэнкс",
         },
         {
           "href": "/actors/1",
-          "poster": "tomHanks.jpg",
+          "poster": "tomHanks.webp",
           "title": "Том Хэнкс",
         },
         {
           "href": "/actors/1",
-          "poster": "tomHanks.jpg",
+          "poster": "tomHanks.webp",
           "title": "Том Хэнкс",
         },        
       ],
       "movies": [
         {
           "ID": "2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
           "title": "Зелёная миля",
           "originalTitle": "The Green Mile",
@@ -1809,7 +1809,7 @@ const startServer = (app) => {
         },
         {
           "ID": "2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
           "title": "Зелёная миля",
           "originalTitle": "The Green Mile",
@@ -1854,7 +1854,7 @@ const startServer = (app) => {
         },
         {
           "ID": "2",
-          "poster": "greenMile.png",
+          "poster": "greenMile.webp",
           "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
           "title": "Зелёная миля",
           "originalTitle": "The Green Mile",

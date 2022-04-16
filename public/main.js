@@ -1,5 +1,5 @@
 import "./index.scss";
-import { regularRoutes } from "./consts/routes.js";
+import { regularRoutes } from "./consts/routes";
 import { Router } from "./modules/router.js";
 import { authModule } from "./modules/auth.js";
 import { HeaderController } from "./controllers/HeaderController.js";

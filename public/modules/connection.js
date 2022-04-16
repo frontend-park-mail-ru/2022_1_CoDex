@@ -1,5 +1,5 @@
-import { statuses } from "../consts/statuses.js";
-import { urls } from "../consts/urls.js";
+import { statuses } from "../consts/statuses";
+import { urls } from "../consts/urls";
 import regeneratorRuntime from "regenerator-runtime";
 
 let CSRFToken = null;

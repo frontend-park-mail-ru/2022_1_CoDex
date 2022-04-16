@@ -1,6 +1,6 @@
 import baseViewPug from "../views/BaseView/BaseView.pug";
-import { headerLinks } from "../consts/header.js";
-import { routes } from "../consts/routes.js";
+import { headerLinks } from "../consts/header";
+import { routes } from "../consts/routes";
 
 
 /**

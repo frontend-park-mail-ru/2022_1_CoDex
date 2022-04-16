@@ -1,5 +1,5 @@
-import { events } from "../consts/events.js";
-import { statuses } from "../consts/statuses.js";
+import { events } from "../consts/events";
+import { statuses } from "../consts/statuses";
 import { eventBus} from "./eventBus.js";
 import { checkAuth, getCurrentUser, logout } from "./connection.js";
 

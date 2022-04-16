@@ -3,9 +3,14 @@ const { basename } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
     entry: "./public/main.js",
+    devtool: "source-map",
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js'],
+    },
     output: {
         path: path.resolve(__dirname, 'public/dist'),
         filename: "bundle.js",
@@ -29,6 +34,11 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                loader: 'ts-loader',
+            },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -75,5 +85,9 @@ module.exports = {
                 },
             ],
         }),
-    ]
+    ],
+    resolve: {
+        plugins: [new TsconfigPathsPlugin()],
+        extensions: ['.js', '.ts'],
+    },
 }

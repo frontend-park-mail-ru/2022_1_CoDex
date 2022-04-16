@@ -1,10 +1,10 @@
 import { BaseModel } from "./BaseModel.js";
-import { regularRoutes, routes } from "../consts/routes.js";
-import { authConfig, authFormName, submitButtonName } from "../consts/auth.js";
-import { events } from "../consts/events.js";
+import { regularRoutes, routes } from "../consts/routes";
+import { authConfig, authFormName, submitButtonName } from "../consts/authConfig";
+import { events } from "../consts/events";
 import { errorMessages } from "../consts/errors.js";
 import { login, register } from "../modules/connection.js";
-import { statuses } from "../consts/statuses.js";
+import { statuses } from "../consts/statuses";
 
 /**
  * @description Класс модели страницы авторизации / регистрации.

@@ -1,6 +1,6 @@
-import { events } from "../consts/events.js";
+import { events } from "../consts/events";
 import { getActor } from "../modules/connection.js";
-import { statuses } from "../consts/statuses.js";
+import { statuses } from "../consts/statuses";
 
 /**
  * @description Класс модели страницы актёра.

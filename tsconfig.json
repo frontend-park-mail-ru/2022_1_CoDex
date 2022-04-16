@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        // Strict Checks
+        "strictNullChecks": true,
+        "noImplicitAny": true,
+        "alwaysStrict": true,
+        "strictFunctionTypes": true,
+        "noImplicitThis": true,
+        "strictBindCallApply": true,
+        // Other
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "target": "ES6",
+        "allowJs": true,
+        "module": "ES6",
+        "moduleResolution": "node",
+        "outDir": "dist",
+        "sourceMap": true,
+        "baseUrl": "./",
+        "paths": {
+            "*": [ "node_modules/*" ],
+            "@/*": [ "public/*" ],
+        },
+        "lib": ["es2019", "ES6", "dom", "webworker"],
+    },
+    "include": [
+        "./public",
+    ]
+}

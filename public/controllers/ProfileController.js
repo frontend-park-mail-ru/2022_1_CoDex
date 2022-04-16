@@ -1,4 +1,4 @@
-import { events } from "../consts/events.js";
+import { events } from "../consts/events";
 import { ProfileModel } from "../models/ProfileModel.js";
 import { ProfileView } from "../views/ProfileView/ProfileView.js";
 import { BaseController } from "./BaseController.js";

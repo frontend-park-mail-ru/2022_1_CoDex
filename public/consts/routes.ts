@@ -1,7 +1,9 @@
-export const routes = {
+import { routeList } from "@/types"
+
+export const routes: routeList = {
     homePage: "/",
     collectionsPage: "/collections",
-    singleCollectionsPage: "/collections/\\d+",
+    singleCollectionPage: "/collections/\\d+",
     profilePage: "/profile",
     loginPage: "/login",
     registrationPage: "/register",
@@ -9,13 +11,13 @@ export const routes = {
     actorPage: "/actor/\\d+",
 }
 
-export const regularRoutes = {
+export const regularRoutes: routeList = {
+    homePage: "^/$",
+    collectionsPage: "^/collections$",    
     singleCollectionPage:"^/collections/\\d+$",    
-    moviePage:"^/movies/\\d+$",
+    profilePage:"^/profile/\\d+$",
     loginPage:  "^/login",
     registrationPage: "^/register",
-    profilePage:"^/profile/\\d+$",
+    moviePage:"^/movies/\\d+$",
     actorPage: "^/actors/\\d+$",
-    collectionsPage: "^/collections$",    
-    homePage: "^/$",
 }

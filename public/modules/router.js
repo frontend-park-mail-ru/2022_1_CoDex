@@ -1,6 +1,6 @@
 import { eventBus } from "./eventBus.js";
-import { events } from "../consts/events.js";
-import { routes } from "../consts/routes.js";
+import { events } from "../consts/events";
+import { routes } from "../consts/routes";
 
 /**
  * @description Получает аргументы из URL-a.

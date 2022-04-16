@@ -1,7 +1,7 @@
 import { getProfile, getBookmarks, getReview, sendSettingsChanges, sendAvatar } from "../modules/connection.js";
 import { BaseModel } from "./BaseModel.js";
-import { statuses } from "../consts/statuses.js";
-import { events } from "../consts/events.js";
+import { statuses } from "../consts/statuses";
+import { events } from "../consts/events";
 
 /**
  * @description Класс модели страницы профиля.

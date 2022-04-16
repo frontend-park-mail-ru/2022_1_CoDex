@@ -1,5 +1,5 @@
 import {BaseView} from '../BaseView/BaseView.js';
-import {events} from '../../consts/events.js';
+import {events} from '../../consts/events';
 import collectionsContent from '../../components/collections/collections.pug';
 
 /**

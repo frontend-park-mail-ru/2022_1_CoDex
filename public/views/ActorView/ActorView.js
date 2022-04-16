@@ -1,4 +1,4 @@
-import {events} from '../../consts/events.js';
+import {events} from '../../consts/events';
 import {BaseView} from '../BaseView/BaseView.js';
 import {getURLArguments} from '../../modules/router.js';
 import {slider} from '../../utils/slider.js';

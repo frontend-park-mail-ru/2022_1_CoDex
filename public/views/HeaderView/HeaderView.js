@@ -1,6 +1,6 @@
 import {authModule} from '../../modules/auth.js';
-import {events} from '../../consts/events.js';
-import {routes} from '../../consts/routes.js';
+import {events} from '../../consts/events';
+import {routes} from '../../consts/routes';
 import {renderBaseView, createElementFromHTML} from '../../utils/utils.js';
 import {BaseView} from '../BaseView/BaseView.js';
 import loginButton from '../../components/header/loginButton.pug';

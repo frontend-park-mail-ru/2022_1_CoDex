@@ -1,7 +1,7 @@
 import {BaseView} from '../BaseView/BaseView.js';
 import authContent from '../../components/auth/auth.pug';
-import {events} from '../../consts/events.js';
-import {authFormName, authConfig} from '../../consts/auth.js';
+import {events} from '../../consts/events';
+import {authFormName, authConfig} from '../../consts/authConfig';
 
 /**
  * @description Класс представления страницы авторизации / регистрации.

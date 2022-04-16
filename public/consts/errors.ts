@@ -1,4 +1,4 @@
-import { authConfig } from "./auth.js";
+import { authConfig } from "./authConfig";
 
 export const errorMessages = {
     [authConfig.emailInput.name]: [{

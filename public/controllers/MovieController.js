@@ -1,4 +1,4 @@
-import { events } from "../consts/events.js";
+import { events } from "../consts/events";
 import { MovieModel } from "../models/MovieModel.js";
 import { MovieView } from "../views/MovieView/MovieView.js";
 import { BaseController } from "./BaseController.js";

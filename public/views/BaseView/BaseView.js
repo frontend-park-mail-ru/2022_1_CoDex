@@ -1,6 +1,6 @@
 import {root} from '../../main.js';
 import loader from '../../components/loader/loader.pug';
-import {events} from '../../consts/events.js';
+import {events} from '../../consts/events';
 import {renderBaseView} from '../../utils/utils.js';
 
 /**
