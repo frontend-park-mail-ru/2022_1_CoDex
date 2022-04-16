@@ -2,24 +2,27 @@ import { BaseModel } from "./BaseModel";
 import { regularRoutes, routes } from "../consts/routes";
 import { authConfig, authFormName, submitButtonName } from "../consts/authConfig";
 import { events } from "../consts/events";
-import { errorMessages } from "../consts/errors";
+import { errorInfo, emptyField } from "../consts/errors";
 import { login, register } from "../modules/connection";
 import { statuses } from "../consts/statuses";
+import EventBus from "@/modules/eventBus";
+import { authInputs, input, loginData, registerData, URLData } from "@/types";
 
 /**
  * @description Класс модели страницы авторизации / регистрации.
  */
 export class AuthModel extends BaseModel {
+    private errorMessages: Map<string, Set<string>>;
     /**
      * @description Создаёт экземпляр страницы авторизации / регистрации.
      * @param { EventBus } eventBus Глобальная шина данных
      */
-    constructor(eventBus) {
+    constructor(eventBus: EventBus) {
         super(eventBus);
         this.errorMessages = new Map();
     }
 
-    getContent = (URLData) => {
+    getContent = (URLData: URLData) => {
         if (URLData?.URL?.URL.match(regularRoutes.loginPage)) {
             this.getLoginContent();
         } else {
@@ -49,9 +52,9 @@ export class AuthModel extends BaseModel {
      * @description Инициализирует внутренний список ошибок.
      */
     initErrorMessages = () => {
-        for (const input in authConfig) {
-            this.errorMessages.set(authConfig[input].name, new Set());
-        }
+        Object.entries(authConfig).forEach(([key, value])=> {
+            this.errorMessages.set(value.name, new Set());
+        });
     };
 
     /**
@@ -91,11 +94,11 @@ export class AuthModel extends BaseModel {
      * @param { string } inputName Название поля ввода с ошибкой
      * @param { string } errorMessage Добавляемое ообщение об ошибке 
      */
-    addError = (inputName, errorMessage) => {
+    addError = (inputName: string, errorMessage: string) => {
         const inputErrors = this.errorMessages.get(inputName);
-        if (!inputErrors.has(errorMessage)) {
+        if (!inputErrors?.has(errorMessage)) {
             this.eventBus.emit(events.authPage.addValidationError, inputName, errorMessage);
-            inputErrors.add(errorMessage);
+            inputErrors?.add(errorMessage);
         }
     };
 
@@ -104,11 +107,11 @@ export class AuthModel extends BaseModel {
      * @param { string } inputName Название поля ввода с ошибкой
      * @param { string } errorMessage Удаляемое сообщение об ошибке
      */
-    deleteError = (inputName, errorMessage) => {
+    deleteError = (inputName: string, errorMessage: string) => {
         const inputErrors = this.errorMessages.get(inputName);
-        if (inputErrors.has(errorMessage)) {
+        if (inputErrors?.has(errorMessage)) {
             this.eventBus.emit(events.authPage.deleteValidationError, inputName);
-            inputErrors.delete(errorMessage);
+            inputErrors?.delete(errorMessage);
         }
     };
 
@@ -116,16 +119,20 @@ export class AuthModel extends BaseModel {
      * @description Удаляет все ошибки с конкретного поля ввода.
      * @param { string } inputName Названия поля ввода с ошибками
      */
-    deleteAllErrors = (inputName) => {
+    deleteAllErrors = (inputName: string) => {
         if (!inputName) {
             return;
         }
-        for (const errorMessage of this.errorMessages.get(inputName)) {
+        let inputErrors = this.errorMessages.get(inputName);
+        if (!inputErrors) { return; }
+        for (const errorMessage of inputErrors) {
             this.deleteError(inputName, errorMessage);
         }
         let repeatePasswordName = authConfig.repeatePasswordInput.name;
         if (inputName === authConfig.passwordInput.name) {
-            for (const errorMessage of this.errorMessages.get(repeatePasswordName)) {
+            inputErrors = this.errorMessages.get(repeatePasswordName);
+            if (!inputErrors) { return; }
+            for (const errorMessage of inputErrors) {
                 this.deleteError(repeatePasswordName, errorMessage);
             }
         }
@@ -137,7 +144,9 @@ export class AuthModel extends BaseModel {
      * @param { object } inputsData Данные об авторизациии / регистрации
      * @param { object } URLData Данные о текущей странице
      */
-    submit = (inputsData = {}, URLData) => {
+    submit = (inputsData: any, URLData: URLData) => {
+        // any, потому что тип однозначно ставится в соответствие с путём,
+        // а его мы тут проверяем
         if (this.hasErrors(inputsData)) {
             return;
         }
@@ -152,7 +161,7 @@ export class AuthModel extends BaseModel {
      * @description Отправляет и обрабатывает данные об авторизации.
      * @param { object } inputsData Данные об авторизации.
      */
-    submitLogin = (inputsData) => {
+    submitLogin = (inputsData: loginData) => {
         if (!inputsData) {
             return;
         }
@@ -177,7 +186,7 @@ export class AuthModel extends BaseModel {
      * @description Отправляет и обрабатывает данные об регистрации.
      * @param { object } inputsData Данные об регистрации.
      */
-    submitRegister = (inputsData) => {
+    submitRegister = (inputsData: registerData) => {
         if (!inputsData) {
             return;
         }
@@ -204,14 +213,14 @@ export class AuthModel extends BaseModel {
      * @param { object } Данные о полях ввода формы
      * @returns { boolean } Есть ли в форме ошибки
      */
-    hasErrors = (inputsData) => {
+    hasErrors = (inputsData: any) => {
         if (!inputsData) {
             return true;
         }
         let result = false;
         for (const inputName in inputsData) {
             this.validateSingleInput(inputName, inputsData[inputName]);
-            if (this.errorMessages.get(inputName).size) {
+            if (this.errorMessages.get(inputName)?.size) {
                 this.eventBus.emit(events.authPage.wrongInput, inputName);
                 result = true;
             }
@@ -224,23 +233,22 @@ export class AuthModel extends BaseModel {
      * @param { string } inputName Имя проверяемого поля ввода
      * @param { string } inputValue Значение проверяемого поля ввода
      */
-    validateSingleInput = (inputName, inputValue) => {
-        if (!inputName) {
-            return;
-        }
+    validateSingleInput = (inputName: string, inputValue: string) => {
+        if (!inputName) { return; }
         if (!inputValue) {
-            this.addError(inputName, errorMessages.emptyField.message);
+            this.addError(inputName, emptyField.message);
             return;
         }
-        this.deleteError(inputName, errorMessages.emptyField.message);
-        for (const error of errorMessages[inputName]) {
-            if (error.regexp && !inputValue.match(error.regexp)) {
+        this.deleteError(inputName, emptyField.message);
+        for (const error of (errorInfo[inputName])) {
+            if (error?.regexp != /empty/ && !inputValue.match(error.regexp)) {
                 this.addError(inputName, error.message)
-            } else if (!error.regexp && inputName === 
+            } else if (error.regexp == /empty/ && inputName === 
                 authConfig.repeatePasswordInput.name) {
-                const authForm = document.forms[authFormName];
+                    
+                const authForm = document.forms[<any>authFormName];
                 let passwordValue = "";
-                for (const input of authForm) {
+                for (const input of Object.values(authForm)) {
                     if (input.name === authConfig.passwordInput.name) {
                         passwordValue = input.value;
                     }
@@ -250,6 +258,8 @@ export class AuthModel extends BaseModel {
                 } else {
                     this.deleteError(inputName, error.message)
                 }
+            } else {
+                this.deleteError(inputName, error.message);
             }
         }
     };

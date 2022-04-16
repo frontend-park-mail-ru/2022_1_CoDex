@@ -30,7 +30,6 @@ export class BaseView {
    * @param { object } routeData Конкретные данные о странице
    */
   render = (routeData) => {
-    console.log("Rendering...");
     this.routeData = routeData;
     const content = document.querySelector('.content');
     if (!content) {

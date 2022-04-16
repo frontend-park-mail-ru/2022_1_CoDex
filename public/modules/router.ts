@@ -73,7 +73,6 @@ export class Router {
      */
     go = (URL = "/") => {
         const routeData = this.getURLData(URL);
-        console.log(routeData);
         const data = {...routeData};
         if (this.currentController) {
             this.currentController.unsubscribe();

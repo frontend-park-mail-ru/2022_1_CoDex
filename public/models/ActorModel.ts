@@ -2,6 +2,8 @@ import { events } from "../consts/events";
 import { getActor } from "../modules/connection";
 import { statuses } from "../consts/statuses";
 import { BaseModel } from "./BaseModel";
+import EventBus from "@/modules/eventBus";
+import { actorData } from "@/types";
 
 /**
  * @description Класс модели страницы актёра.
@@ -11,7 +13,7 @@ export class ActorModel extends BaseModel {
      * @description Создаёт модель страницы актёра.
      * @param { EventBus } eventBus Глобальная шина событий
      */
-    constructor(eventBus) {
+    constructor(eventBus: EventBus) {
         super(eventBus);
     }
 
@@ -21,7 +23,7 @@ export class ActorModel extends BaseModel {
      * @param { object } actor Информация об актёре: 
      * имя, ID, фильмография...
      */
-    getContent = (actor) => {
+    getContent = (actor: actorData) => {
         if (!actor?.ID) {
             this.eventBus.emit(events.app.errorPage);
             return;
@@ -33,7 +35,7 @@ export class ActorModel extends BaseModel {
             } else if (response.status === statuses.OK && response.parsedResponse) {
                 this.eventBus.emit(events.actorPage.render.content, response.parsedResponse);
             }
-            if (response.status === statuses.NOT_FOUND) {
+            if (response?.status === statuses.NOT_FOUND) {
                 this.eventBus.emit(events.app.errorPageText, "Такого фильма нет :/");
             }
         });

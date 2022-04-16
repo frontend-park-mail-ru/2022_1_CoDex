@@ -1,6 +1,6 @@
 import { authConfig } from "./authConfig";
 
-export const errorMessages = {
+export const errorInfo = {
     [authConfig.emailInput.name]: [{
         message: 'Неправильный email!',
         regexp: new RegExp('^[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)' +
@@ -18,12 +18,14 @@ export const errorMessages = {
     }],
     [authConfig.repeatePasswordInput.name]: [{
         message: 'Пароли не совпадают!',
+        regexp: /empty/,
     }],
     [authConfig.nameInput.name]: [{
         message: 'Количество символов больше 30 или введены небуквенные символы!',
         regexp: /^[^0-9_!.,\-¡?÷¿/\\+=@#$%ˆ&*(){}| ~<>;:[\]]{0,30}$/,
     }],
-    emptyField: {
-        message: 'Заполните поле!',
-    },
+}
+
+export const emptyField = {
+    message: "Заполните поле!",
 }

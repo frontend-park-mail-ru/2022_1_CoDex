@@ -1,3 +1,4 @@
+import { authConfig } from "./consts/authConfig"
 import { BaseController } from "./controllers/BaseController"
 
 export type urlsList = {
@@ -61,7 +62,7 @@ export type authInputs = {
     repeatePasswordInput: input
 }
 
-type input = {
+export type input = {
     type: string,
     name: string,
     placeholder: string,
@@ -133,3 +134,12 @@ export type controllerItem = {
     event: string,
     handler: Function,
 }
+
+export type actorData = {
+    ID: string,
+}
+
+export type error = [{
+    message: string,
+    regexp: string,
+}]
