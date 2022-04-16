@@ -1,8 +1,9 @@
-import { statuses } from "../consts/statuses";
-import { urls } from "../consts/urls";
-import regeneratorRuntime from "regenerator-runtime";
+import { statuses } from "@/consts/statuses";
+import { urls } from "@/consts/urls";
+import { loginData, personalData, registerData, requestParams, requestParamsData, review } from "@/types";
+// import regeneratorRuntime from "regenerator-runtime";
 
-let CSRFToken = null;
+let CSRFToken: string | null = null;
 
 export const csrf = async () => {
         if (CSRFToken === null) {
@@ -26,7 +27,7 @@ export const csrf = async () => {
  * @param { object } params Параметры для запроса
  * @returns { object } Статус и обработанный ответ
  */
-export const sendRequest = async ({ url, method, body } = {}) => {
+const sendRequest = async (params: requestParams) => {
     //await csrf();
     let headers =  {
         "Content-Type": "application/json",
@@ -34,14 +35,13 @@ export const sendRequest = async ({ url, method, body } = {}) => {
     // if (CSRFToken != null) {
     //     headers.set("X-CSRF-Token", CSRFToken);
     // }
-    const response = await fetch(url, {
-        method: method,
+    const response = await fetch(params.url, {
+        method: params.method,
         headers: headers,
-        body: body,
+        body: params.body,
         mode: "cors",
         credentials: "include",
     });
-
     try {
         const parsedResponse = await response?.json();
         if (response.status !== statuses.OK && response.status !== statuses.CREATED) {
@@ -64,10 +64,10 @@ export const sendRequest = async ({ url, method, body } = {}) => {
  * @param { object } params Параметры для запроса
  * @returns { object } Статус и обработанный ответ
  */
- export const sendRequestAvatar = async ({ url, method, body } = {}) => {
-    const response = await fetch(url, {
-        method: method,
-        body: body,
+ export const sendRequestAvatar = async (params: requestParamsData) => {
+    const response = await fetch(params.url, {
+        method: params.method,
+        body: params.body,
         mode: "cors",
         credentials: "include",
     });
@@ -94,10 +94,11 @@ export const sendRequest = async ({ url, method, body } = {}) => {
  * @returns { object } Ответ с сервера
  */
 export const checkAuth = async () => {
-    const params = {
+    const params: requestParams = {
         url: urls.api.checkAuth,
         method: "GET",
         credentials: "include",
+        body: null,
     };
 
     try {
@@ -113,14 +114,15 @@ export const checkAuth = async () => {
  * @param { string } id ID пользователя
  * @returns { object } Данные о текущем пользователе
  */
-export const getCurrentUser = async (id) => {
+export const getCurrentUser = async (id: string) => {
     if (!id) {
         return;
     }
-    const params = {
+    const params: requestParams = {
         url: urls.api.getUser.concat('/').concat(id),
-        methd: "GET",
+        method: "GET",
         credentials: "include",
+        body: null,
     };
     try {
         return await sendRequest(params);
@@ -134,9 +136,11 @@ export const getCurrentUser = async (id) => {
  * @returns { object } Ответ с сервера
  */
 export const logout = async () => {
-    const params = {
+    const params: requestParams = {
         url: urls.api.logout,
         method: "POST",
+        credentials: null,
+        body: null,
     };
 
     try {
@@ -151,10 +155,11 @@ export const logout = async () => {
  * @param { object } user Данные о пользователе
  * @returns { object } Ответ с сервера
  */
-export const login = async (user) => {
-    const params = {
+export const login = async (user: loginData) => {
+    const params: requestParams = {
         url: urls.api.login,
         method: "POST",
+        credentials: null,
         body: JSON.stringify(user),
     };
 
@@ -170,10 +175,11 @@ export const login = async (user) => {
  * @param { object } user Данные о пользователе
  * @returns { object } Ответ с сервера
  */
-export const register = async (user) => {
-    const params = {
+export const register = async (user: registerData) => {
+    const params: requestParams = {
         url: urls.api.register,
         method: "POST",
+        credentials: null,
         body: JSON.stringify(user),
     };
 
@@ -189,10 +195,12 @@ export const register = async (user) => {
  * @param { string } collectionID ID запрашиваемой подборки
  * @returns { object } Ответ с сервера
  */
-export const getSingleCollection = async (collectionID) => {
-    const params = {
+export const getSingleCollection = async (collectionID: string) => {
+    const params: requestParams = {
         url: `${urls.api.singleCollection}/${collectionID}`,
         method: "GET",
+        credentials: null,
+        body: null,
     };
 
     try {
@@ -207,12 +215,16 @@ export const getSingleCollection = async (collectionID) => {
  * @returns { object } Ответ с сервера
  */
 export const getCollections = async () => {
-    const params = {
+    console.log("For collectioins");
+    const params: requestParams = {
         url: `${urls.api.collections}`,
         method: "GET",
+        credentials: null,
+        body: null,
     };
 
     try {
+        console.log("Sending...");
         return await sendRequest(params);
     } catch (error) {
         return null;
@@ -224,10 +236,12 @@ export const getCollections = async () => {
  * @param { string } movieID ID запрашиваемой подборки
  * @returns { object } Ответ с сервера
  */
-export const getMovie = async (movieID) => {
-    const params = {
+export const getMovie = async (movieID: string) => {
+    const params: requestParams = {
         url: `${urls.api.movie}/${movieID}`,
         method: "GET",
+        credentials: null,
+        body: null,
     };
 
     try {
@@ -242,10 +256,11 @@ export const getMovie = async (movieID) => {
  * @param { string } rating Данные о рейтинге
  * @returns { object } Ответ с сервера
  */
-export const sendUserRating = async (rating) => {
-    const params = {
+export const sendUserRating = async (rating: string) => {
+    const params: requestParams = {
         url: `${urls.api.sendRating}`,
         method: "POST",
+        credentials: null,
         body: JSON.stringify(rating),
     };
 
@@ -262,10 +277,11 @@ export const sendUserRating = async (rating) => {
  * @param { number } rating Оставленная оценка
  * @returns { object } Ответ с сервера
  */
-export const sendUserReview = async (review) => {
-    const params = {
+export const sendUserReview = async (review: review) => {
+    const params: requestParams = {
         url: `${urls.api.sendReviews}`,
         method: "POST",
+        credentials: null,
         body: JSON.stringify(review),
     };
 
@@ -281,14 +297,15 @@ export const sendUserReview = async (review) => {
  * @param { string } id ID запрашиваемого пользователя
  * @returns { object } Ответ с сервера
  */
-export const getProfile = async (id) => {
+export const getProfile = async (id: string) => {
     if (!id) {
         return;
     }
-    const params = {
+    const params: requestParams = {
         url: `${urls.api.getUser}/${id}`,
         method: "GET",
         credentials: "include",
+        body: null,
     };
     try {
         return await sendRequest(params);
@@ -302,11 +319,12 @@ export const getProfile = async (id) => {
  * @param { string } id ID запрашиваемого пользователя
  * @returns { object } Ответ с сервера
  */
-export const getBookmarks = async (id) => {
-    const params = {
+export const getBookmarks = async (id: string) => {
+    const params: requestParams = {
         url: `${urls.api.bookmarks}/${id}`,
         method: "GET",
         credentials: "include",
+        body: null,
     };
 
     try {
@@ -321,11 +339,12 @@ export const getBookmarks = async (id) => {
  * @param { string } id ID запрашиваемого пользователя
  * @returns { object } Ответ с сервера
  */
-export const getReview = async (id) => {
-    const params = {
+export const getReview = async (id: string) => {
+    const params: requestParams = {
         url: `${urls.api.reviews}/${id}`,
         method: "GET",
         credentials: "include",
+        body: null,
     };
 
     try {
@@ -341,10 +360,11 @@ export const getReview = async (id) => {
  * @param { object } personalData Новые данные
  * @returns { object } Ответ с сервера
  */
-export const sendSettingsChanges = async (personalData, userID) => {
-    const params = {
+export const sendSettingsChanges = async (personalData: personalData, userID: string) => {
+    const params: requestParams = {
         url: `${urls.api.changeProfile}/${userID}`,
         method: "POST",
+        credentials: null,
         body: JSON.stringify(personalData),
     };
 
@@ -360,10 +380,11 @@ export const sendSettingsChanges = async (personalData, userID) => {
  * @param { object } formData Новые данные
  * @returns { object } Ответ с сервера
  */
- export const sendAvatar = async (formData, userID) => {
-    const params = {
+ export const sendAvatar = async (formData: FormData, userID: string) => {
+    const params: requestParamsData = {
         url: `${urls.api.changeAvatar}/${userID}`,
         method: "POST",
+        credentials: null,
         body: formData,
     };
 
@@ -379,10 +400,12 @@ export const sendSettingsChanges = async (personalData, userID) => {
  * @param { string } actorID ID запрашиваемой подборки
  * @returns { object } Ответ с сервера
  */
-export const getActor = async (actorID) => {
-    const params = {
+export const getActor = async (actorID: string) => {
+    const params: requestParams = {
         url: `${urls.api.actor}/${actorID}`,
         method: "GET",
+        credentials: null,
+        body: null,
     };
 
     try {

@@ -1,4 +1,4 @@
-import { getProfile, getBookmarks, getReview, sendSettingsChanges, sendAvatar } from "../modules/connection.js";
+import { getProfile, getBookmarks, getReview, sendSettingsChanges, sendAvatar } from "../modules/connection";
 import { BaseModel } from "./BaseModel.js";
 import { statuses } from "../consts/statuses";
 import { events } from "../consts/events";

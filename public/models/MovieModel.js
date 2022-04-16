@@ -1,7 +1,7 @@
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
 import { authModule } from "../modules/auth.js";
-import { getMovie, sendUserRating, sendUserReview } from "../modules/connection.js";
+import { getMovie, sendUserRating, sendUserReview } from "../modules/connection";
 
 /**
  * @description Класс модели страницы одного фильма.

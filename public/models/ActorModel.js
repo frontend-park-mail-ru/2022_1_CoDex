@@ -1,5 +1,5 @@
 import { events } from "../consts/events";
-import { getActor } from "../modules/connection.js";
+import { getActor } from "../modules/connection";
 import { statuses } from "../consts/statuses";
 
 /**

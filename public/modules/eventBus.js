@@ -5,7 +5,7 @@
 /**
  * @description Класс шины событий, необходимой для MVC моделей.
  */
-class EventBus {
+export default class EventBus {
     #listeners;
     /**
      * @description Создаёт шину событий с пустыми обработчиками.

@@ -2,8 +2,8 @@ import { BaseModel } from "./BaseModel.js";
 import { regularRoutes, routes } from "../consts/routes";
 import { authConfig, authFormName, submitButtonName } from "../consts/authConfig";
 import { events } from "../consts/events";
-import { errorMessages } from "../consts/errors.js";
-import { login, register } from "../modules/connection.js";
+import { errorMessages } from "../consts/errors";
+import { login, register } from "../modules/connection";
 import { statuses } from "../consts/statuses";
 
 /**

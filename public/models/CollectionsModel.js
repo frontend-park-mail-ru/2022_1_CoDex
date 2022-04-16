@@ -1,6 +1,6 @@
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
-import { getCollections } from "../modules/connection.js";
+import { getCollections } from "../modules/connection";
 
 /**
  * @description Класс модели подборок фильмов.
@@ -19,6 +19,7 @@ export class CollectionsModel {
      * подборок.
      */
     getContent = () => {
+        console.log("Going");
         getCollections().then(
             (response) => {
                 if (!response) {

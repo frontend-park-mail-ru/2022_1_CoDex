@@ -1,6 +1,6 @@
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
-import { getSingleCollection } from "../modules/connection.js";
+import { getSingleCollection } from "../modules/connection";
 
 /**
  * @description Класс модели одной подборки фильмов.

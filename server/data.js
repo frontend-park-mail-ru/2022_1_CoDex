@@ -108,7 +108,7 @@ const startServer = (app) => {
       ],
       reviews: [
         {
-          avatarSrc: "http://localhost:3000/server/images/romantic.webp",
+          avatarSrc: "/romantic.webp",
           username: "Пётр Калашников",
           userID: "",
           rating: "9 / 10",
@@ -117,7 +117,7 @@ const startServer = (app) => {
           type: "good",
         },
         {
-          avatarSrc: "http://localhost:3000/server/images/comics.webp",
+          avatarSrc: "/comics.webp",
           username: "Анатолий Мужиков",
           userID: "",
           rating: "10 / 10",
@@ -126,7 +126,7 @@ const startServer = (app) => {
           type: "good",
         },
         {
-          avatarSrc: "http://localhost:3000/server/images/spy.webp",
+          avatarSrc: "/spy.webp",
           username: "Костя Костяной",
           userID: "",
           rating: "7 / 10",
@@ -135,7 +135,7 @@ const startServer = (app) => {
           type: "neutral",
         },
         {
-          avatarSrc: "http://localhost:3000/server/images/ourTop.webp",
+          avatarSrc: "/ourTop.webp",
           username: "Виктория Киселёва",
           userID: "",
           rating: "8 / 10",
@@ -144,7 +144,7 @@ const startServer = (app) => {
           type: "bad",
         },
         {
-          avatarSrc: "http://localhost:3000/server/images/tales.webp",
+          avatarSrc: "/tales.webp",
           username: "Баба Яга",
           userID: "",
           rating: "8 / 10",
@@ -218,7 +218,7 @@ const startServer = (app) => {
       ],
       reviews: [
         {
-          avatarSrc: "http://localhost:3000/server/images/romantic.webp",
+          avatarSrc: "/romantic.webp",
           username: "Пётр Калашников",
           userID: "",
           rating: "",
@@ -227,7 +227,7 @@ const startServer = (app) => {
           type: "good",
         },
         {
-          avatarSrc: "http://localhost:3000/server/images/comics.webp",
+          avatarSrc: "/comics.webp",
           username: "Анатолий Мужиков",
           userID: "",
           rating: "10 / 10",
@@ -236,7 +236,7 @@ const startServer = (app) => {
           type: "good",
         },
         {
-          avatarSrc: "http://localhost:3000/server/images/spy.webp",
+          avatarSrc: "/spy.webp",
           username: "Костя Костяной",
           userID: "",
           rating: "7 / 10",
@@ -245,7 +245,7 @@ const startServer = (app) => {
           type: "neutral",
         },
         {
-          avatarSrc: "http://localhost:3000/server/images/ourTop.webp",
+          avatarSrc: "/ourTop.webp",
           username: "Виктория Киселёва",
           userID: "",
           rating: "8 / 10",

@@ -1,12 +1,14 @@
-import { events } from "../consts/events";
-import { statuses } from "../consts/statuses";
-import { eventBus} from "./eventBus.js";
-import { checkAuth, getCurrentUser, logout } from "./connection.js";
+import { events } from "@/consts/events";
+import { statuses } from "@/consts/statuses";
+// import EventBus from "./eventBus.js";
+import { eventBus } from "./eventBus.js";
+import { checkAuth, getCurrentUser, logout } from "./connection";
 
 /**
  * @description Класс авторизации
  */
 class Auth {
+    
     /**
      * @description Создаёт модуль авторизации.
      * @param { eventBus } Глобальная шина событий

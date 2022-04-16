@@ -65,3 +65,40 @@ type input = {
     placeholder: string,
     title: string,
 }
+
+export type requestParams = {
+    url: string,
+    method: string,
+    credentials: string | null,
+    body: string | null,
+}
+
+export type loginData = {
+    email: string,
+    password: string,
+}
+
+export type registerData = {
+    email: string,
+    password: string,
+    repeatpassword: string,
+    username: string,
+}
+
+export type review = {
+    movieid: string,
+    reviewText: string,
+    reviewType: string,
+    userId: string,
+}
+
+export type personalData = {
+    name: string,
+}
+
+export type requestParamsData = {
+    url: string,
+    method: string,
+    credentials: string | null,
+    body: FormData | null,
+}
