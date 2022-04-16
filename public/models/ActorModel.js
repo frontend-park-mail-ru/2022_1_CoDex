@@ -1,17 +1,18 @@
 import { events } from "../consts/events";
 import { getActor } from "../modules/connection";
 import { statuses } from "../consts/statuses";
+import { BaseModel } from "./BaseModel";
 
 /**
  * @description Класс модели страницы актёра.
  */
-export class ActorModel {
+export class ActorModel extends BaseModel {
     /**
      * @description Создаёт модель страницы актёра.
      * @param { EventBus } eventBus Глобальная шина событий
      */
     constructor(eventBus) {
-        this.eventBus = eventBus;
+        super(eventBus);
     }
 
     /**

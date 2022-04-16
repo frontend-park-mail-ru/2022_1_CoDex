@@ -2,14 +2,14 @@ import "./index.scss";
 import { regularRoutes } from "./consts/routes";
 import { Router } from "./modules/router";
 import { authModule } from "./modules/auth";
-import { HeaderController } from "./controllers/HeaderController.js";
-import { HomeController } from "./controllers/HomeController.js";
-import { AuthController } from "./controllers/AuthController.js";
-import { SingleCollectionController } from "./controllers/SingleCollectionController.js";
-import { CollectionsController } from "./controllers/CollectionsController.js";
-import { MovieController } from "./controllers/MovieController.js";
-import { ProfileController } from "./controllers/ProfileController.js";
-import { ActorController } from "./controllers/ActorController.js";
+import { HeaderController } from "./controllers/HeaderController";
+import { HomeController } from "./controllers/HomeController";
+import { AuthController } from "./controllers/AuthController";
+import { SingleCollectionController } from "./controllers/SingleCollectionController";
+import { CollectionsController } from "./controllers/CollectionsController";
+import { MovieController } from "./controllers/MovieController";
+import { ProfileController } from "./controllers/ProfileController";
+import { ActorController } from "./controllers/ActorController";
 
 //Выключили сервис воркер if ('serviceWorker' in navigator) {
 //   navigator.serviceWorker.register('/sw.js', {scope: '/'})

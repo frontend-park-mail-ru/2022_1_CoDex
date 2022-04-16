@@ -1,7 +1,7 @@
 import { events } from "../consts/events";
 import { AuthModel } from "../models/AuthModel.js";
 import { AuthView } from "../views/AuthView/AuthView.js";
-import { BaseController } from "./BaseController.js";
+import { BaseController } from "./BaseController";
 
 export class AuthController extends BaseController {
     constructor() {
@@ -17,7 +17,8 @@ export class AuthController extends BaseController {
             },
             { 
                 event: events.authPage.addValidationError, 
-                handler: this.view.addErrorMessage },
+                handler: this.view.addErrorMessage 
+            },
             { 
                 event: events.authPage.deleteValidationError, 
                 handler: this.view.deleteErrorMessage 

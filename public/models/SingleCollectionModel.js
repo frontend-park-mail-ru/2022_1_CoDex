@@ -1,17 +1,18 @@
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
 import { getSingleCollection } from "../modules/connection";
+import { BaseModel } from "./BaseModel";
 
 /**
  * @description Класс модели одной подборки фильмов.
  */
-export class SingleCollectionModel {
+export class SingleCollectionModel extends BaseModel {
     /**
      * @description Создаёт экземляр модели одной подборки фильмов.
      * @param { EventBus } eventBus Глобальная шина событий
      */
     constructor(eventBus) {
-        this.eventBus = eventBus;
+        super(eventBus);
     }
 
     /**

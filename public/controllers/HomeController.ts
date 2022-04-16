@@ -1,6 +1,6 @@
 import { HomeModel } from "../models/HomeModel.js";
 import { HomeView } from "../views/HomeView/HomeView.js";
-import { BaseController } from "./BaseController.js";
+import { BaseController } from "./BaseController";
 
 /**
  * @description Класс контроллера домашней страницы.

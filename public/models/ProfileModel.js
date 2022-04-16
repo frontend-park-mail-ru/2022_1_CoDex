@@ -1,5 +1,5 @@
 import { getProfile, getBookmarks, getReview, sendSettingsChanges, sendAvatar } from "../modules/connection";
-import { BaseModel } from "./BaseModel.js";
+import { BaseModel } from "./BaseModel";
 import { statuses } from "../consts/statuses";
 import { events } from "../consts/events";
 

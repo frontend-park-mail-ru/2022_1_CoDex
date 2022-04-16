@@ -1,4 +1,4 @@
-import { BaseController } from "./BaseController.js";
+import { BaseController } from "./BaseController";
 import { SingleCollectionView } from "../views/SingleCollectionView/SingleCollectionView.js";
 import { SingleCollectionModel } from "../models/SingleCollectionModel";
 import { events } from "../consts/events";

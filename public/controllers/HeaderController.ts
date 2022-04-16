@@ -1,7 +1,7 @@
 import { events } from "../consts/events";
 import { HeaderModel } from "../models/HeaderModel.js";
 import { HeaderView } from "../views/HeaderView/HeaderView.js";
-import { BaseController } from "./BaseController.js";
+import { BaseController } from "./BaseController";
 
 export class HeaderController extends BaseController {
     constructor() {

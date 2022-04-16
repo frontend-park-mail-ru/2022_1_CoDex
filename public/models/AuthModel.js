@@ -1,4 +1,4 @@
-import { BaseModel } from "./BaseModel.js";
+import { BaseModel } from "./BaseModel";
 import { regularRoutes, routes } from "../consts/routes";
 import { authConfig, authFormName, submitButtonName } from "../consts/authConfig";
 import { events } from "../consts/events";

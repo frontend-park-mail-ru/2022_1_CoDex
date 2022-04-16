@@ -1,7 +1,7 @@
 import { events } from "../consts/events";
 import { MovieModel } from "../models/MovieModel.js";
 import { MovieView } from "../views/MovieView/MovieView.js";
-import { BaseController } from "./BaseController.js";
+import { BaseController } from "./BaseController";
 
 /**
  * @description Класс контроллера страницы одного фильма.

@@ -2,17 +2,18 @@ import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
 import { authModule } from "../modules/auth";
 import { getMovie, sendUserRating, sendUserReview } from "../modules/connection";
+import { BaseModel } from "./BaseModel";
 
 /**
  * @description Класс модели страницы одного фильма.
  */
-export class MovieModel {
+export class MovieModel extends BaseModel {
     /**
      * @description Создаёт модель страницы одного фильма.
      * @param { EventBus } eventBus Глобальная шина событий
      */
     constructor(eventBus) {
-        this.eventBus = eventBus;
+        super(eventBus);
     }
 
     /**

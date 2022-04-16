@@ -55,7 +55,6 @@ export class Router {
                         return;
                     }
                     e.preventDefault();
-                    console.log("I hear");
                     let data = {
                         URL: closestLink.getAttribute("href"),
                     }

@@ -1,7 +1,7 @@
 import { events } from "../consts/events";
 import { ProfileModel } from "../models/ProfileModel.js";
 import { ProfileView } from "../views/ProfileView/ProfileView.js";
-import { BaseController } from "./BaseController.js";
+import { BaseController } from "./BaseController";
 
 /**
  * @description Класс контроллера страницы профиля пользователя.
@@ -56,10 +56,10 @@ export class ProfileController extends BaseController {
                 event: events.profilePage.render.changedProfile,
                 handler: this.view.reRenderPage,
             },
-            {
-                event: events.profilePage.render.changedAvatar,
-                handler: this.view.renderChangedProfile,
-            },
+            // {
+            //     event: events.profilePage.render.changedAvatar,
+            //     handler: this.view.renderChangedProfile,
+            // },
             {
                 event: events.header.logout,
                 handler: this.view.reRenderPage,

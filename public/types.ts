@@ -128,3 +128,8 @@ export type URLData = {
         resourceID: number,
     }
 }
+
+export type controllerItem = {
+    event: string,
+    handler: Function,
+}

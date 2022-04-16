@@ -1,12 +1,13 @@
+import { BaseModel } from "./BaseModel";
 /**
  * @description Класс модели домашней страницы.
  */
-export class HomeModel {
+export class HomeModel extends BaseModel {
     /**
      * @description Создаёт модель домашней страницы.
      */
     constructor(eventBus) {
-        this.eventBus = eventBus;
+        super(eventBus);
     }
     // TODO
 }

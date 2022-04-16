@@ -1,7 +1,7 @@
 import { events } from "../consts/events";
 import { ActorView } from "../views/ActorView/ActorView.js";
 import { ActorModel } from "../models/ActorModel.js";
-import { BaseController } from "./BaseController.js";
+import { BaseController } from "./BaseController";
 
 /**
  * @description Класс контроллера страницы актёра.

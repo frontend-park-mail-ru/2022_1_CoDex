@@ -1,6 +1,6 @@
 import { events } from "../consts/events";
 import { headerLinks } from "../consts/header";
-import { BaseModel } from "./BaseModel.js";
+import { BaseModel } from "./BaseModel";
 
 /**
  * @description Класс модели навигационной панели.
