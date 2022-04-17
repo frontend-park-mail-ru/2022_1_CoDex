@@ -1,4 +1,4 @@
-import {BaseView} from '../BaseView/BaseView.js';
+import {BaseView} from '../BaseView/BaseView';
 
 /**
  * @description Класс представления домашней страницы.

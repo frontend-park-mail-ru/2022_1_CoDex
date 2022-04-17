@@ -1,21 +1,25 @@
 import { events } from '../../consts/events';
-import { BaseView } from '../BaseView/BaseView.js';
+import { BaseView } from '../BaseView/BaseView';
 import { getURLArguments } from '../../modules/router';
 import profilePug from '../../components/profile/profile.pug';
 import profileSettings from '../../components/profile/profileInfo/profileInfo.pug';
 import profileReview from '../../components/profile/profileReview/profileReview.pug';
 import profileBookmark from '../../components/profile/profileBookmark/profileBookmark.pug';
 import { authModule } from '../../modules/auth';
+import EventBus from '@/modules/eventBus';
+import { userData } from '@/types';
+
 /**
  * @description Класс представления страницы профиля.
  */
 export class ProfileView extends BaseView {
+  user: any;
   /**
      * @description Создаёт представление страницы профиля.
      * @param { EventBus } eventBus Глобальная шина событий
      * @param { Object } data Данные, необходимые для создания представления
     */
-  constructor(eventBus, { data = {} } = {}) {
+  constructor(eventBus: EventBus, data: object) {
     super(eventBus, data);
   }
 
@@ -31,7 +35,7 @@ export class ProfileView extends BaseView {
  * @description Отрисовывает страницу профиля (часть с данными о пользователе).
  * @param { object } data Данные о пользователе
  */
-  renderProfileInfo = (data) => {
+  renderProfileInfo = (data: userData) => {
     this.user = data;
     this.user.isThisUser = authModule.user ? (data.ID === authModule.user.ID) : false;
     const content = document.querySelector('.content');
@@ -46,7 +50,7 @@ export class ProfileView extends BaseView {
  * @description Отрисовывает страницу профиля (часть с личными подборками).
  * @param { object } data Данные о подборках пользователя
  */
-  renderBookmarks = (data) => {
+  renderBookmarks = (data: userData) => {
     const profileBookmarks = document.querySelector('.profile-bookmarks');
     if (profileBookmarks) {
       profileBookmarks.innerHTML += profileBookmark(data);
@@ -56,7 +60,7 @@ export class ProfileView extends BaseView {
  * @description Отрисовывает страницу профиля (часть с активностью).
  * @param { object } data Данные об активности пользователя
  */
-  renderReviews = (data) => {
+  renderReviews = (data: userData) => {
     const profileReviews = document.querySelector('.profile-reviews');
     if (profileReviews) {
       profileReviews.innerHTML += profileReview(data);
@@ -66,7 +70,7 @@ export class ProfileView extends BaseView {
  * @description Отображает изменения (после изменений полей данных пользователя).
  * @param { object } data Новые данные
  */
-  renderChangedProfile = (data) => {
+  renderChangedProfile = (data: userData) => {
     this.user = data;
     this.user.isThisUser = authModule.user ? (data.ID === authModule.user.ID) : false;
     const profileInfo = document.querySelector('.profile-info');
@@ -78,31 +82,38 @@ export class ProfileView extends BaseView {
 
   addSettingsButtonListener = () => {
     const settings = document.querySelector('.profile-info__container');
+    const openSettingsButton = document?.querySelector('.profile-info__container__settings') as HTMLElement;
+    const openedSettingsForm = document?.querySelector('.profile-info__container__settings__form') as HTMLElement;
+    const settingsInput = document?.querySelector('.profile-info__container__settings__form__name-input') as HTMLInputElement;
+
+    if (!settings) return;
     settings.addEventListener('click', (e) => {
       e.preventDefault();
-      const target = e.target;
-      if (target.classList.contains('profile-info__container__settings')) {
-        document.querySelector('.profile-info__container__settings').style.display = 'none';
-        document.querySelector('.profile-info__container__settings__form').style.display = 'block';
+      const target = e.target as HTMLSelectElement;
+      if (!target) return;
+      if (target?.classList.contains('profile-info__container__settings')) {
+        openSettingsButton.style.display = 'none';
+        openedSettingsForm.style.display = 'block';
       }
-      if (target.value == 'Отменить') {
-        document.querySelector('.profile-info__container__settings').style.display = 'flex';
-        document.querySelector('.profile-info__container__settings__form').style.display = 'none';
-        document.querySelector('.profile-info__container__settings__form__name-input').value = '';
-      } else if (target.value == 'Сохранить') {
-        document.querySelector('.profile-info__container__settings').style.display = 'flex';
-        document.querySelector('.profile-info__container__settings__form').style.display = 'none';
+      
+      if (target.value === 'Отменить') {
+        openSettingsButton.style.display = 'flex';
+        openedSettingsForm.style.display = 'none';
+        settingsInput.value = '';
+      } else if (target.value === 'Сохранить') {
+        openSettingsButton.style.display = 'flex';
+        openedSettingsForm.style.display = 'none';
         this.submitChange();
       }
     });
   };
   submitChange = () => {
-    const inputName = document.querySelector('.profile-info__container__settings__form__name-input').value;
-    if (!this.validateInput(inputName)) {
+    const settingsInput = document.querySelector('.profile-info__container__settings__form__name-input') as HTMLInputElement;
+    if (!this.validateInput(settingsInput.value)) {
       return;
     } else {
-      document.querySelector('.profile-info__container__settings__form__name-input').value = '';
-      this.eventBus.emit(events.profilePage.sendChanges, { name: inputName }, this.user.ID);
+      settingsInput.value = '';
+      this.eventBus.emit(events.profilePage.sendChanges, { name: settingsInput.value }, this.user.ID);
     }
   };
   /**
@@ -110,7 +121,7 @@ export class ProfileView extends BaseView {
  * @param { string } inputName Имя поля ввода.
  * @return { bool } Корректны ли новые данные
  */
-  validateInput = (inputName) => {
+  validateInput = (inputName: string) => {
     if (!inputName) {
       return null;
     } else {
@@ -119,25 +130,35 @@ export class ProfileView extends BaseView {
   };
 
   listenAvatarChanged = () => {
-    const avatarInput = document.querySelector('.profile-info__avatar__input');
-    const avatarDiv = document.querySelector('.avatar');
+    const avatarInput = document.querySelector('.profile-info__avatar__input') as HTMLElement;
+    const avatarDiv = document.querySelector('.avatar') as HTMLElement;
     if (!avatarInput) {
       return;
     }
-    avatarInput.addEventListener('click', (e) => {
-      avatarInput.addEventListener('change', (ee) => {
-        if (!ee.target.files[0]) {
+    if (!avatarDiv) {
+      return;
+    }
+    avatarInput.addEventListener('click', (e: Event) => {
+      avatarInput.addEventListener('change', (ee: Event) => {
+        const target = ee.target as HTMLInputElement;
+        if (!target) {
           return;
         }
+        const file = target.files as FileList;
+        if (!file) {
+          return
+        };
         const reader = new FileReader();
-        reader.addEventListener('load', (event) => {
-          avatarDiv.style.backgroundImage = `url(${event.target.result})`;
+        reader.addEventListener('load', (event : Event) => {
+          const avatarTarget = event.target as FileReader;
+          if (!avatarTarget) return;
+          avatarDiv.style.backgroundImage = `url(${avatarTarget.result})`;
         });
-        reader.readAsDataURL(ee.target.files[0]);
+        reader.readAsDataURL(file[0]);
 
         const formData = new FormData();
-        if (ee.target.files[0]) {
-          formData.append('avatar', ee.target.files[0]);
+        if (file[0]) {
+          formData.append('avatar', file[0]);
           this.eventBus.emit(events.profilePage.sendAvatar, formData, this.user.ID);
         }
       });

@@ -36,7 +36,7 @@ const movieController = new MovieController();
 const profileController = new ProfileController();
 const actorController = new ActorController();
 
-const router = new Router(root);
+const router = new Router(root as HTMLElement);
 
 router.register(regularRoutes.homePage, collectionsController)
   .register(regularRoutes.singleCollectionPage, singleCollectionController)

@@ -2,7 +2,7 @@
   "name": "akino-codex",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "main.ts",
   "scripts": {
     "start": "webpack server --mode=development --config ./webpack.config.js",
     "server": "node server/index.js",
@@ -57,6 +57,6 @@
     "url-loader": "^4.1.1",
     "webpack": "^5.71.0",
     "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.7.4"
+    "webpack-dev-server": "^4.8.1"
   }
 }

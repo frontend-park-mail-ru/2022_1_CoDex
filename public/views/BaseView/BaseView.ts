@@ -1,18 +1,24 @@
-import {root} from '../../main.js';
+import { root } from '../../main';
 import loader from '../../components/loader/loader.pug';
-import {events} from '../../consts/events';
-import {renderBaseView} from '../../utils/utils';
+import { events } from '../../consts/events';
+import { renderBaseView } from '../../utils/utils';
+import EventBus from '@/modules/eventBus';
+import { routerData } from '@/types';
+
 
 /**
  * @description Абстрактный класс базового представления.
  */
 export class BaseView {
+  private _data: object;
+  eventBus: EventBus;
+  routeData: routerData;
   /**
      * @description Создаёт базовое представление.
      * @param { EventBus } eventBus Глобальная шина событий
      * @param { Object } data Данные, необходимые для создания представления
      */
-  constructor(eventBus, {data = {}} = {}) {
+  constructor(eventBus: EventBus, data: object) {
     this._data = data;
     this.eventBus = eventBus;
   }
@@ -22,18 +28,22 @@ export class BaseView {
      * контента страницы. Функция базового класса предназначена для
      * переопределения.
      */
-  emitGetContent = () => {};
+  emitGetContent = () => { };
 
   /**
    * @description Отрисовывает страницу целиком, вместе с
    * навигационной панелью и нижним колонтитулом.
    * @param { object } routeData Конкретные данные о странице
    */
-  render = (routeData) => {
+  render = (routeData : routerData) => {
     this.routeData = routeData;
     const content = document.querySelector('.content');
     if (!content) {
-      root.innerHTML = renderBaseView();
+      if (root) {
+        root.innerHTML = renderBaseView();
+      } else {
+        return;
+      }
       this.eventBus.emit(events.header.render.header);
     } else {
       content.innerHTML = loader();

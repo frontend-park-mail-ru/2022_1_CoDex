@@ -1,4 +1,4 @@
-import {BaseView} from '../BaseView/BaseView.js';
+import {BaseView} from '../BaseView/BaseView';
 import {getURLArguments} from '../../modules/router';
 import {authModule} from '../../modules/auth';
 import {slider} from '@/utils/slider';

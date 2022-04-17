@@ -1,4 +1,4 @@
-import {BaseView} from '../BaseView/BaseView.js';
+import {BaseView} from '../BaseView/BaseView';
 import authContent from '../../components/auth/auth.pug';
 import {events} from '../../consts/events';
 import {authFormName, authConfig} from '../../consts/authConfig';

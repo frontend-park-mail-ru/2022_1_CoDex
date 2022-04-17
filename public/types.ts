@@ -148,7 +148,7 @@ export type ratingRequest = {
 }
 
 export type userData = {
-    ID: number,
+    ID: string,
     username: string,
     email: string,
     imgsrc: string,

@@ -2,6 +2,7 @@
  * @description Отрисовывает и меняет указанный слайдер.
  * @param { string } selector Селектор для слайдера
  */
+
 export const slider = (selector: string) => {
     const slider = document.querySelector(selector);
     const sliderList = slider?.querySelector(".slider__list") as HTMLElement;

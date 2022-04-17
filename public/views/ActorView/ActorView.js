@@ -1,5 +1,5 @@
 import {events} from '../../consts/events';
-import {BaseView} from '../BaseView/BaseView.js';
+import {BaseView} from '../BaseView/BaseView';
 import {getURLArguments} from '../../modules/router';
 import {slider} from '@/utils/slider';
 import actorPageContent from '../../components/actor/actor.pug';

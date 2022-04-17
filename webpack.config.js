@@ -6,17 +6,15 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
-    entry: "./public/main.js",
+    entry: "./public/main.ts",
     devtool: "source-map",
-    resolve: {
-        extensions: ['.ts', '.tsx', '.js'],
-    },
     output: {
         path: path.resolve(__dirname, 'public/dist'),
         filename: "bundle.js",
         publicPath: "/",
-        sourceMapFilename: '[name].[fullhash:8].map',
-        chunkFilename: '[id].[fullhash:8].js',
+    },
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js'],
     },
     devServer: {
         historyApiFallback: true,

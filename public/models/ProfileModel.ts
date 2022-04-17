@@ -2,21 +2,25 @@ import { getProfile, getBookmarks, getReview, sendSettingsChanges, sendAvatar } 
 import { BaseModel } from "./BaseModel";
 import { statuses } from "../consts/statuses";
 import { events } from "../consts/events";
+import EventBus from "@/modules/eventBus";
+import { personalData, userData } from "@/types";
+
 
 /**
  * @description Класс модели страницы профиля.
  */
 export class ProfileModel extends BaseModel {
+    errorMessages: Map<any, any>;
     /**
      * @description Создаёт модель страницы одного фильма.
      * @param { EventBus } eventBus Глобальная шина событий
      */
-    constructor(eventBus) {
+    constructor(eventBus: EventBus) {
         super(eventBus);
         this.errorMessages = new Map();
     }
 
-    getProfileInfo = (user) => {
+    getProfileInfo = (user: userData) => {
         getProfile(user.ID).then((response) => {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
@@ -30,7 +34,7 @@ export class ProfileModel extends BaseModel {
         });
     }
 
-    getBookmarks = (user) => {
+    getBookmarks = (user: userData) => {
         getBookmarks(user.ID).then((response) => {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
@@ -44,7 +48,7 @@ export class ProfileModel extends BaseModel {
         });
     }
 
-    getReviews = (user) => {
+    getReviews = (user: userData) => {
         getReview(user.ID).then((response) => {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
@@ -58,12 +62,12 @@ export class ProfileModel extends BaseModel {
         });
     }
 
-    getContent = (user) => {
+    getContent = (user: userData) => {
         this.getBookmarks(user);
         this.getReviews(user);
     }
 
-    sendSettingsCnanges = (inputsData, userID) => {
+    sendSettingsCnanges = (inputsData: personalData, userID: string) => {
         sendSettingsChanges(inputsData, userID).then((response) => {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
@@ -77,7 +81,7 @@ export class ProfileModel extends BaseModel {
         })
     }
 
-    sendSettingsAvatar = (formData, userID) => {
+    sendSettingsAvatar = (formData: FormData, userID: string) => {
         sendAvatar(formData, userID).then((response) => {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);

@@ -2,7 +2,7 @@
 
 const cacheName = "fallback";
 
-const cacheURLs = [ "main.js" ];
+const cacheURLs = [ "main.ts" ];
 self.addEventListener("install", (e) => {
     e.waitUntil(
         caches.open(cacheName).then(
