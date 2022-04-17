@@ -8,7 +8,7 @@
     "server": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "doc": "jsdoc -c jsdoc.json public/*/*/*.js -r --readme README.md",
-    "lint": "npx eslint public/*/*/*.js --fix"
+    "lint": "eslint --cache --ext .js,.ts public"
   },
   "repository": {
     "type": "git",
@@ -42,6 +42,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.8",
     "@babel/preset-env": "^7.16.11",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
     "babel-loader": "^8.2.3",
     "copy-webpack-plugin": "^10.2.4",
     "eslint": "^8.10.0",
