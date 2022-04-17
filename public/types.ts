@@ -173,3 +173,85 @@ export type singleCollectionMovie = {
     info: string,
     description: string,
 }
+
+export type actor = {
+    ID: string,
+    avatar: string,
+    birthdate: string,
+    birthplace: string,
+    career: string,
+    genres: string,
+    height: string,
+    name: string,
+    originalName: string,
+    total: string,
+}
+
+export type movieActor = {
+    name: string,
+    href: string,
+}
+
+export type movieInfo = {
+    ID: string,
+    budget: string,
+    cast: movieActor[],
+    country: string,
+    description: string,
+    director: string,
+    duration: string,
+    genre: string,
+    gross: string,
+    info: string,
+    mainCast: string,
+    motto: string,
+    originalTitle: string,
+    poster: string,
+    rating: string,
+    title: string,
+    trailerHref: string,
+    year: string,
+}
+
+export type relatedItem = {
+    href: string,
+    poster: string,
+    title: string,
+}
+
+export type actorPageData = {
+    actor: actor,
+    movies: movieInfo[],
+    related: relatedItem[],
+}
+
+export type authPageData = {
+    authFormName: string,
+    inputs: input[],
+    login: boolean,
+    submitButtonName: string,
+}
+
+export type review = {
+    avatarSrc: string,
+    content: string,
+    date: string,
+    rating: string,
+    type: string,
+    userID: string,
+    username: string,
+}
+
+export type moviePageData = {
+    movie: movieInfo,
+    related: relatedItem[],
+    reviewex: string,
+    reviews: review[],
+    userrating: string,
+}
+
+export type singleCollectionPageData = {
+    description: string,
+    movielist: movieInfo[],
+    title: string,
+}

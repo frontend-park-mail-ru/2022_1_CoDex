@@ -1,3 +1,4 @@
+import EventBus from '@/modules/eventBus';
 import {BaseView} from '../BaseView/BaseView';
 
 /**
@@ -10,7 +11,7 @@ export class HomeView extends BaseView {
      * @param { EventBus } eventBus Глобальная шина событий
      * @param { object } data Данные для представления.
      */
-  constructor(eventBus, {data = {}} = {}) {
+  constructor(eventBus: EventBus, {data = {}} = {}) {
     super(eventBus, data);
   }
 }

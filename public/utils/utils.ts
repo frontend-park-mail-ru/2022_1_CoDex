@@ -8,9 +8,9 @@ import { routes } from "../consts/routes";
  * @param { string } html HTML содержание создаваемого элемента
  * @return { HTMLDivElement } Созданный HTML Div
  */
-export function createElementFromHTML(html) {
+export function createElementFromHTML(html: string | null) {
   const temp = document.createElement("div");
-  temp.innerHTML = html;
+  temp.innerHTML = html ? html : "";
   return temp.firstElementChild;
 }
 

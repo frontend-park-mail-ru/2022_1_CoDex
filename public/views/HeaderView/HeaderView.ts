@@ -1,21 +1,24 @@
-import {authModule} from '../../modules/auth';
-import {events} from '../../consts/events';
-import {routes} from '../../consts/routes';
-import {renderBaseView, createElementFromHTML} from '../../utils/utils';
 import {BaseView} from '../BaseView/BaseView';
-import loginButton from '../../components/header/loginButton.pug';
-import userBlock from '../../components/header/userBlock/userBlock.pug';
-import logoutButton from '../../components/header/logoutButton.pug';
+import EventBus from '@/modules/eventBus';
+import {events} from '@/consts/events';
+import {routes} from '@/consts/routes';
+import {renderBaseView, createElementFromHTML} from '@/utils/utils';
+import {authModule} from '@/modules/auth';
+import loginButton from '@/components/header/loginButton.pug';
+import userBlock from '@/components/header/userBlock/userBlock.pug';
+import logoutButton from '@/components/header/logoutButton.pug';
 
 /**
  * @description Класс представления навигационной панели.
  */
 export class HeaderView extends BaseView {
+  private searchIsClicked: boolean;
+  private verticalMenuIsClicked: boolean;
   /**
      * @description Создаёт представление навигационной панели.
      * @param { eventBus } eventBus Глобальная шина событий
      */
-  constructor(eventBus) {
+  constructor(eventBus: EventBus) {
     super(eventBus);
     this.searchIsClicked = false;
     this.verticalMenuIsClicked = false;
@@ -40,21 +43,21 @@ export class HeaderView extends BaseView {
      * @param { string } buttonHref Ссылка кнопки навигационной панели, которую
      * надо сделать активной
      */
-  changeActiveButton = (buttonHref) => {
+  changeActiveButton = (buttonHref: string) => {
     this.unactiveAllButtons();
     if (!buttonHref) {
       return;
     }
     const header = this.getHeaderFromDOM();
-    const buttons = header.querySelectorAll('.navbar__menu-btn');
-    if (!buttons.length) {
+    const buttons = header?.querySelectorAll('.navbar__menu-btn');
+    if (!buttons?.length) {
       return;
     }
-    for (const button of buttons) {
+    Object.entries(buttons).forEach(([name, button]) => {
       if (button.getAttribute('href') === buttonHref) {
         button.classList.add('navbar__menu-btn__active');
       }
-    }
+    });
   };
 
   /**
@@ -65,17 +68,17 @@ export class HeaderView extends BaseView {
     if (!activeButtons) {
       return;
     }
-    for (const button of activeButtons) {
+    Object.entries(activeButtons).forEach(([name, button]) => {
       button.classList.remove('navbar__menu-btn__active');
-    }
+    });
   };
 
   /**
      * @description Убирает кнопку выхода с навигационной панели
      */
   removeLogoutButton = () => {
-    const logoutBtn = [...document.querySelectorAll('.vertival-menu__btn-container a')]
-    .find((elem) => elem.textContent.includes('Выйти'));
+    const logoutBtn = [...Object.values(document.querySelectorAll('.vertival-menu__btn-container a'))]
+    .find((elem) => elem.textContent?.includes('Выйти'));
     if (logoutBtn) {
       logoutBtn.remove();
     }
@@ -89,7 +92,7 @@ export class HeaderView extends BaseView {
     if (!userBlock) {
       return;
     }
-    userBlock.replaceWith(createElementFromHTML(loginButton()));
+    userBlock.replaceWith(<Node>createElementFromHTML(loginButton()));
   };
 
   /**
@@ -104,7 +107,7 @@ export class HeaderView extends BaseView {
       return;
     }
 
-    changeBlock.replaceWith(createElementFromHTML(userBlock({
+    changeBlock.replaceWith(<Node>createElementFromHTML(userBlock({
       imgsrc: authModule.user.imgsrc,
       userID: authModule.user.ID,
       profileHref: routes.profilePage,
@@ -136,18 +139,6 @@ export class HeaderView extends BaseView {
         this.eventBus.emit(events.header.logout);
       });
     });
-  };
-
-  /**
-     * @description Находит и удаляет кнопку выхода из аккаунта
-     * из вертикального меню.
-     */
-  removeLogoutButton = () => {
-    const logoutButton = [...document.querySelectorAll('vertical-menu__btn-container a')]
-        .find((button) => button.textContent.includes('Выйти'));
-    if (logoutButton) {
-      logoutButton.remove();
-    }
   };
 
 

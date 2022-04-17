@@ -1,5 +1,5 @@
 import { events } from "@/consts/events";
-import { ActorView } from "../views/ActorView/ActorView.js";
+import { ActorView } from "@/views/ActorView/ActorView";
 import { ActorModel } from "@/models/ActorModel";
 import { BaseController } from "./BaseController";
 

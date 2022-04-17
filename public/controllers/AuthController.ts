@@ -1,6 +1,6 @@
 import { events } from "../consts/events";
 import { AuthModel } from "@/models/AuthModel";
-import { AuthView } from "../views/AuthView/AuthView.js";
+import { AuthView } from "@/views/AuthView/AuthView";
 import { BaseController } from "./BaseController";
 
 export class AuthController extends BaseController {

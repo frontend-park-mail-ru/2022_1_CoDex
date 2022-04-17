@@ -1,25 +1,28 @@
+import { moviePageData, review } from '@/types';
+import EventBus from '@/modules/eventBus';
 import {BaseView} from '../BaseView/BaseView';
-import {getURLArguments} from '../../modules/router';
-import {authModule} from '../../modules/auth';
+import {events} from '@/consts/events';
+import {getURLArguments} from '@/modules/router';
+import {authModule} from '@/modules/auth';
+import {createElementFromHTML} from '@/utils/utils';
 import {slider} from '@/utils/slider';
-import {events} from '../../consts/events';
-import moviePageContent from '../../components/movie/movie.pug';
-import reviewInvitation from '../../components/reviewInvitation/reviewInvitation.pug';
-import reviewInputBlock from '../../components/reviewInputBlock/reviewInputBlock.pug';
-import reviewSuccessBlock from '../../components/reviewSuccessBlock/reviewSuccessBlock.pug';
-import createReviewCard from '../../components/reviewCard/createReviewCard.pug';
-import {createElementFromHTML} from '../../utils/utils';
+import moviePageContent from '@/components/movie/movie.pug';
+import reviewInvitation from '@/components/reviewInvitation/reviewInvitation.pug';
+import reviewInputBlock from '@/components/reviewInputBlock/reviewInputBlock.pug';
+import reviewSuccessBlock from '@/components/reviewSuccessBlock/reviewSuccessBlock.pug';
+import createReviewCard from '@/components/reviewCard/createReviewCard.pug';
 
 /**
  * @description Класс представления страницы одного фильма
  */
 export class MovieView extends BaseView {
+  private movieID: string;
   /**
      * @description Создаёт представление страницы одного фильма.
      * @param { EventBus } eventBus Глобальная шина событий
      * @param { Object } data Данные, необходимые для создания представления
     */
-  constructor(eventBus, {data = {}} = {}) {
+  constructor(eventBus: EventBus, {data = {}} = {}) {
     super(eventBus, data);
   }
 
@@ -36,8 +39,7 @@ export class MovieView extends BaseView {
      * @description Отрисовывает контент страницы фильма.
      * @param { Object } data Информация о фильме (от названия до отзывов)
      */
-  renderContent = (data) => {
-    // data: poster, title, rating, originalTitle, desctiption
+  renderContent = (data: moviePageData) => {
     if (!data) {
       return;
     }
@@ -65,27 +67,28 @@ export class MovieView extends BaseView {
      * обработчики (для динамического изменения рейтинга).
      * @param { string } movieID ID текущего фильма
      */
-  renderRating = (movieID) => {
-    const rating = document.querySelector('.stars');
-    const ratingItems = document.querySelectorAll('.stars__item__single-star');
+  renderRating = (movieID: string) => {
+    const rating = document.querySelector('.stars') as HTMLElement;
+    const ratingItems = Object.values
+      (document.querySelectorAll('.stars__item__single-star')) as HTMLElement[];
     rating.addEventListener('click', (e) => {
       if (!authModule) {
         e.preventDefault();
       }
-      const target = e.target;
+      const target = e.target as HTMLElement;
       if (target.classList.contains('stars__item__single-star')) {
         removeClass('current-active');
         target.classList.add('active', 'current-active');
         const rating = {
           myRating: target.getAttribute('rating'),
-          ID: authModule?.ID,
+          ID: authModule?.user?.ID,
         };
         this.eventBus.emit(events.moviePage.sendRating, movieID, rating.myRating);
       }
     });
 
     rating.onmouseover = function(e) {
-      const target = e.target;
+      const target = e.target as HTMLElement;
       if (target.classList.contains('stars__item__single-star')) {
         removeClass('active');
         target.classList.add('active');
@@ -102,7 +105,7 @@ export class MovieView extends BaseView {
      * @description Убирает переданный класс c элементов-звёзд.
      * @param { string } removableClass
      */
-    function removeClass(removableClass) {
+    function removeClass(removableClass: string) {
       for (let i = 0, len = ratingItems.length; i < len; i++) {
         ratingItems[i].classList.remove(removableClass);
       }
@@ -111,7 +114,7 @@ export class MovieView extends BaseView {
      * @description Добавляет переданный класс элементам-звёздам.
      * @param { string } addbleClass
      */
-    function addClass(addbleClass) {
+    function addClass(addbleClass: string) {
       for (let i = 0, len = ratingItems.length; i < len; i++) {
         ratingItems[i].classList.add(addbleClass);
       }
@@ -121,7 +124,7 @@ export class MovieView extends BaseView {
      * @description Помещает все переданные элементы активными.
      * @param { HTMLElement[] } items Массив элементов
      */
-    function mouseOverActive(items) {
+    function mouseOverActive(items: HTMLElement[]) {
       for (let i = 0, len = items.length; i < len; i++) {
         if (items[i].classList.contains('active')) {
           break;
@@ -135,7 +138,7 @@ export class MovieView extends BaseView {
      * @description Помещает все переданные элементы неактивными.
      * @param { HTMLElement[] } items Массив элементов
      */
-    function mouseOutOfActive(items) {
+    function mouseOutOfActive(items: HTMLElement[]) {
       for (let i = items.length - 1; i >= 0; i--) {
         if (items[i].classList.contains('current-active')) {
           break;
@@ -150,8 +153,8 @@ export class MovieView extends BaseView {
      * @description Выводит сообщение о просьбе зарегистрироваться.
      * @param { string } movieID ID текущего фильма.
      */
-  askToLog = (movieID) => {
-    const messageArea = document.querySelector('.user-rating');
+  askToLog = (movieID: string) => {
+    const messageArea = document.querySelector('.user-rating') as HTMLElement;
     messageArea.innerHTML = `
         Чтобы поставить оценку, пожалуйста, 
         <a href= /register?redirect=movie/${movieID} class = "white_text"">
@@ -164,10 +167,10 @@ export class MovieView extends BaseView {
      * @param { string } myRating Оставленная оценка
      * @param { string } movieRating Глобальная оценка фильма
      */
-  onRatingSuccess = (myRating, movieRating) => {
-    const messageArea = document.querySelector('.user-rating');
+  onRatingSuccess = (myRating: string, movieRating: string) => {
+    const messageArea = document.querySelector('.user-rating') as HTMLElement;
     messageArea.innerHTML = `Ваша оценка: ${myRating}. Рейтинг фильма: ${movieRating}`;
-    const shortRating = document.querySelector('.short-rating');
+    const shortRating = document.querySelector('.short-rating') as HTMLElement;
     shortRating.textContent = `${movieRating}`;
   };
 
@@ -175,7 +178,7 @@ export class MovieView extends BaseView {
      * @description Отрисовывает область оставления отзыва.
      * @param { string } movieID ID текущего фильма
      */
-  renderReviewInput = (movieID) => {
+  renderReviewInput = (movieID: string) => {
     const reviewInput = document.querySelector('.send-review__input');
     if (!reviewInput) {
       return;
@@ -216,13 +219,15 @@ export class MovieView extends BaseView {
       dropdown[i].appendChild(optionListContainer);
       div.addEventListener('click', function(e) {
         e.stopPropagation();
-        e.target.nextSibling.classList.toggle('select-hide');
-        e.target.classList.toggle('select-arrow-active');
+        let target = e.target as HTMLElement;
+        let next = target.nextSibling as HTMLElement;
+        next?.classList.toggle('select-hide');
+        target.classList.toggle('select-arrow-active');
       });
     }
     document.addEventListener('click', this.closeAllSelect);
 
-    const submitButton = document.querySelector('.review-input-block__submit');
+    const submitButton = document.querySelector('.review-input-block__submit') as HTMLElement;
     submitButton.addEventListener('click', this.sendReview);
   };
 
@@ -231,17 +236,17 @@ export class MovieView extends BaseView {
      * обновляет исходный dropdown и отмечает элемент как выбранный.\
      * @param { Event } e Событие нажатия
      */
-  dropdownEventListener = (e) => {
-    const target = e.target;
-
-    const currentSelect = target.parentNode.parentNode.getElementsByTagName('select')[0];
-    const currentSelectLength = currentSelect.length;
-    const previousSelect = target.parentNode.previousSibling;
+  dropdownEventListener = (e: Event) => {
+    const target = e.target as HTMLElement;
+    const currentSelect = target?.parentElement?.parentElement?.getElementsByTagName('select')[0];
+    const currentSelectLength = currentSelect?.length;
+    const previousSelect = target.parentNode?.previousSibling as HTMLElement;
+    if (!currentSelect || !currentSelectLength || !previousSelect) { return; }
     for (let i = 0; i < currentSelectLength; i++) {
       if (currentSelect.options[i].innerHTML == target.innerHTML) {
         currentSelect.selectedIndex = i;
         previousSelect.innerHTML = 'Выбор: ' + target.innerHTML;
-        const previousSameAsSelected = target.parentNode.getElementsByClassName('same-as-selected');
+        const previousSameAsSelected = target.parentElement.getElementsByClassName('same-as-selected');
         const previousLength = previousSameAsSelected.length;
         for (let k = 0; k < previousLength; k++) {
           previousSameAsSelected[k].classList.toggle('same-as-selected');
@@ -257,7 +262,7 @@ export class MovieView extends BaseView {
      * @description Закрывает все элементы в dropdown-e, кроме выбранного.
      * @param { HTMLElement } element Выбранный элемент.
      */
-  closeAllSelect = (element) => {
+  closeAllSelect = (element: any) => {
     const items = document.getElementsByClassName('select-items');
     const selected = document.getElementsByClassName('select-selected');
     const itemsAmount = items.length;
@@ -281,21 +286,22 @@ export class MovieView extends BaseView {
    * @description Собирает данные для оставления отзыва и отправляет их в модель.
    */
   sendReview = () => {
-    const reviewText = document.querySelector('.review-input-block__text-input').value;
-    const reviewTypeText = document.querySelector('.select-selected').textContent;
+    const input = document.querySelector('.review-input-block__text-input') as HTMLFormElement;
+    const reviewText = input.value;
+    const reviewTypeText = document.querySelector('.select-selected')?.textContent;
     let reviewType = 2;
-    if (reviewTypeText.includes('Отлично')) {
+    if (reviewTypeText?.includes('Отлично')) {
       reviewType = 1;
-    } else if (reviewTypeText.includes('Неплохо')) {
+    } else if (reviewTypeText?.includes('Неплохо')) {
       reviewType = 2;
-    } else if (reviewTypeText.includes('Ужасно')) {
+    } else if (reviewTypeText?.includes('Ужасно')) {
       reviewType = 3;
     }
     const review = {
       reviewText: reviewText,
       reviewType: reviewType.toString(),
       movieId: this.movieID,
-      userId: authModule.user.ID.toString(),
+      userId: authModule?.user?.ID.toString(),
     };
     this.eventBus.emit(events.moviePage.sendReview, review);
   };
@@ -304,14 +310,14 @@ export class MovieView extends BaseView {
      * @description Отображает результат отправления отзыва.
      * @param { object } review Сформированный отзыв
      */
-  renderReviewSuccess = (review) => {
-    const reviewInput = document.querySelector('.send-review__input');
+  renderReviewSuccess = (review: review) => {
+    const reviewInput = document.querySelector('.send-review__input') as HTMLElement;
     reviewInput.innerHTML = reviewSuccessBlock();
     const reviewList = document.querySelector('.review-list');
     if (!review) {
       return;
     }
-    reviewList.append(createElementFromHTML(createReviewCard({singleReview: review})));
+    reviewList?.append(<HTMLElement>createElementFromHTML(createReviewCard({singleReview: review})));
   };
 
   /**
@@ -325,6 +331,6 @@ export class MovieView extends BaseView {
       return;
     }
     messageArea.innerHTML = ``;
-    reviewInput.innerHTML = reviewInvitation({movieID: movieID});
+    reviewInput.innerHTML = reviewInvitation({movieID: this.movieID});
   };
 }

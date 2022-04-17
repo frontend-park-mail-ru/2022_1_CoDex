@@ -3,16 +3,19 @@ import {BaseView} from '../BaseView/BaseView';
 import {getURLArguments} from '../../modules/router';
 import {slider} from '@/utils/slider';
 import actorPageContent from '../../components/actor/actor.pug';
+import { actorPageData } from '@/types';
+import EventBus from '@/modules/eventBus';
 /**
  * @description Класс представления страницы актёра.
  */
 export class ActorView extends BaseView {
+  private actorID: string;
   /**
      * @description Создаёт представление страницы актёра.
      * @param { EventBus } eventBus Глобальная шина событий
      * @param { Object } data Данные, необходимые для создания представления
     */
-  constructor(eventBus, {data={}} = {}) {
+  constructor(eventBus: EventBus, {data={}} = {}) {
     super(eventBus, data);
   }
 
@@ -29,7 +32,7 @@ export class ActorView extends BaseView {
      * @description Отрисовывает контент страницы актёра.
      * @param { Object } data Информация об актёре (от имени до фильмографии)
      */
-  renderContent = (data) => {
+  renderContent = (data: actorPageData) => {
     if (!data) {
       return;
     }

@@ -1,5 +1,5 @@
 import { HomeModel } from "@/models/HomeModel";
-import { HomeView } from "../views/HomeView/HomeView.js";
+import { HomeView } from "@/views/HomeView/HomeView";
 import { BaseController } from "./BaseController";
 
 /**

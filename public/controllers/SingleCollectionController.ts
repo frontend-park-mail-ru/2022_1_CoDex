@@ -1,7 +1,7 @@
 import { BaseController } from "./BaseController";
-import { SingleCollectionView } from "../views/SingleCollectionView/SingleCollectionView.js";
-import { SingleCollectionModel } from "../models/SingleCollectionModel";
-import { events } from "../consts/events";
+import { SingleCollectionView } from "@/views/SingleCollectionView/SingleCollectionView";
+import { SingleCollectionModel } from "@/models/SingleCollectionModel";
+import { events } from "@/consts/events";
 
 /**
  * @description Класс контроллера страницы одной подборки.

@@ -10,7 +10,7 @@ import { routerData } from '@/types';
  * @description Абстрактный класс базового представления.
  */
 export class BaseView {
-  private _data: object;
+  protected data: object;
   eventBus: EventBus;
   routeData: routerData;
   /**
@@ -18,8 +18,8 @@ export class BaseView {
      * @param { EventBus } eventBus Глобальная шина событий
      * @param { Object } data Данные, необходимые для создания представления
      */
-  constructor(eventBus: EventBus, data: object) {
-    this._data = data;
+  constructor(eventBus: EventBus, data: object={}) {
+    this.data = data;
     this.eventBus = eventBus;
   }
 
