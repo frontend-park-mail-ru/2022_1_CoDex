@@ -6,11 +6,13 @@ import { BaseController } from "./BaseController";
  * @description Класс контроллера домашней страницы.
  */
 export class HomeController extends BaseController {
-    /**
-     * @description Создаёт экземляр контроллера домашней страницы.
-     */
+    public model: HomeModel;
+    public view: HomeView;
+
     constructor() {
-        super(HomeView, HomeModel);
+        super()
+        this.model = new HomeModel(this.eventBus);
+        this.view = new HomeView(this.eventBus);
         this.subscribe();
     }
     

@@ -125,7 +125,7 @@ export type URLData = {
 
 export type controllerItem = {
     event: string,
-    handler: Function,
+    handler: callback,
 }
 
 export type actorData = {
@@ -255,3 +255,18 @@ export type singleCollectionPageData = {
     movielist: movieInfo[],
     title: string,
 }
+
+export type ratingResponse = {
+    newrating: string
+}
+
+export type reviewResponse = {
+    review: review;
+}
+
+export type authcheckResponse = {
+    status: string,
+    ID: string
+}
+
+export type callback = (...args: any[]) => void;

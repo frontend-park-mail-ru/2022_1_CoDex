@@ -8,8 +8,13 @@ import { BaseController } from "./BaseController";
  */
 export class ProfileController extends BaseController {
 
+    public model: ProfileModel;
+    public view: ProfileView;
+
     constructor() {
-        super(ProfileView, ProfileModel);
+        super()
+        this.model = new ProfileModel(this.eventBus);
+        this.view = new ProfileView(this.eventBus);
         this.events.push(
 
             {
@@ -36,10 +41,10 @@ export class ProfileController extends BaseController {
                 event: events.profilePage.sendAvatar,
                 handler: this.model.sendSettingsAvatar,
             },
-            {
-                event: events.profilePage.render.content,
-                handler: this.view.renderContent,
-            },
+            // {
+            //     event: events.profilePage.render.content,
+            //     handler: this.view.renderContent,
+            // },
             {
                 event: events.profilePage.render.profileInfo,
                 handler: this.view.renderProfileInfo,

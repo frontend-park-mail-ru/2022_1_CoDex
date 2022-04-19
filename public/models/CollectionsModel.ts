@@ -33,6 +33,8 @@ export class CollectionsModel extends BaseModel {
                     this.eventBus.emit(events.app.errorPageText, "Подборки не найдены :(");
                 }
             }
-        );
+        ).catch((e) => {
+            console.log("Unexpected error: ", e);
+        });
     }
 }

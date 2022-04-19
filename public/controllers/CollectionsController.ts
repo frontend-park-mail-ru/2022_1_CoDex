@@ -7,11 +7,13 @@ import {CollectionsView} from "../views/CollectionsView/CollectionsView"
  * @description Класс контроллера страницы подборок
  */
  export class CollectionsController extends BaseController {
-    /**
-     * @description Создаёт экземпляр контроллера страницы подборок.
-     */
+    public model: CollectionsModel;
+    public view: CollectionsView;
+
     constructor() {
-        super(CollectionsView, CollectionsModel);
+        super()
+        this.model = new CollectionsModel(this.eventBus);
+        this.view = new CollectionsView(this.eventBus);
         this.events.push(
             {
                 event: events.collectionsPage.getContent, 

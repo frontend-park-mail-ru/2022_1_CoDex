@@ -6,7 +6,7 @@ import { errorInfo, emptyField } from "../consts/errors";
 import { login, register } from "../modules/connection";
 import { statuses } from "../consts/statuses";
 import EventBus from "@/modules/eventBus";
-import { authInputs, input, loginData, registerData, URLData } from "@/types";
+import { loginData, registerData, URLData } from "@/types";
 
 /**
  * @description Класс модели страницы авторизации / регистрации.
@@ -52,7 +52,7 @@ export class AuthModel extends BaseModel {
      * @description Инициализирует внутренний список ошибок.
      */
     initErrorMessages = () => {
-        Object.entries(authConfig).forEach(([key, value])=> {
+        Object.values(authConfig).forEach((value)=> {
             this.errorMessages.set(value.name, new Set());
         });
     };
@@ -128,7 +128,7 @@ export class AuthModel extends BaseModel {
         for (const errorMessage of inputErrors) {
             this.deleteError(inputName, errorMessage);
         }
-        let repeatePasswordName = authConfig.repeatePasswordInput.name;
+        const repeatePasswordName = authConfig.repeatePasswordInput.name;
         if (inputName === authConfig.passwordInput.name) {
             inputErrors = this.errorMessages.get(repeatePasswordName);
             if (!inputErrors) { return; }
@@ -137,25 +137,6 @@ export class AuthModel extends BaseModel {
             }
         }
     }
-
-    /**
-     * @desctiption Отправялет данные об авторизации / регистрации 
-     * (в зависимости от URL-a).
-     * @param { object } inputsData Данные об авторизациии / регистрации
-     * @param { object } URLData Данные о текущей странице
-     */
-    submit = (inputsData: any, URLData: URLData) => {
-        // any, потому что тип однозначно ставится в соответствие с путём,
-        // а его мы тут проверяем
-        if (this.hasErrors(inputsData)) {
-            return;
-        }
-        if (URLData?.URL?.URL.match(regularRoutes.loginPage)) {
-            this.submitLogin(inputsData);
-        } else {
-            this.submitRegister(inputsData);
-        }
-    };
 
     /**
      * @description Отправляет и обрабатывает данные об авторизации.
@@ -213,18 +194,18 @@ export class AuthModel extends BaseModel {
      * @param { object } Данные о полях ввода формы
      * @returns { boolean } Есть ли в форме ошибки
      */
-    hasErrors = (inputsData: any) => {
+    hasErrors = (inputsData: loginData | registerData) => {
         if (!inputsData) {
             return true;
         }
         let result = false;
-        for (const inputName in inputsData) {
-            this.validateSingleInput(inputName, inputsData[inputName]);
+        Object.entries(inputsData).forEach(([inputName, inputValue]) => {
+            this.validateSingleInput(inputName, inputValue);
             if (this.errorMessages.get(inputName)?.size) {
                 this.eventBus.emit(events.authPage.wrongInput, inputName);
                 result = true;
             }
-        }
+        });
         return result;
     };
 
@@ -245,12 +226,13 @@ export class AuthModel extends BaseModel {
                 this.addError(inputName, error.message)
             } else if (error.regexp == /empty/ && inputName === 
                 authConfig.repeatePasswordInput.name) {
-                    
-                const authForm = document.forms[<any>authFormName];
+                const authForm = document.forms.namedItem(authFormName);
+                if (!authForm) { return; }
                 let passwordValue = "";
                 for (const input of Object.values(authForm)) {
-                    if (input.name === authConfig.passwordInput.name) {
-                        passwordValue = input.value;
+                    const formInput = <HTMLFormElement> input;
+                    if (formInput.name === authConfig.passwordInput.name) {
+                        passwordValue = <string> formInput.value;
                     }
                 }
                 if (inputValue !== passwordValue) {

@@ -3,7 +3,7 @@ import { statuses } from "@/consts/statuses";
 import EventBus from "./eventBus";
 import { eventBus } from "./eventBus";
 import { checkAuth, getCurrentUser, logout } from "./connection";
-import { userData } from "@/types";
+import { authcheckResponse, userData } from "@/types";
 
 /**
  * @description Класс авторизации
@@ -38,8 +38,9 @@ class Auth {
             if (!response) {
                 return null;
             }
-            if (response?.parsedResponse?.status == statuses.OK) {
-                return response.parsedResponse?.ID;
+            const parsed = <authcheckResponse> response.parsedResponse;
+            if (+parsed.status == statuses.OK) {
+                return parsed.ID;
             }
             window.localStorage.removeItem("user");
             this.eventBus.emit(events.auth.notLoggedIn);
@@ -54,7 +55,7 @@ class Auth {
                 return;
             }
             if (response?.status === statuses.OK) {
-                this.user = response.parsedResponse;
+                this.user = <userData> response.parsedResponse;
                 if (this.user) {
                     window.localStorage.setItem("user", JSON.stringify(this.user));
                     this.eventBus.emit(events.auth.gotUser);
@@ -77,6 +78,7 @@ class Auth {
         }
         this.user = parsedResponse;
         if (this.user) {
+            console.log("got user from submit");
             window.localStorage.setItem("user", JSON.stringify(this.user));
             this.eventBus.emit(events.auth.gotUser);
             this.lastEvent = events.auth.gotUser;

@@ -1,5 +1,5 @@
 import EventBus from "@/modules/eventBus";
-import { movie, ratingRequest, reviewRequest } from "@/types";
+import { movie, ratingRequest, ratingResponse, reviewRequest, reviewResponse } from "@/types";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
 import { authModule } from "../modules/auth";
@@ -39,6 +39,8 @@ export class MovieModel extends BaseModel {
             if (response?.status === statuses.NOT_FOUND) {
                 this.eventBus.emit(events.app.errorPageText, "Такого фильма нет :/");
             }
+        }).catch((e) => {
+            console.log("Unexpected error: ", e);
         });
     }
 
@@ -65,26 +67,32 @@ export class MovieModel extends BaseModel {
         sendUserRating(request).then(
             (response) => {
                 if (!response) { return; }
+                const parsed = <ratingResponse> response.parsedResponse;
                 if (response.status == statuses.OK) {
                     this.eventBus.emit(
                         events.moviePage.ratingSuccess, 
                         rating, 
-                        response.parsedResponse.newrating
+                        parsed.newrating
                     );
                 }
             }
-        );
+        ).catch((e) => {
+            console.log("Unexpected error: ", e);
+        });
     }
 
     sendReview = (inputsData: reviewRequest) => {
         sendUserReview(inputsData).then(
             (response) => {
                 if (!response) { return; }
+                const parsed = <reviewResponse> response.parsedResponse;
                 if (response.status == statuses.OK) {
-                    this.eventBus.emit(events.moviePage.reviewSuccess, response.parsedResponse.review);
+                    this.eventBus.emit(events.moviePage.reviewSuccess, parsed.review);
                 }
             }
-        );
+        ).catch((e) => {
+            console.log("Unexpected review error: ", e);
+        });
     }
 
 

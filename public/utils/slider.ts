@@ -48,7 +48,7 @@ export const slider = (selector: string) => {
      * @description Сдвигает слайды на необходимую величину.
      * @param { Number } Ширина, по которую необходимо сдвинуть слайды
      */
-    const moveSlides = (resultSlide: number = 0) => {
+    const moveSlides = (resultSlide = 0) => {
         if (!sliderTrack) { return; }
         sliderTrack.style.transition = "transform .5s";
         if (resultSlide) {

@@ -1,6 +1,6 @@
 import EventBus from "@/modules/eventBus";
-import { events } from "../consts/events";
-import { headerLinks } from "../consts/header";
+import { events } from "@/consts/events";
+import { headerLinks } from "@/consts/header";
 import { BaseModel } from "./BaseModel";
 
 /**

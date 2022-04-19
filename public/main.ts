@@ -1,15 +1,13 @@
 import "./index.scss";
 import { regularRoutes } from "@/consts/routes";
 import { Router } from "@/modules/router";
-import { authModule } from "@/modules/auth";
-import { HeaderController } from "@/controllers/HeaderController";
-import { HomeController } from "@/controllers/HomeController";
 import { AuthController } from "@/controllers/AuthController";
 import { SingleCollectionController } from "@/controllers/SingleCollectionController";
 import { CollectionsController } from "@/controllers/CollectionsController";
 import { MovieController } from "@/controllers/MovieController";
 import { ProfileController } from "@/controllers/ProfileController";
 import { ActorController } from "@/controllers/ActorController";
+import { HeaderController } from "./controllers/HeaderController";
 
 //Выключили сервис воркер if ('serviceWorker' in navigator) {
 //   navigator.serviceWorker.register('/sw.js', {scope: '/'})
@@ -25,16 +23,13 @@ import { ActorController } from "@/controllers/ActorController";
 
 export const root = document.getElementById("root");
 
-const AuthModule = authModule;
-
-const headerController = new HeaderController();
-const homeController = new HomeController();
 const authController = new AuthController();
-const singleCollectionController = new SingleCollectionController();
+const actorController = new ActorController();
 const collectionsController = new CollectionsController();
+const headerController = new HeaderController();
 const movieController = new MovieController();
 const profileController = new ProfileController();
-const actorController = new ActorController();
+const singleCollectionController = new SingleCollectionController();
 
 const router = new Router(root as HTMLElement);
 

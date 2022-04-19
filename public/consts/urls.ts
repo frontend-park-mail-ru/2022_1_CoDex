@@ -1,15 +1,15 @@
 import { urlsList } from "../types";
 
 // eslint-disable-next-line no-unused-vars
-const localUrl: string = "http://localhost:3001";
+const localUrl = "http://localhost:3001";
 
 // eslint-disable-next-line no-unused-vars
-export const deployUrl: string = "https://teamprojectkinopoisk.herokuapp.com";
+export const deployUrl = "https://teamprojectkinopoisk.herokuapp.com";
 //https://teamprojectkinopoisk.herokuapp.com
 
-export const currentUrl: string = localUrl;
+export const currentUrl = localUrl;
 
-const version: string = "/api/v1";
+const version = "/api/v1";
 
 export const urls: urlsList = {
     api: {

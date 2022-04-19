@@ -7,9 +7,13 @@ import { BaseController } from "./BaseController";
  * @description Класс контроллера страницы одного фильма.
  */
 export class MovieController extends BaseController {
+    public model: MovieModel;
+    public view: MovieView;
 
     constructor() {
-        super(MovieView, MovieModel);
+        super()
+        this.model = new MovieModel(this.eventBus);
+        this.view = new MovieView(this.eventBus);
         this.events.push(
             {
                 event: events.moviePage.getContent,

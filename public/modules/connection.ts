@@ -7,7 +7,7 @@ let CSRFToken: string | null = null;
 
 export const csrf = async () => {
         if (CSRFToken === null) {
-            let headers = {
+            const headers = {
                 "Content-Type": 'application/json',
             }
             const response = await fetch(urls.api.csrf, {
@@ -29,7 +29,7 @@ export const csrf = async () => {
  */
 const sendRequest = async (params: requestParams) => {
     //await csrf();
-    let headers =  {
+    const headers =  {
         "Content-Type": "application/json",
     };
     // if (CSRFToken != null) {

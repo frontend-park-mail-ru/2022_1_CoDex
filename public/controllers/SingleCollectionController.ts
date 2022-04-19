@@ -7,11 +7,14 @@ import { events } from "@/consts/events";
  * @description Класс контроллера страницы одной подборки.
  */
 export class SingleCollectionController extends BaseController {
-    /**
-     * @description Создаёт экземпляр контроллера страницы одной подборки.
-     */
+    
+    public model: SingleCollectionModel;
+    public view: SingleCollectionView;
+
     constructor() {
-        super(SingleCollectionView, SingleCollectionModel);
+        super()
+        this.model = new SingleCollectionModel(this.eventBus);
+        this.view = new SingleCollectionView(this.eventBus);
         this.events.push(
             {
                 event: events.singleCollectionPage.getContent, 

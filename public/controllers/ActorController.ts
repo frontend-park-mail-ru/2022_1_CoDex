@@ -8,8 +8,13 @@ import { BaseController } from "./BaseController";
  */
 export class ActorController extends BaseController {
 
+    public model: ActorModel;
+    public view: ActorView;
+
     constructor() {
-        super(ActorView, ActorModel);
+        super()
+        this.model = new ActorModel(this.eventBus);
+        this.view = new ActorView(this.eventBus);
         this.events.push(
             {
                 event: events.actorPage.getContent,

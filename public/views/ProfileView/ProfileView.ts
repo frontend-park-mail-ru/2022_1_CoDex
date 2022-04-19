@@ -19,7 +19,7 @@ export class ProfileView extends BaseView {
      * @param { EventBus } eventBus Глобальная шина событий
      * @param { Object } data Данные, необходимые для создания представления
     */
-  constructor(eventBus: EventBus, data: object) {
+  constructor(eventBus: EventBus, data: object = {}) {
     super(eventBus, data);
   }
 

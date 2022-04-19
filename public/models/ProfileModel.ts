@@ -10,14 +10,12 @@ import { personalData, userData } from "@/types";
  * @description Класс модели страницы профиля.
  */
 export class ProfileModel extends BaseModel {
-    errorMessages: Map<any, any>;
     /**
      * @description Создаёт модель страницы одного фильма.
      * @param { EventBus } eventBus Глобальная шина событий
      */
     constructor(eventBus: EventBus) {
         super(eventBus);
-        this.errorMessages = new Map();
     }
 
     getProfileInfo = (user: userData) => {
@@ -31,6 +29,8 @@ export class ProfileModel extends BaseModel {
             } else if (response?.status === statuses.NOT_FOUND) {
                 this.eventBus.emit(events.app.errorPageText, "Такого пользователя нет");
             }
+        }).catch((e) => {
+            console.log("Unexpected profileInfo error: ", e);
         });
     }
 
@@ -45,6 +45,8 @@ export class ProfileModel extends BaseModel {
             } else if (response?.status === statuses.NOT_FOUND) {
                 this.eventBus.emit(events.app.errorPageText, "Такого пользователя нет");
             }
+        }).catch((e) => {
+            console.log("Unexpected profileBookmarks error: ", e);
         });
     }
 
@@ -59,6 +61,8 @@ export class ProfileModel extends BaseModel {
             } else if (response?.status === statuses.NOT_FOUND) {
                 this.eventBus.emit(events.app.errorPageText, "Такого пользователя нет");
             }
+        }).catch((e) => {
+            console.log("Unexpected profileReview error: ", e);
         });
     }
 
@@ -78,7 +82,9 @@ export class ProfileModel extends BaseModel {
             } else if (response?.status === statuses.NOT_FOUND) {
                 this.eventBus.emit(events.app.errorPageText, "Такого пользователя нет");
             }
-        })
+        }).catch((e) => {
+            console.log("Unexpected profileSettingsChanges error: ", e);
+        });
     }
 
     sendSettingsAvatar = (formData: FormData, userID: string) => {
@@ -92,6 +98,8 @@ export class ProfileModel extends BaseModel {
             } else if (response?.status === statuses.NOT_FOUND) {
                 this.eventBus.emit(events.app.errorPageText, "Такого пользователя нет");
             }
-        })
+        }).catch((e) => {
+            console.log("Unexpected profileSettingsAvatar error: ", e);
+        });
     }
 }

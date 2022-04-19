@@ -1,4 +1,4 @@
-import { authPageData } from '@/types';
+import { authPageData, loginData, registerData } from '@/types';
 import {events} from '@/consts/events';
 import {BaseView} from '../BaseView/BaseView';
 import EventBus from '@/modules/eventBus';
@@ -117,12 +117,44 @@ export class AuthView extends BaseView {
       if (!textInputs?.length) {
         return;
       }
+      let regData: registerData = {
+        email: "",
+        username: "",
+        password: "",
+        repeatpassword: ""
+      };
+      let logData: loginData = {
+        email: "",
+        password: "",
+      };
+      let isLogin = true;
+      const inputs = Object.values(textInputs);
+      inputs.forEach((currentInput) => {
+        const formInput = <HTMLFormElement>currentInput;
+        if (formInput.name === authConfig.repeatePasswordInput.name) {
+          isLogin = false;
+        }
+      });
       const inputData: any = {};
       Object.entries(textInputs).forEach(([name, input]) => {
         let formInput = <HTMLFormElement>input;
-        inputData[formInput.name] = formInput.value;
+        if (formInput.name === authConfig.emailInput.name) {
+          logData.email = formInput.value;
+          regData.email = formInput.value;
+        } else if (formInput.name === authConfig.nameInput.name) {
+          regData.username = formInput.value;
+        } else if (formInput.name === authConfig.passwordInput.name) {
+          logData.password = formInput.value;
+          regData.password = formInput.value;
+        } else if (formInput.name === authConfig.repeatePasswordInput.name) {
+          regData.repeatpassword = formInput.value;
+        }
       });
-      this.eventBus.emit(events.authPage.submit, inputData, this.routeData);
+      if (isLogin) {
+        this.eventBus.emit(events.authPage.submitLogin, logData);
+      } else {
+        this.eventBus.emit(events.authPage.submitRegister, regData);
+      }
     });
   };
 

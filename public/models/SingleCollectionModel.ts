@@ -1,5 +1,5 @@
 import EventBus from "@/modules/eventBus";
-import { singleCollection, singleCollectionMovie } from "@/types";
+import { singleCollection, singleCollectionMovie, singleCollectionPageData } from "@/types";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
 import { getSingleCollection } from "../modules/connection";
@@ -33,7 +33,8 @@ export class SingleCollectionModel extends BaseModel {
                 if (!response) {
                     this.eventBus.emit(events.app.errorPage);
                 } if (response?.status === statuses.OK && response.parsedResponse) {
-                    this.shortenMoviesDescription(response.parsedResponse.movielist);
+                    const parsed = <singleCollectionPageData> response.parsedResponse;
+                    this.shortenMoviesDescription(parsed.movielist);
                     this.eventBus.emit(
                         events.singleCollectionPage.render.content, response.parsedResponse
                     );
@@ -41,7 +42,9 @@ export class SingleCollectionModel extends BaseModel {
                     this.eventBus.emit(events.app.errorPageText, "Такой подборки нет :(");
                 }
             }
-        );
+        ).catch((e) => {
+            console.log("Unexpected singleCollection error: ", e);
+        });
     }
 
     /**

@@ -16,7 +16,7 @@ export const getURLArguments = (URL: string, template: string) => {
     }
     const splitURL: string[] = URL.split("/");
     return template.split("/").reduce(
-        (args: any, propertyName: string, index: number) => {
+        (args: Record<string, string>, propertyName: string, index: number) => {
             if (propertyName.startsWith(":")) {
                 args[propertyName.slice(1)] = splitURL[index];
             }
@@ -55,7 +55,7 @@ export class Router {
                         return;
                     }
                     e.preventDefault();
-                    let data = {
+                    const data = {
                         URL: closestLink.getAttribute("href"),
                     }
                     eventBus.emit(events.pathChanged, data);
@@ -71,6 +71,8 @@ export class Router {
     /**
      * @description Переходит на указанную страницу.
      */
+    /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+    /* eslint-disable @typescript-eslint/no-unsafe-call */
     go = (URL = "/") => {
         const routeData = this.getURLData(URL);
         const data = {...routeData};
@@ -125,7 +127,7 @@ export class Router {
      * @param { string } currentURL URL, на который перешёл пользователь
      * @return { object } Параметры URL-а
      */
-    getParameters = (currentURL: string = "/"): routeParameters => {
+    getParameters = (currentURL = "/"): routeParameters => {
         const parsedURL = new URL(window.location.origin + currentURL);
         const URLParameters = null;
         const resultURL = parsedURL.pathname;

@@ -4,8 +4,13 @@ import { AuthView } from "@/views/AuthView/AuthView";
 import { BaseController } from "./BaseController";
 
 export class AuthController extends BaseController {
+    public model: AuthModel;
+    public view: AuthView;
+
     constructor() {
-        super(AuthView, AuthModel);
+        super();
+        this.model = new AuthModel(this.eventBus);
+        this.view = new AuthView(this.eventBus);
         this.events.push(
             {
                 event: events.authPage.render.page, 
@@ -36,8 +41,12 @@ export class AuthController extends BaseController {
                 handler: this.model.validateSingleInput,
             },
             {
-                event: events.authPage.submit,
-                handler: this.model.submit,
+                event: events.authPage.submitLogin,
+                handler: this.model.submitLogin,
+            },
+            {
+                event: events.authPage.submitRegister,
+                handler: this.model.submitRegister,
             },
             {
                 event: events.authPage.redirect,

@@ -38,6 +38,9 @@ export class ActorModel extends BaseModel {
             if (response?.status === statuses.NOT_FOUND) {
                 this.eventBus.emit(events.app.errorPageText, "Такого фильма нет :/");
             }
+        })
+        .catch((e) => {
+            console.log("Unexpected error: ", e);
         });
     }
 }

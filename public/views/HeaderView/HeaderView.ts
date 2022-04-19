@@ -101,12 +101,13 @@ export class HeaderView extends BaseView {
      * ситуации, отрисовывает приглашение ко выходу или кнопку выхода.
      */
   renderUserBlock = () => {
+    console.log("Start Changing...");
     const changeBlock = document.querySelector('.navbar__login-btn') ||
             document.querySelector('.user-block');
     if (!authModule.user || !changeBlock) {
       return;
     }
-
+    console.log("Changing...");
     changeBlock.replaceWith(<Node>createElementFromHTML(userBlock({
       imgsrc: authModule.user.imgsrc,
       userID: authModule.user.ID,

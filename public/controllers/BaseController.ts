@@ -1,7 +1,6 @@
-import { BaseModel } from "@/models/BaseModel";
 import { controllerItem } from "@/types";
-import { BaseView } from "@/views/BaseView/BaseView";
 import EventBus, { eventBus } from "@/modules/eventBus";
+import { BaseView } from "@/views/BaseView/BaseView";
 
 /**
  * @description Базовый класс контроллера для MVC архитектуры.
@@ -9,19 +8,13 @@ import EventBus, { eventBus } from "@/modules/eventBus";
 export class BaseController {
     protected eventBus: EventBus;
     protected events: controllerItem[];
-    public model: any;
+    
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     public view: any;
-    /**
-     * @description Создаёт базовый контроллер.
-     * @param { function } view - Представление (view)
-     * @param { function } model - Модель
-     */
-    constructor(view: any, model: any) { 
-        // Если any заменить на BaseView и BaseModel, то ошибка
-        // "type has no construct signatures"
+    public model: any;
+
+    constructor() { 
         this.eventBus = eventBus;
-        this.view = new view(eventBus);
-        this.model = new model(eventBus);
         this.events = [];
     }
     

@@ -4,8 +4,14 @@ import { HeaderView } from "@/views/HeaderView/HeaderView";
 import { BaseController } from "./BaseController";
 
 export class HeaderController extends BaseController {
+    public model: HeaderModel;
+    public view: HeaderView;
+
     constructor() {
-        super(HeaderView, HeaderModel);
+        super()
+        console.log("Creating Header controller");
+        this.model = new HeaderModel(this.eventBus);
+        this.view = new HeaderView(this.eventBus);
         this.events.push(
             { 
                 event: events.header.changeActiveButton, 

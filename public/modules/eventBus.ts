@@ -2,11 +2,13 @@
  * @typedef { EventBus } Шина событий
  */
 
+import { callback } from "@/types";
+
 /**
  * @description Класс шины событий, необходимой для MVC моделей.
  */
 export default class EventBus {
-    private listeners: Map<string, Set<Function> | null>;
+    private listeners: Map<string, Set<callback> | null>;
     /**
      * @description Создаёт шину событий с пустыми обработчиками.
      */
@@ -19,11 +21,11 @@ export default class EventBus {
      * @param { string } event Имя нового события
      * @param { function } callback Функция-callback для события
      */
-    on(event: string, callback: Function) {
+    on(event: string, callback: callback) {
         if (this.listeners.get(event))
             this.listeners.get(event)?.add(callback);
         else 
-            this.listeners.set(event, (new Set<Function>([callback])));
+            this.listeners.set(event, (new Set<callback>([callback])));
     }
 
     /**
@@ -31,7 +33,7 @@ export default class EventBus {
      * @param { string } event Имя отключаемого события
      * @param { function } callback Функция-callback для события
      */
-    off(event: string, callback: Function) {
+    off(event: string, callback: callback) {
         this.listeners.get(event)?.delete(callback);
     }
 
@@ -41,11 +43,13 @@ export default class EventBus {
      * @param { string } event Имя вызываемого события
      * @param { any } data Данные для вызываемых обработчиков
      */
-    emit(event: string, ...data: any) {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    emit(event: string, ...data: any[]) {
         if (!this.listeners.get(event)) {
             return;
         }
         const tmpSet = new Set(this.listeners.get(event));
+        /* eslint-disable @typescript-eslint/no-unsafe-argument */
         tmpSet?.forEach((listener) => listener(...data));
     }
 }
