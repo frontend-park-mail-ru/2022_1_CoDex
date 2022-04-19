@@ -5,15 +5,14 @@ import profilePug from '../../components/profile/profile.pug';
 import profileSettings from '../../components/profile/profileInfo/profileInfo.pug';
 import profileReview from '../../components/profile/profileReview/profileReview.pug';
 import profileBookmark from '../../components/profile/profileBookmark/profileBookmark.pug';
-import { authModule } from '../../modules/auth';
 import EventBus from '@/modules/eventBus';
-import { userData } from '@/types';
+import { userData, profileUserData } from '@/types';
 
 /**
  * @description Класс представления страницы профиля.
  */
 export class ProfileView extends BaseView {
-  user: any;
+  userData: profileUserData;
   /**
      * @description Создаёт представление страницы профиля.
      * @param { EventBus } eventBus Глобальная шина событий
@@ -35,14 +34,13 @@ export class ProfileView extends BaseView {
  * @description Отрисовывает страницу профиля (часть с данными о пользователе).
  * @param { object } data Данные о пользователе
  */
-  renderProfileInfo = (data: userData) => {
-    this.user = data;
-    this.user.isThisUser = authModule.user ? (data.ID === authModule.user.ID) : false;
+  renderProfileInfo = (data: profileUserData) => {
+    this.userData = data;
     const content = document.querySelector('.content');
     if (content) {
-      content.innerHTML = profilePug(this.user);
+      content.innerHTML = profilePug(this.userData);
     }
-    this.eventBus.emit(events.profilePage.getContent, data);
+    this.eventBus.emit(events.profilePage.getContent, this.userData);
     this.addSettingsButtonListener();
     this.listenAvatarChanged();
   };
@@ -70,12 +68,11 @@ export class ProfileView extends BaseView {
  * @description Отображает изменения (после изменений полей данных пользователя).
  * @param { object } data Новые данные
  */
-  renderChangedProfile = (data: userData) => {
-    this.user = data;
-    this.user.isThisUser = authModule.user ? (data.ID === authModule.user.ID) : false;
+  renderChangedProfile = (data: profileUserData) => {
+    this.userData = data;
     const profileInfo = document.querySelector('.profile-info');
     if (profileInfo) {
-      profileInfo.innerHTML = profileSettings(this.user);
+      profileInfo.innerHTML = profileSettings(this.userData);
     }
     this.addSettingsButtonListener();
   };
@@ -95,7 +92,7 @@ export class ProfileView extends BaseView {
         openSettingsButton.style.display = 'none';
         openedSettingsForm.style.display = 'block';
       }
-      
+
       if (target.value === 'Отменить') {
         openSettingsButton.style.display = 'flex';
         openedSettingsForm.style.display = 'none';
@@ -113,7 +110,7 @@ export class ProfileView extends BaseView {
       return;
     } else {
       settingsInput.value = '';
-      this.eventBus.emit(events.profilePage.sendChanges, { name: settingsInput.value }, this.user.ID);
+      this.eventBus.emit(events.profilePage.sendChanges, { name: settingsInput.value }, this.userData.ID);
     }
   };
   /**
@@ -138,9 +135,9 @@ export class ProfileView extends BaseView {
     if (!avatarDiv) {
       return;
     }
-    avatarInput.addEventListener('click', (e: Event) => {
-      avatarInput.addEventListener('change', (ee: Event) => {
-        const target = ee.target as HTMLInputElement;
+    avatarInput.addEventListener('click', () => {
+      avatarInput.addEventListener('change', (event: Event) => {
+        const target = event.target as HTMLInputElement;
         if (!target) {
           return;
         }
@@ -149,17 +146,18 @@ export class ProfileView extends BaseView {
           return
         }
         const reader = new FileReader();
-        reader.addEventListener('load', (event : Event) => {
+        reader.addEventListener('load', (event: Event) => {
           const avatarTarget = event.target as FileReader;
           if (!avatarTarget) return;
-          avatarDiv.style.backgroundImage = `url(${avatarTarget.result})`;
+          const imgSrc : string = avatarTarget.result as string;
+          avatarDiv.style.backgroundImage = `url(${imgSrc})`;
         });
         reader.readAsDataURL(file[0]);
 
         const formData = new FormData();
         if (file[0]) {
           formData.append('avatar', file[0]);
-          this.eventBus.emit(events.profilePage.sendAvatar, formData, this.user.ID);
+          this.eventBus.emit(events.profilePage.sendAvatar, formData, this.userData.ID);
         }
       });
     });

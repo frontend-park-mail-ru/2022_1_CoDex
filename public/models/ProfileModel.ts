@@ -3,7 +3,8 @@ import { BaseModel } from "./BaseModel";
 import { statuses } from "../consts/statuses";
 import { events } from "../consts/events";
 import EventBus from "@/modules/eventBus";
-import { personalData, userData } from "@/types";
+import { personalData, profileUserData, userData } from "@/types";
+import { authModule } from "@/modules/auth";
 
 
 /**
@@ -23,8 +24,10 @@ export class ProfileModel extends BaseModel {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
             } if (response?.status === statuses.OK && response.parsedResponse) {
+                const profileData : profileUserData = response.parsedResponse;
+                profileData.isThisUser = authModule.user ? (user.ID === authModule.user.ID) : false;
                 this.eventBus.emit(
-                    events.profilePage.render.profileInfo, response.parsedResponse
+                    events.profilePage.render.profileInfo, profileData
                 );
             } else if (response?.status === statuses.NOT_FOUND) {
                 this.eventBus.emit(events.app.errorPageText, "Такого пользователя нет");
@@ -76,8 +79,10 @@ export class ProfileModel extends BaseModel {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
             } if (response?.status === statuses.OK && response.parsedResponse) {
+                const profileData : profileUserData = response.parsedResponse;
+                profileData.isThisUser = authModule.user ? (userID === authModule.user.ID) : false;
                 this.eventBus.emit(
-                    events.profilePage.render.changedProfile, response.parsedResponse
+                    events.profilePage.render.changedProfile, profileData
                 );
             } else if (response?.status === statuses.NOT_FOUND) {
                 this.eventBus.emit(events.app.errorPageText, "Такого пользователя нет");

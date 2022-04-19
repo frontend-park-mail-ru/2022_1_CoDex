@@ -154,6 +154,14 @@ export type userData = {
     imgsrc: string,
 }
 
+export type profileUserData = {
+    ID: string,
+    username: string,
+    email: string,
+    imgsrc: string,
+    isThisUser: boolean,
+}
+
 export type reviewRequest = {
     movieId: string,
     reviewText: string,
