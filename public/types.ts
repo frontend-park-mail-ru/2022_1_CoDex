@@ -270,3 +270,11 @@ export type authcheckResponse = {
 }
 
 export type callback = (...args: any[]) => void;
+
+export type baseViewData = {
+    headerLinks: headerLink[],
+    imgsrc: string,
+    userId: string,
+    profileHref: string,
+    userFromStorage: boolean,
+  }

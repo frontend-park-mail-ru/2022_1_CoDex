@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { controllerItem } from "@/types";
 import EventBus, { eventBus } from "@/modules/eventBus";
 import { BaseView } from "@/views/BaseView/BaseView";

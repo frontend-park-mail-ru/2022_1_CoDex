@@ -147,7 +147,7 @@ export class ProfileView extends BaseView {
         const file = target.files as FileList;
         if (!file) {
           return
-        };
+        }
         const reader = new FileReader();
         reader.addEventListener('load', (event : Event) => {
           const avatarTarget = event.target as FileReader;

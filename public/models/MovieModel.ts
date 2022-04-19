@@ -94,15 +94,4 @@ export class MovieModel extends BaseModel {
             console.log("Unexpected review error: ", e);
         });
     }
-
-
-    addCollection = (movieID: string, collectionID: string) => {
-        // TODO
-    }
-
-    createCollection = (collection: string) => {
-        // TODO
-    }
-
-
 }

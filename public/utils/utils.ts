@@ -1,6 +1,7 @@
 import baseViewPug from "../views/BaseView/BaseView.pug";
 import { headerLinks } from "../consts/header";
 import { routes } from "../consts/routes";
+import { baseViewData, userData } from "@/types";
 
 
 /**
@@ -17,18 +18,23 @@ export function createElementFromHTML(html: string | null) {
 export const renderBaseView = () => {
   const userLocalStorage = window.localStorage.getItem("user");
   if (userLocalStorage) {
-    const user = JSON.parse(userLocalStorage);
-    return baseViewPug({
+    const user: userData = JSON.parse(userLocalStorage);
+    const baseViewData: baseViewData = {
       headerLinks: headerLinks,
-      imgsrc: user.profile_pic,
+      imgsrc: user.imgsrc,
       userId: user.ID,
       profileHref: routes.profilePage,
       userFromStorage: true,
-    });
+    }
+    return <string> baseViewPug(baseViewData);
   } else {
-    return baseViewPug({
+    const baseViewData: baseViewData = {
       headerLinks: headerLinks,
-      userLocalStorage: false,
-    });
+      imgsrc: "",
+      userId: "",
+      profileHref: "",
+      userFromStorage: false,
+    }
+    return <string> baseViewPug(baseViewData);
   }
 };

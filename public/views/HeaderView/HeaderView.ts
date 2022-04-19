@@ -6,7 +6,6 @@ import {renderBaseView, createElementFromHTML} from '@/utils/utils';
 import {authModule} from '@/modules/auth';
 import loginButton from '@/components/header/loginButton.pug';
 import userBlock from '@/components/header/userBlock/userBlock.pug';
-import logoutButton from '@/components/header/logoutButton.pug';
 
 /**
  * @description Класс представления навигационной панели.
@@ -53,7 +52,7 @@ export class HeaderView extends BaseView {
     if (!buttons?.length) {
       return;
     }
-    Object.entries(buttons).forEach(([name, button]) => {
+    Object.values(buttons).forEach((button) => {
       if (button.getAttribute('href') === buttonHref) {
         button.classList.add('navbar__menu-btn__active');
       }
@@ -68,7 +67,7 @@ export class HeaderView extends BaseView {
     if (!activeButtons) {
       return;
     }
-    Object.entries(activeButtons).forEach(([name, button]) => {
+    Object.values(activeButtons).forEach((button) => {
       button.classList.remove('navbar__menu-btn__active');
     });
   };
@@ -92,7 +91,7 @@ export class HeaderView extends BaseView {
     if (!userBlock) {
       return;
     }
-    userBlock.replaceWith(<Node>createElementFromHTML(loginButton()));
+    userBlock.replaceWith(<Node>createElementFromHTML(<string> loginButton()));
   };
 
   /**
@@ -101,14 +100,12 @@ export class HeaderView extends BaseView {
      * ситуации, отрисовывает приглашение ко выходу или кнопку выхода.
      */
   renderUserBlock = () => {
-    console.log("Start Changing...");
     const changeBlock = document.querySelector('.navbar__login-btn') ||
             document.querySelector('.user-block');
     if (!authModule.user || !changeBlock) {
       return;
     }
-    console.log("Changing...");
-    changeBlock.replaceWith(<Node>createElementFromHTML(userBlock({
+    changeBlock.replaceWith(<Node>createElementFromHTML(<string> userBlock({
       imgsrc: authModule.user.imgsrc,
       userID: authModule.user.ID,
       profileHref: routes.profilePage,
@@ -134,7 +131,7 @@ export class HeaderView extends BaseView {
       return;
     }
     logoutButton.forEach((button) => {
-      button.addEventListener('click', (e) => {
+      button.addEventListener('click', () => {
         this.removeLogoutButton();
         this.renderLoginButton();
         this.eventBus.emit(events.header.logout);
@@ -162,4 +159,4 @@ export class HeaderView extends BaseView {
   addEventListenerToVerticalMenu = () => {
     // TODO
   };
-};
+}

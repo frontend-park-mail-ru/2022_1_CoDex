@@ -9,7 +9,6 @@ export class HeaderController extends BaseController {
 
     constructor() {
         super()
-        console.log("Creating Header controller");
         this.model = new HeaderModel(this.eventBus);
         this.view = new HeaderView(this.eventBus);
         this.events.push(

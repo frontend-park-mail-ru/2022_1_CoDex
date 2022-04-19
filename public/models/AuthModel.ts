@@ -143,7 +143,7 @@ export class AuthModel extends BaseModel {
      * @param { object } inputsData Данные об авторизации.
      */
     submitLogin = (inputsData: loginData) => {
-        if (!inputsData) {
+        if (!inputsData || this.hasErrors(inputsData)) {
             return;
         }
         login(inputsData).then((response) => {
@@ -168,7 +168,7 @@ export class AuthModel extends BaseModel {
      * @param { object } inputsData Данные об регистрации.
      */
     submitRegister = (inputsData: registerData) => {
-        if (!inputsData) {
+        if (!inputsData || this.hasErrors(inputsData)) {
             return;
         }
         register(inputsData).then((response) => {

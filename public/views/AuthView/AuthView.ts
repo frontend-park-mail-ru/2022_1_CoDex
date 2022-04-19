@@ -53,20 +53,25 @@ export class AuthView extends BaseView {
   addValidateListeners = () => {
     const authForm = this.getAuthDOMForm();
     const textInputs = authForm?.querySelectorAll('.text-input');
-    if (!authForm || !textInputs.length) {
+    if (!authForm || !textInputs?.length) {
       return;
     }
-    Object.entries(textInputs).forEach(([name, input]) => {
-      let formInput = <HTMLFormElement>input;
+    Object.values(textInputs).forEach((input) => {
+      const formInput = <HTMLFormElement>input;
       input.addEventListener('input', () => {
         this.eventBus.emit(events.authPage.deleteAllErrors, formInput.name);
         this.deleteSubmitError();
       });
       input.addEventListener('change', () => {
-        this.eventBus.emit(events.authPage.validate, 
-          formInput.name, formInput.value, (formInput.name === authConfig.repeatePasswordInput.name) ? 
-          this.getAuthDOMForm()?.[authConfig.passwordInput.name].value : '');
-        });
+        if (formInput.name === authConfig.repeatePasswordInput.name) {
+          const passwordInput = <HTMLFormElement> this.getAuthDOMForm()?.[authConfig.passwordInput.name];
+          this.eventBus.emit(events.authPage.validate, formInput.name, 
+            formInput.value, passwordInput.value);
+        } else {
+          this.eventBus.emit(events.authPage.validate, formInput.name, 
+            formInput.value, "");
+        }
+      });
       this.eventBus.emit(events.authPage.deleteAllErrors, formInput.name);
     });
   };
@@ -76,7 +81,7 @@ export class AuthView extends BaseView {
      * @return { HTMLFormElement } Форма авторизации / регистрации.
      */
   getAuthDOMForm = () => {
-    return document.forms[<any>authFormName];
+    return document.forms.namedItem(authFormName);
   };
 
   /**
@@ -112,18 +117,18 @@ export class AuthView extends BaseView {
     if (!authForm || !submitBtn) {
       return;
     }
-    submitBtn.addEventListener('click', (e) => {
+    submitBtn.addEventListener('click', () => {
       const textInputs = authForm.querySelectorAll('.text-input');
       if (!textInputs?.length) {
         return;
       }
-      let regData: registerData = {
+      const regData: registerData = {
         email: "",
         username: "",
         password: "",
         repeatpassword: ""
       };
-      let logData: loginData = {
+      const logData: loginData = {
         email: "",
         password: "",
       };
@@ -135,9 +140,8 @@ export class AuthView extends BaseView {
           isLogin = false;
         }
       });
-      const inputData: any = {};
-      Object.entries(textInputs).forEach(([name, input]) => {
-        let formInput = <HTMLFormElement>input;
+      Object.values(textInputs).forEach((input) => {
+        const formInput = <HTMLFormElement>input;
         if (formInput.name === authConfig.emailInput.name) {
           logData.email = formInput.value;
           regData.email = formInput.value;
@@ -169,7 +173,7 @@ export class AuthView extends BaseView {
     if (!inputName || !errorMessage || !authForm || !errorField) {
       return;
     }
-    const errorInput = authForm[inputName];
+    const errorInput = authForm[inputName] as HTMLFormElement;
     errorInput.classList.add('error');
     errorField.textContent = errorMessage;
   };
@@ -184,7 +188,7 @@ export class AuthView extends BaseView {
     if (!inputName || !authForm || !errorField) {
       return;
     }
-    const errorInput = authForm[inputName];
+    const errorInput = authForm[inputName] as HTMLFormElement;
     errorInput.classList.remove('error');
     errorField.textContent = '';
   };

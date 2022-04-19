@@ -47,10 +47,10 @@ export class MovieController extends BaseController {
                 event: events.moviePage.reviewSuccess,
                 handler: this.view.renderReviewSuccess,
             },
-            {
-                event: events.moviePage.addCollection,
-                handler: this.model.addCollection,
-            },
+            // {
+            //     event: events.moviePage.addCollection,
+            //     handler: this.model.addCollection,
+            // },
             {
                 event: events.header.logout,
                 handler: this.view.onLogout,

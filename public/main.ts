@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import "./index.scss";
 import { regularRoutes } from "@/consts/routes";
 import { Router } from "@/modules/router";

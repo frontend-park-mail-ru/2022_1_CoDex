@@ -28,7 +28,9 @@ export class BaseView {
      * контента страницы. Функция базового класса предназначена для
      * переопределения.
      */
-  emitGetContent = () => { };
+  emitGetContent = () => { 
+    console.log("BaseView, emitGetContent: You need to redefine this function");
+  };
 
   /**
    * @description Отрисовывает страницу целиком, вместе с

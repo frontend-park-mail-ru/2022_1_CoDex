@@ -69,8 +69,8 @@ export class MovieView extends BaseView {
      */
   renderRating = (movieID: string) => {
     const rating = document.querySelector('.stars') as HTMLElement;
-    const ratingItems = Object.values
-      (document.querySelectorAll('.stars__item__single-star')) as HTMLElement[];
+    const ratingItems: HTMLElement[] = Object.values(
+      document.querySelectorAll('.stars__item__single-star')) ;
     rating.addEventListener('click', (e) => {
       if (!authModule) {
         e.preventDefault();
@@ -96,7 +96,7 @@ export class MovieView extends BaseView {
       }
     };
 
-    rating.onmouseout = function(e) {
+    rating.onmouseout = function() {
       addClass('active');
       mouseOutOfActive(ratingItems);
     };
@@ -219,8 +219,8 @@ export class MovieView extends BaseView {
       dropdown[i].appendChild(optionListContainer);
       div.addEventListener('click', function(e) {
         e.stopPropagation();
-        let target = e.target as HTMLElement;
-        let next = target.nextSibling as HTMLElement;
+        const target = e.target as HTMLElement;
+        const next = target.nextSibling as HTMLElement;
         next?.classList.toggle('select-hide');
         target.classList.toggle('select-arrow-active');
       });
@@ -262,7 +262,8 @@ export class MovieView extends BaseView {
      * @description Закрывает все элементы в dropdown-e, кроме выбранного.
      * @param { HTMLElement } element Выбранный элемент.
      */
-  closeAllSelect = (element: any) => {
+  closeAllSelect = (event: Event) => {
+    const element = event.target;
     const items = document.getElementsByClassName('select-items');
     const selected = document.getElementsByClassName('select-selected');
     const itemsAmount = items.length;
@@ -317,7 +318,8 @@ export class MovieView extends BaseView {
     if (!review) {
       return;
     }
-    reviewList?.append(<HTMLElement>createElementFromHTML(createReviewCard({singleReview: review})));
+    reviewList?.append(<HTMLElement>createElementFromHTML(
+      <string> createReviewCard({singleReview: review})));
   };
 
   /**

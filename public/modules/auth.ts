@@ -62,7 +62,7 @@ class Auth {
                     this.lastEvent = events.auth.gotUser;
                 }
             }
-        }).catch((e) => {
+        }).catch(() => {
             this.eventBus.emit(events.app.errorPage);
         });
     };
