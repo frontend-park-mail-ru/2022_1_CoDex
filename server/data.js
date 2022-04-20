@@ -17,8 +17,8 @@ const startServer = (app) => {
   app.get("/api/v1/user/1", function (req, res) {
     res.status(200).json({
       ID: 1,
-      avatarSrc: "/server/images/adventures.webp",
-      name: users['a@a.ru'].name,
+      imgsrc: "/server/images/adventures.webp",
+      username: users['a@a.ru'].name,
       email: 'a@a.ru',
     });
   });
@@ -284,8 +284,8 @@ const startServer = (app) => {
     res.cookie('podvorot', id, { expires: new Date(Date.now() + 1000 * 60 * 10) });
     res.status(201).json({
       ID: id,
-      avatarSrc: "server/images/adventures.webp",
-      name: users[email].name,
+      imgsrc: "server/images/adventures.webp",
+      username: users[email].name,
       email: email,
     });
   });
@@ -306,8 +306,8 @@ const startServer = (app) => {
     res.cookie('podvorot', ID, { expires: new Date(Date.now() + 1000 * 60 * 10) });
     res.status(200).json({
       ID: 1,
-      avatarSrc: "server/images/adventures.webp",
-      name: users[email].name,
+      imgsrc: "server/images/adventures.webp",
+      username: users[email].name,
       email: email,
     });
   });
@@ -315,6 +315,18 @@ const startServer = (app) => {
   app.post("/api/v1/user/logout", function (req, res) {
     res.status(200).json({
       status:200,
+    });
+  });
+
+
+  app.post("/api/v1/user/update/1", function (req, res) {
+    const name = req.body.username;
+    users["a@a.ru"].name = name;
+    res.status(200).json({
+      ID: 1,
+      avatarSrc: "/server/images/adventures.webp",
+      username: users["a@a.ru"].name,
+      email: "a@a.ru",
     });
   });
 
@@ -327,7 +339,7 @@ const startServer = (app) => {
     res.status(200).json({
       ID: 1,
       avatarSrc: "/server/images/adventures.webp",
-      name: users["a@a.ru"].name,
+      username: users["a@a.ru"].name,
       email: "a@a.ru",
     });
   });
