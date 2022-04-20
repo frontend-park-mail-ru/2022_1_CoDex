@@ -3,15 +3,18 @@ const { basename } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
-    entry: "./public/main.js",
+    entry: "./public/main.ts",
+    devtool: "source-map",
     output: {
         path: path.resolve(__dirname, 'public/dist'),
         filename: "bundle.js",
         publicPath: "/",
-        sourceMapFilename: '[name].[fullhash:8].map',
-        chunkFilename: '[id].[fullhash:8].js',
+    },
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js'],
     },
     devServer: {
         historyApiFallback: true,
@@ -53,6 +56,11 @@ module.exports = {
                 test: /\.pug$/,
                 use: ['pug-loader'],
             },
+            {
+                test: /\.ts?$/,
+                exclude: /node_modules/,
+                loader: 'ts-loader',
+            },
         ],
     },
 
@@ -75,5 +83,9 @@ module.exports = {
                 },
             ],
         }),
-    ]
+    ],
+    resolve: {
+        plugins: [new TsconfigPathsPlugin()],
+        extensions: ['.js', '.ts'],
+    },
 }
