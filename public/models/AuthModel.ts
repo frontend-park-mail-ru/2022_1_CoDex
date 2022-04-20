@@ -222,8 +222,8 @@ export class AuthModel extends BaseModel {
         }
         this.deleteError(inputName, emptyField.message);
         for (const error of (errorInfo[inputName])) {
-            if (error?.regexp != /empty/ && !inputValue.match(error.regexp)) {
-                console.log("Adding error: ", inputName, error.message);
+            if (error.regexp != /empty/ && !inputValue.match(error.regexp)) {
+                console.log("Adding error: ", error, inputName, error.message);
                 this.addError(inputName, error.message)
             } else if (error.regexp == /empty/ && inputName === 
                 authConfig.repeatePasswordInput.name) {
