@@ -36,8 +36,9 @@ export class ProfileView extends BaseView {
  */
   renderProfileInfo = (data: profileUserData) => {
     this.userData = data;
-    const content = document.querySelector('.content');
+    const content = document.querySelector('.content') as HTMLElement;
     if (content) {
+      console.log(this.userData)
       content.innerHTML = profilePug(this.userData);
     }
     this.eventBus.emit(events.profilePage.getContent, this.userData);
@@ -89,10 +90,10 @@ export class ProfileView extends BaseView {
       const target = e.target as HTMLSelectElement;
       if (!target) return;
       if (target?.classList.contains('profile-info__container__settings')) {
+        
         openSettingsButton.style.display = 'none';
         openedSettingsForm.style.display = 'block';
       }
-
       if (target.value === 'Отменить') {
         openSettingsButton.style.display = 'flex';
         openedSettingsForm.style.display = 'none';
