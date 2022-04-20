@@ -64,6 +64,7 @@ export class AuthView extends BaseView {
       });
       input.addEventListener('change', () => {
         if (formInput.name === authConfig.repeatePasswordInput.name) {
+          console.log("Trying to validate repeatePassword");
           const passwordInput = <HTMLFormElement> this.getAuthDOMForm()?.[authConfig.passwordInput.name];
           this.eventBus.emit(events.authPage.validate, formInput.name, 
             formInput.value, passwordInput.value);
