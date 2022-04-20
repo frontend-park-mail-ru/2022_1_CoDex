@@ -223,11 +223,9 @@ export class AuthModel extends BaseModel {
         this.deleteError(inputName, emptyField.message);
         for (const error of (errorInfo[inputName])) {
             if (error.regexp.toString() != (/empty/).toString() && !inputValue.match(error.regexp)) {
-                console.log("Adding error: ", error, inputName, error.message);
                 this.addError(inputName, error.message)
-            } else if (error.regexp.toString() != (/empty/).toString() && inputName === 
+            } else if (error.regexp.toString() == (/empty/).toString() && inputName === 
                 authConfig.repeatePasswordInput.name) {
-                console.log("validating repeat password...");
                 const authForm = document.forms.namedItem(authFormName);
                 if (!authForm) { return; }
                 let passwordValue = "";
@@ -238,7 +236,6 @@ export class AuthModel extends BaseModel {
                     }
                 }
                 if (inputValue !== passwordValue) {
-                    console.log("Adding repeat password error", inputValue, passwordValue);
                     this.addError(inputName, error.message);
                 } else {
                     this.deleteError(inputName, error.message)
