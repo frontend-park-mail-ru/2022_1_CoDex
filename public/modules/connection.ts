@@ -359,6 +359,7 @@ export const getReview = async (id: string) => {
  * @returns { object } Ответ с сервера
  */
 export const sendSettingsChanges = async (personalData: personalData, userID: string) => {
+    console.log(personalData);
     const params: requestParams = {
         url: `${urls.api.changeProfile}/${userID}`,
         method: "POST",

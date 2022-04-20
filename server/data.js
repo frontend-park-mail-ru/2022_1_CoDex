@@ -320,7 +320,7 @@ const startServer = (app) => {
 
 
   app.post("/api/v1/user/update/1", function (req, res) {
-    const name = req.body.username;
+    const name = req.body.name;
     users["a@a.ru"].name = name;
     res.status(200).json({
       ID: 1,

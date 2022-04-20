@@ -286,3 +286,4 @@ export type baseViewData = {
     profileHref: string,
     userFromStorage: boolean,
   }
+  

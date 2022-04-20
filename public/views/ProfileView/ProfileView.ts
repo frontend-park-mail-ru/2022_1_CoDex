@@ -110,7 +110,7 @@ export class ProfileView extends BaseView {
     if (!this.validateInput(settingsInput.value)) {
       return;
     } else {
-      this.eventBus.emit(events.profilePage.sendChanges, { username: settingsInput.value }, this.userData.ID);
+      this.eventBus.emit(events.profilePage.sendChanges, { name: settingsInput.value }, this.userData.ID);
       settingsInput.value = '';
     }
   };
