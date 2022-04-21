@@ -256,6 +256,12 @@ export type moviePageData = {
     reviewex: string,
     reviews: review[],
     userrating: string,
+    collectionsInfo: personalCollectionItem[],
+}
+
+export type personalCollectionItem = {
+    collection: string,
+    hasMovie: boolean,
 }
 
 export type singleCollectionPageData = {

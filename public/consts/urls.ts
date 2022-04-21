@@ -7,7 +7,7 @@ const localUrl = "http://localhost:3000";
 export const deployUrl = "https://park-akino.ru";
 //https://teamprojectkinopoisk.herokuapp.com
 
-export const currentUrl = deployUrl;
+export const currentUrl = localUrl;
 
 const version = "/api/v1";
 
