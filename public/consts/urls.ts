@@ -5,7 +5,6 @@ const localUrl = "http://localhost:3000";
 
 // eslint-disable-next-line no-unused-vars
 export const deployUrl = "https://park-akino.ru";
-//https://teamprojectkinopoisk.herokuapp.com
 
 export const currentUrl = deployUrl;
 
