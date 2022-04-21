@@ -106,22 +106,22 @@ export class ProfileView extends BaseView {
     });
   };
   submitChange = () => {
-    const settingsInput = document.querySelector('.profile-info__container__settings__form__name-input') as HTMLInputElement;
-    if (!this.validateInput(settingsInput.value)) {
+    const nameInput = document.querySelector('.profile-info__container__settings__form__name-input') as HTMLInputElement;
+    if (!this.validateInput(nameInput.value)) {
       return;
     } else {
-      this.eventBus.emit(events.profilePage.sendChanges, { name: settingsInput.value }, this.userData.ID);
-      settingsInput.value = '';
+      this.eventBus.emit(events.profilePage.sendChanges, { username: nameInput.value}, this.userData.ID);
+      nameInput.value = '';
     }
   };
   /**
  * @description Проверяет корректность данных для поля ввода.
- * @param { string } inputName Имя поля ввода.
- * @return { bool } Корректны ли новые данные
+ * @param { string } inputValue поле ввода.
+ * @return { boolean } Корректны ли новые данные
  */
-  validateInput = (inputName: string) => {
-    if (!inputName) {
-      return null;
+  validateInput = (inputValue: string): boolean => {
+    if (!inputValue) {
+      return false;
     } else {
       return true;
     }

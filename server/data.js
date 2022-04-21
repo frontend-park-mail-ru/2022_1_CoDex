@@ -40,7 +40,7 @@ const startServer = (app) => {
   app.get("/api/v1/actors/1", function (req, res) {
     res.json(actors[0]);
   });
-  
+
   app.get("/api/v1/actors/2", function (req, res) {
     res.json(actors[1]);
   });
@@ -256,7 +256,7 @@ const startServer = (app) => {
           date: "28.03.2022",
           content: "Не зашло.",
           type: "bad",
-        },  
+        },
       ],
     });
   });
@@ -314,14 +314,16 @@ const startServer = (app) => {
 
   app.post("/api/v1/user/logout", function (req, res) {
     res.status(200).json({
-      status:200,
+      status: 200,
     });
   });
 
 
   app.post("/api/v1/user/update/1", function (req, res) {
-    const name = req.body.name;
-    users["a@a.ru"].name = name;
+    const name = req.body.username;
+    if (name != "") {
+      users["a@a.ru"].name = name;
+    }
     res.status(200).json({
       ID: 1,
       avatarSrc: "/server/images/adventures.webp",
@@ -363,9 +365,9 @@ const startServer = (app) => {
   const Reviews = {
     reviewsList: [
       { type: "Оценка", text: "10", date: "01.01.2001", number: "1" },
-      { type: "Отзыв", feedbacktype: "1", date: "01.01.2001", number: "2", movieTitle: "Вечное сияние чистого разума"},
-      { type: "Отзыв", feedbacktype: "2", date: "01.01.2001", number: "3", movieTitle: "Вечное сияние чистого разума"},
-      { type: "Отзыв", feedbacktype: "3", date: "01.01.2001", number: "4", movieTitle: "Вечное сияние чистого разума"},
+      { type: "Отзыв", feedbacktype: "1", date: "01.01.2001", number: "2", movieTitle: "Вечное сияние чистого разума" },
+      { type: "Отзыв", feedbacktype: "2", date: "01.01.2001", number: "3", movieTitle: "Вечное сияние чистого разума" },
+      { type: "Отзыв", feedbacktype: "3", date: "01.01.2001", number: "4", movieTitle: "Вечное сияние чистого разума" },
     ]
   };
 
@@ -399,7 +401,7 @@ const startServer = (app) => {
     ]
   };
 
-  const   top256 = {
+  const top256 = {
     title: "Топ 256",
     description: "Вот такая вот подборочка :)",
     movielist: [
@@ -1775,7 +1777,7 @@ const startServer = (app) => {
           "href": "/actors/1",
           "poster": "tomHanks.webp",
           "title": "Том Хэнкс",
-        },        
+        },
       ],
       "movies": [
         {
