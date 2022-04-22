@@ -20,11 +20,12 @@ class Auth {
         this.eventBus = eventBus;
         this.user = null;
         this.lastEvent = null;
-        async () => {
-            if (navigator.onLine) {
+        if (navigator.onLine){
+            (async () => {
                 await this.getUserFromServer();
-            }
+            })();
         }
+       
         
         this.eventBus.on(events.authPage.logRegSuccess, this.getUserFromSubmit);
         this.eventBus.on(events.header.logout, this.logoutUser);

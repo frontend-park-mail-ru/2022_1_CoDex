@@ -23,14 +23,30 @@ import { HeaderController } from "./controllers/HeaderController";
 // }
 
 export const root = document.getElementById("root");
-
+console.log("aboba");
+// let authController;
+// (async ()=> {
+//   await new AuthController;
+// })()
+console.log("beforeAuth");
 const authController = new AuthController();
+console.log("afterAuth");
+
 const actorController = new ActorController();
+console.log("afterActor");
+
 const collectionsController = new CollectionsController();
-const headerController = new HeaderController();
+console.log("afterCollections");
+
 const movieController = new MovieController();
+console.log("afterMovie");
+
 const profileController = new ProfileController();
+console.log("afterProfile");
+
 const singleCollectionController = new SingleCollectionController();
+console.log("afterSingleCollections");
+
 
 const router = new Router(root as HTMLElement);
 
