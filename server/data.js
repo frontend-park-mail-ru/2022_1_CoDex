@@ -1,8 +1,5 @@
 const { v4: uuid } = require('uuid');
 const path = require('path');
-const upload = multer('public/server/images');
-const express = require('express');
-const app = express();
 
 const startServer = (app) => {
   app.get("/api/v1/collections/feed", function (req, res) {

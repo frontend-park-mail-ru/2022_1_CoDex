@@ -67,13 +67,13 @@
 }
 
 .good {
-	background: radial-gradient(circle, $dark-raspberry 11%, $green 92%);
+	background: var(--goodFeedback);
 }
 
 .neutral {
-	background: radial-gradient(circle, $dark-raspberry 11%, $navigational 92%);
+	background: var(--neutralFeedback);
 }
 
 .bad {
-	background: radial-gradient(circle, $dark-raspberry 11%, $red 92%);
+	background: var(--badFeedback);
 }
