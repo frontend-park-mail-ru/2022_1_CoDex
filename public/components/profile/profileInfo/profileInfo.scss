@@ -30,13 +30,15 @@
             width: 100%;
             border-radius: 50%;
             opacity: 0;
+            object-fit: cover;
+            background-repeat: no-repeat;
+            background-position: center;
             cursor: pointer;
+            background-image: url("static/pics/avatarBackground.jpg");
         }
-    }
-    &__input:hover {
-        background-image: url("static/pics/avatarBackground.jpg");
-        img {
-            filter: opacity(50%);
+        .change__avatar:hover {
+            opacity: 0.5;
+            font-size: 0px;
         }
     }
 }

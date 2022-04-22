@@ -100,8 +100,10 @@ export class HeaderView extends BaseView {
      * ситуации, отрисовывает приглашение ко выходу или кнопку выхода.
      */
   renderUserBlock = () => {
+    console.log("inside renderUserBlock");
     const changeBlock = document.querySelector('.navbar__login-btn') ||
             document.querySelector('.user-block');
+    console.log("changeBlock", changeBlock)
     if (!authModule.user || !changeBlock) {
       return;
     }
