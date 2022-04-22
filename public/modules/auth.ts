@@ -78,7 +78,6 @@ class Auth {
         }
         this.user = parsedResponse;
         if (this.user) {
-            console.log("got user from submit");
             window.localStorage.setItem("user", JSON.stringify(this.user));
             this.eventBus.emit(events.auth.gotUser);
             this.lastEvent = events.auth.gotUser;

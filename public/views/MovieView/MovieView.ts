@@ -1,4 +1,4 @@
-import { moviePageData, personalCollectionItem, review } from '@/types';
+import { bookmarkCreateRequest, bookmarkRequest, moviePageData, personalCollectionItem, review } from '@/types';
 import EventBus from '@/modules/eventBus';
 import {BaseView} from '../BaseView/BaseView';
 import {events} from '@/consts/events';
@@ -349,7 +349,6 @@ export class MovieView extends BaseView {
 
   addCollectionsAreaListeners = () => {
     const dropdown = document.getElementsByClassName('movie-collection__dropdown');
-    console.log(dropdown);
     const choiceAmount = dropdown.length;
     for (let i = 0; i < choiceAmount; i++) {
       const currentSelect = dropdown[i].getElementsByTagName('select')[0];
@@ -360,7 +359,7 @@ export class MovieView extends BaseView {
       dropdown[i].appendChild(div);
 
       const optionListContainer = document.createElement('div');
-      optionListContainer.setAttribute('class', 'select-items select-hide');
+      optionListContainer.setAttribute('class', 'select-items bookmark-items select-hide');
       for (let j = 1; j < currentSelectLength - 1; j++) {
         const optionItem = document.createElement('div');
         if (j == currentSelectLength - 1) {
@@ -369,6 +368,8 @@ export class MovieView extends BaseView {
         if (currentSelect.options[j].classList.contains("hasMovie")) {
           optionItem.classList.add("hasMovie");
         }
+        const bookmarkId = currentSelect.options[j].getAttribute("bookmarkid");
+        optionItem.setAttribute("bookmarkid", bookmarkId ? bookmarkId : "");
         optionItem.innerHTML = currentSelect.options[j].innerHTML;
         optionItem.addEventListener('click', this.collectionsDropdownListener);
         optionListContainer.appendChild(optionItem);
@@ -395,14 +396,23 @@ export class MovieView extends BaseView {
     const currentSelectLength = currentSelect?.length;
     const previousSelect = target.parentNode?.previousSibling as HTMLElement;
     if (!currentSelect || !currentSelectLength || !previousSelect) { return; }
-    console.log(currentSelect);
     for (let i = 0; i < currentSelectLength; i++) {
       if (currentSelect.options[i].innerHTML == target.innerHTML) {
         currentSelect.selectedIndex = i;
-        if (target.classList.contains("hasMovie"))
+        const bookmarkId = target.getAttribute("bookmarkid");
+        let bookmarkRequest: bookmarkRequest = {
+          userId: authModule.user?.ID ? authModule.user.ID : "",
+          movieId: this.movieID,
+          bookmarkId: bookmarkId ? bookmarkId : "",
+        }
+        if (target.classList.contains("hasMovie")) {
           previousSelect.innerHTML = 'Добавить в подборку: ';
-        else
+          this.eventBus.emit(events.moviePage.removeCollection, bookmarkRequest);
+        }
+        else {
           previousSelect.innerHTML = 'Добавлено: ' + target.innerHTML;
+          this.eventBus.emit(events.moviePage.addCollection, bookmarkRequest);
+        }
         const previousSameAsSelected = target.parentElement.getElementsByClassName('same-as-selected');
         const previousLength = previousSameAsSelected.length;
         for (let k = 0; k < previousLength; k++) {
@@ -427,29 +437,34 @@ export class MovieView extends BaseView {
       if (event.key === "Enter") {
         const collectionName = input.value;
         if (collectionName !== "") {
-          /* TODO: отослать появление коллекции*/
-          const parent = input.parentElement;
-          const grand = parent?.parentNode;
-          const currentSelect = parent?.parentElement?.parentElement?.getElementsByTagName('select')[0];
-          const currentSelectLength = currentSelect?.length;
-          const previousSelect = input.parentNode?.previousSibling as HTMLElement;
-          if (!currentSelect || !currentSelectLength || !previousSelect || !parent || !grand) {
-             return; 
+          const bookmarkCreateRequest: bookmarkCreateRequest = {
+            title: collectionName,
+            userId: authModule.user?.ID ? authModule.user.ID : "",
+            public: true,
           }
-          const newOption = document.createElement("option");
-          newOption.setAttribute("value", `${currentSelectLength - 1}`);
-          newOption.textContent = collectionName;
-          currentSelect.insertBefore(newOption, currentSelect.options[currentSelectLength - 1]);
-          const newCollection = document.createElement("div");
-          newCollection.classList.add("hasMovie");
-          newCollection.textContent = collectionName;
-          newCollection.addEventListener("click", this.collectionsDropdownListener);
-          const target = e.target as HTMLElement;
-          grand?.insertBefore(newCollection, parent);
-          parent.innerHTML = "Новая подборка";
-          parent.addEventListener("click", this.newCollectionListener);
+          this.eventBus.emit(events.moviePage.createCollection, bookmarkCreateRequest);
         }
       }
     })
+  }
+
+  onCreateCollectionSuccess = (bookmarkId: string, bookmarkName: string) => {
+    const currentSelect = document.querySelector(".bookmark-select") as HTMLSelectElement;
+    const currentSelectLength = currentSelect?.length;
+    if (!currentSelect || !currentSelectLength) {
+        return; 
+    }
+    const newOption = document.createElement("option");
+    newOption.setAttribute("bookmarkid", `${bookmarkId}`);
+    newOption.textContent = bookmarkName;
+    currentSelect.insertBefore(newOption, currentSelect.options[currentSelectLength - 1]);
+
+    const bookmarkItems = document.querySelector(".bookmark-items") as HTMLDivElement;
+    const newCollection = document.createElement("div");
+    newCollection.classList.add("hasMovie");
+    newCollection.setAttribute("bookmarkid", bookmarkId);
+    newCollection.textContent = bookmarkName;
+    newCollection.addEventListener("click", this.collectionsDropdownListener);
+    bookmarkItems.insertBefore(newCollection, bookmarkItems.lastChild);
   }
 }

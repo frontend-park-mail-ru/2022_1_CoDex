@@ -36,6 +36,9 @@ type api = {
     actor: string,
     sendRating: string,
     sendReviews: string,
+    addMovieToBookmark: string,
+    removeMovieFromBookmark: string,
+    createBookmark: string
 }
 
 export type routeList = {
@@ -262,6 +265,7 @@ export type moviePageData = {
 export type personalCollectionItem = {
     collection: string,
     hasMovie: boolean,
+    bookmarkId: number,
 }
 
 export type singleCollectionPageData = {
@@ -291,5 +295,21 @@ export type baseViewData = {
     userId: string,
     profileHref: string,
     userFromStorage: boolean,
-  }
-  
+}
+
+export type bookmarkRequest = {
+    userId: string,
+    movieId: string,
+    bookmarkId: string,
+}
+
+export type bookmarkCreateRequest = {
+    title: string,
+    userId: string,
+    public: boolean,
+}
+
+export type createBookmarkResponse = {
+    ID: string,
+    title: string,
+}

@@ -69,7 +69,10 @@ export const events = {
         ratingSuccess: "moviePage:ratingSuccess",
         reviewSuccess: "moviePage:reviewSuccess",
         addCollection: "moviePage:addCollection",
+        removeCollection: "moviePage:removeCollection",
+        createCollection: "moviePage:createCollection",
         askToLog: "moviePage:askToLog",
+        createCollectionSuccess: "moviePage:createCollectionSuccess",
     },
 
     actorPage: {

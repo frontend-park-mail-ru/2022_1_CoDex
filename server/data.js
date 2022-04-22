@@ -45,6 +45,13 @@ const startServer = (app) => {
     res.json(actors[1]);
   });
 
+  app.post("/api/v1/createBookmark", function (req, res) {
+    res.json({
+      ID: "777",
+      title: "new title",
+    });
+  });
+
 
   app.get("/api/v1/movies/1", function (req, res) {
     res.json({
@@ -55,10 +62,12 @@ const startServer = (app) => {
         {
           collection: "Мне нравится",
           hasMovie: false,
+          bookmarkId: 1,
         },
         {
           collection: "Пример",
           hasMovie: true,
+          bookmarkId: 2
         }
       ],
       related: [

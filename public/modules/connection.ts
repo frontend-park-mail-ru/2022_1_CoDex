@@ -1,6 +1,6 @@
 import { statuses } from "@/consts/statuses";
 import { urls } from "@/consts/urls";
-import { loginData, personalData, ratingRequest, registerData, requestParams, requestParamsData, reviewRequest } from "@/types";
+import { bookmarkCreateRequest, bookmarkRequest, loginData, personalData, ratingRequest, registerData, requestParams, requestParamsData, reviewRequest } from "@/types";
 // import regeneratorRuntime from "regenerator-runtime";
 
 let CSRFToken: string | null = null;
@@ -359,7 +359,6 @@ export const getReview = async (id: string) => {
  * @returns { object } Ответ с сервера
  */
 export const sendSettingsChanges = async (personalData: personalData, userID: string) => {
-    console.log(personalData);
     const params: requestParams = {
         url: `${urls.api.changeProfile}/${userID}`,
         method: "POST",
@@ -414,5 +413,48 @@ export const getActor = async (actorID: string) => {
     }
 };
 
+export const addMovieToBookmark = async (bookmarkRequest: bookmarkRequest) => {
+    const params: requestParams = {
+        url: `${urls.api.addMovieToBookmark}`,
+        method: "POST",
+        credentials: null,
+        body: JSON.stringify(bookmarkRequest),
+    };
 
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+};
+
+export const removeMovieFromBookmark = async (bookmarkRequest: bookmarkRequest) => {
+    const params: requestParams = {
+        url: `${urls.api.removeMovieFromBookmark}`,
+        method: "POST",
+        credentials: null,
+        body: JSON.stringify(bookmarkRequest),
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+};
+
+export const createBookmark = async (bookmarkCreateRequest: bookmarkCreateRequest) => {
+    const params: requestParams = {
+        url: `${urls.api.createBookmark}`,
+        method: "POST",
+        credentials: null,
+        body: JSON.stringify(bookmarkCreateRequest),
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+};
 

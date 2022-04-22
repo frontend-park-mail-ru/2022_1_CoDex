@@ -1,9 +1,9 @@
 import EventBus from "@/modules/eventBus";
-import { movie, ratingRequest, ratingResponse, reviewRequest, reviewResponse } from "@/types";
+import { bookmarkCreateRequest, bookmarkRequest, createBookmarkResponse, movie, ratingRequest, ratingResponse, reviewRequest, reviewResponse } from "@/types";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
 import { authModule } from "../modules/auth";
-import { getMovie, sendUserRating, sendUserReview } from "../modules/connection";
+import { addMovieToBookmark, createBookmark, getMovie, removeMovieFromBookmark, sendUserRating, sendUserReview } from "../modules/connection";
 import { BaseModel } from "./BaseModel";
 
 /**
@@ -88,6 +88,29 @@ export class MovieModel extends BaseModel {
                 const parsed = <reviewResponse> response.parsedResponse;
                 if (response.status == statuses.OK) {
                     this.eventBus.emit(events.moviePage.reviewSuccess, parsed.review);
+                }
+            }
+        ).catch((e) => {
+            console.log("Unexpected review error: ", e);
+        });
+    }
+
+    addCollection = (inputsData: bookmarkRequest) => {
+        addMovieToBookmark(inputsData);
+        
+    }
+
+    removeCollection = (inputsData: bookmarkRequest) => {
+        removeMovieFromBookmark(inputsData);
+    }
+
+    createCollection = (inputsData: bookmarkCreateRequest) => {
+        createBookmark(inputsData).then(
+            (response) => {
+                if (!response) { return; }
+                const parsed = <createBookmarkResponse> response.parsedResponse;
+                if (response.status == statuses.OK) {
+                    this.eventBus.emit(events.moviePage.createCollectionSuccess, parsed.ID, parsed.title);
                 }
             }
         ).catch((e) => {

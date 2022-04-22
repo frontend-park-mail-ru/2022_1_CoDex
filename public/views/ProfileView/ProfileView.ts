@@ -38,7 +38,6 @@ export class ProfileView extends BaseView {
     this.userData = data;
     const content = document.querySelector('.content') as HTMLElement;
     if (content) {
-      console.log(this.userData)
       content.innerHTML = profilePug(this.userData);
     }
     this.eventBus.emit(events.profilePage.getContent, this.userData);
