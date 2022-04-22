@@ -112,4 +112,5 @@ export class ProfileModel extends BaseModel {
             console.log("Unexpected profileSettingsAvatar error: ", e);
         });
     }
+
 }

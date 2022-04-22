@@ -14,6 +14,7 @@ import { authModule } from '@/modules/auth';
  */
 export class ProfileView extends BaseView {
   userData: profileUserData;
+  pageID : string;
   /**
      * @description Создаёт представление страницы профиля.
      * @param { EventBus } eventBus Глобальная шина событий
@@ -21,7 +22,7 @@ export class ProfileView extends BaseView {
     */
   constructor(eventBus: EventBus, data: object = {}) {
     super(eventBus, data);
-    console.log("authModule.user",authModule.user);
+    console.log("authModule.user", authModule.user);
   }
 
   /**
@@ -93,7 +94,7 @@ export class ProfileView extends BaseView {
       const target = e.target as HTMLSelectElement;
       if (!target) return;
       if (target?.classList.contains('profile-info__container__settings')) {
-        
+
         openSettingsButton.style.display = 'none';
         openedSettingsForm.style.display = 'block';
       }
@@ -114,7 +115,7 @@ export class ProfileView extends BaseView {
     if (!this.validateInput(nameInput.value)) {
       return;
     } else {
-      this.eventBus.emit(events.profilePage.sendChanges, { username: nameInput.value}, this.userData.ID);
+      this.eventBus.emit(events.profilePage.sendChanges, { username: nameInput.value }, this.userData.ID);
       nameInput.value = '';
     }
   };
@@ -154,7 +155,7 @@ export class ProfileView extends BaseView {
         reader.addEventListener('load', (event: Event) => {
           const avatarTarget = event.target as FileReader;
           if (!avatarTarget) return;
-          const imgSrc : string = avatarTarget.result as string;
+          const imgSrc: string = avatarTarget.result as string;
           avatarDiv.style.backgroundImage = `url(${imgSrc})`;
         });
         reader.readAsDataURL(file[0]);
@@ -168,6 +169,15 @@ export class ProfileView extends BaseView {
     });
   };
 
+  reRenderProfileInfo = () => {
+    if(!authModule.user) return;
+    this.userData.isThisUser = (authModule.user.ID == this.userData.ID);
+    const profileInfo = document.querySelector('.profile-info');
+    if (profileInfo) {
+      profileInfo.innerHTML = profileSettings(this.userData);
+    }
+    this.addSettingsButtonListener();
+  }
   reRenderPage = () => {
     this.emitGetContent();
   };

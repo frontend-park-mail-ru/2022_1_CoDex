@@ -62,10 +62,10 @@ export class ProfileController extends BaseController {
                 event: events.profilePage.render.changedProfile,
                 handler: this.view.reRenderPage,
             },
-            // {
-            //     event: events.auth.gotUser,
-            //     handler: this.view.reRenderPage,
-            // },
+            {
+                event: events.auth.gotUser,
+                handler: this.view.reRenderProfileInfo,
+            },
             //TODO{
             //     event: events.profilePage.render.changedAvatar,
             //     handler: this.view.renderChangedProfile,

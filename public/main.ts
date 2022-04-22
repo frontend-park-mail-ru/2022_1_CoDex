@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import "./index.scss";
+import { authModule } from "./modules/auth";
 import { regularRoutes } from "@/consts/routes";
 import { Router } from "@/modules/router";
 import { AuthController } from "@/controllers/AuthController";
