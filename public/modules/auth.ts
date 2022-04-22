@@ -21,9 +21,7 @@ class Auth {
         this.user = null;
         this.lastEvent = null;
         if (navigator.onLine){
-            (async () => {
-                await this.getUserFromServer();
-            })();
+            this.getUserFromServer();
         }
        
         
