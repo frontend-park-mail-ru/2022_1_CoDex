@@ -334,7 +334,10 @@ const startServer = (app) => {
 
   app.post("/api/v1/user/update/avatar/1", function (req, res) {
     res.status(200).json({
+      ID: 1,
       imgsrc: "/server/images/adventures.webp",
+      username: users["a@a.ru"].name,
+      email: "a@a.ru",
     });
   });
 

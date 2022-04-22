@@ -85,6 +85,7 @@ export class ProfileModel extends BaseModel {
                 this.eventBus.emit(
                     events.profilePage.render.changedProfile, profileData
                 );
+                authModule.changeUser(response.parsedResponse);
             } else if (response?.status === statuses.NOT_FOUND) {
                 this.eventBus.emit(events.app.errorPageText, "Такого пользователя нет");
             }
@@ -98,6 +99,8 @@ export class ProfileModel extends BaseModel {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
             } if (response?.status === statuses.OK && response.parsedResponse) {
+                console.log(response.parsedResponse)
+                authModule.changeUser(response.parsedResponse);
                 this.eventBus.emit(
                     events.profilePage.render.changedProfile, response.parsedResponse
                 );

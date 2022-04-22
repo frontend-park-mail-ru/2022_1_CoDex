@@ -25,7 +25,7 @@ class Auth {
         }
         this.eventBus.on(events.authPage.logRegSuccess, this.getUserFromSubmit);
         this.eventBus.on(events.header.logout, this.logoutUser);
-        // this.eventBus.on(events.profilePage.changedProfile, this.changeUser);
+        //TODO this.eventBus.on(events.profilePage.render.changedProfile, this.changeUser);
     }
 
     /**
@@ -33,8 +33,8 @@ class Auth {
      * запоминает. В случае успеха перенаправляет на следующую
      * страницу.
      */
-    getUserFromServer = () => {
-        checkAuth().then((response) => {
+    getUserFromServer = async ()  => {
+        await checkAuth().then((response) => {
             if (!response) {
                 return null;
             }
@@ -77,6 +77,7 @@ class Auth {
             return;
         }
         this.user = parsedResponse;
+        console.log(parsedResponse)
         if (this.user) {
             console.log("got user from submit");
             window.localStorage.setItem("user", JSON.stringify(this.user));
