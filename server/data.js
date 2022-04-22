@@ -357,7 +357,8 @@ const startServer = (app) => {
 
   app.get('/api/v1/user/authcheck', (req, res) => {
     res.json({
-      "status": 400,
+      "status": 200,
+      "ID":"1",
     });
   });
 
