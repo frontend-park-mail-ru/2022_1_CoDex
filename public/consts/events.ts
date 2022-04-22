@@ -107,5 +107,12 @@ export const events = {
         // deleteValidationError: "profilePage:deleteValidationError",
         // addValidationError: "profilePage:addValidationError",
         // deleteAllErrors: "profilePage:deleteAllErrors",
+    },
+
+    genresPage: {
+        render: {
+            content: "collectionsPage:renderContent",
+        },
+        getContent: "genresPage:getContent",
     }
 };

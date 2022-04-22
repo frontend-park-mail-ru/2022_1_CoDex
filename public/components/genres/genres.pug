@@ -1,0 +1,9 @@
+div.content_wrapper
+    page.page
+        div(class = "content_container")
+            h1.title Жанры
+            div.description Это наши жанры ;)
+            div.bg_container
+                div.genres__container
+                    each input, i in genresList
+                            img(src=`${input.imgsrc}`)

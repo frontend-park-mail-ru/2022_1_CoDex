@@ -458,3 +458,21 @@ export const createBookmark = async (bookmarkCreateRequest: bookmarkCreateReques
     }
 };
 
+/**
+ * @description Получает с сервера данные о подборках фильмов.
+ * @returns { object } Ответ с сервера
+ */
+ export const getGenres = async () => {
+    const params: requestParams = {
+        url: `${urls.api.genres}`,
+        method: "GET",
+        credentials: null,
+        body: null,
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}

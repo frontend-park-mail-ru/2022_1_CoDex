@@ -38,7 +38,8 @@ type api = {
     sendReviews: string,
     addMovieToBookmark: string,
     removeMovieFromBookmark: string,
-    createBookmark: string
+    createBookmark: string,
+    genres: string
 }
 
 export type routeList = {
