@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import "./index.scss";
-import { authModule } from "./modules/auth";
 import { regularRoutes } from "@/consts/routes";
 import { Router } from "@/modules/router";
 import { AuthController } from "@/controllers/AuthController";
@@ -24,29 +23,12 @@ import { HeaderController } from "./controllers/HeaderController";
 // }
 
 export const root = document.getElementById("root");
-console.log("aboba");
-// let authController;
-// (async ()=> {
-//   await new AuthController;
-// })()
-console.log("beforeAuth");
 const authController = new AuthController();
-console.log("afterAuth");
-
 const actorController = new ActorController();
-console.log("afterActor");
-
 const collectionsController = new CollectionsController();
-console.log("afterCollections");
-
 const movieController = new MovieController();
-console.log("afterMovie");
-
 const profileController = new ProfileController();
-console.log("afterProfile");
-
 const singleCollectionController = new SingleCollectionController();
-console.log("afterSingleCollections");
 const headerController = new HeaderController;
 
 const router = new Router(root as HTMLElement);
