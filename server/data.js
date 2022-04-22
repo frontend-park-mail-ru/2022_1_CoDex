@@ -1,5 +1,8 @@
 const { v4: uuid } = require('uuid');
 const path = require('path');
+const upload = multer('public/server/images');
+const express = require('express');
+const app = express();
 
 const startServer = (app) => {
   app.get("/api/v1/collections/feed", function (req, res) {
@@ -326,9 +329,15 @@ const startServer = (app) => {
     }
     res.status(200).json({
       ID: 1,
-      avatarSrc: "/server/images/adventures.webp",
+      imgsrc: "/server/images/adventures.webp",
       username: users["a@a.ru"].name,
       email: "a@a.ru",
+    });
+  });
+
+  app.post("/api/v1/user/update/avatar/1", function (req, res) {
+    res.status(200).json({
+      imgsrc: "/server/images/adventures.webp",
     });
   });
 
