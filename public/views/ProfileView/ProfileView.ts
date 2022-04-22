@@ -7,6 +7,7 @@ import profileReview from '../../components/profile/profileReview/profileReview.
 import profileBookmark from '../../components/profile/profileBookmark/profileBookmark.pug';
 import EventBus from '@/modules/eventBus';
 import { userData, profileUserData } from '@/types';
+import { authModule } from '@/modules/auth';
 
 /**
  * @description Класс представления страницы профиля.
@@ -20,6 +21,7 @@ export class ProfileView extends BaseView {
     */
   constructor(eventBus: EventBus, data: object = {}) {
     super(eventBus, data);
+    console.log("authModule.user",authModule.user);
   }
 
   /**

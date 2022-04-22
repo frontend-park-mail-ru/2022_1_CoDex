@@ -27,6 +27,7 @@ export class ProfileModel extends BaseModel {
                 const profileData : profileUserData = response.parsedResponse;
                 console.log(user.ID, "authmodule", authModule.user?.ID);
                 profileData.isThisUser = authModule.user ? (user.ID == authModule.user.ID) : false;
+                console.log("getProfileInfo",profileData);
                 this.eventBus.emit(
                     events.profilePage.render.profileInfo, profileData
                 );
