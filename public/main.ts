@@ -46,7 +46,7 @@ console.log("afterProfile");
 
 const singleCollectionController = new SingleCollectionController();
 console.log("afterSingleCollections");
-
+const headerController = new HeaderController;
 
 const router = new Router(root as HTMLElement);
 
