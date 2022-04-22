@@ -35,7 +35,7 @@ class Auth {
      * запоминает. В случае успеха перенаправляет на следующую
      * страницу.
      */
-    getUserFromServer = async () => {
+    getUserFromServer = () => {
         console.log("getUserFromServer")
         // try {
         //     const responseCheckAuth = await checkAuth();

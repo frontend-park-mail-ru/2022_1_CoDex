@@ -14,7 +14,6 @@ import { authModule } from '@/modules/auth';
  */
 export class ProfileView extends BaseView {
   userData: profileUserData;
-  pageID : string;
   /**
      * @description Создаёт представление страницы профиля.
      * @param { EventBus } eventBus Глобальная шина событий
@@ -178,6 +177,7 @@ export class ProfileView extends BaseView {
     }
     this.addSettingsButtonListener();
   }
+  
   reRenderPage = () => {
     this.emitGetContent();
   };

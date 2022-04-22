@@ -23,13 +23,13 @@ import { HeaderController } from "./controllers/HeaderController";
 // }
 
 export const root = document.getElementById("root");
+const headerController = new HeaderController;
 const authController = new AuthController();
 const actorController = new ActorController();
 const collectionsController = new CollectionsController();
 const movieController = new MovieController();
 const profileController = new ProfileController();
 const singleCollectionController = new SingleCollectionController();
-const headerController = new HeaderController;
 
 const router = new Router(root as HTMLElement);
 
