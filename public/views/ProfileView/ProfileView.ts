@@ -41,6 +41,7 @@ export class ProfileView extends BaseView {
       console.log(this.userData)
       content.innerHTML = profilePug(this.userData);
     }
+    console.log(this.userData)
     this.eventBus.emit(events.profilePage.getContent, this.userData);
     this.addSettingsButtonListener();
     this.listenAvatarChanged();
@@ -82,7 +83,7 @@ export class ProfileView extends BaseView {
     const settings = document.querySelector('.profile-info__container');
     const openSettingsButton = document?.querySelector('.profile-info__container__settings') as HTMLElement;
     const openedSettingsForm = document?.querySelector('.profile-info__container__settings__form') as HTMLElement;
-    const settingsInput = document?.querySelector('.profile-info__container__settings__form__name-input') as HTMLInputElement;
+    const nameInput = document?.querySelector('.profile-info__container__settings__form__name-input') as HTMLInputElement;
 
     if (!settings) return;
     settings.addEventListener('click', (e) => {
@@ -97,7 +98,7 @@ export class ProfileView extends BaseView {
       if (target.value === 'Отменить') {
         openSettingsButton.style.display = 'flex';
         openedSettingsForm.style.display = 'none';
-        settingsInput.value = '';
+        nameInput.value = '';
       } else if (target.value === 'Сохранить') {
         openSettingsButton.style.display = 'flex';
         openedSettingsForm.style.display = 'none';
@@ -105,6 +106,7 @@ export class ProfileView extends BaseView {
       }
     });
   };
+
   submitChange = () => {
     const nameInput = document.querySelector('.profile-info__container__settings__form__name-input') as HTMLInputElement;
     if (!this.validateInput(nameInput.value)) {
