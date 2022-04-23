@@ -29,7 +29,9 @@ export const csrf = async () => {
  */
 const sendRequest = async (params: requestParams) => {
     await csrf();
-    let headers =  {};
+    let headers =  {
+        "Content-Type": "application/json",
+    };
     if (CSRFToken != null) {
         headers = {...headers, ...{"X-CSRF-Token": CSRFToken}};
         //headers.X-CSRF-Token = 'CSRFToken';
