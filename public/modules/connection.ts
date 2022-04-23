@@ -39,7 +39,7 @@ const sendRequest = async (params: requestParams) => {
     }
     const response = await fetch(params.url, {
         method: params.method,
-        //headers: headers,
+        headers: headers,
         body: params.body,
         mode: "cors",
         credentials: "include",
