@@ -69,6 +69,7 @@ const sendRequest = async (params: requestParams) => {
  */
  export const sendRequestAvatar = async (params: requestParamsData) => {
     await csrf();
+    console.log("insideSendAvatar");
     let headers =  {
         "Content-Type": "multipart/form-data",
     };
@@ -77,6 +78,7 @@ const sendRequest = async (params: requestParams) => {
         //headers.X-CSRF-Token = 'CSRFToken';
        // headers.set("X-CSRF-Token", CSRFToken);
     }
+    console.log("headers", headers)
     const response = await fetch(params.url, {
         method: params.method,
         headers: headers,
@@ -84,7 +86,7 @@ const sendRequest = async (params: requestParams) => {
         mode: "cors",
         credentials: "include",
     });
-
+    console.log("responseAvatar", response)
     try {
         const parsedResponse = await response?.json();
         if (response.status !== statuses.OK && response.status !== statuses.CREATED) {
