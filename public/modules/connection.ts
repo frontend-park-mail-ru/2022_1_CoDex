@@ -28,15 +28,15 @@ export const csrf = async () => {
  * @returns { object } Статус и обработанный ответ
  */
 const sendRequest = async (params: requestParams) => {
-    // await csrf();
-    // let headers =  {
-    //     "Content-Type": "application/json",
-    // };
-    // if (CSRFToken != null) {
-    //     headers = {...headers, ...{"X-CSRF-Token": CSRFToken}};
-    //     //headers.X-CSRF-Token = 'CSRFToken';
-    //    // headers.set("X-CSRF-Token", CSRFToken);
-    // }
+    await csrf();
+    let headers =  {
+        "Content-Type": "application/json",
+    };
+    if (CSRFToken != null) {
+        headers = {...headers, ...{"X-CSRF-Token": CSRFToken}};
+        //headers.X-CSRF-Token = 'CSRFToken';
+       // headers.set("X-CSRF-Token", CSRFToken);
+    }
     const response = await fetch(params.url, {
         method: params.method,
         //headers: headers,
@@ -44,6 +44,7 @@ const sendRequest = async (params: requestParams) => {
         mode: "cors",
         credentials: "include",
     });
+    console.log(response)
     try {
         const parsedResponse = await response?.json();
         if (response.status !== statuses.OK && response.status !== statuses.CREATED) {
