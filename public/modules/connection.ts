@@ -28,18 +28,18 @@ export const csrf = async () => {
  * @returns { object } Статус и обработанный ответ
  */
 const sendRequest = async (params: requestParams) => {
-    await csrf();
-    let headers =  {
-        "Content-Type": "application/json",
-    };
-    if (CSRFToken != null) {
-        headers = {...headers, ...{"X-CSRF-Token": CSRFToken}};
-        //headers.X-CSRF-Token = 'CSRFToken';
-       // headers.set("X-CSRF-Token", CSRFToken);
-    }
+    // await csrf();
+    // let headers =  {
+    //     "Content-Type": "application/json",
+    // };
+    // if (CSRFToken != null) {
+    //     headers = {...headers, ...{"X-CSRF-Token": CSRFToken}};
+    //     //headers.X-CSRF-Token = 'CSRFToken';
+    //    // headers.set("X-CSRF-Token", CSRFToken);
+    // }
     const response = await fetch(params.url, {
         method: params.method,
-        headers: headers,
+        //headers: headers,
         body: params.body,
         mode: "cors",
         credentials: "include",
@@ -67,18 +67,18 @@ const sendRequest = async (params: requestParams) => {
  * @returns { object } Статус и обработанный ответ
  */
  export const sendRequestAvatar = async (params: requestParamsData) => {
-    await csrf();
-    let headers =  {
-        "Content-Type": "application/json",
-    };
-    if (CSRFToken != null) {
-        headers = {...headers, ...{"X-CSRF-Token": CSRFToken}};
-        //headers.X-CSRF-Token = 'CSRFToken';
-       // headers.set("X-CSRF-Token", CSRFToken);
-    }
+    // await csrf();
+    // let headers =  {
+    //     "Content-Type": "application/json",
+    // };
+    // if (CSRFToken != null) {
+    //     headers = {...headers, ...{"X-CSRF-Token": CSRFToken}};
+    //     //headers.X-CSRF-Token = 'CSRFToken';
+    //    // headers.set("X-CSRF-Token", CSRFToken);
+    // }
     const response = await fetch(params.url, {
         method: params.method,
-        headers: headers,
+        //headers: headers,
         body: params.body,
         mode: "cors",
         credentials: "include",
