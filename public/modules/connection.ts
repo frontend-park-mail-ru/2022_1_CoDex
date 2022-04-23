@@ -384,6 +384,7 @@ export const sendSettingsChanges = async (personalData: personalData, userID: st
  * @returns { object } Ответ с сервера
  */
 export const sendAvatar = async (formData: FormData, userID: string) => {
+    console.log("sendAvatar");
     const params: requestParamsData = {
         url: `${urls.api.changeAvatar}/${userID}`,
         method: "POST",

@@ -94,14 +94,15 @@ export class ProfileModel extends BaseModel {
     }
 
     sendSettingsAvatar = (formData: FormData, userID: string) => {
+        console.log("sendSettingsAvatar");
         sendAvatar(formData, userID).then((response) => {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
             } if (response?.status === statuses.OK && response.parsedResponse) {
-                authModule.changeUser(response.parsedResponse);
                 this.eventBus.emit(
                     events.profilePage.render.changedProfile, response.parsedResponse
                 );
+                authModule.changeUser(response.parsedResponse);
             } else if (response?.status === statuses.NOT_FOUND) {
                 this.eventBus.emit(events.app.errorPageText, "Такого пользователя нет");
             }

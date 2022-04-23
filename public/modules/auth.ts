@@ -65,39 +65,6 @@ class Auth {
         } catch (err) {
             this.eventBus.emit(events.app.errorPage);
         }
-        // checkAuth().then((response) => {
-        //     if (!response) {
-        //         return null;
-        //     }
-        //     const parsed = <authcheckResponse>response.parsedResponse;
-        //     if (+parsed.status == statuses.OK) {
-        //         return parsed.ID;
-        //     }
-        //     window.localStorage.removeItem("user");
-        //     this.eventBus.emit(events.auth.notLoggedIn);
-        //     this.lastEvent = events.auth.notLoggedIn;
-        //     return null;
-        // }).then((userID) => {
-        //     if (userID) {
-        //         return getCurrentUser(userID);
-        //     }
-        // }).then((response) => {
-        //     if (!response) {
-        //         return;
-        //     }
-        //     if (response?.status === statuses.OK) {
-        //         this.user = <userData>response.parsedResponse;
-        //         if (this.user) {
-        //             window.localStorage.setItem("user", JSON.stringify(this.user));
-        //             console.log("authcheck:user")
-        //             this.eventBus.emit(events.auth.gotUser);
-        //             this.lastEvent = events.auth.gotUser;
-
-        //         }
-        //     }
-        // }).catch(() => {
-        //     this.eventBus.emit(events.app.errorPage);
-        // });
     };
 
     /**
