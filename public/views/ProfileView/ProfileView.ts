@@ -132,7 +132,7 @@ export class ProfileView extends BaseView {
   };
 
   listenAvatarChanged = () => {
-    const avatarInput = document.querySelector('.profile-info__avatar__input') as HTMLElement;
+    const avatarInput = document.querySelector('.change__avatar') as HTMLElement;
     const avatarDiv = document.querySelector('.avatar') as HTMLElement;
     if (!avatarInput) {
       return;
