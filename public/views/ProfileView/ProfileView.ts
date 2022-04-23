@@ -168,6 +168,7 @@ export class ProfileView extends BaseView {
     });
   };
 
+  
   reRenderProfileInfo = () => {
     if(!authModule.user) return;
     this.userData.isThisUser = (authModule.user.ID == this.userData.ID);
