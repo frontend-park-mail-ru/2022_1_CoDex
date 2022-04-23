@@ -20,7 +20,6 @@ export class AuthModel extends BaseModel {
     constructor(eventBus: EventBus) {
         super(eventBus);
         this.errorMessages = new Map();
-        console.log("AuthModel");
     }
 
     getContent = (URLData: URLData) => {
