@@ -70,7 +70,7 @@ const sendRequest = async (params: requestParams) => {
  export const sendRequestAvatar = async (params: requestParamsData) => {
     await csrf();
     let headers =  {
-        "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
     };
     if (CSRFToken != null) {
         headers = {...headers, ...{"X-CSRF-Token": CSRFToken}};
