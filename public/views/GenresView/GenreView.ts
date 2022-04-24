@@ -15,7 +15,6 @@ export class GenresView extends BaseView {
   };
   
   renderContent = (data: object) => {
-    console.log(data);
     const template = genresContent({genresList: data});
     this.moviesData = data;
     const content = document.querySelector('.content');

@@ -491,3 +491,18 @@ export const getSingleGenre = async (genreID: string) => {
         return null;
     }
 }
+
+export const getPremiers = async () => {
+    const params: requestParams = {
+        url: `${urls.api.premiers}`,
+        method: "GET",
+        credentials: null,
+        body: null,
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}

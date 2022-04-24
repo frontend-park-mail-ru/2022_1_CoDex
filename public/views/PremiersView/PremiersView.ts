@@ -3,14 +3,18 @@ import EventBus from '@/modules/eventBus';
 import {events} from '@/consts/events';
 import {getURLArguments} from '@/modules/router';
 import {BaseView} from '../BaseView/BaseView';
-import singleGenreContent from '@/components/singleGenre/singleGenre.pug';
+import premiersContent from '@/components/premiers/premiers.pug';
 
 /**
  * @description Класс представления страницы одной подборки.
  */
-export class SingleGenreView extends BaseView {
+export class PremiersView extends BaseView {
   private moviesData: singleCollectionPageData;
-
+  /**
+     * @description Создаёт представление страницы одной подборки.
+     * @param { EventBus } eventBus Глобальная шина событий
+     * @param { Object } data Данные, необходимые для создания представления
+     */
   constructor(eventBus: EventBus, {data={}} = {}) {
     super(eventBus, data);
   }
@@ -20,8 +24,8 @@ export class SingleGenreView extends BaseView {
      * контента страницы.
      */
   emitGetContent = () => {
-    const URLArgs = getURLArguments(window.location.pathname, '/genres/:ID');
-    this.eventBus.emit(events.singleGenrePage.getContent, URLArgs);
+    const URLArgs = getURLArguments(window.location.pathname, '/collections/:ID');
+    this.eventBus.emit(events.premiersPage.getContent, URLArgs);
   };
 
   /**
@@ -30,7 +34,7 @@ export class SingleGenreView extends BaseView {
      * название подборки, даннные о фильмах
      */
   renderContent = (data: singleCollectionPageData) => {
-    const template = singleGenreContent(data);
+    const template = premiersContent(data);
     this.moviesData = data;
     const content = document.querySelector('.content');
     if (content) {

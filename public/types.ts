@@ -40,7 +40,8 @@ type api = {
     removeMovieFromBookmark: string,
     createBookmark: string,
     genres: string,
-    singleGenre: string
+    singleGenre: string,
+    premiers: string,
 }
 
 export type routeList = {
@@ -53,7 +54,8 @@ export type routeList = {
     moviePage: string,
     actorPage: string,
     genresPage: string,
-    singleGenrePage: string
+    singleGenrePage: string,
+    premiersPage: string,
 }
 
 export type headerLink = {

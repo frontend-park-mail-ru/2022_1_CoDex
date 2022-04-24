@@ -1,14 +1,14 @@
 import EventBus from "@/modules/eventBus";
-import { singleCollectionMovie, singleCollectionPageData, singleGenre } from "@/types";
+import { singleCollection, singleCollectionMovie, singleCollectionPageData } from "@/types";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
-import { getSingleGenre } from "../modules/connection";
+import { getPremiers } from "../modules/connection";
 import { BaseModel } from "./BaseModel";
 
 /**
  * @description Класс модели одной подборки фильмов.
  */
-export class SingleGenreModel extends BaseModel {
+export class PremiersModel extends BaseModel {
     /**
      * @description Создаёт экземляр модели одной подборки фильмов.
      * @param { EventBus } eventBus Глобальная шина событий
@@ -17,18 +17,8 @@ export class SingleGenreModel extends BaseModel {
         super(eventBus);
     }
 
-    /**
-     * @description Получает информацию для контента страницы 
-     * одной подборки.
-     * @param { object } collection Информация о подборке: 
-     * название, ID
-     */
-    getContent = (genre: singleGenre) => {
-        if (!genre?.ID) {
-            this.eventBus.emit(events.app.errorPage);
-            return;
-        }
-        getSingleGenre(genre.ID).then(
+    getContent = () => {
+        getPremiers().then(
             (response) => {
                 if (!response) {
                     this.eventBus.emit(events.app.errorPage);
@@ -36,14 +26,14 @@ export class SingleGenreModel extends BaseModel {
                     const parsed = <singleCollectionPageData> response.parsedResponse;
                     this.shortenMoviesDescription(parsed.movielist);
                     this.eventBus.emit(
-                        events.singleGenrePage.render.content, response.parsedResponse
+                        events.premiersPage.render.content, response.parsedResponse
                     );
                 } else if (response?.status === statuses.NOT_FOUND) {
-                    this.eventBus.emit(events.app.errorPageText, "Таких жанров нет :(");
+                    this.eventBus.emit(events.app.errorPageText, "Премьер нет :(");
                 }
             }
         ).catch((e) => {
-            console.log("Unexpected singleGenreModel error: ", e);
+            console.log("Unexpected premiersModel error: ", e);
         });
     }
 

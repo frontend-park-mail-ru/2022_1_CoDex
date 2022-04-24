@@ -122,4 +122,11 @@ export const events = {
         },
         getContent: "singleGenrePage:getContent",
     },
+
+    premiersPage: {
+        render: {
+            content: "premiersPage:renderContent",
+        },
+        getContent: "premiersPage:getContent",
+    },
 };
