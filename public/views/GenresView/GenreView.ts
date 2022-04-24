@@ -1,6 +1,6 @@
 import {BaseView} from '../BaseView/BaseView';
 import {events} from '../../consts/events';
-import collectionsContent from '../../components/collections/collections.pug';
+import genresContent from '../../components/genres/genres.pug';
 import EventBus from '@/modules/eventBus.js';
 
 export class GenresView extends BaseView {
@@ -15,7 +15,8 @@ export class GenresView extends BaseView {
   };
   
   renderContent = (data: object) => {
-    const template = collectionsContent(data);
+    console.log(data);
+    const template = genresContent({genresList: data});
     this.moviesData = data;
     const content = document.querySelector('.content');
     if (content) {

@@ -54,6 +54,21 @@
                 display: grid;
                 row-gap: 30px;
                 column-gap: 20px;
+
+				img {
+					border-radius: 12px;
+					width: 256px;
+					height: 256px;
+					object-fit: cover;
+					transition: transform .3s;
+				}
+
+				img:hover {
+					position: relative;
+					opacity: 1;
+					transform: scale(1.1);
+					transition-duration: 300ms;
+				  }
             }
         }
     }

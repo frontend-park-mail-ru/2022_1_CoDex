@@ -6,4 +6,5 @@ div.content_wrapper
             div.bg_container
                 div.genres__container
                     each input, i in genresList
-                            img(src=`${input.imgsrc}`)
+                        a(href=`${href}`)
+                            img(class="genre-poster" src=`server/images/${input.imgsrc}`)

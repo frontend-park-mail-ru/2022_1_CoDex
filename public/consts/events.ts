@@ -111,7 +111,7 @@ export const events = {
 
     genresPage: {
         render: {
-            content: "collectionsPage:renderContent",
+            content: "genresPage:renderContent",
         },
         getContent: "genresPage:getContent",
     }

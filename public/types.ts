@@ -51,6 +51,7 @@ export type routeList = {
     registrationPage: string,
     moviePage: string,
     actorPage: string,
+    genresPage: string
 }
 
 export type headerLink = {

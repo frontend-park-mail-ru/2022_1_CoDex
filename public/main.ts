@@ -9,7 +9,7 @@ import { MovieController } from "@/controllers/MovieController";
 import { ProfileController } from "@/controllers/ProfileController";
 import { ActorController } from "@/controllers/ActorController";
 import { HeaderController } from "./controllers/HeaderController";
-
+import { GenresController } from "./controllers/GenresController";
 //Выключили сервис воркер if ('serviceWorker' in navigator) {
 //   navigator.serviceWorker.register('/sw.js', {scope: '/'})
 //       .then((registration) => {
@@ -31,6 +31,7 @@ const headerController = new HeaderController();
 const movieController = new MovieController();
 const profileController = new ProfileController();
 const singleCollectionController = new SingleCollectionController();
+const genresController = new GenresController();
 
 const router = new Router(root as HTMLElement);
 
@@ -43,4 +44,5 @@ router.register(regularRoutes.homePage, collectionsController)
   .register(regularRoutes.collectionsPage, collectionsController)
   .register(regularRoutes.moviePage, movieController)
   .register(regularRoutes.profilePage, profileController)
+  .register(regularRoutes.genresPage, genresController)
   .start();
