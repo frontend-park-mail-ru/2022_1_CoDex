@@ -34,12 +34,17 @@
 				font-family: $main_font;
 				color: white;
 				grid-area: C1;
+				font-size: 28px;
+				margin-bottom: 30px;
 			}
 			.title {
 				color: white;
 				grid-area: B1;
 				text-align: left;
 				width: 100%;
+				font-size: 40px;
+				margin-top: 0px;
+				margin-bottom: 20px;
 			}
 		}
 		.bg_container {
