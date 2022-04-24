@@ -476,3 +476,18 @@ export const createBookmark = async (bookmarkCreateRequest: bookmarkCreateReques
         return null;
     }
 }
+
+export const getSingleGenre = async (genreID: string) => {
+    const params: requestParams = {
+        url: `${urls.api.singleGenre}/${genreID}`,
+        method: "GET",
+        credentials: null,
+        body: null,
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}

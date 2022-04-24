@@ -10,6 +10,7 @@ export const routes: routeList = {
     moviePage: "/movies/\\d+",
     actorPage: "/actor/\\d+",
     genresPage: "/genres",
+    singleGenrePage: "/genres/\\d+",
 }
 
 export const regularRoutes: routeList = {
@@ -22,4 +23,5 @@ export const regularRoutes: routeList = {
     moviePage:"^/movies/\\d+$",
     actorPage: "^/actors/\\d+$",
     genresPage: "^/genres$",
+    singleGenrePage: "^/genres/\\d+$",
 }

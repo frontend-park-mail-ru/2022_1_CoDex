@@ -114,5 +114,12 @@ export const events = {
             content: "genresPage:renderContent",
         },
         getContent: "genresPage:getContent",
-    }
+    },
+
+    singleGenrePage: {
+        render: {
+            content: "singleGenrePage:renderContent",
+        },
+        getContent: "singleGenrePage:getContent",
+    },
 };

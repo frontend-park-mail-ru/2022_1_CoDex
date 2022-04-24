@@ -32,6 +32,7 @@ export const urls: urlsList = {
         addMovieToBookmark: `${currentUrl}${version}/addMovieToBookmark`, // TODO
         removeMovieFromBookmark: `${currentUrl}${version}/removeMovieFromBookmark`, // TODO
         createBookmark: `${currentUrl}${version}/createBookmark`, // TODO
-        genres: `${currentUrl}${version}/genres`, // TODO
+        genres: `${currentUrl}${version}/genres`, // TODO,
+        singleGenre: `${currentUrl}${version}/genres`, // TODO
     }
 }

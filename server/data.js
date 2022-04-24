@@ -10,6 +10,14 @@ const startServer = (app) => {
     res.json(Genres);
   });
 
+  app.get("/api/v1/genres/1", function (req, res) {
+    res.json(adventures);
+  });
+
+  app.get("/api/v1/genres/2", function (req, res) {
+    res.json(top256);
+  });
+  
   app.get("/api/v1/collections/1", function (req, res) {
     res.json(top256);
   });
@@ -406,30 +414,30 @@ const startServer = (app) => {
   ids[id] = "a@a.ru";
 
   const Genres = [
-    { href: "/", imgsrc: "genresAction.webp"},
-    { href: "/", imgsrc: "genresAdventure.webp"},
-    { href: "/", imgsrc: "genresAnime.webp"},
-    { href: "/", imgsrc: "genresAuthors.webp"},
-    { href: "/", imgsrc: "genresBiography.webp"},
-    { href: "/", imgsrc: "genresCartoons.webp"},
-    { href: "/", imgsrc: "genresComedy.webp"},
-    { href: "/", imgsrc: "genresCriminal.webp"},
-    { href: "/", imgsrc: "genresDetective.webp"},
-    { href: "/", imgsrc: "genresDocumental.webp"},
-    { href: "/", imgsrc: "genresDrama.webp"},
-    { href: "/", imgsrc: "genresFamily.webp"},
-    { href: "/", imgsrc: "genresFantastic.webp"},
-    { href: "/", imgsrc: "genresFantasy.webp"},
-    { href: "/", imgsrc: "genresHistorical.webp"},
-    { href: "/", imgsrc: "genresHorror.webp"},
-    { href: "/", imgsrc: "genresMelodrama.webp"},
-    { href: "/", imgsrc: "genresMusical.webp"},
-    { href: "/", imgsrc: "genresMystic.webp"},
-    { href: "/", imgsrc: "genresRomantic.webp"},
-    { href: "/", imgsrc: "genresShort.webp"},
-    { href: "/", imgsrc: "genresSport.webp"},
-    { href: "/", imgsrc: "genresThriller.webp"},
-    { href: "/", imgsrc: "genresWestern.webp"},
+    { href: "/genres/1", imgsrc: "genresAction.webp"},
+    { href: "/genres/2", imgsrc: "genresAdventure.webp"},
+    { href: "/genres/1", imgsrc: "genresAnime.webp"},
+    { href: "/genres/2", imgsrc: "genresAuthors.webp"},
+    { href: "/genres/1", imgsrc: "genresBiography.webp"},
+    { href: "/genres/2", imgsrc: "genresCartoons.webp"},
+    { href: "/genres/1", imgsrc: "genresComedy.webp"},
+    { href: "/genres/2", imgsrc: "genresCriminal.webp"},
+    { href: "/genres/1", imgsrc: "genresDetective.webp"},
+    { href: "/genres/2", imgsrc: "genresDocumental.webp"},
+    { href: "/genres/1", imgsrc: "genresDrama.webp"},
+    { href: "/genres/2", imgsrc: "genresFamily.webp"},
+    { href: "/genres/1", imgsrc: "genresFantastic.webp"},
+    { href: "/genres/2", imgsrc: "genresFantasy.webp"},
+    { href: "/genres/1", imgsrc: "genresHistorical.webp"},
+    { href: "/genres/2", imgsrc: "genresHorror.webp"},
+    { href: "/genres/1", imgsrc: "genresMelodrama.webp"},
+    { href: "/genres/2", imgsrc: "genresMusical.webp"},
+    { href: "/genres/1", imgsrc: "genresMystic.webp"},
+    { href: "/genres/2", imgsrc: "genresRomantic.webp"},
+    { href: "/genres/1", imgsrc: "genresShort.webp"},
+    { href: "/genres/2", imgsrc: "genresSport.webp"},
+    { href: "/genres/1", imgsrc: "genresThriller.webp"},
+    { href: "/genres/2", imgsrc: "genresWestern.webp"},
   ]
 
   const Collections = {
