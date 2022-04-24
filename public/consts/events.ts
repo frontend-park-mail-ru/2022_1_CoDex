@@ -69,7 +69,10 @@ export const events = {
         ratingSuccess: "moviePage:ratingSuccess",
         reviewSuccess: "moviePage:reviewSuccess",
         addCollection: "moviePage:addCollection",
+        removeCollection: "moviePage:removeCollection",
+        createCollection: "moviePage:createCollection",
         askToLog: "moviePage:askToLog",
+        createCollectionSuccess: "moviePage:createCollectionSuccess",
     },
 
     actorPage: {
@@ -104,5 +107,26 @@ export const events = {
         // deleteValidationError: "profilePage:deleteValidationError",
         // addValidationError: "profilePage:addValidationError",
         // deleteAllErrors: "profilePage:deleteAllErrors",
-    }
+    },
+
+    genresPage: {
+        render: {
+            content: "genresPage:renderContent",
+        },
+        getContent: "genresPage:getContent",
+    },
+
+    singleGenrePage: {
+        render: {
+            content: "singleGenrePage:renderContent",
+        },
+        getContent: "singleGenrePage:getContent",
+    },
+
+    premiersPage: {
+        render: {
+            content: "premiersPage:renderContent",
+        },
+        getContent: "premiersPage:getContent",
+    },
 };

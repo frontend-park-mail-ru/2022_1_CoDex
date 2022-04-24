@@ -1,4 +1,4 @@
-import { moviePageData, review } from '@/types';
+import { bookmarkCreateRequest, bookmarkRequest, moviePageData, personalCollectionItem, review } from '@/types';
 import EventBus from '@/modules/eventBus';
 import {BaseView} from '../BaseView/BaseView';
 import {events} from '@/consts/events';
@@ -11,6 +11,7 @@ import reviewInvitation from '@/components/reviewInvitation/reviewInvitation.pug
 import reviewInputBlock from '@/components/reviewInputBlock/reviewInputBlock.pug';
 import reviewSuccessBlock from '@/components/reviewSuccessBlock/reviewSuccessBlock.pug';
 import createReviewCard from '@/components/reviewCard/createReviewCard.pug';
+import collectionDropdown from '@/components/collectionDropdown/collectionDropdown.pug';
 
 /**
  * @description Класс представления страницы одного фильма
@@ -51,6 +52,7 @@ export class MovieView extends BaseView {
       slider('#related-slider');
       this.renderRating(data.movie.ID);
       this.renderReviewInput(data.movie.ID);
+      this.renderCollectionsArea(data.collectionsInfo);
       if (data.reviewex != '') {
         this.eventBus.emit(events.moviePage.reviewSuccess);
       }
@@ -335,4 +337,134 @@ export class MovieView extends BaseView {
     messageArea.innerHTML = ``;
     reviewInput.innerHTML = reviewInvitation({movieID: this.movieID});
   };
+
+  renderCollectionsArea = (collectionsInfo: personalCollectionItem[]) => {
+    const collectionsArea = document.querySelector(".movie-collection");
+    if (!collectionsArea) { return; }
+    // if (authModule.user) {
+      collectionsArea.innerHTML = collectionDropdown({ collectionsInfo: collectionsInfo });
+      this.addCollectionsAreaListeners();
+    // }
+  }
+
+  addCollectionsAreaListeners = () => {
+    const dropdown = document.getElementsByClassName('movie-collection__dropdown');
+    const choiceAmount = dropdown.length;
+    for (let i = 0; i < choiceAmount; i++) {
+      const currentSelect = dropdown[i].getElementsByTagName('select')[0];
+      const currentSelectLength = currentSelect.length;
+      const div = document.createElement('div');
+      div.setAttribute('class', 'select-selected');
+      div.innerHTML = currentSelect.options[currentSelect.selectedIndex].innerHTML;
+      dropdown[i].appendChild(div);
+
+      const optionListContainer = document.createElement('div');
+      optionListContainer.setAttribute('class', 'select-items bookmark-items select-hide');
+      for (let j = 1; j < currentSelectLength - 1; j++) {
+        const optionItem = document.createElement('div');
+        if (j == currentSelectLength - 1) {
+          optionItem.classList.add('last');
+        }
+        if (currentSelect.options[j].classList.contains("hasMovie")) {
+          optionItem.classList.add("hasMovie");
+        }
+        const bookmarkId = currentSelect.options[j].getAttribute("bookmarkid");
+        optionItem.setAttribute("bookmarkid", bookmarkId ? bookmarkId : "");
+        optionItem.innerHTML = currentSelect.options[j].innerHTML;
+        optionItem.addEventListener('click', this.collectionsDropdownListener);
+        optionListContainer.appendChild(optionItem);
+      }
+      const lastItem = document.createElement('section');
+      lastItem.classList.add("collections-last");
+      lastItem.textContent = "Новая подборка";
+      lastItem.addEventListener('click', this.newCollectionListener);
+      optionListContainer.appendChild(lastItem);
+      dropdown[i].appendChild(optionListContainer);
+      div.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const target = e.target as HTMLElement;
+        const next = target.nextSibling as HTMLElement;
+        next?.classList.toggle('select-hide');
+        target.classList.toggle('select-arrow-active');
+      });
+    }
+  };
+
+  collectionsDropdownListener = (e: Event) => {
+    const target = e.target as HTMLElement;
+    const currentSelect = target?.parentElement?.parentElement?.getElementsByTagName('select')[0];
+    const currentSelectLength = currentSelect?.length;
+    const previousSelect = target.parentNode?.previousSibling as HTMLElement;
+    if (!currentSelect || !currentSelectLength || !previousSelect) { return; }
+    for (let i = 0; i < currentSelectLength; i++) {
+      if (currentSelect.options[i].innerHTML == target.innerHTML) {
+        currentSelect.selectedIndex = i;
+        const bookmarkId = target.getAttribute("bookmarkid");
+        let bookmarkRequest: bookmarkRequest = {
+          userId: authModule.user?.ID ? authModule.user.ID : "",
+          movieId: this.movieID,
+          bookmarkId: bookmarkId ? bookmarkId : "",
+        }
+        if (target.classList.contains("hasMovie")) {
+          previousSelect.innerHTML = 'Добавить в подборку: ';
+          this.eventBus.emit(events.moviePage.removeCollection, bookmarkRequest);
+        }
+        else {
+          previousSelect.innerHTML = 'Добавлено: ' + target.innerHTML;
+          this.eventBus.emit(events.moviePage.addCollection, bookmarkRequest);
+        }
+        const previousSameAsSelected = target.parentElement.getElementsByClassName('same-as-selected');
+        const previousLength = previousSameAsSelected.length;
+        for (let k = 0; k < previousLength; k++) {
+          previousSameAsSelected[k].classList.toggle('same-as-selected');
+        }
+        target.classList.add('same-as-selected');
+        target.classList.toggle('hasMovie');
+        break;
+      }
+    }
+  };
+
+  newCollectionListener = (e: Event) => {
+    const target = e.target as HTMLElement;
+    target.removeEventListener("click", this.newCollectionListener);
+    target.innerHTML = `<input type="text" class="collections-last__input">`;
+    const input = document.querySelector(".collections-last__input") as HTMLInputElement;
+    if (!input) { return; }
+    input.focus();
+    input.addEventListener("keydown", (e) => {
+      const event = e as KeyboardEvent;
+      if (event.key === "Enter") {
+        const collectionName = input.value;
+        if (collectionName !== "") {
+          const bookmarkCreateRequest: bookmarkCreateRequest = {
+            title: collectionName,
+            userId: authModule.user?.ID ? authModule.user.ID : "",
+            public: true,
+          }
+          this.eventBus.emit(events.moviePage.createCollection, bookmarkCreateRequest);
+        }
+      }
+    })
+  }
+
+  onCreateCollectionSuccess = (bookmarkId: string, bookmarkName: string) => {
+    const currentSelect = document.querySelector(".bookmark-select") as HTMLSelectElement;
+    const currentSelectLength = currentSelect?.length;
+    if (!currentSelect || !currentSelectLength) {
+        return; 
+    }
+    const newOption = document.createElement("option");
+    newOption.setAttribute("bookmarkid", `${bookmarkId}`);
+    newOption.textContent = bookmarkName;
+    currentSelect.insertBefore(newOption, currentSelect.options[currentSelectLength - 1]);
+
+    const bookmarkItems = document.querySelector(".bookmark-items") as HTMLDivElement;
+    const newCollection = document.createElement("div");
+    newCollection.classList.add("hasMovie");
+    newCollection.setAttribute("bookmarkid", bookmarkId);
+    newCollection.textContent = bookmarkName;
+    newCollection.addEventListener("click", this.collectionsDropdownListener);
+    bookmarkItems.insertBefore(newCollection, bookmarkItems.lastChild);
+  }
 }

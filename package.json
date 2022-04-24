@@ -5,6 +5,7 @@
   "main": "main.ts",
   "scripts": {
     "start": "webpack --mode=development --config ./webpack.config.js",
+    "local": "webpack server --mode=development --config ./webpack.config.js",
     "server": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "doc": "jsdoc -c jsdoc.json public/*/*/*.js -r --readme README.md",

@@ -9,6 +9,9 @@ import { MovieController } from "@/controllers/MovieController";
 import { ProfileController } from "@/controllers/ProfileController";
 import { ActorController } from "@/controllers/ActorController";
 import { HeaderController } from "./controllers/HeaderController";
+import { GenresController } from "./controllers/GenresController";
+import { SingleGenreController } from "./controllers/SingleGenreController";
+import { PremiersController } from "./controllers/PremiersController";
 
 //Выключили сервис воркер if ('serviceWorker' in navigator) {
 //   navigator.serviceWorker.register('/sw.js', {scope: '/'})
@@ -30,10 +33,14 @@ const collectionsController = new CollectionsController();
 const movieController = new MovieController();
 const profileController = new ProfileController();
 const singleCollectionController = new SingleCollectionController();
+const genresController = new GenresController();
+const singleGenreController = new SingleGenreController();
+const premiersController = new PremiersController();
 
 const router = new Router(root as HTMLElement);
 
 router.register(regularRoutes.homePage, collectionsController)
+  .register(regularRoutes.singleGenrePage, singleGenreController)
   .register(regularRoutes.singleCollectionPage, singleCollectionController)
   .register(regularRoutes.moviePage, movieController)
   .register(regularRoutes.actorPage, actorController)
@@ -42,4 +49,6 @@ router.register(regularRoutes.homePage, collectionsController)
   .register(regularRoutes.collectionsPage, collectionsController)
   .register(regularRoutes.moviePage, movieController)
   .register(regularRoutes.profilePage, profileController)
+  .register(regularRoutes.genresPage, genresController)
+  .register(regularRoutes.premiersPage, premiersController)
   .start();

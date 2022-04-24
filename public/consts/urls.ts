@@ -6,7 +6,7 @@ const localUrl = "http://localhost:3000";
 // eslint-disable-next-line no-unused-vars
 export const deployUrl = "https://park-akino.ru";
 
-export const currentUrl = deployUrl;
+export const currentUrl = localUrl;
 
 const version = "/api/v1";
 
@@ -28,5 +28,11 @@ export const urls: urlsList = {
         actor: `${currentUrl}${version}/actors`,
         sendRating: `${currentUrl}${version}/movies/postrating`,
         sendReviews: `${currentUrl}${version}/movies/postcomment`,
+        addMovieToBookmark: `${currentUrl}${version}/addMovieToBookmark`, // TODO
+        removeMovieFromBookmark: `${currentUrl}${version}/removeMovieFromBookmark`, // TODO
+        createBookmark: `${currentUrl}${version}/createBookmark`, // TODO
+        genres: `${currentUrl}${version}/genres`, // TODO,
+        singleGenre: `${currentUrl}${version}/genres`, // TODO
+        premiers: `${currentUrl}${version}/premiers`, // TODO
     }
 }
