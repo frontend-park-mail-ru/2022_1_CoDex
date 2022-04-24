@@ -42,6 +42,7 @@ type api = {
     genres: string,
     singleGenre: string,
     premiers: string,
+    announced: string,
 }
 
 export type routeList = {
@@ -56,6 +57,7 @@ export type routeList = {
     genresPage: string,
     singleGenrePage: string,
     premiersPage: string,
+    announcedPage: string,
 }
 
 export type headerLink = {

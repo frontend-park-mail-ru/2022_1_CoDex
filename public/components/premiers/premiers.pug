@@ -1,4 +1,4 @@
-include ../movieCard/movieCard
+include ../announcedCard/announcedCard
 
 div.content-wrapper
     page.page
@@ -7,4 +7,4 @@ div.content-wrapper
             div.container__collection-description #{description}
             div.movies-container
                 each movie, _ in movielist
-                    +movieCard(movie)
+                    +announcedCard(movie)

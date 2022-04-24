@@ -341,10 +341,10 @@ export class MovieView extends BaseView {
   renderCollectionsArea = (collectionsInfo: personalCollectionItem[]) => {
     const collectionsArea = document.querySelector(".movie-collection");
     if (!collectionsArea) { return; }
-    // if (authModule.user) {
+    if (authModule.user) {
       collectionsArea.innerHTML = collectionDropdown({ collectionsInfo: collectionsInfo });
       this.addCollectionsAreaListeners();
-    // }
+    }
   }
 
   addCollectionsAreaListeners = () => {

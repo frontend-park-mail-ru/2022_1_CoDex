@@ -12,6 +12,7 @@ import { HeaderController } from "./controllers/HeaderController";
 import { GenresController } from "./controllers/GenresController";
 import { SingleGenreController } from "./controllers/SingleGenreController";
 import { PremiersController } from "./controllers/PremiersController";
+import { AnnouncedController } from "./controllers/AnnouncedController";
 
 //Выключили сервис воркер if ('serviceWorker' in navigator) {
 //   navigator.serviceWorker.register('/sw.js', {scope: '/'})
@@ -36,6 +37,7 @@ const singleCollectionController = new SingleCollectionController();
 const genresController = new GenresController();
 const singleGenreController = new SingleGenreController();
 const premiersController = new PremiersController();
+const announcedController = new AnnouncedController();
 
 const router = new Router(root as HTMLElement);
 
@@ -51,4 +53,5 @@ router.register(regularRoutes.homePage, collectionsController)
   .register(regularRoutes.profilePage, profileController)
   .register(regularRoutes.genresPage, genresController)
   .register(regularRoutes.premiersPage, premiersController)
+  .register(regularRoutes.announcedPage, announcedController)
   .start();

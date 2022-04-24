@@ -129,4 +129,12 @@ export const events = {
         },
         getContent: "premiersPage:getContent",
     },
+
+    announcedPage: {
+        render: {
+            content: "announcedPage:renderContent",
+            page: "announcedPage:renderPage",
+        },
+        getContent: "announcedPage:getContent",
+    },
 };
