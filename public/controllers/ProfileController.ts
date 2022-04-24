@@ -60,7 +60,7 @@ export class ProfileController extends BaseController {
             },
             {
                 event: events.profilePage.render.changedProfile,
-                handler: this.view.reRenderPage,
+                handler: this.view.reRenderProfileInfo,
             },
             {
                 event: events.auth.gotUser,
@@ -72,7 +72,7 @@ export class ProfileController extends BaseController {
             // },
             {
                 event: events.header.logout,
-                handler: this.view.reRenderPage,
+                handler: this.view.reRenderProfileInfo,
             },
         );
         this.subscribe();
