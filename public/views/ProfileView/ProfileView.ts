@@ -37,6 +37,7 @@ export class ProfileView extends BaseView {
  * @param { object } data Данные о пользователе
  */
   renderProfileInfo = (data: profileUserData) => {
+    console.log("renderProfileInfo")
     this.userData = data;
     const content = document.querySelector('.content') as HTMLElement;
     if (content) {
@@ -167,15 +168,18 @@ export class ProfileView extends BaseView {
     });
   };
 
-  reRenderProfileInfo = () => {
-    if(!authModule.user) return;
-    this.userData.isThisUser = (authModule.user.ID == this.userData.ID);
+  reRenderProfileInfo = (profileData : profileUserData) => {
+    console.log("reRenderProfile")
     const profileInfo = document.querySelector('.profile-info');
     if (profileInfo) {
-      profileInfo.innerHTML = profileSettings(this.userData);
+      profileInfo.innerHTML = profileSettings(profileData);
     }
     this.addSettingsButtonListener();
     this.listenAvatarChanged();
   }
+
+  reRenderPage = () => {
+    this.emitGetContent();
+  };
   
 }

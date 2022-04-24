@@ -72,7 +72,7 @@ export class ProfileController extends BaseController {
             // },
             {
                 event: events.header.logout,
-                handler: this.view.reRenderProfileInfo,
+                handler: this.view.reRenderPage,
             },
         );
         this.subscribe();
