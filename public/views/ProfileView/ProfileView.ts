@@ -176,9 +176,7 @@ export class ProfileView extends BaseView {
       profileInfo.innerHTML = profileSettings(this.userData);
     }
     this.addSettingsButtonListener();
+    this.listenAvatarChanged();
   }
   
-  reRenderPage = () => {
-    this.emitGetContent();
-  };
 }
