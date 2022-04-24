@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.ts",
   "scripts": {
-    "start": "webpack  --mode=development --config ./webpack.config.js",
+    "start": "webpack --mode=development --config ./webpack.config.js",
     "local": "webpack server --mode=development --config ./webpack.config.js",
     "server": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -31,6 +31,7 @@
     "express": "^4.16.4",
     "file-loader": "^6.2.0",
     "morgan": "^1.9.1",
+    "multer": "^1.4.4",
     "pug": "^3.0.2",
     "pug-loader": "^2.4.0",
     "sass": "^1.49.9",

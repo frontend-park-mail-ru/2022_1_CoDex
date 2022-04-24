@@ -7,6 +7,7 @@ import profileReview from '../../components/profile/profileReview/profileReview.
 import profileBookmark from '../../components/profile/profileBookmark/profileBookmark.pug';
 import EventBus from '@/modules/eventBus';
 import { userData, profileUserData } from '@/types';
+import { authModule } from '@/modules/auth';
 
 /**
  * @description Класс представления страницы профиля.
@@ -20,6 +21,7 @@ export class ProfileView extends BaseView {
     */
   constructor(eventBus: EventBus, data: object = {}) {
     super(eventBus, data);
+    console.log("authModule.user", authModule.user);
   }
 
   /**
@@ -40,6 +42,7 @@ export class ProfileView extends BaseView {
     if (content) {
       content.innerHTML = profilePug(this.userData);
     }
+    console.log(this.userData)
     this.eventBus.emit(events.profilePage.getContent, this.userData);
     this.addSettingsButtonListener();
     this.listenAvatarChanged();
@@ -81,7 +84,7 @@ export class ProfileView extends BaseView {
     const settings = document.querySelector('.profile-info__container');
     const openSettingsButton = document?.querySelector('.profile-info__container__settings') as HTMLElement;
     const openedSettingsForm = document?.querySelector('.profile-info__container__settings__form') as HTMLElement;
-    const settingsInput = document?.querySelector('.profile-info__container__settings__form__name-input') as HTMLInputElement;
+    const nameInput = document?.querySelector('.profile-info__container__settings__form__name-input') as HTMLInputElement;
 
     if (!settings) return;
     settings.addEventListener('click', (e) => {
@@ -89,14 +92,14 @@ export class ProfileView extends BaseView {
       const target = e.target as HTMLSelectElement;
       if (!target) return;
       if (target?.classList.contains('profile-info__container__settings')) {
-        
+
         openSettingsButton.style.display = 'none';
         openedSettingsForm.style.display = 'block';
       }
       if (target.value === 'Отменить') {
         openSettingsButton.style.display = 'flex';
         openedSettingsForm.style.display = 'none';
-        settingsInput.value = '';
+        nameInput.value = '';
       } else if (target.value === 'Сохранить') {
         openSettingsButton.style.display = 'flex';
         openedSettingsForm.style.display = 'none';
@@ -104,23 +107,24 @@ export class ProfileView extends BaseView {
       }
     });
   };
+
   submitChange = () => {
-    const settingsInput = document.querySelector('.profile-info__container__settings__form__name-input') as HTMLInputElement;
-    if (!this.validateInput(settingsInput.value)) {
+    const nameInput = document.querySelector('.profile-info__container__settings__form__name-input') as HTMLInputElement;
+    if (!this.validateInput(nameInput.value)) {
       return;
     } else {
-      this.eventBus.emit(events.profilePage.sendChanges, { name: settingsInput.value }, this.userData.ID);
-      settingsInput.value = '';
+      this.eventBus.emit(events.profilePage.sendChanges, { username: nameInput.value }, this.userData.ID);
+      nameInput.value = '';
     }
   };
   /**
  * @description Проверяет корректность данных для поля ввода.
- * @param { string } inputName Имя поля ввода.
- * @return { bool } Корректны ли новые данные
+ * @param { string } inputValue поле ввода.
+ * @return { boolean } Корректны ли новые данные
  */
-  validateInput = (inputName: string) => {
-    if (!inputName) {
-      return null;
+  validateInput = (inputValue: string): boolean => {
+    if (!inputValue) {
+      return false;
     } else {
       return true;
     }
@@ -149,7 +153,7 @@ export class ProfileView extends BaseView {
         reader.addEventListener('load', (event: Event) => {
           const avatarTarget = event.target as FileReader;
           if (!avatarTarget) return;
-          const imgSrc : string = avatarTarget.result as string;
+          const imgSrc: string = avatarTarget.result as string;
           avatarDiv.style.backgroundImage = `url(${imgSrc})`;
         });
         reader.readAsDataURL(file[0]);
@@ -163,7 +167,15 @@ export class ProfileView extends BaseView {
     });
   };
 
-  reRenderPage = () => {
-    this.emitGetContent();
-  };
+  reRenderProfileInfo = () => {
+    if(!authModule.user) return;
+    this.userData.isThisUser = (authModule.user.ID == this.userData.ID);
+    const profileInfo = document.querySelector('.profile-info');
+    if (profileInfo) {
+      profileInfo.innerHTML = profileSettings(this.userData);
+    }
+    this.addSettingsButtonListener();
+    this.listenAvatarChanged();
+  }
+  
 }

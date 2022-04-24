@@ -13,6 +13,7 @@
 
         .avatar {
             border-radius: 50%;
+            border: none;
             width: 280px;
             height: 280px;
             object-fit: cover;
@@ -29,15 +30,17 @@
             width: 100%;
             border-radius: 50%;
             opacity: 0;
+            object-fit: cover;
+            background-repeat: no-repeat;
+            background-position: center;
             cursor: pointer;
+            background-image: url("static/pics/avatarBackground.jpg");
+        }
+        .change__avatar:hover {
+            opacity: 0.5;
+            font-size: 0px;
         }
     }
-    //TODO &__input:hover {
-    //     background-image: url("static/pics/avatarBackground.jpg");
-    //     img {
-    //         filter: opacity(50%);
-    //     }
-    // }
 }
 
 .profile-info__name {
@@ -87,7 +90,7 @@
 
     &__settings__form {
         display: none;
-        a {
+        a.input-text {
             width: 350px;
             height: 20px;
             margin-left: 15px;

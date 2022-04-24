@@ -6,19 +6,18 @@ import { bookmarkCreateRequest, bookmarkRequest, loginData, personalData, rating
 let CSRFToken: string | null = null;
 
 export const csrf = async () => {
-        if (CSRFToken === null) {
-            const headers = {
-                "Content-Type": 'application/json',
-            }
-            const response = await fetch(urls.api.csrf, {
-              method: 'GET',
-              mode: 'cors',
-              cache: 'no-store',
-              credentials: 'include',
-              headers: headers,
-            });
-            CSRFToken = response.headers.get('X-Csrf-Token');
-            console.log(CSRFToken);
+    if (CSRFToken === null) {
+        const headers = {
+            "Content-Type": 'application/json',
+        }
+        const response = await fetch(urls.api.csrf, {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-store',
+            credentials: 'include',
+            headers: headers,
+        });
+        CSRFToken = response.headers.get('X-Csrf-Token');
     }
 };
 
@@ -28,13 +27,13 @@ export const csrf = async () => {
  * @returns { object } Статус и обработанный ответ
  */
 const sendRequest = async (params: requestParams) => {
-    //await csrf();
-    const headers =  {
+    await csrf();
+    let headers = {
         "Content-Type": "application/json",
     };
-    // if (CSRFToken != null) {
-    //     headers.set("X-CSRF-Token", CSRFToken);
-    // }
+    if (CSRFToken != null) {
+        headers = { ...headers, ...{ "X-CSRF-Token": CSRFToken } };
+    }
     const response = await fetch(params.url, {
         method: params.method,
         headers: headers,
@@ -64,14 +63,19 @@ const sendRequest = async (params: requestParams) => {
  * @param { object } params Параметры для запроса
  * @returns { object } Статус и обработанный ответ
  */
- export const sendRequestAvatar = async (params: requestParamsData) => {
+export const sendRequestAvatar = async (params: requestParamsData) => {
+    await csrf();
+    let headers = {};
+    if (CSRFToken != null) {
+        headers = { ...headers, ...{ "X-CSRF-Token": CSRFToken } };
+    }
     const response = await fetch(params.url, {
         method: params.method,
+        headers: headers,
         body: params.body,
         mode: "cors",
         credentials: "include",
     });
-
     try {
         const parsedResponse = await response?.json();
         if (response.status !== statuses.OK && response.status !== statuses.CREATED) {
@@ -378,7 +382,8 @@ export const sendSettingsChanges = async (personalData: personalData, userID: st
  * @param { object } formData Новые данные
  * @returns { object } Ответ с сервера
  */
- export const sendAvatar = async (formData: FormData, userID: string) => {
+export const sendAvatar = async (formData: FormData, userID: string) => {
+    console.log("sendAvatar");
     const params: requestParamsData = {
         url: `${urls.api.changeAvatar}/${userID}`,
         method: "POST",

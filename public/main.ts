@@ -26,11 +26,10 @@ import { PremiersController } from "./controllers/PremiersController";
 // }
 
 export const root = document.getElementById("root");
-
+const headerController = new HeaderController;
 const authController = new AuthController();
 const actorController = new ActorController();
 const collectionsController = new CollectionsController();
-const headerController = new HeaderController();
 const movieController = new MovieController();
 const profileController = new ProfileController();
 const singleCollectionController = new SingleCollectionController();

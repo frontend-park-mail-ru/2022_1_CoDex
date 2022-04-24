@@ -1,3 +1,4 @@
+import { authConfig } from "@/consts/authConfig";
 import { events } from "../consts/events";
 import { ProfileModel } from "../models/ProfileModel";
 import { ProfileView } from "../views/ProfileView/ProfileView";
@@ -59,15 +60,19 @@ export class ProfileController extends BaseController {
             },
             {
                 event: events.profilePage.render.changedProfile,
-                handler: this.view.reRenderPage,
+                handler: this.view.reRenderProfileInfo,
             },
-            // {
+            {
+                event: events.auth.gotUser,
+                handler: this.view.reRenderProfileInfo,
+            },
+            //TODO{
             //     event: events.profilePage.render.changedAvatar,
             //     handler: this.view.renderChangedProfile,
             // },
             {
                 event: events.header.logout,
-                handler: this.view.reRenderPage,
+                handler: this.view.reRenderProfileInfo,
             },
         );
         this.subscribe();

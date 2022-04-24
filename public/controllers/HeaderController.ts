@@ -20,6 +20,10 @@ export class HeaderController extends BaseController {
                 event: events.auth.gotUser, 
                 handler: this.view.renderUserBlock 
             },
+            {
+                event: events.profilePage.render.changedProfile,
+                handler: this.view.renderUserBlock,
+            },
             { 
                 event: events.auth.changedUser, 
                 handler: this.view.renderUserBlock 

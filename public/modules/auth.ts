@@ -23,9 +23,11 @@ class Auth {
         if (navigator.onLine) {
             this.getUserFromServer();
         }
+
+
         this.eventBus.on(events.authPage.logRegSuccess, this.getUserFromSubmit);
         this.eventBus.on(events.header.logout, this.logoutUser);
-        // this.eventBus.on(events.profilePage.changedProfile, this.changeUser);
+        //TODO this.eventBus.on(events.profilePage.render.changedProfile, this.changeUser);
     }
 
     /**
@@ -33,38 +35,36 @@ class Auth {
      * запоминает. В случае успеха перенаправляет на следующую
      * страницу.
      */
-    getUserFromServer = () => {
-        checkAuth().then((response) => {
-            if (!response) {
+    getUserFromServer = async () => {
+        console.log("getUserFromServer")
+        try {
+            const responseCheckAuth = await checkAuth();
+            if (!responseCheckAuth) {
                 return null;
             }
-            const parsed = <authcheckResponse> response.parsedResponse;
-            if (+parsed.status == statuses.OK) {
-                return parsed.ID;
+            const parsed = <authcheckResponse>responseCheckAuth.parsedResponse;
+            if (+parsed.status !== statuses.OK && !parsed.ID) {
+                window.localStorage.removeItem("user");
+                this.eventBus.emit(events.auth.notLoggedIn);
+                this.lastEvent = events.auth.notLoggedIn;
+                return null;
             }
-            window.localStorage.removeItem("user");
-            this.eventBus.emit(events.auth.notLoggedIn);
-            this.lastEvent = events.auth.notLoggedIn;
-            return null;
-        }).then((userID) => {
-            if (userID) {
-                return getCurrentUser(userID);
-            }
-        }).then((response) => {
-            if (!response) {
+            const responseCurrentUser = await getCurrentUser(parsed.ID);
+            if (!responseCurrentUser) {
                 return;
             }
-            if (response?.status === statuses.OK) {
-                this.user = <userData> response.parsedResponse;
+            if (responseCurrentUser?.status === statuses.OK) {
+                this.user = <userData>responseCurrentUser.parsedResponse;
                 if (this.user) {
                     window.localStorage.setItem("user", JSON.stringify(this.user));
+                    console.log("authcheck:user")
                     this.eventBus.emit(events.auth.gotUser);
                     this.lastEvent = events.auth.gotUser;
                 }
             }
-        }).catch(() => {
+        } catch (err) {
             this.eventBus.emit(events.app.errorPage);
-        });
+        }
     };
 
     /**
@@ -77,6 +77,7 @@ class Auth {
             return;
         }
         this.user = parsedResponse;
+        console.log(parsedResponse)
         if (this.user) {
             window.localStorage.setItem("user", JSON.stringify(this.user));
             this.eventBus.emit(events.auth.gotUser);
