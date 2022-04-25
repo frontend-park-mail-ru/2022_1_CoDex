@@ -16,9 +16,9 @@
 
 	.profile {
 		display: grid;
-		grid-template-columns: repeat(12, 80px);
+		grid-template-columns: 0.25fr 0.75fr;
 		column-gap: 20px;
-		grid-template-areas: "info info info info content content content content content content content content";
+		grid-template-areas: "info content";
 
 		&-info {
 			grid-area: info;
@@ -27,7 +27,7 @@
 			align-items: center;
 			background-color: $profile_info_background;
 			height: 600px;
-			width: 380px;
+			width: max-content;
 			margin-top: 30px;
 			margin-top: 20px;
 			border-radius: 20px;
@@ -38,21 +38,16 @@
 			grid-template-areas:
 				"bookmarks"
 				"review";
-			margin-left: 20px;
-			grid-template-rows: max-content;
-
 			.profile-bookmarks {
 				grid-area: bookmarks;
-				width: 780px;
 				display: grid;
 				grid-template-areas:
-					"name name name name name name"
-					"el el el el el el";
-
+					"name"
+					"el";
+				grid-template-columns: minmax(380px, 780px);
 				&__title {
 					margin-top: 30px;
 					grid-area: name;
-					width: 780px;
 					height: 40px;
 					color: $font_color_white;
 					text-align: center;
@@ -64,16 +59,13 @@
 			}
 			.profile-reviews {
 				grid-area: review;
-				width: 780px;
 				display: grid;
 				grid-template-areas:
-					"name name name name name name"
-					"el el el el el el";
-				grid-template-rows: min-content;
+					"name"
+					"el";
 
 				&__title {
 					grid-area: name;
-					width: 780px;
 					height: 40px;
 					color: $font_color_white;
 					text-align: center;
@@ -86,3 +78,12 @@
 		}
 	}
 }
+
+// @media (max-width: 1216px){
+// 	// .profile {
+// 	// 	&-content{
+// 	// 		grid-template-columns: 450px;
+// 	// 	}
+// 	// }
+
+// }
