@@ -23,7 +23,7 @@
 
 .login {
     grid-area: C1;
-    width: 100%;
+    width:75%;
     padding: 16px;
     align-items: center;
     background: rgb(240 240 240 / 83%);
@@ -62,7 +62,7 @@
 
 .register {
     grid-area: C1;
-    width: 100%;
+    width: 75%;
     flex-direction: column;
     padding: 16px;
     align-items: center;
@@ -141,6 +141,7 @@
     font-family: $main_font;
     font-weight: bold;
     width: 100%;
+    padding-left: 10px;
     border-radius: 10px;
     box-sizing: border-box;
 }
@@ -220,4 +221,49 @@
     border-width: 2px;
     animation-name: input-error;
     animation-duration: 1s;
+}
+
+@media (max-width: 660px) {
+    .login {
+        width:50%;
+        &__invitation {
+            font-size: 30px;
+        }
+
+    }
+    .register {
+        width:50%;
+        &__invitation {
+            font-size: 30px;
+        }
+    }
+
+    .auth-input {
+        &__head__error {
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .login {
+        width:40%;
+        &__invitation {
+            font-size: 25px;
+        }
+
+    }
+    .register {
+        width:40%;
+        &__invitation {
+            font-size: 25px;
+        }
+    }
+
+    .auth-input {
+        &__head__error {
+            line-height: 20px;
+        }
+    }
 }
