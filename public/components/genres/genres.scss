@@ -17,7 +17,7 @@
 			max-width: 100%;
 			margin: 0 auto;
 			display: grid;
-			grid-template-columns: repeat(12, 120px);
+			grid-template-columns: repeat(12, 1fr);
 			column-gap: 30px;
 			row-gap: 0;
 			grid-template-areas:
@@ -26,6 +26,22 @@
 				"D0 D0 D1 D1 D1 D1 D1 D1 D1 D1 D2 D2";
 			justify-items: center;
 			justify-content: center;
+
+			@media (max-width: 1200px) {
+				grid-template-columns: repeat(10, 1fr);
+				grid-template-areas: 
+					"B0 B1 B1 B1 B1 B1 B1 B1 B1 B2"
+					"C0 C1 C1 C1 C1 C1 C1 C1 C1 C2"
+					"D0 D1 D1 D1 D1 D1 D1 D1 D1 D2";
+			}
+
+			@media (max-width: 600px) {
+				grid-template-columns: repeat(8, 1fr);
+				grid-template-areas: 
+					"B0 B1 B1 B1 B1 B1 B1 B2"
+					"C0 C1 C1 C1 C1 C1 C1 C2"
+					"D0 D1 D1 D1 D1 D1 D1 D2";
+			}
 
 			.description {
 				text-align: left;
