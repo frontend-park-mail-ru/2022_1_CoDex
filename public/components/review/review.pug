@@ -1,19 +1,19 @@
 mixin review(i)
     if i.feedbacktype=='1'
         .review-element(style="background: var(--goodFeedback);")
-            .review-element__type #{i.type}:
+            .review-element__type Отзыв
             .review-element__film-name #{i.movieTitle}
         //TODO .review-element__date #{i.date}
     else if i.feedbacktype=='2'
         .review-element(style="background: var(--neutralFeedback);")
-            .review-element__type #{i.type}:
+            .review-element__type Отзыв:
             .review-element__film-name #{i.movieTitle}
     else if i.feedbacktype=='3'
         .review-element(style="background: var(--badFeedback);")
-            .review-element__type #{i.type}:
+            .review-element__type Отзыв:
             .review-element__film-name #{i.movieTitle}
     else
         .review-element(style="background: var(--neutralFeedback);")
-            .review-element__type #{i.type}:
+            .review-element__type Оценка:
             .review-element__film-name #{i.movieTitle}
             .review-element__text #{i.text}
