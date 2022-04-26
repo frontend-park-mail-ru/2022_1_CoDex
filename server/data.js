@@ -596,7 +596,7 @@ const startServer = (app) => {
 
   const top256 = {
     title: "Топ 256",
-    description: "Вот такая вот подборочка :)",
+    description: "Лучшие 256 фильмов по мнению наших пользователей",
     movielist: [
       {
         "ID": "1",

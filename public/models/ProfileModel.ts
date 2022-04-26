@@ -25,6 +25,7 @@ export class ProfileModel extends BaseModel {
                 this.eventBus.emit(events.app.errorPage);
             } if (response?.status === statuses.OK && response.parsedResponse) {
                 const profileData: profileUserData = response.parsedResponse;
+                authModule.changeUser(response.parsedResponse);
                 profileData.isThisUser = authModule.user ? (user.ID == authModule.user.ID) : false;
                 this.eventBus.emit(
                     events.profilePage.render.profileInfo, profileData
@@ -94,7 +95,6 @@ export class ProfileModel extends BaseModel {
     }
 
     sendSettingsAvatar = (formData: FormData, userID: string) => {
-        console.log("sendSettingsAvatar");
         sendAvatar(formData, userID).then((response) => {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);

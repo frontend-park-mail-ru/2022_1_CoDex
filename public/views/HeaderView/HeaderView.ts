@@ -100,11 +100,8 @@ export class HeaderView extends BaseView {
      * ситуации, отрисовывает приглашение ко выходу или кнопку выхода.
      */
   renderUserBlock = () => {
-    console.log("inside renderUserBlock");
     const changeBlock = document.querySelector('.navbar__login-btn') ||
             document.querySelector('.user-block');
-    console.log("changeBlock", changeBlock)
-    console.log("imgsrc", authModule.user?.imgsrc)
     if (!authModule.user || !changeBlock) {
       return;
     }
@@ -113,7 +110,6 @@ export class HeaderView extends BaseView {
       userID: authModule.user.ID,
       profileHref: routes.profilePage,
     })));
-    console.log("changeBlockAfter", changeBlock)
     // const verticalMenu = document.querySelector('.vertical-menu__btn-container');
     // if (verticalMenu) {
     //   const logoutBtn = document.querySelector('.vertical-logout-btn');
