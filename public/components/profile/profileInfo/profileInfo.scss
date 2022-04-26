@@ -121,6 +121,7 @@
                 border: 0;
                 &:hover {
                     filter: brightness(80%);
+                    cursor: pointer;
                 }
                 &:active {
                     filter: brightness(72%);
