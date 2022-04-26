@@ -94,7 +94,6 @@ export class ProfileModel extends BaseModel {
     }
 
     sendSettingsAvatar = (formData: FormData, userID: string) => {
-        console.log("sendSettingsAvatar");
         sendAvatar(formData, userID).then((response) => {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);

@@ -319,6 +319,18 @@ const startServer = (app) => {
       movie: top256.movielist[1],
       reviewex: "",
       userrating: "",
+      collectionsInfo: [
+        {
+          collection: "Мне нравится",
+          hasMovie: false,
+          bookmarkId: 1,
+        },
+        {
+          collection: "Пример",
+          hasMovie: true,
+          bookmarkId: 2
+        }
+      ],
       related: [
         {
           "href": "/movies/1",

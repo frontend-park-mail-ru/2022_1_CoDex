@@ -36,7 +36,6 @@ class Auth {
      * страницу.
      */
     getUserFromServer = async () => {
-        console.log("getUserFromServer")
         try {
             const responseCheckAuth = await checkAuth();
             if (!responseCheckAuth) {
@@ -57,7 +56,6 @@ class Auth {
                 this.user = <userData>responseCurrentUser.parsedResponse;
                 if (this.user) {
                     window.localStorage.setItem("user", JSON.stringify(this.user));
-                    console.log("authcheck:user")
                     this.eventBus.emit(events.auth.gotUser);
                     this.lastEvent = events.auth.gotUser;
                 }
@@ -77,7 +75,6 @@ class Auth {
             return;
         }
         this.user = parsedResponse;
-        console.log(parsedResponse)
         if (this.user) {
             window.localStorage.setItem("user", JSON.stringify(this.user));
             this.eventBus.emit(events.auth.gotUser);

@@ -21,7 +21,6 @@ export class ProfileView extends BaseView {
     */
   constructor(eventBus: EventBus, data: object = {}) {
     super(eventBus, data);
-    console.log("authModule.user", authModule.user);
   }
 
   /**
@@ -37,13 +36,11 @@ export class ProfileView extends BaseView {
  * @param { object } data Данные о пользователе
  */
   renderProfileInfo = (data: profileUserData) => {
-    console.log("renderProfileInfo")
     this.userData = data;
     const content = document.querySelector('.content') as HTMLElement;
     if (content) {
       content.innerHTML = profilePug(this.userData);
     }
-    console.log(this.userData)
     this.eventBus.emit(events.profilePage.getContent, this.userData);
     this.addSettingsButtonListener();
     this.listenAvatarChanged();
@@ -169,7 +166,6 @@ export class ProfileView extends BaseView {
   };
 
   reRenderProfileInfo = (profileData : profileUserData) => {
-    console.log("reRenderProfile")
     const profileInfo = document.querySelector('.profile-info');
     if (profileInfo) {
       profileInfo.innerHTML = profileSettings(profileData);

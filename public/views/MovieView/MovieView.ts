@@ -52,6 +52,7 @@ export class MovieView extends BaseView {
       slider('#related-slider');
       this.renderRating(data.movie.ID);
       this.renderReviewInput(data.movie.ID);
+      console.log(data);
       this.renderCollectionsArea(data.collectionsInfo);
       if (data.reviewex != '') {
         this.eventBus.emit(events.moviePage.reviewSuccess);
@@ -185,12 +186,12 @@ export class MovieView extends BaseView {
     if (!reviewInput) {
       return;
     }
-    if (authModule?.user) {
+    // if (authModule?.user) {
       reviewInput.innerHTML = reviewInputBlock();
       this.addReviewInputListeners();
-    } else {
-      reviewInput.innerHTML = reviewInvitation({movieID: movieID});
-    }
+    // } else {
+    //   reviewInput.innerHTML = reviewInvitation({movieID: movieID});
+    // }
   };
 
   /**
@@ -341,10 +342,10 @@ export class MovieView extends BaseView {
   renderCollectionsArea = (collectionsInfo: personalCollectionItem[]) => {
     const collectionsArea = document.querySelector(".movie-collection");
     if (!collectionsArea) { return; }
-    if (authModule.user) {
+    // if (authModule.user) {
       collectionsArea.innerHTML = collectionDropdown({ collectionsInfo: collectionsInfo });
       this.addCollectionsAreaListeners();
-    }
+    // }
   }
 
   addCollectionsAreaListeners = () => {
