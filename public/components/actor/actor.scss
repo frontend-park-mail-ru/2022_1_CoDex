@@ -98,11 +98,14 @@
 	margin-bottom: 15px;
 
 	img {
-		width: 280px;
 		min-height: 440px;
 		height: 100%;
 		object-fit: cover;
 		border-radius: 8px;
+	}
+
+	@media (max-width: 800px) {
+		width: 100%;
 	}
 }
 

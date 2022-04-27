@@ -3,7 +3,7 @@ include ../movieCard/movieCard
 div.content-wrapper
     page.page
         div.container
-            h1.container__collection-title Жанр:
+            h1(class="container__collection-title") #{`Жанр: `}
                 span
                 span.container__collection-title__color #{title}
             div.container__collection-description #{description}

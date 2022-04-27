@@ -3,6 +3,7 @@ import { events } from "../consts/events";
 import { routes } from "../consts/routes";
 import { BaseController } from "@/controllers/BaseController";
 import { pathData, routeParameters, routerData, URLData } from "@/types";
+import { AuthController } from "@/controllers/AuthController";
 
 /**
  * @description Получает аргументы из URL-a.
@@ -73,11 +74,24 @@ export class Router {
      */
     /* eslint-disable @typescript-eslint/no-unsafe-member-access */
     /* eslint-disable @typescript-eslint/no-unsafe-call */
-    go = (URL = "/") => {
-        const routeData = this.getURLData(URL);
+    go = (url = "/") => {
+        const routeData = this.getURLData(url);
         const data = {...routeData};
         if (this.currentController) {
             this.currentController.unsubscribe();
+        }
+        let urlToGo = url;
+        if (routeData.controller instanceof AuthController) {
+            if (this.currentController instanceof AuthController) {
+                const redirect = new URL(location.href).searchParams.get("redirect");
+                if (redirect) {
+                    console.log("Here", redirect);
+                    urlToGo += `?redirect=${redirect}`;
+                }
+            } else {
+                urlToGo += `?redirect=${location.pathname}`;
+                console.log("Url", location.pathname);
+            }
         }
         this.currentController = routeData.controller;
         if (!this.currentController) {
@@ -85,16 +99,17 @@ export class Router {
             return;
         }
         this.currentController?.subscribe();
+
         
         if (!this.currentController) {
-            URL = routes.homePage;
-            this.currentController = this.getURLData(URL).controller;
+            url = routes.homePage;
+            this.currentController = this.getURLData(url).controller;
         }
-        if (window.location.pathname !== URL) {
-            window.history.pushState(null, "", URL);
+        if (window.location.pathname !== url) {
+            window.history.pushState(null, "", urlToGo);
         }
         this.currentController?.view.render(data);
-        eventBus.emit(events.router.go, URL);
+        eventBus.emit(events.router.go, url);
     }
     
     /**

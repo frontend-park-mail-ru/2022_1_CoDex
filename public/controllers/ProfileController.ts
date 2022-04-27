@@ -17,7 +17,6 @@ export class ProfileController extends BaseController {
         this.model = new ProfileModel(this.eventBus);
         this.view = new ProfileView(this.eventBus);
         this.events.push(
-
             {
                 event: events.profilePage.getProfileInfo,
                 handler: this.model.getProfileInfo,
@@ -62,18 +61,14 @@ export class ProfileController extends BaseController {
                 event: events.profilePage.render.changedProfile,
                 handler: this.view.reRenderPage,
             },
-            {
-                event: events.auth.gotUser,
-                handler: this.view.reRenderPage,
-            },
             //TODO{
             //     event: events.profilePage.render.changedAvatar,
             //     handler: this.view.renderChangedProfile,
             // },
-            {
-                event: events.header.logout,
-                handler: this.view.reRenderPage,
-            },
+            // {
+            //     event: events.header.logout,
+            //     handler: this.view.reRenderPage,
+            // },
         );
         this.subscribe();
     }
