@@ -161,7 +161,7 @@ export class MovieView extends BaseView {
     const messageArea = document.querySelector('.user-rating') as HTMLElement;
     messageArea.innerHTML = `
         Чтобы поставить оценку, пожалуйста, 
-        <a href= /register?redirect=movie/${movieID} class = "white_text"">
+        <a class = "white_text"">
         зарегистрируйтесь</a>`;
   };
 
