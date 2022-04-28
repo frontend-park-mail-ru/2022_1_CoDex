@@ -5,6 +5,8 @@ import { events } from "../consts/events";
 import EventBus from "@/modules/eventBus";
 import { personalData, profileUserData, userData } from "@/types";
 import { authModule } from "@/modules/auth";
+import { emptyField, errorInfo } from "@/consts/errors";
+import { authConfig } from "@/consts/authConfig";
 
 
 /**
@@ -75,6 +77,9 @@ export class ProfileModel extends BaseModel {
     }
 
     sendSettingsCnanges = (inputsData: personalData, userID: string) => {
+        if (this.hasError(inputsData)) {
+            return;
+        }
         sendSettingsChanges(inputsData, userID).then((response) => {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
@@ -85,6 +90,7 @@ export class ProfileModel extends BaseModel {
                 this.eventBus.emit(
                     events.profilePage.render.changedProfile, profileData
                 );
+                this.eventBus.emit(events.profilePage.onSuccessSubmit);
             } else if (response?.status === statuses.NOT_FOUND) {
                 this.eventBus.emit(events.app.errorPageText, "Такого пользователя нет");
             }
@@ -94,7 +100,6 @@ export class ProfileModel extends BaseModel {
     }
 
     sendSettingsAvatar = (formData: FormData, userID: string) => {
-        console.log("sendSettingsAvatar");
         sendAvatar(formData, userID).then((response) => {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
@@ -110,4 +115,32 @@ export class ProfileModel extends BaseModel {
             console.log("Unexpected profileSettingsAvatar error: ", e);
         });
     }
+
+    /**
+     * @description Проверяет указанное поле ввода на корректность.
+     * @param { string } inputName Имя проверяемого поля ввода
+     * @param { string } inputValue Значение проверяемого поля ввода
+     */
+    validateSingleInput = (inputName: string, inputValue: string) => {
+        console.log("validateSingleInput",inputValue);
+        if (!inputName) { return false; }
+        if (!inputValue) {
+            this.eventBus.emit(events.profilePage.addValidationError, emptyField.message);
+            return false;
+        }
+        this.eventBus.emit(events.profilePage.deleteValidationError);
+        for (const error of (errorInfo[inputName])) {
+            if (!inputValue.match(error.regexp)) {
+                this.eventBus.emit(events.profilePage.addValidationError, error.message);
+                return false;
+            } else {
+                this.eventBus.emit(events.profilePage.deleteValidationError);
+                return true;
+            }
+        }
+    };
+
+    hasError = (inputsData: personalData) => {
+        return !this.validateSingleInput(authConfig.nameInput.name, inputsData.username);
+    };
 }
