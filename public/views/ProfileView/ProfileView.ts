@@ -95,7 +95,7 @@ export class ProfileView extends BaseView {
       if (target?.classList.contains('profile-info__container__settings')) {
 
         openSettingsButton.style.display = 'none';
-        openedSettingsForm.style.display = 'block';
+        openedSettingsForm.style.display = 'flex';
       }
       if (target.value === 'Отменить') {
         openSettingsButton.style.display = 'flex';
