@@ -4,6 +4,7 @@ import { routes } from "../consts/routes";
 import { BaseController } from "@/controllers/BaseController";
 import { pathData, routeParameters, routerData, URLData } from "@/types";
 import { AuthController } from "@/controllers/AuthController";
+import { getURLData } from "@/utils/utils";
 
 /**
  * @description Получает аргументы из URL-a.
@@ -32,7 +33,7 @@ export const getURLArguments = (URL: string, template: string) => {
 export class Router {
     private routes: Set<routerData>;
     private page: HTMLElement;
-    private currentController: BaseController | null;
+    private currentController: BaseController;
     /**
      * @description Создаёт роутер.
      * @param { HTMLElement } page HTML страницы 
@@ -40,7 +41,6 @@ export class Router {
     constructor(page: HTMLElement) {
         this.routes = new Set();
         this.page = page;
-        this.currentController = null;
         eventBus.on(events.pathChanged, this.onPathChanged);
         eventBus.on(events.redirectBack, this.onRedirectBack);
         eventBus.on(events.redirectForward, this.onRedirectForward);
@@ -75,8 +75,12 @@ export class Router {
     /* eslint-disable @typescript-eslint/no-unsafe-member-access */
     /* eslint-disable @typescript-eslint/no-unsafe-call */
     go = (url = "/") => {
-        const routeData = this.getURLData(url);
-        const data = {...routeData};
+        const routeData = getURLData(url, this.routes);
+        if (!routeData) { return; }
+        const data: routerData = {
+            URL: routeData.URL.URL,
+            controller: routeData.controller
+        };
         if (this.currentController) {
             this.currentController.unsubscribe();
         }
@@ -103,7 +107,9 @@ export class Router {
         
         if (!this.currentController) {
             url = routes.homePage;
-            this.currentController = this.getURLData(url).controller;
+            let homeData = getURLData(url, this.routes);
+            if (!homeData) { return; }
+            this.currentController = homeData.controller;
         }
         if (window.location.pathname !== url) {
             window.history.pushState(null, "", urlToGo);
@@ -111,48 +117,6 @@ export class Router {
         this.currentController?.view.render(data);
         eventBus.emit(events.router.go, url);
     }
-    
-    /**
-     * @description Получает информацию из URL-a.
-     * @param { string } URL URL, на которые перешёл пользователь
-     * @return { object } Информация об URL-е
-     */
-    getURLData = (URL: string) => {
-        let targetController = null;
-        const result: routeParameters = this.getParameters(URL);
-        this.routes.forEach((route) => {
-            const tmpResult = result.URL.match(route.URL);
-            if (tmpResult) {
-                targetController = route.controller;
-            }
-        });
-        const URLData: URLData = {
-            controller: targetController,
-            data: result.data,
-            URL: {
-                URL: result.URL,
-                resourceID: +(result.URLParameters ? result.URLParameters : 0),
-            },
-        };
-        return URLData;
-    };
-
-    /**
-     * @description Получает параметры из URL-a.
-     * @param { string } currentURL URL, на который перешёл пользователь
-     * @return { object } Параметры URL-а
-     */
-    getParameters = (currentURL = "/"): routeParameters => {
-        const parsedURL = new URL(window.location.origin + currentURL);
-        const URLParameters = null;
-        const resultURL = parsedURL.pathname;
-        const result: routeParameters = {
-            URL: resultURL,
-            URLParameters: URLParameters,
-            data: null,
-        }
-        return result;
-    };
 
     /**
      * @description Переключает на страницу назад.
