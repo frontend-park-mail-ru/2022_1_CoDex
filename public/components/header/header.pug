@@ -1,11 +1,14 @@
 header.navbar
     .navbar__vertical-menu
-        img(src="../../dist/img/burger.svg")
-        .vertical-menu__main-btn
-        .vertical-menu__btn-container
+        .navbar__vertical-menu__main-btn
+            .burger-left
+            .burger-right
+        .navbar__vertical-menu__btn-container
             a.navbar__menu-btn.collections(href="/collections") Подборки
             a.navbar__menu-btn.genres(href="/genres") Жанры
             a.navbar__menu-btn.premiers(href="/premiers") Премьеры
+            div(class="user-block__logout-btn not-route user-block__submenu__block") Выйти
+
     a.navbar__logo(href="/" data-section="main")
         img(data-section="main" src="../dist/img/logo.svg")
 
