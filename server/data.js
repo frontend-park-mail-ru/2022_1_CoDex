@@ -591,7 +591,7 @@ const startServer = (app) => {
     { href: "/genres/sport", imgsrc: "genresSport.webp"},
     { href: "/genres/thriller", imgsrc: "genresThriller.webp"},
     { href: "/genres/western", imgsrc: "genresWestern.webp"},
-  ]
+  ];
 
   const Collections = {
     collectionlist: [

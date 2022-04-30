@@ -75,7 +75,6 @@ export class Router {
     /* eslint-disable @typescript-eslint/no-unsafe-member-access */
     /* eslint-disable @typescript-eslint/no-unsafe-call */
     go = (url = "/") => {
-        console.log("Going");
         const routeData = getURLData(url, this.routes);
         if (!routeData) { return; }
         const data: routerData = {

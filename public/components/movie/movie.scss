@@ -304,6 +304,9 @@
 	}
 	.user-rating {
 		display: flex;
+		@media (max-width: 800px) {
+			flex-direction: column;
+		}
 		width: 100%;
 		font-family: $main_font;
 		font-size: 20px;
