@@ -30,14 +30,14 @@ div.content-wrapper
                     div.actor-facts__fact
                         div.actor-facts__fact__name Всего фильмов
                         div.actor-facts__fact__value #{actor.total}
-            div.related
-                div.related__title Если вам понравился этот актёр:
-                +slider(related)
             div.actor-movies
                 div.actor-movies__title Фильмография: 
                 div.actor-movies__container
                     each movie, _ in movies
                         +movieCard(movie)
+            div.related
+                div.related__title Если вам понравился этот актёр:
+                +slider(related)
 
 
                     

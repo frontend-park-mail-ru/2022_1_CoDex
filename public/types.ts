@@ -126,7 +126,7 @@ export type routeParameters = {
 }
 
 export type URLData = {
-    controller: BaseController | null,
+    controller: BaseController,
     data: null,
     URL: {
         URL: string,

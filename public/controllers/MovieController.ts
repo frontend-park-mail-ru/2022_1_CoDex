@@ -66,7 +66,11 @@ export class MovieController extends BaseController {
             {
                 event: events.header.logout,
                 handler: this.view.onLogout,
-            }
+            },
+            {
+                event: events.auth.gotUser,
+                handler: this.view.onGotUser,
+            },
         );
     }
 }

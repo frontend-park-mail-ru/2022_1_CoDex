@@ -3,6 +3,7 @@
 import { controllerItem } from "@/types";
 import EventBus, { eventBus } from "@/modules/eventBus";
 import { BaseView } from "@/views/BaseView/BaseView";
+import { BaseModel } from "@/models/BaseModel";
 
 /**
  * @description Базовый класс контроллера для MVC архитектуры.
@@ -11,9 +12,8 @@ export class BaseController {
     protected eventBus: EventBus;
     protected events: controllerItem[];
     
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    public view: any;
-    public model: any;
+    public view: BaseView;
+    public model: BaseModel;
 
     constructor() { 
         this.eventBus = eventBus;
