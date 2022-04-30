@@ -89,12 +89,10 @@ export class Router {
             if (this.currentController instanceof AuthController) {
                 const redirect = new URL(location.href).searchParams.get("redirect");
                 if (redirect) {
-                    console.log("Here", redirect);
                     urlToGo += `?redirect=${redirect}`;
                 }
             } else {
                 urlToGo += `?redirect=${location.pathname}`;
-                console.log("Url", location.pathname);
             }
         }
         this.currentController = routeData.controller;

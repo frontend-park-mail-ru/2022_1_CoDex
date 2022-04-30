@@ -80,7 +80,6 @@ export class HeaderView extends BaseView {
   removeLogoutButton = () => {
     const logoutBtn = [...Object.values(document.querySelectorAll('.navbar__vertical-menu__btn-container a'))]
       .find((elem) => elem.textContent?.includes('Выйти'));
-    console.log(logoutBtn)
     if (logoutBtn) {
       logoutBtn.remove();
     }

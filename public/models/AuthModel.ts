@@ -6,7 +6,7 @@ import { errorInfo, emptyField } from "../consts/errors";
 import { login, register } from "../modules/connection";
 import { statuses } from "../consts/statuses";
 import EventBus from "@/modules/eventBus";
-import { loginData, registerData, URLData } from "@/types";
+import { loginData, registerData, routerData } from "@/types";
 
 /**
  * @description Класс модели страницы авторизации / регистрации.
@@ -22,8 +22,8 @@ export class AuthModel extends BaseModel {
         this.errorMessages = new Map();
     }
 
-    getContent = (URLData: URLData) => {
-        if (URLData?.URL?.URL.match(regularRoutes.loginPage)) {
+    getContent = (routeData: routerData) => {
+        if (routeData?.URL.match(regularRoutes.loginPage)) {
             this.getLoginContent();
         } else {
             this.getRegistrationContent();
@@ -82,7 +82,6 @@ export class AuthModel extends BaseModel {
      */
     redirect = () => {
         const redirect = new URL(location.href).searchParams.get("redirect");
-        console.log('redirecting', redirect);
         if (!redirect) {
             this.eventBus.emit(events.pathChanged, { URL: routes.collectionsPage });
         } else {
