@@ -32,6 +32,10 @@ export class HeaderController extends BaseController {
                 event: events.auth.notLoggedIn, 
                 handler: this.view.renderLoginButton 
             },
+            { 
+                event: events.auth.notLoggedIn, 
+                handler: this.view.removeLogoutButton 
+            },
             // TODO Адаптивность
             { 
                 event: events.router.go, 

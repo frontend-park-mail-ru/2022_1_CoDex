@@ -5,6 +5,7 @@ import { routes } from '@/consts/routes';
 import { renderBaseView, createElementFromHTML } from '@/utils/utils';
 import { authModule } from '@/modules/auth';
 import loginButton from '@/components/header/loginButton.pug';
+import logoutButton from '@/components/header/logoutButton.pug';
 import userBlock from '@/components/header/userBlock/userBlock.pug';
 
 /**
@@ -77,8 +78,9 @@ export class HeaderView extends BaseView {
      * @description Убирает кнопку выхода с навигационной панели
      */
   removeLogoutButton = () => {
-    const logoutBtn = [...Object.values(document.querySelectorAll('.vertival-menu__btn-container a'))]
+    const logoutBtn = [...Object.values(document.querySelectorAll('.navbar__vertical-menu__btn-container a'))]
       .find((elem) => elem.textContent?.includes('Выйти'));
+    console.log(logoutBtn)
     if (logoutBtn) {
       logoutBtn.remove();
     }
@@ -111,14 +113,14 @@ export class HeaderView extends BaseView {
       userID: authModule.user.ID,
       profileHref: routes.profilePage,
     })));
-    // const verticalMenu = document.querySelector('.vertical-menu__btn-container');
-    // if (verticalMenu) {
-    //   const logoutBtn = document.querySelector('.vertical-logout-btn');
-    //   if (logoutBtn) {
-    //     return;
-    //   }
-    //   verticalMenu.appendChild(createElementFromHTML(logoutButton()));
-    // }
+    const verticalMenu = document.querySelector('.navbar__vertical-menu__btn-container');
+    if (verticalMenu) {
+      const logouttBtn = document.querySelector('.user-block__logout-btn not-route user-block__submenu__block');
+      if (logouttBtn) {
+        return;
+      }
+      verticalMenu.appendChild(<Node>createElementFromHTML(<string>logoutButton()));
+    }
     this.addEventListenerToLogoutButton();
   };
 
