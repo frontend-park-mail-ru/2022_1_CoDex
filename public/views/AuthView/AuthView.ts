@@ -56,8 +56,12 @@ export class AuthView extends BaseView {
     if (!authForm || !textInputs?.length) {
       return;
     }
-    Object.values(textInputs).forEach((input) => {
+    Object.values(textInputs).forEach((input, i) => {
+      
       const formInput = <HTMLFormElement>input;
+      if (i == 0){
+        formInput.focus();
+      }
       input.addEventListener('input', () => {
         this.eventBus.emit(events.authPage.deleteAllErrors, formInput.name);
         this.deleteSubmitError();

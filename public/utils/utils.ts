@@ -1,7 +1,7 @@
 import baseViewPug from "../views/BaseView/BaseView.pug";
 import { headerLinks } from "../consts/header";
 import { routes } from "../consts/routes";
-import { baseViewData, userData } from "@/types";
+import { baseViewData, routeParameters, routerData, URLData, userData } from "@/types";
 
 
 /**
@@ -37,4 +37,47 @@ export const renderBaseView = () => {
     }
     return <string> baseViewPug(baseViewData);
   }
+};
+
+/**
+     * @description Получает параметры из URL-a.
+     * @param { string } currentURL URL, на который перешёл пользователь
+     * @return { object } Параметры URL-а
+     */
+const getParameters = (currentURL = "/"): routeParameters => {
+  const parsedURL = new URL(window.location.origin + currentURL);
+  const URLParameters = null;
+  const resultURL = parsedURL.pathname;
+  const result: routeParameters = {
+      URL: resultURL,
+      URLParameters: URLParameters,
+      data: null,
+  }
+  return result;
+};
+
+/**
+     * @description Получает информацию из URL-a.
+     * @param { string } URL URL, на которые перешёл пользователь
+     * @return { object } Информация об URL-е
+     */
+export const getURLData = (URL: string, routes: Set<routerData>) => {
+  let targetController;
+  const result: routeParameters = getParameters(URL);
+  routes.forEach((route) => {
+      const tmpResult = result.URL.match(route.URL);
+      if (tmpResult) {
+          targetController = route.controller;
+      }
+  });
+  if (!targetController) { return; }
+  const URLData: URLData = {
+      controller: targetController,
+      data: result.data,
+      URL: {
+          URL: result.URL,
+          resourceID: +(result.URLParameters ? result.URLParameters : 0),
+      },
+  };
+  return URLData;
 };

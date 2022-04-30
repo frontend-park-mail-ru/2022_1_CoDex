@@ -12,18 +12,19 @@ import { HeaderController } from "./controllers/HeaderController";
 import { GenresController } from "./controllers/GenresController";
 import { SingleGenreController } from "./controllers/SingleGenreController";
 import { PremiersController } from "./controllers/PremiersController";
+import { AnnouncedController } from "./controllers/AnnouncedController";
 
-//Выключили сервис воркер if ('serviceWorker' in navigator) {
-//   navigator.serviceWorker.register('/sw.js', {scope: '/'})
-//       .then((registration) => {
-//         console.log('SW registered on scope:', registration.scope);
-//       })
-//       .catch((err) => {
-//         console.error("Error", err);
-//   });
-// } else {
-//   console.log("smt went wrong, we shouldn't be here");
-// }
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js', { scope: '/' })
+    .then((registration) => {
+      console.log('SW registered on scope:', registration.scope);
+    })
+    .catch((err) => {
+      console.error("Error", err);
+    });
+} else {
+  console.log("smt went wrong, we shouldn't be here");
+}
 
 export const root = document.getElementById("root");
 const headerController = new HeaderController;
@@ -36,6 +37,7 @@ const singleCollectionController = new SingleCollectionController();
 const genresController = new GenresController();
 const singleGenreController = new SingleGenreController();
 const premiersController = new PremiersController();
+const announcedController = new AnnouncedController();
 
 const router = new Router(root as HTMLElement);
 
@@ -51,4 +53,5 @@ router.register(regularRoutes.homePage, collectionsController)
   .register(regularRoutes.profilePage, profileController)
   .register(regularRoutes.genresPage, genresController)
   .register(regularRoutes.premiersPage, premiersController)
+  .register(regularRoutes.announcedPage, announcedController)
   .start();

@@ -91,7 +91,8 @@
 		font-size: 20px;
 		font-weight: 600;
 		height: 40px;
-		width: 380px;
+		width: 100%;
+		max-width: 380px;
 		color: $white;
 		line-height: 40px;
 		font-family: $main_font;

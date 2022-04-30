@@ -68,6 +68,127 @@ const startServer = (app) => {
     });
   });
 
+  app.get("/api/v1/announced/1", function (req, res) {
+    res.json({
+      movie: top256.movielist[0],
+      collectionsInfo: [
+        {
+          collection: "Мне нравится",
+          hasMovie: false,
+          bookmarkId: 1,
+        },
+        {
+          collection: "Пример",
+          hasMovie: true,
+          bookmarkId: 2
+        }
+      ],
+      related: [
+        {
+          "href": "/movies/2",
+          "poster": "greenMile.webp",
+          "title": "Зелёная миля",
+        },
+        {
+          "href": "/movies/2",
+          "poster": "greenMile.webp",
+          "title": "Зелёная миля",
+        },
+        {
+          "href": "/movies/2",
+          "poster": "greenMile.webp",
+          "title": "Зелёная миля",
+        },
+        {
+          "href": "/movies/2",
+          "poster": "greenMile.webp",
+          "title": "Зелёная миля",
+        },
+        {
+          "href": "/movies/2",
+          "poster": "greenMile.webp",
+          "title": "Зелёная миля",
+        },
+        {
+          "href": "/movies/2",
+          "poster": "greenMile.webp",
+          "title": "Зелёная миля",
+        },
+        {
+          "href": "/movies/2",
+          "poster": "greenMile.webp",
+          "title": "Зелёная миля",
+        },
+        {
+          "href": "/movies/2",
+          "poster": "greenMile.webp",
+          "title": "Зелёная миля",
+        },
+        {
+          "href": "/movies/2",
+          "poster": "greenMile.webp",
+          "title": "Зелёная миля",
+        },
+        {
+          "href": "/movies/2",
+          "poster": "greenMile.webp",
+          "title": "Зелёная миля",
+        },
+        {
+          "href": "/movies/2",
+          "poster": "greenMile.webp",
+          "title": "Зелёная миля",
+        },
+      ],
+      reviews: [
+        {
+          avatarSrc: "/romantic.webp",
+          username: "Пётр Калашников",
+          userID: "",
+          rating: "9 / 10",
+          date: "28.03.2022",
+          content: "Понравилось, только хочется продолжения",
+          type: "good",
+        },
+        {
+          avatarSrc: "/comics.webp",
+          username: "Анатолий Мужиков",
+          userID: "",
+          rating: "10 / 10",
+          date: "28.03.2022",
+          content: "Просто огонь! Ребят, это надо смотреть просто всем!",
+          type: "good",
+        },
+        {
+          avatarSrc: "/spy.webp",
+          username: "Костя Костяной",
+          userID: "",
+          rating: "7 / 10",
+          date: "28.03.2022",
+          content: "Средненько, книга интереснее",
+          type: "neutral",
+        },
+        {
+          avatarSrc: "/ourTop.webp",
+          username: "Виктория Киселёва",
+          userID: "",
+          rating: "8 / 10",
+          date: "28.03.2022",
+          content: "Не зашло.",
+          type: "bad",
+        },
+        {
+          avatarSrc: "/tales.webp",
+          username: "Баба Яга",
+          userID: "",
+          rating: "8 / 10",
+          date: "28.03.2022",
+          content: "Ох, ребят, молодцы, порадовали старушку... Давно я таких хороших фильмов не смотрела.",
+          type: "good",
+        },
+      ],
+    });
+  });
 
   app.get("/api/v1/movies/1", function (req, res) {
     res.json({
@@ -198,6 +319,18 @@ const startServer = (app) => {
       movie: top256.movielist[1],
       reviewex: "",
       userrating: "",
+      collectionsInfo: [
+        {
+          collection: "Мне нравится",
+          hasMovie: false,
+          bookmarkId: 1,
+        },
+        {
+          collection: "Пример",
+          hasMovie: true,
+          bookmarkId: 2
+        }
+      ],
       related: [
         {
           "href": "/movies/1",
@@ -479,7 +612,7 @@ const startServer = (app) => {
 
   const top256 = {
     title: "Топ 256",
-    description: "Вот такая вот подборочка :)",
+    description: "Лучшие 256 фильмов по мнению наших пользователей",
     movielist: [
       {
         "ID": "1",

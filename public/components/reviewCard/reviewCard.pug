@@ -1,13 +1,14 @@
 mixin reviewCard(singleReview)
     div(class=`review-card ${singleReview.type}`)
         div.review-card__avatar
-            img(src=`/server/images${singleReview.avatarSrc}`)
+            img(src=`${singleReview.avatarSrc}`)
         div.review-card__info
             div.review-card__info__title
-                a.review-card__info__title__name(href=`/profiles/${singleReview.userID}`) #{`${singleReview.username}, `}
+                a.review-card__info__title__name(href=`/profile/${singleReview.userID}`) #{`${singleReview.username}, `}
                 if singleReview.rating != ""
                     div.review-card__info__title__info #{`${singleReview.rating} / 10, ${singleReview.date}`}
                 else
                     div.review-card__info__title__info #{`${singleReview.date}`}
                 //TODO- div.review-card__info__title__info #{`${singleReview.rating} / 10, ${singleReview.date}`}
             div.review-card__info__content #{singleReview.content}
+            

@@ -18,6 +18,7 @@ import collectionDropdown from '@/components/collectionDropdown/collectionDropdo
  */
 export class MovieView extends BaseView {
   private movieID: string;
+  private collectionsInfo: personalCollectionItem[];
   /**
      * @description Создаёт представление страницы одного фильма.
      * @param { EventBus } eventBus Глобальная шина событий
@@ -45,6 +46,7 @@ export class MovieView extends BaseView {
       return;
     }
     this.movieID = data.movie.ID;
+    this.collectionsInfo = data.collectionsInfo;
     const template = moviePageContent(data);
     const content = document.querySelector('.content');
     if (content) {
@@ -159,7 +161,7 @@ export class MovieView extends BaseView {
     const messageArea = document.querySelector('.user-rating') as HTMLElement;
     messageArea.innerHTML = `
         Чтобы поставить оценку, пожалуйста, 
-        <a href= /register?redirect=movie/${movieID} class = "white_text"">
+        <a class = "white_text"">
         зарегистрируйтесь</a>`;
   };
 
@@ -331,20 +333,22 @@ export class MovieView extends BaseView {
   onLogout = () => {
     const reviewInput = document.querySelector('.send-review__input');
     const messageArea = document.querySelector('.user-rating');
-    if (!reviewInput || !messageArea) {
+    const collectionsArea = document.querySelector(".movie-collection");
+    if (!reviewInput || !messageArea || !collectionsArea) {
       return;
     }
     messageArea.innerHTML = ``;
+    collectionsArea.innerHTML = ``;
     reviewInput.innerHTML = reviewInvitation({movieID: this.movieID});
   };
 
   renderCollectionsArea = (collectionsInfo: personalCollectionItem[]) => {
     const collectionsArea = document.querySelector(".movie-collection");
     if (!collectionsArea) { return; }
-    // if (authModule.user) {
+    if (authModule.user) {
       collectionsArea.innerHTML = collectionDropdown({ collectionsInfo: collectionsInfo });
       this.addCollectionsAreaListeners();
-    // }
+    }
   }
 
   addCollectionsAreaListeners = () => {
@@ -466,5 +470,10 @@ export class MovieView extends BaseView {
     newCollection.textContent = bookmarkName;
     newCollection.addEventListener("click", this.collectionsDropdownListener);
     bookmarkItems.insertBefore(newCollection, bookmarkItems.lastChild);
+  }
+
+  onGotUser = () => {
+    this.renderReviewInput(this.movieID);
+    this.renderCollectionsArea(this.collectionsInfo);
   }
 }

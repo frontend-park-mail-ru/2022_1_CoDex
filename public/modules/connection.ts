@@ -510,3 +510,18 @@ export const getPremiers = async () => {
         return null;
     }
 }
+
+export const getAnnounced = async (movieID: string) => {
+    const params: requestParams = {
+        url: `${urls.api.announced}/${movieID}`,
+        method: "GET",
+        credentials: null,
+        body: null,
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}
