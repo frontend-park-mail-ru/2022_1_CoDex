@@ -8,6 +8,7 @@ import profileBookmark from '../../components/profile/profileBookmark/profileBoo
 import EventBus from '@/modules/eventBus';
 import { userData, profileUserData } from '@/types';
 import { authModule } from '@/modules/auth';
+import { authConfig } from '@/consts/authConfig';
 
 /**
  * @description Класс представления страницы профиля.
@@ -83,7 +84,13 @@ export class ProfileView extends BaseView {
     const openSettingsButton = document?.querySelector('.profile-info__container__settings') as HTMLElement;
     const openedSettingsForm = document?.querySelector('.profile-info__container__settings__form') as HTMLElement;
     const nameInput = document?.querySelector('.profile-info__container__settings__form__name-input') as HTMLInputElement;
-
+    if (!nameInput) { return; }
+    nameInput.addEventListener('input', (e) => {
+      this.deleteValidationError();
+    });
+    nameInput.addEventListener('change', (e) => {
+      this.eventBus.emit(events.profilePage.validate, nameInput.name, nameInput.value);
+    });
     if (!settings) return;
     settings.addEventListener('click', (e) => {
       e.preventDefault();
@@ -92,42 +99,48 @@ export class ProfileView extends BaseView {
       if (target?.classList.contains('profile-info__container__settings')) {
 
         openSettingsButton.style.display = 'none';
-        openedSettingsForm.style.display = 'block';
+        openedSettingsForm.style.display = 'flex';
       }
+
       if (target.value === 'Отменить') {
         openSettingsButton.style.display = 'flex';
         openedSettingsForm.style.display = 'none';
         nameInput.value = '';
+        this.eventBus.emit(events.profilePage.deleteValidationError);
       } else if (target.value === 'Сохранить') {
-        openSettingsButton.style.display = 'flex';
-        openedSettingsForm.style.display = 'none';
-        this.submitChange();
+        this.submitChange(nameInput.value);
       }
     });
   };
 
-  submitChange = () => {
-    const nameInput = document.querySelector('.profile-info__container__settings__form__name-input') as HTMLInputElement;
-    if (!this.validateInput(nameInput.value)) {
-      return;
-    } else {
-      this.eventBus.emit(events.profilePage.sendChanges, { username: nameInput.value }, this.userData.ID);
-      nameInput.value = '';
-    }
-  };
-  /**
- * @description Проверяет корректность данных для поля ввода.
- * @param { string } inputValue поле ввода.
- * @return { boolean } Корректны ли новые данные
- */
-  validateInput = (inputValue: string): boolean => {
-    if (!inputValue) {
-      return false;
-    } else {
-      return true;
-    }
+  submitChange = (inputValue: string) => {
+    this.eventBus.emit(events.profilePage.sendChanges, { username: inputValue }, this.userData.ID);
   };
 
+  successSumbit = () => {
+    const openSettingsButton = document?.querySelector('.profile-info__container__settings') as HTMLElement;
+    const openedSettingsForm = document?.querySelector('.profile-info__container__settings__form') as HTMLElement;
+    const nameInput = document?.querySelector('.profile-info__container__settings__form__name-input') as HTMLInputElement;
+
+    openSettingsButton.style.display = 'flex';
+    openedSettingsForm.style.display = 'none';
+    nameInput.value = "";
+  };
+
+  addValidationError = (errorMessage: string) => {
+    const errorField = document.querySelector('.profile-info__container__settings__form__name-error') as HTMLElement;
+    if (!errorField) {
+      return;
+    }
+    errorField.textContent = errorMessage;
+  }
+  deleteValidationError = () => {
+    const errorField = document.querySelector('.profile-info__container__settings__form__name-error') as HTMLElement;
+    if (!errorField) {
+      return;
+    }
+    errorField.textContent = "";
+  }
   listenAvatarChanged = () => {
     const avatarInput = document.querySelector('.profile-info__avatar__input') as HTMLElement;
     const avatarDiv = document.querySelector('.avatar') as HTMLElement;
@@ -165,7 +178,7 @@ export class ProfileView extends BaseView {
     });
   };
 
-  reRenderProfileInfo = (profileData : profileUserData) => {
+  reRenderProfileInfo = (profileData: profileUserData) => {
     const profileInfo = document.querySelector('.profile-info');
     if (profileInfo) {
       profileInfo.innerHTML = profileSettings(profileData);
@@ -177,5 +190,5 @@ export class ProfileView extends BaseView {
   reRenderPage = () => {
     this.emitGetContent();
   };
-  
+
 }

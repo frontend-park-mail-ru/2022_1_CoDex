@@ -100,12 +100,13 @@ export const events = {
         sendChanges: "profilePage:sendSettingsChanges",
         sendAvatar: "profilePage:sendAvatarChanges",
 
-        //TODO validate: "profilePage:validate",
-        // submit: "profilePage:submit",
+        validate: "profilePage:validate",
+        addValidationError: "profilePage:addValidationError",
+        deleteValidationError: "profilePage:deleteValidationError",
+        onSuccessSubmit: "profilePage:successSumbit",
+        //TODO submit: "profilePage:submit",
         // submitError: "profilePage:submitError",
         // wrongInput: "profilePage:wrongInput",
-        // deleteValidationError: "profilePage:deleteValidationError",
-        // addValidationError: "profilePage:addValidationError",
         // deleteAllErrors: "profilePage:deleteAllErrors",
     },
 

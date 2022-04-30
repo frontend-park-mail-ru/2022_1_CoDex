@@ -100,7 +100,7 @@ export type registerData = {
 }
 
 export type personalData = {
-    name: string,
+    username: string,
 }
 
 export type requestParamsData = {

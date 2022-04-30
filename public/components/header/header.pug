@@ -1,22 +1,22 @@
 header.navbar
     .navbar__vertical-menu
-      .vertical-menu__main-btn
-        span.vertical-menu-line.first-line-in-menu
-        span.vertical-menu-line.second-line-in-menu
-        span.vertical-menu-line.third-line-in-menu
-      .vertical-menu__btn-container
-        //TODO - each btn in mobileHeaderLinks
-        //TODO-     a.navbar__menu-btn(href = btn.href)= btn.title
+        .navbar__vertical-menu__main-btn
+            .burger-left
+            .burger-right
+        .navbar__vertical-menu__btn-container
+            a.navbar__menu-btn.collections(href="/collections") Подборки
+            a.navbar__menu-btn.genres(href="/genres") Жанры
+            a.navbar__menu-btn.premiers(href="/premiers") Премьеры
+            //- div(class="user-block__logout-btn not-route user-block__submenu__block") Выйти
+
     a.navbar__logo(href="/" data-section="main")
         img(data-section="main" src="../dist/img/logo.svg")
- 
+
     div.navbar__menu
         a.navbar__menu-btn.collections(href="/collections") Подборки
         a.navbar__menu-btn.genres(href="/genres") Жанры
         a.navbar__menu-btn.premiers(href="/premiers") Премьеры
-        //TODO Как так сделать?
-        //- each btn in headerLinks
-        //-     a.navbar__menu-btn(href=btn.href) = btn.title
+
     .search
         input.search__input(placeholder="Фильм? Актёр?")
         .search__btn

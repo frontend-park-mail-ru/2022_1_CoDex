@@ -1,10 +1,11 @@
-import {BaseView} from '../BaseView/BaseView';
+import { BaseView } from '../BaseView/BaseView';
 import EventBus from '@/modules/eventBus';
-import {events} from '@/consts/events';
-import {routes} from '@/consts/routes';
-import {renderBaseView, createElementFromHTML} from '@/utils/utils';
-import {authModule} from '@/modules/auth';
+import { events } from '@/consts/events';
+import { routes } from '@/consts/routes';
+import { renderBaseView, createElementFromHTML } from '@/utils/utils';
+import { authModule } from '@/modules/auth';
 import loginButton from '@/components/header/loginButton.pug';
+import logoutButton from '@/components/header/logoutButton.pug';
 import userBlock from '@/components/header/userBlock/userBlock.pug';
 
 /**
@@ -34,6 +35,7 @@ export class HeaderView extends BaseView {
     } else {
       this.eventBus.emit(events.app.errorPage);
     }
+    this.addEventListenerToVerticalMenu();
   };
 
   /**
@@ -76,8 +78,9 @@ export class HeaderView extends BaseView {
      * @description Убирает кнопку выхода с навигационной панели
      */
   removeLogoutButton = () => {
-    const logoutBtn = [...Object.values(document.querySelectorAll('.vertival-menu__btn-container a'))]
-    .find((elem) => elem.textContent?.includes('Выйти'));
+    const logoutBtn = [...Object.values(document.querySelectorAll('.navbar__vertical-menu__btn-container a'))]
+      .find((elem) => elem.textContent?.includes('Выйти'));
+    console.log(logoutBtn)
     if (logoutBtn) {
       logoutBtn.remove();
     }
@@ -91,7 +94,7 @@ export class HeaderView extends BaseView {
     if (!userBlock) {
       return;
     }
-    userBlock.replaceWith(<Node>createElementFromHTML(<string> loginButton()));
+    userBlock.replaceWith(<Node>createElementFromHTML(<string>loginButton()));
   };
 
   /**
@@ -101,23 +104,23 @@ export class HeaderView extends BaseView {
      */
   renderUserBlock = () => {
     const changeBlock = document.querySelector('.navbar__login-btn') ||
-            document.querySelector('.user-block');
+      document.querySelector('.user-block');
     if (!authModule.user || !changeBlock) {
       return;
     }
-    changeBlock.replaceWith(<Node>createElementFromHTML(<string> userBlock({
+    changeBlock.replaceWith(<Node>createElementFromHTML(<string>userBlock({
       imgsrc: authModule.user.imgsrc,
       userID: authModule.user.ID,
       profileHref: routes.profilePage,
     })));
-    // const verticalMenu = document.querySelector('.vertical-menu__btn-container');
-    // if (verticalMenu) {
-    //   const logoutBtn = document.querySelector('.vertical-logout-btn');
-    //   if (logoutBtn) {
-    //     return;
-    //   }
-    //   verticalMenu.appendChild(createElementFromHTML(logoutButton()));
-    // }
+    const verticalMenu = document.querySelector('.navbar__vertical-menu__btn-container');
+    if (verticalMenu) {
+      const logouttBtn = document.querySelector('.user-block__logout-btn not-route user-block__submenu__block');
+      if (logouttBtn) {
+        return;
+      }
+      verticalMenu.appendChild(<Node>createElementFromHTML(<string>logoutButton()));
+    }
     this.addEventListenerToLogoutButton();
   };
 
@@ -157,6 +160,27 @@ export class HeaderView extends BaseView {
   };
 
   addEventListenerToVerticalMenu = () => {
-    // TODO
+    const burgerButton = document.querySelector('.navbar__vertical-menu__main-btn');
+    const burgerButtonList = document.querySelectorAll('.navbar__vertical-menu__btn-container');
+
+    if (!burgerButton) { return; }
+    const verticalMenu = document.querySelector('.navbar__vertical-menu__btn-container') as HTMLElement;
+    if (!verticalMenu) { return; }
+    burgerButton.addEventListener("click", (e) => {
+      if (burgerButton.classList.contains('open')) {
+        burgerButton.classList.remove("open");
+        verticalMenu.style.display = "none";
+      } else {
+        burgerButton.classList.add("open");
+        verticalMenu.style.display = "flex";
+      }
+    });
+    burgerButtonList.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        burgerButton.classList.remove("open");
+        verticalMenu.style.display = "none";
+      })
+    });
+
   };
 }

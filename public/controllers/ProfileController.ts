@@ -65,10 +65,26 @@ export class ProfileController extends BaseController {
             //     event: events.profilePage.render.changedAvatar,
             //     handler: this.view.renderChangedProfile,
             // },
-            // {
-            //     event: events.header.logout,
-            //     handler: this.view.reRenderPage,
-            // },
+            {
+                event: events.header.logout,
+                handler: this.view.reRenderPage,
+            },
+            {
+                event: events.profilePage.validate,
+                handler: this.model.validateSingleInput,
+            },
+            {
+                event: events.profilePage.addValidationError,
+                handler: this.view.addValidationError
+            },
+            {
+                event: events.profilePage.deleteValidationError,
+                handler: this.view.deleteValidationError
+            },
+            {
+                event: events.profilePage.onSuccessSubmit,
+                handler: this.view.successSumbit
+            },
         );
         this.subscribe();
     }

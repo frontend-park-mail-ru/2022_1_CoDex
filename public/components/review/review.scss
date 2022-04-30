@@ -1,7 +1,6 @@
 .review-element {
     display: flex;
     flex-direction: row;
-    width: 780px;
     border-radius: 20px;
     background-color: $grey;
     height: 80px;
@@ -32,5 +31,33 @@
         font-weight: 600;
         font-size: 28px;
         line-height: 32px;
+    }
+}
+
+@media (max-width: 1216px) {
+    .review-element {
+        &__type {
+            font-size: 24px;
+        }
+        &__text {
+            font-size: 24px;
+        }
+        &__film-name {
+            font-size: 24px;
+        }
+    }
+}
+
+@media (max-width: 767px){
+    .review-element {
+        &__type {
+            font-size: 24px;
+        }
+        &__text {
+            font-size: 24px;
+        }
+        &__film-name {
+            font-size: 24px;
+        }
     }
 }

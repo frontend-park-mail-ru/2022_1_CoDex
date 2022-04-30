@@ -39,7 +39,7 @@ const startServer = (app) => {
     });
   });
 
-  app.get("/api/v1/user/getBookmarks/1", function (req, res) {
+  app.get("/api/v1/user/bookmarks/1", function (req, res) {
     res.status(200).json({
       ID: 1,
       bookmarksList: users['a@a.ru'].bookmarksList,
@@ -537,6 +537,10 @@ const startServer = (app) => {
     bookmarksList: [
       { description: "Подборка №1", imgSrc: "top.webp", page: "profile", number: "1" },
       { description: "Подборка №2", imgSrc: "top.webp", page: "profile", number: "2" },
+      { description: "Подборка №3", imgSrc: "top.webp", page: "profile", number: "3" },
+      { description: "Подборка №4", imgSrc: "top.webp", page: "profile", number: "4" },
+      { description: "Подборка №5", imgSrc: "top.webp", page: "profile", number: "5" },
+      { description: "Подборка №6", imgSrc: "top.webp", page: "profile", number: "6" },
     ]
   };
 
