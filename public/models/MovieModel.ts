@@ -110,7 +110,7 @@ export class MovieModel extends BaseModel {
                 if (!response) { return; }
                 const parsed = <createBookmarkResponse> response.parsedResponse;
                 console.log("0: ", parsed);
-                if (response.status == statuses.OK) {
+                if (response.status == statuses.CREATED) {
                     this.eventBus.emit(events.moviePage.createCollectionSuccess, parsed.ID, parsed.title);
                 }
             }
