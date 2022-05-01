@@ -28,9 +28,9 @@ export const urls: urlsList = {
         actor: `${currentUrl}${version}/actors`,
         sendRating: `${currentUrl}${version}/movies/postrating`,
         sendReviews: `${currentUrl}${version}/movies/postcomment`,
-        addMovieToBookmark: `${currentUrl}${version}/addMovieToBookmark`, // TODO
-        removeMovieFromBookmark: `${currentUrl}${version}/removeMovieFromBookmark`, // TODO
-        createBookmark: `${currentUrl}${version}/createBookmark`, // TODO
+        addMovieToBookmark: `${currentUrl}${version}/playlist/addMovie`, // TODO
+        removeMovieFromBookmark: `${currentUrl}${version}/playlist/deleteMovie`, // TODO
+        createBookmark: `${currentUrl}${version}/playlist/create`, //
         genres: `${currentUrl}${version}/genres`,
         singleGenre: `${currentUrl}${version}/genres`,
         premiers: `${currentUrl}${version}/announced`,

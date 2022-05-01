@@ -229,7 +229,7 @@ export class MovieView extends BaseView {
         target.classList.toggle('select-arrow-active');
       });
     }
-    document.addEventListener('click', this.closeAllSelect);
+    // document.addEventListener('click', this.closeAllSelect);
 
     const submitButton = document.querySelector('.review-input-block__submit') as HTMLElement;
     submitButton.addEventListener('click', this.sendReview);
