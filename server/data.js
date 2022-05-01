@@ -61,7 +61,7 @@ const startServer = (app) => {
     res.json(actors[1]);
   });
 
-  app.post("/api/v1/createBookmark", function (req, res) {
+  app.post("/api/v1/playlist/create", function (req, res) {
     res.json({
       ID: "777",
       title: "new title",

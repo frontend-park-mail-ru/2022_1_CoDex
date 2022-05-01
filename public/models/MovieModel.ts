@@ -97,7 +97,6 @@ export class MovieModel extends BaseModel {
 
     addCollection = (inputsData: bookmarkRequest) => {
         addMovieToBookmark(inputsData);
-        
     }
 
     removeCollection = (inputsData: bookmarkRequest) => {
