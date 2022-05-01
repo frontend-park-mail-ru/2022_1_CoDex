@@ -13,15 +13,15 @@ const version = "/api/v1";
 export const urls: urlsList = {
     api: {
         csrf: `${currentUrl}${version}/csrf`,
-        checkAuth: `${currentUrl}${version}/user/authcheck`,
+        checkAuth: `${currentUrl}${version}/authcheck`,
         getUser: `${currentUrl}${version}/user`,
         changeProfile:`${currentUrl}${version}/user/update`,
         changeAvatar:`${currentUrl}${version}/user/update/avatar`,
         bookmarks: `${currentUrl}${version}/user/bookmarks`,
         reviews: `${currentUrl}${version}/user/reviews`,
-        logout: `${currentUrl}${version}/user/logout`,
-        login: `${currentUrl}${version}/user/login`,
-        register: `${currentUrl}${version}/user/signup`,
+        logout: `${currentUrl}${version}/logout`,
+        login: `${currentUrl}${version}/login`,
+        register: `${currentUrl}${version}/signup`,
         singleCollection: `${currentUrl}${version}/collections`,
         collections: `${currentUrl}${version}/collections/feed`,
         movie: `${currentUrl}${version}/movies`,
@@ -31,9 +31,9 @@ export const urls: urlsList = {
         addMovieToBookmark: `${currentUrl}${version}/addMovieToBookmark`, // TODO
         removeMovieFromBookmark: `${currentUrl}${version}/removeMovieFromBookmark`, // TODO
         createBookmark: `${currentUrl}${version}/createBookmark`, // TODO
-        genres: `${currentUrl}${version}/genres`, // TODO,
-        singleGenre: `${currentUrl}${version}/genres`, // TODO
-        premiers: `${currentUrl}${version}/announced`, // TODO
+        genres: `${currentUrl}${version}/genres`,
+        singleGenre: `${currentUrl}${version}/genres`,
+        premiers: `${currentUrl}${version}/announced`,
         announced: `${currentUrl}${version}/announced`
     }
 }
