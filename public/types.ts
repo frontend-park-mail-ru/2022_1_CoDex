@@ -310,7 +310,6 @@ export type baseViewData = {
 }
 
 export type bookmarkRequest = {
-    userId: string,
     movieId: string,
     bookmarkId: string,
 }

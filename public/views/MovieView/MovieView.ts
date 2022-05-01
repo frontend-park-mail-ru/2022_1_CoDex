@@ -405,7 +405,6 @@ export class MovieView extends BaseView {
         currentSelect.selectedIndex = i;
         const bookmarkId = target.getAttribute("bookmarkid");
         let bookmarkRequest: bookmarkRequest = {
-          userId: authModule.user?.ID ? authModule.user.ID : "",
           movieId: this.movieID,
           bookmarkId: bookmarkId ? bookmarkId : "",
         }
