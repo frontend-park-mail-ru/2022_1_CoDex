@@ -33,7 +33,7 @@ export const urls: urlsList = {
         createBookmark: `${currentUrl}${version}/createBookmark`, // TODO
         genres: `${currentUrl}${version}/genres`, // TODO,
         singleGenre: `${currentUrl}${version}/genres`, // TODO
-        premiers: `${currentUrl}${version}/premiers`, // TODO
+        premiers: `${currentUrl}${version}/announced`, // TODO
         announced: `${currentUrl}${version}/announced`
     }
 }
