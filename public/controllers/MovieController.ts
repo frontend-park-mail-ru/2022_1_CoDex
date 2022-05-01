@@ -72,5 +72,6 @@ export class MovieController extends BaseController {
                 handler: this.view.onGotUser,
             },
         );
+        this.subscribe();
     }
 }
