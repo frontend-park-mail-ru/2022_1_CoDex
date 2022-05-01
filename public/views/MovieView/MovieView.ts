@@ -452,9 +452,9 @@ export class MovieView extends BaseView {
   }
 
   onCreateCollectionSuccess = (bookmarkId: string, bookmarkName: string) => {
+    console.log("1:", bookmarkId, bookmarkName);
     const currentSelect = document.querySelector(".bookmark-select") as HTMLSelectElement;
     const currentSelectLength = currentSelect?.length;
-    console.log("1");
     if (!currentSelect || !currentSelectLength) {
         return; 
     }
