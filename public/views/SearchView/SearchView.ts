@@ -28,7 +28,7 @@ export class SearchView extends BaseView {
         if (!content) {
             return;
         }
-        content.innerHTML = searchPug({ value: query.Query});
+        content.innerHTML = searchPug({ value: decodeURI(query.Query)});
     }
 
     renderFilms = (data: any) => {

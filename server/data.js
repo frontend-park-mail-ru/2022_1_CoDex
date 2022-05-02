@@ -64,7 +64,7 @@ const startServer = (app) => {
     });
   });
 
-  app.get("/api/v1/search/1", function (req, res) {
+  app.get("/api/v1/search/\*", function (req, res) {
     res.status(200).json({
       status: 200,
       movies: {

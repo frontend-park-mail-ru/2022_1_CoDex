@@ -158,8 +158,8 @@ export class HeaderView extends BaseView {
 
     input.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
-        console.log(input.value)
-        this.eventBus.emit(events.pathChanged, { URL: `/search/${input.value}`});
+        console.log("encode",decodeURI(input.value))
+        this.eventBus.emit(events.pathChanged, { URL: `/search/${decodeURI(input.value)}`});
       }
     });
     const searchBtn = document.querySelector('.search__btn') as HTMLElement;
@@ -169,7 +169,7 @@ export class HeaderView extends BaseView {
     searchBtn.addEventListener('click', (e) => {
       console.log(input.value)
 
-      this.eventBus.emit(events.pathChanged, { URL: `/search/${input.value}` });
+      this.eventBus.emit(events.pathChanged, { URL: `/search/${decodeURI(input.value)}` });
     });
   }
 
