@@ -62,7 +62,7 @@ const startServer = (app) => {
   });
 
   app.post("/api/v1/playlist/create", function (req, res) {
-    res.json({
+    res.status(201).json({
       ID: "777",
       title: "new title",
     });

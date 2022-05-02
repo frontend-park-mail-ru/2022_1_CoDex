@@ -106,10 +106,8 @@ export class MovieModel extends BaseModel {
     createCollection = (inputsData: bookmarkCreateRequest) => {
         createBookmark(inputsData).then(
             (response) => {
-                console.log("-1");
                 if (!response) { return; }
                 const parsed = <createBookmarkResponse> response.parsedResponse;
-                console.log("0: ", parsed);
                 if (response.status == statuses.CREATED) {
                     this.eventBus.emit(events.moviePage.createCollectionSuccess, parsed.ID, parsed.title);
                 }

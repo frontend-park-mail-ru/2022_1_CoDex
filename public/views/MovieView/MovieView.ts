@@ -452,18 +452,15 @@ export class MovieView extends BaseView {
   }
 
   onCreateCollectionSuccess = (bookmarkId: string, bookmarkName: string) => {
-    console.log("1:", bookmarkId, bookmarkName);
     const currentSelect = document.querySelector(".bookmark-select") as HTMLSelectElement;
     const currentSelectLength = currentSelect?.length;
     if (!currentSelect || !currentSelectLength) {
         return; 
     }
-    console.log("2");
     const newOption = document.createElement("option");
     newOption.setAttribute("bookmarkid", `${bookmarkId}`);
     newOption.textContent = bookmarkName;
     currentSelect.insertBefore(newOption, currentSelect.options[currentSelectLength - 1]);
-    console.log("3");
     const bookmarkItems = document.querySelector(".bookmark-items") as HTMLDivElement;
     const newCollection = document.createElement("div");
     newCollection.classList.add("hasMovie");
@@ -471,7 +468,6 @@ export class MovieView extends BaseView {
     newCollection.textContent = bookmarkName;
     newCollection.addEventListener("click", this.collectionsDropdownListener);
     bookmarkItems.insertBefore(newCollection, bookmarkItems.lastChild);
-    console.log("4");
   }
 
   onGotUser = () => {
