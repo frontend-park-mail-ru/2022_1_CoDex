@@ -6,10 +6,6 @@ const startServer = (app) => {
     res.json(Collections);
   });
 
-  app.get("/api/v1/genres", function (req, res) {
-    res.json(Genres);
-  });
-
   app.get("/api/v1/genres/adventure", function (req, res) {
     res.json(adventures);
   });
@@ -61,8 +57,8 @@ const startServer = (app) => {
     res.json(actors[1]);
   });
 
-  app.post("/api/v1/createBookmark", function (req, res) {
-    res.json({
+  app.post("/api/v1/playlist/create", function (req, res) {
+    res.status(201).json({
       ID: "777",
       title: "new title",
     });
@@ -514,7 +510,7 @@ const startServer = (app) => {
     });
   });
 
-  app.post("/api/v1/user/login", function (req, res) {
+  app.post("/api/v1/login", function (req, res) {
     const password = req.body.password;
     const email = req.body.email;
     if (!password || !email) {
@@ -536,7 +532,7 @@ const startServer = (app) => {
     });
   });
 
-  app.post("/api/v1/user/logout", function (req, res) {
+  app.post("/api/v1/logout", function (req, res) {
     res.status(200).json({
       status: 200,
     });
@@ -579,7 +575,7 @@ const startServer = (app) => {
     });
   });
 
-  app.get('/api/v1/user/authcheck', (req, res) => {
+  app.get('/api/v1/authcheck', (req, res) => {
     res.json({
       "status": 200,
       "ID": "1",
@@ -678,7 +674,12 @@ const startServer = (app) => {
         "originalTitle": "The Shawshank Redemption",
         "year": "1994",
         "country": "США",
-        "genre": "Драма",
+        "genres": [
+          {
+            "title": "Экшн",
+            "href": "/genres/action",
+          }
+        ],
         "motto": "Страх - это кандалы. Надежда - это свобода",
         "director": "Франк Дарабонт",
         "budget": "25 000 000 $",
@@ -718,7 +719,12 @@ const startServer = (app) => {
         "originalTitle": "The Green Mile",
         "year": "1999",
         "country": "США",
-        "genre": "Драма, Криминал",
+        "genres": [
+          {
+            "title": "Экшн",
+            "href": "/genres/action",
+          }
+        ],
         "motto": "Пол Эджкомб не верил в чудеса. Пока не столкнулся с одним из них",
         "director": "Франк Дарабонт",
         "budget": "60 000 000 $",
@@ -763,7 +769,12 @@ const startServer = (app) => {
         "originalTitle": "The Shawshank Redemption",
         "year": "1994",
         "country": "США",
-        "genre": "Драма",
+        "genres": [
+          {
+            "title": "Экшн",
+            "href": "/genres/action",
+          }
+        ],
         "motto": "Страх - это кандалы. Надежда - это свобода",
         "director": "Франк Дарабонт",
         "budget": "25 000 000 $",
@@ -803,7 +814,12 @@ const startServer = (app) => {
         "originalTitle": "The Green Mile",
         "year": "1999",
         "country": "США",
-        "genre": "Драма, Криминал",
+        "genres": [
+          {
+            "title": "Экшн",
+            "href": "/genres/action",
+          }
+        ],
         "motto": "Пол Эджкомб не верил в чудеса. Пока не столкнулся с одним из них",
         "director": "Франк Дарабонт",
         "budget": "60 000 000 $",
@@ -848,7 +864,12 @@ const startServer = (app) => {
         "originalTitle": "The Shawshank Redemption",
         "year": "1994",
         "country": "США",
-        "genre": "Драма",
+        "genres": [
+          {
+            "title": "Экшн",
+            "href": "/genres/action",
+          }
+        ],
         "motto": "Страх - это кандалы. Надежда - это свобода",
         "director": "Франк Дарабонт",
         "budget": "25 000 000 $",
@@ -888,7 +909,12 @@ const startServer = (app) => {
         "originalTitle": "The Green Mile",
         "year": "1999",
         "country": "США",
-        "genre": "Драма, Криминал",
+        "genres": [
+          {
+            "title": "Экшн",
+            "href": "/genres/action",
+          }
+        ],
         "motto": "Пол Эджкомб не верил в чудеса. Пока не столкнулся с одним из них",
         "director": "Франк Дарабонт",
         "budget": "60 000 000 $",
@@ -933,7 +959,12 @@ const startServer = (app) => {
         "originalTitle": "The Shawshank Redemption",
         "year": "1994",
         "country": "США",
-        "genre": "Драма",
+        "genres": [
+          {
+            "title": "Экшн",
+            "href": "/genres/action",
+          }
+        ],
         "motto": "Страх - это кандалы. Надежда - это свобода",
         "director": "Франк Дарабонт",
         "budget": "25 000 000 $",
@@ -973,7 +1004,12 @@ const startServer = (app) => {
         "originalTitle": "The Green Mile",
         "year": "1999",
         "country": "США",
-        "genre": "Драма, Криминал",
+        "genres": [
+          {
+            "title": "Экшн",
+            "href": "/genres/action",
+          }
+        ],
         "motto": "Пол Эджкомб не верил в чудеса. Пока не столкнулся с одним из них",
         "director": "Франк Дарабонт",
         "budget": "60 000 000 $",
@@ -1018,7 +1054,12 @@ const startServer = (app) => {
         "originalTitle": "The Shawshank Redemption",
         "year": "1994",
         "country": "США",
-        "genre": "Драма",
+        "genres": [
+          {
+            "title": "Экшн",
+            "href": "/genres/action",
+          }
+        ],
         "motto": "Страх - это кандалы. Надежда - это свобода",
         "director": "Франк Дарабонт",
         "budget": "25 000 000 $",
@@ -1058,7 +1099,12 @@ const startServer = (app) => {
         "originalTitle": "The Green Mile",
         "year": "1999",
         "country": "США",
-        "genre": "Драма, Криминал",
+        "genres": [
+          {
+            "title": "Экшн",
+            "href": "/genres/action",
+          }
+        ],
         "motto": "Пол Эджкомб не верил в чудеса. Пока не столкнулся с одним из них",
         "director": "Франк Дарабонт",
         "budget": "60 000 000 $",

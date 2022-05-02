@@ -32,7 +32,7 @@ div.content-wrapper
                             each genre, index in movie.genres
                                 if index != 0
                                     span=`, `
-                                a(class="movie-facts__fact__value__link" href=genre.href) #{genre.name}
+                                a(class="movie-facts__fact__value__link" href=genre.href) #{genre.title}
                     div.movie-facts__fact
                         div.movie-facts__fact__name Слоган
                         div.movie-facts__fact__value #{movie.motto}

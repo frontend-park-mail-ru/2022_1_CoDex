@@ -229,7 +229,7 @@ export class MovieView extends BaseView {
         target.classList.toggle('select-arrow-active');
       });
     }
-    document.addEventListener('click', this.closeAllSelect);
+    // document.addEventListener('click', this.closeAllSelect);
 
     const submitButton = document.querySelector('.review-input-block__submit') as HTMLElement;
     submitButton.addEventListener('click', this.sendReview);
@@ -405,9 +405,9 @@ export class MovieView extends BaseView {
         currentSelect.selectedIndex = i;
         const bookmarkId = target.getAttribute("bookmarkid");
         let bookmarkRequest: bookmarkRequest = {
-          userId: authModule.user?.ID ? authModule.user.ID : "",
           movieId: this.movieID,
           bookmarkId: bookmarkId ? bookmarkId : "",
+          userId: ''
         }
         if (target.classList.contains("hasMovie")) {
           previousSelect.innerHTML = 'Добавить в подборку: ';
@@ -462,7 +462,6 @@ export class MovieView extends BaseView {
     newOption.setAttribute("bookmarkid", `${bookmarkId}`);
     newOption.textContent = bookmarkName;
     currentSelect.insertBefore(newOption, currentSelect.options[currentSelectLength - 1]);
-
     const bookmarkItems = document.querySelector(".bookmark-items") as HTMLDivElement;
     const newCollection = document.createElement("div");
     newCollection.classList.add("hasMovie");

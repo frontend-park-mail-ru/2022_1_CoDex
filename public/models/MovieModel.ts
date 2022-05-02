@@ -97,7 +97,6 @@ export class MovieModel extends BaseModel {
 
     addCollection = (inputsData: bookmarkRequest) => {
         addMovieToBookmark(inputsData);
-        
     }
 
     removeCollection = (inputsData: bookmarkRequest) => {
@@ -109,7 +108,7 @@ export class MovieModel extends BaseModel {
             (response) => {
                 if (!response) { return; }
                 const parsed = <createBookmarkResponse> response.parsedResponse;
-                if (response.status == statuses.OK) {
+                if (response.status == statuses.CREATED) {
                     this.eventBus.emit(events.moviePage.createCollectionSuccess, parsed.ID, parsed.title);
                 }
             }
