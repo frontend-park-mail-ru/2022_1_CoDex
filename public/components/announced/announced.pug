@@ -23,8 +23,12 @@ div.content-wrapper
                         div.movie-facts__fact__name Страна
                         div.movie-facts__fact__value #{movie.country}
                     div.movie-facts__fact
-                        div.movie-facts__fact__name Жанр
-                        div.movie-facts__fact__value #{movie.genre}
+                        div.movie-facts__fact__name Жанры:
+                        div.movie-facts__fact__value
+                            each genre, index in movie.genres
+                                if index != 0
+                                    span=`, `
+                                a(class="movie-facts__fact__value__link" href=genre.href) #{genre.title}
                     div.movie-facts__fact
                         div.movie-facts__fact__name Режиссёр
                         div.movie-facts__fact__value #{movie.director}

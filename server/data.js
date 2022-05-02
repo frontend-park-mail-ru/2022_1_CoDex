@@ -5,9 +5,7 @@ const startServer = (app) => {
   app.get("/api/v1/collections/feed", function (req, res) {
     res.json(Collections);
   });
-
-  app.get("/api/v1/genres", function (req, res) {
-    res.json(Genres);
+  •••••••••
   });
 
   app.get("/api/v1/genres/adventure", function (req, res) {
