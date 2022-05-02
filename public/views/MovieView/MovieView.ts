@@ -407,7 +407,6 @@ export class MovieView extends BaseView {
         let bookmarkRequest: bookmarkRequest = {
           movieId: this.movieID,
           bookmarkId: bookmarkId ? bookmarkId : "",
-          userId: ''
         }
         if (target.classList.contains("hasMovie")) {
           previousSelect.innerHTML = 'Добавить в подборку: ';
