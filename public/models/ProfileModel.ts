@@ -27,8 +27,9 @@ export class ProfileModel extends BaseModel {
                 this.eventBus.emit(events.app.errorPage);
             } if (response?.status === statuses.OK && response.parsedResponse) {
                 const profileData: profileUserData = response.parsedResponse;
-                authModule.changeUser(response.parsedResponse);
+                //authModule.changeUser(response.parsedResponse);
                 profileData.isThisUser = authModule.user ? (user.ID == authModule.user.ID) : false;
+                console.log("getProfileInfo", profileData)
                 this.eventBus.emit(
                     events.profilePage.render.profileInfo, profileData
                 );
@@ -87,6 +88,7 @@ export class ProfileModel extends BaseModel {
             } if (response?.status === statuses.OK && response.parsedResponse) {
                 const profileData: profileUserData = response.parsedResponse;
                 profileData.isThisUser = authModule.user ? (userID === authModule.user.ID) : false;
+                console.log("getProfileInfo", profileData)
                 authModule.changeUser(response.parsedResponse);
                 this.eventBus.emit(
                     events.profilePage.render.changedProfile, profileData
