@@ -13,6 +13,7 @@ export const routes: routeList = {
     singleGenrePage: "/genres/\\d+",
     premiersPage: "/permiers",
     announcedPage: "/announced/\\d+",
+    search: '/search',
 }
 
 export const regularRoutes: routeList = {
@@ -28,4 +29,5 @@ export const regularRoutes: routeList = {
     singleGenrePage: "^/genres/\*",
     premiersPage: "^/premiers$",
     announcedPage: "^/announced/\\d+$",
+    search: '^/search/\*',
 }

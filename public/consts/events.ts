@@ -138,4 +138,14 @@ export const events = {
         },
         getContent: "announcedPage:getContent",
     },
+
+    searchPage: {
+        render: {
+            content: "searchPage:renderContent",
+            films: "searchPage:renderFilms",
+            persons: "searchPage:renderPersons",
+            emptyPage: "searchPage:renderEmptyPage",
+        },
+        getContent: "searchPage:getContent",
+    }
 };

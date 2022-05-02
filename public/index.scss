@@ -8,6 +8,7 @@
 @import "components/collections/collections.scss";
 @import "components/singleCollection/singleCollection.scss";
 @import "components/movieCard/movieCard.scss";
+@import "components/personCard/personCard.scss";
 @import "components/movie/movie.scss";
 @import "components/slider/slider.scss";
 @import "components/reviewCard/reviewCard.scss";
@@ -18,6 +19,7 @@
 @import "components/actor/actor.scss";
 @import "components/collectionDropdown/collectionDropdown.scss";
 @import "components/genres/genres.scss";
+@import "components/search/search.scss";
 
 html, body {
     font-family: $main_font;

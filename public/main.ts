@@ -13,6 +13,7 @@ import { GenresController } from "./controllers/GenresController";
 import { SingleGenreController } from "./controllers/SingleGenreController";
 import { PremiersController } from "./controllers/PremiersController";
 import { AnnouncedController } from "./controllers/AnnouncedController";
+import { SearchController } from "./controllers/SearchController";
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js', { scope: '/' })
@@ -38,6 +39,7 @@ const genresController = new GenresController();
 const singleGenreController = new SingleGenreController();
 const premiersController = new PremiersController();
 const announcedController = new AnnouncedController();
+const searchController = new SearchController();
 
 const router = new Router(root as HTMLElement);
 
@@ -54,4 +56,5 @@ router.register(regularRoutes.homePage, collectionsController)
   .register(regularRoutes.genresPage, genresController)
   .register(regularRoutes.premiersPage, premiersController)
   .register(regularRoutes.announcedPage, announcedController)
+  .register(regularRoutes.search, searchController)
   .start();

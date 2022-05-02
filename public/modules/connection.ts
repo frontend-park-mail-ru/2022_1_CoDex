@@ -466,7 +466,7 @@ export const createBookmark = async (bookmarkCreateRequest: bookmarkCreateReques
  * @description Получает с сервера данные о подборках фильмов.
  * @returns { object } Ответ с сервера
  */
- export const getGenres = async () => {
+export const getGenres = async () => {
     const params: requestParams = {
         url: `${urls.api.genres}`,
         method: "GET",
@@ -514,6 +514,21 @@ export const getPremiers = async () => {
 export const getAnnounced = async (movieID: string) => {
     const params: requestParams = {
         url: `${urls.api.announced}/${movieID}`,
+        method: "GET",
+        credentials: null,
+        body: null,
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}
+
+export const getSearch = async (query: string) => {
+    const params: requestParams = {
+        url: `${urls.api.search}/${query}`,
         method: "GET",
         credentials: null,
         body: null,

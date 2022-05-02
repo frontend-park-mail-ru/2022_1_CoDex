@@ -1,0 +1,7 @@
+include ../../personCard/personCard
+
+if !isEmpty
+    each person, _ in data
+        +personCard(person)
+else 
+    span.empty-search-message Персоны не найдены

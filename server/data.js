@@ -17,7 +17,7 @@ const startServer = (app) => {
   app.get("/api/v1/genres/action", function (req, res) {
     res.json(top256);
   });
-  
+
   app.get("/api/v1/collections/1", function (req, res) {
     res.json(top256);
   });
@@ -65,6 +65,62 @@ const startServer = (app) => {
     res.json({
       ID: "777",
       title: "new title",
+    });
+  });
+
+  app.get("/api/v1/search/1", function (req, res) {
+    res.status(200).json({
+      status: 200,
+      movies: {
+        "isEmpty": false,
+        "data": [
+          {
+            "ID": "2",
+            "poster": "ironman.webp",
+            "title": "Железный Человек",
+            "rating": "10.0",
+            "info": "2008, США, Канада. Фантастика, Боевик, Приключения.",
+            "description": "Миллиардер-изобретатель Тони Старк попадает в плен к Афганским террористам, которые пытаются заставить его создать оружие массового поражения. В тайне от своих захватчиков Старк конструирует высокотехнологичную киберброню, которая помогает ему сбежать. Однако по возвращении в США он узнаёт, что в совете директоров его фирмы плетётся заговор, чреватый страшными последствиями. Используя своё последнее изобретение, Старк пытается решить проблемы своей компании радикально..."
+          },
+          {
+            "ID": "1",
+            "poster": "ironman.webp",
+            "title": "Железный Человек",
+            "rating": "10.0",
+            "info": "2008, США, Канада. Фантастика, Боевик, Приключения.",
+            "description": "Миллиардер-изобретатель Тони Старк попадает в плен к Афганским террористам, которые пытаются заставить его создать оружие массового поражения. В тайне от своих захватчиков Старк конструирует высокотехнологичную киберброню, которая помогает ему сбежать. Однако по возвращении в США он узнаёт, что в совете директоров его фирмы плетётся заговор, чреватый страшными последствиями. Используя своё последнее изобретение, Старк пытается решить проблемы своей компании радикально..."
+          },
+          {
+            "ID": "3",
+            "poster": "ironman.webp",
+            "title": "Железный Человек",
+            "rating": "10.0",
+            "info": "2008, США, Канада. Фантастика, Боевик, Приключения.",
+            "description": "Миллиардер-изобретатель Тони Старк попадает в плен к Афганским террористам, которые пытаются заставить его создать оружие массового поражения. В тайне от своих захватчиков Старк конструирует высокотехнологичную киберброню, которая помогает ему сбежать. Однако по возвращении в США он узнаёт, что в совете директоров его фирмы плетётся заговор, чреватый страшными последствиями. Используя своё последнее изобретение, Старк пытается решить проблемы своей компании радикально..."
+          }
+        ]
+      },
+      "actors": {
+        "isEmpty": false,
+        "data": [
+          {
+            "href": "/actors/2",
+            "poster": "robertDowneyJr.webp",
+            "title": "Роберт Дауни мл."
+          },
+          {
+            "href": "/actors/3",
+            "poster": "robertDowneyJr.webp",
+            "title": "Роберт Дауни мл."
+          },
+          {
+            "href": "/actors/4",
+            "poster": "timRobbins.webp",
+            "title": "Тим Роббинс"
+          }
+        ]
+      },
+
     });
   });
 
@@ -526,7 +582,7 @@ const startServer = (app) => {
   app.get('/api/v1/user/authcheck', (req, res) => {
     res.json({
       "status": 200,
-      "ID":"1",
+      "ID": "1",
     });
   });
 
@@ -567,30 +623,30 @@ const startServer = (app) => {
   ids[id] = "a@a.ru";
 
   const Genres = [
-    { href: "/genres/action", imgsrc: "genresAction.webp"},
-    { href: "/genres/adventure", imgsrc: "genresAdventure.webp"},
-    { href: "/genres/anime", imgsrc: "genresAnime.webp"},
-    { href: "/genres/authors", imgsrc: "genresAuthors.webp"},
-    { href: "/genres/biography", imgsrc: "genresBiography.webp"},
-    { href: "/genres/cartoons", imgsrc: "genresCartoons.webp"},
-    { href: "/genres/comedy", imgsrc: "genresComedy.webp"},
-    { href: "/genres/criminal", imgsrc: "genresCriminal.webp"},
-    { href: "/genres/detective", imgsrc: "genresDetective.webp"},
-    { href: "/genres/documental", imgsrc: "genresDocumental.webp"},
-    { href: "/genres/drama", imgsrc: "genresDrama.webp"},
-    { href: "/genres/family", imgsrc: "genresFamily.webp"},
-    { href: "/genres/fantastic", imgsrc: "genresFantastic.webp"},
-    { href: "/genres/fantasy", imgsrc: "genresFantasy.webp"},
-    { href: "/genres/historical", imgsrc: "genresHistorical.webp"},
-    { href: "/genres/horror", imgsrc: "genresHorror.webp"},
-    { href: "/genres/melodrama", imgsrc: "genresMelodrama.webp"},
-    { href: "/genres/musical", imgsrc: "genresMusical.webp"},
-    { href: "/genres/mystic", imgsrc: "genresMystic.webp"},
-    { href: "/genres/romantic", imgsrc: "genresRomantic.webp"},
-    { href: "/genres/short", imgsrc: "genresShort.webp"},
-    { href: "/genres/sport", imgsrc: "genresSport.webp"},
-    { href: "/genres/thriller", imgsrc: "genresThriller.webp"},
-    { href: "/genres/western", imgsrc: "genresWestern.webp"},
+    { href: "/genres/action", imgsrc: "genresAction.webp" },
+    { href: "/genres/adventure", imgsrc: "genresAdventure.webp" },
+    { href: "/genres/anime", imgsrc: "genresAnime.webp" },
+    { href: "/genres/authors", imgsrc: "genresAuthors.webp" },
+    { href: "/genres/biography", imgsrc: "genresBiography.webp" },
+    { href: "/genres/cartoons", imgsrc: "genresCartoons.webp" },
+    { href: "/genres/comedy", imgsrc: "genresComedy.webp" },
+    { href: "/genres/criminal", imgsrc: "genresCriminal.webp" },
+    { href: "/genres/detective", imgsrc: "genresDetective.webp" },
+    { href: "/genres/documental", imgsrc: "genresDocumental.webp" },
+    { href: "/genres/drama", imgsrc: "genresDrama.webp" },
+    { href: "/genres/family", imgsrc: "genresFamily.webp" },
+    { href: "/genres/fantastic", imgsrc: "genresFantastic.webp" },
+    { href: "/genres/fantasy", imgsrc: "genresFantasy.webp" },
+    { href: "/genres/historical", imgsrc: "genresHistorical.webp" },
+    { href: "/genres/horror", imgsrc: "genresHorror.webp" },
+    { href: "/genres/melodrama", imgsrc: "genresMelodrama.webp" },
+    { href: "/genres/musical", imgsrc: "genresMusical.webp" },
+    { href: "/genres/mystic", imgsrc: "genresMystic.webp" },
+    { href: "/genres/romantic", imgsrc: "genresRomantic.webp" },
+    { href: "/genres/short", imgsrc: "genresShort.webp" },
+    { href: "/genres/sport", imgsrc: "genresSport.webp" },
+    { href: "/genres/thriller", imgsrc: "genresThriller.webp" },
+    { href: "/genres/western", imgsrc: "genresWestern.webp" },
   ];
 
   const Collections = {

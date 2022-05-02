@@ -34,6 +34,7 @@ export const urls: urlsList = {
         genres: `${currentUrl}${version}/genres`, // TODO,
         singleGenre: `${currentUrl}${version}/genres`, // TODO
         premiers: `${currentUrl}${version}/premiers`, // TODO
-        announced: `${currentUrl}${version}/announced`
+        announced: `${currentUrl}${version}/announced`,
+        search: `${currentUrl}${version}/search`,
     }
 }

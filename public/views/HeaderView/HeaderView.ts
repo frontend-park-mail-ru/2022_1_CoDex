@@ -36,6 +36,7 @@ export class HeaderView extends BaseView {
       this.eventBus.emit(events.app.errorPage);
     }
     this.addEventListenerToVerticalMenu();
+    this.addEventListenerToSearch();
   };
 
   /**
@@ -141,7 +142,6 @@ export class HeaderView extends BaseView {
     });
   };
 
-
   /**
      * @description Находит и возвращает элемент навигационной панели.
      * @return { HTMLDivElement } Элемент навигационной панели
@@ -150,13 +150,28 @@ export class HeaderView extends BaseView {
     return document.querySelector('.navbar');
   };
 
-  addEventListenerToResize = () => {
-    // TODO
-  };
-
   addEventListenerToSearch = () => {
-    // TODO
-  };
+    const input = document.querySelector('.search__input') as HTMLInputElement;
+    if (!input) {
+      return;
+    }
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        console.log(input.value)
+        this.eventBus.emit(events.pathChanged, { URL: `/search/${input.value}`});
+      }
+    });
+    const searchBtn = document.querySelector('.search__btn') as HTMLElement;
+    if (!searchBtn) {
+      return;
+    }
+    searchBtn.addEventListener('click', (e) => {
+      console.log(input.value)
+
+      this.eventBus.emit(events.pathChanged, { URL: `/search/${input.value}` });
+    });
+  }
 
   addEventListenerToVerticalMenu = () => {
     const burgerButton = document.querySelector('.navbar__vertical-menu__main-btn');

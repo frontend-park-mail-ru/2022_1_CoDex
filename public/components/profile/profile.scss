@@ -38,7 +38,6 @@
 			grid-template-areas:
 				"bookmarks"
 				"review";
-			//width: 100%;
 			grid-template-columns: minmax(360px, 780px);
 			.profile-bookmarks {
 				grid-area: bookmarks;
