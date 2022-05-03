@@ -23,7 +23,11 @@ export class SingleBookmarkController extends BaseController {
             {
                 event: events.singleBookmarkPage.render.content,
                 handler: this.view.renderContent,
-            }
+            },
+            {
+                event: events.singleBookmarkPage.delete.bookmark,
+                handler: this.model.deleteBookmark,
+            },
         );
         this.subscribe();
     }

@@ -1,6 +1,6 @@
 import { statuses } from "@/consts/statuses";
 import { urls } from "@/consts/urls";
-import { bookmarkCreateRequest, bookmarkRequest, loginData, personalData, ratingRequest, registerData, requestParams, requestParamsData, reviewRequest } from "@/types";
+import { bookmarkCreateRequest, bookmarkRequest, loginData, personalData, ratingRequest, registerData, requestParams, requestParamsData, reviewRequest, bookmarkDeleteRequest } from "@/types";
 // import regeneratorRuntime from "regenerator-runtime";
 
 let CSRFToken: string | null = null;
@@ -219,7 +219,7 @@ export const getSingleCollection = async (collectionID: string) => {
  * @param { string } bookmarkID ID запрашиваемой закладки
  * @returns { object } Ответ с сервера
  */
- export const getSingleBookmark = async (bookmarkID: string) => {
+export const getSingleBookmark = async (bookmarkID: string) => {
     const params: requestParams = {
         url: `${urls.api.singleCollection}/${bookmarkID}`,
         method: "GET",
@@ -473,6 +473,22 @@ export const createBookmark = async (bookmarkCreateRequest: bookmarkCreateReques
         method: "POST",
         credentials: null,
         body: JSON.stringify(bookmarkCreateRequest),
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+};
+
+export const deleteBookmark = async (bookmarkDeleteRequest: bookmarkDeleteRequest) => {
+    console.log("deleteBookmarkRequest",bookmarkDeleteRequest )
+    const params: requestParams = {
+        url: `${urls.api.deleteBookmark}`,
+        method: "POST",
+        credentials: null,
+        body: JSON.stringify(bookmarkDeleteRequest),
     };
 
     try {

@@ -40,6 +40,7 @@ type api = {
     addMovieToBookmark: string,
     removeMovieFromBookmark: string,
     createBookmark: string,
+    deleteBookmark: string,
     genres: string,
     singleGenre: string,
     premiers: string,
@@ -295,6 +296,7 @@ export type singleCollectionPageData = {
 }
 
 export type singleBookmarkPageData = {
+    ID: string,
     description: string,
     movielist: movieInfo[],
     title: string,
@@ -333,6 +335,10 @@ export type bookmarkCreateRequest = {
     title: string,
     userId: string,
     public: boolean,
+}
+
+export type bookmarkDeleteRequest = {
+    bookmarkId: string,
 }
 
 export type createBookmarkResponse = {

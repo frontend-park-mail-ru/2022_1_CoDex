@@ -1,9 +1,10 @@
 import EventBus from "@/modules/eventBus";
-import { singleBookmark, singleCollectionMovie, singleBookmarkPageData } from "@/types";
+import { singleBookmark, singleCollectionMovie, singleBookmarkPageData, bookmarkDeleteRequest } from "@/types";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
-import { getSingleBookmark } from "../modules/connection";
+import { getSingleBookmark, deleteBookmark } from "../modules/connection";
 import { BaseModel } from "./BaseModel";
+import { authModule } from "@/modules/auth";
 
 /**
  * @description Класс модели одной закладки.
@@ -73,5 +74,12 @@ export class SingleBookmarkModel extends BaseModel {
         for (const movie of movielist) {
             movie.description = this.processDescription(movie.description);
         }
+    }
+
+    deleteBookmark = (bookmarkData: bookmarkDeleteRequest) =>{
+        deleteBookmark(bookmarkData)
+        .then(() =>{
+            this.eventBus.emit(events.redirectBack);
+        });
     }
 }

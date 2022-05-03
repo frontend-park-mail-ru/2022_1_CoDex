@@ -22,6 +22,8 @@ export class ProfileModel extends BaseModel {
     }
 
     getProfileInfo = (user: userData) => {
+        console.log("profileInfo")
+        console.log("userID", user.ID)
         getProfile(user.ID).then((response) => {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
