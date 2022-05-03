@@ -46,7 +46,7 @@ export class MovieView extends BaseView {
       return;
     }
     this.movieID = data.movie.ID;
-    this.collectionsInfo = data.collectionsInfo;
+    this.collectionsInfo = data.collectionsInfo ? data.collectionsInfo : [];
     const template = moviePageContent(data);
     const content = document.querySelector('.content');
     if (content) {
