@@ -128,7 +128,6 @@ export class ProfileModel extends BaseModel {
      * @param { string } inputValue Значение проверяемого поля ввода
      */
     validateSingleInput = (inputName: string, inputValue: string) => {
-        console.log("validateSingleInput",inputValue);
         if (!inputName) { return false; }
         if (!inputValue) {
             this.eventBus.emit(events.profilePage.addValidationError, emptyField.message);
