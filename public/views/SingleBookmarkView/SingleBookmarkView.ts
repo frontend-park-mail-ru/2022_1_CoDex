@@ -24,7 +24,7 @@ export class SingleBookmarkView extends BaseView {
        * контента страницы.
        */
     emitGetContent = () => {
-        const URLArgs = getURLArguments(window.location.pathname, '/collections/:ID');
+        const URLArgs = getURLArguments(window.location.pathname, '/bookmarks/:ID');
         this.eventBus.emit(events.singleBookmarkPage.getContent, URLArgs);
     };
 

@@ -3,7 +3,7 @@ import { routeList } from "@/types"
 export const routes: routeList = {
     homePage: "/",
     collectionsPage: "/collections",
-    singleBookmarkPage: "/collections/\\d+",
+    singleBookmarkPage: "/bookmarks/\\d+",
     singleCollectionPage: "/collections/\\d+",
     profilePage: "/profile",
     loginPage: "/login",
@@ -20,7 +20,7 @@ export const routes: routeList = {
 export const regularRoutes: routeList = {
     homePage: "^/$",
     collectionsPage: "^/collections$",
-    singleBookmarkPage:"^/collections/\\d+$",    
+    singleBookmarkPage:"^/bookmarks/\\d+$",    
     singleCollectionPage:"^/collections/\\d+$",    
     profilePage:"^/profile/\\d+$",
     loginPage:  "^/login",
