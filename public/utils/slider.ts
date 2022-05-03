@@ -75,6 +75,99 @@ export const slider = (selector: string) => {
         }
     }
     addButtonsEvent(buttons);
-    // TODO: swipe? 
+    
+    let widthSlided = 0;
+    let posInit = 0;
+    let posX1 = 0;
+    let posX2 = 0;
+    let posY1 = 0;
+    let posY2 = 0;
+    let isSwipe = false;
+    let isScroll = false;
+    let allowSwipe = true;
+    const trfRegExp = /([-0-9.]+(?=px))/;
+    let swipeStartTime = 0;
+    let swipeEndTime = 0;
 
+    const getEvent = (e: TouchEvent) => {
+        return (e.type.search("touch") !== -1) ? e.touches[0] : null;
+    }
+
+    const swipeStart = (e: Event) => {
+      const evt = getEvent(e as TouchEvent);
+      if (!evt) { return; }
+      if (allowSwipe) {
+        swipeStartTime = Date.now();
+        posInit = posX1 = evt.clientX;
+        posY1 = evt.clientY;
+        sliderTrack.style.transition = '';
+        slider.addEventListener('touchmove', function(e) {
+          swipeAction(e);
+        }, false);
+        slider.addEventListener('touchend', swipeEnd);
+      }
+    };
+
+    const swipeAction = (e: Event) => {
+      const touchEvent = e as TouchEvent;
+      allowSwipe = true;
+      const evt = getEvent(touchEvent);
+      if (!evt) { return; }
+      const style = sliderTrack.style.transform;
+      const transformArray = style.match(trfRegExp);
+      const transformString = transformArray ? transformArray[0] : null;
+      const transform = transformString ? +transformString : 0;
+      posX2 = posX1 - evt.clientX;
+      posX1 = evt.clientX;
+
+      posY2 = posY1 - evt.clientY;
+      posY1 = evt.clientY;
+
+      if (!isSwipe && !isScroll) {
+        const posY = Math.abs(posY2);
+        if (posY >= 7) {
+          isScroll = true;
+          allowSwipe = false;
+        } else if (posY < 7) {
+          isSwipe = true;
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }
+      if (isSwipe) {
+        sliderTrack.style.transform = `translate3d(${transform - posX2}px, 0px, 0px)`;
+      }
+    };
+    const swipeEnd = () => {
+      // posFinal = posInit - posX1;
+      isSwipe = false;
+      slider.addEventListener('touchmove', function(e) {
+        swipeAction(e);
+      }, false);
+      slider.addEventListener('touchend', swipeEnd);
+
+      if (allowSwipe) {
+        swipeEndTime = Date.now();
+        if (posInit !== posX1 && !isScroll && swipeEndTime - swipeStartTime < 800) {
+          widthSlided += (posInit - posX1) * 3;
+          if (widthSlided > moveWidth) {
+            widthSlided = moveWidth;
+          }
+          if (widthSlided <= 0) {
+            widthSlided = 0;
+          }
+          moveSlides(widthSlided);
+        } else if (widthSlided + (posInit - posX1) > moveWidth) {
+          moveSlides(moveWidth);
+          sliderTrack.style.transform = `translate3d(-${moveWidth}px, 0px, 0px)`;
+        } else if (widthSlided + (posInit - posX1) <= 0) {
+          moveSlides(0);
+          sliderTrack.style.transform = 'translate3d(0px, 0px, 0px)';
+        }
+      }
+      isScroll = false;
+    };
+
+    sliderTrack.addEventListener('transitionend', () => allowSwipe = true);
+    slider.addEventListener('touchstart', swipeStart);
 }
