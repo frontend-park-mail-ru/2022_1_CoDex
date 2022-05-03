@@ -1,4 +1,4 @@
-include ../movieCard/movieCard
+include ../bookmarkMovieCard/bookmarkMovieCard
 
 div.content-wrapper
     page.page
@@ -11,5 +11,4 @@ div.content-wrapper
                 //TODO .container__bookmark-settings__make-private-btn Приватная закладка
             div.movies-container
                 each movie, _ in movielist
-                    +movieCard(movie)
-                    .delete-movie-btn
+                    +bookmarkMovieCard(movie)

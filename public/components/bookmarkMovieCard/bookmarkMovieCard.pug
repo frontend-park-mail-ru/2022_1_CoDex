@@ -1,0 +1,17 @@
+mixin bookmarkMovieCard(currentMovie)
+    div.movie-card
+        div.movie
+            div.movie__image
+                a.movie__image(href=`/movies/${currentMovie.ID}`)
+                    img(src=(`../server/images/${currentMovie.poster}`))
+            div.movie__body
+                div.movie__body__info
+                    div.movie__body__info__data
+                        div.movie__body__info__data__title
+                            a.movie__body__info__data__title__movie-title(href=`/movies/${currentMovie.ID}`) #{currentMovie.title}
+                            div.movie__body__info__data__title__rating #{currentMovie.rating}
+                            div.movie__body__info__data__title__delete-movie-btn
+
+                        div.movie__body__info__data__additional
+                        div.movie__body__info__data__additional #{currentMovie.info}
+                div.movie__body__description #{currentMovie.description}

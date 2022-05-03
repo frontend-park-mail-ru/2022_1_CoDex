@@ -120,14 +120,6 @@
     column-gap: 20px;
     grid-area: D1;
 
-    .delete-movie-btn{
-        position: absolute;
-        
-        width: 20px;
-        height: 20px;
-        background-color: red;
-    }
-
     @media (max-width: 1200px) {
         grid-template-columns: repeat(1, 1fr);
     }

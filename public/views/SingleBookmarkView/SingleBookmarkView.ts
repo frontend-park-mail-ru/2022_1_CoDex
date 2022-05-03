@@ -1,4 +1,4 @@
-import { singleBookmarkPageData } from '@/types';
+import { singleBookmarkPageData, bookmarkRequest } from '@/types';
 import EventBus from '@/modules/eventBus';
 import { events } from '@/consts/events';
 import { getURLArguments } from '@/modules/router';
@@ -50,15 +50,32 @@ export class SingleBookmarkView extends BaseView {
         this.addEventListenerToDeleteButtons();
     };
 
-    addEventListenerToDeleteButtons = ()=>{
+    addEventListenerToDeleteButtons = () => {
         const deletePlaylistButton = document.querySelector('.container__bookmark-settings__delete-playlist-btn') as HTMLInputElement;
-        if(!deletePlaylistButton){return;}
+        const deleteMovieButton = document.querySelector('.movie__body__info__data__title__delete-movie-btn');
 
-        deletePlaylistButton.addEventListener('click', (e)=>{
+        if (!deletePlaylistButton || !deleteMovieButton) { return; }
+
+        deletePlaylistButton.addEventListener('click', (e) => {
             e.preventDefault();
             console.log("click delete")
-            console.log("bookmarkID",this.bookmarkID)
-            this.eventBus.emit(events.singleBookmarkPage.delete.bookmark, {bookmarkId : this.bookmarkID});
+            console.log("bookmarkID", this.bookmarkID)
+            this.eventBus.emit(events.singleBookmarkPage.delete.bookmark, { bookmarkId: this.bookmarkID });
         });
+
+        deleteMovieButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log(deleteMovieButton)
+            let movieTitle = deleteMovieButton.parentNode?.firstChild as HTMLAnchorElement;
+            const movieID = movieTitle.href.split('/')[movieTitle.href.split('/').length - 1];
+            let bookmarkRequest: bookmarkRequest = {
+                movieId: movieID,
+                bookmarkId: this.bookmarkID,
+            };
+            console.log(bookmarkRequest)
+            this.eventBus.emit(events.singleBookmarkPage.delete.movie, bookmarkRequest);
+        });
+
+
     }
 }

@@ -1,8 +1,8 @@
 import EventBus from "@/modules/eventBus";
-import { singleBookmark, singleCollectionMovie, singleBookmarkPageData, bookmarkDeleteRequest } from "@/types";
+import { singleBookmark, singleCollectionMovie, singleBookmarkPageData, bookmarkDeleteRequest, bookmarkRequest } from "@/types";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
-import { getSingleBookmark, deleteBookmark } from "../modules/connection";
+import { getSingleBookmark, deleteBookmark, removeMovieFromBookmark } from "../modules/connection";
 import { BaseModel } from "./BaseModel";
 import { authModule } from "@/modules/auth";
 
@@ -80,6 +80,14 @@ export class SingleBookmarkModel extends BaseModel {
         deleteBookmark(bookmarkData)
         .then(() =>{
             this.eventBus.emit(events.redirectBack);
+        });
+    }
+
+    deleteMovie = (bookmarkData: bookmarkRequest) =>{
+        removeMovieFromBookmark(bookmarkData)
+        .then(() =>{
+            let bookmark : singleBookmark = {ID: bookmarkData.bookmarkId}; 
+            this.getContent(bookmark);
         });
     }
 }

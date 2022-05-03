@@ -73,6 +73,11 @@ const startServer = (app) => {
     });
   });
 
+  app.post("/api/v1/playlist/deleteMovie", function (req, res) {
+    res.status(200).json({
+    });
+  });
+
   app.get("/api/v1/search/\*", function (req, res) {
     res.status(200).json({
       status: 200,

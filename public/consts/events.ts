@@ -65,6 +65,7 @@ export const events = {
         getContent: "singleBookmarkPage:getContent",
         delete: {
             bookmark: "singleBookmarkPage:deleteBookmark",
+            movie: "singleBookmarkPage:deleteMovie",
         }
     },
 
