@@ -359,7 +359,7 @@ export class MovieView extends BaseView {
       const currentSelect = dropdown[i].getElementsByTagName('select')[0];
       const currentSelectLength = currentSelect.length;
       const div = document.createElement('div');
-      div.setAttribute('class', 'select-selected');
+      div.setAttribute('class', 'select-selected-collections');
       div.innerHTML = currentSelect.options[currentSelect.selectedIndex].innerHTML;
       dropdown[i].appendChild(div);
 
@@ -443,7 +443,7 @@ export class MovieView extends BaseView {
         if (collectionName !== "") {
           const bookmarkCreateRequest: bookmarkCreateRequest = {
             title: collectionName,
-            userId: authModule.user?.ID ? authModule.user.ID : "",
+            userId: authModule.user?.ID.toString() ? authModule.user.ID : "",
             public: true,
           }
           this.eventBus.emit(events.moviePage.createCollection, bookmarkCreateRequest);
