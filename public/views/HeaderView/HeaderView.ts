@@ -12,16 +12,14 @@ import userBlock from '@/components/header/userBlock/userBlock.pug';
  * @description Класс представления навигационной панели.
  */
 export class HeaderView extends BaseView {
-  private searchIsClicked: boolean;
-  private verticalMenuIsClicked: boolean;
+  private isSearchClicked: boolean;
   /**
      * @description Создаёт представление навигационной панели.
      * @param { eventBus } eventBus Глобальная шина событий
      */
   constructor(eventBus: EventBus) {
     super(eventBus);
-    this.searchIsClicked = false;
-    this.verticalMenuIsClicked = false;
+    this.isSearchClicked = false;
   }
 
   /**
@@ -158,8 +156,11 @@ export class HeaderView extends BaseView {
 
     input.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
-        console.log("encode",decodeURI(input.value))
-        this.eventBus.emit(events.pathChanged, { URL: `/search/${decodeURI(input.value)}`});
+        this.eventBus.emit(events.pathChanged, { URL: `/search/${decodeURI(input.value)}` });
+        if (document.documentElement.clientWidth <= 600) {
+          this.hideSearch();
+          this.isSearchClicked = false;
+        }
       }
     });
     const searchBtn = document.querySelector('.search__btn') as HTMLElement;
@@ -167,11 +168,55 @@ export class HeaderView extends BaseView {
       return;
     }
     searchBtn.addEventListener('click', (e) => {
-      console.log(input.value)
+      if (document.documentElement.clientWidth > 600) {
+        this.isSearchClicked = false;
+        this.eventBus.emit(events.pathChanged, { URL: `/search/${decodeURI(input.value)}` });
+      } else {
+        if (this.isSearchClicked) {
+          this.isSearchClicked = false;
+          this.hideSearch();
+          this.eventBus.emit(events.pathChanged, { URL: `/search/${decodeURI(input.value)}` });
+        } else {
+          this.isSearchClicked = true;
+          this.showSearch();
+        }
+      }
 
-      this.eventBus.emit(events.pathChanged, { URL: `/search/${decodeURI(input.value)}` });
     });
   }
+
+  hideSearch = () => {
+    this.isSearchClicked = false;
+    const logo = document.querySelector('.navbar__logo') as HTMLElement;
+    const verticalMenu = document.querySelector('.navbar__vertical-menu') as HTMLElement;
+    const searchInput = document.querySelector('.search__input') as HTMLInputElement;
+    if (logo) {
+      logo.style.display = 'flex';
+    }
+    if (verticalMenu) {
+      verticalMenu.style.display = 'flex';
+    }
+    if (searchInput) {
+
+      searchInput.style.removeProperty('display');
+
+    }
+  }
+
+  showSearch = () => {
+    const logo = document.querySelector('.navbar__logo') as HTMLElement;
+    const verticalMenu = document.querySelector('.navbar__vertical-menu') as HTMLElement;
+    const searchInput = document.querySelector('.search__input') as HTMLInputElement;
+    if (logo) {
+      logo.style.display = 'none';
+    }
+    if (verticalMenu) {
+      verticalMenu.style.display = 'none';
+    }
+    if (searchInput) {
+      searchInput.style.display = "flex";
+    }
+  };
 
   addEventListenerToVerticalMenu = () => {
     const burgerButton = document.querySelector('.navbar__vertical-menu__main-btn');

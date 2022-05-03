@@ -483,7 +483,6 @@ export const createBookmark = async (bookmarkCreateRequest: bookmarkCreateReques
 };
 
 export const deleteBookmark = async (bookmarkDeleteRequest: bookmarkDeleteRequest) => {
-    console.log("deleteBookmarkRequest",bookmarkDeleteRequest )
     const params: requestParams = {
         url: `${urls.api.deleteBookmark}`,
         method: "POST",

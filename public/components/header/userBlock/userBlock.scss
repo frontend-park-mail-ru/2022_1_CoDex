@@ -67,6 +67,9 @@
     text-decoration: none;
     font-size: 16px;
     transition: 0.2s ease-in-out;
+    @media (max-width: 1035px) {
+      font-size: 20px;
+    }
   }
 }
 
@@ -75,18 +78,17 @@
     display: block;
   }
 }
-@media (max-width: 1036px) {
+@media (max-width: 1035px) {
   .user-block {
     &__submenu {
       display: none;
       width: 0px;
       height: 0px;
       &__block {
-        margin-top:0px;
+        margin-top: 0px;
         text-align: left;
         font-size: 14px;
       }
     }
-    
   }
 }

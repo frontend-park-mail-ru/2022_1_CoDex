@@ -11,6 +11,7 @@ import { getURLArguments } from '@/modules/router';
 export class SearchView extends BaseView {
     constructor(eventBus: eventBus, { data = {} } = {}) {
         super(eventBus, data);
+
     }
 
     emitGetContent = () => {

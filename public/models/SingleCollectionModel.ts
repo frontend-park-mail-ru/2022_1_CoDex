@@ -24,8 +24,6 @@ export class SingleCollectionModel extends BaseModel {
      * название, ID
      */
     getContent = (collection: singleCollection) => {
-        console.log("getContent from collection")
-
         if (!collection?.ID) {
             this.eventBus.emit(events.app.errorPage);
             return;
@@ -37,7 +35,6 @@ export class SingleCollectionModel extends BaseModel {
                 } if (response?.status === statuses.OK && response.parsedResponse) {
                     const parsed = <singleCollectionPageData> response.parsedResponse;
                     this.shortenMoviesDescription(parsed.movielist);
-                    console.log("getSingleCollection")
                     this.eventBus.emit(
                         events.singleCollectionPage.render.content, response.parsedResponse
                     );

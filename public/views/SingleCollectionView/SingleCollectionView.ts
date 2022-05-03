@@ -35,8 +35,6 @@ export class SingleCollectionView extends BaseView {
      */
   renderContent = (data: singleCollectionPageData) => {
     const template = singleCollectionContent(data);
-    console.log("collection template",template)
-
     this.moviesData = data;
     const content = document.querySelector('.content');
     if (content) {

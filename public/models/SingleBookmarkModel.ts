@@ -25,7 +25,6 @@ export class SingleBookmarkModel extends BaseModel {
      * название, ID
      */
     getContent = (bookmark: singleBookmark) => {
-        console.log("getContent from bookmark")
         if (!bookmark?.ID) {
             this.eventBus.emit(events.app.errorPage);
             return;

@@ -12,7 +12,6 @@ export class SearchModel extends BaseModel {
 
     getContent = () => {
         const query = getURLArguments(window.location.pathname, '/search/:Query');
-        console.log(query.Query)
         if (!query.Query) {
             this.eventBus.emit(events.searchPage.render.emptyPage);
             return;
@@ -24,7 +23,6 @@ export class SearchModel extends BaseModel {
                 }
                 if (response?.status === statuses.OK) {
                     const parsedBody = response.parsedResponse;
-                    console.log(parsedBody)
                     if (!parsedBody || !parsedBody.actors || !parsedBody.movies) {
                         return;
                     }
