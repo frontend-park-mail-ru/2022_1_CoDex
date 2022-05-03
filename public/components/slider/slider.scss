@@ -73,6 +73,10 @@
 		cursor: pointer;
 		background-size: cover;
 
+		@media (max-width: 800px) {
+			display: none;
+		}
+
 		&__left {
 			background-image: url("./dist/img/previous-arrow.png");
 		}
