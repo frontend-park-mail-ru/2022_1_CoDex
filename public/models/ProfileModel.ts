@@ -28,6 +28,7 @@ export class ProfileModel extends BaseModel {
             } if (response?.status === statuses.OK && response.parsedResponse) {
                 const profileData: profileUserData = response.parsedResponse;
                 //authModule.changeUser(response.parsedResponse);
+                console.log("authModule", authModule.user)
                 profileData.isThisUser = authModule.user ? (user.ID == authModule.user.ID) : false;
                 console.log("getProfileInfo", profileData)
                 this.eventBus.emit(

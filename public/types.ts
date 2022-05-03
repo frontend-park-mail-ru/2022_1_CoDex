@@ -30,6 +30,7 @@ type api = {
     logout: string,
     login: string,
     register: string,
+    singleBookmark: string,
     singleCollection: string,
     collections: string,
     movie: string,
@@ -49,6 +50,7 @@ type api = {
 export type routeList = {
     homePage: string,
     collectionsPage: string,
+    singleBookmarkPage: string,
     singleCollectionPage: string,
     profilePage: string,
     loginPage: string,
@@ -186,6 +188,10 @@ export type singleCollection = {
     ID: string,
 }
 
+export type singleBookmark = {
+    ID: string,
+}
+
 export type singleGenre = {
     ID: string,
 }
@@ -286,6 +292,13 @@ export type singleCollectionPageData = {
     description: string,
     movielist: movieInfo[],
     title: string,
+}
+
+export type singleBookmarkPageData = {
+    description: string,
+    movielist: movieInfo[],
+    title: string,
+    public: boolean,
 }
 
 export type ratingResponse = {

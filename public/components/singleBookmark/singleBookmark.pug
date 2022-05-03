@@ -1,0 +1,15 @@
+include ../movieCard/movieCard
+
+div.content-wrapper
+    page.page
+        div.container
+            h1(class="container__bookmark-title") #{`Подборка: `}
+                span.container__bookmark-title__color #{title}
+            div.container__bookmark-description #{description}
+            //- .container__bookmark-settings
+            //-     .container__bookmark-settings__delete-playlist-btn Удалить закладку
+            //-     .container__bookmark-settings__make-private-btn Приватная закладка
+            div.movies-container
+                each movie, _ in movielist
+                    +movieCard(movie)
+                    //- .delete-movie-btn

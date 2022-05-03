@@ -4,6 +4,7 @@ import { regularRoutes } from "@/consts/routes";
 import { Router } from "@/modules/router";
 import { AuthController } from "@/controllers/AuthController";
 import { SingleCollectionController } from "@/controllers/SingleCollectionController";
+import { SingleBookmarkController } from "@/controllers/SingleBookmarkController";
 import { CollectionsController } from "@/controllers/CollectionsController";
 import { MovieController } from "@/controllers/MovieController";
 import { ProfileController } from "@/controllers/ProfileController";
@@ -35,6 +36,7 @@ const collectionsController = new CollectionsController();
 const movieController = new MovieController();
 const profileController = new ProfileController();
 const singleCollectionController = new SingleCollectionController();
+const singleBookmarkController = new SingleBookmarkController();
 const genresController = new GenresController();
 const singleGenreController = new SingleGenreController();
 const premiersController = new PremiersController();
@@ -46,6 +48,7 @@ const router = new Router(root as HTMLElement);
 router.register(regularRoutes.homePage, collectionsController)
   .register(regularRoutes.singleGenrePage, singleGenreController)
   .register(regularRoutes.singleCollectionPage, singleCollectionController)
+  .register(regularRoutes.singleBookmarkPage, singleBookmarkController)
   .register(regularRoutes.moviePage, movieController)
   .register(regularRoutes.actorPage, actorController)
   .register(regularRoutes.loginPage, authController)

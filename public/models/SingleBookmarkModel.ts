@@ -1,16 +1,16 @@
 import EventBus from "@/modules/eventBus";
-import { singleCollection, singleCollectionMovie, singleCollectionPageData } from "@/types";
+import { singleBookmark, singleCollectionMovie, singleBookmarkPageData } from "@/types";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
-import { getSingleCollection } from "../modules/connection";
+import { getSingleBookmark } from "../modules/connection";
 import { BaseModel } from "./BaseModel";
 
 /**
- * @description Класс модели одной подборки фильмов.
+ * @description Класс модели одной закладки.
  */
-export class SingleCollectionModel extends BaseModel {
+export class SingleBookmarkModel extends BaseModel {
     /**
-     * @description Создаёт экземляр модели одной подборки фильмов.
+     * @description Создаёт экземляр модели одной закладки.
      * @param { EventBus } eventBus Глобальная шина событий
      */
     constructor(eventBus: EventBus) {
@@ -19,27 +19,25 @@ export class SingleCollectionModel extends BaseModel {
 
     /**
      * @description Получает информацию для контента страницы 
-     * одной подборки.
-     * @param { object } collection Информация о подборке: 
+     * одной закладки.
+     * @param { object } bookmark Информация о закладке: 
      * название, ID
      */
-    getContent = (collection: singleCollection) => {
-        console.log("getContent from collection")
-
-        if (!collection?.ID) {
+    getContent = (bookmark: singleBookmark) => {
+        console.log("getContent from bookmark")
+        if (!bookmark?.ID) {
             this.eventBus.emit(events.app.errorPage);
             return;
         }
-        getSingleCollection(collection.ID).then(
+        getSingleBookmark(bookmark.ID).then(
             (response) => {
                 if (!response) {
                     this.eventBus.emit(events.app.errorPage);
                 } if (response?.status === statuses.OK && response.parsedResponse) {
-                    const parsed = <singleCollectionPageData> response.parsedResponse;
+                    const parsed = <singleBookmarkPageData>response.parsedResponse;
                     this.shortenMoviesDescription(parsed.movielist);
-                    console.log("getSingleCollection")
                     this.eventBus.emit(
-                        events.singleCollectionPage.render.content, response.parsedResponse
+                        events.singleBookmarkPage.render.content, response.parsedResponse
                     );
                 } else if (response?.status === statuses.NOT_FOUND) {
                     this.eventBus.emit(events.app.errorPageText, "Такой подборки нет :(");
@@ -60,7 +58,7 @@ export class SingleCollectionModel extends BaseModel {
     processDescription = (description: string) => {
         const maxMovieShortDescriptionLength = 190;
         if (description.length < maxMovieShortDescriptionLength) {
-        return description;
+            return description;
         }
         return description.slice(0, description.slice(
             0, maxMovieShortDescriptionLength).

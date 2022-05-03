@@ -215,6 +215,26 @@ export const getSingleCollection = async (collectionID: string) => {
 }
 
 /**
+ * @description Получает с сервера данные о конкретной закладки фильмов.
+ * @param { string } bookmarkID ID запрашиваемой закладки
+ * @returns { object } Ответ с сервера
+ */
+ export const getSingleBookmark = async (bookmarkID: string) => {
+    const params: requestParams = {
+        url: `${urls.api.singleCollection}/${bookmarkID}`,
+        method: "GET",
+        credentials: null,
+        body: null,
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}
+
+/**
  * @description Получает с сервера данные о подборках фильмов.
  * @returns { object } Ответ с сервера
  */

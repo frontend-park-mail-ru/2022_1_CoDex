@@ -58,6 +58,13 @@ export const events = {
         getContent: "singleCollectionPage:getContent",
     },
 
+    singleBookmarkPage: {
+        render: {
+            content: "singleBookmarkPage:renderContent",
+        },
+        getContent: "singleBookmarkPage:getContent",
+    },
+
     moviePage: {
         render: {
             content: "moviePage:renderContent",
@@ -96,7 +103,7 @@ export const events = {
         getReviews: "profilePage:getReviews",
         getBookmarks: "profilePage:getBookmarks",
         getProfileInfo: "profilePage:getProfileInfo",
-        
+
         sendChanges: "profilePage:sendSettingsChanges",
         sendAvatar: "profilePage:sendAvatarChanges",
 

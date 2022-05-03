@@ -1,5 +1,5 @@
 mixin bookmark(i)
-    .bookmark-element
+    a.bookmark-element(href=`/collections/${i.ID}`)
         .bookmark-element__wrapper
             img(src=`/server/images${i.imgSrc}`)
         .bookmark-element__description #{i.description}
