@@ -26,8 +26,8 @@ export const urls: urlsList = {
         collections: `${currentUrl}${version}/collections/feed`,
         movie: `${currentUrl}${version}/movies`,
         actor: `${currentUrl}${version}/actors`,
-        sendRating: `${currentUrl}${version}/movies/postrating`,
-        sendReviews: `${currentUrl}${version}/movies/postcomment`,
+        sendRating: `${currentUrl}${version}/ratings/set`,
+        sendReviews: `${currentUrl}${version}/comments/set`,
         addMovieToBookmark: `${currentUrl}${version}/playlist/addMovie`, // TODO
         removeMovieFromBookmark: `${currentUrl}${version}/playlist/deleteMovie`, // TODO
         createBookmark: `${currentUrl}${version}/playlist/create`, //
