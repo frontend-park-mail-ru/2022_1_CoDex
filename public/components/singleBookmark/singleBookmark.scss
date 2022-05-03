@@ -30,18 +30,12 @@
     justify-items: center;
     justify-content: center;
 
-    // @media (max-width: 1200px) {
-    // 	grid-template-columns: repeat(10, 1fr);
-    // 	grid-template-areas:
-    // 		"B0 B1 B1 B1 B1 B1 B1 B1 B1 B2"
-    // 		"C0 C1 C1 C1 C1 C1 C1 C1 C1 C2"
-    // 		"D0 D1 D1 D1 D1 D1 D1 D1 D1 D2";
-    // }
 
     @media (max-width: 1200px) {
         grid-template-columns: repeat(8, 1fr);
         grid-template-areas:
             "B0 B1 B1 B1 B1 B1 B1 B2"
+            "A0 A1 A1 A1 A1 A1 A1 A2"
             "C0 C1 C1 C1 C1 C1 C1 C2"
             "C0 D1 D1 D1 D1 D1 D1 D2";
     }
@@ -50,6 +44,7 @@
         grid-template-columns: repeat(8, 1fr);
         grid-template-areas:
             "B0 B1 B1 B1 B1 B1 B1 B2"
+            "A0 A1 A1 A1 A1 A1 A1 A2"
             "C0 C1 C1 C1 C1 C1 C1 C2"
             "D1 D1 D1 D1 D1 D1 D1 D1";
     }
