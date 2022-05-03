@@ -294,6 +294,7 @@ export class MovieView extends BaseView {
     const input = document.querySelector('.review-input-block__text-input') as HTMLFormElement;
     const reviewText = input.value;
     const reviewTypeText = document.querySelector('.select-selected')?.textContent;
+    console.log(input, reviewText, reviewTypeText);
     let reviewType = 2;
     if (reviewTypeText?.includes('Отлично')) {
       reviewType = 1;

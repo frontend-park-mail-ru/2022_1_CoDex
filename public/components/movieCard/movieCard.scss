@@ -67,12 +67,16 @@
                         font-family: $main_font;
                         display: flex;
                         width: 100%;
+                        overflow: hidden;
                         max-width: 1180px;
                         font-size: 20px;
                         text-decoration: none;
                         color: white;
                         grid-area: B1;
                         text-align: left;
+                        @media (max-width: 600px) {
+                            width: 75%;
+                        }
                     }
 
                     &__rating {
