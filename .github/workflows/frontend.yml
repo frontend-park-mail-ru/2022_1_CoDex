@@ -3,10 +3,10 @@ name: Frontend Build
 on:
   push:
    branches:
-     - searchWork
+     - develop
   pull_request:
    branches:
-     - searchWork
+     - develop
 
 jobs:
 #   lint:
