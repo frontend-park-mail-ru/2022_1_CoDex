@@ -3,6 +3,7 @@ import { routeList } from "@/types"
 export const routes: routeList = {
     homePage: "/",
     collectionsPage: "/collections",
+    singleBookmarkPage: "/bookmarks/\\d+",
     singleCollectionPage: "/collections/\\d+",
     profilePage: "/profile",
     loginPage: "/login",
@@ -13,11 +14,13 @@ export const routes: routeList = {
     singleGenrePage: "/genres/\\d+",
     premiersPage: "/permiers",
     announcedPage: "/announced/\\d+",
+    search: '/search',
 }
 
 export const regularRoutes: routeList = {
     homePage: "^/$",
-    collectionsPage: "^/collections$",    
+    collectionsPage: "^/collections$",
+    singleBookmarkPage:"^/bookmarks/\\d+$",    
     singleCollectionPage:"^/collections/\\d+$",    
     profilePage:"^/profile/\\d+$",
     loginPage:  "^/login",
@@ -28,4 +31,5 @@ export const regularRoutes: routeList = {
     singleGenrePage: "^/genres/\*",
     premiersPage: "^/premiers$",
     announcedPage: "^/announced/\\d+$",
+    search: '^/search/\*',
 }

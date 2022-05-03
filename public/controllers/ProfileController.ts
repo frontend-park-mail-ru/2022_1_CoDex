@@ -13,7 +13,7 @@ export class ProfileController extends BaseController {
     public view: ProfileView;
 
     constructor() {
-        super()
+        super();
         this.model = new ProfileModel(this.eventBus);
         this.view = new ProfileView(this.eventBus);
         this.events.push(

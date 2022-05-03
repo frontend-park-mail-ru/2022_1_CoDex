@@ -36,7 +36,6 @@ export class HeaderController extends BaseController {
                 event: events.auth.notLoggedIn, 
                 handler: this.view.removeLogoutButton 
             },
-            // TODO Адаптивность
             { 
                 event: events.router.go, 
                 handler: this.model.compareURLWithPath 
@@ -44,10 +43,6 @@ export class HeaderController extends BaseController {
             { 
                 event: events.header.render.header, 
                 handler: this.view.addEventListenerToSearch 
-            },
-            { 
-                event: events.header.render.header, 
-                handler: this.view.addEventListenerToResize 
             },
             { 
                 event: events.header.render.header, 

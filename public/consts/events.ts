@@ -58,6 +58,17 @@ export const events = {
         getContent: "singleCollectionPage:getContent",
     },
 
+    singleBookmarkPage: {
+        render: {
+            content: "singleBookmarkPage:renderContent",
+        },
+        getContent: "singleBookmarkPage:getContent",
+        delete: {
+            bookmark: "singleBookmarkPage:deleteBookmark",
+            movie: "singleBookmarkPage:deleteMovie",
+        }
+    },
+
     moviePage: {
         render: {
             content: "moviePage:renderContent",
@@ -96,7 +107,7 @@ export const events = {
         getReviews: "profilePage:getReviews",
         getBookmarks: "profilePage:getBookmarks",
         getProfileInfo: "profilePage:getProfileInfo",
-        
+
         sendChanges: "profilePage:sendSettingsChanges",
         sendAvatar: "profilePage:sendAvatarChanges",
 
@@ -138,4 +149,14 @@ export const events = {
         },
         getContent: "announcedPage:getContent",
     },
+
+    searchPage: {
+        render: {
+            content: "searchPage:renderContent",
+            films: "searchPage:renderFilms",
+            persons: "searchPage:renderPersons",
+            emptyPage: "searchPage:renderEmptyPage",
+        },
+        getContent: "searchPage:getContent",
+    }
 };

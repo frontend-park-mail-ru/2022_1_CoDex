@@ -5,8 +5,6 @@ const startServer = (app) => {
   app.get("/api/v1/collections/feed", function (req, res) {
     res.json(Collections);
   });
-  •••••••••
-  });
 
   app.get("/api/v1/genres/adventure", function (req, res) {
     res.json(adventures);
@@ -15,13 +13,17 @@ const startServer = (app) => {
   app.get("/api/v1/genres/action", function (req, res) {
     res.json(top256);
   });
-  
+
   app.get("/api/v1/collections/1", function (req, res) {
     res.json(top256);
   });
 
   app.get("/api/v1/collections/2", function (req, res) {
     res.json(adventures);
+  });
+
+  app.get("/api/v1/collections/10", function (req, res) {
+    res.json(bookmark);
   });
 
   app.get("/api/v1/premiers", function (req, res) {
@@ -63,6 +65,72 @@ const startServer = (app) => {
     res.status(201).json({
       ID: "777",
       title: "new title",
+    });
+  });
+
+  app.post("/api/v1/playlist/deletePlaylist", function (req, res) {
+    res.status(200).json({
+    });
+  });
+
+  app.post("/api/v1/playlist/deleteMovie", function (req, res) {
+    res.status(200).json({
+    });
+  });
+
+  app.get("/api/v1/search/\*", function (req, res) {
+    res.status(200).json({
+      status: 200,
+      movies: {
+        "isEmpty": false,
+        "data": [
+          {
+            "ID": "2",
+            "poster": "ironman.webp",
+            "title": "Железный Человек",
+            "rating": "10.0",
+            "info": "2008, США, Канада. Фантастика, Боевик, Приключения.",
+            "description": "Миллиардер-изобретатель Тони Старк попадает в плен к Афганским террористам, которые пытаются заставить его создать оружие массового поражения. В тайне от своих захватчиков Старк конструирует высокотехнологичную киберброню, которая помогает ему сбежать. Однако по возвращении в США он узнаёт, что в совете директоров его фирмы плетётся заговор, чреватый страшными последствиями. Используя своё последнее изобретение, Старк пытается решить проблемы своей компании радикально..."
+          },
+          {
+            "ID": "1",
+            "poster": "ironman.webp",
+            "title": "Железный Человек",
+            "rating": "10.0",
+            "info": "2008, США, Канада. Фантастика, Боевик, Приключения.",
+            "description": "Миллиардер-изобретатель Тони Старк попадает в плен к Афганским террористам, которые пытаются заставить его создать оружие массового поражения. В тайне от своих захватчиков Старк конструирует высокотехнологичную киберброню, которая помогает ему сбежать. Однако по возвращении в США он узнаёт, что в совете директоров его фирмы плетётся заговор, чреватый страшными последствиями. Используя своё последнее изобретение, Старк пытается решить проблемы своей компании радикально..."
+          },
+          {
+            "ID": "3",
+            "poster": "ironman.webp",
+            "title": "Железный Человек",
+            "rating": "10.0",
+            "info": "2008, США, Канада. Фантастика, Боевик, Приключения.",
+            "description": "Миллиардер-изобретатель Тони Старк попадает в плен к Афганским террористам, которые пытаются заставить его создать оружие массового поражения. В тайне от своих захватчиков Старк конструирует высокотехнологичную киберброню, которая помогает ему сбежать. Однако по возвращении в США он узнаёт, что в совете директоров его фирмы плетётся заговор, чреватый страшными последствиями. Используя своё последнее изобретение, Старк пытается решить проблемы своей компании радикально..."
+          }
+        ]
+      },
+      "actors": {
+        "isEmpty": false,
+        "data": [
+          {
+            "href": "/actors/2",
+            "poster": "robertDowneyJr.webp",
+            "title": "Роберт Дауни мл."
+          },
+          {
+            "href": "/actors/3",
+            "poster": "robertDowneyJr.webp",
+            "title": "Роберт Дауни мл."
+          },
+          {
+            "href": "/actors/4",
+            "poster": "timRobbins.webp",
+            "title": "Тим Роббинс"
+          }
+        ]
+      },
+
     });
   });
 
@@ -524,7 +592,7 @@ const startServer = (app) => {
   app.get('/api/v1/authcheck', (req, res) => {
     res.json({
       "status": 200,
-      "ID":"1",
+      "ID": "1",
     });
   });
 
@@ -533,12 +601,12 @@ const startServer = (app) => {
 
   const Bookmarks = {
     bookmarksList: [
-      { description: "Подборка №1", imgSrc: "top.webp", page: "profile", number: "1" },
-      { description: "Подборка №2", imgSrc: "top.webp", page: "profile", number: "2" },
-      { description: "Подборка №3", imgSrc: "top.webp", page: "profile", number: "3" },
-      { description: "Подборка №4", imgSrc: "top.webp", page: "profile", number: "4" },
-      { description: "Подборка №5", imgSrc: "top.webp", page: "profile", number: "5" },
-      { description: "Подборка №6", imgSrc: "top.webp", page: "profile", number: "6" },
+      { description: "Подборка №1", imgSrc: "top.webp", ID: "10" },
+      { description: "Подборка №2", imgSrc: "top.webp", ID: "11" },
+      { description: "Подборка №3", imgSrc: "top.webp", ID: "12" },
+      { description: "Подборка №4", imgSrc: "top.webp", ID: "13" },
+      { description: "Подборка №5", imgSrc: "top.webp", ID: "14" },
+      { description: "Подборка №6", imgSrc: "top.webp", ID: "15" },
     ]
   };
 
@@ -565,30 +633,30 @@ const startServer = (app) => {
   ids[id] = "a@a.ru";
 
   const Genres = [
-    { href: "/genres/action", imgsrc: "genresAction.webp"},
-    { href: "/genres/adventure", imgsrc: "genresAdventure.webp"},
-    { href: "/genres/anime", imgsrc: "genresAnime.webp"},
-    { href: "/genres/authors", imgsrc: "genresAuthors.webp"},
-    { href: "/genres/biography", imgsrc: "genresBiography.webp"},
-    { href: "/genres/cartoons", imgsrc: "genresCartoons.webp"},
-    { href: "/genres/comedy", imgsrc: "genresComedy.webp"},
-    { href: "/genres/criminal", imgsrc: "genresCriminal.webp"},
-    { href: "/genres/detective", imgsrc: "genresDetective.webp"},
-    { href: "/genres/documental", imgsrc: "genresDocumental.webp"},
-    { href: "/genres/drama", imgsrc: "genresDrama.webp"},
-    { href: "/genres/family", imgsrc: "genresFamily.webp"},
-    { href: "/genres/fantastic", imgsrc: "genresFantastic.webp"},
-    { href: "/genres/fantasy", imgsrc: "genresFantasy.webp"},
-    { href: "/genres/historical", imgsrc: "genresHistorical.webp"},
-    { href: "/genres/horror", imgsrc: "genresHorror.webp"},
-    { href: "/genres/melodrama", imgsrc: "genresMelodrama.webp"},
-    { href: "/genres/musical", imgsrc: "genresMusical.webp"},
-    { href: "/genres/mystic", imgsrc: "genresMystic.webp"},
-    { href: "/genres/romantic", imgsrc: "genresRomantic.webp"},
-    { href: "/genres/short", imgsrc: "genresShort.webp"},
-    { href: "/genres/sport", imgsrc: "genresSport.webp"},
-    { href: "/genres/thriller", imgsrc: "genresThriller.webp"},
-    { href: "/genres/western", imgsrc: "genresWestern.webp"},
+    { href: "/genres/action", imgsrc: "genresAction.webp" },
+    { href: "/genres/adventure", imgsrc: "genresAdventure.webp" },
+    { href: "/genres/anime", imgsrc: "genresAnime.webp" },
+    { href: "/genres/authors", imgsrc: "genresAuthors.webp" },
+    { href: "/genres/biography", imgsrc: "genresBiography.webp" },
+    { href: "/genres/cartoons", imgsrc: "genresCartoons.webp" },
+    { href: "/genres/comedy", imgsrc: "genresComedy.webp" },
+    { href: "/genres/criminal", imgsrc: "genresCriminal.webp" },
+    { href: "/genres/detective", imgsrc: "genresDetective.webp" },
+    { href: "/genres/documental", imgsrc: "genresDocumental.webp" },
+    { href: "/genres/drama", imgsrc: "genresDrama.webp" },
+    { href: "/genres/family", imgsrc: "genresFamily.webp" },
+    { href: "/genres/fantastic", imgsrc: "genresFantastic.webp" },
+    { href: "/genres/fantasy", imgsrc: "genresFantasy.webp" },
+    { href: "/genres/historical", imgsrc: "genresHistorical.webp" },
+    { href: "/genres/horror", imgsrc: "genresHorror.webp" },
+    { href: "/genres/melodrama", imgsrc: "genresMelodrama.webp" },
+    { href: "/genres/musical", imgsrc: "genresMusical.webp" },
+    { href: "/genres/mystic", imgsrc: "genresMystic.webp" },
+    { href: "/genres/romantic", imgsrc: "genresRomantic.webp" },
+    { href: "/genres/short", imgsrc: "genresShort.webp" },
+    { href: "/genres/sport", imgsrc: "genresSport.webp" },
+    { href: "/genres/thriller", imgsrc: "genresThriller.webp" },
+    { href: "/genres/western", imgsrc: "genresWestern.webp" },
   ];
 
   const Collections = {
@@ -1780,6 +1848,203 @@ const startServer = (app) => {
   const adventures = {
     title: "Приключения",
     description: "Вот такая вот подборочка :)",
+    movielist: [
+      {
+        "ID": "1",
+        "poster": "showshenkRedemption.webp",
+        "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
+        "title": "Побег из Шоушенка",
+        "originalTitle": "The Shawshank Redemption",
+        "year": "1994",
+        "country": "США",
+        "genres": [
+          {
+            "name": "Драма",
+            "href": "/genres/drama",
+          },
+        ],
+        "motto": "Страх - это кандалы. Надежда - это свобода",
+        "director": "Франк Дарабонт",
+        "budget": "25 000 000 $",
+        "gross": "28 418 687 $",
+        "duration": "142 минуты",
+        "cast": [
+          {
+            "name": "Тим Роббинс",
+            "href": "/collections",
+          },
+          {
+            "name": "Боб Гантон",
+            "href": "/collections",
+          },
+          {
+            "name": "Уильям Сэдлер",
+            "href": "/collections",
+          },
+          {
+            "name": "Клэнси Браун",
+            "href": "/collections",
+          },
+          {
+            "name": "Гил Беллоуз",
+            "href": "/collections",
+          },
+        ],
+        "info": "1994, США. Драма",
+        "rating": "8.9",
+        "description": "Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника. Оказавшись в тюрьме под названием Шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решётки. Каждый, кто попадает в эти стены, становится их рабом до конца жизни. Но Энди, обладающий живым умом и доброй душой, находит подход как к заключённым, так и к охранникам, добиваясь их особого к себе расположения.",
+      },
+      {
+        "ID": "2",
+        "poster": "greenMile.webp",
+        "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
+        "title": "Зелёная миля",
+        "originalTitle": "The Green Mile",
+        "year": "1999",
+        "country": "США",
+        "genres": [
+          {
+            "name": "Драма",
+            "href": "/genres/drama",
+          },
+        ],
+        "motto": "Пол Эджкомб не верил в чудеса. Пока не столкнулся с одним из них",
+        "director": "Франк Дарабонт",
+        "budget": "60 000 000 $",
+        "gross": "300 000 000 $",
+        "duration": "189 минут",
+        "mainCast": "Том Хэнкс, Дэвид Морс, Бонни Хант, Майкл Клакр Дункан, Джеймс Кромуэлл, Майкл Джитер, Грэм Грин, Даг Хатчисон",
+        "cast": [
+          {
+            "name": "Том Хэнкс",
+            "href": "/collections",
+          },
+          {
+            "name": "Дэвид Морс",
+            "href": "/collections",
+          },
+          {
+            "name": "Бонни Хант",
+            "href": "/collections",
+          },
+          {
+            "name": "Майкл Кларк Дункан",
+            "href": "/collections",
+          },
+          {
+            "name": "Джеймс Кромуэлл",
+            "href": "/collections",
+          },
+          {
+            "name": "Майкл Джиттер",
+            "href": "/collections",
+          },
+        ],
+        "info": "1999, США. Драма",
+        "rating": "9.1",
+        "description": "Пол Эджкомб — начальник блока смертников в тюрьме «Холодная гора», каждый из узников которого однажды проходит «зеленую милю» по пути к месту казни. Пол повидал много заключённых и надзирателей за время работы. Однако гигант Джон Коффи, обвинённый в страшном преступлении, стал одним из самых необычных обитателей блока.",
+      },
+      {
+        "ID": "1",
+        "poster": "showshenkRedemption.webp",
+        "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
+        "title": "Побег из Шоушенка",
+        "originalTitle": "The Shawshank Redemption",
+        "year": "1994",
+        "country": "США",
+        "genres": [
+          {
+            "name": "Драма",
+            "href": "/genres/drama",
+          },
+        ],
+        "motto": "Страх - это кандалы. Надежда - это свобода",
+        "director": "Франк Дарабонт",
+        "budget": "25 000 000 $",
+        "gross": "28 418 687 $",
+        "duration": "142 минуты",
+        "cast": [
+          {
+            "name": "Тим Роббинс",
+            "href": "/collections",
+          },
+          {
+            "name": "Боб Гантон",
+            "href": "/collections",
+          },
+          {
+            "name": "Уильям Сэдлер",
+            "href": "/collections",
+          },
+          {
+            "name": "Клэнси Браун",
+            "href": "/collections",
+          },
+          {
+            "name": "Гил Беллоуз",
+            "href": "/collections",
+          },
+        ],
+        "info": "1994, США. Драма",
+        "rating": "8.9",
+        "description": "Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника. Оказавшись в тюрьме под названием Шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решётки. Каждый, кто попадает в эти стены, становится их рабом до конца жизни. Но Энди, обладающий живым умом и доброй душой, находит подход как к заключённым, так и к охранникам, добиваясь их особого к себе расположения.",
+      },
+      {
+        "ID": "2",
+        "poster": "greenMile.webp",
+        "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
+        "title": "Зелёная миля",
+        "originalTitle": "The Green Mile",
+        "year": "1999",
+        "country": "США",
+        "genres": [
+          {
+            "name": "Драма",
+            "href": "/genres/drama",
+          },
+        ],
+        "motto": "Пол Эджкомб не верил в чудеса. Пока не столкнулся с одним из них",
+        "director": "Франк Дарабонт",
+        "budget": "60 000 000 $",
+        "gross": "300 000 000 $",
+        "duration": "189 минут",
+        "mainCast": "Том Хэнкс, Дэвид Морс, Бонни Хант, Майкл Клакр Дункан, Джеймс Кромуэлл, Майкл Джитер, Грэм Грин, Даг Хатчисон",
+        "cast": [
+          {
+            "name": "Том Хэнкс",
+            "href": "/collections",
+          },
+          {
+            "name": "Дэвид Морс",
+            "href": "/collections",
+          },
+          {
+            "name": "Бонни Хант",
+            "href": "/collections",
+          },
+          {
+            "name": "Майкл Кларк Дункан",
+            "href": "/collections",
+          },
+          {
+            "name": "Джеймс Кромуэлл",
+            "href": "/collections",
+          },
+          {
+            "name": "Майкл Джиттер",
+            "href": "/collections",
+          },
+        ],
+        "info": "1999, США. Драма",
+        "rating": "9.1",
+        "description": "Пол Эджкомб — начальник блока смертников в тюрьме «Холодная гора», каждый из узников которого однажды проходит «зеленую милю» по пути к месту казни. Пол повидал много заключённых и надзирателей за время работы. Однако гигант Джон Коффи, обвинённый в страшном преступлении, стал одним из самых необычных обитателей блока.",
+      },
+    ]
+  };
+
+  const bookmark = {
+    title: "Подборка №1",
+    description: "Вот такая вот закладка :)",
     movielist: [
       {
         "ID": "1",

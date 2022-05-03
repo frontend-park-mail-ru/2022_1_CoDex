@@ -64,6 +64,7 @@ const getParameters = (currentURL = "/"): routeParameters => {
 export const getURLData = (URL: string, routes: Set<routerData>) => {
   let targetController;
   const result: routeParameters = getParameters(URL);
+  console.log("result", result)
   routes.forEach((route) => {
       const tmpResult = result.URL.match(route.URL);
       if (tmpResult) {

@@ -1,6 +1,6 @@
 import { statuses } from "@/consts/statuses";
 import { urls } from "@/consts/urls";
-import { bookmarkCreateRequest, bookmarkRequest, loginData, personalData, ratingRequest, registerData, requestParams, requestParamsData, reviewRequest } from "@/types";
+import { bookmarkCreateRequest, bookmarkRequest, loginData, personalData, ratingRequest, registerData, requestParams, requestParamsData, reviewRequest, bookmarkDeleteRequest } from "@/types";
 // import regeneratorRuntime from "regenerator-runtime";
 
 let CSRFToken: string | null = null;
@@ -202,6 +202,26 @@ export const register = async (user: registerData) => {
 export const getSingleCollection = async (collectionID: string) => {
     const params: requestParams = {
         url: `${urls.api.singleCollection}/${collectionID}`,
+        method: "GET",
+        credentials: null,
+        body: null,
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}
+
+/**
+ * @description Получает с сервера данные о конкретной закладки фильмов.
+ * @param { string } bookmarkID ID запрашиваемой закладки
+ * @returns { object } Ответ с сервера
+ */
+export const getSingleBookmark = async (bookmarkID: string) => {
+    const params: requestParams = {
+        url: `${urls.api.singleCollection}/${bookmarkID}`,
         method: "GET",
         credentials: null,
         body: null,
@@ -462,11 +482,27 @@ export const createBookmark = async (bookmarkCreateRequest: bookmarkCreateReques
     }
 };
 
+export const deleteBookmark = async (bookmarkDeleteRequest: bookmarkDeleteRequest) => {
+    console.log("deleteBookmarkRequest",bookmarkDeleteRequest )
+    const params: requestParams = {
+        url: `${urls.api.deleteBookmark}`,
+        method: "POST",
+        credentials: null,
+        body: JSON.stringify(bookmarkDeleteRequest),
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+};
+
 /**
  * @description Получает с сервера данные о подборках фильмов.
  * @returns { object } Ответ с сервера
  */
- export const getGenres = async () => {
+export const getGenres = async () => {
     const params: requestParams = {
         url: `${urls.api.genres}`,
         method: "GET",
@@ -514,6 +550,21 @@ export const getPremiers = async () => {
 export const getAnnounced = async (movieID: string) => {
     const params: requestParams = {
         url: `${urls.api.announced}/${movieID}`,
+        method: "GET",
+        credentials: null,
+        body: null,
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+}
+
+export const getSearch = async (query: string) => {
+    const params: requestParams = {
+        url: `${urls.api.search}/${query}`,
         method: "GET",
         credentials: null,
         body: null,

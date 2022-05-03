@@ -27,7 +27,7 @@ class Auth {
 
         this.eventBus.on(events.authPage.logRegSuccess, this.getUserFromSubmit);
         this.eventBus.on(events.header.logout, this.logoutUser);
-        //TODO this.eventBus.on(events.profilePage.render.changedProfile, this.changeUser);
+        this.eventBus.on(events.profilePage.render.changedProfile, this.changeUser);
     }
 
     /**

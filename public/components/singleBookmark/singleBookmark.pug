@@ -1,0 +1,14 @@
+include ../bookmarkMovieCard/bookmarkMovieCard
+
+div.content-wrapper
+    page.page
+        div.container
+            h1(class="container__bookmark-title") #{`Подборка: `}
+                span.container__bookmark-title__color #{title}
+            div.container__bookmark-description #{description}
+            .container__bookmark-settings
+                input(type="button" class='container__bookmark-settings__delete-playlist-btn' value='Удалить подборку') 
+                //TODO .container__bookmark-settings__make-private-btn Приватная закладка
+            div.movies-container
+                each movie, _ in movielist
+                    +bookmarkMovieCard(movie)

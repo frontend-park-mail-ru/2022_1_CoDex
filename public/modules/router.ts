@@ -66,6 +66,8 @@ export class Router {
     }
 
     onPathChanged = (data: pathData) => {
+        console.log("dataOnPathChanged",data)
+        console.log("data.URL",data.URL)
         this.go(data.URL);
     }
     
@@ -75,8 +77,10 @@ export class Router {
     /* eslint-disable @typescript-eslint/no-unsafe-member-access */
     /* eslint-disable @typescript-eslint/no-unsafe-call */
     go = (url = "/") => {
+        console.log("go-url",url);
         const routeData = getURLData(url, this.routes);
-        if (!routeData) { return; }
+        console.log("routeData", routeData, "this.routes",this.routes)
+        if (!routeData) { return;}
         const data: routerData = {
             URL: routeData.URL.URL,
             controller: routeData.controller
@@ -86,6 +90,7 @@ export class Router {
         }
         let urlToGo = url;
         if (routeData.controller instanceof AuthController) {
+            console.log("after instanseof AutchController")
             if (this.currentController instanceof AuthController) {
                 const redirect = new URL(location.href).searchParams.get("redirect");
                 if (redirect) {
@@ -113,6 +118,7 @@ export class Router {
             window.history.pushState(null, "", urlToGo);
         }
         this.currentController?.view.render(data);
+        console.log("url",url)
         eventBus.emit(events.router.go, url);
     }
 

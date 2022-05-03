@@ -1,7 +1,10 @@
 .bookmark-element {
 	display: flex;
+	text-decoration: none;
 	flex-direction: column;
-
+	:hover {
+		cursor: pointer;
+	}
 	&__wrapper {
 		margin-right: 10px;
 
@@ -24,6 +27,12 @@
 		font-weight: 600;
 		font-size: 17px;
 		line-height: 24px;
+		&:hover{
+            color: $dark_raspberry;
+		}
+		&:active {
+            color: $very_dark_raspberry;
+        }
 	}
 }
 
@@ -31,7 +40,7 @@
 	.bookmark-element {
 		&__wrapper {
 			margin-right: 5px;
-	
+
 			img {
 				width: 150px;
 				height: 125px;

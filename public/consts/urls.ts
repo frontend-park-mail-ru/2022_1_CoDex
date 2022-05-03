@@ -22,6 +22,7 @@ export const urls: urlsList = {
         logout: `${currentUrl}${version}/logout`,
         login: `${currentUrl}${version}/login`,
         register: `${currentUrl}${version}/signup`,
+        singleBookmark: `${currentUrl}${version}/collections`,
         singleCollection: `${currentUrl}${version}/collections`,
         collections: `${currentUrl}${version}/collections/feed`,
         movie: `${currentUrl}${version}/movies`,
@@ -30,10 +31,12 @@ export const urls: urlsList = {
         sendReviews: `${currentUrl}${version}/comments/set`,
         addMovieToBookmark: `${currentUrl}${version}/playlist/addMovie`, // TODO
         removeMovieFromBookmark: `${currentUrl}${version}/playlist/deleteMovie`, // TODO
-        createBookmark: `${currentUrl}${version}/playlist/create`, //
+        deleteBookmark: `${currentUrl}${version}/playlist/deletePlaylist`,
+        createBookmark: `${currentUrl}${version}/playlist/create`, 
         genres: `${currentUrl}${version}/genres`,
         singleGenre: `${currentUrl}${version}/genres`,
         premiers: `${currentUrl}${version}/announced`,
-        announced: `${currentUrl}${version}/announced`
+        announced: `${currentUrl}${version}/announced`,
+        search: `${currentUrl}${version}/search`,
     }
 }
