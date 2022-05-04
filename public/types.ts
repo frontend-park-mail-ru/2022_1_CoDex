@@ -303,6 +303,16 @@ export type singleBookmarkPageData = {
     public: boolean,
 }
 
+export type filmsSearchData = {
+    data: singleCollectionMovie[],
+    isEmpty : boolean,
+}
+
+export type actorsSearchData = {
+    data: relatedItem[],
+    isEmpty : boolean,
+}
+
 export type ratingResponse = {
     newrating: string
 }
@@ -314,6 +324,27 @@ export type reviewResponse = {
 export type authcheckResponse = {
     status: string,
     ID: string
+}
+
+export type searchResponse = {
+    actors : actorsSearchData,
+    announced : {
+        data: Object[],
+        isEmpty : boolean,
+    },
+    bookmarks : {
+        data: Object[],
+        isEmpty : boolean,
+    },
+    genres : {
+        data: Object[],
+        isEmpty : boolean,
+    },
+    movies : filmsSearchData
+    users : {
+        data: Object[],
+        isEmpty : boolean,
+    },
 }
 
 export type callback = (...args: any[]) => void;

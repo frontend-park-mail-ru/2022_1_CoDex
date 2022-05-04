@@ -6,6 +6,7 @@ import emptyPagePug from '../../components/search/emptySearch.pug';
 import { events } from '@/consts/events';
 import eventBus from '@/modules/eventBus';
 import { getURLArguments } from '@/modules/router';
+import { actorsSearchData, filmsSearchData } from '@/types';
 
 
 export class SearchView extends BaseView {
@@ -32,7 +33,7 @@ export class SearchView extends BaseView {
         content.innerHTML = searchPug({ value: decodeURI(query.Query)});
     }
 
-    renderFilms = (data: any) => {
+    renderFilms = (data: filmsSearchData) => {
         const filmsContainer = document.querySelector('.search-block__films-container');
         if (!filmsContainer) {
             return;
@@ -40,7 +41,7 @@ export class SearchView extends BaseView {
         filmsContainer.innerHTML = filmsBlock(data);
     }
 
-    renderPersons = (data: any) => {
+    renderPersons = (data: actorsSearchData) => {
         const personsContainer = document.querySelector('.search-block__persons-container');
         if (!personsContainer) {
             return;
