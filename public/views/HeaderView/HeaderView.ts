@@ -161,6 +161,7 @@ export class HeaderView extends BaseView {
           this.hideSearch();
           this.isSearchClicked = false;
         }
+        input.value = '';
       }
     });
     const searchBtn = document.querySelector('.search__btn') as HTMLElement;
@@ -181,7 +182,7 @@ export class HeaderView extends BaseView {
           this.showSearch();
         }
       }
-
+      input.value = '';
     });
   }
 

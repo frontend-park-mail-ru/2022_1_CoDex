@@ -446,6 +446,8 @@ export class MovieView extends BaseView {
             public: true,
           }
           this.eventBus.emit(events.moviePage.createCollection, bookmarkCreateRequest);
+          input.value = '';
+          input.blur();
         }
       }
     })

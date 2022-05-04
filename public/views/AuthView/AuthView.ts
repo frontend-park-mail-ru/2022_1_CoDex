@@ -1,8 +1,8 @@
 import { authPageData, loginData, registerData } from '@/types';
-import {events} from '@/consts/events';
-import {BaseView} from '../BaseView/BaseView';
+import { events } from '@/consts/events';
+import { BaseView } from '../BaseView/BaseView';
 import EventBus from '@/modules/eventBus';
-import {authFormName, authConfig} from '@/consts/authConfig';
+import { authFormName, authConfig } from '@/consts/authConfig';
 import authContent from '@/components/auth/auth.pug';
 
 /**
@@ -15,7 +15,7 @@ export class AuthView extends BaseView {
      * @param { EventBus } eventBus Глобальная шина событий
      * @param { Object } data Данные, необходимые для создания представления
      */
-  constructor(eventBus: EventBus, {data={}} = {}) {
+  constructor(eventBus: EventBus, { data = {} } = {}) {
     super(eventBus, data);
   }
 
@@ -57,9 +57,9 @@ export class AuthView extends BaseView {
       return;
     }
     Object.values(textInputs).forEach((input, i) => {
-      
+
       const formInput = <HTMLFormElement>input;
-      if (i == 0){
+      if (i == 0) {
         formInput.focus();
       }
       input.addEventListener('input', () => {
@@ -68,11 +68,11 @@ export class AuthView extends BaseView {
       });
       input.addEventListener('change', () => {
         if (formInput.name === authConfig.repeatePasswordInput.name) {
-          const passwordInput = <HTMLFormElement> this.getAuthDOMForm()?.[authConfig.passwordInput.name];
-          this.eventBus.emit(events.authPage.validate, formInput.name, 
+          const passwordInput = <HTMLFormElement>this.getAuthDOMForm()?.[authConfig.passwordInput.name];
+          this.eventBus.emit(events.authPage.validate, formInput.name,
             formInput.value, passwordInput.value);
         } else {
-          this.eventBus.emit(events.authPage.validate, formInput.name, 
+          this.eventBus.emit(events.authPage.validate, formInput.name,
             formInput.value, "");
         }
       });
@@ -117,10 +117,15 @@ export class AuthView extends BaseView {
      */
   addSubmitListener = () => {
     const authForm = this.getAuthDOMForm();
-    const submitBtn = document.querySelector('.auth__btn__input');
+    const submitBtn = document.querySelector('.auth__btn__input') as HTMLInputElement;
     if (!authForm || !submitBtn) {
       return;
     }
+    authForm.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') {
+       submitBtn.click();
+      } 
+    });
     submitBtn.addEventListener('click', () => {
       const textInputs = authForm.querySelectorAll('.text-input');
       if (!textInputs?.length) {

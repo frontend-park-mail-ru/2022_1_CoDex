@@ -6,17 +6,17 @@
     justify-content: flex-start;
     .bookmark-element-default {
         display: flex;
-        :hover {
-            cursor: pointer;
-            filter: brightness(110%);
-        }
+        //TODO :hover {
+        //     cursor: pointer;
+        //     filter: brightness(110%);
+        // }
         &__wrapper {
             margin-right: 10px;
             border-radius: 20px;
             width: 180px;
             height: 150px;
             position: relative;
-            background-color: #f6f8f9;
+            background-color: #474747;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -26,14 +26,14 @@
             }
             &__plus-btn::before {
                 content: "";
-                background-color: rgb(171, 171, 171);
+                //background-color: rgb(171, 171, 171);
                 height: 5px;
                 width: 30%;
                 position: absolute;
             }
             &__plus-btn::after {
                 content: "";
-                background-color: rgb(171, 171, 171);
+                //background-color: rgb(171, 171, 171);
                 height: 5px;
                 width: 30%;
                 position: absolute;

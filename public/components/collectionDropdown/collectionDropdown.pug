@@ -3,4 +3,4 @@ div.movie-collection__dropdown
         option(bookmarkid="0") Добавить в подборку:
         each collectionItem, i in collectionsInfo
             option(bookmarkid=`${collectionItem.bookmarkId}` class=`${ collectionItem.hasMovie ? "hasMovie" : ""}`) #{collectionItem.collection}
-        option(value="last") Новая подборка
+        option(value="last" ) Новая подборка

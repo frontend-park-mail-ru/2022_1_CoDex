@@ -73,6 +73,9 @@
                         color: white;
                         grid-area: B1;
                         text-align: left;
+                        @media (max-width: 600px) {
+                            width: 75%;
+                        }
                     }
 
                     &__rating {
