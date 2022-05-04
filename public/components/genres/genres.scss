@@ -1,0 +1,108 @@
+@import "../../css/consts.scss";
+
+.content_wrapper {
+	font-family: $main_font;
+	font-weight: bold;
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+
+	.page {
+		margin: 20px 0 50px;
+		flex: 1 1 auto;
+
+		.content_container {
+			max-width: 100%;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: repeat(12, 1fr);
+			column-gap: 30px;
+			row-gap: 0;
+			grid-template-areas:
+				"B0 B0 B1 B1 B2 B2 B3 B3 B4 B4 B5 B5"
+				"C0 C0 C1 C1 C1 C1 C1 C1 C1 C1 C2 C2"
+				"D0 D0 D1 D1 D1 D1 D1 D1 D1 D1 D2 D2";
+			justify-items: center;
+			justify-content: center;
+
+			@media (max-width: 1200px) {
+				grid-template-columns: repeat(10, 1fr);
+				grid-template-areas: 
+					"B0 B1 B1 B1 B1 B1 B1 B1 B1 B2"
+					"C0 C1 C1 C1 C1 C1 C1 C1 C1 C2"
+					"D0 D1 D1 D1 D1 D1 D1 D1 D1 D2";
+			}
+
+			@media (max-width: 600px) {
+				grid-template-columns: repeat(8, 1fr);
+				grid-template-areas: 
+					"B0 B1 B1 B1 B1 B1 B1 B2"
+					"C0 C1 C1 C1 C1 C1 C1 C2"
+					"D0 D1 D1 D1 D1 D1 D1 D2";
+			}
+
+			.description {
+				text-align: left;
+				width: 100%;
+				margin-bottom: 15px;
+				font-family: $main_font;
+				color: white;
+				grid-area: C1;
+				font-size: 28px;
+				margin-bottom: 30px;
+			}
+			.title {
+				color: white;
+				grid-area: B1;
+				text-align: left;
+				width: 100%;
+				font-size: 40px;
+				margin-top: 0px;
+				margin-bottom: 20px;
+			}
+		}
+		.bg_container {
+            background-color: $background;
+            border-radius: 30px;
+            color: $background;
+            grid-area: D1;
+            width: 100%;
+
+            .genres__container {
+                grid-template-columns: repeat(4, 1fr);
+                display: grid;
+                row-gap: 30px;
+                column-gap: 30px;
+
+				@media (max-width: 1200px) {
+					grid-template-columns: repeat(3, 1fr);
+				}
+
+				@media (max-width: 900px) {
+					grid-template-columns: repeat(2, 1fr);
+				}
+
+				@media (max-width: 500px) {
+					grid-template-columns: repeat(1, 1fr);
+				}
+
+				img {
+					border-radius: 12px;
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					transition: transform .3s;
+				}
+
+				img:hover {
+					position: relative;
+					opacity: 1;
+					transform: scale(1.1);
+					transition-duration: 300ms;
+				  }
+            }
+        }
+    }
+}

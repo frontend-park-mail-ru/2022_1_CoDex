@@ -1,0 +1,19 @@
+.profile-info__avatar
+    .profile-info__avatar__input
+        if isThisUser
+            img(class="avatar" src=`${imgsrc}` accept=".webp .jpg, .jpeg, .png, .svg")
+            input(class="change__avatar" type ="file" accept=".webp .jpg, .jpeg, .png, .svg")
+        else 
+            img(class="avatar" src=`${imgsrc}` accept=".webp .jpg, .jpeg, .png, .svg")
+.profile-info__name
+    span.name #{username}
+.profile-info__container
+    if isThisUser
+        .profile-info__container__settings Изменить
+        .profile-info__container__settings__form
+            a(class="input-text") Имя
+            input(type="text" name="username" class='profile-info__container__settings__form__name-input' placeholder=" Введите новое имя")
+            .profile-info__container__settings__form__name-error
+            .profile-info__container__settings__form__button
+                input(type="button" class='profile-info__container__settings__form__button-input' value='Сохранить') 
+                input(type="button" class='profile-info__container__settings__form__button-input' value='Отменить')

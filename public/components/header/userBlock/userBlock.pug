@@ -1,0 +1,8 @@
+.navbar__login
+    .user-block
+        a.user-block__profile-href(href=`${profileHref}/${userID}`)
+            img.user-block__img(src=`${imgsrc}`)
+        .user-block__submenu
+            a(class="user-block__profile user-block__submenu__block" href=`${profileHref}/${userID}`) Профиль
+            div(class="user-block__logout-btn not-route user-block__submenu__block") Выйти
+            

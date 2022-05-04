@@ -1,0 +1,10 @@
+include ../announcedCard/announcedCard
+
+div.content-wrapper
+    page.page
+        div.container
+            h1.container__collection-title Премьеры
+            div.container__collection-description #{description}
+            div.movies-container
+                each movie, _ in movielist
+                    +announcedCard(movie)

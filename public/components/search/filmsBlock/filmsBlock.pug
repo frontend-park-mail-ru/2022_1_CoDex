@@ -1,0 +1,8 @@
+include ../../movieCard/movieCard
+
+if !isEmpty
+    each movie, _ in data
+        +movieCard(movie)
+else 
+    span.empty-search-message Фильмы не найдены
+

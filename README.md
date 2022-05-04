@@ -3,11 +3,11 @@
 
 ## Деплой
 
-https://xenodochial-mayer-d916ec.netlify.app/
+ https://park-akino.ru
 
 ## API
 
-https://app.swaggerhub.com/apis/CoDex9/CoDex/1.0.0#/info
+https://app.swaggerhub.com/apis/CoDex9/CoDex/1.0.0#/info 
 
 ## Авторы
 

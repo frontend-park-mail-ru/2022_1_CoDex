@@ -1,0 +1,108 @@
+@import "../../css/consts.scss";
+@import "profileReview/profileReview.scss";
+@import "profileBookmark/profileBookmark.scss";
+@import "profileInfo/profileInfo.scss";
+@import "../review/review.scss";
+@import "../bookmark/bookmark.scss";
+
+.profile-wrapper {
+	width: 100%;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	align-items: center;
+
+	.profile {
+		display: grid;
+		grid-template-columns: minmax(280px, 380px) minmax(380px, 780px);
+		column-gap: 20px;
+		grid-template-areas: "info content";
+		&-info {
+			grid-area: info;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background-color: $profile_info_background;
+			height: 600px;
+			width: 100%;
+			margin-top: 30px;
+			margin-left: 10px;
+			margin-right: 10px;
+			border-radius: 20px;
+		}
+		&-content {
+			grid-area: content;
+			display: grid;
+			grid-template-areas:
+				"bookmarks"
+				"review";
+			grid-template-columns: minmax(360px, 780px);
+			.profile-bookmarks {
+				grid-area: bookmarks;
+				display: grid;
+				grid-template-areas:
+					"name"
+					"el";
+				&__title {
+					display: flex;
+					margin-top: 30px;
+					grid-area: name;
+					height: 40px;
+					color: $font_color_white;
+					font-family: $main_font;
+					font-weight: 600;
+					font-size: 28px;
+					line-height: 32px;
+				}
+			}
+			.profile-reviews {
+				grid-area: review;
+				display: grid;
+				grid-template-areas:
+					"name"
+					"el";
+				margin-right: 10px;
+				&__title {
+					display:flex;
+					grid-area: name;
+					height: 40px;
+					color: $font_color_white;
+					font-family: $main_font;
+					font-weight: 600;
+					font-size: 28px;
+					line-height: 32px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.profile-wrapper {
+		.profile {
+			grid-template-columns: minmax(280px, 767px);
+			grid-template-areas:
+				"info"
+				"content";
+			justify-content: center;
+			&-info {
+				width: auto;
+			}
+			&-content {
+				.profile-bookmarks {
+					&__title {
+						justify-content: center;
+					}
+				}
+				.profile-reviews{
+					margin-right: 0px;
+					&__title {
+						justify-content: center;
+					}
+				}
+			}
+		}
+	}
+}

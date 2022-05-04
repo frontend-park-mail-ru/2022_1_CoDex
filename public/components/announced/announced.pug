@@ -1,0 +1,44 @@
+include ../slider/slider
+include ../reviewCard/reviewCard
+
+div.content-wrapper
+    div.page
+        div.movie-content
+            div.poster-and-buttons
+                div.poster
+                    img.poster__img(src=`../server/images/${movie.poster}`)
+                div.trailer.not-route
+                    a.trailer__btn.not-route(href=`${movie.trailerHref}`) Смотреть трейлер
+                    
+            div.info
+                div.movie-title #{movie.title}
+                div.movie-original #{movie.originalTitle}
+                div.movie-description #{movie.description}
+                div.movie-facts
+                    div.movie-facts__title О фильме
+                    div.movie-facts__fact
+                        div.movie-facts__fact__name Год производства
+                        div.movie-facts__fact__value #{movie.year}
+                    div.movie-facts__fact
+                        div.movie-facts__fact__name Страна
+                        div.movie-facts__fact__value #{movie.country}
+                    div.movie-facts__fact
+                        div.movie-facts__fact__name Жанры:
+                        div.movie-facts__fact__value
+                            each genre, index in movie.genres
+                                if index != 0
+                                    span=`, `
+                                a(class="movie-facts__fact__value__link" href=genre.href) #{genre.title}
+                    div.movie-facts__fact
+                        div.movie-facts__fact__name Режиссёр
+                        div.movie-facts__fact__value #{movie.director}
+                    div.movie-facts__fact
+                        div.movie-facts__fact__name Главные роли
+                        div.movie-facts__fact__value
+                            each actor, index in movie.cast
+                                if index != 0
+                                    span=`, `
+                                a(class="movie-facts__fact__value__link" href=actor.href) #{actor.name}
+            div.related
+                div.related__title Похожие фильмы:
+                +slider(related)

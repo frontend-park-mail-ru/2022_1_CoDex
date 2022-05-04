@@ -1,0 +1,13 @@
+mixin slider(i)
+    div.slider#related-slider
+        div.slider__list
+            div.slider__list__track
+                each item, _ in i
+                    div.slider__list__track__item.slide
+                        a.slider__list__track__item__link(href=`${item.href}`)
+                            div.slider__list__track__item__link__poster
+                                img(src=`../server/images/${item.poster}`)
+                            div.slider__list__track__item__link__title #{item.title}
+        div.slider__arrows
+            div.slider__button.slider__button__left
+            div.slider__button.slider__button__right

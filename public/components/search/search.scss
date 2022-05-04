@@ -1,0 +1,102 @@
+@import "../../css/consts.scss";
+.search-wrapper {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .search-block {
+        display: grid;
+        grid-template-areas:
+            "query"
+            "filmsTitle"
+            "filmsContainer"
+            "personsTitle"
+            "personsContainer";
+        grid-template-columns: minmax(340px, 1216px);
+        &__query {
+            grid-area: query;
+            margin-top: 20px;
+            display: flex;
+            width: 100%;
+            font-size: 28px;
+            color: $white;
+        }
+        &__films-title {
+            grid-area: filmsTitle;
+            margin-top: 20px;
+            display: flex;
+            width: 100%;
+            font-size: 24px;
+            color: $white;
+        }
+        &__films-container {
+            grid-area: filmsContainer;
+            margin-top: 30px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        &__persons-title {
+            grid-area: personsTitle;
+            margin-top: 20px;
+            display: flex;
+            width: 100%;
+            font-size: 24px;
+            color: $white;
+        }
+        &__persons-container {
+            grid-area: personsContainer;
+            margin-top: 30px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            
+        }
+    }
+}
+
+.empty-search-message {
+    display: flex;
+    margin-bottom:20px;
+    font-size: 24px;
+    color: $error;
+}
+
+@media (max-width: 1200px) {
+    .search-wrapper {
+        .search-block {
+            &__query {
+                justify-content: center;
+            }
+            &__films-title {
+                justify-content: center;
+            }
+            &__films-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            &__persons-title {
+                justify-content: center;
+            }
+            &__persons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    }
+}
+
+.empty-search-block {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    .error-message {
+        color: $error;
+        font-size: 32px;
+        font-family: $main_font;
+    }
+}

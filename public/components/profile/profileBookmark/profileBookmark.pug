@@ -1,0 +1,8 @@
+include ../../bookmark/bookmark
+.profile-bookmarks__bookmarks-container
+    .bookmark-element-default
+        .bookmark-element-default__wrapper
+            .bookmark-element-default__wrapper__plus-btn     
+    each input, _ in bookmarksList
+        +bookmark(input)    
+        

@@ -1,0 +1,10 @@
+mixin personCard(currentPerson)
+    div.person-card
+        div.person
+            div.person__image
+                a.person__image(href=`${currentPerson.href}`)
+                    img(src=(`../server/images/${currentPerson.poster}`))
+            div.person__body
+                div.person__body__info
+                    div.person__body__info__name
+                        a.person__body__info__name__person-title(href=`${currentPerson.href}`) #{currentPerson.title}

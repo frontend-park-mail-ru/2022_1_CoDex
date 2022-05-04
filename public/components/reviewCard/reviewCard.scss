@@ -1,0 +1,110 @@
+@import "../../css/consts.scss";
+
+.review-card {
+	display: grid;
+	column-gap: 20px;
+	grid-template-columns: repeat(10, 1fr);
+	grid-template-areas: "A0 A0 A1 A1 A1 A1 A1 A1 A1 A1";
+	background-color: $dark_raspberry;
+	color: $white;
+	border-radius: 20px;
+	margin-bottom: 30px;
+
+	@media (max-width: 1000px) {
+		grid-template-columns: repeat(12, 1fr);
+		grid-template-areas: "A0 A0 A0 A1 A1 A1 A1 A1 A1 A1 A1 A1";
+	}
+
+	@media (max-width: 800px) {
+		grid-template-columns: repeat(14, 1fr);
+		grid-template-areas: "A0 A0 A0 A0 A1 A1 A1 A1 A1 A1 A1 A1 A1 A1";
+	}
+
+	@media (max-width: 500px) {
+		grid-template-columns: repeat(18, 1fr);
+		grid-template-areas: "A0 A0 A0 A0 A0 A0 A2 A1 A1 A1 A1 A1 A1 A1 A1 A1 A1 A1";
+		column-gap: 0;
+	}
+
+	&__avatar {
+		grid-area: A0;
+		display: flex;
+		flex-direction: column;
+		min-height: 100%;
+		width: 100%;
+
+		img {
+			object-fit: cover;
+			margin: 30px;
+			width: 120px;
+			height: 120px;
+			border-radius: 60px;
+
+			@media (max-width: 800px) {
+				width: 80px;
+				height: 80px;
+			}
+
+			@media (max-width: 500px) {
+				width: 60px;
+				height: 60px;
+			}
+		}
+	}
+	&__info {
+		grid-area: A1;
+		padding-right: 10px;
+
+		&__title {
+			display: flex;
+			flex-direction: row;
+			line-height: 40px;
+			margin-bottom: 10px;
+
+			@media (max-width: 800px) {
+				line-height: 20px;
+			}
+
+			@media (max-width: 500px) {
+				flex-direction: column;
+			}
+
+			&__name {
+				color: $white;
+				text-decoration: none;
+				font-size: 20px;
+				font-weight: 500;
+				font-family: $main_font;
+				margin-right: 6px;
+			}
+			&__info {
+				color: $white;
+				text-decoration: none;
+				font-size: 20px;
+				font-family: $main_font;
+			}
+		}
+		&__content {
+			display: flex;
+			flex-direction: column;
+			color: $white;
+			text-decoration: none;
+			font-size: 20px;
+			font-family: $main_font;
+			line-height: 20px;
+			margin-bottom: 10px;
+		}
+	}
+}
+
+.good {
+	background: var(--goodFeedback);
+}
+
+.neutral {
+	background: var(--neutralFeedback);
+}
+
+.bad {
+	background: var(--badFeedback);
+}

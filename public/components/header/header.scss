@@ -1,0 +1,324 @@
+@import "../../css/consts.scss";
+
+@mixin icon-before($height, $width, $top) {
+    transition-duration: 0.5s;
+    position: absolute;
+    width: $width;
+    height: $height;
+    background-color: $white;
+    content: "";
+    top: $top;
+}
+
+@mixin icon-after($height, $width, $top) {
+    transition-duration: 0.5s;
+    position: absolute;
+    width: $width;
+    height: $height;
+    background-color: $white;
+    content: "";
+    top: $top;
+}
+
+.navbar {
+    font-family: $main_font;
+    font-weight: bold;
+    width: 100%;
+    height: 80px;
+    flex: 0 0 10%;
+    background-color: $navigational;
+    position: sticky;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    z-index:1;
+    display: grid;
+
+    grid-template-areas: "vert_menu logo menu search login";
+    grid-template-columns: 80px 120px minmax(360px, 720px) minmax(240px, 720px) 120px;
+
+    column-gap: 20px;
+    &__logo {
+        grid-area: logo;
+        display:flex;
+        img {
+            max-width: 100%;
+            height: 80px;
+        }
+    }
+
+    &__vertical-menu {
+        display: none;
+        grid-area: vert_menu;
+        justify-content: center;
+
+        &__main-btn {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            transition-duration: 0.5s;
+
+            .burger-left {
+                transition-duration: 0.5s;
+                position: absolute;
+                height: 5px;
+                width: 30px;
+                top: 30px;
+                background-color: $white;
+
+                &:before {
+                    @include icon-before(5px, 30px, -20px);
+                }
+
+                &:after {
+                    @include icon-after(5px, 30px, 20px);
+                }
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .burger-right {
+                transition-duration: 0.5s;
+                position: absolute;
+                height: 5px;
+                width: 30px;
+                top: 30px;
+                background-color: $white;
+                left: 30px;
+
+                &:before {
+                    @include icon-before(5px, 30px, -20px);
+                }
+
+                &:after {
+                    @include icon-after(5px, 30px, 20px);
+                }
+            }
+
+            &.open {
+                .burger-left {
+                    transition-duration: 0.5s;
+                    background: transparent;
+
+                    &:before {
+                        transform: rotateZ(45deg) scaleX(1.4) translate(4px, 4px);
+                    }
+
+                    &:after {
+                        transform: rotateZ(-45deg) scaleX(1.4) translate(4px, -4px);
+                    }
+                }
+
+                .burger-right {
+                    transition-duration: 0.5s;
+                    background: transparent;
+
+                    &:before {
+                        transform: rotateZ(-45deg) scaleX(1.4) translate(-4px, 4px);
+                    }
+
+                    &:after {
+                        transform: rotateZ(45deg) scaleX(1.4) translate(-4px, -4px);
+                    }
+                }
+            }
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .navbar__vertical-menu__btn-container {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        margin-top: 70px;
+        width: 120px;
+        justify-content: center;
+        white-space: nowrap;
+        overflow-x: hidden;
+        background-color: #15161a;
+        margin-left: 40px;
+        border-radius: 10px;
+        padding: 5px
+    }
+
+    &__menu {
+        display: grid;
+        grid-area: menu;
+        align-items: center;
+        justify-items: center;
+        grid-template-columns: repeat(3, minmax(120px, 240px));
+        grid-template-areas: "collections genres premiers";
+        font-size: 20px;
+    }
+
+    &__menu-btn {
+        text-decoration: none;
+        transition: 0.1s;
+        color: white;
+
+        &:hover {
+            color: $dark_raspberry;
+            cursor: pointer;
+        }
+
+        &:active {
+            color: $very_dark_raspberry;
+            cursor: pointer;
+        }
+
+        &__active {
+            color: $dark_raspberry;
+        }
+    }
+
+    .collections {
+        grid-area: collections;
+        @media (max-width:1035px) {
+            font-size:20px;
+        }
+    }
+
+    .genres {
+        grid-area: genres;
+        @media (max-width:1035px) {
+            font-size:20px;
+        }
+    }
+
+    .premiers {
+        grid-area: premiers;
+        @media (max-width:1035px) {
+            font-size:20px;
+        }
+    }
+
+    &__login {
+        display: grid;
+        grid-area: login;
+        grid-template-areas: "A81";
+        margin: 0 auto;
+    }
+
+    &__login-btn {
+        display: grid;
+        padding: 10px;
+        grid-area: A81;
+        text-decoration: none;
+        width: 88px;
+        height: 48px;
+        font-family: $main_font;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 28px;
+        color: white;
+        background: #9207a6;
+        border-radius: 12px;
+        box-sizing: border-box;
+
+        &:hover {
+            background: #9207a6;
+            box-shadow: inset 0 0 15px rgb(0 0 0 / 75%);
+        }
+
+        &:active {
+            box-shadow: inset 0 0 30px rgb(0 0 0 / 75%);
+        }
+    }
+}
+
+.search {
+    grid-area: search;
+    font-family: "Montserrat-Regular", "Arial", sans-serif;
+    display: flex;
+    visibility: visible;
+    justify-content: end;
+    width: 100%;
+
+    &__input {
+        display:flex;
+        width: 100%;
+        flex-grow: 1;
+        background-color: white;
+        font-family: "Montserrat-Regular", sans-serif;
+        border-radius: 20px;
+        border: 0;
+        padding: 6px 15px;
+        outline: none;
+        transition-property: visibility, opacity;
+        transition-duration: 2s, 0.4s;
+        transition-delay: 0s;
+    }
+
+    &__btn {
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 1035px) {
+    .navbar {
+        grid-template-areas: "vert_menu logo search login";
+        grid-template-columns: minmax(80px, 120px) 120px minmax(240px, 720px) 120px;
+
+        &__menu {
+            display: none;
+        }
+        &__vertical-menu {
+            display: flex;
+        }
+        &__menu-btn {
+            font-size: 20px;
+        }
+    }
+}
+
+@media (max-width: 660px) {
+    .navbar {
+        grid-template-areas: "vert_menu logo search login";
+        grid-template-columns: 100px 120px minmax(240px, 720px) 120px;
+        column-gap: 0px;
+        .navbar__vertical-menu__btn-container {
+            width: 120px;
+        }
+        &__menu {
+            display: none;
+        }
+        &__vertical-menu {
+            display: flex;
+        }
+        &__menu-btn {
+            font-size: 18px;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        grid-template-areas: "vert_menu logo search login";
+        grid-template-columns: 80px 120px minmax(36px, 720px) 120px;
+        column-gap: 0px;
+        justify-content: space-between;
+
+        .search {
+            &__input {
+                width: max-content;
+                max-width: 200px;
+                display:none;
+            }
+        }
+
+        &__menu {
+            display: none;
+        }
+        &__vertical-menu {
+            display: flex;
+        }
+        &__menu-btn {
+            font-size: 14px;
+        }
+    }
+}

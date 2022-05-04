@@ -1,9 +1,27 @@
-header#navbar
-    a.navbar_logo(href="/" data-section="main")
-        img(data-section="main" src="../server/images/logo.svg")
-    div.navbar_menu
-        a.navbar_menu_btn_collections(href="/collections", data-section="collections") Подборки
-        a.navbar_menu_btn_genres(href="/", data-section="genres") Жанры
-        a.navbar_menu_btn_premiers(href="/", data-section="premiers") Премьеры
-    div.navbar_search
-    a.navbar_menu_login-btn(id="navbar-button" href="/login", data-section="login") Войти
+header.navbar
+    .navbar__vertical-menu
+        .navbar__vertical-menu__main-btn
+            .burger-left
+            .burger-right
+        .navbar__vertical-menu__btn-container
+            a.navbar__menu-btn.collections(href="/collections") Подборки
+            a.navbar__menu-btn.genres(href="/genres") Жанры
+            a.navbar__menu-btn.premiers(href="/premiers") Премьеры
+            //- div(class="user-block__logout-btn not-route user-block__submenu__block") Выйти
+
+    a.navbar__logo(href="/" data-section="main")
+        img(data-section="main" src="../dist/img/logo.svg")
+
+    div.navbar__menu
+        a.navbar__menu-btn.collections(href="/collections") Подборки
+        a.navbar__menu-btn.genres(href="/genres") Жанры
+        a.navbar__menu-btn.premiers(href="/premiers") Премьеры
+
+    .search
+        input.search__input(placeholder="Фильм? Актёр?")
+        .search__btn
+            include ../../dist/img/search.svg
+    if userFromStorage
+        include userBlock/userBlock.pug
+    else
+        include loginButton.pug
