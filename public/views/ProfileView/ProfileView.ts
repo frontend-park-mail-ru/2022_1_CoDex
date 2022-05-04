@@ -7,8 +7,6 @@ import profileReview from '../../components/profile/profileReview/profileReview.
 import profileBookmark from '../../components/profile/profileBookmark/profileBookmark.pug';
 import EventBus from '@/modules/eventBus';
 import { userData, profileUserData } from '@/types';
-import { authModule } from '@/modules/auth';
-import { authConfig } from '@/consts/authConfig';
 
 /**
  * @description Класс представления страницы профиля.
@@ -86,10 +84,10 @@ export class ProfileView extends BaseView {
     const openedSettingsForm = document?.querySelector('.profile-info__container__settings__form') as HTMLElement;
     const nameInput = document?.querySelector('.profile-info__container__settings__form__name-input') as HTMLInputElement;
     if (!nameInput) { return; }
-    nameInput.addEventListener('input', (e) => {
+    nameInput.addEventListener('input', () => {
       this.deleteValidationError();
     });
-    nameInput.addEventListener('change', (e) => {
+    nameInput.addEventListener('change', () => {
       this.eventBus.emit(events.profilePage.validate, nameInput.name, nameInput.value);
     });
     if (!settings) return;

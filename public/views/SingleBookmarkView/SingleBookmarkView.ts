@@ -62,9 +62,9 @@ export class SingleBookmarkView extends BaseView {
         deleteMovieButtons.forEach((button)=>{
             button.addEventListener('click', (e) => {
                 e.preventDefault();
-                let movieTitle = button.parentNode?.firstChild as HTMLAnchorElement;
+                const movieTitle = button.parentNode?.firstChild as HTMLAnchorElement;
                 const movieID = movieTitle.href.split('/')[movieTitle.href.split('/').length - 1];
-                let bookmarkRequest: bookmarkRequest = {
+                const bookmarkRequest: bookmarkRequest = {
                     movieId: movieID,
                     bookmarkId: this.bookmarkID,
                 };

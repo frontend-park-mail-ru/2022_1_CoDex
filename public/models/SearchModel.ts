@@ -29,6 +29,8 @@ export class SearchModel extends BaseModel {
                     this.eventBus.emit(events.searchPage.render.persons, parsedBody.actors);
                     this.eventBus.emit(events.searchPage.render.films, parsedBody.movies);
                 } 
+            }).catch((e) => {
+                console.log("Unexpected searchModel error: ", e);
             });
     }
 }

@@ -4,7 +4,6 @@ import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
 import { getSingleBookmark, deleteBookmark, removeMovieFromBookmark } from "../modules/connection";
 import { BaseModel } from "./BaseModel";
-import { authModule } from "@/modules/auth";
 
 /**
  * @description Класс модели одной закладки.
@@ -76,17 +75,19 @@ export class SingleBookmarkModel extends BaseModel {
     }
 
     deleteBookmark = (bookmarkData: bookmarkDeleteRequest) =>{
-        deleteBookmark(bookmarkData)
-        .then(() =>{
+        deleteBookmark(bookmarkData).then(() =>{
             this.eventBus.emit(events.redirectBack);
+        }).catch((e) => {
+            console.log("Unexpected singleCollection error: ", e);
         });
     }
 
     deleteMovie = (bookmarkData: bookmarkRequest) =>{
-        removeMovieFromBookmark(bookmarkData)
-        .then(() =>{
-            let bookmark : singleBookmark = {ID: bookmarkData.bookmarkId}; 
+        removeMovieFromBookmark(bookmarkData).then(() =>{
+            const bookmark : singleBookmark = {ID: bookmarkData.bookmarkId}; 
             this.getContent(bookmark);
+        }).catch((e) => {
+            console.log("Unexpected singleCollection error: ", e);
         });
     }
 }

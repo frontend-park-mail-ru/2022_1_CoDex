@@ -157,7 +157,7 @@ export class MovieView extends BaseView {
      * @description Выводит сообщение о просьбе зарегистрироваться.
      * @param { string } movieID ID текущего фильма.
      */
-  askToLog = (movieID: string) => {
+  askToLog = () => {
     const messageArea = document.querySelector('.user-rating') as HTMLElement;
     messageArea.innerHTML = `
         Чтобы поставить оценку, пожалуйста, 
@@ -404,7 +404,7 @@ export class MovieView extends BaseView {
       if (currentSelect.options[i].innerHTML == target.innerHTML) {
         currentSelect.selectedIndex = i;
         const bookmarkId = target.getAttribute("bookmarkid");
-        let bookmarkRequest: bookmarkRequest = {
+        const bookmarkRequest: bookmarkRequest = {
           movieId: this.movieID,
           bookmarkId: bookmarkId ? bookmarkId : "",
         }
@@ -436,8 +436,7 @@ export class MovieView extends BaseView {
     if (!input) { return; }
     input.focus();
     input.addEventListener("keydown", (e) => {
-      const event = e as KeyboardEvent;
-      if (event.key === "Enter") {
+      if (e.key === "Enter") {
         const collectionName = input.value;
         if (collectionName !== "") {
           const bookmarkCreateRequest: bookmarkCreateRequest = {

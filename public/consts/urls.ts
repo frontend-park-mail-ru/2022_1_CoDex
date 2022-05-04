@@ -1,9 +1,9 @@
 import { urlsList } from "../types";
 
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable  @typescript-eslint/no-unused-vars */
 const localUrl = "http://localhost:3000";
 
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable  @typescript-eslint/no-unused-vars */
 export const deployUrl = "https://park-akino.ru";
 
 export const currentUrl = deployUrl;

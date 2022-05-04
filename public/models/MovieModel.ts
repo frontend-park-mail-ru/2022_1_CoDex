@@ -96,11 +96,15 @@ export class MovieModel extends BaseModel {
     }
 
     addCollection = (inputsData: bookmarkRequest) => {
-        addMovieToBookmark(inputsData);
+        addMovieToBookmark(inputsData).catch((e) => {
+            console.log("Unexpected error: ", e);
+        });
     }
 
     removeCollection = (inputsData: bookmarkRequest) => {
-        removeMovieFromBookmark(inputsData);
+        removeMovieFromBookmark(inputsData).catch((e) => {
+            console.log("Unexpected error: ", e);
+        });
     }
 
     createCollection = (inputsData: bookmarkCreateRequest) => {

@@ -21,7 +21,9 @@ class Auth {
         this.user = null;
         this.lastEvent = null;
         if (navigator.onLine) {
-            this.getUserFromServer();
+            this.getUserFromServer().catch((e) => {
+                console.log("Unexpected auth error: ", e);
+            });
         }
 
 

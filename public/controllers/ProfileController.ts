@@ -1,4 +1,3 @@
-import { authConfig } from "@/consts/authConfig";
 import { events } from "../consts/events";
 import { ProfileModel } from "../models/ProfileModel";
 import { ProfileView } from "../views/ProfileView/ProfileView";
