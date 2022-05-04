@@ -132,7 +132,7 @@
 		font-family: $main_font;
 		font-size: 20px;
 		font-weight: 600;
-		color: black;
+		color: $font_color_white;
 		text-align: center;
 		padding: 14px;
 	}
@@ -345,8 +345,8 @@
 			}
 
 			@media (max-width: 500px) {
-				width: 20px;
-				height: 20px;
+				width: 28px;
+				height: 28px;
 			}
 		}
 		&__single-star.active {
@@ -374,7 +374,7 @@
 		@media (max-width: 500px) {
 			font-size: 10px;
 			line-height: 30px;
-			width: 20px;
+			width: 28px;
 			height: 30px;
 		}
 	}

@@ -14,6 +14,10 @@ const startServer = (app) => {
     res.json(top256);
   });
 
+  app.get("/api/v1/genres", function (req, res) {
+    res.json(Genres);
+  });
+
   app.get("/api/v1/collections/1", function (req, res) {
     res.json(top256);
   });

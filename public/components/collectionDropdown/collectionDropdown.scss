@@ -16,7 +16,7 @@
 		font-weight: 700;
 		font-size: 15px;
 		line-height: 48px;
-		color: $black;
+		color: $font_color_white;
 		background-color: $raspberry;
         margin-bottom: 20px;
         border-radius: 20px;
@@ -36,7 +36,7 @@
 				width: 0;
 				height: 0;
 				border: 6px solid transparent;
-				border-color: $black transparent transparent transparent;
+				border-color: $font_color_white transparent transparent transparent;
 			}
 		}
 		.select-items {
@@ -49,7 +49,7 @@
 		.select-items div,
 		.select-selected {
 			background-color: $raspberry;
-			color: $black;
+			color: $font_color_white;
 			line-height: 48px;
 			cursor: pointer;
 			user-select: none;
@@ -69,7 +69,7 @@
 			border-radius: 20px 20px 0 0;
 
 			&::after {
-				border-color: transparent transparent $black transparent;
+				border-color: transparent transparent $font_color_white transparent;
 				top: 15px;
 			}
 		}
@@ -118,7 +118,7 @@
     font-weight: 700;
     font-size: 15px;
     line-height: 48px;
-    color: $black;
+    color: $font_color_white;
     background-color: $raspberry;
     margin-bottom: 20px;
 	border-radius: 0 0 20px 20px;
