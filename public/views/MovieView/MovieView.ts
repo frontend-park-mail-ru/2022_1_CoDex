@@ -380,7 +380,7 @@ export class MovieView extends BaseView {
         const bookmarkId = currentSelect.options[j].getAttribute("bookmarkid");
         optionItem.setAttribute("bookmarkid", bookmarkId ? bookmarkId : "");
         optionItem.textContent = currentSelect.options[j].innerHTML;
-        // optionItem.addEventListener('click', this.collectionsDropdownListener);
+        optionItem.addEventListener('click', this.collectionsDropdownListener);
         
         
         optionItem.appendChild(checkbox);
@@ -436,7 +436,6 @@ export class MovieView extends BaseView {
           bookmarkId: bookmarkId ? bookmarkId : "",
         }
         if (target.classList.contains("hasMovie")) {
-          console.log(e.target);
           previousSelect.innerHTML = 'Добавить в подборку: ';
           this.eventBus.emit(events.moviePage.removeCollection, bookmarkRequest);
         }
