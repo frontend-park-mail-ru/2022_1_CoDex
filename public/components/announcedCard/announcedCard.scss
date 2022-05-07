@@ -1,0 +1,97 @@
+@import "../../css/consts.scss";
+
+.announced-card {
+    color: $background;
+    background-color: $movie_card;
+    border-radius: 20px;
+    max-width: 580px;
+    max-height: 254px;
+    padding: 20px;
+    margin-bottom: 30px;
+    align-items: center;
+    box-sizing: border-box;
+    font-family: $main_font;
+}
+
+.announced {
+    font-family: $main_font;
+    font-weight: bold;
+    max-width: 580px;
+    max-height: 254px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin-right: 12px;
+    
+    &__image {
+        display: flex;
+        max-width: 158px;
+        max-height: 214px;
+        align-self: center;
+
+        img {
+            width: 158px;
+            height: 214px;
+            border-radius: 10px;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: row;
+        height: 214px;
+        align-items: center;
+        
+        @media (max-width: 600px) {
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        &__name {
+            display: flex;
+            flex-direction: column;
+            font-weight: 600;
+            width: 248px;
+
+            @media (max-width: 600px) {
+                width: 100%;
+            }
+    
+            &__russian {
+                font-size: 20px;
+                line-height: 28px;
+                color: $font_color_white;
+                text-decoration: none;
+            }
+            
+            &__original {
+                font-size: 15px;
+                line-height: 20px;
+                color: $shadow;
+            }
+        }
+        
+        &__premier {
+            display: flex;
+            flex-direction: column;
+            font-weight: 600;
+            width: 98px;
+            color: $font_color_white;
+            text-align: center;
+    
+            &__day {
+                font-size: 40px;
+                line-height: 24px;
+                margin-bottom: 8px;
+            }
+    
+            &__month {
+                font-size: 20px;
+                line-height: 28px;
+            }
+        }
+    }
+
+}

@@ -376,3 +376,30 @@ export type createBookmarkResponse = {
     ID: string,
     title: string,
 }
+
+export type announcedResponse = {
+    title: string,
+    description: string,
+    movielist: announcedResponseMovie[],
+}
+
+export type announcedData = {
+    title: string,
+    description: string,
+    movielist: announcedMovie[]
+}
+
+export type announcedResponseMovie = {
+    ID: string,
+    date: string,
+    title: string,
+    poster: string,
+}
+
+export type announcedMovie = {
+    ID: string,
+    day: string,
+    month: string,
+    title: string,
+    poster: string,
+}
