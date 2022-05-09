@@ -25,9 +25,6 @@ div.content-wrapper
                         div.actor-facts__fact__name Место рождения
                         div.actor-facts__fact__value #{actor.birthplace}
                     div.actor-facts__fact
-                        div.actor-facts__fact__name Жанры
-                        div.actor-facts__fact__value #{actor.genres}
-                    div.actor-facts__fact
                         div.actor-facts__fact__name Всего фильмов
                         div.actor-facts__fact__value #{actor.total}
             div.actor-movies
@@ -35,9 +32,6 @@ div.content-wrapper
                 div.actor-movies__container
                     each movie, _ in movies
                         +movieCard(movie)
-            div.related
-                div.related__title Если вам понравился этот актёр:
-                +slider(related)
 
 
                     
