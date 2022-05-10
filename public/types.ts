@@ -276,7 +276,7 @@ export type review = {
 
 export type moviePageData = {
     movie: movieInfo,
-    related: relatedItem[],
+    related: relatedItem[] | null,
     reviewex: string,
     reviews: review[],
     userrating: string,

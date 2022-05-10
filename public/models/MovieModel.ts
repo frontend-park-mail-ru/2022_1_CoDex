@@ -1,5 +1,5 @@
 import EventBus from "@/modules/eventBus";
-import { bookmarkCreateRequest, bookmarkRequest, createBookmarkResponse, movie, ratingRequest, ratingResponse, reviewRequest, reviewResponse } from "@/types";
+import { bookmarkCreateRequest, bookmarkRequest, createBookmarkResponse, movie, moviePageData, ratingRequest, ratingResponse, reviewRequest, reviewResponse } from "@/types";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
 import { authModule } from "../modules/auth";
@@ -34,6 +34,10 @@ export class MovieModel extends BaseModel {
             if (!response || !response.status) {
                 this.eventBus.emit(events.app.errorPage);
             } else if (response.status === statuses.OK && response.parsedResponse) {
+                const parsed = response.parsedResponse as moviePageData;
+                if (parsed.related?.length != 0) {
+                    parsed.related = null;
+                }
                 this.eventBus.emit(events.moviePage.render.content, response.parsedResponse);
             }
             if (response?.status === statuses.NOT_FOUND) {
