@@ -67,8 +67,7 @@ const startServer = (app) => {
 
   app.post("/api/v1/playlist/create", function (req, res) {
     res.status(201).json({
-      ID: "777",
-      title: "new title",
+      ID:16, imgSrc:'top.webp', title: "NewOne",
     });
   });
 
@@ -611,6 +610,12 @@ const startServer = (app) => {
       { description: "Подборка №4", imgSrc: "top.webp", ID: "13" },
       { description: "Подборка №5", imgSrc: "top.webp", ID: "14" },
       { description: "Подборка №6", imgSrc: "top.webp", ID: "15" },
+    ]
+  };
+
+  const BookmarkNew = {
+    bookmarksList: [
+      { description: "New №1", imgSrc: "top.webp", ID: "16" },
     ]
   };
 
@@ -1707,7 +1712,7 @@ const startServer = (app) => {
         "originalTitle": "The Green Mile",
         "premierDay": "10",
         "premierMonth": "июня"
-      },{
+      }, {
         "ID": "1",
         "poster": "showshenkRedemption.webp",
         "title": "Побег из Шоушенка",

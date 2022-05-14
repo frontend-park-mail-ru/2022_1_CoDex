@@ -372,9 +372,11 @@ export type bookmarkDeleteRequest = {
     bookmarkId: string,
 }
 
-export type createBookmarkResponse = {
+export type bookmarkResponse = {
     ID: string,
     title: string,
+    public: boolean,
+    imgSrc: string,
 }
 
 export type announcedResponse = {

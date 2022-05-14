@@ -102,6 +102,7 @@ export const events = {
             reviews: "profilePage:renderReviews",
             profileInfo: "profilePage:renderProfileInfo",
             changedProfile: "profilePage:renderChangedProfile",
+            newBookmark: "profilePage:renderNewBookmark",
         },
         getContent: "profilePage:getContent",
         getReviews: "profilePage:getReviews",
@@ -109,6 +110,7 @@ export const events = {
         getProfileInfo: "profilePage:getProfileInfo",
 
         sendChanges: "profilePage:sendSettingsChanges",
+        createBookmark: "profilePage:createBookmark",
         sendAvatar: "profilePage:sendAvatarChanges",
 
         validate: "profilePage:validate",
