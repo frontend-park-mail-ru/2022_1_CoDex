@@ -1,8 +1,12 @@
 include ../../bookmark/bookmark
 .profile-bookmarks__bookmarks-container
-    .bookmark-element-default
-        .bookmark-element-default__wrapper
-            .bookmark-element-default__wrapper__plus-btn     
+    if isThisUser
+        .bookmark-element-default
+            .bookmark-element-default__wrapper
+                .bookmark-element-default__wrapper__plus-btn     
     each input, _ in bookmarksList
-        +bookmark(input)    
+        if isThisUser
+            +bookmark(input)
+        else if input.public    
+            +bookmark(input)
         

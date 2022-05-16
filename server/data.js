@@ -604,12 +604,12 @@ const startServer = (app) => {
 
   const Bookmarks = {
     bookmarksList: [
-      { description: "Подборка №1", imgSrc: "top.webp", ID: "10" },
-      { description: "Подборка №2", imgSrc: "top.webp", ID: "11" },
-      { description: "Подборка №3", imgSrc: "top.webp", ID: "12" },
-      { description: "Подборка №4", imgSrc: "top.webp", ID: "13" },
-      { description: "Подборка №5", imgSrc: "top.webp", ID: "14" },
-      { description: "Подборка №6", imgSrc: "top.webp", ID: "15" },
+      { description: "Подборка №1", imgSrc: "top.webp", ID: "10", public: true },
+      { description: "Подборка №2", imgSrc: "top.webp", ID: "11", public: true },
+      { description: "Подборка №3", imgSrc: "top.webp", ID: "12",public: false },
+      { description: "Подборка №4", imgSrc: "top.webp", ID: "13",public: false },
+      { description: "Подборка №5", imgSrc: "top.webp", ID: "14",public: true },
+      { description: "Подборка №6", imgSrc: "top.webp", ID: "15",public: true },
     ]
   };
 

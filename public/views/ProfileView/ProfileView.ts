@@ -54,7 +54,8 @@ export class ProfileView extends BaseView {
   renderBookmarks = (data: any) => {
     const profileBookmarks = document.querySelector('.profile-bookmarks');
     if (profileBookmarks) {
-      profileBookmarks.innerHTML += profileBookmark(data);
+      console.log("isthisUser", this.userData.isThisUser)
+      profileBookmarks.innerHTML += profileBookmark(data, this.userData.isThisUser);
     }
     this.addCreateBookmarkButtonListener();
   };
@@ -85,12 +86,14 @@ export class ProfileView extends BaseView {
   renderNewBookmark = (data: bookmarkResponse) => {
     console.log(data)
     const profileBookmarksContainer = document.querySelector('.profile-bookmarks__bookmarks-container') as HTMLElement;
-    const newBookmark = {bookmarksList: [{ID: data.ID, imgSrc: data.imgSrc, description: data.title}]};
+    const newBookmark = { bookmarksList: [{ ID: data.ID, imgSrc: data.imgSrc, description: data.title }] };
     console.log(newBookmark)
-    if(profileBookmarksContainer){
-      const newBookmarkElement = createElementFromHTML(profileBookmark(newBookmark)) as HTMLElement;
+    if (profileBookmarksContainer) {
+      const newBookmarkElement = createElementFromHTML(profileBookmark(newBookmark, this.userData.isThisUser)) as HTMLElement;
       profileBookmarksContainer.innerHTML += newBookmarkElement.querySelector('.bookmark-element')?.outerHTML;
     }
+    this.addCreateBookmarkButtonListener();
+
   }
 
   addCreateBookmarkButtonListener = () => {
@@ -100,28 +103,32 @@ export class ProfileView extends BaseView {
     const closePopupButton = document.querySelector('.popup-close') as HTMLElement;
     if (!openWindowButton || !popup || !closePopupButton || !createBookmarkButton) { return; }
     openWindowButton.addEventListener('click', (e) => {
+      console.log("clickopen")
       e.preventDefault();
       popup.classList.add('open');
     });
     popup.addEventListener('click', (e) => {
       e.preventDefault();
       this.closePopupWindow(e, popup);
-      
+
     });
-    createBookmarkButton.addEventListener('click', (e)=>{
+    createBookmarkButton.addEventListener('click', (e) => {
       e.preventDefault();
       const bookmarkName = document.querySelector('.bookmark-name') as HTMLInputElement;
-      this.createBookmark(bookmarkName.value);
-      popup.classList.remove('open');
+      if (bookmarkName.value) {
+        this.createBookmark(bookmarkName.value);
+        popup.classList.remove('open');
+        bookmarkName.value = "";
+      }
     });
 
   }
 
-  closePopupWindow = (e : MouseEvent, popup: HTMLElement) =>{
+  closePopupWindow = (e: MouseEvent, popup: HTMLElement) => {
     const target = e.target as Element;
-      if (!target.closest('.profile__popup__container__body') || target.classList.contains('popup-close')) {
-        popup.classList.remove('open');
-      }
+    if (!target.closest('.profile__popup__container__body') || target.classList.contains('popup-close')) {
+      popup.classList.remove('open');
+    }
   }
 
   addSettingsButtonListener = () => {
