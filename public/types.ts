@@ -377,7 +377,6 @@ export type bookmarkResponse = {
     title: string,
     public: boolean,
     imgSrc: string,
-    [key: string]: any
 }
 
 export type announcedResponse = {

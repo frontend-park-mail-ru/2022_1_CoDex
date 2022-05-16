@@ -173,7 +173,7 @@ export class ProfileView extends BaseView {
   };
 
   createBookmark = (bookmarkName: string) => {
-    this.eventBus.emit(events.profilePage.createBookmark, { title: bookmarkName, userId: this.userData.ID, public: true }, this.userData.ID);
+    this.eventBus.emit(events.profilePage.createBookmark, { title: bookmarkName, userId: this.userData.ID.toString(), public: true }, this.userData.ID);
   };
 
   successSumbit = () => {
