@@ -105,17 +105,23 @@ export class ProfileView extends BaseView {
     });
     popup.addEventListener('click', (e) => {
       e.preventDefault();
-      const target = e.target as Element;
-      if (!target.closest('.profile__popup__container__body') || target.classList.contains('popup-close')) {
-        popup.classList.remove('open');
-      }
+      this.closePopupWindow(e, popup);
+      
     });
     createBookmarkButton.addEventListener('click', (e)=>{
       e.preventDefault();
       const bookmarkName = document.querySelector('.bookmark-name') as HTMLInputElement;
       this.createBookmark(bookmarkName.value);
+      popup.classList.remove('open');
     });
 
+  }
+
+  closePopupWindow = (e : MouseEvent, popup: HTMLElement) =>{
+    const target = e.target as Element;
+      if (!target.closest('.profile__popup__container__body') || target.classList.contains('popup-close')) {
+        popup.classList.remove('open');
+      }
   }
 
   addSettingsButtonListener = () => {
