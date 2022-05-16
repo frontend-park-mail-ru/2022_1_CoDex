@@ -3,7 +3,7 @@ name: Frontend Build
 on:
   push:
    branches:
-     - develop
+     - addBookmarkWork
   pull_request:
    branches:
      - develop
