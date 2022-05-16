@@ -43,6 +43,7 @@ export class ProfileView extends BaseView {
     if (content) {
       content.innerHTML = profilePug(this.userData);
     }
+    console.log("userDataFrom render profileinfo", this.userData)
     this.eventBus.emit(events.profilePage.getContent, this.userData);
     this.addSettingsButtonListener();
     this.listenAvatarChanged();
@@ -54,8 +55,9 @@ export class ProfileView extends BaseView {
   renderBookmarks = (data: any) => {
     const profileBookmarks = document.querySelector('.profile-bookmarks');
     if (profileBookmarks) {
-      console.log("isthisUser", this.userData.isThisUser)
-      profileBookmarks.innerHTML += profileBookmark(data, this.userData.isThisUser);
+      console.log("userDataFrom render bookmarks", this.userData)
+      data.isThisUser = this.userData.isThisUser;
+      profileBookmarks.innerHTML += profileBookmark(data);
     }
     this.addCreateBookmarkButtonListener();
   };
@@ -84,12 +86,13 @@ export class ProfileView extends BaseView {
   };
 
   renderNewBookmark = (data: bookmarkResponse) => {
-    console.log(data)
     const profileBookmarksContainer = document.querySelector('.profile-bookmarks__bookmarks-container') as HTMLElement;
-    const newBookmark = { bookmarksList: [{ ID: data.ID, imgSrc: data.imgSrc, description: data.title }] };
-    console.log(newBookmark)
+    const newBookmark = {
+      bookmarksList: [{ ID: data.ID, imgSrc: data.imgSrc, description: data.title }],
+      isThisUser: this.userData.isThisUser
+    };
     if (profileBookmarksContainer) {
-      const newBookmarkElement = createElementFromHTML(profileBookmark(newBookmark, this.userData.isThisUser)) as HTMLElement;
+      const newBookmarkElement = createElementFromHTML(profileBookmark(newBookmark)) as HTMLElement;
       profileBookmarksContainer.innerHTML += newBookmarkElement.querySelector('.bookmark-element')?.outerHTML;
     }
     this.addCreateBookmarkButtonListener();

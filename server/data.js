@@ -615,7 +615,7 @@ const startServer = (app) => {
 
   const BookmarkNew = {
     bookmarksList: [
-      { description: "New №1", imgSrc: "top.webp", ID: "16" },
+      { description: "New №1", imgSrc: "top.webp", ID: "16", public: true },
     ]
   };
 
