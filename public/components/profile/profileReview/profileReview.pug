@@ -1,6 +1,6 @@
 include ../../review/review
 .profile-reviews__reviewContainer
-    if !reviewsList
+    if reviewsList
         each el, _ in reviewsList 
             +review(el)
     else 
