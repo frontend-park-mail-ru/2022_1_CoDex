@@ -9,7 +9,7 @@ div.content-wrapper
             .container__bookmark-settings
                 input(type="button" class='container__bookmark-settings__delete-playlist-btn' value='Удалить подборку')
                 label.title Приватная подборка
-                if private 
+                if !public 
                     div(class='container__bookmark-settings__private-btn private-on')
                 else 
                     div(class='container__bookmark-settings__private-btn')
