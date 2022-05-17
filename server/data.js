@@ -67,8 +67,7 @@ const startServer = (app) => {
 
   app.post("/api/v1/playlist/create", function (req, res) {
     res.status(201).json({
-      ID: "777",
-      title: "new title",
+      ID:16, imgSrc:'top.webp', title: "NewOne",
     });
   });
 
@@ -608,12 +607,18 @@ const startServer = (app) => {
 
   const Bookmarks = {
     bookmarksList: [
-      { description: "Подборка №1", imgSrc: "top.webp", ID: "10" },
-      { description: "Подборка №2", imgSrc: "top.webp", ID: "11" },
-      { description: "Подборка №3", imgSrc: "top.webp", ID: "12" },
-      { description: "Подборка №4", imgSrc: "top.webp", ID: "13" },
-      { description: "Подборка №5", imgSrc: "top.webp", ID: "14" },
-      { description: "Подборка №6", imgSrc: "top.webp", ID: "15" },
+      { description: "Подборка №1", imgSrc: "top.webp", ID: "10", public: true },
+      { description: "Подборка №2", imgSrc: "top.webp", ID: "11", public: true },
+      { description: "Подборка №3", imgSrc: "top.webp", ID: "12",public: false },
+      { description: "Подборка №4", imgSrc: "top.webp", ID: "13",public: false },
+      { description: "Подборка №5", imgSrc: "top.webp", ID: "14",public: true },
+      { description: "Подборка №6", imgSrc: "top.webp", ID: "15",public: true },
+    ]
+  };
+
+  const BookmarkNew = {
+    bookmarksList: [
+      { description: "New №1", imgSrc: "top.webp", ID: "16", public: true },
     ]
   };
 
@@ -1710,7 +1715,7 @@ const startServer = (app) => {
         "originalTitle": "The Green Mile",
         "premierDay": "10",
         "premierMonth": "июня"
-      },{
+      }, {
         "ID": "1",
         "poster": "showshenkRedemption.webp",
         "title": "Побег из Шоушенка",

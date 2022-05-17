@@ -1,4 +1,8 @@
 include ../../review/review
 .profile-reviews__reviewContainer
-    each el, _ in reviewsList 
-        +review(el)
+    if !reviewsList
+        each el, _ in reviewsList 
+            +review(el)
+    else 
+        .profile-reviews__reviewContainer__empty-container
+            p.empty-container__text Список отзывов пуст

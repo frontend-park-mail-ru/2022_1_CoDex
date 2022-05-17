@@ -6,10 +6,10 @@
     justify-content: flex-start;
     .bookmark-element-default {
         display: flex;
-        //TODO :hover {
-        //     cursor: pointer;
-        //     filter: brightness(110%);
-        // }
+        :hover {
+            cursor: pointer;
+            filter: brightness(110%);
+        }
         &__wrapper {
             margin-right: 10px;
             border-radius: 20px;
@@ -26,14 +26,14 @@
             }
             &__plus-btn::before {
                 content: "";
-                //background-color: rgb(171, 171, 171);
+                background-color: rgb(171, 171, 171);
                 height: 5px;
                 width: 30%;
                 position: absolute;
             }
             &__plus-btn::after {
                 content: "";
-                //background-color: rgb(171, 171, 171);
+                background-color: rgb(171, 171, 171);
                 height: 5px;
                 width: 30%;
                 position: absolute;

@@ -1,5 +1,5 @@
 import EventBus from "@/modules/eventBus";
-import { bookmarkCreateRequest, bookmarkRequest, createBookmarkResponse, movie, moviePageData, ratingRequest, ratingResponse, reviewRequest, reviewResponse } from "@/types";
+import { bookmarkCreateRequest, bookmarkRequest, bookmarkResponse, movie, moviePageData, ratingRequest, ratingResponse, reviewRequest, reviewResponse } from "@/types";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
 import { authModule } from "../modules/auth";
@@ -118,7 +118,7 @@ export class MovieModel extends BaseModel {
         createBookmark(inputsData).then(
             (response) => {
                 if (!response) { return; }
-                const parsed = <createBookmarkResponse> response.parsedResponse;
+                const parsed = <bookmarkResponse> response.parsedResponse;
                 if (response.status == statuses.CREATED) {
                     this.eventBus.emit(events.moviePage.createCollectionSuccess, parsed.ID, parsed.title);
                 }

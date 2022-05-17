@@ -1,9 +1,9 @@
-import { getProfile, getBookmarks, getReview, sendSettingsChanges, sendAvatar } from "../modules/connection";
+import { getProfile, getBookmarks, getReview, sendSettingsChanges, sendAvatar, createBookmark } from "../modules/connection";
 import { BaseModel } from "./BaseModel";
 import { statuses } from "../consts/statuses";
 import { events } from "../consts/events";
 import EventBus from "@/modules/eventBus";
-import { personalData, profileUserData, userData } from "@/types";
+import { bookmarkCreateRequest, bookmarkResponse, personalData, profileUserData, userData } from "@/types";
 import { authModule } from "@/modules/auth";
 import { emptyField, errorInfo } from "@/consts/errors";
 import { authConfig } from "@/consts/authConfig";
@@ -114,6 +114,23 @@ export class ProfileModel extends BaseModel {
             }
         }).catch((e) => {
             console.log("Unexpected profileSettingsAvatar error: ", e);
+        });
+    }
+
+    createBookmark = (inputsData: bookmarkCreateRequest) => {
+        console.log("inputsbookmark",inputsData)
+        createBookmark(inputsData).then(
+            (response) => {
+                if (!response) { return; }
+                const parsed = <bookmarkResponse> response.parsedResponse;
+                
+                if (response.status == statuses.OK) {
+                    console.log(response.parsedResponse)
+                    this.eventBus.emit(events.profilePage.render.newBookmark, response.parsedResponse);
+                }
+            }
+        ).catch((e) => {
+            console.log("Unexpected review error: ", e);
         });
     }
 
