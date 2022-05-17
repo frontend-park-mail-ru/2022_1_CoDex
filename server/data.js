@@ -1934,6 +1934,7 @@ const startServer = (app) => {
   const bookmark = {
     title: "Подборка №1",
     description: "Вот такая вот закладка :)",
+    private: false,
     movielist: [
       {
         "ID": "1",

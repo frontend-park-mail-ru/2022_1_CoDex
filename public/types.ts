@@ -25,6 +25,7 @@ type api = {
     getUser: string,
     changeProfile: string,
     changeAvatar: string,
+    changePrivateSettings:string,
     bookmarks: string,
     reviews: string,
     logout: string,
@@ -370,6 +371,10 @@ export type bookmarkCreateRequest = {
 
 export type bookmarkDeleteRequest = {
     bookmarkId: string,
+}
+export type bookmarkChangePrivateRequest = {
+    bookmarkId: string,
+    private: boolean,
 }
 
 export type bookmarkResponse = {

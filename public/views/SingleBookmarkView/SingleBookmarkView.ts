@@ -45,21 +45,33 @@ export class SingleBookmarkView extends BaseView {
         } else {
             this.eventBus.emit(events.app.errorPage);
         }
-        this.addEventListenerToDeleteButtons();
+        this.addEventListenerToSettingsButtons();
     };
 
-    addEventListenerToDeleteButtons = () => {
+    addEventListenerToSettingsButtons = () => {
         const deletePlaylistButton = document.querySelector('.container__bookmark-settings__delete-playlist-btn') as HTMLInputElement;
         const deleteMovieButtons = document.querySelectorAll('.movie__body__info__data__title__delete-movie-btn');
-
-        if (!deletePlaylistButton || !deleteMovieButtons) { return; }
+        const togglePrivateButton = document.querySelector('.container__bookmark-settings__private-btn') as HTMLElement;
+        if (!deletePlaylistButton || !deleteMovieButtons || !togglePrivateButton) { return; }
 
         deletePlaylistButton.addEventListener('click', (e) => {
             e.preventDefault();
             this.eventBus.emit(events.singleBookmarkPage.delete.bookmark, { bookmarkId: this.bookmarkID });
         });
 
-        deleteMovieButtons.forEach((button)=>{
+        togglePrivateButton.addEventListener('click', (e) => {
+            console.log('toggle')
+            e.preventDefault();
+            if (togglePrivateButton.classList.contains('private-on')) {
+                this.eventBus.emit(events.singleBookmarkPage.changePrivate, {bookmarkId: this.bookmarkID, public: false});
+                togglePrivateButton.classList.remove('private-on');
+            } else {
+                this.eventBus.emit(events.singleBookmarkPage.changePrivate, {bookmarkId: this.bookmarkID, public: true});
+                togglePrivateButton.classList.add('private-on');
+            }
+        });
+
+        deleteMovieButtons.forEach((button) => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
                 const movieTitle = button.parentNode?.firstChild as HTMLAnchorElement;

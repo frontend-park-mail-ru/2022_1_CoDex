@@ -1,8 +1,8 @@
 import EventBus from "@/modules/eventBus";
-import { singleBookmark, singleCollectionMovie, singleBookmarkPageData, bookmarkDeleteRequest, bookmarkRequest } from "@/types";
+import { singleBookmark, singleCollectionMovie, singleBookmarkPageData, bookmarkDeleteRequest, bookmarkRequest, bookmarkChangePrivateRequest } from "@/types";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
-import { getSingleBookmark, deleteBookmark, removeMovieFromBookmark } from "../modules/connection";
+import { getSingleBookmark, deleteBookmark, removeMovieFromBookmark, changePrivateSettings } from "../modules/connection";
 import { BaseModel } from "./BaseModel";
 
 /**
@@ -88,6 +88,16 @@ export class SingleBookmarkModel extends BaseModel {
             this.getContent(bookmark);
         }).catch((e) => {
             console.log("Unexpected singleCollection error: ", e);
+        });
+    }
+    
+    changePrivate = (bookmarkData: bookmarkChangePrivateRequest) =>{
+        changePrivateSettings(bookmarkData).then((response)=>{
+            if (!response) {
+                this.eventBus.emit(events.app.errorPage);
+            } if (response?.status === statuses.OK) {
+
+            }
         });
     }
 }
