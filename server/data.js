@@ -500,7 +500,7 @@ const startServer = (app) => {
   });
 
   app.post("/api/v1/signup", function (req, res) {
-    const name = req.body.name;
+    const name = req.body.username;
     const password = req.body.password;
     const email = req.body.email;
     if (
@@ -520,7 +520,10 @@ const startServer = (app) => {
     users[email] = user;
 
     res.cookie('podvorot', id, { expires: new Date(Date.now() + 1000 * 60 * 10) });
-    res.status(201).json({
+    console.log(user);
+    console.log(user.name);
+    console.log(users[email].name);
+    res.status(200).json({
       ID: id,
       imgsrc: "server/images/adventures.webp",
       username: users[email].name,
