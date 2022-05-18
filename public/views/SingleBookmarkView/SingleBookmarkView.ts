@@ -63,10 +63,10 @@ export class SingleBookmarkView extends BaseView {
             console.log('toggle')
             e.preventDefault();
             if (togglePrivateButton.classList.contains('private-on')) {
-                this.eventBus.emit(events.singleBookmarkPage.changePrivate, {bookmarkId: this.bookmarkID, public: true});
+                this.eventBus.emit(events.singleBookmarkPage.changePrivate, { bookmarkId: this.bookmarkID, public: true });
                 togglePrivateButton.classList.remove('private-on');
             } else {
-                this.eventBus.emit(events.singleBookmarkPage.changePrivate, {bookmarkId: this.bookmarkID, public: false});
+                this.eventBus.emit(events.singleBookmarkPage.changePrivate, { bookmarkId: this.bookmarkID, public: false });
                 togglePrivateButton.classList.add('private-on');
             }
         });
@@ -81,7 +81,19 @@ export class SingleBookmarkView extends BaseView {
                     bookmarkId: this.bookmarkID,
                 };
                 this.eventBus.emit(events.singleBookmarkPage.delete.movie, bookmarkRequest);
+                this.showNotify("Фильм удалён");
             });
         });
     }
+
+    showNotify = (message: string) => {
+        const notify = document.querySelector('.notify') as HTMLElement;
+        const notifyMessageBody = document.querySelector('.notify__message') as HTMLElement;
+        notifyMessageBody.innerHTML = message;
+        notify.classList.add('notify-open');
+        setTimeout(() => {
+            notify.classList.remove('notify-open');
+        }, 3000);
+        console.log(notifyMessageBody)
+    };
 }

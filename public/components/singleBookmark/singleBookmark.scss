@@ -30,7 +30,6 @@
     justify-items: center;
     justify-content: center;
 
-
     @media (max-width: 1200px) {
         grid-template-columns: repeat(8, 1fr);
         grid-template-areas:
@@ -48,6 +47,34 @@
             "C0 C1 C1 C1 C1 C1 C1 C2"
             "D1 D1 D1 D1 D1 D1 D1 D1";
     }
+    .notify {
+        display: flex;
+        position: fixed;
+        bottom: 20px;
+        height: 25px;
+        opacity: 0;
+        align-items: center;
+        background-color: #585858;
+        border-radius: 5px;
+
+        &__message {
+            color: $white;
+            padding-left: 15px;
+            // background-color: white;
+        }
+        &__close {
+            //position: relative;
+            color: $white;
+            cursor: pointer;
+            //top: 0px;
+            //left: 100%;
+            padding-left: 10px;
+            padding-right: 15px;
+        }
+    }
+    .notify-open{
+        opacity: 1;
+    }
 
     &__bookmark-title {
         font-family: $main_font;
@@ -62,8 +89,8 @@
         margin-top: 0;
         margin-bottom: 20px;
         @media (max-width: 600px) {
-			font-size: 30px;
-		}
+            font-size: 30px;
+        }
 
         span {
             min-width: 20px;
@@ -90,16 +117,16 @@
         align-items: center;
         width: 100%;
         margin-bottom: 40px;
-        .title{
-            margin-left:5px;
-            color:$white;
+        .title {
+            margin-left: 5px;
+            color: $white;
             text-align: center;
         }
         &__delete-playlist-btn {
             display: flex;
             background-color: $raspberry;
             color: $white;
-            
+
             height: 40px;
             border-radius: 12px;
             border: 0;
@@ -113,9 +140,9 @@
         }
         &__private-btn {
             display: flex;
-            width: 48px; 
-            height: 20px; 
-            border-radius: 12px; 
+            width: 48px;
+            height: 20px;
+            border-radius: 12px;
             background: #bfbfbf;
             z-index: 0;
             margin-left: 20px;
@@ -128,13 +155,13 @@
         &__private-btn::after {
             content: "";
             height: 20px;
-            width: 20px; 
-            border-radius: 18px; 
-            background: $white; 
-           // top: -1px; 
+            width: 20px;
+            border-radius: 18px;
+            background: $white;
+            // top: -1px;
             left: -5px;
-            transition-duration: 300ms; 
-            box-shadow: 0 0 10px 0 #999999; 
+            transition-duration: 300ms;
+            box-shadow: 0 0 10px 0 #999999;
             position: absolute;
             z-index: 1;
         }
