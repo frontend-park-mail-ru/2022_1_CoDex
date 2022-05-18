@@ -11,6 +11,7 @@ import singleBookmarkContent from '@/components/singleBookmark/singleBookmark.pu
 export class SingleBookmarkView extends BaseView {
     private bookmarkData: singleBookmarkPageData;
     private bookmarkID: string;
+    private isNotifyVisible:boolean;
     /**
        * @description Создаёт представление страницы одной закладки.
        * @param { EventBus } eventBus Глобальная шина событий
@@ -19,6 +20,7 @@ export class SingleBookmarkView extends BaseView {
     constructor(eventBus: EventBus, { data = {} } = {}) {
         super(eventBus, data);
         this.bookmarkID = "";
+        this.isNotifyVisible = false;
     }
 
     /**
@@ -46,6 +48,9 @@ export class SingleBookmarkView extends BaseView {
             this.eventBus.emit(events.app.errorPage);
         }
         this.addEventListenerToSettingsButtons();
+        if(this.isNotifyVisible){
+            this.showNotify("Фильм удалён");
+        }
     };
 
     addEventListenerToSettingsButtons = () => {
@@ -81,6 +86,8 @@ export class SingleBookmarkView extends BaseView {
                     bookmarkId: this.bookmarkID,
                 };
                 this.eventBus.emit(events.singleBookmarkPage.delete.movie, bookmarkRequest);
+                this.isNotifyVisible = true;
+
             });
         });
     }
@@ -92,6 +99,7 @@ export class SingleBookmarkView extends BaseView {
         notify.classList.add('notify-open');
         setTimeout(() => {
             notify.classList.remove('notify-open');
+            this.isNotifyVisible = false;
         }, 2000);
     };
 }
