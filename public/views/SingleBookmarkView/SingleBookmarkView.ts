@@ -81,7 +81,6 @@ export class SingleBookmarkView extends BaseView {
                     bookmarkId: this.bookmarkID,
                 };
                 this.eventBus.emit(events.singleBookmarkPage.delete.movie, bookmarkRequest);
-                this.showNotify("Фильм удалён");
             });
         });
     }
@@ -89,11 +88,10 @@ export class SingleBookmarkView extends BaseView {
     showNotify = (message: string) => {
         const notify = document.querySelector('.notify') as HTMLElement;
         const notifyMessageBody = document.querySelector('.notify__message') as HTMLElement;
-        notifyMessageBody.innerHTML = message;
+        notifyMessageBody.innerText = message;
         notify.classList.add('notify-open');
         setTimeout(() => {
             notify.classList.remove('notify-open');
-        }, 3000);
-        console.log(notifyMessageBody)
+        }, 2000);
     };
 }

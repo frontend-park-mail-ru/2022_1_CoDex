@@ -85,7 +85,11 @@ export class SingleBookmarkModel extends BaseModel {
     deleteMovie = (bookmarkData: bookmarkRequest) =>{
         removeMovieFromBookmark(bookmarkData).then(() =>{
             const bookmark : singleBookmark = {ID: bookmarkData.bookmarkId}; 
-            this.getContent(bookmark);
+            async ()=>{
+                await this.getContent(bookmark);
+            }
+            this.eventBus.emit(events.singleBookmarkPage.showNotify, "Фильм удалён");
+            
         }).catch((e) => {
             console.log("Unexpected singleCollection error: ", e);
         });
