@@ -11,7 +11,7 @@ import singleBookmarkContent from '@/components/singleBookmark/singleBookmark.pu
 export class SingleBookmarkView extends BaseView {
     private bookmarkData: singleBookmarkPageData;
     private bookmarkID: string;
-    private isNotifyVisible:boolean;
+    private isNotifyVisible: boolean;
     /**
        * @description Создаёт представление страницы одной закладки.
        * @param { EventBus } eventBus Глобальная шина событий
@@ -48,7 +48,7 @@ export class SingleBookmarkView extends BaseView {
             this.eventBus.emit(events.app.errorPage);
         }
         this.addEventListenerToSettingsButtons();
-        if(this.isNotifyVisible){
+        if (this.isNotifyVisible) {
             this.showNotify("Фильм удалён");
         }
     };
@@ -57,15 +57,17 @@ export class SingleBookmarkView extends BaseView {
         const deletePlaylistButton = document.querySelector('.container__bookmark-settings__delete-playlist-btn') as HTMLInputElement;
         const deleteMovieButtons = document.querySelectorAll('.movie__body__info__data__title__delete-movie-btn');
         const togglePrivateButton = document.querySelector('.container__bookmark-settings__private-btn') as HTMLElement;
-        if (!deletePlaylistButton || !deleteMovieButtons || !togglePrivateButton) { return; }
+        const popup = document.querySelector('.popup') as HTMLElement;
+        const confirmDeleteButton = document.querySelector('.bookmark-submit') as HTMLElement;
+        const closePopupButton = document.querySelector('.bookmark-cancel') as HTMLElement;
+        if (!deletePlaylistButton || !deleteMovieButtons || !togglePrivateButton || !popup || !closePopupButton) { return; }
 
         deletePlaylistButton.addEventListener('click', (e) => {
             e.preventDefault();
-            this.eventBus.emit(events.singleBookmarkPage.delete.bookmark, { bookmarkId: this.bookmarkID });
+            popup.classList.add('popup-open');
         });
 
         togglePrivateButton.addEventListener('click', (e) => {
-            console.log('toggle')
             e.preventDefault();
             if (togglePrivateButton.classList.contains('private-on')) {
                 this.eventBus.emit(events.singleBookmarkPage.changePrivate, { bookmarkId: this.bookmarkID, public: true });
@@ -90,6 +92,16 @@ export class SingleBookmarkView extends BaseView {
 
             });
         });
+
+        confirmDeleteButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.eventBus.emit(events.singleBookmarkPage.delete.bookmark, { bookmarkId: this.bookmarkID });
+        });
+
+        popup.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.closePopupWindow(e, popup);
+        });
     }
 
     showNotify = (message: string) => {
@@ -102,4 +114,11 @@ export class SingleBookmarkView extends BaseView {
             this.isNotifyVisible = false;
         }, 2000);
     };
+
+    closePopupWindow = (e: MouseEvent, popup: HTMLElement) => {
+        const target = e.target as Element;
+        if (!target.closest('.popup__container_body') || target.classList.contains('bookmark-cancel')) {
+            popup.classList.remove('popup-open');
+        }
+    }
 }
