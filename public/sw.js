@@ -1,5 +1,3 @@
-
-
 const cacheName = "fallback";
 
 const cacheURLs = [ "main.ts" ];
@@ -14,7 +12,6 @@ self.addEventListener("install", (e) => {
         }),
     );
 });
-
 
 self.addEventListener("fetch", 
     (e) => {
