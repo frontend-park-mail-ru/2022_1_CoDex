@@ -20,10 +20,10 @@ function initializeApp() {
       body: payload.notification.body,
       icon: 'https://a-static.besthdwallpaper.com/simpatichni-sire-koshenya-v-koshiku-shpalery-2048x1152-26674_49.jpg',
     };
-    console.log(payload)
+    console.log("onMessage")
     if (!("Notification" in window)) {
       console.log("This browser does not support system notifications.");
-    } else if (Notification.permission === "granted") {
+    } else {
 
       const notification = new Notification(notificationTitle, notificationOptions);
       notification.onclick = function (event) {
@@ -36,25 +36,15 @@ function initializeApp() {
 
   });
 
-  messaging.setBackgroundMessageHandler(function (payload) {
-    const data = JSON.parse(payload.data.notification);
-    console.log(data)
-    const notificationTitle = data.title;
+  messaging.onBackgroundMessage(function (payload) {
+    const notificationTitle = payload.notification.title;
     const notificationOptions = {
-      body: data.body,
+      body: payload.notification.body,
       icon: 'https://a-static.besthdwallpaper.com/simpatichni-sire-koshenya-v-koshiku-shpalery-2048x1152-26674_49.jpg'
     };
-    return self.registration.showNotification(notificationTitle,
-      notificationOptions);
-  });
 
-  // self.addEventListener('push', () => {
-  //   console.log("push event");
-  //   // event.waitUntil(
-  //   //   self.registration.showNotification(data.title, {
-  //   //     body: data.content
-  //   //   })
-  //   // );
-  // });
+    self.registration.showNotification(notificationTitle,
+      notificationOptions).finally();
+  });
 
 }
