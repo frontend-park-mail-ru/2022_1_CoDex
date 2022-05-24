@@ -22,4 +22,14 @@ function initializeApp() {
     self.registration.showNotification(notificationTitle,
       notificationOptions).finally();
   });
+
+  self.addEventListener('push', () => {
+    console.log("push event");
+    // event.waitUntil(
+    //   self.registration.showNotification(data.title, {
+    //     body: data.content
+    //   })
+    // );
+  });
+
 }
