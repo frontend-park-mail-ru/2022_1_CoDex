@@ -1,3 +1,5 @@
+import { onMessage } from "firebase/messaging";
+
 importScripts('https://www.gstatic.com/firebasejs/9.8.1/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/9.8.1/firebase-messaging-compat.js');
 
@@ -15,8 +17,15 @@ function initializeApp() {
   const app = initializeApp(firebaseConfig);
   const messaging = firebase.messaging();
 
-  messaging.onMessage(function (payload) {
-
+  onMessage(messaging, (payload) => {
+    const title = payload.notification.title;
+    console.log(payload)
+    const greeting = new Notification(title, {
+      body: payload?.notification?.body,
+      icon: 'https://a-static.besthdwallpaper.com/simpatichni-sire-koshenya-v-koshiku-shpalery-2048x1152-26674_49.jpg',
+    });
+  });
+  messaging.onMessage((payload) => {
     const notificationTitle = payload.notification.title;
     const notificationOptions = {
       body: payload.notification.body,
@@ -38,17 +47,6 @@ function initializeApp() {
 
   });
 
-  // messaging.onBackgroundMessage(function (payload) {
-  //   const notificationTitle = payload.notification.title;
-  //   const notificationOptions = {
-  //     body: payload.notification.body,
-  //     icon: 'https://a-static.besthdwallpaper.com/simpatichni-sire-koshenya-v-koshiku-shpalery-2048x1152-26674_49.jpg'
-  //   };
-
-  //   self.registration.showNotification(notificationTitle,
-  //     notificationOptions).finally();
-  // });
-
   onBackgroundMessage(messaging, (payload) => {
     console.log('[firebase-messaging-sw.js] Received background message ', payload);
 
@@ -57,9 +55,8 @@ function initializeApp() {
       body: payload.notification.body,
       icon: 'https://a-static.besthdwallpaper.com/simpatichni-sire-koshenya-v-koshiku-shpalery-2048x1152-26674_49.jpg'
     };
-  
+
     self.registration.showNotification(notificationTitle,
       notificationOptions);
   });
 };
-initializeApp();
