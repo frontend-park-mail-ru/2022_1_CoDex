@@ -1,5 +1,6 @@
 importScripts('https://www.gstatic.com/firebasejs/9.8.1/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/9.8.1/firebase-messaging-compat.js');
+import { onBackgroundMessage } from "firebase/messaging/sw";
 
 function initializeApp() {
   const firebaseConfig = {
@@ -36,15 +37,27 @@ function initializeApp() {
 
   });
 
-  messaging.onBackgroundMessage(function (payload) {
+  // messaging.onBackgroundMessage(function (payload) {
+  //   const notificationTitle = payload.notification.title;
+  //   const notificationOptions = {
+  //     body: payload.notification.body,
+  //     icon: 'https://a-static.besthdwallpaper.com/simpatichni-sire-koshenya-v-koshiku-shpalery-2048x1152-26674_49.jpg'
+  //   };
+
+  //   self.registration.showNotification(notificationTitle,
+  //     notificationOptions).finally();
+  // });
+
+  onBackgroundMessage(messaging, (payload) => {
+    console.log('[firebase-messaging-sw.js] Received background message ', payload);
+
     const notificationTitle = payload.notification.title;
     const notificationOptions = {
       body: payload.notification.body,
       icon: 'https://a-static.besthdwallpaper.com/simpatichni-sire-koshenya-v-koshiku-shpalery-2048x1152-26674_49.jpg'
     };
-
+  
     self.registration.showNotification(notificationTitle,
-      notificationOptions).finally();
+      notificationOptions);
   });
-
 }
