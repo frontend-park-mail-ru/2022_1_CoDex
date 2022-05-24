@@ -1,6 +1,5 @@
 importScripts('https://www.gstatic.com/firebasejs/9.8.1/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/9.8.1/firebase-messaging-compat.js');
-import { onBackgroundMessage } from "firebase/messaging/sw";
 
 function initializeApp() {
   const firebaseConfig = {
@@ -11,6 +10,7 @@ function initializeApp() {
     messagingSenderId: "643793608275",
     appId: "1:643793608275:web:b6dcca5445ef7873e8f0a6",
   };
+
   const app = initializeApp(firebaseConfig);
   const messaging = firebase.messaging();
 
