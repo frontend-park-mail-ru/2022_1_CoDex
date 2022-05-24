@@ -1,7 +1,7 @@
 importScripts('https://www.gstatic.com/firebasejs/9.8.1/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/9.8.1/firebase-messaging-compat.js');
 
-function initializeApp() {
+  console.log('1')
   const firebaseConfig = {
     apiKey: "AIzaSyCO0VasuBzGS74ONUmtMKrktKddF58DIS8",
     authDomain: "akino-61bc9.firebaseapp.com",
@@ -60,4 +60,4 @@ function initializeApp() {
     self.registration.showNotification(notificationTitle,
       notificationOptions);
   });
-}
+console.log("12")

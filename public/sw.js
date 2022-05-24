@@ -1,5 +1,4 @@
 const cacheName = "fallback";
-
 const cacheURLs = [ "main.ts" ];
 self.addEventListener("install", (e) => {
     e.waitUntil(
