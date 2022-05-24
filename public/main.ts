@@ -60,6 +60,7 @@ getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYn
 
 onMessage(messaging, (payload) => {
   const title : string = payload.notification?.title!;
+  console.log("recieved", payload)
   const greeting = new Notification(title, {
     body: title,
     icon: 'https://park-akino.ru/assets/favicon.ico',
