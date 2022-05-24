@@ -31,18 +31,19 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const messaging = getMessaging();
 
-// if ('serviceWorker' in navigator) {
-//   // navigator.serviceWorker.register('sw.js', { scope: '/' })
-//   //   .then((registration) => {
-//   //     console.log('SW registered on scope:', registration.scope);
-//   //   })
-//   //   .catch((err) => {
-//   //     console.error("Error", err);
-//   //   });
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js', { scope: '/' })
+    .then((registration) => {
+      console.log('SW registered on scope:', registration.scope);
+    })
+    .catch((err) => {
+      console.error("Error", err);
+    });
 
-// } else {
-//   console.log("smt went wrong, we shouldn't be here");
-// }
+} else {
+  console.log("smt went wrong, we shouldn't be here");
+}
+
 getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYnl17WWj3g_N5B7R0RKxiXS1fMlpzZDpZJ3oOID1QM' }).then((currentToken) => {
   if (currentToken) {
     console.log("SUCCESS")
@@ -58,7 +59,11 @@ getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYn
 });
 
 onMessage(messaging, (payload) => {
-  console.log("Message received. ", payload);
+  const title : string = payload.notification?.title!;
+  const greeting = new Notification(title, {
+    body: payload?.notification?.body,
+    icon: 'https://park-akino.ru/assets/favicon.ico',
+  });
 });
 
 export const root = document.getElementById("root");
