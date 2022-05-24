@@ -46,7 +46,7 @@ if ('serviceWorker' in navigator) {
 
 getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYnl17WWj3g_N5B7R0RKxiXS1fMlpzZDpZJ3oOID1QM' }).then((currentToken) => {
   if (currentToken) {
-    console.log("SUCCESS")
+    console.log("SUCCESS", messaging)
     fetch('https://park-akino.ru/api/v1/user/subscribePush', {
       method: 'POST',
       body: JSON.stringify({ token: currentToken }),
@@ -60,7 +60,7 @@ getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYn
 
 onMessage(messaging, (payload) => {
   const title : string = payload.notification?.title!;
-  console.log("recieved", payload)
+  console.log("recieved", payload, messaging)
   const greeting = new Notification(title, {
     body: title,
     icon: 'https://park-akino.ru/assets/favicon.ico',
