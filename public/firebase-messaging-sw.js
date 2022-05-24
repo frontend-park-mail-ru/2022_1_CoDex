@@ -13,6 +13,27 @@ function initializeApp() {
   const app = initializeApp(firebaseConfig);
   const messaging = firebase.messaging();
 
+  messaging.onMessage(function(payload) {
+
+    const notificationTitle = payload.notification.title;
+    const notificationOptions = {
+        body: payload.notification.body,
+        icon: 'https://a-static.besthdwallpaper.com/simpatichni-sire-koshenya-v-koshiku-shpalery-2048x1152-26674_49.jpg',        
+    };
+
+    if (!("Notification" in window)) {
+        console.log("This browser does not support system notifications.");
+    } else if (Notification.permission === "granted") {
+
+      const notification = new Notification(notificationTitle,notificationOptions);
+        notification.onclick = function(event) {
+            event.preventDefault();
+            notification.close();
+        }
+    }
+
+});
+
   // messaging.onBackgroundMessage(function (payload) {
   //   const notificationTitle = payload.notification.title;
   //   const notificationOptions = {
