@@ -32,7 +32,15 @@ const app = initializeApp(firebaseConfig);
 const messaging = getMessaging();
 
 // if ('serviceWorker' in navigator) {
-//   navigator.serviceWorker.register('/sw.js', { scope: '/' })
+//   // navigator.serviceWorker.register('sw.js', { scope: '/' })
+//   //   .then((registration) => {
+//   //     console.log('SW registered on scope:', registration.scope);
+//   //   })
+//   //   .catch((err) => {
+//   //     console.error("Error", err);
+//   //   });
+
+//   navigator.serviceWorker.register('/firebase-messaging-sw.js', { scope: '/firebase-cloud-messaging-push-scope' })
 //     .then((registration) => {
 //       console.log('SW registered on scope:', registration.scope);
 //     })
@@ -42,19 +50,19 @@ const messaging = getMessaging();
 // } else {
 //   console.log("smt went wrong, we shouldn't be here");
 // }
-
-getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYnl17WWj3g_N5B7R0RKxiXS1fMlpzZDpZJ3oOID1QM' }).then((currentToken) => {
-  if (currentToken) {
-    fetch('https://park-akino.ru/api/v1/user/subscribePush', {
-      method: 'POST',
-      body: JSON.stringify({ token: currentToken }),
-    }).finally();
-  } else {
-    console.log('No registration token available. Request permission to generate one.');
-  }
-}).catch((err) => {
-  console.log('An error occurred while retrieving token. ', err);
-});
+getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYnl17WWj3g_N5B7R0RKxiXS1fMlpzZDpZJ3oOID1QM'});
+// getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYnl17WWj3g_N5B7R0RKxiXS1fMlpzZDpZJ3oOID1QM' }).then((currentToken) => {
+//   if (currentToken) {
+//     fetch('https://park-akino.ru/api/v1/user/subscribePush', {
+//       method: 'POST',
+//       body: JSON.stringify({ token: currentToken }),
+//     }).finally();
+//   } else {
+//     console.log('No registration token available. Request permission to generate one.');
+//   }
+// }).catch((err) => {
+//   console.log('An error occurred while retrieving token. ', err);
+// });
 
 onMessage(messaging, (payload) => {
   console.log("Message received. ", payload);

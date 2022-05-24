@@ -1,5 +1,5 @@
-importScripts('https://www.gstatic.com/firebasejs/9.2.0/firebase-app-compat.js');
-importScripts('https://www.gstatic.com/firebasejs/9.2.0/firebase-messaging-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/9.8.1/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/9.8.1/firebase-messaging-compat.js');
 
 const firebaseConfig = {
   apiKey: "AIzaSyCO0VasuBzGS74ONUmtMKrktKddF58DIS8",
