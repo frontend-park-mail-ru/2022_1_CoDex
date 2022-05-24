@@ -63,7 +63,7 @@ onMessage(messaging, (payload) => {
   console.log(payload)
   const greeting = new Notification(title, {
     body: payload?.notification?.body,
-    icon: 'https://park-akino.ru/assets/favicon.ico',
+    icon: 'https://a-static.besthdwallpaper.com/simpatichni-sire-koshenya-v-koshiku-shpalery-2048x1152-26674_49.jpg',
   });
 });
 
