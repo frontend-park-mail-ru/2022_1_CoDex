@@ -36,15 +36,16 @@ function initializeApp() {
 
   });
 
-  messaging.onBackgroundMessage(function (payload) {
-    console.log(payload)
-    const notificationTitle = payload.notification.title;
+  messaging.setBackgroundMessageHandler(function (payload) {
+    const data = JSON.parse(payload.data.notification);
+    console.log(data)
+    const notificationTitle = data.title;
     const notificationOptions = {
-      body: payload.notification.title,
+      body: data.body,
+      icon: 'https://a-static.besthdwallpaper.com/simpatichni-sire-koshenya-v-koshiku-shpalery-2048x1152-26674_49.jpg'
     };
-
-    self.registration.showNotification(notificationTitle,
-      notificationOptions).finally();
+    return self.registration.showNotification(notificationTitle,
+      notificationOptions);
   });
 
   // self.addEventListener('push', () => {
