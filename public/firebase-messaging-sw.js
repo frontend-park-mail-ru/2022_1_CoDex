@@ -13,23 +13,23 @@ function initializeApp() {
   const app = initializeApp(firebaseConfig);
   const messaging = firebase.messaging();
 
-  messaging.onBackgroundMessage(function (payload) {
-    const notificationTitle = payload.notification.title;
-    const notificationOptions = {
-      body: payload.notification.title,
-    };
+  // messaging.onBackgroundMessage(function (payload) {
+  //   const notificationTitle = payload.notification.title;
+  //   const notificationOptions = {
+  //     body: payload.notification.title,
+  //   };
 
-    self.registration.showNotification(notificationTitle,
-      notificationOptions).finally();
-  });
+  //   self.registration.showNotification(notificationTitle,
+  //     notificationOptions).finally();
+  // });
 
-  self.addEventListener('push', () => {
-    console.log("push event");
-    // event.waitUntil(
-    //   self.registration.showNotification(data.title, {
-    //     body: data.content
-    //   })
-    // );
-  });
+  // self.addEventListener('push', () => {
+  //   console.log("push event");
+  //   // event.waitUntil(
+  //   //   self.registration.showNotification(data.title, {
+  //   //     body: data.content
+  //   //   })
+  //   // );
+  // });
 
 }
