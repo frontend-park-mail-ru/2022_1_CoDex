@@ -61,7 +61,7 @@ getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYn
 onMessage(messaging, (payload) => {
   const title : string = payload.notification?.title!;
   const greeting = new Notification(title, {
-    body: payload?.notification?.body,
+    body: title,
     icon: 'https://park-akino.ru/assets/favicon.ico',
   });
 });
