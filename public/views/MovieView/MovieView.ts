@@ -160,8 +160,8 @@ export class MovieView extends BaseView {
   askToLog = () => {
     const messageArea = document.querySelector('.user-rating') as HTMLElement;
     messageArea.innerHTML = `
-        Чтобы поставить оценку, пожалуйста, 
-        <a class = "white_text"">
+        Чтобы поставить оценку, пожалуйста,&nbsp
+        <a class = "white_text"" href="/register">
         зарегистрируйтесь</a>`;
   };
 
