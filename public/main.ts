@@ -54,6 +54,7 @@ const messaging = getMessaging();
 
 getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYnl17WWj3g_N5B7R0RKxiXS1fMlpzZDpZJ3oOID1QM' }).then((currentToken) => {
   if (currentToken) {
+    console.log(currentToken);
     fetch('https://park-akino.ru/api/v1/user/subscribePush', {
      method: 'POST',
      body: JSON.stringify({ token: currentToken }),

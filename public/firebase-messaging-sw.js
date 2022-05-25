@@ -52,12 +52,5 @@ messaging.onBackgroundMessage(function (payload) {
     notificationOptions).finally();
 });
 
-self.addEventListener('push', function (event) {
-  console.log("push notification")
-  //const promise = self.registration.showNotification('Push notification!');
-  event.waitUntil(
-    self.registration.showNotification('Hello world')
-  );
-});
 
 
