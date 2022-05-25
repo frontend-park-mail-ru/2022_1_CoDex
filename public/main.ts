@@ -18,7 +18,6 @@ import { SearchController } from "./controllers/SearchController";
 
 import { initializeApp } from 'firebase/app';
 import { getMessaging, onMessage, getToken } from 'firebase/messaging';
-import { onBackgroundMessage } from "firebase/messaging/sw";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCO0VasuBzGS74ONUmtMKrktKddF58DIS8",
@@ -55,7 +54,6 @@ const messaging = getMessaging();
 
 getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYnl17WWj3g_N5B7R0RKxiXS1fMlpzZDpZJ3oOID1QM' }).then((currentToken) => {
   if (currentToken) {
-    console.log(currentToken)
     fetch('https://park-akino.ru/api/v1/user/subscribePush', {
      method: 'POST',
      body: JSON.stringify({ token: currentToken }),
