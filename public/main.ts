@@ -55,7 +55,6 @@ if ('serviceWorker' in navigator) {
 
 getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYnl17WWj3g_N5B7R0RKxiXS1fMlpzZDpZJ3oOID1QM' }).then((currentToken) => {
   if (currentToken) {
-    console.log("SUCCESS")
     fetch('https://park-akino.ru/api/v1/user/subscribePush', {
      method: 'POST',
      body: JSON.stringify({ token: currentToken }),
@@ -68,12 +67,12 @@ getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYn
 });
 
 
-// const notification = new Notification("title", {
-//   body: "body",
-//   icon: 'https://park-akino.ru/assets/favicon.ico',
-// });
+const notification = new Notification("Сегодня премьера фильма", {
+  body: "Тор: Любовь и гром",
+  icon: 'https://park-akino.ru/assets/favicon.ico',
+});
 
-onMessage(messaging, (payload) => {
+onMessage(messaging, function(payload) {
   const title: string = payload.notification?.title!;
   console.log(payload)
   const greeting = new Notification(title, {
