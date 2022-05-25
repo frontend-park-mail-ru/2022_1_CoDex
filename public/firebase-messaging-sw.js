@@ -41,7 +41,7 @@ function initializeApp() {
         notification.close();
       }
 
-      self.registration.showNotification(notificationTitle,
+      return self.registration.showNotification(notificationTitle,
         notificationOptions).finally();
     }
 
@@ -56,15 +56,14 @@ function initializeApp() {
       icon: 'https://park-akino.ru/assets/favicon.ico',
     };
     const notification = new Notification(notificationTitle, notificationOptions);
-    self.registration.showNotification(notificationTitle,
+    return self.registration.showNotification(notificationTitle,
       notificationOptions);
   });
 
   self.addEventListener('push', function (event) {
     console.log("push notification")
     const promise = self.registration.showNotification('Push notification!');
-
-    event.waitUntil(promise);
+    return event.waitUntil(promise);
   });
 
 
