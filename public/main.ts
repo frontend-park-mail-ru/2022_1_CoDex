@@ -57,12 +57,7 @@ getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYn
     fetch('https://park-akino.ru/api/v1/user/subscribePush', {
      method: 'POST',
      body: JSON.stringify({ token: currentToken }),
-    }).finally(()=>{
-      const notification = new Notification("Сегодня премьера фильма", {
-        body: "Тор: Любовь и гром",
-        icon: 'https://park-akino.ru/assets/favicon.ico',
-      });
-    });
+    }).finally()
   } else {
     console.log('No registration token available. Request permission to generate one.');
   }

@@ -55,7 +55,7 @@ messaging.onBackgroundMessage(function (payload) {
 self.addEventListener('push', function (event) {
   console.log("push notification")
   //const promise = self.registration.showNotification('Push notification!');
-  e.waitUntil(
+  event.waitUntil(
     self.registration.showNotification('Hello world')
   );
 });
