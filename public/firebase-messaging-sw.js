@@ -19,7 +19,7 @@ function initializeApp() {
     console.log(payload)
     const notification = new Notification(title, {
       body: payload?.notification?.body,
-      icon: 'https://park.film4u.club/assets/favicon.ico',
+      icon: 'https://park-akino.ru/assets/favicon.ico',
     });
   });
 
@@ -27,9 +27,9 @@ function initializeApp() {
     const notificationTitle = payload.notification.title;
     const notificationOptions = {
       body: payload.notification.body,
-      icon: 'https://park.film4u.club/assets/favicon.ico',
+      icon: 'https://park-akino.ru/assets/favicon.ico',
     };
-    
+
     console.log("onMessage")
     if (!("Notification" in window)) {
       console.log("This browser does not support system notifications.");
@@ -53,9 +53,9 @@ function initializeApp() {
     const notificationTitle = payload.notification.title;
     const notificationOptions = {
       body: payload.notification.body,
-      icon: 'https://park.film4u.club/assets/favicon.ico',
+      icon: 'https://park-akino.ru/assets/favicon.ico',
     };
-
+    const notification = new Notification(notificationTitle, notificationOptions);
     self.registration.showNotification(notificationTitle,
       notificationOptions);
   });

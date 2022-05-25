@@ -18,6 +18,7 @@ import { SearchController } from "./controllers/SearchController";
 
 import { initializeApp } from 'firebase/app';
 import { getMessaging, onMessage, getToken } from 'firebase/messaging';
+import { onBackgroundMessage } from "firebase/messaging/sw";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCO0VasuBzGS74ONUmtMKrktKddF58DIS8",
@@ -47,10 +48,10 @@ if ('serviceWorker' in navigator) {
 getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYnl17WWj3g_N5B7R0RKxiXS1fMlpzZDpZJ3oOID1QM' }).then((currentToken) => {
   if (currentToken) {
     console.log("SUCCESS")
-    // fetch('https://park-akino.ru/api/v1/user/subscribePush', {
-      // method: 'POST',
-      // body: JSON.stringify({ token: currentToken }),
-    // }).finally();
+    fetch('https://park-akino.ru/api/v1/user/subscribePush', {
+      method: 'POST',
+      body: JSON.stringify({ token: currentToken }),
+    }).finally();
   } else {
     console.log('No registration token available. Request permission to generate one.');
   }
@@ -59,12 +60,28 @@ getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYn
 });
 
 onMessage(messaging, (payload) => {
-  const title : string = payload.notification?.title!;
+  const title: string = payload.notification?.title!;
   console.log(payload)
   const greeting = new Notification(title, {
     body: payload?.notification?.body,
-    icon: 'https://park.film4u.club/assets/favicon.ico'
+    icon: 'https://park-akino.ru/assets/favicon.ico'
   });
+});
+
+onBackgroundMessage(messaging, (payload) => {
+  console.log('[firebase-messaging-sw.js] Received background message ', payload);
+
+  const notificationTitle = 'Background Message Title';
+  const notificationOptions = {
+    body: 'Background Message body.',
+    icon: '/firebase-logo.png'
+  };
+  const notification = new Notification(notificationTitle, {
+    body: payload?.notification?.body,
+    icon: 'https://park-akino.ru/assets/favicon.ico'
+  });
+  // self.registration.showNotification(notificationTitle,
+  //   notificationOptions);
 });
 
 export const root = document.getElementById("root");
