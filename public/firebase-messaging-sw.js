@@ -62,13 +62,14 @@ function initializeApp() {
   });
 
   messaging.onBackgroundMessage(function (payload) {
+    console.log("onBackground");
     const notificationTitle = payload.notification.title;
     const notificationOptions = {
       body: payload.notification.body,
       icon: 'https://park-akino.ru/assets/favicon.ico',
     };
 
-    self.registration.showNotification(notificationTitle,
+    return self.registration.showNotification(notificationTitle,
       notificationOptions).finally();
   });
 
