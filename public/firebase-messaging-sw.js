@@ -21,6 +21,7 @@ function initializeApp() {
       body: payload?.notification?.body,
       icon: 'https://park-akino.ru/assets/favicon.ico',
     });
+    return notification;
   });
 
   messaging.onMessage((payload) => {
