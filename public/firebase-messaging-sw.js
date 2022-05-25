@@ -59,4 +59,13 @@ function initializeApp() {
     self.registration.showNotification(notificationTitle,
       notificationOptions);
   });
+
+  self.addEventListener('push', function (event) {
+    console.log("push notification")
+    const promise = self.registration.showNotification('Push notification!');
+
+    event.waitUntil(promise);
+  });
+
+
 };
