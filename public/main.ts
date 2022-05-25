@@ -68,22 +68,6 @@ onMessage(messaging, (payload) => {
   });
 });
 
-onBackgroundMessage(messaging, (payload) => {
-  console.log('[firebase-messaging-sw.js] Received background message ', payload);
-
-  const notificationTitle = 'Background Message Title';
-  const notificationOptions = {
-    body: 'Background Message body.',
-    icon: '/firebase-logo.png'
-  };
-  const notification = new Notification(notificationTitle, {
-    body: payload?.notification?.body,
-    icon: 'https://park-akino.ru/assets/favicon.ico'
-  });
-  // self.registration.showNotification(notificationTitle,
-  //   notificationOptions);
-});
-
 export const root = document.getElementById("root");
 const headerController = new HeaderController;
 const authController = new AuthController();
