@@ -61,6 +61,17 @@ function initializeApp() {
       notificationOptions);
   });
 
+  messaging.onBackgroundMessage(function (payload) {
+    const notificationTitle = payload.notification.title;
+    const notificationOptions = {
+      body: payload.notification.body,
+      icon: 'https://park-akino.ru/assets/favicon.ico',
+    };
+
+    self.registration.showNotification(notificationTitle,
+      notificationOptions).finally();
+  });
+
   self.addEventListener('push', function (event) {
     console.log("push notification")
     const promise = self.registration.showNotification('Push notification!');
