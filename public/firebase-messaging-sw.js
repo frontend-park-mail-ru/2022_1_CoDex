@@ -75,9 +75,11 @@ function initializeApp() {
 
   self.addEventListener('push', function (event) {
     console.log("push notification")
-    const promise = self.registration.showNotification('Push notification!');
-    return event.waitUntil(promise);
-  });
+    //const promise = self.registration.showNotification('Push notification!');
+    e.waitUntil(
+      self.registration.showNotification('Hello world')
+    );
+});
 
 
 };
