@@ -77,7 +77,6 @@ onMessage(messaging, function(payload) {
     body: payload?.notification?.body,
     icon: 'https://park-akino.ru/assets/favicon.ico'
   });
-  return greeting;
 });
 
 export const root = document.getElementById("root");
