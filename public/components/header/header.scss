@@ -62,16 +62,16 @@
                 transition-duration: 0.5s;
                 position: absolute;
                 height: 3px;
-                width: 18px;
+                width: 12px;
                 top: 30px;
                 background-color: $white;
 
                 &:before {
-                    @include icon-before(3px, 18px, -15px);
+                    @include icon-before(3px, 12px, -12px);
                 }
 
                 &:after {
-                    @include icon-after(3px, 18px, 15px);
+                    @include icon-after(3px, 12px, 12px);
                 }
 
                 &:hover {
@@ -83,17 +83,17 @@
                 transition-duration: 0.5s;
                 position: absolute;
                 height: 3px;
-                width: 18px;
+                width: 12px;
                 top: 30px;
                 background-color: $white;
-                left: 18px;
+                left: 12px;
 
                 &:before {
-                    @include icon-before(3px, 18px, -15px);
+                    @include icon-before(3px, 12px, -12px);
                 }
 
                 &:after {
-                    @include icon-after(3px, 18px, 15px);
+                    @include icon-after(3px, 12px, 12px);
                 }
             }
 
