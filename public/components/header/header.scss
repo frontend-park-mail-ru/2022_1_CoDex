@@ -306,9 +306,9 @@
         justify-content: space-between;
 
         .search {
+            background-color: transparent;
             &__input {
                 width: max-content;
-                //max-width: 200px;
                 display: none;
             }
         }
