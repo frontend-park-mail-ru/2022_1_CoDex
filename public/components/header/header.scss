@@ -69,7 +69,6 @@
                 &:before {
                     @include icon-before(3px, 18px, -15px);
                 }
-                
 
                 &:after {
                     @include icon-after(3px, 18px, 15px);
@@ -239,23 +238,25 @@
     visibility: visible;
     justify-content: end;
     width: 100%;
+    background-color: white;
+    border-radius: 20px;
 
     &__input {
         display: flex;
         width: 100%;
         flex-grow: 1;
-        background-color: white;
         font-family: "Montserrat-Regular", sans-serif;
-        border-radius: 20px;
         border: 0;
+        border-radius: 20px;
         padding: 6px 15px;
-        outline: 1;
+        outline: none;
         transition-property: visibility, opacity;
         transition-duration: 2s, 0.4s;
         transition-delay: 0s;
     }
 
     &__btn {
+        margin-right:5px;
         cursor: pointer;
     }
 }
