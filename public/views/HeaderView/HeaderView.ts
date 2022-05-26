@@ -187,14 +187,16 @@ export class HeaderView extends BaseView {
     });
 
     window.addEventListener('resize', () => {
+      console.log(this.isSearchClicked)
       if (document.documentElement.clientWidth > 600 && this.isSearchClicked) {
-        this.hideSearch();
+        console.log("resize")
+        this.hideSearch(true);
       }
     })
 
   }
 
-  hideSearch = () => {
+  hideSearch = (isWideNavbar: boolean = false) => {
     this.isSearchClicked = false;
     const navbar = document.querySelector('.navbar') as HTMLElement;
     const logo = document.querySelector('.navbar__logo') as HTMLElement;
@@ -203,7 +205,14 @@ export class HeaderView extends BaseView {
     const searchInput = document.querySelector('.search__input') as HTMLInputElement;
     if (logo && verticalMenu && searchInput && navbar && search) {
       logo.style.display = 'flex';
-      verticalMenu.style.display = 'flex';
+      if (isWideNavbar) {
+        verticalMenu.style.removeProperty('display');
+        console.log("wide")
+      }
+      else {
+
+        verticalMenu.style.display = 'flex';
+      }
       searchInput.style.removeProperty('display');
       navbar.style.removeProperty('grid-template-areas');
       search.style.removeProperty('background-color');
