@@ -247,7 +247,7 @@
         }
         &__private-btn {
             display: flex;
-            width: 48px;
+            min-width: 48px;
             height: 20px;
             border-radius: 12px;
             background: #bfbfbf;

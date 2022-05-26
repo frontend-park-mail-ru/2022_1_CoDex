@@ -41,7 +41,6 @@ export class ProfileView extends BaseView {
     if (content) {
       content.innerHTML = profilePug(this.userData);
     }
-    console.log("userDataFrom render profileinfo", this.userData)
     this.eventBus.emit(events.profilePage.getContent, this.userData);
     this.addSettingsButtonListener();
     this.listenAvatarChanged();
@@ -53,7 +52,6 @@ export class ProfileView extends BaseView {
   renderBookmarks = (data: any) => {
     const profileBookmarks = document.querySelector('.profile-bookmarks');
     if (profileBookmarks) {
-      console.log("userDataFrom render bookmarks", this.userData)
       data.isThisUser = this.userData.isThisUser;
       profileBookmarks.innerHTML += profileBookmark(data);
     }
@@ -104,7 +102,6 @@ export class ProfileView extends BaseView {
     const closePopupButton = document.querySelector('.popup-close') as HTMLElement;
     if (!openWindowButton || !popup || !closePopupButton || !createBookmarkButton) { return; }
     openWindowButton.addEventListener('click', (e) => {
-      console.log("clickopen")
       e.preventDefault();
       popup.classList.add('open');
     });

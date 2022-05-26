@@ -164,6 +164,7 @@ export class HeaderView extends BaseView {
         input.value = '';
       }
     });
+
     const searchBtn = document.querySelector('.search__btn') as HTMLElement;
     if (!searchBtn) {
       return;
@@ -184,39 +185,46 @@ export class HeaderView extends BaseView {
       }
       input.value = '';
     });
+
+    window.addEventListener('resize', () => {
+      if (document.documentElement.clientWidth > 600 && this.isSearchClicked) {
+        this.hideSearch();
+      }
+    })
+
   }
 
   hideSearch = () => {
     this.isSearchClicked = false;
+    const navbar = document.querySelector('.navbar') as HTMLElement;
     const logo = document.querySelector('.navbar__logo') as HTMLElement;
+    const search = document.querySelector('.search') as HTMLElement;
     const verticalMenu = document.querySelector('.navbar__vertical-menu') as HTMLElement;
     const searchInput = document.querySelector('.search__input') as HTMLInputElement;
-    if (logo) {
+    if (logo && verticalMenu && searchInput && navbar && search) {
       logo.style.display = 'flex';
-    }
-    if (verticalMenu) {
       verticalMenu.style.display = 'flex';
-    }
-    if (searchInput) {
-
       searchInput.style.removeProperty('display');
-
+      navbar.style.removeProperty('grid-template-areas');
+      search.style.removeProperty('background-color');
     }
-  }
+
+  };
 
   showSearch = () => {
+    const navbar = document.querySelector('.navbar') as HTMLElement;
     const logo = document.querySelector('.navbar__logo') as HTMLElement;
     const verticalMenu = document.querySelector('.navbar__vertical-menu') as HTMLElement;
+    const search = document.querySelector('.search') as HTMLElement;
     const searchInput = document.querySelector('.search__input') as HTMLInputElement;
-    if (logo) {
+    if (logo && verticalMenu && searchInput && navbar && search) {
       logo.style.display = 'none';
-    }
-    if (verticalMenu) {
       verticalMenu.style.display = 'none';
-    }
-    if (searchInput) {
       searchInput.style.display = "flex";
+      navbar.style.gridTemplateAreas = ' "search search search login" ';
+      search.style.backgroundColor = "white";
     }
+
   };
 
   addEventListenerToVerticalMenu = () => {

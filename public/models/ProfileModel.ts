@@ -118,7 +118,6 @@ export class ProfileModel extends BaseModel {
     }
 
     createBookmark = (inputsData: bookmarkCreateRequest) => {
-        console.log("inputsbookmark",inputsData)
         createBookmark(inputsData).then(
             (response) => {
                 if (!response) { return; }

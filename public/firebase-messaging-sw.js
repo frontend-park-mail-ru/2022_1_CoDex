@@ -21,7 +21,6 @@ messaging.onMessage((payload) => {
     icon: 'https://park-akino.ru/assets/favicon.ico',
   };
 
-  console.log("onMessage")
   if (!("Notification" in window)) {
     console.log("This browser does not support system notifications.");
   } else {
@@ -39,7 +38,6 @@ messaging.onMessage((payload) => {
 });
 
 messaging.onBackgroundMessage(function (payload) {
-  console.log("onBackground");
   const notificationTitle = payload.notification.title;
   const notificationOptions = {
     body: payload.notification.body,

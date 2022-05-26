@@ -24,7 +24,7 @@
     font-family: $main_font;
     font-weight: bold;
     width: 100%;
-    height: 80px;
+    min-height: 80px;
     flex: 0 0 10%;
     background-color: $navigational;
     position: sticky;
@@ -240,7 +240,7 @@
     width: 100%;
     background-color: white;
     border-radius: 20px;
-
+    margin-left:5px;
     &__input {
         display: flex;
         width: 100%;
@@ -286,6 +286,7 @@
         .navbar__vertical-menu__btn-container {
             width: 120px;
         }
+        
         &__menu {
             display: none;
         }
@@ -303,12 +304,12 @@
         grid-template-areas: "vert_menu logo search login";
         grid-template-columns: 80px 120px minmax(36px, 720px) 120px;
         column-gap: 0px;
-        justify-content: space-between;
+        //justify-content: space-between;
 
         .search {
             background-color: transparent;
             &__input {
-                width: max-content;
+                width: 100%;
                 display: none;
             }
         }

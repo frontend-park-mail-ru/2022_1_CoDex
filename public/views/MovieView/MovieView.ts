@@ -395,7 +395,6 @@ export class MovieView extends BaseView {
       lastItem.setAttribute("bookmarkid", bookmarkId ? bookmarkId : "");
       const text = currentSelect.options[currentSelectLength - 1].innerHTML
       lastItem.textContent = text.length > 22 ? text.slice(0, 18) + "..." : text;
-      console.log(text.length);
       lastItem.addEventListener('click', this.collectionsDropdownListener);
 
       const checkbox = document.createElement('input');
