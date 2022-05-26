@@ -18,6 +18,10 @@
 		color: $white;
 		text-align: center;
 		line-height: 40px;
+
+		@media (max-width: 600px) {
+			font-size: 16px;
+		}
 	}
 	:hover {
 		border-radius: 20px;

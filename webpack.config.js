@@ -73,12 +73,16 @@ module.exports = {
         new FaviconsWebpackPlugin({
             logo: 'public/dist/img/favicon.ico',
             inject: (htmlPlugin) =>
-              basename(htmlPlugin.options.filename) === 'index.html',
-          }),
+                basename(htmlPlugin.options.filename) === 'index.html',
+        }),
         new CopyWebpackPlugin({
             patterns: [
                 {
                     from: 'public/sw.js',
+                    to: '',
+                },
+                {
+                    from: 'public/firebase-messaging-sw.js',
                     to: '',
                 },
             ],

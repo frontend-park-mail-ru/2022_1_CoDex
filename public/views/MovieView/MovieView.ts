@@ -157,11 +157,11 @@ export class MovieView extends BaseView {
      * @description Выводит сообщение о просьбе зарегистрироваться.
      * @param { string } movieID ID текущего фильма.
      */
-  askToLog = (movieID: string) => {
+  askToLog = () => {
     const messageArea = document.querySelector('.user-rating') as HTMLElement;
     messageArea.innerHTML = `
-        Чтобы поставить оценку, пожалуйста, 
-        <a class = "white_text"">
+        Чтобы поставить оценку, пожалуйста,&nbsp
+        <a class = "white_text"" href="/register">
         зарегистрируйтесь</a>`;
   };
 
@@ -359,29 +359,57 @@ export class MovieView extends BaseView {
       const currentSelectLength = currentSelect.length;
       const div = document.createElement('div');
       div.setAttribute('class', 'select-selected-collections');
-      div.innerHTML = currentSelect.options[currentSelect.selectedIndex].innerHTML;
+      div.textContent = currentSelect.options[currentSelect.selectedIndex].innerHTML;
       dropdown[i].appendChild(div);
-
+      
       const optionListContainer = document.createElement('div');
       optionListContainer.setAttribute('class', 'select-items bookmark-items select-hide');
       for (let j = 1; j < currentSelectLength - 1; j++) {
-        const optionItem = document.createElement('div');
+        const optionItem = document.createElement('label');
+        
+        const checkbox = document.createElement('input') ;
+        checkbox.setAttribute('type', 'checkbox');
+        
         if (j == currentSelectLength - 1) {
           optionItem.classList.add('last');
         }
         if (currentSelect.options[j].classList.contains("hasMovie")) {
           optionItem.classList.add("hasMovie");
+          checkbox.checked = true;
         }
         const bookmarkId = currentSelect.options[j].getAttribute("bookmarkid");
         optionItem.setAttribute("bookmarkid", bookmarkId ? bookmarkId : "");
-        optionItem.innerHTML = currentSelect.options[j].innerHTML;
+        optionItem.textContent = currentSelect.options[j].innerHTML;
         optionItem.addEventListener('click', this.collectionsDropdownListener);
+        
+        
+        optionItem.appendChild(checkbox);
+        const customCheckbox = document.createElement("span");
+        customCheckbox.setAttribute('class', "custom-checkbox");
+        optionItem.appendChild(customCheckbox);
         optionListContainer.appendChild(optionItem);
       }
-      const lastItem = document.createElement('section');
+      const lastItem = document.createElement('label');
       lastItem.classList.add("collections-last");
-      lastItem.textContent = "Новая подборка";
-      lastItem.addEventListener('click', this.newCollectionListener);
+      const bookmarkId = currentSelect.options[currentSelectLength - 1].getAttribute("bookmarkid");
+      lastItem.setAttribute("bookmarkid", bookmarkId ? bookmarkId : "");
+      const text = currentSelect.options[currentSelectLength - 1].innerHTML
+      lastItem.textContent = text.length > 22 ? text.slice(0, 18) + "..." : text;
+      console.log(text.length);
+      lastItem.addEventListener('click', this.collectionsDropdownListener);
+
+      const checkbox = document.createElement('input');
+      checkbox.setAttribute('type', 'checkbox');
+      if (currentSelect.options[currentSelectLength - 1].classList.contains("hasMovie")) {
+        lastItem.classList.add("hasMovie");
+        checkbox.checked = true;
+      }
+      lastItem.appendChild(checkbox);
+        
+      const customCheckbox = document.createElement("span");
+      customCheckbox.setAttribute('class', "custom-checkbox");
+      lastItem.appendChild(customCheckbox);
+      
       optionListContainer.appendChild(lastItem);
       dropdown[i].appendChild(optionListContainer);
       div.addEventListener('click', function(e) {
@@ -396,15 +424,16 @@ export class MovieView extends BaseView {
 
   collectionsDropdownListener = (e: Event) => {
     const target = e.target as HTMLElement;
+    if (!target.textContent) { return; }
     const currentSelect = target?.parentElement?.parentElement?.getElementsByTagName('select')[0];
     const currentSelectLength = currentSelect?.length;
     const previousSelect = target.parentNode?.previousSibling as HTMLElement;
     if (!currentSelect || !currentSelectLength || !previousSelect) { return; }
     for (let i = 0; i < currentSelectLength; i++) {
-      if (currentSelect.options[i].innerHTML == target.innerHTML) {
+      if (currentSelect.options[i].innerHTML == target.textContent) {
         currentSelect.selectedIndex = i;
         const bookmarkId = target.getAttribute("bookmarkid");
-        let bookmarkRequest: bookmarkRequest = {
+        const bookmarkRequest: bookmarkRequest = {
           movieId: this.movieID,
           bookmarkId: bookmarkId ? bookmarkId : "",
         }
@@ -413,7 +442,6 @@ export class MovieView extends BaseView {
           this.eventBus.emit(events.moviePage.removeCollection, bookmarkRequest);
         }
         else {
-          previousSelect.innerHTML = 'Добавлено: ' + target.innerHTML;
           this.eventBus.emit(events.moviePage.addCollection, bookmarkRequest);
         }
         const previousSameAsSelected = target.parentElement.getElementsByClassName('same-as-selected');
@@ -436,8 +464,7 @@ export class MovieView extends BaseView {
     if (!input) { return; }
     input.focus();
     input.addEventListener("keydown", (e) => {
-      const event = e as KeyboardEvent;
-      if (event.key === "Enter") {
+      if (e.key === "Enter") {
         const collectionName = input.value;
         if (collectionName !== "") {
           const bookmarkCreateRequest: bookmarkCreateRequest = {

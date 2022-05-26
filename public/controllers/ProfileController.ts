@@ -1,4 +1,3 @@
-import { authConfig } from "@/consts/authConfig";
 import { events } from "../consts/events";
 import { ProfileModel } from "../models/ProfileModel";
 import { ProfileView } from "../views/ProfileView/ProfileView";
@@ -41,6 +40,10 @@ export class ProfileController extends BaseController {
                 event: events.profilePage.sendAvatar,
                 handler: this.model.sendSettingsAvatar,
             },
+            {
+                event: events.profilePage.createBookmark,
+                handler: this.model.createBookmark,
+            },
             // {
             //     event: events.profilePage.render.content,
             //     handler: this.view.renderContent,
@@ -56,6 +59,10 @@ export class ProfileController extends BaseController {
             {
                 event: events.profilePage.render.bookmarks,
                 handler: this.view.renderBookmarks,
+            },
+            {
+                event: events.profilePage.render.newBookmark,
+                handler: this.view.renderNewBookmark,
             },
             {
                 event: events.profilePage.render.changedProfile,

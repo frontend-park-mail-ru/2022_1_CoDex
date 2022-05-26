@@ -28,8 +28,8 @@ export const regularRoutes: routeList = {
     moviePage:"^/movies/\\d+$",
     actorPage: "^/actors/\\d+$",
     genresPage: "^/genres$",
-    singleGenrePage: "^/genres/\*",
+    singleGenrePage: "^/genres/",
     premiersPage: "^/premiers$",
     announcedPage: "^/announced/\\d+$",
-    search: '^/search/\*',
+    search: '^/search/',
 }

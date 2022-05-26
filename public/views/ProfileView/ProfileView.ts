@@ -6,9 +6,8 @@ import profileSettings from '../../components/profile/profileInfo/profileInfo.pu
 import profileReview from '../../components/profile/profileReview/profileReview.pug';
 import profileBookmark from '../../components/profile/profileBookmark/profileBookmark.pug';
 import EventBus from '@/modules/eventBus';
-import { userData, profileUserData } from '@/types';
-import { authModule } from '@/modules/auth';
-import { authConfig } from '@/consts/authConfig';
+import { userData, profileUserData, bookmarkResponse } from '@/types';
+import { createElementFromHTML } from '@/utils/utils';
 
 /**
  * @description Класс представления страницы профиля.
@@ -42,6 +41,7 @@ export class ProfileView extends BaseView {
     if (content) {
       content.innerHTML = profilePug(this.userData);
     }
+    console.log("userDataFrom render profileinfo", this.userData)
     this.eventBus.emit(events.profilePage.getContent, this.userData);
     this.addSettingsButtonListener();
     this.listenAvatarChanged();
@@ -50,11 +50,14 @@ export class ProfileView extends BaseView {
  * @description Отрисовывает страницу профиля (часть с личными подборками).
  * @param { object } data Данные о подборках пользователя
  */
-  renderBookmarks = (data: userData) => {
+  renderBookmarks = (data: any) => {
     const profileBookmarks = document.querySelector('.profile-bookmarks');
     if (profileBookmarks) {
+      console.log("userDataFrom render bookmarks", this.userData)
+      data.isThisUser = this.userData.isThisUser;
       profileBookmarks.innerHTML += profileBookmark(data);
     }
+    this.addCreateBookmarkButtonListener();
   };
   /**
  * @description Отрисовывает страницу профиля (часть с активностью).
@@ -80,16 +83,65 @@ export class ProfileView extends BaseView {
     this.listenAvatarChanged();
   };
 
+  renderNewBookmark = (data: bookmarkResponse) => {
+    const profileBookmarksContainer = document.querySelector('.profile-bookmarks__bookmarks-container') as HTMLElement;
+    const newBookmark = {
+      bookmarksList: [{ ID: data.ID, imgSrc: data.imgSrc, description: data.title }],
+      isThisUser: this.userData.isThisUser
+    };
+    if (profileBookmarksContainer) {
+      const newBookmarkElement = createElementFromHTML(profileBookmark(newBookmark)) as HTMLElement;
+      profileBookmarksContainer.innerHTML += newBookmarkElement.querySelector('.bookmark-element')?.outerHTML;
+    }
+    this.addCreateBookmarkButtonListener();
+
+  }
+
+  addCreateBookmarkButtonListener = () => {
+    const openWindowButton = document.querySelector('.bookmark-element-default__wrapper') as HTMLElement;
+    const createBookmarkButton = document.querySelector('.bookmark-submit') as HTMLElement;
+    const popup = document.querySelector('.profile__popup') as HTMLElement;
+    const closePopupButton = document.querySelector('.popup-close') as HTMLElement;
+    if (!openWindowButton || !popup || !closePopupButton || !createBookmarkButton) { return; }
+    openWindowButton.addEventListener('click', (e) => {
+      console.log("clickopen")
+      e.preventDefault();
+      popup.classList.add('open');
+    });
+    popup.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.closePopupWindow(e, popup);
+
+    });
+    createBookmarkButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const bookmarkName = document.querySelector('.bookmark-name') as HTMLInputElement;
+      if (bookmarkName.value) {
+        this.createBookmark(bookmarkName.value);
+        popup.classList.remove('open');
+        bookmarkName.value = "";
+      }
+    });
+
+  }
+
+  closePopupWindow = (e: MouseEvent, popup: HTMLElement) => {
+    const target = e.target as Element;
+    if (!target.closest('.profile__popup__container__body') || target.classList.contains('popup-close')) {
+      popup.classList.remove('open');
+    }
+  }
+
   addSettingsButtonListener = () => {
     const settings = document.querySelector('.profile-info__container');
     const openSettingsButton = document?.querySelector('.profile-info__container__settings') as HTMLElement;
     const openedSettingsForm = document?.querySelector('.profile-info__container__settings__form') as HTMLElement;
     const nameInput = document?.querySelector('.profile-info__container__settings__form__name-input') as HTMLInputElement;
     if (!nameInput) { return; }
-    nameInput.addEventListener('input', (e) => {
+    nameInput.addEventListener('input', () => {
       this.deleteValidationError();
     });
-    nameInput.addEventListener('change', (e) => {
+    nameInput.addEventListener('change', () => {
       this.eventBus.emit(events.profilePage.validate, nameInput.name, nameInput.value);
     });
     if (!settings) return;
@@ -116,6 +168,10 @@ export class ProfileView extends BaseView {
 
   submitChange = (inputValue: string) => {
     this.eventBus.emit(events.profilePage.sendChanges, { username: inputValue }, this.userData.ID);
+  };
+
+  createBookmark = (bookmarkName: string) => {
+    this.eventBus.emit(events.profilePage.createBookmark, { title: bookmarkName, userId: this.userData.ID.toString(), public: true }, this.userData.ID);
   };
 
   successSumbit = () => {

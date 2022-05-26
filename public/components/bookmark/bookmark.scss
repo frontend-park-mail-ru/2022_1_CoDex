@@ -18,21 +18,24 @@
 	&__description {
 		width: 180px;
 		height: 64px;
-		color: $font_color_white;
+		color: #ffffff;
 		text-align: center;
 		align-items: center;
 		display: flex;
 		justify-content: center;
-		font-family: $main_font;
+		font-family: "Montserrat", sans-serif;
 		font-weight: 600;
 		font-size: 17px;
 		line-height: 24px;
-		&:hover{
-            color: $dark_raspberry;
+		overflow: hidden;
+		flex-direction: column;
+		word-break: break-word;
+		&:hover {
+			color: $dark_raspberry;
 		}
 		&:active {
-            color: $very_dark_raspberry;
-        }
+			color: $very_dark_raspberry;
+		}
 	}
 }
 

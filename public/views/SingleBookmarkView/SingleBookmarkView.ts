@@ -11,6 +11,7 @@ import singleBookmarkContent from '@/components/singleBookmark/singleBookmark.pu
 export class SingleBookmarkView extends BaseView {
     private bookmarkData: singleBookmarkPageData;
     private bookmarkID: string;
+    private isNotifyVisible: boolean;
     /**
        * @description Создаёт представление страницы одной закладки.
        * @param { EventBus } eventBus Глобальная шина событий
@@ -19,6 +20,7 @@ export class SingleBookmarkView extends BaseView {
     constructor(eventBus: EventBus, { data = {} } = {}) {
         super(eventBus, data);
         this.bookmarkID = "";
+        this.isNotifyVisible = false;
     }
 
     /**
@@ -45,31 +47,78 @@ export class SingleBookmarkView extends BaseView {
         } else {
             this.eventBus.emit(events.app.errorPage);
         }
-        this.addEventListenerToDeleteButtons();
+        this.addEventListenerToSettingsButtons();
+        if (this.isNotifyVisible) {
+            this.showNotify("Фильм удалён");
+        }
     };
 
-    addEventListenerToDeleteButtons = () => {
+    addEventListenerToSettingsButtons = () => {
         const deletePlaylistButton = document.querySelector('.container__bookmark-settings__delete-playlist-btn') as HTMLInputElement;
         const deleteMovieButtons = document.querySelectorAll('.movie__body__info__data__title__delete-movie-btn');
-
-        if (!deletePlaylistButton || !deleteMovieButtons) { return; }
+        const togglePrivateButton = document.querySelector('.container__bookmark-settings__private-btn') as HTMLElement;
+        const popup = document.querySelector('.popup') as HTMLElement;
+        const confirmDeleteButton = document.querySelector('.bookmark-submit') as HTMLElement;
+        const closePopupButton = document.querySelector('.bookmark-cancel') as HTMLElement;
+        if (!deletePlaylistButton || !deleteMovieButtons || !togglePrivateButton || !popup || !closePopupButton) { return; }
 
         deletePlaylistButton.addEventListener('click', (e) => {
             e.preventDefault();
-            this.eventBus.emit(events.singleBookmarkPage.delete.bookmark, { bookmarkId: this.bookmarkID });
+            popup.classList.add('popup-open');
         });
 
-        deleteMovieButtons.forEach((button)=>{
+        togglePrivateButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (togglePrivateButton.classList.contains('private-on')) {
+                this.eventBus.emit(events.singleBookmarkPage.changePrivate, { bookmarkId: this.bookmarkID, public: true });
+                togglePrivateButton.classList.remove('private-on');
+            } else {
+                this.eventBus.emit(events.singleBookmarkPage.changePrivate, { bookmarkId: this.bookmarkID, public: false });
+                togglePrivateButton.classList.add('private-on');
+            }
+        });
+
+        deleteMovieButtons.forEach((button) => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
-                let movieTitle = button.parentNode?.firstChild as HTMLAnchorElement;
+                const movieTitle = button.parentNode?.firstChild as HTMLAnchorElement;
                 const movieID = movieTitle.href.split('/')[movieTitle.href.split('/').length - 1];
-                let bookmarkRequest: bookmarkRequest = {
+                const bookmarkRequest: bookmarkRequest = {
                     movieId: movieID,
                     bookmarkId: this.bookmarkID,
                 };
                 this.eventBus.emit(events.singleBookmarkPage.delete.movie, bookmarkRequest);
+                this.isNotifyVisible = true;
+
             });
         });
+
+        confirmDeleteButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.eventBus.emit(events.singleBookmarkPage.delete.bookmark, { bookmarkId: this.bookmarkID });
+        });
+
+        popup.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.closePopupWindow(e, popup);
+        });
+    }
+
+    showNotify = (message: string) => {
+        const notify = document.querySelector('.notify') as HTMLElement;
+        const notifyMessageBody = document.querySelector('.notify__message') as HTMLElement;
+        notifyMessageBody.innerText = message;
+        notify.classList.add('notify-open');
+        setTimeout(() => {
+            notify.classList.remove('notify-open');
+            this.isNotifyVisible = false;
+        }, 2000);
+    };
+
+    closePopupWindow = (e: MouseEvent, popup: HTMLElement) => {
+        const target = e.target as Element;
+        if (!target.closest('.popup__container_body') || target.classList.contains('bookmark-cancel')) {
+            popup.classList.remove('popup-open');
+        }
     }
 }

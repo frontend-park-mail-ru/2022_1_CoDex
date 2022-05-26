@@ -63,6 +63,8 @@ export const events = {
             content: "singleBookmarkPage:renderContent",
         },
         getContent: "singleBookmarkPage:getContent",
+        showNotify: "singleBookmarkPage:notify",
+        changePrivate: "signleBookmarkPage:changePrivate",
         delete: {
             bookmark: "singleBookmarkPage:deleteBookmark",
             movie: "singleBookmarkPage:deleteMovie",
@@ -102,6 +104,7 @@ export const events = {
             reviews: "profilePage:renderReviews",
             profileInfo: "profilePage:renderProfileInfo",
             changedProfile: "profilePage:renderChangedProfile",
+            newBookmark: "profilePage:renderNewBookmark",
         },
         getContent: "profilePage:getContent",
         getReviews: "profilePage:getReviews",
@@ -109,6 +112,7 @@ export const events = {
         getProfileInfo: "profilePage:getProfileInfo",
 
         sendChanges: "profilePage:sendSettingsChanges",
+        createBookmark: "profilePage:createBookmark",
         sendAvatar: "profilePage:sendAvatarChanges",
 
         validate: "profilePage:validate",

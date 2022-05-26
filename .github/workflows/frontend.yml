@@ -3,10 +3,10 @@ name: Frontend Build
 on:
   push:
    branches:
-     - main
+     - develop
   pull_request:
    branches:
-     - main
+     - develop
 
 jobs:
 #   lint:
@@ -42,7 +42,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run start
+        run: npm run build
 
       - name: Upload build result
         uses: actions/upload-artifact@v3
@@ -50,11 +50,11 @@ jobs:
           name: build
           path: ./public/dist
           
-      - name: Upload server images
-        uses: actions/upload-artifact@v3
-        with:
-          name: backend
-          path: ./public/server
+      # - name: Upload server images
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: backend
+      #     path: ./public/server
 
   deploy:
     runs-on: ubuntu-latest
@@ -76,19 +76,19 @@ jobs:
           target: "/home/ubuntu/deploy"
           strip_components: 1
       
-      - name: Download server images
-        uses: actions/download-artifact@v3
-        with:
-          name: backend
+      # - name: Download server images
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: backend
         
-      - name: Transfer server images
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          port: 22
-          key: ${{ secrets.PRIVATE_KEY }}
-          source: "/home/runner/work/2022_1_CoDex/2022_1_CoDex"
-          target: "/home/ubuntu/deploy"
-          strip_components: 1
+      # - name: Transfer server images
+      #   uses: appleboy/scp-action@master
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     port: 22
+      #     key: ${{ secrets.PRIVATE_KEY }}
+      #     source: "/home/runner/work/2022_1_CoDex/2022_1_CoDex"
+      #     target: "/home/ubuntu/deploy"
+      #     strip_components: 1
           

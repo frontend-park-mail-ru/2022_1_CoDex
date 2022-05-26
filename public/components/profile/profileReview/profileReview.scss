@@ -2,6 +2,10 @@
     grid-area: el;
     display: flex;
     flex-direction: column;
+    &__empty-container{
+        color: $error;
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 767px) {

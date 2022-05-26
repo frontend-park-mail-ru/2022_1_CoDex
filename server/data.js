@@ -30,7 +30,7 @@ const startServer = (app) => {
     res.json(bookmark);
   });
 
-  app.get("/api/v1/premiers", function (req, res) {
+  app.get("/api/v1/announced", function (req, res) {
     res.json(premiers);
   });
 
@@ -67,8 +67,7 @@ const startServer = (app) => {
 
   app.post("/api/v1/playlist/create", function (req, res) {
     res.status(201).json({
-      ID: "777",
-      title: "new title",
+      ID:16, imgSrc:'top.webp', title: "NewOne",
     });
   });
 
@@ -272,7 +271,7 @@ const startServer = (app) => {
           bookmarkId: 1,
         },
         {
-          collection: "Пример",
+          collection: "Примерырырырырырырырырырырыырырырырырырырырырырырыырырыр",
           hasMovie: true,
           bookmarkId: 2
         }
@@ -500,7 +499,7 @@ const startServer = (app) => {
   });
 
   app.post("/api/v1/signup", function (req, res) {
-    const name = req.body.name;
+    const name = req.body.username;
     const password = req.body.password;
     const email = req.body.email;
     if (
@@ -520,7 +519,10 @@ const startServer = (app) => {
     users[email] = user;
 
     res.cookie('podvorot', id, { expires: new Date(Date.now() + 1000 * 60 * 10) });
-    res.status(201).json({
+    console.log(user);
+    console.log(user.name);
+    console.log(users[email].name);
+    res.status(200).json({
       ID: id,
       imgsrc: "server/images/adventures.webp",
       username: users[email].name,
@@ -605,12 +607,18 @@ const startServer = (app) => {
 
   const Bookmarks = {
     bookmarksList: [
-      { description: "Подборка №1", imgSrc: "top.webp", ID: "10" },
-      { description: "Подборка №2", imgSrc: "top.webp", ID: "11" },
-      { description: "Подборка №3", imgSrc: "top.webp", ID: "12" },
-      { description: "Подборка №4", imgSrc: "top.webp", ID: "13" },
-      { description: "Подборка №5", imgSrc: "top.webp", ID: "14" },
-      { description: "Подборка №6", imgSrc: "top.webp", ID: "15" },
+      { description: "Подборка №1", imgSrc: "top.webp", ID: "10", public: true },
+      { description: "Подборка №2", imgSrc: "top.webp", ID: "11", public: true },
+      { description: "Подборка №3", imgSrc: "top.webp", ID: "12",public: false },
+      { description: "Подборка №4", imgSrc: "top.webp", ID: "13",public: false },
+      { description: "Подборка №5", imgSrc: "top.webp", ID: "14",public: true },
+      { description: "Подборка №6", imgSrc: "top.webp", ID: "15",public: true },
+    ]
+  };
+
+  const BookmarkNew = {
+    bookmarksList: [
+      { description: "New №1", imgSrc: "top.webp", ID: "16", public: true },
     ]
   };
 
@@ -1679,172 +1687,49 @@ const startServer = (app) => {
       {
         "ID": "1",
         "poster": "showshenkRedemption.webp",
-        "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
         "title": "Побег из Шоушенка",
         "originalTitle": "The Shawshank Redemption",
-        "year": "1994",
-        "country": "США",
-        "genre": "Драма",
-        "motto": "Страх - это кандалы. Надежда - это свобода",
-        "director": "Франк Дарабонт",
-        "budget": "25 000 000 $",
-        "gross": "28 418 687 $",
-        "duration": "142 минуты",
-        "cast": [
-          {
-            "name": "Тим Роббинс",
-            "href": "/collections",
-          },
-          {
-            "name": "Боб Гантон",
-            "href": "/collections",
-          },
-          {
-            "name": "Уильям Сэдлер",
-            "href": "/collections",
-          },
-          {
-            "name": "Клэнси Браун",
-            "href": "/collections",
-          },
-          {
-            "name": "Гил Беллоуз",
-            "href": "/collections",
-          },
-        ],
-        "info": "Уже скоро)",
-        "rating": "",
-        "description": "Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника. Оказавшись в тюрьме под названием Шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решётки. Каждый, кто попадает в эти стены, становится их рабом до конца жизни. Но Энди, обладающий живым умом и доброй душой, находит подход как к заключённым, так и к охранникам, добиваясь их особого к себе расположения.",
+        "premierDay": "9",
+        "premierMonth": "мая"
       },
       {
         "ID": "2",
         "poster": "greenMile.webp",
-        "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
         "title": "Зелёная миля",
         "originalTitle": "The Green Mile",
-        "year": "1999",
-        "country": "США",
-        "genre": "Драма, Криминал",
-        "motto": "Пол Эджкомб не верил в чудеса. Пока не столкнулся с одним из них",
-        "director": "Франк Дарабонт",
-        "budget": "60 000 000 $",
-        "gross": "300 000 000 $",
-        "duration": "189 минут",
-        "mainCast": "Том Хэнкс, Дэвид Морс, Бонни Хант, Майкл Клакр Дункан, Джеймс Кромуэлл, Майкл Джитер, Грэм Грин, Даг Хатчисон",
-        "cast": [
-          {
-            "name": "Том Хэнкс",
-            "href": "/collections",
-          },
-          {
-            "name": "Дэвид Морс",
-            "href": "/collections",
-          },
-          {
-            "name": "Бонни Хант",
-            "href": "/collections",
-          },
-          {
-            "name": "Майкл Кларк Дункан",
-            "href": "/collections",
-          },
-          {
-            "name": "Джеймс Кромуэлл",
-            "href": "/collections",
-          },
-          {
-            "name": "Майкл Джиттер",
-            "href": "/collections",
-          },
-        ],
-        "info": "Совсем скоро",
-        "rating": "",
-        "description": "Пол Эджкомб — начальник блока смертников в тюрьме «Холодная гора», каждый из узников которого однажды проходит «зеленую милю» по пути к месту казни. Пол повидал много заключённых и надзирателей за время работы. Однако гигант Джон Коффи, обвинённый в страшном преступлении, стал одним из самых необычных обитателей блока.",
+        "premierDay": "10",
+        "premierMonth": "июня"
       },
       {
         "ID": "1",
         "poster": "showshenkRedemption.webp",
-        "trailerHref": "https://www.youtube.com/watch?v=PLl99DlL6b4",
         "title": "Побег из Шоушенка",
         "originalTitle": "The Shawshank Redemption",
-        "year": "1994",
-        "country": "США",
-        "genre": "Драма",
-        "motto": "Страх - это кандалы. Надежда - это свобода",
-        "director": "Франк Дарабонт",
-        "budget": "25 000 000 $",
-        "gross": "28 418 687 $",
-        "duration": "142 минуты",
-        "cast": [
-          {
-            "name": "Тим Роббинс",
-            "href": "/collections",
-          },
-          {
-            "name": "Боб Гантон",
-            "href": "/collections",
-          },
-          {
-            "name": "Уильям Сэдлер",
-            "href": "/collections",
-          },
-          {
-            "name": "Клэнси Браун",
-            "href": "/collections",
-          },
-          {
-            "name": "Гил Беллоуз",
-            "href": "/collections",
-          },
-        ],
-        "info": "Вот уже почти выходит",
-        "rating": "",
-        "description": "Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника. Оказавшись в тюрьме под названием Шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решётки. Каждый, кто попадает в эти стены, становится их рабом до конца жизни. Но Энди, обладающий живым умом и доброй душой, находит подход как к заключённым, так и к охранникам, добиваясь их особого к себе расположения.",
+        "premierDay": "9",
+        "premierMonth": "мая"
       },
       {
         "ID": "2",
         "poster": "greenMile.webp",
-        "trailerHref": "https://www.youtube.com/watch?v=Bg7epsq0OIQ",
         "title": "Зелёная миля",
         "originalTitle": "The Green Mile",
-        "year": "1999",
-        "country": "США",
-        "genre": "Драма, Криминал",
-        "motto": "Пол Эджкомб не верил в чудеса. Пока не столкнулся с одним из них",
-        "director": "Франк Дарабонт",
-        "budget": "60 000 000 $",
-        "gross": "300 000 000 $",
-        "duration": "189 минут",
-        "mainCast": "Том Хэнкс, Дэвид Морс, Бонни Хант, Майкл Клакр Дункан, Джеймс Кромуэлл, Майкл Джитер, Грэм Грин, Даг Хатчисон",
-        "cast": [
-          {
-            "name": "Том Хэнкс",
-            "href": "/collections",
-          },
-          {
-            "name": "Дэвид Морс",
-            "href": "/collections",
-          },
-          {
-            "name": "Бонни Хант",
-            "href": "/collections",
-          },
-          {
-            "name": "Майкл Кларк Дункан",
-            "href": "/collections",
-          },
-          {
-            "name": "Джеймс Кромуэлл",
-            "href": "/collections",
-          },
-          {
-            "name": "Майкл Джиттер",
-            "href": "/collections",
-          },
-        ],
-        "info": "На следующий день",
-        "rating": "",
-        "description": "Пол Эджкомб — начальник блока смертников в тюрьме «Холодная гора», каждый из узников которого однажды проходит «зеленую милю» по пути к месту казни. Пол повидал много заключённых и надзирателей за время работы. Однако гигант Джон Коффи, обвинённый в страшном преступлении, стал одним из самых необычных обитателей блока.",
+        "premierDay": "10",
+        "premierMonth": "июня"
+      }, {
+        "ID": "1",
+        "poster": "showshenkRedemption.webp",
+        "title": "Побег из Шоушенка",
+        "originalTitle": "The Shawshank Redemption",
+        "premierDay": "9",
+        "premierMonth": "мая"
+      },
+      {
+        "ID": "2",
+        "poster": "greenMile.webp",
+        "title": "Зелёная миля",
+        "originalTitle": "The Green Mile",
+        "premierDay": "10",
+        "premierMonth": "июня"
       },
     ]
   };
@@ -2049,6 +1934,7 @@ const startServer = (app) => {
   const bookmark = {
     title: "Подборка №1",
     description: "Вот такая вот закладка :)",
+    private: false,
     movielist: [
       {
         "ID": "1",

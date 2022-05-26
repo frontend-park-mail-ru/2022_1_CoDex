@@ -1,9 +1,9 @@
-import { getProfile, getBookmarks, getReview, sendSettingsChanges, sendAvatar } from "../modules/connection";
+import { getProfile, getBookmarks, getReview, sendSettingsChanges, sendAvatar, createBookmark } from "../modules/connection";
 import { BaseModel } from "./BaseModel";
 import { statuses } from "../consts/statuses";
 import { events } from "../consts/events";
 import EventBus from "@/modules/eventBus";
-import { personalData, profileUserData, userData } from "@/types";
+import { bookmarkCreateRequest, bookmarkResponse, personalData, profileUserData, userData } from "@/types";
 import { authModule } from "@/modules/auth";
 import { emptyField, errorInfo } from "@/consts/errors";
 import { authConfig } from "@/consts/authConfig";
@@ -85,7 +85,8 @@ export class ProfileModel extends BaseModel {
             } if (response?.status === statuses.OK && response.parsedResponse) {
                 const profileData: profileUserData = response.parsedResponse;
                 profileData.isThisUser = authModule.user ? (userID === authModule.user.ID) : false;
-                authModule.changeUser(response.parsedResponse);
+                const parsed: userData = response.parsedResponse;
+                authModule.changeUser(parsed);
                 this.eventBus.emit(
                     events.profilePage.render.changedProfile, profileData
                 );
@@ -103,7 +104,8 @@ export class ProfileModel extends BaseModel {
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
             } if (response?.status === statuses.OK && response.parsedResponse) {
-                authModule.changeUser(response.parsedResponse);
+                const parsed: userData = response.parsedResponse;
+                authModule.changeUser(parsed);
                 this.eventBus.emit(
                     events.profilePage.render.changedProfile, response.parsedResponse
                 );
@@ -112,6 +114,23 @@ export class ProfileModel extends BaseModel {
             }
         }).catch((e) => {
             console.log("Unexpected profileSettingsAvatar error: ", e);
+        });
+    }
+
+    createBookmark = (inputsData: bookmarkCreateRequest) => {
+        console.log("inputsbookmark",inputsData)
+        createBookmark(inputsData).then(
+            (response) => {
+                if (!response) { return; }
+                const parsed = <bookmarkResponse> response.parsedResponse;
+                
+                if (response.status == statuses.OK) {
+                    console.log(response.parsedResponse)
+                    this.eventBus.emit(events.profilePage.render.newBookmark, parsed);
+                }
+            }
+        ).catch((e) => {
+            console.log("Unexpected review error: ", e);
         });
     }
 

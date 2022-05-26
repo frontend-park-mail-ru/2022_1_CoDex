@@ -32,6 +32,14 @@ export class SingleBookmarkController extends BaseController {
                 event: events.singleBookmarkPage.delete.movie,
                 handler: this.model.deleteMovie,
             },
+            {
+                event: events.singleBookmarkPage.showNotify,
+                handler: this.view.showNotify,
+            },
+            {
+                event: events.singleBookmarkPage.changePrivate,
+                handler: this.model.changePrivate,
+            },
         );
         this.subscribe();
     }

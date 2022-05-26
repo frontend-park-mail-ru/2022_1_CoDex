@@ -7,8 +7,23 @@ div.content-wrapper
                 span.container__bookmark-title__color #{title}
             div.container__bookmark-description #{description}
             .container__bookmark-settings
-                input(type="button" class='container__bookmark-settings__delete-playlist-btn' value='Удалить подборку') 
-                //TODO .container__bookmark-settings__make-private-btn Приватная закладка
+                input(type="button" class='container__bookmark-settings__delete-playlist-btn' value='Удалить подборку')
+                label.title Приватная подборка
+                if !public 
+                    div(class='container__bookmark-settings__private-btn private-on')
+                else 
+                    div(class='container__bookmark-settings__private-btn')
             div.movies-container
                 each movie, _ in movielist
                     +bookmarkMovieCard(movie)
+            .notify
+                span.notify__message
+                div.notify__close &#10006
+            .popup
+                .popup__container
+                    .popup__container__body
+                        span.bookmark-title Плейлист будет удалён без возможности восстановления. Удалить плейлист?
+                        div.popup__container__body__buttons
+                            button.bookmark-submit Да
+                            button.bookmark-cancel Нет
+

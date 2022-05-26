@@ -1,15 +1,14 @@
 mixin announcedCard(currentMovie)
-    div.movie-card
-        div.movie
-            div.movie__image
-                a.movie__image(href=`/announced/${currentMovie.ID}`)
+    div.announced-card
+        div.announced
+            div.announced__image
+                a.announced__image(href=`/announced/${currentMovie.ID}`)
                     img(src=(`../server/images/${currentMovie.poster}`))
-            div.movie__body
-                div.movie__body__info
-                    div.movie__body__info__data
-                        div.movie__body__info__data__title
-                            a.movie__body__info__data__title__movie-title(href=`/announced/${currentMovie.ID}`) #{currentMovie.title}
-                            div.movie__body__info__data__title__rating #{currentMovie.rating}
-                        div.movie__body__info__data__additional
-                        div.movie__body__info__data__additional #{currentMovie.info}
-                div.movie__body__description #{currentMovie.description}
+            div.announced__info
+                div.announced__info__name
+                    a.announced__info__name__russian(href=`/announced/${currentMovie.ID}`) #{currentMovie.title}
+                    div.announced__info__name__original #{currentMovie.originalTitle}
+                div.announced__info__premier
+                    div.announced__info__premier__day #{currentMovie.premierDay}
+                    div.announced__info__premier__month #{currentMovie.premierMonth}
+    

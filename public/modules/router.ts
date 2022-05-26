@@ -2,7 +2,7 @@ import { eventBus } from "./eventBus";
 import { events } from "../consts/events";
 import { routes } from "../consts/routes";
 import { BaseController } from "@/controllers/BaseController";
-import { pathData, routeParameters, routerData, URLData } from "@/types";
+import { pathData, routerData } from "@/types";
 import { AuthController } from "@/controllers/AuthController";
 import { getURLData } from "@/utils/utils";
 
@@ -105,7 +105,7 @@ export class Router {
         
         if (!this.currentController) {
             url = routes.homePage;
-            let homeData = getURLData(url, this.routes);
+            const homeData = getURLData(url, this.routes);
             if (!homeData) { return; }
             this.currentController = homeData.controller;
         }

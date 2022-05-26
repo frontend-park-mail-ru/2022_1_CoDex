@@ -46,23 +46,41 @@
 			left: 0;
 			right: 0;
 		}
-		.select-items div,
+
+		.select-items label input{
+			position: absolute;
+			opacity: 0;
+			cursor: pointer;
+		}
+
+
+		.select-items label,
 		.select-selected {
+			display: inline-block;
+			position: relative;
+
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+
 			background-color: $raspberry;
 			color: $font_color_white;
 			line-height: 48px;
+			height: 48px;
+			width: 100%;
 			cursor: pointer;
 			user-select: none;
 		}
+
 		.select-hide {
 			display: none;
 		}
-		.select-items div:hover,
+		.select-items label:hover,
 		.same-as-selected {
 			background-color: $dark_raspberry;
 		}
-		.select-items div:active,
-        .select-items div.hasMovie {
+		.select-items label:active {
 			background-color: $very_dark_raspberry;
 		}
 		.select-arrow-active {
@@ -130,4 +148,60 @@
         border: 1px solid black;
 		
     }
+}
+
+.custom-checkbox {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 25px;
+	width: 25px;
+	// background-color: $raspberry;
+
+	
+	&:after {
+		content: "";
+		position: absolute;
+		display: none;
+	
+		left: 20px;
+		top: 16px;
+		width: 5px;
+		height: 10px;
+		border: solid $font_color_white;
+		border-width: 0 3px 3px 0;
+		transform: rotate(45deg);
+	}
+	
+	
+}
+
+.select-items label:hover input~ .custom-checkbox:after {
+	display: block;
+	top: 4px;
+	left: 4px;
+	width: 40px;
+	height: 40px;
+	background: 
+		linear-gradient($font_color_white, $font_color_white),
+		linear-gradient($font_color_white, $font_color_white);
+	background-position:center;
+	background-size: 50% 2px,2px 50%; /*thickness = 2px, length = 50% (25px)*/
+	background-repeat:no-repeat;
+	border: none;
+	transform: none;
+}
+
+.select-items label input:checked ~ .custom-checkbox:after {
+	display: block;
+	content: "";
+	position: absolute;
+	background: none;
+	left: 20px;
+	top: 16px;
+	width: 5px;
+	height: 10px;
+	border: solid $font_color_white;
+	border-width: 0 3px 3px 0;
+	transform: rotate(45deg);
 }

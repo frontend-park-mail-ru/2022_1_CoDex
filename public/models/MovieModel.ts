@@ -1,5 +1,5 @@
 import EventBus from "@/modules/eventBus";
-import { bookmarkCreateRequest, bookmarkRequest, createBookmarkResponse, movie, ratingRequest, ratingResponse, reviewRequest, reviewResponse } from "@/types";
+import { bookmarkCreateRequest, bookmarkRequest, bookmarkResponse, movie, moviePageData, ratingRequest, ratingResponse, reviewRequest, reviewResponse } from "@/types";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
 import { authModule } from "../modules/auth";
@@ -34,6 +34,13 @@ export class MovieModel extends BaseModel {
             if (!response || !response.status) {
                 this.eventBus.emit(events.app.errorPage);
             } else if (response.status === statuses.OK && response.parsedResponse) {
+                const parsed = response.parsedResponse as moviePageData;
+                console.log("1", parsed);
+                if (parsed.related?.length == 0) {
+                    parsed.related = null;
+                    console.log("1.1", parsed);
+                }
+                console.log("3", parsed);
                 this.eventBus.emit(events.moviePage.render.content, response.parsedResponse);
             }
             if (response?.status === statuses.NOT_FOUND) {
@@ -96,18 +103,22 @@ export class MovieModel extends BaseModel {
     }
 
     addCollection = (inputsData: bookmarkRequest) => {
-        addMovieToBookmark(inputsData);
+        addMovieToBookmark(inputsData).catch((e) => {
+            console.log("Unexpected error: ", e);
+        });
     }
 
     removeCollection = (inputsData: bookmarkRequest) => {
-        removeMovieFromBookmark(inputsData);
+        removeMovieFromBookmark(inputsData).catch((e) => {
+            console.log("Unexpected error: ", e);
+        });
     }
 
     createCollection = (inputsData: bookmarkCreateRequest) => {
         createBookmark(inputsData).then(
             (response) => {
                 if (!response) { return; }
-                const parsed = <createBookmarkResponse> response.parsedResponse;
+                const parsed = <bookmarkResponse> response.parsedResponse;
                 if (response.status == statuses.CREATED) {
                     this.eventBus.emit(events.moviePage.createCollectionSuccess, parsed.ID, parsed.title);
                 }

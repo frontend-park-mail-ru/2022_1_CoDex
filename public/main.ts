@@ -16,6 +16,21 @@ import { PremiersController } from "./controllers/PremiersController";
 import { AnnouncedController } from "./controllers/AnnouncedController";
 import { SearchController } from "./controllers/SearchController";
 
+import { initializeApp } from 'firebase/app';
+import { getMessaging, onMessage, getToken } from 'firebase/messaging';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCO0VasuBzGS74ONUmtMKrktKddF58DIS8",
+  authDomain: "akino-61bc9.firebaseapp.com",
+  projectId: "akino-61bc9",
+  storageBucket: "akino-61bc9.appspot.com",
+  messagingSenderId: "643793608275",
+  appId: "1:643793608275:web:b6dcca5445ef7873e8f0a6",
+};
+
+const app = initializeApp(firebaseConfig);
+const messaging = getMessaging();
+
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js', { scope: '/' })
     .then((registration) => {
@@ -24,9 +39,32 @@ if ('serviceWorker' in navigator) {
     .catch((err) => {
       console.error("Error", err);
     });
+
 } else {
   console.log("smt went wrong, we shouldn't be here");
 }
+
+getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYnl17WWj3g_N5B7R0RKxiXS1fMlpzZDpZJ3oOID1QM' }).then((currentToken) => {
+  if (currentToken) {
+    fetch('https://park-akino.ru/api/v1/user/subscribePush', {
+     method: 'POST',
+     body: JSON.stringify({ token: currentToken }),
+    }).finally()
+  } else {
+    console.log('No registration token available. Request permission to generate one.');
+  }
+}).catch((err) => {
+  console.log('An error occurred while retrieving token. ', err);
+});
+
+onMessage(messaging, function(payload) {
+  const title: string = payload.notification?.title!;
+  console.log(payload)
+  const greeting = new Notification(title, {
+    body: payload?.notification?.body,
+    icon: 'https://park-akino.ru/assets/favicon.ico'
+  });
+});
 
 export const root = document.getElementById("root");
 const headerController = new HeaderController;

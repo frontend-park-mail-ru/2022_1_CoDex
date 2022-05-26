@@ -17,6 +17,7 @@ export const urls: urlsList = {
         getUser: `${currentUrl}${version}/user`,
         changeProfile:`${currentUrl}${version}/user/update`,
         changeAvatar:`${currentUrl}${version}/user/update/avatar`,
+        changePrivateSettings: `${currentUrl}${version}/playlist/alterPublic`,
         bookmarks: `${currentUrl}${version}/user/bookmarks`,
         reviews: `${currentUrl}${version}/user/reviews`,
         logout: `${currentUrl}${version}/logout`,
@@ -29,8 +30,8 @@ export const urls: urlsList = {
         actor: `${currentUrl}${version}/actors`,
         sendRating: `${currentUrl}${version}/ratings/set`,
         sendReviews: `${currentUrl}${version}/comments/set`,
-        addMovieToBookmark: `${currentUrl}${version}/playlist/addMovie`, // TODO
-        removeMovieFromBookmark: `${currentUrl}${version}/playlist/deleteMovie`, // TODO
+        addMovieToBookmark: `${currentUrl}${version}/playlist/addMovie`,
+        removeMovieFromBookmark: `${currentUrl}${version}/playlist/deleteMovie`,
         deleteBookmark: `${currentUrl}${version}/playlist/deletePlaylist`,
         createBookmark: `${currentUrl}${version}/playlist/create`, 
         genres: `${currentUrl}${version}/genres`,

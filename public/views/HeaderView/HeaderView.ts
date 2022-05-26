@@ -168,7 +168,7 @@ export class HeaderView extends BaseView {
     if (!searchBtn) {
       return;
     }
-    searchBtn.addEventListener('click', (e) => {
+    searchBtn.addEventListener('click', () => {
       if (document.documentElement.clientWidth > 600) {
         this.isSearchClicked = false;
         this.eventBus.emit(events.pathChanged, { URL: `/search/${decodeURI(input.value)}` });
@@ -226,7 +226,7 @@ export class HeaderView extends BaseView {
     if (!burgerButton) { return; }
     const verticalMenu = document.querySelector('.navbar__vertical-menu__btn-container') as HTMLElement;
     if (!verticalMenu) { return; }
-    burgerButton.addEventListener("click", (e) => {
+    burgerButton.addEventListener("click", () => {
       if (burgerButton.classList.contains('open')) {
         burgerButton.classList.remove("open");
         verticalMenu.style.display = "none";
@@ -236,7 +236,7 @@ export class HeaderView extends BaseView {
       }
     });
     burgerButtonList.forEach((button) => {
-      button.addEventListener("click", (e) => {
+      button.addEventListener("click", () => {
         burgerButton.classList.remove("open");
         verticalMenu.style.display = "none";
       })

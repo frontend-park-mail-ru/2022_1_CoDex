@@ -55,9 +55,10 @@ div.content-wrapper
                                 if index != 0
                                     span=`, `
                                 a(class="movie-facts__fact__value__link" href=actor.href) #{actor.name}
-            div.related
-                div.related__title Если вам понравился этот фильм:
-                +slider(related)
+            if related
+                div.related
+                    div.related__title Если вам понравился этот фильм:
+                    +slider(related)
             div.star-rating
                 div.star-rating__title Рейтинг фильма:
                 div.stars

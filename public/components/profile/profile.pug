@@ -1,5 +1,12 @@
 .profile-wrapper
     .profile
+        .profile__popup
+            .profile__popup__container
+                .profile__popup__container__body
+                    span.bookmark-title Создание подборки
+                    input.bookmark-name(type="text" placeholder="Название вашей новой подборки" maxlength="46")
+                    button.bookmark-submit Создать подборку
+                    div.popup-close &#10006
         .profile-info
             include profileInfo/profileInfo
         .profile-content
