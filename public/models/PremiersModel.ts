@@ -1,5 +1,5 @@
 import EventBus from "@/modules/eventBus";
-import { singleCollectionMovie, singleCollectionPageData } from "@/types";
+import { singleCollectionPageData } from "@/types";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
 import { getPremiers } from "../modules/connection";
@@ -23,9 +23,9 @@ export class PremiersModel extends BaseModel {
                 if (!response) {
                     this.eventBus.emit(events.app.errorPage);
                 } if (response?.status === statuses.OK && response.parsedResponse) {
-                    const parsed = <singleCollectionPageData> response.parsedResponse;
+                    const parsed = <singleCollectionPageData>response.parsedResponse;
                     this.eventBus.emit(
-                        events.premiersPage.render.content, response.parsedResponse
+                        events.premiersPage.render.content, parsed
                     );
                 } else if (response?.status === statuses.NOT_FOUND) {
                     this.eventBus.emit(events.app.errorPageText, "Премьер нет :(");

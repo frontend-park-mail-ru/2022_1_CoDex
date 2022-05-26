@@ -5,10 +5,8 @@ import profilePug from '../../components/profile/profile.pug';
 import profileSettings from '../../components/profile/profileInfo/profileInfo.pug';
 import profileReview from '../../components/profile/profileReview/profileReview.pug';
 import profileBookmark from '../../components/profile/profileBookmark/profileBookmark.pug';
-import singleBookmark from '../../components/bookmark/bookmark.pug';
 import EventBus from '@/modules/eventBus';
 import { userData, profileUserData, bookmarkResponse } from '@/types';
-import { authModule } from '@/modules/auth';
 import { createElementFromHTML } from '@/utils/utils';
 
 /**

@@ -11,8 +11,6 @@ const firebaseConfig = {
   appId: "1:643793608275:web:b6dcca5445ef7873e8f0a6",
 };
 
-console.log("inside sw")
-
 firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 
@@ -51,6 +49,3 @@ messaging.onBackgroundMessage(function (payload) {
   self.registration.showNotification(notificationTitle,
     notificationOptions).finally();
 });
-
-
-

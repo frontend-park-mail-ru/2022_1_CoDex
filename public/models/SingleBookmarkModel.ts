@@ -95,8 +95,6 @@ export class SingleBookmarkModel extends BaseModel {
         changePrivateSettings(bookmarkData).then((response)=>{
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
-            } if (response?.status === statuses.OK) {
-
             }
         });
     }

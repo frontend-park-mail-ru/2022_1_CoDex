@@ -31,30 +31,21 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const messaging = getMessaging();
 
-// if ('serviceWorker' in navigator) {
-//   navigator.serviceWorker.register('/sw.js', { scope: '/' })
-//     .then((registration) => {
-//       console.log('SW registered on scope:', registration.scope);
-//     })
-//     .catch((err) => {
-//       console.error("Error", err);
-//     });
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js', { scope: '/' })
+    .then((registration) => {
+      console.log('SW registered on scope:', registration.scope);
+    })
+    .catch((err) => {
+      console.error("Error", err);
+    });
 
-//   navigator.serviceWorker.register('/firebase-messaging-sw.js', { scope: '/firebase-cloud-messaging-push-scope' })
-//     .then((registration) => {
-//       console.log('Firebase SW registered on scope:', registration.scope);
-//     })
-//     .catch((err) => {
-//       console.error("Error", err);
-//     });
-
-// } else {
-//   console.log("smt went wrong, we shouldn't be here");
-// }
+} else {
+  console.log("smt went wrong, we shouldn't be here");
+}
 
 getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYnl17WWj3g_N5B7R0RKxiXS1fMlpzZDpZJ3oOID1QM' }).then((currentToken) => {
   if (currentToken) {
-    console.log(currentToken);
     fetch('https://park-akino.ru/api/v1/user/subscribePush', {
      method: 'POST',
      body: JSON.stringify({ token: currentToken }),
