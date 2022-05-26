@@ -121,6 +121,7 @@
             font-size: 1.5em;
             font-family: $main_font;
             align-self: baseline;
+            font-weight: 500;
         }
     }
     &__head__error {
@@ -139,7 +140,7 @@
 .text-input {
     height: 50px;
     font-family: $main_font;
-    font-weight: bold;
+    font-weight: 700;
     width: 100%;
     padding-left: 10px;
     border-radius: 10px;
@@ -253,12 +254,28 @@
             font-size: 25px;
         }
 
+        grid-template-areas:
+        "A0 A0 A0 A0 A0 A0 A0 A0 A0 A0"
+        "B0 B1 B1 B1 B1 B1 B1 B1 B1 B2"
+        "B0 B1 B1 B1 B1 B1 B1 B1 B1 B2"
+        "B0 B1 B1 B1 B1 B1 B1 B1 B1 B2"
+        "C0 C1 C1 C1 C1 C1 C1 C1 C1 C2";
+
     }
     .register {
         width:40%;
         &__invitation {
             font-size: 25px;
         }
+
+        grid-template-areas:
+        "A0 A0 A0 A0 A0 A0 A0 A0 A0 A0"
+        "B0 B1 B1 B1 B1 B1 B1 B1 B1 B2"
+        "B0 B1 B1 B1 B1 B1 B1 B1 B1 B2"
+        "B0 B1 B1 B1 B1 B1 B1 B1 B1 B2"
+        "B0 B1 B1 B1 B1 B1 B1 B1 B1 B2"
+        "B0 B1 B1 B1 B1 B1 B1 B1 B1 B2"
+        "C0 C1 C1 C1 C1 C1 C1 C1 C1 C2";
     }
 
     .auth-input {
