@@ -1938,8 +1938,8 @@ const startServer = (app) => {
   const bookmark = {
     title: "Подборка №1jfksdjffsdklfjsdklfjsdf",
     description: "Вот такая вот закладка :)",
-    private: false,
-    userID: "1",
+    public: false,
+    userId: "1",
     movielist: [
       {
         "ID": "1",

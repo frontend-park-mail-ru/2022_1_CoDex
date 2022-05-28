@@ -303,7 +303,7 @@ export type singleBookmarkPageData = {
     movielist: movieInfo[],
     title: string,
     public: boolean,
-    userID: string,
+    userId: string,
     isThisUser: boolean,
 }
 

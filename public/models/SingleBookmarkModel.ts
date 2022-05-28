@@ -35,8 +35,9 @@ export class SingleBookmarkModel extends BaseModel {
                     this.eventBus.emit(events.app.errorPage);
                 } if (response?.status === statuses.OK && response.parsedResponse) {
                     const parsed = <singleBookmarkPageData>response.parsedResponse;
-                    parsed.isThisUser = authModule.user ? (authModule.user.ID == parsed.userID) : false;
+                    parsed.isThisUser = authModule.user ? (authModule.user.ID == parsed.userId) : false;
                     this.shortenMoviesDescription(parsed.movielist);
+                    console.log(parsed)
                     this.eventBus.emit(
                         events.singleBookmarkPage.render.content, parsed
                     );
@@ -105,7 +106,7 @@ export class SingleBookmarkModel extends BaseModel {
         changeTitle(bookmarkData).then((response) => {
             if (response?.status === statuses.OK) {
                 const parsed = <singleBookmarkPageData>response.parsedResponse;
-                parsed.isThisUser = authModule.user ? (authModule.user.ID == parsed.userID) : false;
+                parsed.isThisUser = authModule.user ? (authModule.user.ID == parsed.userId) : false;
                 this.shortenMoviesDescription(parsed.movielist);
                 this.eventBus.emit(
                     events.singleBookmarkPage.render.content, parsed
