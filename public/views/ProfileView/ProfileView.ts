@@ -21,6 +21,7 @@ export class ProfileView extends BaseView {
     */
   constructor(eventBus: EventBus, data: object = {}) {
     super(eventBus, data);
+    
   }
 
   /**
@@ -53,6 +54,9 @@ export class ProfileView extends BaseView {
     const profileBookmarks = document.querySelector('.profile-bookmarks');
     if (profileBookmarks) {
       data.isThisUser = this.userData.isThisUser;
+      data.userID = this.userData.ID;
+      
+      console.log(data)
       profileBookmarks.innerHTML += profileBookmark(data);
     }
     this.addCreateBookmarkButtonListener();
@@ -210,7 +214,8 @@ export class ProfileView extends BaseView {
         if (!target) {
           return;
         }
-        const file = target.files as FileList;
+        const fileList = target.files as FileList;
+        const file = fileList[0] as File;
         if (!file) {
           return
         }
@@ -221,11 +226,11 @@ export class ProfileView extends BaseView {
           const imgSrc: string = avatarTarget.result as string;
           avatarDiv.style.backgroundImage = `url(${imgSrc})`;
         });
-        reader.readAsDataURL(file[0]);
+        reader.readAsDataURL(file);
 
         const formData = new FormData();
-        if (file[0]) {
-          formData.append('avatar', file[0]);
+        if (file) {
+          formData.append('avatar', file);
           this.eventBus.emit(events.profilePage.sendAvatar, formData, this.userData.ID);
         }
       });

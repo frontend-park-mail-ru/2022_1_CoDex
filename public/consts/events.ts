@@ -65,10 +65,13 @@ export const events = {
         getContent: "singleBookmarkPage:getContent",
         showNotify: "singleBookmarkPage:notify",
         changePrivate: "signleBookmarkPage:changePrivate",
+        changeTitle: "singleBookmarkPage:changeTitle",
+        setTitle: "singleBookmarkPage:setTitle",
         delete: {
             bookmark: "singleBookmarkPage:deleteBookmark",
             movie: "singleBookmarkPage:deleteMovie",
         }
+
     },
 
     moviePage: {
@@ -119,6 +122,7 @@ export const events = {
         addValidationError: "profilePage:addValidationError",
         deleteValidationError: "profilePage:deleteValidationError",
         onSuccessSubmit: "profilePage:successSumbit",
+        onGotUser: "profilePage:onGotUser",
         //TODO submit: "profilePage:submit",
         // submitError: "profilePage:submitError",
         // wrongInput: "profilePage:wrongInput",

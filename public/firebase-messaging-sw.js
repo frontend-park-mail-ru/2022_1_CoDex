@@ -1,7 +1,6 @@
 importScripts('https://www.gstatic.com/firebasejs/9.8.1/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/9.8.1/firebase-messaging-compat.js');
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyCO0VasuBzGS74ONUmtMKrktKddF58DIS8",
   authDomain: "akino-61bc9.firebaseapp.com",
@@ -25,11 +24,11 @@ messaging.onMessage((payload) => {
     console.log("This browser does not support system notifications.");
   } else {
 
-    const notification = new Notification(notificationTitle, notificationOptions);
-    notification.onclick = function (event) {
-      event.preventDefault();
-      notification.close();
-    }
+    // const notification = new Notification(notificationTitle, notificationOptions);
+    // notification.onclick = function (event) {
+    //   event.preventDefault();
+    //   notification.close();
+    // }
 
     self.registration.showNotification(notificationTitle,
       notificationOptions).finally();

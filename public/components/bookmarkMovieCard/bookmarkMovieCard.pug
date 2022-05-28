@@ -1,4 +1,4 @@
-mixin bookmarkMovieCard(currentMovie)
+mixin bookmarkMovieCard(currentMovie, isThisUser)
     div.movie-card
         div.movie
             div.movie__image
@@ -10,7 +10,8 @@ mixin bookmarkMovieCard(currentMovie)
                         div.movie__body__info__data__title
                             a.movie__body__info__data__title__movie-title(href=`/movies/${currentMovie.ID}`) #{currentMovie.title}
                             div.movie__body__info__data__title__rating #{currentMovie.rating}
-                            div.movie__body__info__data__title__delete-movie-btn
+                            if isThisUser
+                                div.movie__body__info__data__title__delete-movie-btn
 
                         div.movie__body__info__data__additional
                         div.movie__body__info__data__additional #{currentMovie.info}

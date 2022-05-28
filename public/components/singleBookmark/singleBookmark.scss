@@ -165,17 +165,8 @@
 
         &__message {
             color: $white;
-            padding-left: 15px;
-            // background-color: white;
-        }
-        &__close {
-            //position: relative;
-            color: $white;
-            cursor: pointer;
-            //top: 0px;
-            //left: 100%;
             padding-left: 10px;
-            padding-right: 15px;
+            padding-right: 10px;
         }
     }
     .notify-open {
@@ -188,13 +179,13 @@
         display: block;
         height: 100%;
         width: 100%;
-        font-size: 40px;
         text-decoration: none;
         color: white;
         grid-area: B1;
         text-align: left;
         margin-top: 0;
         margin-bottom: 20px;
+        display: flex;
         @media (max-width: 600px) {
             font-size: 30px;
         }
@@ -204,7 +195,38 @@
         }
         &__color {
             max-width: 100%;
-            color: $error;
+            color: white;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            height: 40px;
+            font-size: 38px;
+            text-overflow: ellipsis;
+            &::placeholder {
+                opacity: 1;
+                color: white;
+            }
+        }
+        &__color__title-user {
+            max-width: 100%;
+            color: white;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            height: 40px;
+            font-size: 38px;
+            text-overflow: ellipsis;
+            &:hover {
+                outline: 1px solid $raspberry;
+                cursor: pointer;
+            }
+            &:focus {
+                outline: 1px solid $raspberry;
+            }
+            &::placeholder {
+                opacity: 1;
+                color: white;
+            }
         }
     }
     &__bookmark-description {

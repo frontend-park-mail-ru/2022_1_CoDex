@@ -25,7 +25,7 @@ class Auth {
                 console.log("Unexpected auth error: ", e);
             });
         }
-
+        
 
         this.eventBus.on(events.authPage.logRegSuccess, this.getUserFromSubmit);
         this.eventBus.on(events.header.logout, this.logoutUser);

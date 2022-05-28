@@ -3,22 +3,25 @@ include ../bookmarkMovieCard/bookmarkMovieCard
 div.content-wrapper
     page.page
         div.container
-            h1(class="container__bookmark-title") #{`Подборка: `}
-                span.container__bookmark-title__color #{title}
+            h1(class="container__bookmark-title")
+                if isThisUser
+                    input(class="container__bookmark-title__color__title-user" type="input" value=title maxlength="46")
+                else
+                    input.container__bookmark-title__color(type="input" readOnly="true" value=title maxlength="46")
             div.container__bookmark-description #{description}
-            .container__bookmark-settings
-                input(type="button" class='container__bookmark-settings__delete-playlist-btn' value='Удалить подборку')
-                label.title Приватная подборка
-                if !public 
-                    div(class='container__bookmark-settings__private-btn private-on')
-                else 
-                    div(class='container__bookmark-settings__private-btn')
+            if isThisUser
+                .container__bookmark-settings
+                    input(type="button" class='container__bookmark-settings__delete-playlist-btn' value='Удалить подборку')
+                    label.title Приватная подборка
+                    if !public 
+                        div(class='container__bookmark-settings__private-btn private-on')
+                    else 
+                        div(class='container__bookmark-settings__private-btn')
             div.movies-container
                 each movie, _ in movielist
-                    +bookmarkMovieCard(movie)
+                    +bookmarkMovieCard(movie, isThisUser)
             .notify
                 span.notify__message
-                div.notify__close &#10006
             .popup
                 .popup__container
                     .popup__container__body

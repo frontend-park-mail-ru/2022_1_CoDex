@@ -18,6 +18,7 @@ export const urls: urlsList = {
         changeProfile:`${currentUrl}${version}/user/update`,
         changeAvatar:`${currentUrl}${version}/user/update/avatar`,
         changePrivateSettings: `${currentUrl}${version}/playlist/alterPublic`,
+        changeTitleSettings: `${currentUrl}${version}/playlist/changeTitle`,
         bookmarks: `${currentUrl}${version}/user/bookmarks`,
         reviews: `${currentUrl}${version}/user/reviews`,
         logout: `${currentUrl}${version}/logout`,

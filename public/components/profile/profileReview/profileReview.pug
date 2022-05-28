@@ -1,8 +1,8 @@
 include ../../review/review
-.profile-reviews__reviewContainer
-    if reviewsList
+.profile-reviews__review-container
+    if reviewsList.length
         each el, _ in reviewsList 
             +review(el)
     else 
-        .profile-reviews__reviewContainer__empty-container
+        .profile-reviews__review-container__empty-container
             p.empty-container__text Список отзывов пуст

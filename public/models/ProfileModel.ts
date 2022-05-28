@@ -7,6 +7,7 @@ import { bookmarkCreateRequest, bookmarkResponse, personalData, profileUserData,
 import { authModule } from "@/modules/auth";
 import { emptyField, errorInfo } from "@/consts/errors";
 import { authConfig } from "@/consts/authConfig";
+import { sleep } from "@/utils/sleep";
 
 /**
  * @description Класс модели страницы профиля.
@@ -26,10 +27,17 @@ export class ProfileModel extends BaseModel {
                 this.eventBus.emit(events.app.errorPage);
             } if (response?.status === statuses.OK && response.parsedResponse) {
                 const profileData: profileUserData = response.parsedResponse;
-                profileData.isThisUser = authModule.user ? (user.ID == authModule.user.ID) : false;
-                this.eventBus.emit(
-                    events.profilePage.render.profileInfo, profileData
-                );
+                (async () => {
+                    await sleep(500);
+                    profileData.isThisUser = authModule.user ? (user.ID == authModule.user.ID) : false;
+                    this.eventBus.emit(
+                        events.profilePage.render.profileInfo, profileData
+                    );
+                })();
+                // profileData.isThisUser = authModule.user ? (user.ID == authModule.user.ID) : false;
+                //     this.eventBus.emit(
+                //         events.profilePage.render.profileInfo, profileData
+                //     );
             } else if (response?.status === statuses.NOT_FOUND) {
                 this.eventBus.emit(events.app.errorPageText, "Такого пользователя нет");
             }
@@ -121,8 +129,8 @@ export class ProfileModel extends BaseModel {
         createBookmark(inputsData).then(
             (response) => {
                 if (!response) { return; }
-                const parsed = <bookmarkResponse> response.parsedResponse;
-                
+                const parsed = <bookmarkResponse>response.parsedResponse;
+
                 if (response.status == statuses.OK) {
                     console.log(response.parsedResponse)
                     this.eventBus.emit(events.profilePage.render.newBookmark, parsed);

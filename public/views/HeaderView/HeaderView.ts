@@ -187,9 +187,7 @@ export class HeaderView extends BaseView {
     });
 
     window.addEventListener('resize', () => {
-      console.log(this.isSearchClicked)
       if (document.documentElement.clientWidth > 600 && this.isSearchClicked) {
-        console.log("resize")
         this.hideSearch(true);
       }
     })

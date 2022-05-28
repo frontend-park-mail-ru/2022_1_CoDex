@@ -92,6 +92,7 @@ export class ProfileController extends BaseController {
                 event: events.profilePage.onSuccessSubmit,
                 handler: this.view.successSumbit
             },
+
         );
         this.subscribe();
     }

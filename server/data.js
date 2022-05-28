@@ -81,6 +81,10 @@ const startServer = (app) => {
     });
   });
 
+  app.post("/api/v1/playlist/changeTitle", function (req, res) {
+    res.status(200).json(bookmark);
+  });
+
   app.get("/api/v1/search/\*", function (req, res) {
     res.status(200).json({
       status: 200,
@@ -1932,9 +1936,10 @@ const startServer = (app) => {
   };
 
   const bookmark = {
-    title: "Подборка №1",
+    title: "Подборка №1jfksdjffsdklfjsdklfjsdf",
     description: "Вот такая вот закладка :)",
     private: false,
+    userID: "1",
     movielist: [
       {
         "ID": "1",
