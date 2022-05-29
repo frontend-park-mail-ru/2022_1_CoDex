@@ -1,6 +1,6 @@
 mixin review(currentReview)
     if currentReview.type=='1'
-        div.review-card(style="background: var(--goodFeedback);")
+        div.profile__review-card(style="background: var(--goodFeedback);")
             div.review
                 div.review__image
                     a.review__image(href=`/movies/${currentReview.movieID}`)
