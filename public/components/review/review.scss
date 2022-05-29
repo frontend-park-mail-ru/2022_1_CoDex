@@ -1,7 +1,6 @@
 @import "../../css/consts.scss";
 
 .profile__review-card {
-    max-width: 580px;
     min-height: 200px;
     border-radius: 20px;
     color: $background;
@@ -17,7 +16,6 @@
 .review {
     font-family: $main_font;
     font-weight: bold;
-    max-width: 560px;
     display: flex;
     align-items: flex-start;
 
@@ -52,7 +50,6 @@
 
         @media (max-width: 600px) {
             max-width: 200px;
-            max-height: 195px;
             padding: 0 0 0 10px;
         }
 
@@ -102,7 +99,6 @@
             display: flex;
             font-size: 16px;
             line-height: 20px;
-            width: 350px;
             overflow: hidden;
             text-overflow: ellipsis;
         }
