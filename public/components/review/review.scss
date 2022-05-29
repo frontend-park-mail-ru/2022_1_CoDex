@@ -1,63 +1,110 @@
-.review-element {
-    display: flex;
-    flex-direction: row;
+@import "../../css/consts.scss";
+
+.review-card {
+    max-width: 580px;
+    min-height: 200px;
     border-radius: 20px;
-    background-color: $grey;
-    height: 80px;
-    margin-bottom: 24px;
-    align-items: center;
+    color: $background;
+    padding: 10px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
 
-    &__type {
-        margin-left: 26px;
-        color: $font_color_white;
-        font-family: $main_font;
-        font-weight: 600;
-        font-size: 28px;
-        line-height: 32px;
-    }
-    &__text {
-        color: $font_color_white;
-        font-family: $main_font;
-        margin-left: 10px;
-        font-weight: 600;
-        font-size: 28px;
-        line-height: 32px;
-    }
-
-    &__film-name {
-        font-family: $main_font;
-        color: $font_color_white;
-        margin-left: 10px;
-        font-weight: 600;
-        font-size: 28px;
-        line-height: 32px;
+    @media (max-width: 600px) {
+        max-width: 355px;
     }
 }
 
-@media (max-width: 1216px) {
-    .review-element {
-        &__type {
-            font-size: 24px;
+.review {
+    font-family: $main_font;
+    font-weight: bold;
+    max-width: 560px;
+    display: flex;
+    align-items: flex-start;
+
+    &__image {
+        display: flex;
+        max-width: 158px;
+        max-height: 214px;
+        margin-bottom: 20px;
+
+        img {
+            width: 158px;
+            height: 214px;
+            border-radius: 10px;
         }
-        &__text {
-            font-size: 24px;
-        }
-        &__film-name {
-            font-size: 24px;
+        @media (max-width: 600px) {
+            max-width: 130px;
+            max-height: 160px;
+            margin-bottom: 35px;
+
+            img {
+                max-width: 130px;
+                max-height: 160px;
+            }
         }
     }
-}
 
-@media (max-width: 767px){
-    .review-element {
-        &__type {
-            font-size: 24px;
+    &__body {
+        flex: 1 1 auto;
+        padding: 0 30px 0 20px;
+        display: flex;
+        flex-direction: column;
+
+        @media (max-width: 600px) {
+            max-width: 200px;
+            max-height: 195px;
+            padding: 0 0 0 10px;
         }
-        &__text {
-            font-size: 24px;
+
+        &__info {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            &__data {
+                margin-bottom: 10px;
+                width: 100%;
+
+                &__title {
+                    display: flex;
+
+                    &__review-title {
+                        font-family: $main_font;
+                        display: flex;
+                        width: 100%;
+                        overflow: hidden;
+                        max-width: 1180px;
+                        font-size: 20px;
+                        text-decoration: none;
+                        color: white;
+                        grid-area: B1;
+                        text-align: left;
+                        @media (max-width: 600px) {
+                            width: 100%;
+                            font-size: 18px;
+                        }
+                    }
+
+                    &__rating {
+                        text-align: center;
+                        font-family: $main_font;
+                        font-size: 20px;
+                        color: #73324a;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
         }
-        &__film-name {
-            font-size: 24px;
+
+        &__description {
+            color: white;
+            max-width: 100%;
+            display: flex;
+            font-size: 16px;
+            line-height: 20px;
+            width: 350px;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 }

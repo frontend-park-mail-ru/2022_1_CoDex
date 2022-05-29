@@ -67,6 +67,8 @@ export class ProfileView extends BaseView {
  */
   renderReviews = (data: userData) => {
     const profileReviews = document.querySelector('.profile-reviews');
+    console.log("review data", data);
+    console.log(profileReviews)
     if (profileReviews) {
       profileReviews.innerHTML += profileReview(data);
     }

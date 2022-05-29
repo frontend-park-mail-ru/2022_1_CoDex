@@ -1,6 +1,7 @@
 import { authModule } from "@/modules/auth";
 import EventBus from "@/modules/eventBus";
 import { singleBookmark, singleCollectionMovie, singleBookmarkPageData, bookmarkDeleteRequest, bookmarkRequest, bookmarkChangePrivateRequest, bookmarkChangeTitleRequest } from "@/types";
+import { sleep } from "@/utils/sleep";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
 import { getSingleBookmark, deleteBookmark, removeMovieFromBookmark, changePrivateSettings, changeTitle, } from "../modules/connection";
@@ -35,12 +36,20 @@ export class SingleBookmarkModel extends BaseModel {
                     this.eventBus.emit(events.app.errorPage);
                 } if (response?.status === statuses.OK && response.parsedResponse) {
                     const parsed = <singleBookmarkPageData>response.parsedResponse;
-                    parsed.isThisUser = authModule.user ? (authModule.user.ID == parsed.userId) : false;
-                    this.shortenMoviesDescription(parsed.movielist);
-                    console.log(parsed)
-                    this.eventBus.emit(
-                        events.singleBookmarkPage.render.content, parsed
-                    );
+                    (async () => {
+                        await sleep(500);
+                        parsed.isThisUser = authModule.user ? (authModule.user.ID == parsed.userId) : false;
+                        this.shortenMoviesDescription(parsed.movielist);
+                        this.eventBus.emit(
+                            events.singleBookmarkPage.render.content, parsed
+                        );
+                    })();
+                    // parsed.isThisUser = authModule.user ? (authModule.user.ID == parsed.userId) : false;
+                    // this.shortenMoviesDescription(parsed.movielist);
+                    // console.log(parsed)
+                    // this.eventBus.emit(
+                    //     events.singleBookmarkPage.render.content, parsed
+                    // );
                 } else if (response?.status === statuses.NOT_FOUND) {
                     this.eventBus.emit(events.app.errorPageText, "Такой подборки нет :(");
                 }

@@ -67,7 +67,7 @@ const startServer = (app) => {
 
   app.post("/api/v1/playlist/create", function (req, res) {
     res.status(201).json({
-      ID:16, imgSrc:'top.webp', title: "NewOne",
+      ID: 16, imgSrc: 'top.webp', title: "NewOne",
     });
   });
 
@@ -613,10 +613,10 @@ const startServer = (app) => {
     bookmarksList: [
       { description: "Подборка №1", imgSrc: "top.webp", ID: "10", public: true },
       { description: "Подборка №2", imgSrc: "top.webp", ID: "11", public: true },
-      { description: "Подборка №3", imgSrc: "top.webp", ID: "12",public: false },
-      { description: "Подборка №4", imgSrc: "top.webp", ID: "13",public: false },
-      { description: "Подборка №5", imgSrc: "top.webp", ID: "14",public: true },
-      { description: "Подборка №6", imgSrc: "top.webp", ID: "15",public: true },
+      { description: "Подборка №3", imgSrc: "top.webp", ID: "12", public: false },
+      { description: "Подборка №4", imgSrc: "top.webp", ID: "13", public: false },
+      { description: "Подборка №5", imgSrc: "top.webp", ID: "14", public: true },
+      { description: "Подборка №6", imgSrc: "top.webp", ID: "15", public: true },
     ]
   };
 
@@ -628,12 +628,12 @@ const startServer = (app) => {
 
   const Reviews = {
     reviewsList: [
-      { type: "Оценка", text: "10", date: "01.01.2001", number: "1" },
-      { type: "Отзыв", feedbacktype: "1", date: "01.01.2001", number: "2", movieTitle: "Вечное сияние чистого разума" },
-      { type: "Отзыв", feedbacktype: "2", date: "01.01.2001", number: "3", movieTitle: "Вечное сияние чистого разума" },
-      { type: "Отзыв", feedbacktype: "3", date: "01.01.2001", number: "4", movieTitle: "Вечное сияние чистого разума" },
+      { type: "1", rating: "10", date: "01.01.2001",movieID: "1", number: "1", movieTitle: "Вечное сияние чистого разума","poster": "showshenkRedemption.webp",text: "`Великолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильм`" },
+      { type: "2", rating: "10", date: "01.01.2001",movieID: "2", number: "2", movieTitle: "Вечное сияние чистого разума","poster": "showshenkRedemption.webp",text: "Великолепный фильм" },
+      { type: "3", rating: "10", date: "01.01.2001",movieID: "3", number: "3", movieTitle: "Вечное сияние чистого разума","poster": "showshenkRedemption.webp",text: "Великолепный фильм" },
+      { type: "1", rating: "10", date: "01.01.2001",movieID: "4", number: "4", movieTitle: "Вечное сияние чистого разума","poster": "showshenkRedemption.webp",text: "Великолепный фильм" },
     ]
-  };
+  }
 
   const users = {
     "a@a.ru": {
