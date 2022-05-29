@@ -14,7 +14,7 @@ mixin review(currentReview)
                             div.review__body__info__data__additional
                     div.review__body__description #{currentReview.text}
     else if currentReview.type=='2'
-        div.review-card(style="background: var(--neutralFeedback);")
+        div.profile__review-card(style="background: var(--neutralFeedback);")
             div.review
                 div.review__image
                     a.review__image(href=`/movies/${currentReview.ID}`)
@@ -28,7 +28,7 @@ mixin review(currentReview)
                             div.review__body__info__data__additional
                     div.review__body__description #{currentReview.text}
     else if currentReview.type=='3'
-        div.review-card(style="background: var(--badFeedback);")
+        div.profile__review-card(style="background: var(--badFeedback);")
             div.review
                 div.review__image
                     a.review__image(href=`/movies/${currentReview.ID}`)
@@ -41,3 +41,4 @@ mixin review(currentReview)
                                 div.review__body__info__data__title__rating #{currentReview.rating}
                             div.review__body__info__data__additional
                     div.review__body__description #{currentReview.text}
+                    
