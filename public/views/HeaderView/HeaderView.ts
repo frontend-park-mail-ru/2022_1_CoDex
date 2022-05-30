@@ -205,7 +205,6 @@ export class HeaderView extends BaseView {
       logo.style.display = 'flex';
       if (isWideNavbar) {
         verticalMenu.style.removeProperty('display');
-        console.log("wide")
       }
       else {
 

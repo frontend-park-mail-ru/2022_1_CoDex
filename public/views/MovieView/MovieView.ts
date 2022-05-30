@@ -318,6 +318,7 @@ export class MovieView extends BaseView {
   renderReviewSuccess = (review: review) => {
     const reviewInput = document.querySelector('.send-review__input') as HTMLElement;
     reviewInput.innerHTML = reviewSuccessBlock();
+    
     const reviewList = document.querySelector('.review-list');
     if (!review) {
       return;
@@ -499,7 +500,7 @@ export class MovieView extends BaseView {
   }
 
   onGotUser = () => {
-    this.renderReviewInput(this.movieID);
-    this.renderCollectionsArea(this.collectionsInfo);
+    // this.renderReviewInput(this.movieID);
+    // this.renderCollectionsArea(this.collectionsInfo);
   }
 }

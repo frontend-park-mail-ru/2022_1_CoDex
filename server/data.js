@@ -266,7 +266,7 @@ const startServer = (app) => {
   app.get("/api/v1/movies/1", function (req, res) {
     res.json({
       movie: top256.movielist[0],
-      reviewex: "",
+      reviewex: "1",
       userrating: "",
       collectionsInfo: [
         {

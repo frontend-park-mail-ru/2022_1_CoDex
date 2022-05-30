@@ -132,7 +132,6 @@ export class ProfileModel extends BaseModel {
                 const parsed = <bookmarkResponse>response.parsedResponse;
 
                 if (response.status == statuses.OK) {
-                    console.log(response.parsedResponse)
                     this.eventBus.emit(events.profilePage.render.newBookmark, parsed);
                 }
             }
