@@ -628,10 +628,10 @@ const startServer = (app) => {
 
   const Reviews = {
     reviewsList: [
-      { type: "1", rating: "10", date: "01.01.2001",movieID: "1", number: "1", movieTitle: "Вечное сияние чистого разума","poster": "showshenkRedemption.webp",text: "`Великолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильм`" },
-      { type: "2", rating: "10", date: "01.01.2001",movieID: "2", number: "2", movieTitle: "Вечное сияние чистого разума","poster": "showshenkRedemption.webp",text: "Великолепный фильм" },
-      { type: "3", rating: "10", date: "01.01.2001",movieID: "3", number: "3", movieTitle: "Вечное сияние чистого разума","poster": "showshenkRedemption.webp",text: "Великолепный фильм" },
-      { type: "1", rating: "10", date: "01.01.2001",movieID: "4", number: "4", movieTitle: "Вечное сияние чистого разума","poster": "showshenkRedemption.webp",text: "Великолепный фильм" },
+      { type: "1", rating: "10", date: "01.01.2001",movieID: "1", number: "1", movieTitle: "Вечное сияние чистого разума",moviePoster: "showshenkRedemption.webp",text: "`Великолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильм`" },
+      { type: "2", rating: "10", date: "01.01.2001",movieID: "2", number: "2", movieTitle: "Вечное сияние чистого разума",moviePoster: "showshenkRedemption.webp",text: "Великолепный фильм" },
+      { type: "3", rating: "10", date: "01.01.2001",movieID: "3", number: "3", movieTitle: "Вечное сияние чистого разума",moviePoster: "showshenkRedemption.webp",text: "Великолепный фильм" },
+      { type: "1", rating: "10", date: "01.01.2001",movieID: "4", number: "4", movieTitle: "Вечное сияние чистого разума",moviePoster: "showshenkRedemption.webp",text: "Великолепный фильм" },
     ]
   }
 
