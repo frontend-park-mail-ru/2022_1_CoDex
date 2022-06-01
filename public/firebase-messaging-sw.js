@@ -14,28 +14,28 @@ firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 
 messaging.onMessage((payload) => {
-  const title = payload.notification.title;
-  const greeting = new Notification(title, {
+  const notificationTitle = payload.notification.title;
+  const notificationOptions = {
     body: payload?.notification?.body,
     icon: 'https://park-akino.ru/server/images/Thor4.webp',
-  });
+  };
 
-  // if (!("Notification" in window)) {
-  //   console.log("This browser does not support system notifications.");
-  // } else {
-  //   self.registration.showNotification(notificationTitle,
-  //     notificationOptions).finally();
-  // }
+  if (!("Notification" in window)) {
+    console.log("This browser does not support system notifications.");
+  } else {
+    self.registration.showNotification(notificationTitle,
+      notificationOptions).finally();
+  }
 
 });
 
-// messaging.onBackgroundMessage(function (payload) {
-//   const notificationTitle = payload.notification.title;
-//   const notificationOptions = {
-//     body: payload.notification.body,
-//     icon: 'https://park-akino.ru/assets/favicon.ico',
-//   };
+messaging.onBackgroundMessage(function (payload) {
+  const notificationTitle = payload.notification.title;
+  const notificationOptions = {
+    body: payload.notification.body,
+    icon: 'https://park-akino.ru/assets/favicon.ico',
+  };
 
-//   self.registration.showNotification(notificationTitle,
-//     notificationOptions).finally();
-// });
+  self.registration.showNotification(notificationTitle,
+    notificationOptions).finally();
+});
