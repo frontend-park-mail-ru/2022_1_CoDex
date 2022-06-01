@@ -143,4 +143,9 @@ export class SingleBookmarkView extends BaseView {
             popup.classList.remove('popup-open');
         }
     }
+
+    reRenderPage = () => {
+        this.emitGetContent();
+    };
+
 }
