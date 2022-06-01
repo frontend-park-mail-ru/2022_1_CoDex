@@ -20,12 +20,12 @@ messaging.onMessage((payload) => {
     icon: 'https://park-akino.ru/server/images/Thor4.webp'
   });
 
-  if (!("Notification" in window)) {
-    console.log("This browser does not support system notifications.");
-  } else {
-    self.registration.showNotification(notificationTitle,
-      notificationOptions).finally();
-  }
+  // if (!("Notification" in window)) {
+  //   console.log("This browser does not support system notifications.");
+  // } else {
+  //   self.registration.showNotification(notificationTitle,
+  //     notificationOptions).finally();
+  // }
 
 });
 
