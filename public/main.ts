@@ -61,7 +61,7 @@ onMessage(messaging, function (payload) {
   const title: string = payload.notification?.title!;
   const greeting = new Notification(title, {
     body: payload?.notification?.body,
-    icon: 'https://park-akino.ru/server/images/Thor4.webp'
+    icon: 'https://park-akino.ru/assets/favicon.ico',
   });
 });
 
