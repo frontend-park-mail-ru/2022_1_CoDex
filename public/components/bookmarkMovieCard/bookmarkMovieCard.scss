@@ -45,7 +45,7 @@
         display: flex;
         flex-direction: column;
         overflow: hidden;
-
+        max-height: 192px;
         @media (max-width: 600px) {
             max-width: 200px;
             max-height: 195px;
