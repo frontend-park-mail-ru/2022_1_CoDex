@@ -146,12 +146,12 @@
     }
 
     @media (max-width: 600px) {
-        grid-template-columns: repeat(8, 1fr);
+        grid-template-columns: repeat(7, 1fr);
         grid-template-areas:
-            "B0 B1 B1 B1 B1 B1 B1 B2"
-            "A0 A1 A1 A1 A1 A1 A1 A2"
-            "C0 C1 C1 C1 C1 C1 C1 C2"
-            "D1 D1 D1 D1 D1 D1 D1 D1";
+            "B1 B1 B1 B1 B1 B1 B2"
+            "A1 A1 A1 A1 A1 A1 A2"
+            "C1 C1 C1 C1 C1 C1 C2"
+            "D1 D1 D1 D1 D1 D1 D1";
     }
     .notify {
         display: flex;
@@ -188,6 +188,7 @@
         display: flex;
         @media (max-width: 600px) {
             font-size: 30px;
+            margin-left: 30px;
         }
 
         span {
@@ -238,6 +239,9 @@
         font-size: 28px;
         color: white;
         grid-area: C1;
+        @media (max-width: 600px) {
+            margin-left: 30px;
+        }
     }
     &__bookmark-settings {
         grid-area: A1;
@@ -246,16 +250,20 @@
         align-items: center;
         width: 100%;
         margin-bottom: 40px;
+        @media (max-width: 600px) {
+            margin-left: 30px;
+        }
         .title {
             margin-left: 5px;
             color: $white;
-            text-align: center;
         }
         &__delete-playlist-btn {
             display: flex;
             background-color: $raspberry;
             color: $white;
-
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 16px;
             height: 40px;
             border-radius: 12px;
             border: 0;

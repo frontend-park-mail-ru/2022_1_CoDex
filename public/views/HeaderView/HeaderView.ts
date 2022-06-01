@@ -155,7 +155,7 @@ export class HeaderView extends BaseView {
     }
 
     input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
+      if (e.key === 'Enter' && input.value !== "") {
         this.eventBus.emit(events.pathChanged, { URL: `/search/${decodeURI(input.value)}` });
         if (document.documentElement.clientWidth <= 600) {
           this.hideSearch();

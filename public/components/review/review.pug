@@ -4,12 +4,12 @@ mixin review(currentReview)
             div.review
                 div.review__image
                     a.review__image(href=`/movies/${currentReview.movieID}`)
-                        img(src=(`../server/images/${currentReview.poster}`))
+                        img(src=(`../server/images/${currentReview.moviePoster}`))
                 div.review__body
                     div.review__body__info
                         div.review__body__info__data
                             div.review__body__info__data__title
-                                a.review__body__info__data__title__review-title(href=`/movies/${currentReview.ID}`) #{currentReview.movieTitle}
+                                a.review__body__info__data__title__review-title(href=`/movies/${currentReview.movieID}`) #{currentReview.movieTitle}
                                 div.review__body__info__data__title__rating #{currentReview.rating}
                             div.review__body__info__data__additional
                     div.review__body__description #{currentReview.text}
@@ -17,8 +17,8 @@ mixin review(currentReview)
         div.profile__review-card(style="background: var(--neutralFeedback);")
             div.review
                 div.review__image
-                    a.review__image(href=`/movies/${currentReview.ID}`)
-                        img(src=(`../server/images/${currentReview.poster}`))
+                    a.review__image(href=`/movies/${currentReview.movieID}`)
+                        img(src=(`../server/images/${currentReview.moviePoster}`))
                 div.review__body
                     div.review__body__info
                         div.review__body__info__data
@@ -31,14 +31,13 @@ mixin review(currentReview)
         div.profile__review-card(style="background: var(--badFeedback);")
             div.review
                 div.review__image
-                    a.review__image(href=`/movies/${currentReview.ID}`)
-                        img(src=(`../server/images/${currentReview.poster}`))
+                    a.review__image(href=`/movies/${currentReview.movieID}`)
+                        img(src=(`../server/images/${currentReview.moviePoster}`))
                 div.review__body
                     div.review__body__info
                         div.review__body__info__data
                             div.review__body__info__data__title
-                                a.review__body__info__data__title__review-title(href=`/movies/${currentReview.ID}`) #{currentReview.movieTitle}
+                                a.review__body__info__data__title__review-title(href=`/movies/${currentReview.movieID}`) #{currentReview.movieTitle}
                                 div.review__body__info__data__title__rating #{currentReview.rating}
                             div.review__body__info__data__additional
                     div.review__body__description #{currentReview.text}
-                    
