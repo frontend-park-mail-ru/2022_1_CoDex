@@ -217,6 +217,7 @@
             height: 40px;
             font-size: 38px;
             text-overflow: ellipsis;
+            font-family: $main_font;
             &:hover {
                 outline: 1px solid $raspberry;
                 cursor: pointer;
