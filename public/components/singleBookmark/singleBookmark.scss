@@ -218,6 +218,8 @@
             font-size: 38px;
             text-overflow: ellipsis;
             font-family: $main_font;
+            font-weight: 600;
+            
             &:hover {
                 outline: 1px solid $raspberry;
                 cursor: pointer;
