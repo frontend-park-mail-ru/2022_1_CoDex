@@ -500,7 +500,7 @@ export class MovieView extends BaseView {
   }
 
   onGotUser = () => {
-    // this.renderReviewInput(this.movieID);
-    // this.renderCollectionsArea(this.collectionsInfo);
+    this.renderReviewInput(this.movieID);
+    this.renderCollectionsArea(this.collectionsInfo);
   }
 }
