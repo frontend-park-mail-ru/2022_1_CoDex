@@ -59,7 +59,7 @@ export class SingleBookmarkView extends BaseView {
         if (!nameInput) return;
         nameInput.addEventListener('keyup', (enterUp) => {
             const target = enterUp.target as HTMLInputElement;
-            if (enterUp.key == 'Enter' && !(target.value == "" || target.value == this.bookmarkData.title || target.value.trim())) {
+            if (enterUp.key == 'Enter' && !(target.value == "" || target.value == this.bookmarkData.title || !target.value.trim())) {
                 this.eventBus.emit(events.singleBookmarkPage.changeTitle, { bookmarkId: this.bookmarkID, newTitle: nameInput.value });
                 nameInput.blur();
             }
