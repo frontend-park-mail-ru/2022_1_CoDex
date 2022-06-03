@@ -139,7 +139,6 @@ export const slider = (selector: string) => {
       }
     };
     const swipeEnd = () => {
-      // posFinal = posInit - posX1;
       isSwipe = false;
       slider.addEventListener('touchmove', function(e) {
         swipeAction(e);

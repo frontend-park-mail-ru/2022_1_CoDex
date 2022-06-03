@@ -44,12 +44,6 @@ export class SingleBookmarkModel extends BaseModel {
                             events.singleBookmarkPage.render.content, parsed
                         );
                     })();
-                    // parsed.isThisUser = authModule.user ? (authModule.user.ID == parsed.userId) : false;
-                    // this.shortenMoviesDescription(parsed.movielist);
-                    // console.log(parsed)
-                    // this.eventBus.emit(
-                    //     events.singleBookmarkPage.render.content, parsed
-                    // );
                 } else if (response?.status === statuses.NOT_FOUND) {
                     this.eventBus.emit(events.app.errorPageText, "Такой подборки нет :(");
                 }

@@ -44,10 +44,6 @@ export class ProfileController extends BaseController {
                 event: events.profilePage.createBookmark,
                 handler: this.model.createBookmark,
             },
-            // {
-            //     event: events.profilePage.render.content,
-            //     handler: this.view.renderContent,
-            // },
             {
                 event: events.profilePage.render.profileInfo,
                 handler: this.view.renderProfileInfo,
@@ -68,10 +64,6 @@ export class ProfileController extends BaseController {
                 event: events.profilePage.render.changedProfile,
                 handler: this.view.reRenderPage,
             },
-            //TODO{
-            //     event: events.profilePage.render.changedAvatar,
-            //     handler: this.view.renderChangedProfile,
-            // },
             {
                 event: events.header.logout,
                 handler: this.view.reRenderPage,

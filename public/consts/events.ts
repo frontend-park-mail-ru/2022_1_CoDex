@@ -123,10 +123,6 @@ export const events = {
         deleteValidationError: "profilePage:deleteValidationError",
         onSuccessSubmit: "profilePage:successSumbit",
         onGotUser: "profilePage:onGotUser",
-        //TODO submit: "profilePage:submit",
-        // submitError: "profilePage:submitError",
-        // wrongInput: "profilePage:wrongInput",
-        // deleteAllErrors: "profilePage:deleteAllErrors",
     },
 
     genresPage: {
