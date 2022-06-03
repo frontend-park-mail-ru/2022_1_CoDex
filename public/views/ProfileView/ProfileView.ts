@@ -119,7 +119,7 @@ export class ProfileView extends BaseView {
     createBookmarkButton.addEventListener('click', (e) => {
       e.preventDefault();
       const bookmarkName = document.querySelector('.bookmark-name') as HTMLInputElement;
-      if (bookmarkName.value) {
+      if (bookmarkName.value && bookmarkName.value.trim()) {
         this.createBookmark(bookmarkName.value);
         popup.classList.remove('open');
         bookmarkName.value = "";

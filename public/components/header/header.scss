@@ -304,7 +304,6 @@
         grid-template-areas: "vert_menu logo search login";
         grid-template-columns: 80px 120px minmax(36px, 720px) 120px;
         column-gap: 0px;
-        //justify-content: space-between;
 
         .search {
             background-color: transparent;

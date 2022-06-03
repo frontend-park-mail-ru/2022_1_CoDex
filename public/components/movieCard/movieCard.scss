@@ -102,7 +102,6 @@
 
         &__description {
             color: rgb(219 218 218);
-            // text-align: left;
             max-width: 100%;
             display: flex;
             font-size: 16px;
@@ -110,7 +109,6 @@
             height: 100px;
             width: 350px;
             overflow: hidden;
-            // white-space: nowrap;
             text-overflow: ellipsis;
         }
     }

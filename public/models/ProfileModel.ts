@@ -34,10 +34,6 @@ export class ProfileModel extends BaseModel {
                         events.profilePage.render.profileInfo, profileData
                     );
                 })();
-                // profileData.isThisUser = authModule.user ? (user.ID == authModule.user.ID) : false;
-                //     this.eventBus.emit(
-                //         events.profilePage.render.profileInfo, profileData
-                //     );
             } else if (response?.status === statuses.NOT_FOUND) {
                 this.eventBus.emit(events.app.errorPageText, "Такого пользователя нет");
             }
