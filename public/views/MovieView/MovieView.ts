@@ -19,6 +19,8 @@ import collectionDropdown from '@/components/collectionDropdown/collectionDropdo
 export class MovieView extends BaseView {
   private movieID: string;
   private collectionsInfo: personalCollectionItem[];
+  private reviewEx = false;
+  private ratingEx = false;
   /**
      * @description Создаёт представление страницы одного фильма.
      * @param { EventBus } eventBus Глобальная шина событий
@@ -55,6 +57,8 @@ export class MovieView extends BaseView {
       this.renderRating(data.movie.ID);
       this.renderReviewInput(data.movie.ID);
       this.renderCollectionsArea(data.collectionsInfo);
+      this.reviewEx = data.reviewex != '';
+      this.ratingEx = data.userrating != '';
       if (data.reviewex != '') {
         this.eventBus.emit(events.moviePage.reviewSuccess);
       }
@@ -500,7 +504,8 @@ export class MovieView extends BaseView {
   }
 
   onGotUser = () => {
-    this.renderReviewInput(this.movieID);
+    if (!this.reviewEx)
+      this.renderReviewInput(this.movieID);
     this.renderCollectionsArea(this.collectionsInfo);
   }
 }
