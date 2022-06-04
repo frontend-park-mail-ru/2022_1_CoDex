@@ -541,7 +541,7 @@ const startServer = (app) => {
       return res.status(400).json({ error: 'Не указан E-Mail или пароль' });
     }
     if (!users[email] || users[email].password !== password) {
-      return res.status(400).json({ error: 'Не верный E-Mail и/или пароль' });
+      return res.status(200).send('Не верный E-Mail и/или пароль');
     }
 
     const ID = uuid();
