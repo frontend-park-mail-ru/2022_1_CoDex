@@ -17,7 +17,7 @@
 	.profile {
 		display: grid;
 		grid-template-columns: minmax(280px, 380px) minmax(380px, 780px);
-		column-gap: 20px;
+		column-gap: 30px;
 		grid-template-areas: "info content";
 
 		&__popup {
@@ -27,10 +27,9 @@
 			left: 0;
 			top: 0;
 			background-color: transparent;
-			z-index: 2;
+			z-index: -1;
 			opacity: 0;
-			transform: translate(0px, -100%);
-			transition: all 0.8s ease 0s;
+			transition: all 0.2s ease 0s;
 			&__container {
 				display: flex;
 				width: 100%;
@@ -79,7 +78,7 @@
 						font-weight: 600;
 						font-size: 20px;
 						line-height: 28px;
-						border:none;
+						border: none;
 						cursor: pointer;
 						&:hover {
 							filter: brightness(80%);
@@ -105,7 +104,7 @@
 		}
 
 		&__popup.open {
-			transform: translate(0px, 0%);
+			z-index: 2;
 			opacity: 1;
 			background-color: rgba(0, 0, 0, 0.426);
 		}
@@ -116,7 +115,7 @@
 			flex-direction: column;
 			align-items: center;
 			background-color: $profile_info_background;
-			height: 600px;
+			height: 450px;
 			width: 100%;
 			margin-top: 30px;
 			margin-left: 10px;

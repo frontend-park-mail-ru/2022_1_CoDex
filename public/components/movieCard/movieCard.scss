@@ -44,7 +44,8 @@
         padding: 0 30px 0 20px;
         display: flex;
         flex-direction: column;
-
+        overflow: hidden;
+        max-height: 192px;
         @media (max-width: 600px) {
             max-width: 200px;
             max-height: 195px;
@@ -74,6 +75,8 @@
                         color: white;
                         grid-area: B1;
                         text-align: left;
+                        word-break: break-word;
+
                         @media (max-width: 600px) {
                             width: 75%;
                         }
@@ -92,14 +95,13 @@
                     font-family: $main_font;
                     margin-bottom: 5px;
                     font-size: 17px;
-                    color: white;
+                    color: $movie_card_grey;
                 }
             }
         }
 
         &__description {
             color: rgb(219 218 218);
-            // text-align: left;
             max-width: 100%;
             display: flex;
             font-size: 16px;
@@ -107,7 +109,6 @@
             height: 100px;
             width: 350px;
             overflow: hidden;
-            // white-space: nowrap;
             text-overflow: ellipsis;
         }
     }

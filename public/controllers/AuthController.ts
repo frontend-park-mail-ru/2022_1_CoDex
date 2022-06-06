@@ -28,10 +28,6 @@ export class AuthController extends BaseController {
                 event: events.authPage.deleteValidationError, 
                 handler: this.view.deleteErrorMessage 
             },
-            // {
-            //     event: events.authPage.wrongInput,
-            //     handler: TODO Animation?
-            // }
             {
                 event: events.authPage.getContent,
                 handler: this.model.getContent,

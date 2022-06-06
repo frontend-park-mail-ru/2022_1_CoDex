@@ -47,8 +47,8 @@ if ('serviceWorker' in navigator) {
 getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYnl17WWj3g_N5B7R0RKxiXS1fMlpzZDpZJ3oOID1QM' }).then((currentToken) => {
   if (currentToken) {
     fetch('https://park-akino.ru/api/v1/user/subscribePush', {
-     method: 'POST',
-     body: JSON.stringify({ token: currentToken }),
+      method: 'POST',
+      body: JSON.stringify({ token: currentToken }),
     }).finally()
   } else {
     console.log('No registration token available. Request permission to generate one.');
@@ -57,12 +57,11 @@ getToken(messaging, { vapidKey: 'BHXKw1xj-ycTEtyFKFWHnrXTaMnJyqFtBfixVtr8YmgvEYn
   console.log('An error occurred while retrieving token. ', err);
 });
 
-onMessage(messaging, function(payload) {
+onMessage(messaging, function (payload) {
   const title: string = payload.notification?.title!;
-  console.log(payload)
   const greeting = new Notification(title, {
     body: payload?.notification?.body,
-    icon: 'https://park-akino.ru/assets/favicon.ico'
+    icon: 'https://park-akino.ru/server/images/Thor4.webp'
   });
 });
 

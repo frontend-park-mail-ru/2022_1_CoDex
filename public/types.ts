@@ -25,7 +25,8 @@ type api = {
     getUser: string,
     changeProfile: string,
     changeAvatar: string,
-    changePrivateSettings:string,
+    changePrivateSettings: string,
+    changeTitleSettings: string,
     bookmarks: string,
     reviews: string,
     logout: string,
@@ -302,16 +303,18 @@ export type singleBookmarkPageData = {
     movielist: movieInfo[],
     title: string,
     public: boolean,
+    userId: string,
+    isThisUser: boolean,
 }
 
 export type filmsSearchData = {
     data: singleCollectionMovie[],
-    isEmpty : boolean,
+    isEmpty: boolean,
 }
 
 export type actorsSearchData = {
     data: relatedItem[],
-    isEmpty : boolean,
+    isEmpty: boolean,
 }
 
 export type ratingResponse = {
@@ -328,23 +331,23 @@ export type authcheckResponse = {
 }
 
 export type searchResponse = {
-    actors : actorsSearchData,
-    announced : {
+    actors: actorsSearchData,
+    announced: {
         data: Object[],
-        isEmpty : boolean,
+        isEmpty: boolean,
     },
-    bookmarks : {
+    bookmarks: {
         data: Object[],
-        isEmpty : boolean,
+        isEmpty: boolean,
     },
-    genres : {
+    genres: {
         data: Object[],
-        isEmpty : boolean,
+        isEmpty: boolean,
     },
-    movies : filmsSearchData
-    users : {
+    movies: filmsSearchData
+    users: {
         data: Object[],
-        isEmpty : boolean,
+        isEmpty: boolean,
     },
 }
 
@@ -375,6 +378,11 @@ export type bookmarkDeleteRequest = {
 export type bookmarkChangePrivateRequest = {
     bookmarkId: string,
     private: boolean,
+}
+
+export type bookmarkChangeTitleRequest = {
+    bookmarkId: string,
+    title: string,
 }
 
 export type bookmarkResponse = {

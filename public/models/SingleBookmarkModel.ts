@@ -1,8 +1,10 @@
+import { authModule } from "@/modules/auth";
 import EventBus from "@/modules/eventBus";
-import { singleBookmark, singleCollectionMovie, singleBookmarkPageData, bookmarkDeleteRequest, bookmarkRequest, bookmarkChangePrivateRequest } from "@/types";
+import { singleBookmark, singleCollectionMovie, singleBookmarkPageData, bookmarkDeleteRequest, bookmarkRequest, bookmarkChangePrivateRequest, bookmarkChangeTitleRequest } from "@/types";
+import { sleep } from "@/utils/sleep";
 import { events } from "../consts/events";
 import { statuses } from "../consts/statuses";
-import { getSingleBookmark, deleteBookmark, removeMovieFromBookmark, changePrivateSettings } from "../modules/connection";
+import { getSingleBookmark, deleteBookmark, removeMovieFromBookmark, changePrivateSettings, changeTitle, } from "../modules/connection";
 import { BaseModel } from "./BaseModel";
 
 /**
@@ -34,10 +36,14 @@ export class SingleBookmarkModel extends BaseModel {
                     this.eventBus.emit(events.app.errorPage);
                 } if (response?.status === statuses.OK && response.parsedResponse) {
                     const parsed = <singleBookmarkPageData>response.parsedResponse;
-                    this.shortenMoviesDescription(parsed.movielist);
-                    this.eventBus.emit(
-                        events.singleBookmarkPage.render.content, response.parsedResponse
-                    );
+                    (async () => {
+                        await sleep(500);
+                        parsed.isThisUser = authModule.user ? (authModule.user.ID == parsed.userId) : false;
+                        this.shortenMoviesDescription(parsed.movielist);
+                        this.eventBus.emit(
+                            events.singleBookmarkPage.render.content, parsed
+                        );
+                    })();
                 } else if (response?.status === statuses.NOT_FOUND) {
                     this.eventBus.emit(events.app.errorPageText, "Такой подборки нет :(");
                 }
@@ -74,25 +80,41 @@ export class SingleBookmarkModel extends BaseModel {
         }
     }
 
-    deleteBookmark = (bookmarkData: bookmarkDeleteRequest) =>{
-        deleteBookmark(bookmarkData).then(() =>{
+    deleteBookmark = (bookmarkData: bookmarkDeleteRequest) => {
+        deleteBookmark(bookmarkData).then(() => {
             this.eventBus.emit(events.redirectBack);
         }).catch((e) => {
             console.log("Unexpected singleCollection error: ", e);
         });
     }
 
-    deleteMovie = (bookmarkData: bookmarkRequest) =>{
-        removeMovieFromBookmark(bookmarkData).then(() =>{
-            const bookmark : singleBookmark = {ID: bookmarkData.bookmarkId}; 
-            this.getContent(bookmark);            
+    deleteMovie = (bookmarkData: bookmarkRequest) => {
+        removeMovieFromBookmark(bookmarkData).then(() => {
+            const bookmark: singleBookmark = { ID: bookmarkData.bookmarkId };
+            this.getContent(bookmark);
         }).catch((e) => {
             console.log("Unexpected singleCollection error: ", e);
         });
     }
-    
-    changePrivate = (bookmarkData: bookmarkChangePrivateRequest) =>{
-        changePrivateSettings(bookmarkData).then((response)=>{
+
+    changePrivate = (bookmarkData: bookmarkChangePrivateRequest) => {
+        changePrivateSettings(bookmarkData).then((response) => {
+            if (!response) {
+                this.eventBus.emit(events.app.errorPage);
+            }
+        });
+    }
+
+    changeTitle = (bookmarkData: bookmarkChangeTitleRequest) => {
+        changeTitle(bookmarkData).then((response) => {
+            if (response?.status === statuses.OK) {
+                const parsed = <singleBookmarkPageData>response.parsedResponse;
+                parsed.isThisUser = authModule.user ? (authModule.user.ID == parsed.userId) : false;
+                this.shortenMoviesDescription(parsed.movielist);
+                this.eventBus.emit(
+                    events.singleBookmarkPage.render.content, parsed
+                );
+            }
             if (!response) {
                 this.eventBus.emit(events.app.errorPage);
             }

@@ -48,10 +48,33 @@ export class SingleBookmarkView extends BaseView {
             this.eventBus.emit(events.app.errorPage);
         }
         this.addEventListenerToSettingsButtons();
+        this.addEventListenerToNameInput();
         if (this.isNotifyVisible) {
             this.showNotify("Фильм удалён");
         }
     };
+
+    addEventListenerToNameInput = () => {
+        const nameInput = document.querySelector('.container__bookmark-title__color__title-user') as HTMLInputElement;
+        if (!nameInput) return;
+        nameInput.addEventListener('keyup', (enterUp) => {
+            const target = enterUp.target as HTMLInputElement;
+            if (enterUp.key == 'Enter' && !(target.value == "" || target.value == this.bookmarkData.title || !target.value.trim())) {
+                this.eventBus.emit(events.singleBookmarkPage.changeTitle, { bookmarkId: this.bookmarkID, newTitle: nameInput.value });
+                nameInput.blur();
+            }
+        });
+
+        nameInput.addEventListener('focusout', (enterUp) => {
+            const target = enterUp.target as HTMLInputElement;
+            console.log(this.bookmarkData)
+            if (!(target.value == "" || target.value == this.bookmarkData.title)) {
+                this.eventBus.emit(events.singleBookmarkPage.changeTitle, { bookmarkId: this.bookmarkID, newTitle: nameInput.value });
+            } else {
+                target.value = this.bookmarkData.title;
+            }
+        })
+    }
 
     addEventListenerToSettingsButtons = () => {
         const deletePlaylistButton = document.querySelector('.container__bookmark-settings__delete-playlist-btn') as HTMLInputElement;
@@ -89,7 +112,6 @@ export class SingleBookmarkView extends BaseView {
                 };
                 this.eventBus.emit(events.singleBookmarkPage.delete.movie, bookmarkRequest);
                 this.isNotifyVisible = true;
-
             });
         });
 
@@ -121,4 +143,9 @@ export class SingleBookmarkView extends BaseView {
             popup.classList.remove('popup-open');
         }
     }
+
+    reRenderPage = () => {
+        this.emitGetContent();
+    };
+
 }

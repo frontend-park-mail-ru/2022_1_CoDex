@@ -67,7 +67,7 @@ const startServer = (app) => {
 
   app.post("/api/v1/playlist/create", function (req, res) {
     res.status(201).json({
-      ID:16, imgSrc:'top.webp', title: "NewOne",
+      ID: 16, imgSrc: 'top.webp', title: "NewOne",
     });
   });
 
@@ -79,6 +79,10 @@ const startServer = (app) => {
   app.post("/api/v1/playlist/deleteMovie", function (req, res) {
     res.status(200).json({
     });
+  });
+
+  app.post("/api/v1/playlist/changeTitle", function (req, res) {
+    res.status(200).json(bookmark);
   });
 
   app.get("/api/v1/search/\*", function (req, res) {
@@ -262,7 +266,7 @@ const startServer = (app) => {
   app.get("/api/v1/movies/1", function (req, res) {
     res.json({
       movie: top256.movielist[0],
-      reviewex: "",
+      reviewex: "1",
       userrating: "",
       collectionsInfo: [
         {
@@ -537,7 +541,7 @@ const startServer = (app) => {
       return res.status(400).json({ error: 'Не указан E-Mail или пароль' });
     }
     if (!users[email] || users[email].password !== password) {
-      return res.status(400).json({ error: 'Не верный E-Mail и/или пароль' });
+      return res.status(200).send('Не верный E-Mail и/или пароль');
     }
 
     const ID = uuid();
@@ -609,10 +613,10 @@ const startServer = (app) => {
     bookmarksList: [
       { description: "Подборка №1", imgSrc: "top.webp", ID: "10", public: true },
       { description: "Подборка №2", imgSrc: "top.webp", ID: "11", public: true },
-      { description: "Подборка №3", imgSrc: "top.webp", ID: "12",public: false },
-      { description: "Подборка №4", imgSrc: "top.webp", ID: "13",public: false },
-      { description: "Подборка №5", imgSrc: "top.webp", ID: "14",public: true },
-      { description: "Подборка №6", imgSrc: "top.webp", ID: "15",public: true },
+      { description: "Подборка №3", imgSrc: "top.webp", ID: "12", public: false },
+      { description: "Подборка №4", imgSrc: "top.webp", ID: "13", public: false },
+      { description: "Подборка №5", imgSrc: "top.webp", ID: "14", public: true },
+      { description: "Подборка №6", imgSrc: "top.webp", ID: "15", public: true },
     ]
   };
 
@@ -624,12 +628,12 @@ const startServer = (app) => {
 
   const Reviews = {
     reviewsList: [
-      { type: "Оценка", text: "10", date: "01.01.2001", number: "1" },
-      { type: "Отзыв", feedbacktype: "1", date: "01.01.2001", number: "2", movieTitle: "Вечное сияние чистого разума" },
-      { type: "Отзыв", feedbacktype: "2", date: "01.01.2001", number: "3", movieTitle: "Вечное сияние чистого разума" },
-      { type: "Отзыв", feedbacktype: "3", date: "01.01.2001", number: "4", movieTitle: "Вечное сияние чистого разума" },
+      { type: "1", rating: "10", date: "01.01.2001",movieID: "1", number: "1", movieTitle: "Вечное сияние чистого разума",moviePoster: "showshenkRedemption.webp",text: "`Великолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильмВеликолепный фильм`" },
+      { type: "2", rating: "10", date: "01.01.2001",movieID: "2", number: "2", movieTitle: "Вечное сияние чистого разума",moviePoster: "showshenkRedemption.webp",text: "Великолепный фильм" },
+      { type: "3", rating: "10", date: "01.01.2001",movieID: "3", number: "3", movieTitle: "Вечное сияние чистого разума",moviePoster: "showshenkRedemption.webp",text: "Великолепный фильм" },
+      { type: "1", rating: "10", date: "01.01.2001",movieID: "4", number: "4", movieTitle: "Вечное сияние чистого разума",moviePoster: "showshenkRedemption.webp",text: "Великолепный фильм" },
     ]
-  };
+  }
 
   const users = {
     "a@a.ru": {
@@ -1932,9 +1936,10 @@ const startServer = (app) => {
   };
 
   const bookmark = {
-    title: "Подборка №1",
+    title: "Подборка №1jfksdjffsdklfjsdklfjsdf",
     description: "Вот такая вот закладка :)",
-    private: false,
+    public: false,
+    userId: "1",
     movielist: [
       {
         "ID": "1",

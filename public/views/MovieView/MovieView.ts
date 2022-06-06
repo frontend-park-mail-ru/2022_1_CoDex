@@ -19,6 +19,8 @@ import collectionDropdown from '@/components/collectionDropdown/collectionDropdo
 export class MovieView extends BaseView {
   private movieID: string;
   private collectionsInfo: personalCollectionItem[];
+  private reviewEx = false;
+  private ratingEx = false;
   /**
      * @description Создаёт представление страницы одного фильма.
      * @param { EventBus } eventBus Глобальная шина событий
@@ -55,6 +57,8 @@ export class MovieView extends BaseView {
       this.renderRating(data.movie.ID);
       this.renderReviewInput(data.movie.ID);
       this.renderCollectionsArea(data.collectionsInfo);
+      this.reviewEx = data.reviewex != '';
+      this.ratingEx = data.userrating != '';
       if (data.reviewex != '') {
         this.eventBus.emit(events.moviePage.reviewSuccess);
       }
@@ -229,7 +233,6 @@ export class MovieView extends BaseView {
         target.classList.toggle('select-arrow-active');
       });
     }
-    // document.addEventListener('click', this.closeAllSelect);
 
     const submitButton = document.querySelector('.review-input-block__submit') as HTMLElement;
     submitButton.addEventListener('click', this.sendReview);
@@ -318,6 +321,7 @@ export class MovieView extends BaseView {
   renderReviewSuccess = (review: review) => {
     const reviewInput = document.querySelector('.send-review__input') as HTMLElement;
     reviewInput.innerHTML = reviewSuccessBlock();
+    
     const reviewList = document.querySelector('.review-list');
     if (!review) {
       return;
@@ -395,7 +399,6 @@ export class MovieView extends BaseView {
       lastItem.setAttribute("bookmarkid", bookmarkId ? bookmarkId : "");
       const text = currentSelect.options[currentSelectLength - 1].innerHTML
       lastItem.textContent = text.length > 22 ? text.slice(0, 18) + "..." : text;
-      console.log(text.length);
       lastItem.addEventListener('click', this.collectionsDropdownListener);
 
       const checkbox = document.createElement('input');
@@ -500,7 +503,8 @@ export class MovieView extends BaseView {
   }
 
   onGotUser = () => {
-    this.renderReviewInput(this.movieID);
+    if (!this.reviewEx)
+      this.renderReviewInput(this.movieID);
     this.renderCollectionsArea(this.collectionsInfo);
   }
 }

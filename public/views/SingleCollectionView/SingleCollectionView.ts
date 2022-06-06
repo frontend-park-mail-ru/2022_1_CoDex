@@ -10,6 +10,7 @@ import singleCollectionContent from '@/components/singleCollection/singleCollect
  */
 export class SingleCollectionView extends BaseView {
   private moviesData: singleCollectionPageData;
+
   /**
      * @description Создаёт представление страницы одной подборки.
      * @param { EventBus } eventBus Глобальная шина событий

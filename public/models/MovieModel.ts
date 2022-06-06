@@ -35,12 +35,9 @@ export class MovieModel extends BaseModel {
                 this.eventBus.emit(events.app.errorPage);
             } else if (response.status === statuses.OK && response.parsedResponse) {
                 const parsed = response.parsedResponse as moviePageData;
-                console.log("1", parsed);
                 if (parsed.related?.length == 0) {
                     parsed.related = null;
-                    console.log("1.1", parsed);
                 }
-                console.log("3", parsed);
                 this.eventBus.emit(events.moviePage.render.content, response.parsedResponse);
             }
             if (response?.status === statuses.NOT_FOUND) {

@@ -21,6 +21,7 @@ export class ProfileView extends BaseView {
     */
   constructor(eventBus: EventBus, data: object = {}) {
     super(eventBus, data);
+    
   }
 
   /**
@@ -41,7 +42,6 @@ export class ProfileView extends BaseView {
     if (content) {
       content.innerHTML = profilePug(this.userData);
     }
-    console.log("userDataFrom render profileinfo", this.userData)
     this.eventBus.emit(events.profilePage.getContent, this.userData);
     this.addSettingsButtonListener();
     this.listenAvatarChanged();
@@ -53,8 +53,10 @@ export class ProfileView extends BaseView {
   renderBookmarks = (data: any) => {
     const profileBookmarks = document.querySelector('.profile-bookmarks');
     if (profileBookmarks) {
-      console.log("userDataFrom render bookmarks", this.userData)
       data.isThisUser = this.userData.isThisUser;
+      data.userID = this.userData.ID;
+      
+      console.log(data)
       profileBookmarks.innerHTML += profileBookmark(data);
     }
     this.addCreateBookmarkButtonListener();
@@ -65,6 +67,8 @@ export class ProfileView extends BaseView {
  */
   renderReviews = (data: userData) => {
     const profileReviews = document.querySelector('.profile-reviews');
+    console.log("review data", data);
+    console.log(profileReviews)
     if (profileReviews) {
       profileReviews.innerHTML += profileReview(data);
     }
@@ -104,7 +108,6 @@ export class ProfileView extends BaseView {
     const closePopupButton = document.querySelector('.popup-close') as HTMLElement;
     if (!openWindowButton || !popup || !closePopupButton || !createBookmarkButton) { return; }
     openWindowButton.addEventListener('click', (e) => {
-      console.log("clickopen")
       e.preventDefault();
       popup.classList.add('open');
     });
@@ -116,7 +119,7 @@ export class ProfileView extends BaseView {
     createBookmarkButton.addEventListener('click', (e) => {
       e.preventDefault();
       const bookmarkName = document.querySelector('.bookmark-name') as HTMLInputElement;
-      if (bookmarkName.value) {
+      if (bookmarkName.value && bookmarkName.value.trim()) {
         this.createBookmark(bookmarkName.value);
         popup.classList.remove('open');
         bookmarkName.value = "";
@@ -213,7 +216,8 @@ export class ProfileView extends BaseView {
         if (!target) {
           return;
         }
-        const file = target.files as FileList;
+        const fileList = target.files as FileList;
+        const file = fileList[0] as File;
         if (!file) {
           return
         }
@@ -224,11 +228,11 @@ export class ProfileView extends BaseView {
           const imgSrc: string = avatarTarget.result as string;
           avatarDiv.style.backgroundImage = `url(${imgSrc})`;
         });
-        reader.readAsDataURL(file[0]);
+        reader.readAsDataURL(file);
 
         const formData = new FormData();
-        if (file[0]) {
-          formData.append('avatar', file[0]);
+        if (file) {
+          formData.append('avatar', file);
           this.eventBus.emit(events.profilePage.sendAvatar, formData, this.userData.ID);
         }
       });

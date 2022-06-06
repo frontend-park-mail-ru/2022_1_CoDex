@@ -150,7 +150,7 @@ export class AuthModel extends BaseModel {
             if (!response) {
                 return;
             }
-            if (response.status === statuses.OK) {
+            if (response.status === statuses.OK && response.parsedResponse?.ID) {
                 this.eventBus.emit(events.authPage.logRegSuccess, 
                     response.parsedResponse);
                 this.redirect();
@@ -175,7 +175,7 @@ export class AuthModel extends BaseModel {
             if (!response) {
                 return;
             }
-            if (response.status === statuses.OK) {
+            if (response.status === statuses.OK && response.parsedResponse?.ID) {
                 this.eventBus.emit(events.authPage.logRegSuccess, 
                     response.parsedResponse);
                 this.redirect();

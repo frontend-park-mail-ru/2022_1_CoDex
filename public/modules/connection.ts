@@ -1,7 +1,7 @@
 import { statuses } from "@/consts/statuses";
 import { urls } from "@/consts/urls";
-import { bookmarkCreateRequest, bookmarkRequest, loginData, personalData, ratingRequest, registerData, requestParams, requestParamsData, reviewRequest, bookmarkDeleteRequest, bookmarkChangePrivateRequest } from "@/types";
-// import regeneratorRuntime from "regenerator-runtime";
+import { bookmarkCreateRequest, bookmarkRequest, loginData, personalData, ratingRequest, registerData, requestParams, requestParamsData, reviewRequest, bookmarkDeleteRequest, bookmarkChangePrivateRequest, 
+bookmarkChangeTitleRequest } from "@/types";
 
 let CSRFToken: string | null = null;
 
@@ -502,6 +502,21 @@ export const changePrivateSettings = async (bookmarkChangePrivateRequest: bookma
         method: "POST",
         credentials: null,
         body: JSON.stringify(bookmarkChangePrivateRequest),
+    };
+
+    try {
+        return await sendRequest(params);
+    } catch (error) {
+        return null;
+    }
+};
+
+export const changeTitle = async (bookmarkChangeTitleRequest: bookmarkChangeTitleRequest) => {
+    const params: requestParams = {
+        url: `${urls.api.changeTitleSettings}`,
+        method: "POST",
+        credentials: null,
+        body: JSON.stringify(bookmarkChangeTitleRequest),
     };
 
     try {

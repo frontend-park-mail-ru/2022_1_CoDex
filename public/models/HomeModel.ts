@@ -10,5 +10,4 @@ export class HomeModel extends BaseModel {
     constructor(eventBus: EventBus) {
         super(eventBus);
     }
-    // TODO
 }

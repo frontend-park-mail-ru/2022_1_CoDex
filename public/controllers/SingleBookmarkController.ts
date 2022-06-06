@@ -40,6 +40,14 @@ export class SingleBookmarkController extends BaseController {
                 event: events.singleBookmarkPage.changePrivate,
                 handler: this.model.changePrivate,
             },
+            {
+                event: events.singleBookmarkPage.changeTitle,
+                handler: this.model.changeTitle,
+            },
+            {
+                event: events.header.logout,
+                handler: this.view.reRenderPage,
+            },
         );
         this.subscribe();
     }

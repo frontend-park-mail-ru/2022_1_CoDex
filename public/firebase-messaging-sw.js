@@ -1,7 +1,6 @@
 importScripts('https://www.gstatic.com/firebasejs/9.8.1/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/9.8.1/firebase-messaging-compat.js');
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyCO0VasuBzGS74ONUmtMKrktKddF58DIS8",
   authDomain: "akino-61bc9.firebaseapp.com",
@@ -14,32 +13,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 
-messaging.onMessage((payload) => {
-  const notificationTitle = payload.notification.title;
-  const notificationOptions = {
-    body: payload.notification.body,
-    icon: 'https://park-akino.ru/assets/favicon.ico',
-  };
-
-  console.log("onMessage")
-  if (!("Notification" in window)) {
-    console.log("This browser does not support system notifications.");
-  } else {
-
-    const notification = new Notification(notificationTitle, notificationOptions);
-    notification.onclick = function (event) {
-      event.preventDefault();
-      notification.close();
-    }
-
-    self.registration.showNotification(notificationTitle,
-      notificationOptions).finally();
-  }
-
-});
-
 messaging.onBackgroundMessage(function (payload) {
-  console.log("onBackground");
   const notificationTitle = payload.notification.title;
   const notificationOptions = {
     body: payload.notification.body,
