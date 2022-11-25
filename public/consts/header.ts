@@ -10,7 +10,7 @@ export const headerLinks: headerLink[] = [
       title: "Жанры",
     },
     {
-      href: "/premieres",
+      href: "/premiers",
       title: "Премьеры",
     },
 ];
